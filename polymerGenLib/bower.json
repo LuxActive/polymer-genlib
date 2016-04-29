@@ -40,6 +40,7 @@
     "google-chart": "GoogleWebComponents/google-chart#1.0.4",
     "vaadin-combo-box": "#1.0.0-rc1",
     "vaadin-grid": "#1.0.0",
-    "vaadin-date-picker": "#1.0.0-beta1"
+    "vaadin-date-picker": "#1.0.0-beta1",
+    "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#1.1.4"
   }
 }
