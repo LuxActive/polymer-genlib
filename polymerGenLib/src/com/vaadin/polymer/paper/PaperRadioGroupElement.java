@@ -5,11 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/selection-controls.html#selection-controls-radio-button">Radio button</a></p>
@@ -33,11 +34,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre><p>See <a href="paper-radio-button">paper-radio-button</a> for more<br>information about <code>paper-radio-button</code>.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperRadioGroupElement extends HTMLElement {
 
-    public static final String TAG = "paper-radio-group";
-    public static final String SRC = "paper-radio-group/paper-radio-group.html";
+    @JsOverlay public static final String TAG = "paper-radio-group";
+    @JsOverlay public static final String SRC = "paper-radio-group/paper-radio-group.html";
 
 
     /**
@@ -103,7 +104,7 @@ public interface PaperRadioGroupElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
@@ -112,7 +113,7 @@ public interface PaperRadioGroupElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
@@ -122,7 +123,7 @@ public interface PaperRadioGroupElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -131,9 +132,28 @@ public interface PaperRadioGroupElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
+
+    /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @property selected
+     * @type (string|number)
+     * @behavior PaperTabs
+     */
+    @JsProperty Object getSelected();
+    /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @property selected
+     * @type (string|number)
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelected(Object value);
 
     /**
      * <p>The list of items from which a selection can be made.</p>
@@ -155,7 +175,26 @@ public interface PaperRadioGroupElement extends HTMLElement {
     @JsProperty void setItems(JsArray value);
 
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getFallbackSelection();
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setFallbackSelection(String value);
+
+    /**
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
@@ -164,7 +203,7 @@ public interface PaperRadioGroupElement extends HTMLElement {
      */
     @JsProperty String getAttrForSelected();
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
@@ -212,25 +251,6 @@ public interface PaperRadioGroupElement extends HTMLElement {
     @JsProperty void setSelectable(String value);
 
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @property selected
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getSelected();
-    /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @property selected
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelected(String value);
-
-    /**
      * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
@@ -270,49 +290,27 @@ public interface PaperRadioGroupElement extends HTMLElement {
 
 
     /**
-     * <p>Selects the given value.</p>
-     *
-     * JavaScript Info:
-     * @method select
-     * @param {} value  
-     * 
-     * 
-     */
-    void select(Object value);
-
-    /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
      *
      * JavaScript Info:
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
 
     /**
-     * 
+     * <p>Selects the given value.</p>
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
-
-    /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
+     * @method select
+     * @param {(string|number)} value  
      * @behavior PaperTabs
      * 
      */
-    void selectPrevious();
+    void select(Object value);
 
     /**
      * <p>Selects the next item. If the next item is disabled, then it is<br>skipped, and the next item after it is selected.</p>
@@ -325,14 +323,48 @@ public interface PaperRadioGroupElement extends HTMLElement {
     void selectNext();
 
     /**
+     * <p>Selects the previous item. If the previous item is disabled, then it is<br>skipped, and its previous item is selected</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * 
+     * 
+     */
+    void selectPrevious();
+
+    /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     void removeOwnKeyBindings();
+
+    /**
+     * <p>Force a synchronous update of the <code>items</code> property.</p>
+     * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
+     * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
+     *
+     * JavaScript Info:
+     * @method forceSynchronousItemUpdate
+     * @behavior PaperTabs
+     * 
+     */
+    void forceSynchronousItemUpdate();
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
     /**
      * <p>Returns the index of the given item.</p>

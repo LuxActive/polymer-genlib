@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>paper-header-panel</code> contains a header section and a content panel section.</p>
@@ -181,11 +184,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperHeaderPanelElement extends HTMLElement {
 
-    public static final String TAG = "paper-header-panel";
-    public static final String SRC = "paper-header-panel/paper-header-panel.html";
+    @JsOverlay public static final String TAG = "paper-header-panel";
+    @JsOverlay public static final String SRC = "paper-header-panel/paper-header-panel.html";
 
 
     /**

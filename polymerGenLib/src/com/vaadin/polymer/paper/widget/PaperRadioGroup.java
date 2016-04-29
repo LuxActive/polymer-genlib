@@ -5,21 +5,28 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.widget.event.IronActivateEvent;
-import com.vaadin.polymer.iron.widget.event.IronActivateEventHandler;
-import com.vaadin.polymer.iron.widget.event.IronDeselectEvent;
-import com.vaadin.polymer.iron.widget.event.IronDeselectEventHandler;
-import com.vaadin.polymer.iron.widget.event.IronItemsChangedEvent;
-import com.vaadin.polymer.iron.widget.event.IronItemsChangedEventHandler;
-import com.vaadin.polymer.iron.widget.event.IronSelectEvent;
-import com.vaadin.polymer.iron.widget.event.IronSelectEventHandler;
-import com.vaadin.polymer.paper.PaperRadioGroupElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.PaperRadioGroupChangedEvent;
 import com.vaadin.polymer.paper.widget.event.PaperRadioGroupChangedEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronActivateEvent;
+import com.vaadin.polymer.iron.widget.event.IronActivateEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronDeselectEvent;
+import com.vaadin.polymer.iron.widget.event.IronDeselectEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronItemsChangedEvent;
+import com.vaadin.polymer.iron.widget.event.IronItemsChangedEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronSelectEvent;
+import com.vaadin.polymer.iron.widget.event.IronSelectEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/selection-controls.html#selection-controls-radio-button">Radio button</a></p>
@@ -56,52 +63,6 @@ public class PaperRadioGroup extends PolymerWidget {
      */
     public PaperRadioGroup(String html) {
         super(PaperRadioGroupElement.TAG, PaperRadioGroupElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.PaperRadioGroupChangedEvent.NAME,
-                new com.vaadin.polymer.paper.event.PaperRadioGroupChangedEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.PaperRadioGroupChangedEvent event) {
-                fireEvent(new PaperRadioGroupChangedEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronActivateEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronActivateEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronActivateEvent event) {
-                fireEvent(new IronActivateEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronDeselectEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronDeselectEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronDeselectEvent event) {
-                fireEvent(new IronDeselectEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronItemsChangedEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronItemsChangedEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronItemsChangedEvent event) {
-                fireEvent(new IronItemsChangedEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronSelectEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronSelectEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronSelectEvent event) {
-                fireEvent(new IronSelectEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -192,7 +153,7 @@ public class PaperRadioGroup extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
@@ -203,7 +164,7 @@ public class PaperRadioGroup extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
@@ -215,7 +176,7 @@ public class PaperRadioGroup extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public boolean getStopKeyboardEventPropagation() {
         return getPolymerElement().getStopKeyboardEventPropagation();
@@ -226,10 +187,33 @@ public class PaperRadioGroup extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
+    }
+
+    /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @property selected
+     * @type (string|number)
+     * @behavior PaperTabs
+     */
+    public Object getSelected() {
+        return getPolymerElement().getSelected();
+    }
+    /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @property selected
+     * @type (string|number)
+     * @behavior PaperTabs
+     */
+    public void setSelected(Object value) {
+        getPolymerElement().setSelected(value);
     }
 
     /**
@@ -256,7 +240,30 @@ public class PaperRadioGroup extends PolymerWidget {
     }
 
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    public String getFallbackSelection() {
+        return getPolymerElement().getFallbackSelection();
+    }
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    public void setFallbackSelection(String value) {
+        getPolymerElement().setFallbackSelection(value);
+    }
+
+    /**
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
@@ -267,7 +274,7 @@ public class PaperRadioGroup extends PolymerWidget {
         return getPolymerElement().getAttrForSelected();
     }
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
@@ -322,29 +329,6 @@ public class PaperRadioGroup extends PolymerWidget {
      */
     public void setSelectable(String value) {
         getPolymerElement().setSelectable(value);
-    }
-
-    /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @property selected
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getSelected() {
-        return getPolymerElement().getSelected();
-    }
-    /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @property selected
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setSelected(String value) {
-        getPolymerElement().setSelected(value);
     }
 
     /**
@@ -410,7 +394,7 @@ public class PaperRadioGroup extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyBindings(String value) {
         getPolymerElement().setAttribute("key-bindings", value);
@@ -421,10 +405,21 @@ public class PaperRadioGroup extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(String value) {
         getPolymerElement().setAttribute("key-event-target", value);
+    }
+
+    /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @attribute selected
+     * @behavior PaperTabs
+     */
+    public void setSelected(String value) {
+        getPolymerElement().setAttribute("selected", value);
     }
 
     /**
@@ -440,26 +435,13 @@ public class PaperRadioGroup extends PolymerWidget {
 
 
     /**
-     * <p>Selects the given value.</p>
-     *
-     * JavaScript Info:
-     * @method select
-     * @param {} value  
-     * 
-     * 
-     */
-    public void select(Object value) {
-        getPolymerElement().select(value);
-    }
-
-    /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
      *
      * JavaScript Info:
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
@@ -467,29 +449,16 @@ public class PaperRadioGroup extends PolymerWidget {
     }
 
     /**
-     * 
+     * <p>Selects the given value.</p>
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
-    }
-
-    /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
+     * @method select
+     * @param {(string|number)} value  
      * @behavior PaperTabs
      * 
      */
-    public void selectPrevious() {
-        getPolymerElement().selectPrevious();
+    public void select(Object value) {
+        getPolymerElement().select(value);
     }
 
     /**
@@ -505,15 +474,55 @@ public class PaperRadioGroup extends PolymerWidget {
     }
 
     /**
+     * <p>Selects the previous item. If the previous item is disabled, then it is<br>skipped, and its previous item is selected</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * 
+     * 
+     */
+    public void selectPrevious() {
+        getPolymerElement().selectPrevious();
+    }
+
+    /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void removeOwnKeyBindings() {
         getPolymerElement().removeOwnKeyBindings();
+    }
+
+    /**
+     * <p>Force a synchronous update of the <code>items</code> property.</p>
+     * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
+     * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
+     *
+     * JavaScript Info:
+     * @method forceSynchronousItemUpdate
+     * @behavior PaperTabs
+     * 
+     */
+    public void forceSynchronousItemUpdate() {
+        getPolymerElement().forceSynchronousItemUpdate();
+    }
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
     /**
@@ -537,7 +546,7 @@ public class PaperRadioGroup extends PolymerWidget {
      * @event paper-radio-group-changed
      */
     public HandlerRegistration addPaperRadioGroupChangedHandler(PaperRadioGroupChangedEventHandler handler) {
-        return addHandler(handler, PaperRadioGroupChangedEvent.TYPE);
+        return addDomHandler(handler, PaperRadioGroupChangedEvent.TYPE);
     }
 
     /**
@@ -547,7 +556,7 @@ public class PaperRadioGroup extends PolymerWidget {
      * @event iron-activate
      */
     public HandlerRegistration addIronActivateHandler(IronActivateEventHandler handler) {
-        return addHandler(handler, IronActivateEvent.TYPE);
+        return addDomHandler(handler, IronActivateEvent.TYPE);
     }
 
     /**
@@ -557,7 +566,7 @@ public class PaperRadioGroup extends PolymerWidget {
      * @event iron-deselect
      */
     public HandlerRegistration addIronDeselectHandler(IronDeselectEventHandler handler) {
-        return addHandler(handler, IronDeselectEvent.TYPE);
+        return addDomHandler(handler, IronDeselectEvent.TYPE);
     }
 
     /**
@@ -567,7 +576,7 @@ public class PaperRadioGroup extends PolymerWidget {
      * @event iron-items-changed
      */
     public HandlerRegistration addIronItemsChangedHandler(IronItemsChangedEventHandler handler) {
-        return addHandler(handler, IronItemsChangedEvent.TYPE);
+        return addDomHandler(handler, IronItemsChangedEvent.TYPE);
     }
 
     /**
@@ -577,7 +586,7 @@ public class PaperRadioGroup extends PolymerWidget {
      * @event iron-select
      */
     public HandlerRegistration addIronSelectHandler(IronSelectEventHandler handler) {
-        return addHandler(handler, IronSelectEvent.TYPE);
+        return addDomHandler(handler, IronSelectEvent.TYPE);
     }
 
 }

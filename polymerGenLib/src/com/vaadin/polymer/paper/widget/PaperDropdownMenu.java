@@ -5,18 +5,25 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEvent;
-import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEventHandler;
-import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEvent;
-import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandler;
-import com.vaadin.polymer.paper.PaperDropdownMenuElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.PaperDropdownCloseEvent;
 import com.vaadin.polymer.paper.widget.event.PaperDropdownCloseEventHandler;
+
 import com.vaadin.polymer.paper.widget.event.PaperDropdownOpenEvent;
 import com.vaadin.polymer.paper.widget.event.PaperDropdownOpenEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEvent;
+import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEvent;
+import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/buttons.html#buttons-dropdown-buttons">Dropdown menus</a></p>
@@ -93,43 +100,6 @@ public class PaperDropdownMenu extends PolymerWidget {
      */
     public PaperDropdownMenu(String html) {
         super(PaperDropdownMenuElement.TAG, PaperDropdownMenuElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.PaperDropdownCloseEvent.NAME,
-                new com.vaadin.polymer.paper.event.PaperDropdownCloseEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.PaperDropdownCloseEvent event) {
-                fireEvent(new PaperDropdownCloseEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.PaperDropdownOpenEvent.NAME,
-                new com.vaadin.polymer.paper.event.PaperDropdownOpenEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.PaperDropdownOpenEvent event) {
-                fireEvent(new PaperDropdownOpenEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronFormElementRegisterEvent event) {
-                fireEvent(new IronFormElementRegisterEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent event) {
-                fireEvent(new IronFormElementUnregisterEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -220,7 +190,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
@@ -231,7 +201,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
@@ -312,7 +282,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property required
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public boolean getRequired() {
         return getPolymerElement().getRequired();
@@ -323,7 +293,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property required
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setRequired(boolean value) {
         getPolymerElement().setRequired(value);
@@ -404,7 +374,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property invalid
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public boolean getInvalid() {
         return getPolymerElement().getInvalid();
@@ -415,7 +385,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property invalid
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setInvalid(boolean value) {
         getPolymerElement().setInvalid(value);
@@ -450,7 +420,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public boolean getStopKeyboardEventPropagation() {
         return getPolymerElement().getStopKeyboardEventPropagation();
@@ -461,7 +431,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
@@ -588,7 +558,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property name
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public String getName() {
         return getPolymerElement().getName();
@@ -599,7 +569,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property name
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setName(String value) {
         getPolymerElement().setName(value);
@@ -726,7 +696,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property validator
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public String getValidator() {
         return getPolymerElement().getValidator();
@@ -737,7 +707,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property validator
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setValidator(String value) {
         getPolymerElement().setValidator(value);
@@ -749,7 +719,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property validatorType
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public String getValidatorType() {
         return getPolymerElement().getValidatorType();
@@ -760,7 +730,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property validatorType
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setValidatorType(String value) {
         getPolymerElement().setValidatorType(value);
@@ -772,7 +742,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(String value) {
         getPolymerElement().setAttribute("key-event-target", value);
@@ -802,31 +772,29 @@ public class PaperDropdownMenu extends PolymerWidget {
 
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
-    }
-
-    /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
      *
      * JavaScript Info:
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
         getPolymerElement().addOwnKeyBinding(eventString, handlerName);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method hasValidator
+     * @behavior VaadinDatePicker
+     * @return {boolean}
+     */
+    public boolean hasValidator() {
+        return getPolymerElement().hasValidator();
     }
 
     /**
@@ -846,23 +814,11 @@ public class PaperDropdownMenu extends PolymerWidget {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void removeOwnKeyBindings() {
         getPolymerElement().removeOwnKeyBindings();
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method hasValidator
-     * @behavior PaperToggleButton
-     * @return {boolean}
-     */
-    public boolean hasValidator() {
-        return getPolymerElement().hasValidator();
     }
 
     /**
@@ -883,11 +839,25 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @method validate
      * @param {Object} value  
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      * @return {boolean}
      */
     public boolean validate(JavaScriptObject value) {
         return getPolymerElement().validate(value);
+    }
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
 
@@ -898,7 +868,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * @event paper-dropdown-close
      */
     public HandlerRegistration addPaperDropdownCloseHandler(PaperDropdownCloseEventHandler handler) {
-        return addHandler(handler, PaperDropdownCloseEvent.TYPE);
+        return addDomHandler(handler, PaperDropdownCloseEvent.TYPE);
     }
 
     /**
@@ -908,7 +878,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * @event paper-dropdown-open
      */
     public HandlerRegistration addPaperDropdownOpenHandler(PaperDropdownOpenEventHandler handler) {
-        return addHandler(handler, PaperDropdownOpenEvent.TYPE);
+        return addDomHandler(handler, PaperDropdownOpenEvent.TYPE);
     }
 
     /**
@@ -918,7 +888,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * @event iron-form-element-register
      */
     public HandlerRegistration addIronFormElementRegisterHandler(IronFormElementRegisterEventHandler handler) {
-        return addHandler(handler, IronFormElementRegisterEvent.TYPE);
+        return addDomHandler(handler, IronFormElementRegisterEvent.TYPE);
     }
 
     /**
@@ -928,7 +898,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * @event iron-form-element-unregister
      */
     public HandlerRegistration addIronFormElementUnregisterHandler(IronFormElementUnregisterEventHandler handler) {
-        return addHandler(handler, IronFormElementUnregisterEvent.TYPE);
+        return addDomHandler(handler, IronFormElementUnregisterEvent.TYPE);
     }
 
 }

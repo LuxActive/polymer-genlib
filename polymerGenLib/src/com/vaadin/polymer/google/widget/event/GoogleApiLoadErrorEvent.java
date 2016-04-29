@@ -5,19 +5,19 @@
  */
 package com.vaadin.polymer.google.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired if an error occurs while loading the requested API. Override this name<br>by setting <code>errorEventName</code>.</p>
  */
-public class GoogleApiLoadErrorEvent extends GwtEvent<GoogleApiLoadErrorEventHandler> {
+public class GoogleApiLoadErrorEvent extends DomEvent<GoogleApiLoadErrorEventHandler> {
 
-    public static Type<GoogleApiLoadErrorEventHandler> TYPE = new Type<GoogleApiLoadErrorEventHandler>();
+    public static Type<GoogleApiLoadErrorEventHandler> TYPE = new Type<GoogleApiLoadErrorEventHandler>(
+       com.vaadin.polymer.google.event.GoogleApiLoadErrorEvent.NAME, new GoogleApiLoadErrorEvent());
 
-    private com.vaadin.polymer.google.event.GoogleApiLoadErrorEvent nativeEvent;
 
-    public GoogleApiLoadErrorEvent(com.vaadin.polymer.google.event.GoogleApiLoadErrorEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public GoogleApiLoadErrorEvent() {
     }
 
     public Type<GoogleApiLoadErrorEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class GoogleApiLoadErrorEvent extends GwtEvent<GoogleApiLoadErrorEventHan
         handler.onGoogleApiLoadError(this);
     }
 
-    public com.vaadin.polymer.google.event.GoogleApiLoadErrorEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.google.event.GoogleApiLoadErrorEvent getPolymerEvent() {
+        return (com.vaadin.polymer.google.event.GoogleApiLoadErrorEvent)super.getNativeEvent();
     }
+
 
 }

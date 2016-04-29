@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.neon.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.neon.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.neon.RippleAnimationElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;ripple-animation&gt;</code> scales and transform an element such that it appears to ripple from either<br>a shared element, or from a screen position, to full screen.</p>
@@ -37,7 +41,6 @@ public class RippleAnimation extends PolymerWidget {
      */
     public RippleAnimation(String html) {
         super(RippleAnimationElement.TAG, RippleAnimationElement.SRC, html);
-
     }
 
     /**
@@ -74,6 +77,29 @@ public class RippleAnimation extends PolymerWidget {
      */
     public void setAnimationTiming(JavaScriptObject value) {
         getPolymerElement().setAnimationTiming(value);
+    }
+
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    public boolean getIsNeonAnimation() {
+        return getPolymerElement().getIsNeonAnimation();
+    }
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    public void setIsNeonAnimation(boolean value) {
+        getPolymerElement().setIsNeonAnimation(value);
     }
 
     /**
@@ -116,7 +142,7 @@ public class RippleAnimation extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute shared-elements
-     * @behavior ReverseRippleAnimation
+     * 
      */
     public void setSharedElements(String value) {
         getPolymerElement().setAttribute("shared-elements", value);
@@ -142,7 +168,7 @@ public class RippleAnimation extends PolymerWidget {
      * JavaScript Info:
      * @method timingFromConfig
      * @param {} config  
-     * 
+     * @behavior PaperMenuShrinkHeightAnimation
      * 
      */
     public void timingFromConfig(Object config) {
@@ -157,7 +183,7 @@ public class RippleAnimation extends PolymerWidget {
      * @param {} node  
      * @param {} property  
      * @param {} value  
-     * @behavior ReverseRippleAnimation
+     * 
      * 
      */
     public void setPrefixedProperty(Object node, Object property, Object value) {

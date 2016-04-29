@@ -5,20 +5,23 @@
  */
 package com.vaadin.polymer.google;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Dynamically loads the Google Youtube Iframe API, firing the <code>api-load</code> event when ready.</p>
  * <p>Any number of components can use <code>&lt;google-youtube-api&gt;</code> elements, and the library will only be loaded once.</p>
  * <p><a href="https://developers.google.com/youtube/iframe_api_reference">https://developers.google.com/youtube/iframe_api_reference</a></p>
  */
-@JsType
+@JsType(isNative=true)
 public interface GoogleYoutubeApiElement extends HTMLElement {
 
-    public static final String TAG = "google-youtube-api";
-    public static final String SRC = "google-apis/google-youtube-api.html";
+    @JsOverlay public static final String TAG = "google-youtube-api";
+    @JsOverlay public static final String SRC = "google-apis/google-youtube-api.html";
 
 
     /**

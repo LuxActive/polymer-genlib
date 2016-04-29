@@ -5,21 +5,22 @@
  */
 package com.vaadin.polymer.polymer;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>Polymer.Base</code> acts as a base prototype for all Polymer elements. It is composed via various calls to <code>Polymer.Base._addFeature()</code>.</p>
  * <p>The properties reflected here are the combined view of all features found in this library. There may be more properties added via other libraries, as well.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface BaseElement extends HTMLElement {
 
-    public static final String TAG = "Polymer.Base";
-    public static final String SRC = "polymer/polymer.html";
+    @JsOverlay public static final String TAG = "Polymer.Base";
+    @JsOverlay public static final String SRC = "polymer/polymer.html";
 
 
     /**
@@ -190,10 +191,11 @@ public interface BaseElement extends HTMLElement {
      * @param {} href  
      * @param {} onload  
      * @param {} onerror  
+     * @param {} optAsync  
      * 
      * 
      */
-    void importHref(Object href, Object onload, Object onerror);
+    void importHref(Object href, Object onload, Object onerror, Object optAsync);
 
     /**
      * 
@@ -224,11 +226,10 @@ public interface BaseElement extends HTMLElement {
      * @method splice
      * @param {} path  
      * @param {} start  
-     * @param {} deleteCount  
      * 
      * 
      */
-    void splice(Object path, Object start, Object deleteCount);
+    void splice(Object path, Object start);
 
     /**
      * 
@@ -306,12 +307,15 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method distributeContent
-     * @param {} updateInsertionPoints  
+     * @method translate3d
+     * @param {} x  
+     * @param {} y  
+     * @param {} z  
+     * @param {} node  
      * 
      * 
      */
-    void distributeContent(Object updateInsertionPoints);
+    void translate3d(Object x, Object y, Object z, Object node);
 
     /**
      * 
@@ -330,15 +334,12 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method translate3d
-     * @param {} x  
-     * @param {} y  
-     * @param {} z  
-     * @param {} node  
+     * @method distributeContent
+     * @param {} updateInsertionPoints  
      * 
      * 
      */
-    void translate3d(Object x, Object y, Object z, Object node);
+    void distributeContent(Object updateInsertionPoints);
 
     /**
      * 

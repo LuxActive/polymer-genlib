@@ -5,8 +5,13 @@
  */
 package com.vaadin.polymer.iron.widget;
 
+import com.vaadin.polymer.iron.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.IronOverlayBackdropElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>iron-overlay-backdrop</code> is a backdrop used by <code>Polymer.IronOverlayBehavior</code>. It should be a<br>singleton.</p>
@@ -57,7 +62,6 @@ public class IronOverlayBackdrop extends PolymerWidget {
      */
     public IronOverlayBackdrop(String html) {
         super(IronOverlayBackdropElement.TAG, IronOverlayBackdropElement.SRC, html);
-
     }
 
     /**

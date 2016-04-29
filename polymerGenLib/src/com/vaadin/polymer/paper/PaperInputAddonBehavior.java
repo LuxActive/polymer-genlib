@@ -5,16 +5,22 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsType;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p>Use <code>Polymer.PaperInputAddonBehavior</code> to implement an add-on for <code>&lt;paper-input-container&gt;</code>. A<br>add-on appears below the input, and may display information based on the input value and<br>validity such as a character counter or an error message.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperInputAddonBehavior {
 
-    public static final String TAG = "Polymer.PaperInputAddonBehavior";
-    public static final String SRC = "paper-input/paper-textarea.html";
+    @JsOverlay public static final String NAME = "Polymer.PaperInputAddonBehavior";
+    @JsOverlay public static final String SRC = "paper-input/paper-textarea.html";
 
 
 
@@ -23,7 +29,7 @@ public interface PaperInputAddonBehavior {
      *
      * JavaScript Info:
      * @method update
-     * @param {{inputElement: (Node|undefined), value: (string|undefined), invalid: (boolean|undefined)}} state  
+     * @param {{inputElement: (Element|undefined), value: (string|undefined), invalid: boolean}} state  
      * 
      * 
      */

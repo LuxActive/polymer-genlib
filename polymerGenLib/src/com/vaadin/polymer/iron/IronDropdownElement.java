@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>&lt;iron-dropdown&gt;</code> is a generalized element that is useful when you have<br>hidden content (<code>.dropdown-content</code>) that is revealed due to some change in<br>state that should cause it to do so.</p>
@@ -22,54 +24,31 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre><p>In the above example, the <code>&lt;div&gt;</code> with class <code>.dropdown-content</code> will be<br>hidden until the dropdown element has <code>opened</code> set to true, or when the <code>open</code><br>method is called on the element.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronDropdownElement extends HTMLElement {
 
-    public static final String TAG = "iron-dropdown";
-    public static final String SRC = "iron-dropdown/iron-dropdown.html";
+    @JsOverlay public static final String TAG = "iron-dropdown";
+    @JsOverlay public static final String SRC = "iron-dropdown/iron-dropdown.html";
 
 
     /**
-     * <p>True if the overlay is currently displayed.</p>
+     * <p>True if the overlay was canceled when it was last closed.</p>
      *
      * JavaScript Info:
-     * @property opened
+     * @property canceled
      * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty boolean getOpened();
+    @JsProperty boolean getCanceled();
     /**
-     * <p>True if the overlay is currently displayed.</p>
+     * <p>True if the overlay was canceled when it was last closed.</p>
      *
      * JavaScript Info:
-     * @property opened
+     * @property canceled
      * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty void setOpened(boolean value);
-
-    /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
-     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
-     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
-     *
-     * JavaScript Info:
-     * @property horizontalOffset
-     * @type Number
-     * 
-     */
-    @JsProperty double getHorizontalOffset();
-    /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
-     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
-     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
-     *
-     * JavaScript Info:
-     * @property horizontalOffset
-     * @type Number
-     * 
-     */
-    @JsProperty void setHorizontalOffset(double value);
+    @JsProperty void setCanceled(boolean value);
 
     /**
      * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
@@ -95,251 +74,46 @@ public interface IronDropdownElement extends HTMLElement {
     @JsProperty void setVerticalOffset(double value);
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
+     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
+     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
      *
      * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty JavaScriptObject getKeyEventTarget();
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty void setKeyEventTarget(JavaScriptObject value);
-
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * @behavior PaperTooltip
-     */
-    @JsProperty JavaScriptObject getAnimationConfig();
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * @behavior PaperTooltip
-     */
-    @JsProperty void setAnimationConfig(JavaScriptObject value);
-
-    /**
-     * <p>The element to fit <code>this</code> into.</p>
-     *
-     * JavaScript Info:
-     * @property fitInto
-     * @type Object
-     * @behavior PaperToast
-     */
-    @JsProperty JavaScriptObject getFitInto();
-    /**
-     * <p>The element to fit <code>this</code> into.</p>
-     *
-     * JavaScript Info:
-     * @property fitInto
-     * @type Object
-     * @behavior PaperToast
-     */
-    @JsProperty void setFitInto(JavaScriptObject value);
-
-    /**
-     * <p>Returns the reason this dialog was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property closingReason
-     * @type Object
-     * @behavior PaperToast
-     */
-    @JsProperty JavaScriptObject getClosingReason();
-    /**
-     * <p>Returns the reason this dialog was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property closingReason
-     * @type Object
-     * @behavior PaperToast
-     */
-    @JsProperty void setClosingReason(JavaScriptObject value);
-
-    /**
-     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
-     *
-     * JavaScript Info:
-     * @property sizingTarget
-     * @type !Element
-     * @behavior PaperToast
-     */
-    @JsProperty JavaScriptObject getSizingTarget();
-    /**
-     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
-     *
-     * JavaScript Info:
-     * @property sizingTarget
-     * @type !Element
-     * @behavior PaperToast
-     */
-    @JsProperty void setSizingTarget(JavaScriptObject value);
-
-    /**
-     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property closeAnimationConfig
-     * @type Object
+     * @property horizontalOffset
+     * @type Number
      * 
      */
-    @JsProperty JavaScriptObject getCloseAnimationConfig();
+    @JsProperty double getHorizontalOffset();
     /**
-     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
+     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
+     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
      *
      * JavaScript Info:
-     * @property closeAnimationConfig
-     * @type Object
+     * @property horizontalOffset
+     * @type Number
      * 
      */
-    @JsProperty void setCloseAnimationConfig(JavaScriptObject value);
+    @JsProperty void setHorizontalOffset(double value);
 
     /**
-     * <p>If provided, this will be the element that will be focused when<br>the dropdown opens.</p>
+     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
      *
      * JavaScript Info:
-     * @property focusTarget
-     * @type Object
-     * 
-     */
-    @JsProperty JavaScriptObject getFocusTarget();
-    /**
-     * <p>If provided, this will be the element that will be focused when<br>the dropdown opens.</p>
-     *
-     * JavaScript Info:
-     * @property focusTarget
-     * @type Object
-     * 
-     */
-    @JsProperty void setFocusTarget(JavaScriptObject value);
-
-    /**
-     * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property openAnimationConfig
-     * @type Object
-     * 
-     */
-    @JsProperty JavaScriptObject getOpenAnimationConfig();
-    /**
-     * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property openAnimationConfig
-     * @type Object
-     * 
-     */
-    @JsProperty void setOpenAnimationConfig(JavaScriptObject value);
-
-    /**
-     * <p>The element that should be used to position the dropdown when<br>it is opened.</p>
-     *
-     * JavaScript Info:
-     * @property positionTarget
-     * @type Object
-     * 
-     */
-    @JsProperty JavaScriptObject getPositionTarget();
-    /**
-     * <p>The element that should be used to position the dropdown when<br>it is opened.</p>
-     *
-     * JavaScript Info:
-     * @property positionTarget
-     * @type Object
-     * 
-     */
-    @JsProperty void setPositionTarget(JavaScriptObject value);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty JavaScriptObject getKeyBindings();
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty void setKeyBindings(JavaScriptObject value);
-
-    /**
-     * <p>Set to true to display a backdrop behind the overlay.</p>
-     *
-     * JavaScript Info:
-     * @property withBackdrop
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getWithBackdrop();
-    /**
-     * <p>Set to true to display a backdrop behind the overlay.</p>
-     *
-     * JavaScript Info:
-     * @property withBackdrop
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setWithBackdrop(boolean value);
-
-    /**
-     * <p>True if the overlay was canceled when it was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property canceled
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getCanceled();
-    /**
-     * <p>True if the overlay was canceled when it was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property canceled
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setCanceled(boolean value);
-
-    /**
-     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property noAnimations
+     * @property allowOutsideScroll
      * @type Boolean
      * 
      */
-    @JsProperty boolean getNoAnimations();
+    @JsProperty boolean getAllowOutsideScroll();
     /**
-     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
+     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
      *
      * JavaScript Info:
-     * @property noAnimations
+     * @property allowOutsideScroll
      * @type Boolean
      * 
      */
-    @JsProperty void setNoAnimations(boolean value);
+    @JsProperty void setAllowOutsideScroll(boolean value);
 
     /**
      * <p>If true, the user cannot interact with this element.</p>
@@ -361,6 +135,82 @@ public interface IronDropdownElement extends HTMLElement {
     @JsProperty void setDisabled(boolean value);
 
     /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty boolean getFocused();
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty void setFocused(boolean value);
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    @JsProperty boolean getStopKeyboardEventPropagation();
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
+
+    /**
+     * <p>Set to true to keep overlay always on top.</p>
+     *
+     * JavaScript Info:
+     * @property alwaysOnTop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getAlwaysOnTop();
+    /**
+     * <p>Set to true to keep overlay always on top.</p>
+     *
+     * JavaScript Info:
+     * @property alwaysOnTop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setAlwaysOnTop(boolean value);
+
+    /**
+     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property noAnimations
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNoAnimations();
+    /**
+     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property noAnimations
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNoAnimations(boolean value);
+
+    /**
      * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
      *
      * JavaScript Info:
@@ -378,25 +228,6 @@ public interface IronDropdownElement extends HTMLElement {
      * @behavior PaperToast
      */
     @JsProperty void setNoAutoFocus(boolean value);
-
-    /**
-     * <p>Set to true to auto-fit on attach.</p>
-     *
-     * JavaScript Info:
-     * @property autoFitOnAttach
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getAutoFitOnAttach();
-    /**
-     * <p>Set to true to auto-fit on attach.</p>
-     *
-     * JavaScript Info:
-     * @property autoFitOnAttach
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setAutoFitOnAttach(boolean value);
 
     /**
      * <p>Set to true to disable canceling the overlay with the ESC key.</p>
@@ -437,61 +268,289 @@ public interface IronDropdownElement extends HTMLElement {
     @JsProperty void setNoCancelOnOutsideClick(boolean value);
 
     /**
-     * <p>If true, the element currently has focus.</p>
+     * <p>True if the overlay is currently displayed.</p>
      *
      * JavaScript Info:
-     * @property focused
+     * @property opened
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToast
      */
-    @JsProperty boolean getFocused();
+    @JsProperty boolean getOpened();
     /**
-     * <p>If true, the element currently has focus.</p>
+     * <p>True if the overlay is currently displayed.</p>
      *
      * JavaScript Info:
-     * @property focused
+     * @property opened
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToast
      */
-    @JsProperty void setFocused(boolean value);
+    @JsProperty void setOpened(boolean value);
 
     /**
-     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
      *
      * JavaScript Info:
-     * @property allowOutsideScroll
+     * @property restoreFocusOnClose
      * @type Boolean
-     * 
+     * @behavior PaperToast
      */
-    @JsProperty boolean getAllowOutsideScroll();
+    @JsProperty boolean getRestoreFocusOnClose();
     /**
-     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
      *
      * JavaScript Info:
-     * @property allowOutsideScroll
+     * @property restoreFocusOnClose
      * @type Boolean
-     * 
+     * @behavior PaperToast
      */
-    @JsProperty void setAllowOutsideScroll(boolean value);
+    @JsProperty void setRestoreFocusOnClose(boolean value);
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>Set to true to display a backdrop behind the overlay.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
+     * @property withBackdrop
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToast
      */
-    @JsProperty boolean getStopKeyboardEventPropagation();
+    @JsProperty boolean getWithBackdrop();
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>Set to true to display a backdrop behind the overlay.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
+     * @property withBackdrop
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToast
      */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
+    @JsProperty void setWithBackdrop(boolean value);
+
+    /**
+     * <p>Set to true to auto-fit on attach.</p>
+     *
+     * JavaScript Info:
+     * @property autoFitOnAttach
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getAutoFitOnAttach();
+    /**
+     * <p>Set to true to auto-fit on attach.</p>
+     *
+     * JavaScript Info:
+     * @property autoFitOnAttach
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setAutoFitOnAttach(boolean value);
+
+    /**
+     * <p>Returns the reason this dialog was last closed.</p>
+     *
+     * JavaScript Info:
+     * @property closingReason
+     * @type Object
+     * @behavior PaperToast
+     */
+    @JsProperty JavaScriptObject getClosingReason();
+    /**
+     * <p>Returns the reason this dialog was last closed.</p>
+     *
+     * JavaScript Info:
+     * @property closingReason
+     * @type Object
+     * @behavior PaperToast
+     */
+    @JsProperty void setClosingReason(JavaScriptObject value);
+
+    /**
+     * <p>If provided, this will be the element that will be focused when<br>the dropdown opens.</p>
+     *
+     * JavaScript Info:
+     * @property focusTarget
+     * @type Object
+     * 
+     */
+    @JsProperty JavaScriptObject getFocusTarget();
+    /**
+     * <p>If provided, this will be the element that will be focused when<br>the dropdown opens.</p>
+     *
+     * JavaScript Info:
+     * @property focusTarget
+     * @type Object
+     * 
+     */
+    @JsProperty void setFocusTarget(JavaScriptObject value);
+
+    /**
+     * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property openAnimationConfig
+     * @type Object
+     * 
+     */
+    @JsProperty JavaScriptObject getOpenAnimationConfig();
+    /**
+     * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property openAnimationConfig
+     * @type Object
+     * 
+     */
+    @JsProperty void setOpenAnimationConfig(JavaScriptObject value);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    @JsProperty JavaScriptObject getKeyBindings();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    @JsProperty void setKeyBindings(JavaScriptObject value);
+
+    /**
+     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property closeAnimationConfig
+     * @type Object
+     * 
+     */
+    @JsProperty JavaScriptObject getCloseAnimationConfig();
+    /**
+     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property closeAnimationConfig
+     * @type Object
+     * 
+     */
+    @JsProperty void setCloseAnimationConfig(JavaScriptObject value);
+
+    /**
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    @JsProperty JavaScriptObject getKeyEventTarget();
+    /**
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    @JsProperty void setKeyEventTarget(JavaScriptObject value);
+
+    /**
+     * <p>The element that should be used to position the dropdown when<br>it is opened.</p>
+     *
+     * JavaScript Info:
+     * @property positionTarget
+     * @type Object
+     * 
+     */
+    @JsProperty JavaScriptObject getPositionTarget();
+    /**
+     * <p>The element that should be used to position the dropdown when<br>it is opened.</p>
+     *
+     * JavaScript Info:
+     * @property positionTarget
+     * @type Object
+     * 
+     */
+    @JsProperty void setPositionTarget(JavaScriptObject value);
+
+    /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    @JsProperty JavaScriptObject getAnimationConfig();
+    /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    @JsProperty void setAnimationConfig(JavaScriptObject value);
+
+    /**
+     * <p>The element to fit <code>this</code> into.</p>
+     *
+     * JavaScript Info:
+     * @property fitInto
+     * @type Object
+     * @behavior PaperToast
+     */
+    @JsProperty JavaScriptObject getFitInto();
+    /**
+     * <p>The element to fit <code>this</code> into.</p>
+     *
+     * JavaScript Info:
+     * @property fitInto
+     * @type Object
+     * @behavior PaperToast
+     */
+    @JsProperty void setFitInto(JavaScriptObject value);
+
+    /**
+     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
+     *
+     * JavaScript Info:
+     * @property sizingTarget
+     * @type !Element
+     * @behavior PaperToast
+     */
+    @JsProperty JavaScriptObject getSizingTarget();
+    /**
+     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
+     *
+     * JavaScript Info:
+     * @property sizingTarget
+     * @type !Element
+     * @behavior PaperToast
+     */
+    @JsProperty void setSizingTarget(JavaScriptObject value);
+
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @property backdropElement
+     * @type Element
+     * @behavior PaperToast
+     */
+    @JsProperty Element getBackdropElement();
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @property backdropElement
+     * @type Element
+     * @behavior PaperToast
+     */
+    @JsProperty void setBackdropElement(Element value);
 
     /**
      * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
@@ -577,22 +636,10 @@ public interface IronDropdownElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
 
     /**
      * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
@@ -600,7 +647,7 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -611,7 +658,7 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     void stopResizeNotificationsFor(Object target);
@@ -621,40 +668,20 @@ public interface IronDropdownElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     void removeOwnKeyBindings();
 
     /**
-     * <p>Cancels the currently running animation.</p>
+     * <p>Toggle the opened state of the overlay.</p>
      *
      * JavaScript Info:
-     * @method cancelAnimation
-     * @behavior PaperTooltip
-     * 
-     */
-    void cancelAnimation();
-
-    /**
-     * <p>Cancels the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method cancel
+     * @method toggle
      * @behavior PaperToast
      * 
      */
-    void cancel();
-
-    /**
-     * <p>Close the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method close
-     * @behavior PaperToast
-     * 
-     */
-    void close();
+    void toggle();
 
     /**
      * <p>Centers horizontally and vertically if not already positioned. This also sets<br><code>position:fixed</code>.</p>
@@ -707,24 +734,34 @@ public interface IronDropdownElement extends HTMLElement {
     void resetFit();
 
     /**
+     * <p>Close the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method close
+     * @behavior PaperToast
+     * 
+     */
+    void close();
+
+    /**
      * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     void notifyResize();
 
     /**
-     * <p>Toggle the opened state of the overlay.</p>
+     * <p>Cancels the currently running animation.</p>
      *
      * JavaScript Info:
-     * @method toggle
-     * @behavior PaperToast
+     * @method cancelAnimation
+     * @behavior PaperTooltip
      * 
      */
-    void toggle();
+    void cancelAnimation();
 
     /**
      * <p>Open the overlay.</p>
@@ -735,6 +772,28 @@ public interface IronDropdownElement extends HTMLElement {
      * 
      */
     void open();
+
+    /**
+     * <p>Cancels the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method cancel
+     * @param {Event=} event  
+     * @behavior PaperToast
+     * 
+     */
+    void cancel(JavaScriptObject event);
+
+    /**
+     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
+     *
+     * JavaScript Info:
+     * @method resizerShouldNotify
+     * @param {HTMLElement} element  
+     * @behavior VaadinComboBoxOverlay
+     * @return {boolean}
+     */
+    boolean resizerShouldNotify(JavaScriptObject element);
 
     /**
      * <p>Plays an animation with an optional <code>type</code>.</p>
@@ -749,14 +808,15 @@ public interface IronDropdownElement extends HTMLElement {
     void playAnimation(String type, JavaScriptObject cookie);
 
     /**
-     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
-     * @method resizerShouldNotify
-     * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
      * @return {boolean}
      */
-    boolean resizerShouldNotify(JavaScriptObject element);
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
 }

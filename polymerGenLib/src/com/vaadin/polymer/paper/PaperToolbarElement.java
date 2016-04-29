@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/toolbars.html">Toolbars</a></p>
@@ -103,11 +106,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <h3 id="accessibility">Accessibility</h3>
  * <p><code>&lt;paper-toolbar&gt;</code> has <code>role=&quot;toolbar&quot;</code> by default. Any elements with the class <code>title</code> will<br>be used as the label of the toolbar via <code>aria-labelledby</code>.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperToolbarElement extends HTMLElement {
 
-    public static final String TAG = "paper-toolbar";
-    public static final String SRC = "paper-toolbar/paper-toolbar.html";
+    @JsOverlay public static final String TAG = "paper-toolbar";
+    @JsOverlay public static final String SRC = "paper-toolbar/paper-toolbar.html";
 
 
     /**

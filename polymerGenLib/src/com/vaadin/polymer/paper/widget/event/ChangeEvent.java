@@ -5,19 +5,19 @@
  */
 package com.vaadin.polymer.paper.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the checked state changes due to user interaction.</p>
  */
-public class ChangeEvent extends GwtEvent<ChangeEventHandler> {
+public class ChangeEvent extends DomEvent<ChangeEventHandler> {
 
-    public static Type<ChangeEventHandler> TYPE = new Type<ChangeEventHandler>();
+    public static Type<ChangeEventHandler> TYPE = new Type<ChangeEventHandler>(
+       com.vaadin.polymer.paper.event.ChangeEvent.NAME, new ChangeEvent());
 
-    private com.vaadin.polymer.paper.event.ChangeEvent nativeEvent;
 
-    public ChangeEvent(com.vaadin.polymer.paper.event.ChangeEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public ChangeEvent() {
     }
 
     public Type<ChangeEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class ChangeEvent extends GwtEvent<ChangeEventHandler> {
         handler.onChange(this);
     }
 
-    public com.vaadin.polymer.paper.event.ChangeEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.paper.event.ChangeEvent getPolymerEvent() {
+        return (com.vaadin.polymer.paper.event.ChangeEvent)super.getNativeEvent();
     }
+
 
 }

@@ -5,25 +5,18 @@
  */
 package com.vaadin.polymer.paper.event;
 
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Event;
-import com.vaadin.polymer.elemental.EventListener;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Fired when the submenu is closed.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperSubmenuCloseEvent extends Event {
 
-    static final String NAME = "paper-submenu-close";
+    @JsOverlay static final String NAME = "paper-submenu-close";
 
-
-    public abstract class Listener implements EventListener {
-        protected abstract void handleEvent(PaperSubmenuCloseEvent event);
-
-        @Override
-        public void handleEvent(Event event) {
-            handleEvent((PaperSubmenuCloseEvent) event);
-        }
-    }
 }

@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/patterns/scrolling-techniques.html">Scrolling techniques</a></p>
@@ -68,11 +70,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperScrollHeaderPanelElement extends HTMLElement {
 
-    public static final String TAG = "paper-scroll-header-panel";
-    public static final String SRC = "paper-scroll-header-panel/paper-scroll-header-panel.html";
+    @JsOverlay public static final String TAG = "paper-scroll-header-panel";
+    @JsOverlay public static final String SRC = "paper-scroll-header-panel/paper-scroll-header-panel.html";
 
 
     /**
@@ -257,7 +259,7 @@ public interface PaperScrollHeaderPanelElement extends HTMLElement {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     void stopResizeNotificationsFor(Object target);
@@ -268,7 +270,7 @@ public interface PaperScrollHeaderPanelElement extends HTMLElement {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -288,7 +290,7 @@ public interface PaperScrollHeaderPanelElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     void notifyResize();
@@ -333,7 +335,7 @@ public interface PaperScrollHeaderPanelElement extends HTMLElement {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);

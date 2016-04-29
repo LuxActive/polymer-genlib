@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.neon.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.neon.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.neon.OpaqueAnimationElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;opaque-animation&gt;</code> makes an element <code>opacity:1</code> for the duration of the animation. Used to prevent<br>webkit/safari from drawing a frame before an animation for elements that animate from display:none.</p>
@@ -25,7 +29,6 @@ public class OpaqueAnimation extends PolymerWidget {
      */
     public OpaqueAnimation(String html) {
         super(OpaqueAnimationElement.TAG, OpaqueAnimationElement.SRC, html);
-
     }
 
     /**
@@ -64,6 +67,29 @@ public class OpaqueAnimation extends PolymerWidget {
         getPolymerElement().setAnimationTiming(value);
     }
 
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    public boolean getIsNeonAnimation() {
+        return getPolymerElement().getIsNeonAnimation();
+    }
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    public void setIsNeonAnimation(boolean value) {
+        getPolymerElement().setIsNeonAnimation(value);
+    }
+
 
     /**
      * <p>Defines the animation timing.</p>
@@ -78,6 +104,21 @@ public class OpaqueAnimation extends PolymerWidget {
 
 
     /**
+     * <p>Sets <code>transform</code> and <code>transformOrigin</code> properties along with the prefixed versions.</p>
+     *
+     * JavaScript Info:
+     * @method setPrefixedProperty
+     * @param {} node  
+     * @param {} property  
+     * @param {} value  
+     * @behavior PaperMenuShrinkHeightAnimation
+     * 
+     */
+    public void setPrefixedProperty(Object node, Object property, Object value) {
+        getPolymerElement().setPrefixedProperty(node, property, value);
+    }
+
+    /**
      * 
      *
      * JavaScript Info:
@@ -88,21 +129,6 @@ public class OpaqueAnimation extends PolymerWidget {
      */
     public void complete(Object config) {
         getPolymerElement().complete(config);
-    }
-
-    /**
-     * <p>Sets <code>transform</code> and <code>transformOrigin</code> properties along with the prefixed versions.</p>
-     *
-     * JavaScript Info:
-     * @method setPrefixedProperty
-     * @param {} node  
-     * @param {} property  
-     * @param {} value  
-     * 
-     * 
-     */
-    public void setPrefixedProperty(Object node, Object property, Object value) {
-        getPolymerElement().setPrefixedProperty(node, property, value);
     }
 
     /**

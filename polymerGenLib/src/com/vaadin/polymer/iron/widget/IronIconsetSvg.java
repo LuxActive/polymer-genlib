@@ -5,10 +5,13 @@
  */
 package com.vaadin.polymer.iron.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.iron.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.elemental.Element;
-import com.vaadin.polymer.iron.IronIconsetSvgElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>The <code>iron-iconset-svg</code> element allows users to define their own icon sets<br>that contain svg icons. The svg icon elements should be children of the<br><code>iron-iconset-svg</code> element. Multiple icons should be given distinct id’s.</p>
@@ -45,7 +48,6 @@ public class IronIconsetSvg extends PolymerWidget {
      */
     public IronIconsetSvg(String html) {
         super(IronIconsetSvgElement.TAG, IronIconsetSvgElement.SRC, html);
-
     }
 
     /**

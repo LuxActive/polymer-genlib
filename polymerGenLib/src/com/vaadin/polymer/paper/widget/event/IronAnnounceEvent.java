@@ -5,20 +5,19 @@
  */
 package com.vaadin.polymer.paper.widget.event;
 
+import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * <p>Fired when <code>paper-toast</code> is opened.</p>
  */
-public class IronAnnounceEvent extends GwtEvent<IronAnnounceEventHandler> {
+public class IronAnnounceEvent extends DomEvent<IronAnnounceEventHandler> {
 
-    public static Type<IronAnnounceEventHandler> TYPE = new Type<IronAnnounceEventHandler>();
+    public static Type<IronAnnounceEventHandler> TYPE = new Type<IronAnnounceEventHandler>(
+       com.vaadin.polymer.paper.event.IronAnnounceEvent.NAME, new IronAnnounceEvent());
 
-    private com.vaadin.polymer.paper.event.IronAnnounceEvent nativeEvent;
 
-    public IronAnnounceEvent(com.vaadin.polymer.paper.event.IronAnnounceEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public IronAnnounceEvent() {
     }
 
     public Type<IronAnnounceEventHandler> getAssociatedType() {
@@ -29,22 +28,23 @@ public class IronAnnounceEvent extends GwtEvent<IronAnnounceEventHandler> {
         handler.onIronAnnounce(this);
     }
 
-    public com.vaadin.polymer.paper.event.IronAnnounceEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.paper.event.IronAnnounceEvent getPolymerEvent() {
+        return (com.vaadin.polymer.paper.event.IronAnnounceEvent)super.getNativeEvent();
     }
+
 
     /**
      * 
      */
     public JavaScriptObject getDetail() {
-        return getNativeEvent().getDetail().getDetail();
+        return getPolymerEvent().getDetail().getDetail();
     }
 
     /**
      * <p>The text that will be announced.</p>
      */
     public String getText() {
-        return getNativeEvent().getDetail().getText();
+        return getPolymerEvent().getDetail().getText();
     }
 
 }

@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.neon.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.neon.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.neon.HeroAnimationElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;hero-animation&gt;</code> is a shared element animation that scales and transform an element such that it<br>appears to be shared between two pages. Use this in <code>&lt;neon-animated-pages&gt;</code>. The source page<br>should use this animation in an ‘exit’ animation and set the <code>fromPage</code> configuration property to<br>itself, and the destination page should use this animation in an <code>entry</code> animation and set the<br><code>toPage</code> configuration property to itself. They should also define the hero elements in the<br><code>sharedElements</code> property (not a configuration property, see<br><code>Polymer.NeonSharedElementAnimatableBehavior</code>).</p>
@@ -34,7 +38,6 @@ public class HeroAnimation extends PolymerWidget {
      */
     public HeroAnimation(String html) {
         super(HeroAnimationElement.TAG, HeroAnimationElement.SRC, html);
-
     }
 
     /**
@@ -71,6 +74,29 @@ public class HeroAnimation extends PolymerWidget {
      */
     public void setAnimationTiming(JavaScriptObject value) {
         getPolymerElement().setAnimationTiming(value);
+    }
+
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    public boolean getIsNeonAnimation() {
+        return getPolymerElement().getIsNeonAnimation();
+    }
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    public void setIsNeonAnimation(boolean value) {
+        getPolymerElement().setIsNeonAnimation(value);
     }
 
     /**
@@ -113,7 +139,7 @@ public class HeroAnimation extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute shared-elements
-     * @behavior ReverseRippleAnimation
+     * 
      */
     public void setSharedElements(String value) {
         getPolymerElement().setAttribute("shared-elements", value);
@@ -154,7 +180,7 @@ public class HeroAnimation extends PolymerWidget {
      * JavaScript Info:
      * @method timingFromConfig
      * @param {} config  
-     * @behavior ReverseRippleAnimation
+     * 
      * 
      */
     public void timingFromConfig(Object config) {

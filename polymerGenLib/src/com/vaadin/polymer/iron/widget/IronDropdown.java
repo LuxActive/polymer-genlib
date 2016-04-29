@@ -5,16 +5,22 @@
  */
 package com.vaadin.polymer.iron.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.IronDropdownElement;
+import com.vaadin.polymer.iron.*;
+
 import com.vaadin.polymer.iron.widget.event.IronOverlayCanceledEvent;
 import com.vaadin.polymer.iron.widget.event.IronOverlayCanceledEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronOverlayClosedEvent;
 import com.vaadin.polymer.iron.widget.event.IronOverlayClosedEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronOverlayOpenedEvent;
 import com.vaadin.polymer.iron.widget.event.IronOverlayOpenedEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;iron-dropdown&gt;</code> is a generalized element that is useful when you have<br>hidden content (<code>.dropdown-content</code>) that is revealed due to some change in<br>state that should cause it to do so.</p>
@@ -41,34 +47,6 @@ public class IronDropdown extends PolymerWidget {
      */
     public IronDropdown(String html) {
         super(IronDropdownElement.TAG, IronDropdownElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronOverlayCanceledEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronOverlayCanceledEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronOverlayCanceledEvent event) {
-                fireEvent(new IronOverlayCanceledEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronOverlayClosedEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronOverlayClosedEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronOverlayClosedEvent event) {
-                fireEvent(new IronOverlayClosedEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronOverlayOpenedEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronOverlayOpenedEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronOverlayOpenedEvent event) {
-                fireEvent(new IronOverlayOpenedEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -85,53 +63,26 @@ public class IronDropdown extends PolymerWidget {
 
 
     /**
-     * <p>True if the overlay is currently displayed.</p>
+     * <p>True if the overlay was canceled when it was last closed.</p>
      *
      * JavaScript Info:
-     * @property opened
+     * @property canceled
      * @type Boolean
      * @behavior PaperToast
      */
-    public boolean getOpened() {
-        return getPolymerElement().getOpened();
+    public boolean getCanceled() {
+        return getPolymerElement().getCanceled();
     }
     /**
-     * <p>True if the overlay is currently displayed.</p>
+     * <p>True if the overlay was canceled when it was last closed.</p>
      *
      * JavaScript Info:
-     * @property opened
+     * @property canceled
      * @type Boolean
      * @behavior PaperToast
      */
-    public void setOpened(boolean value) {
-        getPolymerElement().setOpened(value);
-    }
-
-    /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
-     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
-     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
-     *
-     * JavaScript Info:
-     * @property horizontalOffset
-     * @type Number
-     * 
-     */
-    public double getHorizontalOffset() {
-        return getPolymerElement().getHorizontalOffset();
-    }
-    /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
-     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
-     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
-     *
-     * JavaScript Info:
-     * @property horizontalOffset
-     * @type Number
-     * 
-     */
-    public void setHorizontalOffset(double value) {
-        getPolymerElement().setHorizontalOffset(value);
+    public void setCanceled(boolean value) {
+        getPolymerElement().setCanceled(value);
     }
 
     /**
@@ -162,302 +113,53 @@ public class IronDropdown extends PolymerWidget {
     }
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
+     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
+     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
      *
      * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    public JavaScriptObject getKeyEventTarget() {
-        return getPolymerElement().getKeyEventTarget();
-    }
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    public void setKeyEventTarget(JavaScriptObject value) {
-        getPolymerElement().setKeyEventTarget(value);
-    }
-
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * @behavior PaperTooltip
-     */
-    public JavaScriptObject getAnimationConfig() {
-        return getPolymerElement().getAnimationConfig();
-    }
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * @behavior PaperTooltip
-     */
-    public void setAnimationConfig(JavaScriptObject value) {
-        getPolymerElement().setAnimationConfig(value);
-    }
-
-    /**
-     * <p>The element to fit <code>this</code> into.</p>
-     *
-     * JavaScript Info:
-     * @property fitInto
-     * @type Object
-     * @behavior PaperToast
-     */
-    public JavaScriptObject getFitInto() {
-        return getPolymerElement().getFitInto();
-    }
-    /**
-     * <p>The element to fit <code>this</code> into.</p>
-     *
-     * JavaScript Info:
-     * @property fitInto
-     * @type Object
-     * @behavior PaperToast
-     */
-    public void setFitInto(JavaScriptObject value) {
-        getPolymerElement().setFitInto(value);
-    }
-
-    /**
-     * <p>Returns the reason this dialog was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property closingReason
-     * @type Object
-     * @behavior PaperToast
-     */
-    public JavaScriptObject getClosingReason() {
-        return getPolymerElement().getClosingReason();
-    }
-    /**
-     * <p>Returns the reason this dialog was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property closingReason
-     * @type Object
-     * @behavior PaperToast
-     */
-    public void setClosingReason(JavaScriptObject value) {
-        getPolymerElement().setClosingReason(value);
-    }
-
-    /**
-     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
-     *
-     * JavaScript Info:
-     * @property sizingTarget
-     * @type !Element
-     * @behavior PaperToast
-     */
-    public JavaScriptObject getSizingTarget() {
-        return getPolymerElement().getSizingTarget();
-    }
-    /**
-     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
-     *
-     * JavaScript Info:
-     * @property sizingTarget
-     * @type !Element
-     * @behavior PaperToast
-     */
-    public void setSizingTarget(JavaScriptObject value) {
-        getPolymerElement().setSizingTarget(value);
-    }
-
-    /**
-     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property closeAnimationConfig
-     * @type Object
+     * @property horizontalOffset
+     * @type Number
      * 
      */
-    public JavaScriptObject getCloseAnimationConfig() {
-        return getPolymerElement().getCloseAnimationConfig();
+    public double getHorizontalOffset() {
+        return getPolymerElement().getHorizontalOffset();
     }
     /**
-     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
+     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
+     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
      *
      * JavaScript Info:
-     * @property closeAnimationConfig
-     * @type Object
+     * @property horizontalOffset
+     * @type Number
      * 
      */
-    public void setCloseAnimationConfig(JavaScriptObject value) {
-        getPolymerElement().setCloseAnimationConfig(value);
+    public void setHorizontalOffset(double value) {
+        getPolymerElement().setHorizontalOffset(value);
     }
 
     /**
-     * <p>If provided, this will be the element that will be focused when<br>the dropdown opens.</p>
+     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
      *
      * JavaScript Info:
-     * @property focusTarget
-     * @type Object
-     * 
-     */
-    public JavaScriptObject getFocusTarget() {
-        return getPolymerElement().getFocusTarget();
-    }
-    /**
-     * <p>If provided, this will be the element that will be focused when<br>the dropdown opens.</p>
-     *
-     * JavaScript Info:
-     * @property focusTarget
-     * @type Object
-     * 
-     */
-    public void setFocusTarget(JavaScriptObject value) {
-        getPolymerElement().setFocusTarget(value);
-    }
-
-    /**
-     * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property openAnimationConfig
-     * @type Object
-     * 
-     */
-    public JavaScriptObject getOpenAnimationConfig() {
-        return getPolymerElement().getOpenAnimationConfig();
-    }
-    /**
-     * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property openAnimationConfig
-     * @type Object
-     * 
-     */
-    public void setOpenAnimationConfig(JavaScriptObject value) {
-        getPolymerElement().setOpenAnimationConfig(value);
-    }
-
-    /**
-     * <p>The element that should be used to position the dropdown when<br>it is opened.</p>
-     *
-     * JavaScript Info:
-     * @property positionTarget
-     * @type Object
-     * 
-     */
-    public JavaScriptObject getPositionTarget() {
-        return getPolymerElement().getPositionTarget();
-    }
-    /**
-     * <p>The element that should be used to position the dropdown when<br>it is opened.</p>
-     *
-     * JavaScript Info:
-     * @property positionTarget
-     * @type Object
-     * 
-     */
-    public void setPositionTarget(JavaScriptObject value) {
-        getPolymerElement().setPositionTarget(value);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    public JavaScriptObject getKeyBindings() {
-        return getPolymerElement().getKeyBindings();
-    }
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    public void setKeyBindings(JavaScriptObject value) {
-        getPolymerElement().setKeyBindings(value);
-    }
-
-    /**
-     * <p>Set to true to display a backdrop behind the overlay.</p>
-     *
-     * JavaScript Info:
-     * @property withBackdrop
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public boolean getWithBackdrop() {
-        return getPolymerElement().getWithBackdrop();
-    }
-    /**
-     * <p>Set to true to display a backdrop behind the overlay.</p>
-     *
-     * JavaScript Info:
-     * @property withBackdrop
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public void setWithBackdrop(boolean value) {
-        getPolymerElement().setWithBackdrop(value);
-    }
-
-    /**
-     * <p>True if the overlay was canceled when it was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property canceled
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public boolean getCanceled() {
-        return getPolymerElement().getCanceled();
-    }
-    /**
-     * <p>True if the overlay was canceled when it was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property canceled
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public void setCanceled(boolean value) {
-        getPolymerElement().setCanceled(value);
-    }
-
-    /**
-     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property noAnimations
+     * @property allowOutsideScroll
      * @type Boolean
      * 
      */
-    public boolean getNoAnimations() {
-        return getPolymerElement().getNoAnimations();
+    public boolean getAllowOutsideScroll() {
+        return getPolymerElement().getAllowOutsideScroll();
     }
     /**
-     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
+     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
      *
      * JavaScript Info:
-     * @property noAnimations
+     * @property allowOutsideScroll
      * @type Boolean
      * 
      */
-    public void setNoAnimations(boolean value) {
-        getPolymerElement().setNoAnimations(value);
+    public void setAllowOutsideScroll(boolean value) {
+        getPolymerElement().setAllowOutsideScroll(value);
     }
 
     /**
@@ -484,6 +186,98 @@ public class IronDropdown extends PolymerWidget {
     }
 
     /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getFocused() {
+        return getPolymerElement().getFocused();
+    }
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setFocused(boolean value) {
+        getPolymerElement().setFocused(value);
+    }
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    public boolean getStopKeyboardEventPropagation() {
+        return getPolymerElement().getStopKeyboardEventPropagation();
+    }
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    public void setStopKeyboardEventPropagation(boolean value) {
+        getPolymerElement().setStopKeyboardEventPropagation(value);
+    }
+
+    /**
+     * <p>Set to true to keep overlay always on top.</p>
+     *
+     * JavaScript Info:
+     * @property alwaysOnTop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public boolean getAlwaysOnTop() {
+        return getPolymerElement().getAlwaysOnTop();
+    }
+    /**
+     * <p>Set to true to keep overlay always on top.</p>
+     *
+     * JavaScript Info:
+     * @property alwaysOnTop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public void setAlwaysOnTop(boolean value) {
+        getPolymerElement().setAlwaysOnTop(value);
+    }
+
+    /**
+     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property noAnimations
+     * @type Boolean
+     * 
+     */
+    public boolean getNoAnimations() {
+        return getPolymerElement().getNoAnimations();
+    }
+    /**
+     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property noAnimations
+     * @type Boolean
+     * 
+     */
+    public void setNoAnimations(boolean value) {
+        getPolymerElement().setNoAnimations(value);
+    }
+
+    /**
      * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
      *
      * JavaScript Info:
@@ -504,29 +298,6 @@ public class IronDropdown extends PolymerWidget {
      */
     public void setNoAutoFocus(boolean value) {
         getPolymerElement().setNoAutoFocus(value);
-    }
-
-    /**
-     * <p>Set to true to auto-fit on attach.</p>
-     *
-     * JavaScript Info:
-     * @property autoFitOnAttach
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public boolean getAutoFitOnAttach() {
-        return getPolymerElement().getAutoFitOnAttach();
-    }
-    /**
-     * <p>Set to true to auto-fit on attach.</p>
-     *
-     * JavaScript Info:
-     * @property autoFitOnAttach
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public void setAutoFitOnAttach(boolean value) {
-        getPolymerElement().setAutoFitOnAttach(value);
     }
 
     /**
@@ -576,72 +347,348 @@ public class IronDropdown extends PolymerWidget {
     }
 
     /**
-     * <p>If true, the element currently has focus.</p>
+     * <p>True if the overlay is currently displayed.</p>
      *
      * JavaScript Info:
-     * @property focused
+     * @property opened
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToast
      */
-    public boolean getFocused() {
-        return getPolymerElement().getFocused();
+    public boolean getOpened() {
+        return getPolymerElement().getOpened();
     }
     /**
-     * <p>If true, the element currently has focus.</p>
+     * <p>True if the overlay is currently displayed.</p>
      *
      * JavaScript Info:
-     * @property focused
+     * @property opened
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToast
      */
-    public void setFocused(boolean value) {
-        getPolymerElement().setFocused(value);
-    }
-
-    /**
-     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
-     *
-     * JavaScript Info:
-     * @property allowOutsideScroll
-     * @type Boolean
-     * 
-     */
-    public boolean getAllowOutsideScroll() {
-        return getPolymerElement().getAllowOutsideScroll();
-    }
-    /**
-     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
-     *
-     * JavaScript Info:
-     * @property allowOutsideScroll
-     * @type Boolean
-     * 
-     */
-    public void setAllowOutsideScroll(boolean value) {
-        getPolymerElement().setAllowOutsideScroll(value);
+    public void setOpened(boolean value) {
+        getPolymerElement().setOpened(value);
     }
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
+     * @property restoreFocusOnClose
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToast
      */
-    public boolean getStopKeyboardEventPropagation() {
-        return getPolymerElement().getStopKeyboardEventPropagation();
+    public boolean getRestoreFocusOnClose() {
+        return getPolymerElement().getRestoreFocusOnClose();
     }
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
+     * @property restoreFocusOnClose
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToast
      */
-    public void setStopKeyboardEventPropagation(boolean value) {
-        getPolymerElement().setStopKeyboardEventPropagation(value);
+    public void setRestoreFocusOnClose(boolean value) {
+        getPolymerElement().setRestoreFocusOnClose(value);
+    }
+
+    /**
+     * <p>Set to true to display a backdrop behind the overlay.</p>
+     *
+     * JavaScript Info:
+     * @property withBackdrop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public boolean getWithBackdrop() {
+        return getPolymerElement().getWithBackdrop();
+    }
+    /**
+     * <p>Set to true to display a backdrop behind the overlay.</p>
+     *
+     * JavaScript Info:
+     * @property withBackdrop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public void setWithBackdrop(boolean value) {
+        getPolymerElement().setWithBackdrop(value);
+    }
+
+    /**
+     * <p>Set to true to auto-fit on attach.</p>
+     *
+     * JavaScript Info:
+     * @property autoFitOnAttach
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public boolean getAutoFitOnAttach() {
+        return getPolymerElement().getAutoFitOnAttach();
+    }
+    /**
+     * <p>Set to true to auto-fit on attach.</p>
+     *
+     * JavaScript Info:
+     * @property autoFitOnAttach
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public void setAutoFitOnAttach(boolean value) {
+        getPolymerElement().setAutoFitOnAttach(value);
+    }
+
+    /**
+     * <p>Returns the reason this dialog was last closed.</p>
+     *
+     * JavaScript Info:
+     * @property closingReason
+     * @type Object
+     * @behavior PaperToast
+     */
+    public JavaScriptObject getClosingReason() {
+        return getPolymerElement().getClosingReason();
+    }
+    /**
+     * <p>Returns the reason this dialog was last closed.</p>
+     *
+     * JavaScript Info:
+     * @property closingReason
+     * @type Object
+     * @behavior PaperToast
+     */
+    public void setClosingReason(JavaScriptObject value) {
+        getPolymerElement().setClosingReason(value);
+    }
+
+    /**
+     * <p>If provided, this will be the element that will be focused when<br>the dropdown opens.</p>
+     *
+     * JavaScript Info:
+     * @property focusTarget
+     * @type Object
+     * 
+     */
+    public JavaScriptObject getFocusTarget() {
+        return getPolymerElement().getFocusTarget();
+    }
+    /**
+     * <p>If provided, this will be the element that will be focused when<br>the dropdown opens.</p>
+     *
+     * JavaScript Info:
+     * @property focusTarget
+     * @type Object
+     * 
+     */
+    public void setFocusTarget(JavaScriptObject value) {
+        getPolymerElement().setFocusTarget(value);
+    }
+
+    /**
+     * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property openAnimationConfig
+     * @type Object
+     * 
+     */
+    public JavaScriptObject getOpenAnimationConfig() {
+        return getPolymerElement().getOpenAnimationConfig();
+    }
+    /**
+     * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property openAnimationConfig
+     * @type Object
+     * 
+     */
+    public void setOpenAnimationConfig(JavaScriptObject value) {
+        getPolymerElement().setOpenAnimationConfig(value);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    public JavaScriptObject getKeyBindings() {
+        return getPolymerElement().getKeyBindings();
+    }
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    public void setKeyBindings(JavaScriptObject value) {
+        getPolymerElement().setKeyBindings(value);
+    }
+
+    /**
+     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property closeAnimationConfig
+     * @type Object
+     * 
+     */
+    public JavaScriptObject getCloseAnimationConfig() {
+        return getPolymerElement().getCloseAnimationConfig();
+    }
+    /**
+     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property closeAnimationConfig
+     * @type Object
+     * 
+     */
+    public void setCloseAnimationConfig(JavaScriptObject value) {
+        getPolymerElement().setCloseAnimationConfig(value);
+    }
+
+    /**
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    public JavaScriptObject getKeyEventTarget() {
+        return getPolymerElement().getKeyEventTarget();
+    }
+    /**
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    public void setKeyEventTarget(JavaScriptObject value) {
+        getPolymerElement().setKeyEventTarget(value);
+    }
+
+    /**
+     * <p>The element that should be used to position the dropdown when<br>it is opened.</p>
+     *
+     * JavaScript Info:
+     * @property positionTarget
+     * @type Object
+     * 
+     */
+    public JavaScriptObject getPositionTarget() {
+        return getPolymerElement().getPositionTarget();
+    }
+    /**
+     * <p>The element that should be used to position the dropdown when<br>it is opened.</p>
+     *
+     * JavaScript Info:
+     * @property positionTarget
+     * @type Object
+     * 
+     */
+    public void setPositionTarget(JavaScriptObject value) {
+        getPolymerElement().setPositionTarget(value);
+    }
+
+    /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    public JavaScriptObject getAnimationConfig() {
+        return getPolymerElement().getAnimationConfig();
+    }
+    /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    public void setAnimationConfig(JavaScriptObject value) {
+        getPolymerElement().setAnimationConfig(value);
+    }
+
+    /**
+     * <p>The element to fit <code>this</code> into.</p>
+     *
+     * JavaScript Info:
+     * @property fitInto
+     * @type Object
+     * @behavior PaperToast
+     */
+    public JavaScriptObject getFitInto() {
+        return getPolymerElement().getFitInto();
+    }
+    /**
+     * <p>The element to fit <code>this</code> into.</p>
+     *
+     * JavaScript Info:
+     * @property fitInto
+     * @type Object
+     * @behavior PaperToast
+     */
+    public void setFitInto(JavaScriptObject value) {
+        getPolymerElement().setFitInto(value);
+    }
+
+    /**
+     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
+     *
+     * JavaScript Info:
+     * @property sizingTarget
+     * @type !Element
+     * @behavior PaperToast
+     */
+    public JavaScriptObject getSizingTarget() {
+        return getPolymerElement().getSizingTarget();
+    }
+    /**
+     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
+     *
+     * JavaScript Info:
+     * @property sizingTarget
+     * @type !Element
+     * @behavior PaperToast
+     */
+    public void setSizingTarget(JavaScriptObject value) {
+        getPolymerElement().setSizingTarget(value);
+    }
+
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @property backdropElement
+     * @type Element
+     * @behavior PaperToast
+     */
+    public Element getBackdropElement() {
+        return getPolymerElement().getBackdropElement();
+    }
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @property backdropElement
+     * @type Element
+     * @behavior PaperToast
+     */
+    public void setBackdropElement(Element value) {
+        getPolymerElement().setBackdropElement(value);
     }
 
     /**
@@ -738,29 +785,47 @@ public class IronDropdown extends PolymerWidget {
 
 
     /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
-     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
-     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
+     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
      *
      * JavaScript Info:
-     * @attribute horizontal-offset
-     * 
+     * @attribute sizing-target
+     * @behavior PaperToast
      */
-    public void setHorizontalOffset(String value) {
-        getPolymerElement().setAttribute("horizontal-offset", value);
+    public void setSizingTarget(String value) {
+        getPolymerElement().setAttribute("sizing-target", value);
     }
 
     /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
-     * <p>If <code>verticalAlign</code> is “top”, this offset will increase or decrease<br>the distance to the top side of the screen: a negative offset will<br>move the dropdown upwards; a positive one, downwards.</p>
-     * <p>Conversely if <code>verticalAlign</code> is “bottom”, this offset will increase<br>or decrease the distance to the bottom side of the screen: a negative<br>offset will move the dropdown downwards; a positive one, upwards.</p>
+     * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown.</p>
      *
      * JavaScript Info:
-     * @attribute vertical-offset
+     * @attribute open-animation-config
      * 
      */
-    public void setVerticalOffset(String value) {
-        getPolymerElement().setAttribute("vertical-offset", value);
+    public void setOpenAnimationConfig(String value) {
+        getPolymerElement().setAttribute("open-animation-config", value);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @attribute key-bindings
+     * @behavior VaadinComboBox
+     */
+    public void setKeyBindings(String value) {
+        getPolymerElement().setAttribute("key-bindings", value);
+    }
+
+    /**
+     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @attribute close-animation-config
+     * 
+     */
+    public void setCloseAnimationConfig(String value) {
+        getPolymerElement().setAttribute("close-animation-config", value);
     }
 
     /**
@@ -768,10 +833,21 @@ public class IronDropdown extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(String value) {
         getPolymerElement().setAttribute("key-event-target", value);
+    }
+
+    /**
+     * <p>If provided, this will be the element that will be focused when<br>the dropdown opens.</p>
+     *
+     * JavaScript Info:
+     * @attribute focus-target
+     * 
+     */
+    public void setFocusTarget(String value) {
+        getPolymerElement().setAttribute("focus-target", value);
     }
 
     /**
@@ -797,61 +873,6 @@ public class IronDropdown extends PolymerWidget {
     }
 
     /**
-     * <p>Returns the reason this dialog was last closed.</p>
-     *
-     * JavaScript Info:
-     * @attribute closing-reason
-     * @behavior PaperToast
-     */
-    public void setClosingReason(String value) {
-        getPolymerElement().setAttribute("closing-reason", value);
-    }
-
-    /**
-     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
-     *
-     * JavaScript Info:
-     * @attribute sizing-target
-     * @behavior PaperToast
-     */
-    public void setSizingTarget(String value) {
-        getPolymerElement().setAttribute("sizing-target", value);
-    }
-
-    /**
-     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @attribute close-animation-config
-     * 
-     */
-    public void setCloseAnimationConfig(String value) {
-        getPolymerElement().setAttribute("close-animation-config", value);
-    }
-
-    /**
-     * <p>If provided, this will be the element that will be focused when<br>the dropdown opens.</p>
-     *
-     * JavaScript Info:
-     * @attribute focus-target
-     * 
-     */
-    public void setFocusTarget(String value) {
-        getPolymerElement().setAttribute("focus-target", value);
-    }
-
-    /**
-     * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @attribute open-animation-config
-     * 
-     */
-    public void setOpenAnimationConfig(String value) {
-        getPolymerElement().setAttribute("open-animation-config", value);
-    }
-
-    /**
      * <p>The element that should be used to position the dropdown when<br>it is opened.</p>
      *
      * JavaScript Info:
@@ -863,16 +884,67 @@ public class IronDropdown extends PolymerWidget {
     }
 
     /**
-     * 
+     * <p>The backdrop element.</p>
      *
      * JavaScript Info:
-     * @attribute key-bindings
-     * @behavior PaperTab
+     * @attribute backdrop-element
+     * @behavior PaperToast
      */
-    public void setKeyBindings(String value) {
-        getPolymerElement().setAttribute("key-bindings", value);
+    public void setBackdropElement(String value) {
+        getPolymerElement().setAttribute("backdrop-element", value);
     }
 
+    /**
+     * <p>Returns the reason this dialog was last closed.</p>
+     *
+     * JavaScript Info:
+     * @attribute closing-reason
+     * @behavior PaperToast
+     */
+    public void setClosingReason(String value) {
+        getPolymerElement().setAttribute("closing-reason", value);
+    }
+
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
+     * <p>If <code>verticalAlign</code> is “top”, this offset will increase or decrease<br>the distance to the top side of the screen: a negative offset will<br>move the dropdown upwards; a positive one, downwards.</p>
+     * <p>Conversely if <code>verticalAlign</code> is “bottom”, this offset will increase<br>or decrease the distance to the bottom side of the screen: a negative<br>offset will move the dropdown downwards; a positive one, upwards.</p>
+     *
+     * JavaScript Info:
+     * @attribute vertical-offset
+     * 
+     */
+    public void setVerticalOffset(String value) {
+        getPolymerElement().setAttribute("vertical-offset", value);
+    }
+
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
+     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
+     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
+     *
+     * JavaScript Info:
+     * @attribute horizontal-offset
+     * 
+     */
+    public void setHorizontalOffset(String value) {
+        getPolymerElement().setAttribute("horizontal-offset", value);
+    }
+
+
+    /**
+     * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
+     *
+     * JavaScript Info:
+     * @method addOwnKeyBinding
+     * @param {} eventString  
+     * @param {} handlerName  
+     * @behavior VaadinComboBox
+     * 
+     */
+    public void addOwnKeyBinding(Object eventString, Object handlerName) {
+        getPolymerElement().addOwnKeyBinding(eventString, handlerName);
+    }
 
     /**
      * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
@@ -880,7 +952,7 @@ public class IronDropdown extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -893,7 +965,7 @@ public class IronDropdown extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
@@ -901,31 +973,27 @@ public class IronDropdown extends PolymerWidget {
     }
 
     /**
-     * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
+     * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
-     * @method addOwnKeyBinding
-     * @param {} eventString  
-     * @param {} handlerName  
-     * @behavior PaperTab
+     * @method removeOwnKeyBindings
+     * @behavior VaadinComboBox
      * 
      */
-    public void addOwnKeyBinding(Object eventString, Object handlerName) {
-        getPolymerElement().addOwnKeyBinding(eventString, handlerName);
+    public void removeOwnKeyBindings() {
+        getPolymerElement().removeOwnKeyBindings();
     }
 
     /**
-     * 
+     * <p>Toggle the opened state of the overlay.</p>
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
+     * @method toggle
+     * @behavior PaperToast
      * 
      */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
+    public void toggle() {
+        getPolymerElement().toggle();
     }
 
     /**
@@ -977,75 +1045,15 @@ public class IronDropdown extends PolymerWidget {
     }
 
     /**
-     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
+     * <p>Resets the target element’s position and size constraints, and clear<br>the memoized data.</p>
      *
      * JavaScript Info:
-     * @method notifyResize
-     * @behavior PaperTabs
-     * 
-     */
-    public void notifyResize() {
-        getPolymerElement().notifyResize();
-    }
-
-    /**
-     * <p>Toggle the opened state of the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method toggle
+     * @method resetFit
      * @behavior PaperToast
      * 
      */
-    public void toggle() {
-        getPolymerElement().toggle();
-    }
-
-    /**
-     * <p>Open the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method open
-     * @behavior PaperToast
-     * 
-     */
-    public void open() {
-        getPolymerElement().open();
-    }
-
-    /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
-     *
-     * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior PaperTab
-     * 
-     */
-    public void removeOwnKeyBindings() {
-        getPolymerElement().removeOwnKeyBindings();
-    }
-
-    /**
-     * <p>Cancels the currently running animation.</p>
-     *
-     * JavaScript Info:
-     * @method cancelAnimation
-     * @behavior PaperTooltip
-     * 
-     */
-    public void cancelAnimation() {
-        getPolymerElement().cancelAnimation();
-    }
-
-    /**
-     * <p>Cancels the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method cancel
-     * @behavior PaperToast
-     * 
-     */
-    public void cancel() {
-        getPolymerElement().cancel();
+    public void resetFit() {
+        getPolymerElement().resetFit();
     }
 
     /**
@@ -1061,15 +1069,65 @@ public class IronDropdown extends PolymerWidget {
     }
 
     /**
-     * <p>Resets the target element’s position and size constraints, and clear<br>the memoized data.</p>
+     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
      *
      * JavaScript Info:
-     * @method resetFit
+     * @method notifyResize
+     * @behavior VaadinComboBoxOverlay
+     * 
+     */
+    public void notifyResize() {
+        getPolymerElement().notifyResize();
+    }
+
+    /**
+     * <p>Cancels the currently running animation.</p>
+     *
+     * JavaScript Info:
+     * @method cancelAnimation
+     * @behavior PaperTooltip
+     * 
+     */
+    public void cancelAnimation() {
+        getPolymerElement().cancelAnimation();
+    }
+
+    /**
+     * <p>Open the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method open
      * @behavior PaperToast
      * 
      */
-    public void resetFit() {
-        getPolymerElement().resetFit();
+    public void open() {
+        getPolymerElement().open();
+    }
+
+    /**
+     * <p>Cancels the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method cancel
+     * @param {Event=} event  
+     * @behavior PaperToast
+     * 
+     */
+    public void cancel(JavaScriptObject event) {
+        getPolymerElement().cancel(event);
+    }
+
+    /**
+     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
+     *
+     * JavaScript Info:
+     * @method resizerShouldNotify
+     * @param {HTMLElement} element  
+     * @behavior VaadinComboBoxOverlay
+     * @return {boolean}
+     */
+    public boolean resizerShouldNotify(JavaScriptObject element) {
+        return getPolymerElement().resizerShouldNotify(element);
     }
 
     /**
@@ -1087,16 +1145,17 @@ public class IronDropdown extends PolymerWidget {
     }
 
     /**
-     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
-     * @method resizerShouldNotify
-     * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
      * @return {boolean}
      */
-    public boolean resizerShouldNotify(JavaScriptObject element) {
-        return getPolymerElement().resizerShouldNotify(element);
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
 
@@ -1107,7 +1166,7 @@ public class IronDropdown extends PolymerWidget {
      * @event iron-overlay-canceled
      */
     public HandlerRegistration addIronOverlayCanceledHandler(IronOverlayCanceledEventHandler handler) {
-        return addHandler(handler, IronOverlayCanceledEvent.TYPE);
+        return addDomHandler(handler, IronOverlayCanceledEvent.TYPE);
     }
 
     /**
@@ -1117,7 +1176,7 @@ public class IronDropdown extends PolymerWidget {
      * @event iron-overlay-closed
      */
     public HandlerRegistration addIronOverlayClosedHandler(IronOverlayClosedEventHandler handler) {
-        return addHandler(handler, IronOverlayClosedEvent.TYPE);
+        return addDomHandler(handler, IronOverlayClosedEvent.TYPE);
     }
 
     /**
@@ -1127,7 +1186,7 @@ public class IronDropdown extends PolymerWidget {
      * @event iron-overlay-opened
      */
     public HandlerRegistration addIronOverlayOpenedHandler(IronOverlayOpenedEventHandler handler) {
-        return addHandler(handler, IronOverlayOpenedEvent.TYPE);
+        return addDomHandler(handler, IronOverlayOpenedEvent.TYPE);
     }
 
 }

@@ -5,16 +5,22 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.iron.widget.event.IronOverlayCanceledEvent;
 import com.vaadin.polymer.iron.widget.event.IronOverlayCanceledEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronOverlayClosedEvent;
 import com.vaadin.polymer.iron.widget.event.IronOverlayClosedEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronOverlayOpenedEvent;
 import com.vaadin.polymer.iron.widget.event.IronOverlayOpenedEventHandler;
-import com.vaadin.polymer.paper.PaperDialogElement;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/dialogs.html">Dialogs</a></p>
@@ -63,34 +69,6 @@ public class PaperDialog extends PolymerWidget {
      */
     public PaperDialog(String html) {
         super(PaperDialogElement.TAG, PaperDialogElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronOverlayCanceledEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronOverlayCanceledEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronOverlayCanceledEvent event) {
-                fireEvent(new IronOverlayCanceledEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronOverlayClosedEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronOverlayClosedEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronOverlayClosedEvent event) {
-                fireEvent(new IronOverlayClosedEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronOverlayOpenedEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronOverlayOpenedEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronOverlayOpenedEvent event) {
-                fireEvent(new IronOverlayOpenedEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -105,6 +83,52 @@ public class PaperDialog extends PolymerWidget {
         }
     }
 
+
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @property backdropElement
+     * @type Element
+     * @behavior PaperToast
+     */
+    public Element getBackdropElement() {
+        return getPolymerElement().getBackdropElement();
+    }
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @property backdropElement
+     * @type Element
+     * @behavior PaperToast
+     */
+    public void setBackdropElement(Element value) {
+        getPolymerElement().setBackdropElement(value);
+    }
+
+    /**
+     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code>, <code>no-cancel-on-esc-key</code> and <code>with-backdrop</code>.</p>
+     *
+     * JavaScript Info:
+     * @property modal
+     * @type Boolean
+     * @behavior PaperDialog
+     */
+    public boolean getModal() {
+        return getPolymerElement().getModal();
+    }
+    /**
+     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code>, <code>no-cancel-on-esc-key</code> and <code>with-backdrop</code>.</p>
+     *
+     * JavaScript Info:
+     * @property modal
+     * @type Boolean
+     * @behavior PaperDialog
+     */
+    public void setModal(boolean value) {
+        getPolymerElement().setModal(value);
+    }
 
     /**
      * <p>True if the overlay was canceled when it was last closed.</p>
@@ -153,26 +177,26 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     * <p>Set to true to keep overlay always on top.</p>
      *
      * JavaScript Info:
-     * @property noCancelOnEscKey
+     * @property alwaysOnTop
      * @type Boolean
      * @behavior PaperToast
      */
-    public boolean getNoCancelOnEscKey() {
-        return getPolymerElement().getNoCancelOnEscKey();
+    public boolean getAlwaysOnTop() {
+        return getPolymerElement().getAlwaysOnTop();
     }
     /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     * <p>Set to true to keep overlay always on top.</p>
      *
      * JavaScript Info:
-     * @property noCancelOnEscKey
+     * @property alwaysOnTop
      * @type Boolean
      * @behavior PaperToast
      */
-    public void setNoCancelOnEscKey(boolean value) {
-        getPolymerElement().setNoCancelOnEscKey(value);
+    public void setAlwaysOnTop(boolean value) {
+        getPolymerElement().setAlwaysOnTop(value);
     }
 
     /**
@@ -196,6 +220,29 @@ public class PaperDialog extends PolymerWidget {
      */
     public void setNoCancelOnOutsideClick(boolean value) {
         getPolymerElement().setNoCancelOnOutsideClick(value);
+    }
+
+    /**
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
+     *
+     * JavaScript Info:
+     * @property restoreFocusOnClose
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public boolean getRestoreFocusOnClose() {
+        return getPolymerElement().getRestoreFocusOnClose();
+    }
+    /**
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
+     *
+     * JavaScript Info:
+     * @property restoreFocusOnClose
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public void setRestoreFocusOnClose(boolean value) {
+        getPolymerElement().setRestoreFocusOnClose(value);
     }
 
     /**
@@ -245,26 +292,26 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code> and <code>with-backdrop</code>.</p>
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
      *
      * JavaScript Info:
-     * @property modal
+     * @property noCancelOnEscKey
      * @type Boolean
-     * @behavior PaperDialog
+     * @behavior PaperToast
      */
-    public boolean getModal() {
-        return getPolymerElement().getModal();
+    public boolean getNoCancelOnEscKey() {
+        return getPolymerElement().getNoCancelOnEscKey();
     }
     /**
-     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code> and <code>with-backdrop</code>.</p>
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
      *
      * JavaScript Info:
-     * @property modal
+     * @property noCancelOnEscKey
      * @type Boolean
-     * @behavior PaperDialog
+     * @behavior PaperToast
      */
-    public void setModal(boolean value) {
-        getPolymerElement().setModal(value);
+    public void setNoCancelOnEscKey(boolean value) {
+        getPolymerElement().setNoCancelOnEscKey(value);
     }
 
     /**
@@ -430,17 +477,6 @@ public class PaperDialog extends PolymerWidget {
 
 
     /**
-     * <p>Returns the reason this dialog was last closed.</p>
-     *
-     * JavaScript Info:
-     * @attribute closing-reason
-     * @behavior PaperToast
-     */
-    public void setClosingReason(String value) {
-        getPolymerElement().setAttribute("closing-reason", value);
-    }
-
-    /**
      * <p>Animation configuration. See README for more info.</p>
      *
      * JavaScript Info:
@@ -449,6 +485,17 @@ public class PaperDialog extends PolymerWidget {
      */
     public void setAnimationConfig(String value) {
         getPolymerElement().setAttribute("animation-config", value);
+    }
+
+    /**
+     * <p>Returns the reason this dialog was last closed.</p>
+     *
+     * JavaScript Info:
+     * @attribute closing-reason
+     * @behavior PaperToast
+     */
+    public void setClosingReason(String value) {
+        getPolymerElement().setAttribute("closing-reason", value);
     }
 
     /**
@@ -473,6 +520,17 @@ public class PaperDialog extends PolymerWidget {
         getPolymerElement().setAttribute("sizing-target", value);
     }
 
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @attribute backdrop-element
+     * @behavior PaperToast
+     */
+    public void setBackdropElement(String value) {
+        getPolymerElement().setAttribute("backdrop-element", value);
+    }
+
 
     /**
      * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
@@ -480,7 +538,7 @@ public class PaperDialog extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -493,7 +551,7 @@ public class PaperDialog extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
@@ -501,15 +559,15 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Cancels the overlay.</p>
+     * <p>Close the overlay.</p>
      *
      * JavaScript Info:
-     * @method cancel
+     * @method close
      * @behavior PaperToast
      * 
      */
-    public void cancel() {
-        getPolymerElement().cancel();
+    public void close() {
+        getPolymerElement().close();
     }
 
     /**
@@ -537,15 +595,15 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Open the overlay.</p>
+     * <p>Toggle the opened state of the overlay.</p>
      *
      * JavaScript Info:
-     * @method open
+     * @method toggle
      * @behavior PaperToast
      * 
      */
-    public void open() {
-        getPolymerElement().open();
+    public void toggle() {
+        getPolymerElement().toggle();
     }
 
     /**
@@ -573,39 +631,15 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Close the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method close
-     * @behavior PaperToast
-     * 
-     */
-    public void close() {
-        getPolymerElement().close();
-    }
-
-    /**
      * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void notifyResize() {
         getPolymerElement().notifyResize();
-    }
-
-    /**
-     * <p>Toggle the opened state of the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method toggle
-     * @behavior PaperToast
-     * 
-     */
-    public void toggle() {
-        getPolymerElement().toggle();
     }
 
     /**
@@ -621,6 +655,18 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
+     * <p>Open the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method open
+     * @behavior PaperToast
+     * 
+     */
+    public void open() {
+        getPolymerElement().open();
+    }
+
+    /**
      * <p>Constrains the size of the element to the window or <code>fitInfo</code> by setting <code>max-height</code><br>and/or <code>max-width</code>.</p>
      *
      * JavaScript Info:
@@ -633,12 +679,25 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
+     * <p>Cancels the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method cancel
+     * @param {Event=} event  
+     * @behavior PaperToast
+     * 
+     */
+    public void cancel(JavaScriptObject event) {
+        getPolymerElement().cancel(event);
+    }
+
+    /**
      * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
      *
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {
@@ -667,7 +726,7 @@ public class PaperDialog extends PolymerWidget {
      * @event iron-overlay-canceled
      */
     public HandlerRegistration addIronOverlayCanceledHandler(IronOverlayCanceledEventHandler handler) {
-        return addHandler(handler, IronOverlayCanceledEvent.TYPE);
+        return addDomHandler(handler, IronOverlayCanceledEvent.TYPE);
     }
 
     /**
@@ -677,7 +736,7 @@ public class PaperDialog extends PolymerWidget {
      * @event iron-overlay-closed
      */
     public HandlerRegistration addIronOverlayClosedHandler(IronOverlayClosedEventHandler handler) {
-        return addHandler(handler, IronOverlayClosedEvent.TYPE);
+        return addDomHandler(handler, IronOverlayClosedEvent.TYPE);
     }
 
     /**
@@ -687,7 +746,7 @@ public class PaperDialog extends PolymerWidget {
      * @event iron-overlay-opened
      */
     public HandlerRegistration addIronOverlayOpenedHandler(IronOverlayOpenedEventHandler handler) {
-        return addHandler(handler, IronOverlayOpenedEvent.TYPE);
+        return addDomHandler(handler, IronOverlayOpenedEvent.TYPE);
     }
 
 }

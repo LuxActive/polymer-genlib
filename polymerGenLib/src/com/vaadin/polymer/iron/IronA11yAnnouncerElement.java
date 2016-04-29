@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>iron-a11y-announcer</code> is a singleton element that is intended to add a11y<br>to features that require on-demand announcement from screen readers. In<br>order to make use of the announcer, it is best to request its availability<br>in the announcing element.</p>
@@ -33,11 +36,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre><p>Note: announcements are only audible if you have a screen reader enabled.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronA11yAnnouncerElement extends HTMLElement {
 
-    public static final String TAG = "iron-a11y-announcer";
-    public static final String SRC = "iron-a11y-announcer/iron-a11y-announcer.html";
+    @JsOverlay public static final String TAG = "iron-a11y-announcer";
+    @JsOverlay public static final String SRC = "iron-a11y-announcer/iron-a11y-announcer.html";
 
 
     /**

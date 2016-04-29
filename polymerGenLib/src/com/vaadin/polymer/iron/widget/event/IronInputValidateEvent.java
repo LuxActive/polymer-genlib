@@ -5,19 +5,19 @@
  */
 package com.vaadin.polymer.iron.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>  The <code>iron-input-validate</code> event is fired whenever <code>validate()</code> is called.</p>
  */
-public class IronInputValidateEvent extends GwtEvent<IronInputValidateEventHandler> {
+public class IronInputValidateEvent extends DomEvent<IronInputValidateEventHandler> {
 
-    public static Type<IronInputValidateEventHandler> TYPE = new Type<IronInputValidateEventHandler>();
+    public static Type<IronInputValidateEventHandler> TYPE = new Type<IronInputValidateEventHandler>(
+       com.vaadin.polymer.iron.event.IronInputValidateEvent.NAME, new IronInputValidateEvent());
 
-    private com.vaadin.polymer.iron.event.IronInputValidateEvent nativeEvent;
 
-    public IronInputValidateEvent(com.vaadin.polymer.iron.event.IronInputValidateEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public IronInputValidateEvent() {
     }
 
     public Type<IronInputValidateEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class IronInputValidateEvent extends GwtEvent<IronInputValidateEventHandl
         handler.onIronInputValidate(this);
     }
 
-    public com.vaadin.polymer.iron.event.IronInputValidateEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.iron.event.IronInputValidateEvent getPolymerEvent() {
+        return (com.vaadin.polymer.iron.event.IronInputValidateEvent)super.getNativeEvent();
     }
+
 
 }

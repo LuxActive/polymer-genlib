@@ -5,19 +5,19 @@
  */
 package com.vaadin.polymer.paper.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the slider’s value changes.</p>
  */
-public class ValueChangeEvent extends GwtEvent<ValueChangeEventHandler> {
+public class ValueChangeEvent extends DomEvent<ValueChangeEventHandler> {
 
-    public static Type<ValueChangeEventHandler> TYPE = new Type<ValueChangeEventHandler>();
+    public static Type<ValueChangeEventHandler> TYPE = new Type<ValueChangeEventHandler>(
+       com.vaadin.polymer.paper.event.ValueChangeEvent.NAME, new ValueChangeEvent());
 
-    private com.vaadin.polymer.paper.event.ValueChangeEvent nativeEvent;
 
-    public ValueChangeEvent(com.vaadin.polymer.paper.event.ValueChangeEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public ValueChangeEvent() {
     }
 
     public Type<ValueChangeEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class ValueChangeEvent extends GwtEvent<ValueChangeEventHandler> {
         handler.onValueChange(this);
     }
 
-    public com.vaadin.polymer.paper.event.ValueChangeEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.paper.event.ValueChangeEvent getPolymerEvent() {
+        return (com.vaadin.polymer.paper.event.ValueChangeEvent)super.getNativeEvent();
     }
+
 
 }

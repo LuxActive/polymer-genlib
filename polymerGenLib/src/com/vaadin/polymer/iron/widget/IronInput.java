@@ -5,12 +5,16 @@
  */
 package com.vaadin.polymer.iron.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.IronInputElement;
+import com.vaadin.polymer.iron.*;
+
 import com.vaadin.polymer.iron.widget.event.IronInputValidateEvent;
 import com.vaadin.polymer.iron.widget.event.IronInputValidateEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;iron-input&gt;</code> adds two-way binding and custom validators using <code>Polymer.IronValidatorBehavior</code><br>to <code>&lt;input&gt;</code>.</p>
@@ -49,16 +53,6 @@ public class IronInput extends PolymerWidget {
      */
     public IronInput(String html) {
         super(IronInputElement.TAG, IronInputElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronInputValidateEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronInputValidateEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronInputValidateEvent event) {
-                fireEvent(new IronInputValidateEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -75,7 +69,7 @@ public class IronInput extends PolymerWidget {
 
 
     /**
-     * <p>Set to true to prevent the user from entering invalid input. The new input characters are<br>matched with <code>allowedPattern</code> if it is set, otherwise it will use the <code>pattern</code> attribute if<br>set, or the <code>type</code> attribute (only supported for <code>type=number</code>).</p>
+     * <p>Set to true to prevent the user from entering invalid input. If <code>allowedPattern</code> is set,<br>any character typed by the user will be matched against that pattern, and rejected if it’s not a match.<br>Pasted input will have each character checked individually; if any character<br>doesn’t match <code>allowedPattern</code>, the entire pasted string will be rejected.<br>If <code>allowedPattern</code> is not set, it will use the <code>type</code> attribute (only supported for <code>type=number</code>).</p>
      *
      * JavaScript Info:
      * @property preventInvalidInput
@@ -86,7 +80,7 @@ public class IronInput extends PolymerWidget {
         return getPolymerElement().getPreventInvalidInput();
     }
     /**
-     * <p>Set to true to prevent the user from entering invalid input. The new input characters are<br>matched with <code>allowedPattern</code> if it is set, otherwise it will use the <code>pattern</code> attribute if<br>set, or the <code>type</code> attribute (only supported for <code>type=number</code>).</p>
+     * <p>Set to true to prevent the user from entering invalid input. If <code>allowedPattern</code> is set,<br>any character typed by the user will be matched against that pattern, and rejected if it’s not a match.<br>Pasted input will have each character checked individually; if any character<br>doesn’t match <code>allowedPattern</code>, the entire pasted string will be rejected.<br>If <code>allowedPattern</code> is not set, it will use the <code>type</code> attribute (only supported for <code>type=number</code>).</p>
      *
      * JavaScript Info:
      * @property preventInvalidInput
@@ -103,7 +97,7 @@ public class IronInput extends PolymerWidget {
      * JavaScript Info:
      * @property invalid
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public boolean getInvalid() {
         return getPolymerElement().getInvalid();
@@ -114,14 +108,14 @@ public class IronInput extends PolymerWidget {
      * JavaScript Info:
      * @property invalid
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setInvalid(boolean value) {
         getPolymerElement().setInvalid(value);
     }
 
     /**
-     * <p>Regular expression to match valid input characters.</p>
+     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
      *
      * JavaScript Info:
      * @property allowedPattern
@@ -132,7 +126,7 @@ public class IronInput extends PolymerWidget {
         return getPolymerElement().getAllowedPattern();
     }
     /**
-     * <p>Regular expression to match valid input characters.</p>
+     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
      *
      * JavaScript Info:
      * @property allowedPattern
@@ -172,7 +166,7 @@ public class IronInput extends PolymerWidget {
      * JavaScript Info:
      * @property validator
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public String getValidator() {
         return getPolymerElement().getValidator();
@@ -183,7 +177,7 @@ public class IronInput extends PolymerWidget {
      * JavaScript Info:
      * @property validator
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setValidator(String value) {
         getPolymerElement().setValidator(value);
@@ -195,7 +189,7 @@ public class IronInput extends PolymerWidget {
      * JavaScript Info:
      * @property validatorType
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public String getValidatorType() {
         return getPolymerElement().getValidatorType();
@@ -206,13 +200,25 @@ public class IronInput extends PolymerWidget {
      * JavaScript Info:
      * @property validatorType
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setValidatorType(String value) {
         getPolymerElement().setValidatorType(value);
     }
 
 
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method hasValidator
+     * @behavior VaadinDatePicker
+     * @return {boolean}
+     */
+    public boolean hasValidator() {
+        return getPolymerElement().hasValidator();
+    }
 
     /**
      * <p>Returns true if <code>value</code> is valid. The validator provided in <code>validator</code> will be used first,<br>then any constraints.</p>
@@ -227,24 +233,12 @@ public class IronInput extends PolymerWidget {
     }
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @method hasValidator
-     * @behavior PaperToggleButton
-     * @return {boolean}
-     */
-    public boolean hasValidator() {
-        return getPolymerElement().hasValidator();
-    }
-
-    /**
      * <p>Returns true if the <code>value</code> is valid, and updates <code>invalid</code>. If you want<br>your element to have custom validation logic, do not override this method;<br>override <code>_getValidity(value)</code> instead.</p>
      *
      * JavaScript Info:
      * @method validate
      * @param {Object} value  
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      * @return {boolean}
      */
     public boolean validate(JavaScriptObject value) {
@@ -259,7 +253,7 @@ public class IronInput extends PolymerWidget {
      * @event iron-input-validate
      */
     public HandlerRegistration addIronInputValidateHandler(IronInputValidateEventHandler handler) {
-        return addHandler(handler, IronInputValidateEvent.TYPE);
+        return addDomHandler(handler, IronInputValidateEvent.TYPE);
     }
 
 }

@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/dialogs.html">Dialogs</a></p>
@@ -44,12 +46,50 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </code></pre><h3 id="accessibility">Accessibility</h3>
  * <p>See the docs for <code>Polymer.PaperDialogBehavior</code> for accessibility features implemented by this<br>element.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperDialogElement extends HTMLElement {
 
-    public static final String TAG = "paper-dialog";
-    public static final String SRC = "paper-dialog/paper-dialog.html";
+    @JsOverlay public static final String TAG = "paper-dialog";
+    @JsOverlay public static final String SRC = "paper-dialog/paper-dialog.html";
 
+
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @property backdropElement
+     * @type Element
+     * @behavior PaperToast
+     */
+    @JsProperty Element getBackdropElement();
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @property backdropElement
+     * @type Element
+     * @behavior PaperToast
+     */
+    @JsProperty void setBackdropElement(Element value);
+
+    /**
+     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code>, <code>no-cancel-on-esc-key</code> and <code>with-backdrop</code>.</p>
+     *
+     * JavaScript Info:
+     * @property modal
+     * @type Boolean
+     * @behavior PaperDialog
+     */
+    @JsProperty boolean getModal();
+    /**
+     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code>, <code>no-cancel-on-esc-key</code> and <code>with-backdrop</code>.</p>
+     *
+     * JavaScript Info:
+     * @property modal
+     * @type Boolean
+     * @behavior PaperDialog
+     */
+    @JsProperty void setModal(boolean value);
 
     /**
      * <p>True if the overlay was canceled when it was last closed.</p>
@@ -90,23 +130,23 @@ public interface PaperDialogElement extends HTMLElement {
     @JsProperty void setNoAutoFocus(boolean value);
 
     /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     * <p>Set to true to keep overlay always on top.</p>
      *
      * JavaScript Info:
-     * @property noCancelOnEscKey
+     * @property alwaysOnTop
      * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty boolean getNoCancelOnEscKey();
+    @JsProperty boolean getAlwaysOnTop();
     /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     * <p>Set to true to keep overlay always on top.</p>
      *
      * JavaScript Info:
-     * @property noCancelOnEscKey
+     * @property alwaysOnTop
      * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty void setNoCancelOnEscKey(boolean value);
+    @JsProperty void setAlwaysOnTop(boolean value);
 
     /**
      * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
@@ -126,6 +166,25 @@ public interface PaperDialogElement extends HTMLElement {
      * @behavior PaperToast
      */
     @JsProperty void setNoCancelOnOutsideClick(boolean value);
+
+    /**
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
+     *
+     * JavaScript Info:
+     * @property restoreFocusOnClose
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getRestoreFocusOnClose();
+    /**
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
+     *
+     * JavaScript Info:
+     * @property restoreFocusOnClose
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setRestoreFocusOnClose(boolean value);
 
     /**
      * <p>Set to true to display a backdrop behind the overlay.</p>
@@ -166,23 +225,23 @@ public interface PaperDialogElement extends HTMLElement {
     @JsProperty void setAutoFitOnAttach(boolean value);
 
     /**
-     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code> and <code>with-backdrop</code>.</p>
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
      *
      * JavaScript Info:
-     * @property modal
+     * @property noCancelOnEscKey
      * @type Boolean
-     * @behavior PaperDialog
+     * @behavior PaperToast
      */
-    @JsProperty boolean getModal();
+    @JsProperty boolean getNoCancelOnEscKey();
     /**
-     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code> and <code>with-backdrop</code>.</p>
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
      *
      * JavaScript Info:
-     * @property modal
+     * @property noCancelOnEscKey
      * @type Boolean
-     * @behavior PaperDialog
+     * @behavior PaperToast
      */
-    @JsProperty void setModal(boolean value);
+    @JsProperty void setNoCancelOnEscKey(boolean value);
 
     /**
      * <p>Animation configuration. See README for more info.</p>
@@ -324,7 +383,7 @@ public interface PaperDialogElement extends HTMLElement {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -335,20 +394,20 @@ public interface PaperDialogElement extends HTMLElement {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     void stopResizeNotificationsFor(Object target);
 
     /**
-     * <p>Cancels the overlay.</p>
+     * <p>Close the overlay.</p>
      *
      * JavaScript Info:
-     * @method cancel
+     * @method close
      * @behavior PaperToast
      * 
      */
-    void cancel();
+    void close();
 
     /**
      * <p>Centers horizontally and vertically if not already positioned. This also sets<br><code>position:fixed</code>.</p>
@@ -371,14 +430,14 @@ public interface PaperDialogElement extends HTMLElement {
     void fit();
 
     /**
-     * <p>Open the overlay.</p>
+     * <p>Toggle the opened state of the overlay.</p>
      *
      * JavaScript Info:
-     * @method open
+     * @method toggle
      * @behavior PaperToast
      * 
      */
-    void open();
+    void toggle();
 
     /**
      * <p>Equivalent to calling <code>resetFit()</code> and <code>fit()</code>. Useful to call this after the element,<br>the window, or the <code>fitInfo</code> element has been resized.</p>
@@ -401,34 +460,14 @@ public interface PaperDialogElement extends HTMLElement {
     void resetFit();
 
     /**
-     * <p>Close the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method close
-     * @behavior PaperToast
-     * 
-     */
-    void close();
-
-    /**
      * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     void notifyResize();
-
-    /**
-     * <p>Toggle the opened state of the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method toggle
-     * @behavior PaperToast
-     * 
-     */
-    void toggle();
 
     /**
      * <p>Cancels the currently running animation.</p>
@@ -441,6 +480,16 @@ public interface PaperDialogElement extends HTMLElement {
     void cancelAnimation();
 
     /**
+     * <p>Open the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method open
+     * @behavior PaperToast
+     * 
+     */
+    void open();
+
+    /**
      * <p>Constrains the size of the element to the window or <code>fitInfo</code> by setting <code>max-height</code><br>and/or <code>max-width</code>.</p>
      *
      * JavaScript Info:
@@ -451,12 +500,23 @@ public interface PaperDialogElement extends HTMLElement {
     void constrain();
 
     /**
+     * <p>Cancels the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method cancel
+     * @param {Event=} event  
+     * @behavior PaperToast
+     * 
+     */
+    void cancel(JavaScriptObject event);
+
+    /**
      * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
      *
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);

@@ -5,19 +5,19 @@
  */
 package com.vaadin.polymer.iron.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * 
+ * <p>Fired when the list of selectable items changes (e.g., items are<br>added or removed). The detail of the event is a list of mutation<br>records that describe what changed.</p>
  */
-public class IronItemsChangedEvent extends GwtEvent<IronItemsChangedEventHandler> {
+public class IronItemsChangedEvent extends DomEvent<IronItemsChangedEventHandler> {
 
-    public static Type<IronItemsChangedEventHandler> TYPE = new Type<IronItemsChangedEventHandler>();
+    public static Type<IronItemsChangedEventHandler> TYPE = new Type<IronItemsChangedEventHandler>(
+       com.vaadin.polymer.iron.event.IronItemsChangedEvent.NAME, new IronItemsChangedEvent());
 
-    private com.vaadin.polymer.iron.event.IronItemsChangedEvent nativeEvent;
 
-    public IronItemsChangedEvent(com.vaadin.polymer.iron.event.IronItemsChangedEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public IronItemsChangedEvent() {
     }
 
     public Type<IronItemsChangedEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class IronItemsChangedEvent extends GwtEvent<IronItemsChangedEventHandler
         handler.onIronItemsChanged(this);
     }
 
-    public com.vaadin.polymer.iron.event.IronItemsChangedEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.iron.event.IronItemsChangedEvent getPolymerEvent() {
+        return (com.vaadin.polymer.iron.event.IronItemsChangedEvent)super.getNativeEvent();
     }
+
 
 }

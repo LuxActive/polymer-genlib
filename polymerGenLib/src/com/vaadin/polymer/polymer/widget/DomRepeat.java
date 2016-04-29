@@ -5,10 +5,13 @@
  */
 package com.vaadin.polymer.polymer.widget;
 
-import com.google.gwt.core.client.JsArray;
+import com.vaadin.polymer.polymer.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.elemental.Function;
-import com.vaadin.polymer.polymer.DomRepeatElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * 
@@ -26,7 +29,6 @@ public class DomRepeat extends PolymerWidget {
      */
     public DomRepeat(String html) {
         super(DomRepeatElement.TAG, DomRepeatElement.SRC, html);
-
     }
 
     /**
@@ -109,6 +111,29 @@ public class DomRepeat extends PolymerWidget {
      */
     public void setDelay(double value) {
         getPolymerElement().setDelay(value);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property renderedItemCount
+     * @type Number
+     * 
+     */
+    public double getRenderedItemCount() {
+        return getPolymerElement().getRenderedItemCount();
+    }
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property renderedItemCount
+     * @type Number
+     * 
+     */
+    public void setRenderedItemCount(double value) {
+        getPolymerElement().setRenderedItemCount(value);
     }
 
     /**
@@ -276,6 +301,17 @@ public class DomRepeat extends PolymerWidget {
      * 
      *
      * JavaScript Info:
+     * @attribute rendered-item-count
+     * 
+     */
+    public void setRenderedItemCount(String value) {
+        getPolymerElement().setAttribute("rendered-item-count", value);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
      * @attribute target-framerate
      * 
      */
@@ -301,24 +337,11 @@ public class DomRepeat extends PolymerWidget {
      * JavaScript Info:
      * @method stamp
      * @param {} model  
-     * @behavior DomIf
+     * @behavior VaadinInfiniteScroller
      * 
      */
     public void stamp(Object model) {
         getPolymerElement().stamp(model);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method templatize
-     * @param {} template  
-     * @behavior DomIf
-     * 
-     */
-    public void templatize(Object template) {
-        getPolymerElement().templatize(template);
     }
 
     /**
@@ -371,6 +394,19 @@ public class DomRepeat extends PolymerWidget {
      */
     public void indexForElement(Object el) {
         getPolymerElement().indexForElement(el);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method templatize
+     * @param {} template  
+     * @behavior VaadinInfiniteScroller
+     * 
+     */
+    public void templatize(Object template) {
+        getPolymerElement().templatize(template);
     }
 
     /**

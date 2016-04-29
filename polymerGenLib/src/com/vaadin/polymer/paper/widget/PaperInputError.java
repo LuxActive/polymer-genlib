@@ -5,8 +5,13 @@
  */
 package com.vaadin.polymer.paper.widget;
 
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperInputErrorElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;paper-input-error&gt;</code> is an error message for use with <code>&lt;paper-input-container&gt;</code>. The error is<br>displayed when the <code>&lt;paper-input-container&gt;</code> is <code>invalid</code>.</p>
@@ -30,7 +35,7 @@ import com.vaadin.polymer.paper.PaperInputErrorElement;
  * <tr>
  * <td><code>--paper-input-container-invalid-color</code></td>
  * <td>The foreground color of the error</td>
- * <td><code>--google-red-500</code></td>
+ * <td><code>--error-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-input-error</code></td>
@@ -53,7 +58,6 @@ public class PaperInputError extends PolymerWidget {
      */
     public PaperInputError(String html) {
         super(PaperInputErrorElement.TAG, PaperInputErrorElement.SRC, html);
-
     }
 
     /**
@@ -95,11 +99,11 @@ public class PaperInputError extends PolymerWidget {
 
 
     /**
-     * 
+     * <p>This overrides the update function in PaperInputAddonBehavior.</p>
      *
      * JavaScript Info:
      * @method update
-     * @param {} state  
+     * @param {{inputElement: (Element|undefined), value: (string|undefined), invalid: boolean}} state  
      * 
      * 
      */

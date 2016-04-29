@@ -5,8 +5,13 @@
  */
 package com.vaadin.polymer.paper.widget;
 
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperSpinnerElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/progress-activity.html">Progress &amp; activity</a></p>
@@ -67,7 +72,6 @@ public class PaperSpinner extends PolymerWidget {
      */
     public PaperSpinner(String html) {
         super(PaperSpinnerElement.TAG, PaperSpinnerElement.SRC, html);
-
     }
 
     /**

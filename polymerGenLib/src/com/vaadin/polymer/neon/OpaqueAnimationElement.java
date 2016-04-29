@@ -5,19 +5,21 @@
  */
 package com.vaadin.polymer.neon;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>&lt;opaque-animation&gt;</code> makes an element <code>opacity:1</code> for the duration of the animation. Used to prevent<br>webkit/safari from drawing a frame before an animation for elements that animate from display:none.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface OpaqueAnimationElement extends HTMLElement {
 
-    public static final String TAG = "opaque-animation";
-    public static final String SRC = "neon-animation/neon-shared-element-animatable-behavior.html";
+    @JsOverlay public static final String TAG = "opaque-animation";
+    @JsOverlay public static final String SRC = "neon-animation/neon-shared-element-animatable-behavior.html";
 
 
     /**
@@ -39,6 +41,25 @@ public interface OpaqueAnimationElement extends HTMLElement {
      */
     @JsProperty void setAnimationTiming(JavaScriptObject value);
 
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    @JsProperty boolean getIsNeonAnimation();
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    @JsProperty void setIsNeonAnimation(boolean value);
+
 
     /**
      * 
@@ -59,7 +80,7 @@ public interface OpaqueAnimationElement extends HTMLElement {
      * @param {} node  
      * @param {} property  
      * @param {} value  
-     * 
+     * @behavior PaperMenuShrinkHeightAnimation
      * 
      */
     void setPrefixedProperty(Object node, Object property, Object value);

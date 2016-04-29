@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.neon.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.neon.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.neon.FadeInAnimationElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;fade-in-animation&gt;</code> animates the opacity of an element from 0 to 1.</p>
@@ -32,7 +36,6 @@ public class FadeInAnimation extends PolymerWidget {
      */
     public FadeInAnimation(String html) {
         super(FadeInAnimationElement.TAG, FadeInAnimationElement.SRC, html);
-
     }
 
     /**
@@ -71,6 +74,29 @@ public class FadeInAnimation extends PolymerWidget {
         getPolymerElement().setAnimationTiming(value);
     }
 
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    public boolean getIsNeonAnimation() {
+        return getPolymerElement().getIsNeonAnimation();
+    }
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    public void setIsNeonAnimation(boolean value) {
+        getPolymerElement().setIsNeonAnimation(value);
+    }
+
 
     /**
      * <p>Defines the animation timing.</p>
@@ -85,6 +111,19 @@ public class FadeInAnimation extends PolymerWidget {
 
 
     /**
+     * <p>Returns the animation timing by mixing in properties from <code>config</code> to the defaults defined<br>by the animation.</p>
+     *
+     * JavaScript Info:
+     * @method timingFromConfig
+     * @param {} config  
+     * 
+     * 
+     */
+    public void timingFromConfig(Object config) {
+        getPolymerElement().timingFromConfig(config);
+    }
+
+    /**
      * <p>Sets <code>transform</code> and <code>transformOrigin</code> properties along with the prefixed versions.</p>
      *
      * JavaScript Info:
@@ -97,19 +136,6 @@ public class FadeInAnimation extends PolymerWidget {
      */
     public void setPrefixedProperty(Object node, Object property, Object value) {
         getPolymerElement().setPrefixedProperty(node, property, value);
-    }
-
-    /**
-     * <p>Returns the animation timing by mixing in properties from <code>config</code> to the defaults defined<br>by the animation.</p>
-     *
-     * JavaScript Info:
-     * @method timingFromConfig
-     * @param {} config  
-     * 
-     * 
-     */
-    public void timingFromConfig(Object config) {
-        getPolymerElement().timingFromConfig(config);
     }
 
     /**

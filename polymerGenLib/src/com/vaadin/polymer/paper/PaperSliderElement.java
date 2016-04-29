@@ -5,11 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/sliders.html">Sliders</a></p>
@@ -102,11 +103,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperSliderElement extends HTMLElement {
 
-    public static final String TAG = "paper-slider";
-    public static final String SRC = "paper-slider/paper-slider.html";
+    @JsOverlay public static final String TAG = "paper-slider";
+    @JsOverlay public static final String SRC = "paper-slider/paper-slider.html";
 
 
     /**
@@ -153,7 +154,7 @@ public interface PaperSliderElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
@@ -162,7 +163,7 @@ public interface PaperSliderElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
@@ -191,7 +192,7 @@ public interface PaperSliderElement extends HTMLElement {
      * JavaScript Info:
      * @property required
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty boolean getRequired();
     /**
@@ -200,7 +201,7 @@ public interface PaperSliderElement extends HTMLElement {
      * JavaScript Info:
      * @property required
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty void setRequired(boolean value);
 
@@ -305,7 +306,7 @@ public interface PaperSliderElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -314,7 +315,7 @@ public interface PaperSliderElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
@@ -647,7 +648,7 @@ public interface PaperSliderElement extends HTMLElement {
      * JavaScript Info:
      * @property name
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty String getName();
     /**
@@ -656,7 +657,7 @@ public interface PaperSliderElement extends HTMLElement {
      * JavaScript Info:
      * @property name
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty void setName(String value);
 
@@ -668,22 +669,10 @@ public interface PaperSliderElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
 
     /**
      * <p>Returns the <code>&lt;paper-ripple&gt;</code> element used by this element to create<br>ripple effects. The element’s ripple is created on demand, when<br>necessary, and calling this method will force the<br>ripple to be created.</p>
@@ -730,10 +719,22 @@ public interface PaperSliderElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     void removeOwnKeyBindings();
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
     /**
      * <p>Ensures this element contains a ripple effect. For startup efficiency<br>the ripple effect is dynamically on demand when needed.</p>

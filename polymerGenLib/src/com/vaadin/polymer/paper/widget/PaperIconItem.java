@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperIconItemElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;paper-icon-item&gt;</code> is a convenience element to make an item with icon. It is an interactive list<br>item with a fixed-width icon area, according to Material Design. This is useful if the icons are of<br>varying widths, but you want the item bodies to line up. Use this like a <code>&lt;paper-item&gt;</code>. The child<br>node with the attribute <code>item-icon</code> is placed in the icon area.</p>
@@ -88,7 +92,6 @@ public class PaperIconItem extends PolymerWidget {
      */
     public PaperIconItem(String html) {
         super(PaperIconItemElement.TAG, PaperIconItemElement.SRC, html);
-
     }
 
     /**
@@ -110,7 +113,7 @@ public class PaperIconItem extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
@@ -121,7 +124,7 @@ public class PaperIconItem extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
@@ -248,7 +251,7 @@ public class PaperIconItem extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public boolean getStopKeyboardEventPropagation() {
         return getPolymerElement().getStopKeyboardEventPropagation();
@@ -259,7 +262,7 @@ public class PaperIconItem extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
@@ -363,7 +366,7 @@ public class PaperIconItem extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(String value) {
         getPolymerElement().setAttribute("key-event-target", value);
@@ -374,26 +377,12 @@ public class PaperIconItem extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyBindings(String value) {
         getPolymerElement().setAttribute("key-bindings", value);
     }
 
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
-    }
 
     /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
@@ -402,7 +391,7 @@ public class PaperIconItem extends PolymerWidget {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
@@ -414,11 +403,25 @@ public class PaperIconItem extends PolymerWidget {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void removeOwnKeyBindings() {
         getPolymerElement().removeOwnKeyBindings();
+    }
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
 

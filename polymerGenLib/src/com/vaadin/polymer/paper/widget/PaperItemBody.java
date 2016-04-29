@@ -5,8 +5,13 @@
  */
 package com.vaadin.polymer.paper.widget;
 
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperItemBodyElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Use <code>&lt;paper-item-body&gt;</code> in a <code>&lt;paper-item&gt;</code> or <code>&lt;paper-icon-item&gt;</code> to make two- or<br>three- line items. It is a flex item that is a vertical flexbox.</p>
@@ -66,7 +71,6 @@ public class PaperItemBody extends PolymerWidget {
      */
     public PaperItemBody(String html) {
         super(PaperItemBodyElement.TAG, PaperItemBodyElement.SRC, html);
-
     }
 
     /**

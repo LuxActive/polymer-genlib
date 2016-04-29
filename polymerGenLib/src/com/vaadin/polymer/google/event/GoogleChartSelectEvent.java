@@ -5,26 +5,27 @@
  */
 package com.vaadin.polymer.google.event;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Event;
-import com.vaadin.polymer.elemental.EventListener;
+
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Fired when the user makes a selection in the chart.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface GoogleChartSelectEvent extends Event {
 
-    static final String NAME = "google-chart-select";
+    @JsOverlay static final String NAME = "google-chart-select";
 
     @Override
     @JsProperty
     Detail getDetail();
 
-    @JsType
+    @JsType(isNative=true)
     interface Detail extends Event.Detail {
 
         /**
@@ -35,17 +36,8 @@ public interface GoogleChartSelectEvent extends Event {
         /**
          * <p>The user-defined selection.</p>
          */
-        @JsProperty JsArray getSelection();
+        @JsProperty JsArray<JavaScriptObject> getSelection();
 
     }
 
-
-    public abstract class Listener implements EventListener {
-        protected abstract void handleEvent(GoogleChartSelectEvent event);
-
-        @Override
-        public void handleEvent(Event event) {
-            handleEvent((GoogleChartSelectEvent) event);
-        }
-    }
 }

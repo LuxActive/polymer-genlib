@@ -5,19 +5,19 @@
  */
 package com.vaadin.polymer.paper.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the submenu is opened.</p>
  */
-public class PaperSubmenuOpenEvent extends GwtEvent<PaperSubmenuOpenEventHandler> {
+public class PaperSubmenuOpenEvent extends DomEvent<PaperSubmenuOpenEventHandler> {
 
-    public static Type<PaperSubmenuOpenEventHandler> TYPE = new Type<PaperSubmenuOpenEventHandler>();
+    public static Type<PaperSubmenuOpenEventHandler> TYPE = new Type<PaperSubmenuOpenEventHandler>(
+       com.vaadin.polymer.paper.event.PaperSubmenuOpenEvent.NAME, new PaperSubmenuOpenEvent());
 
-    private com.vaadin.polymer.paper.event.PaperSubmenuOpenEvent nativeEvent;
 
-    public PaperSubmenuOpenEvent(com.vaadin.polymer.paper.event.PaperSubmenuOpenEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public PaperSubmenuOpenEvent() {
     }
 
     public Type<PaperSubmenuOpenEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class PaperSubmenuOpenEvent extends GwtEvent<PaperSubmenuOpenEventHandler
         handler.onPaperSubmenuOpen(this);
     }
 
-    public com.vaadin.polymer.paper.event.PaperSubmenuOpenEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.paper.event.PaperSubmenuOpenEvent getPolymerEvent() {
+        return (com.vaadin.polymer.paper.event.PaperSubmenuOpenEvent)super.getNativeEvent();
     }
+
 
 }

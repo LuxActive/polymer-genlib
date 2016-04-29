@@ -5,8 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Use <code>&lt;paper-item-body&gt;</code> in a <code>&lt;paper-item&gt;</code> or <code>&lt;paper-icon-item&gt;</code> to make two- or<br>three- line items. It is a flex item that is a vertical flexbox.</p>
@@ -53,11 +57,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperItemBodyElement extends HTMLElement {
 
-    public static final String TAG = "paper-item-body";
-    public static final String SRC = "paper-item/paper-item-body.html";
+    @JsOverlay public static final String TAG = "paper-item-body";
+    @JsOverlay public static final String SRC = "paper-item/all-imports.html";
 
 
 

@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p>Use <code>Polymer.IronOverlayBehavior</code> to implement an element that can be hidden or shown, and displays<br>on top of other content. It includes an optional backdrop, and can be used to implement a variety<br>of UI controls including dialogs and drop downs. Multiple overlays may be displayed at once.</p>
@@ -20,88 +24,12 @@ import com.google.gwt.core.client.js.JsType;
  * <h3 id="limitations">Limitations</h3>
  * <p>The element is styled to appear on top of other content by setting its <code>z-index</code> property. You<br>must ensure no element has a stacking context with a higher <code>z-index</code> than its parent stacking<br>context. You should place this element as a child of <code>&lt;body&gt;</code> whenever possible.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronOverlayBehavior {
 
-    public static final String TAG = "Polymer.IronOverlayBehavior";
-    public static final String SRC = "iron-overlay-behavior/iron-overlay-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.IronOverlayBehavior";
+    @JsOverlay public static final String SRC = "iron-overlay-behavior/iron-overlay-behavior.html";
 
-
-    /**
-     * <p>True if the overlay was canceled when it was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property canceled
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getCanceled();
-    /**
-     * <p>True if the overlay was canceled when it was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property canceled
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setCanceled(boolean value);
-
-    /**
-     * <p>Returns the reason this dialog was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property closingReason
-     * @type Object
-     * @behavior PaperToast
-     */
-    @JsProperty JavaScriptObject getClosingReason();
-    /**
-     * <p>Returns the reason this dialog was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property closingReason
-     * @type Object
-     * @behavior PaperToast
-     */
-    @JsProperty void setClosingReason(JavaScriptObject value);
-
-    /**
-     * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
-     *
-     * JavaScript Info:
-     * @property noAutoFocus
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getNoAutoFocus();
-    /**
-     * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
-     *
-     * JavaScript Info:
-     * @property noAutoFocus
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setNoAutoFocus(boolean value);
-
-    /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
-     *
-     * JavaScript Info:
-     * @property noCancelOnEscKey
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getNoCancelOnEscKey();
-    /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
-     *
-     * JavaScript Info:
-     * @property noCancelOnEscKey
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setNoCancelOnEscKey(boolean value);
 
     /**
      * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
@@ -123,6 +51,63 @@ public interface IronOverlayBehavior {
     @JsProperty void setNoCancelOnOutsideClick(boolean value);
 
     /**
+     * <p>Returns the reason this dialog was last closed.</p>
+     *
+     * JavaScript Info:
+     * @property closingReason
+     * @type Object
+     * @behavior PaperToast
+     */
+    @JsProperty JavaScriptObject getClosingReason();
+    /**
+     * <p>Returns the reason this dialog was last closed.</p>
+     *
+     * JavaScript Info:
+     * @property closingReason
+     * @type Object
+     * @behavior PaperToast
+     */
+    @JsProperty void setClosingReason(JavaScriptObject value);
+
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @property backdropElement
+     * @type Element
+     * @behavior PaperToast
+     */
+    @JsProperty Element getBackdropElement();
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @property backdropElement
+     * @type Element
+     * @behavior PaperToast
+     */
+    @JsProperty void setBackdropElement(Element value);
+
+    /**
+     * <p>True if the overlay was canceled when it was last closed.</p>
+     *
+     * JavaScript Info:
+     * @property canceled
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getCanceled();
+    /**
+     * <p>True if the overlay was canceled when it was last closed.</p>
+     *
+     * JavaScript Info:
+     * @property canceled
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setCanceled(boolean value);
+
+    /**
      * <p>True if the overlay is currently displayed.</p>
      *
      * JavaScript Info:
@@ -140,6 +125,44 @@ public interface IronOverlayBehavior {
      * @behavior PaperToast
      */
     @JsProperty void setOpened(boolean value);
+
+    /**
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
+     *
+     * JavaScript Info:
+     * @property restoreFocusOnClose
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getRestoreFocusOnClose();
+    /**
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
+     *
+     * JavaScript Info:
+     * @property restoreFocusOnClose
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setRestoreFocusOnClose(boolean value);
+
+    /**
+     * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
+     *
+     * JavaScript Info:
+     * @property noAutoFocus
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getNoAutoFocus();
+    /**
+     * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
+     *
+     * JavaScript Info:
+     * @property noAutoFocus
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setNoAutoFocus(boolean value);
 
     /**
      * <p>Set to true to display a backdrop behind the overlay.</p>
@@ -160,6 +183,54 @@ public interface IronOverlayBehavior {
      */
     @JsProperty void setWithBackdrop(boolean value);
 
+    /**
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnEscKey
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getNoCancelOnEscKey();
+    /**
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnEscKey
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setNoCancelOnEscKey(boolean value);
+
+    /**
+     * <p>Set to true to keep overlay always on top.</p>
+     *
+     * JavaScript Info:
+     * @property alwaysOnTop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getAlwaysOnTop();
+    /**
+     * <p>Set to true to keep overlay always on top.</p>
+     *
+     * JavaScript Info:
+     * @property alwaysOnTop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setAlwaysOnTop(boolean value);
+
+
+    /**
+     * <p>Close the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method close
+     * @behavior PaperToast
+     * 
+     */
+    void close();
 
     /**
      * <p>Open the overlay.</p>
@@ -182,23 +253,14 @@ public interface IronOverlayBehavior {
     void toggle();
 
     /**
-     * <p>Close the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method close
-     * @behavior PaperToast
-     * 
-     */
-    void close();
-
-    /**
      * <p>Cancels the overlay.</p>
      *
      * JavaScript Info:
      * @method cancel
+     * @param {Event=} event  
      * @behavior PaperToast
      * 
      */
-    void cancel();
+    void cancel(JavaScriptObject event);
 
 }

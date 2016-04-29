@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p><code>Use Polymer.IronValidatableBehavior</code> to implement an element that validates user input.<br>Use the related <code>Polymer.IronValidatorBehavior</code> to add custom validation logic to an iron-input.</p>
@@ -16,11 +20,11 @@ import com.google.gwt.core.client.js.JsType;
  * <h3 id="accessibility">Accessibility</h3>
  * <p>Changing the <code>invalid</code> property, either manually or by calling <code>validate()</code> will update the<br><code>aria-invalid</code> attribute.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronValidatableBehavior {
 
-    public static final String TAG = "Polymer.IronValidatableBehavior";
-    public static final String SRC = "iron-validatable-behavior/iron-validatable-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.IronValidatableBehavior";
+    @JsOverlay public static final String SRC = "iron-validatable-behavior/iron-validatable-behavior.html";
 
 
     /**
@@ -29,7 +33,7 @@ public interface IronValidatableBehavior {
      * JavaScript Info:
      * @property invalid
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty boolean getInvalid();
     /**
@@ -38,7 +42,7 @@ public interface IronValidatableBehavior {
      * JavaScript Info:
      * @property invalid
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty void setInvalid(boolean value);
 
@@ -48,7 +52,7 @@ public interface IronValidatableBehavior {
      * JavaScript Info:
      * @property validator
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty String getValidator();
     /**
@@ -57,7 +61,7 @@ public interface IronValidatableBehavior {
      * JavaScript Info:
      * @property validator
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty void setValidator(String value);
 
@@ -67,7 +71,7 @@ public interface IronValidatableBehavior {
      * JavaScript Info:
      * @property validatorType
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty String getValidatorType();
     /**
@@ -76,7 +80,7 @@ public interface IronValidatableBehavior {
      * JavaScript Info:
      * @property validatorType
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty void setValidatorType(String value);
 
@@ -87,7 +91,7 @@ public interface IronValidatableBehavior {
      * JavaScript Info:
      * @method validate
      * @param {Object} value  
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      * @return {boolean}
      */
     boolean validate(JavaScriptObject value);
@@ -97,7 +101,7 @@ public interface IronValidatableBehavior {
      *
      * JavaScript Info:
      * @method hasValidator
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      * @return {boolean}
      */
     boolean hasValidator();

@@ -5,8 +5,13 @@
  */
 package com.vaadin.polymer.iron.widget;
 
+import com.vaadin.polymer.iron.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.IronImageElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>iron-image</code> is an element for displaying an image that provides useful sizing and<br>preloading options not found on the standard <code>&lt;img&gt;</code> tag.</p>
@@ -83,7 +88,6 @@ public class IronImage extends PolymerWidget {
      */
     public IronImage(String html) {
         super(IronImageElement.TAG, IronImageElement.SRC, html);
-
     }
 
     /**

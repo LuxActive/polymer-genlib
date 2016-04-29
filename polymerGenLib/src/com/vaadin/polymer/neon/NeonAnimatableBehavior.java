@@ -5,18 +5,22 @@
  */
 package com.vaadin.polymer.neon;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p><code>Polymer.NeonAnimatableBehavior</code> is implemented by elements containing animations for use with<br>elements implementing <code>Polymer.NeonAnimationRunnerBehavior</code>.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface NeonAnimatableBehavior {
 
-    public static final String TAG = "Polymer.NeonAnimatableBehavior";
-    public static final String SRC = "neon-animation/neon-shared-element-animatable-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.NeonAnimatableBehavior";
+    @JsOverlay public static final String SRC = "neon-animation/neon-shared-element-animatable-behavior.html";
 
 
     /**

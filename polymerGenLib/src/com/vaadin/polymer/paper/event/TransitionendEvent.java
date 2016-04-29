@@ -5,11 +5,11 @@
  */
 package com.vaadin.polymer.paper.event;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Event;
-import com.vaadin.polymer.elemental.EventListener;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <pre><code>Fired when the animation finishes.
@@ -19,16 +19,16 @@ import com.vaadin.polymer.elemental.EventListener;
  * 
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface TransitionendEvent extends Event {
 
-    static final String NAME = "transitionend";
+    @JsOverlay static final String NAME = "transitionend";
 
     @Override
     @JsProperty
     Detail getDetail();
 
-    @JsType
+    @JsType(isNative=true)
     interface Detail extends Event.Detail {
 
         /**
@@ -38,13 +38,4 @@ public interface TransitionendEvent extends Event {
 
     }
 
-
-    public abstract class Listener implements EventListener {
-        protected abstract void handleEvent(TransitionendEvent event);
-
-        @Override
-        public void handleEvent(Event event) {
-            handleEvent((TransitionendEvent) event);
-        }
-    }
 }

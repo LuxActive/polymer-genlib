@@ -5,19 +5,19 @@
  */
 package com.vaadin.polymer.google.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the graph is displayed.</p>
  */
-public class GoogleChartRenderEvent extends GwtEvent<GoogleChartRenderEventHandler> {
+public class GoogleChartRenderEvent extends DomEvent<GoogleChartRenderEventHandler> {
 
-    public static Type<GoogleChartRenderEventHandler> TYPE = new Type<GoogleChartRenderEventHandler>();
+    public static Type<GoogleChartRenderEventHandler> TYPE = new Type<GoogleChartRenderEventHandler>(
+       com.vaadin.polymer.google.event.GoogleChartRenderEvent.NAME, new GoogleChartRenderEvent());
 
-    private com.vaadin.polymer.google.event.GoogleChartRenderEvent nativeEvent;
 
-    public GoogleChartRenderEvent(com.vaadin.polymer.google.event.GoogleChartRenderEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public GoogleChartRenderEvent() {
     }
 
     public Type<GoogleChartRenderEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class GoogleChartRenderEvent extends GwtEvent<GoogleChartRenderEventHandl
         handler.onGoogleChartRender(this);
     }
 
-    public com.vaadin.polymer.google.event.GoogleChartRenderEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.google.event.GoogleChartRenderEvent getPolymerEvent() {
+        return (com.vaadin.polymer.google.event.GoogleChartRenderEvent)super.getNativeEvent();
     }
+
 
 }

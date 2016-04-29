@@ -5,17 +5,21 @@
  */
 package com.vaadin.polymer.polymer;
 
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface DomTemplateElement extends HTMLElement {
 
-    public static final String TAG = "dom-template";
-    public static final String SRC = "polymer/polymer.html";
+    @JsOverlay public static final String TAG = "dom-template";
+    @JsOverlay public static final String SRC = "polymer/polymer.html";
 
 
 

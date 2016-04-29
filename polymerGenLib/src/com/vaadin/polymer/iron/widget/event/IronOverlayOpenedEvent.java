@@ -5,19 +5,19 @@
  */
 package com.vaadin.polymer.iron.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired after the <code>iron-overlay</code> opens.</p>
  */
-public class IronOverlayOpenedEvent extends GwtEvent<IronOverlayOpenedEventHandler> {
+public class IronOverlayOpenedEvent extends DomEvent<IronOverlayOpenedEventHandler> {
 
-    public static Type<IronOverlayOpenedEventHandler> TYPE = new Type<IronOverlayOpenedEventHandler>();
+    public static Type<IronOverlayOpenedEventHandler> TYPE = new Type<IronOverlayOpenedEventHandler>(
+       com.vaadin.polymer.iron.event.IronOverlayOpenedEvent.NAME, new IronOverlayOpenedEvent());
 
-    private com.vaadin.polymer.iron.event.IronOverlayOpenedEvent nativeEvent;
 
-    public IronOverlayOpenedEvent(com.vaadin.polymer.iron.event.IronOverlayOpenedEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public IronOverlayOpenedEvent() {
     }
 
     public Type<IronOverlayOpenedEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class IronOverlayOpenedEvent extends GwtEvent<IronOverlayOpenedEventHandl
         handler.onIronOverlayOpened(this);
     }
 
-    public com.vaadin.polymer.iron.event.IronOverlayOpenedEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.iron.event.IronOverlayOpenedEvent getPolymerEvent() {
+        return (com.vaadin.polymer.iron.event.IronOverlayOpenedEvent)super.getNativeEvent();
     }
+
 
 }

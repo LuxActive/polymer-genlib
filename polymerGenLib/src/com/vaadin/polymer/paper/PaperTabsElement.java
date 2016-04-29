@@ -5,11 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/tabs.html">Tabs</a></p>
@@ -46,11 +47,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperTabsElement extends HTMLElement {
 
-    public static final String TAG = "paper-tabs";
-    public static final String SRC = "paper-tabs/paper-tabs.html";
+    @JsOverlay public static final String TAG = "paper-tabs";
+    @JsOverlay public static final String SRC = "paper-tabs/paper-tabs.html";
 
 
     /**
@@ -130,42 +131,23 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty JavaScriptObject getKeyEventTarget();
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty void setKeyEventTarget(JavaScriptObject value);
-
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
+     * @property selected
+     * @type (string|number)
      * @behavior PaperTabs
      */
-    @JsProperty JsArray getItems();
+    @JsProperty Object getSelected();
     /**
-     * <p>The list of items from which a selection can be made.</p>
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @property items
-     * @type Array
+     * @property selected
+     * @type (string|number)
      * @behavior PaperTabs
      */
-    @JsProperty void setItems(JsArray value);
+    @JsProperty void setSelected(Object value);
 
     /**
      * <p>Returns an array of currently selected items.</p>
@@ -206,12 +188,126 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setSelectedValues(JsArray value);
 
     /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty JsArray getItems();
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty void setItems(JsArray value);
+
+    /**
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    @JsProperty JavaScriptObject getKeyEventTarget();
+    /**
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    @JsProperty void setKeyEventTarget(JavaScriptObject value);
+
+    /**
+     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
+     *
+     * JavaScript Info:
+     * @property noBar
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNoBar();
+    /**
+     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
+     *
+     * JavaScript Info:
+     * @property noBar
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNoBar(boolean value);
+
+    /**
+     * <p>If true, the slide effect for the bottom bar is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property noSlide
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNoSlide();
+    /**
+     * <p>If true, the slide effect for the bottom bar is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property noSlide
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNoSlide(boolean value);
+
+    /**
+     * <p>If true, dragging on the tabs to scroll is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property disableDrag
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getDisableDrag();
+    /**
+     * <p>If true, dragging on the tabs to scroll is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property disableDrag
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setDisableDrag(boolean value);
+
+    /**
+     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNoink();
+    /**
+     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNoink(boolean value);
+
+    /**
      * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -220,7 +316,7 @@ public interface PaperTabsElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
@@ -282,83 +378,26 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setHideScrollButtons(boolean value);
 
     /**
-     * <p>If true, dragging on the tabs to scroll is disabled.</p>
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
      *
      * JavaScript Info:
-     * @property disableDrag
-     * @type Boolean
-     * 
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
      */
-    @JsProperty boolean getDisableDrag();
+    @JsProperty String getFallbackSelection();
     /**
-     * <p>If true, dragging on the tabs to scroll is disabled.</p>
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
      *
      * JavaScript Info:
-     * @property disableDrag
-     * @type Boolean
-     * 
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
      */
-    @JsProperty void setDisableDrag(boolean value);
+    @JsProperty void setFallbackSelection(String value);
 
     /**
-     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
-     *
-     * JavaScript Info:
-     * @property noBar
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getNoBar();
-    /**
-     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
-     *
-     * JavaScript Info:
-     * @property noBar
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setNoBar(boolean value);
-
-    /**
-     * <p>If true, the slide effect for the bottom bar is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property noSlide
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getNoSlide();
-    /**
-     * <p>If true, the slide effect for the bottom bar is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property noSlide
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setNoSlide(boolean value);
-
-    /**
-     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
-     *
-     * JavaScript Info:
-     * @property noink
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getNoink();
-    /**
-     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
-     *
-     * JavaScript Info:
-     * @property noink
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setNoink(boolean value);
-
-    /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
@@ -367,7 +406,7 @@ public interface PaperTabsElement extends HTMLElement {
      */
     @JsProperty String getAttrForSelected();
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
@@ -375,25 +414,6 @@ public interface PaperTabsElement extends HTMLElement {
      * @behavior PaperTabs
      */
     @JsProperty void setAttrForSelected(String value);
-
-    /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @property selected
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getSelected();
-    /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @property selected
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelected(String value);
 
     /**
      * <p>The attribute to set on elements when selected.</p>
@@ -492,27 +512,26 @@ public interface PaperTabsElement extends HTMLElement {
 
 
     /**
-     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
+     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
      *
      * JavaScript Info:
-     * @method stopResizeNotificationsFor
-     * @param {} target  
+     * @method select
+     * @param {(string|number)} value  
      * @behavior PaperTabs
      * 
      */
-    void stopResizeNotificationsFor(Object target);
+    void select(Object value);
 
     /**
-     * 
+     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
+     * @method assignParentResizable
+     * @param {} parentResizable  
+     * @behavior VaadinComboBoxOverlay
      * 
      */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
+    void assignParentResizable(Object parentResizable);
 
     /**
      * 
@@ -526,27 +545,27 @@ public interface PaperTabsElement extends HTMLElement {
     void multiChanged(Object multi);
 
     /**
-     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
-     *
-     * JavaScript Info:
-     * @method assignParentResizable
-     * @param {} parentResizable  
-     * @behavior PaperTabs
-     * 
-     */
-    void assignParentResizable(Object parentResizable);
-
-    /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
      *
      * JavaScript Info:
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
+
+    /**
+     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
+     *
+     * JavaScript Info:
+     * @method stopResizeNotificationsFor
+     * @param {} target  
+     * @behavior VaadinComboBoxOverlay
+     * 
+     */
+    void stopResizeNotificationsFor(Object target);
 
     /**
      * <p>Selects the next item.</p>
@@ -557,6 +576,18 @@ public interface PaperTabsElement extends HTMLElement {
      * 
      */
     void selectNext();
+
+    /**
+     * <p>Force a synchronous update of the <code>items</code> property.</p>
+     * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
+     * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
+     *
+     * JavaScript Info:
+     * @method forceSynchronousItemUpdate
+     * @behavior PaperTabs
+     * 
+     */
+    void forceSynchronousItemUpdate();
 
     /**
      * <p>Selects the previous item.</p>
@@ -573,7 +604,7 @@ public interface PaperTabsElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     void notifyResize();
@@ -583,10 +614,22 @@ public interface PaperTabsElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     void removeOwnKeyBindings();
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
     /**
      * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
@@ -594,7 +637,7 @@ public interface PaperTabsElement extends HTMLElement {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);
@@ -609,16 +652,5 @@ public interface PaperTabsElement extends HTMLElement {
      * 
      */
     void indexOf(JavaScriptObject item);
-
-    /**
-     * <p>Selects the given value.</p>
-     *
-     * JavaScript Info:
-     * @method select
-     * @param {string} value  
-     * @behavior PaperTabs
-     * 
-     */
-    void select(String value);
 
 }

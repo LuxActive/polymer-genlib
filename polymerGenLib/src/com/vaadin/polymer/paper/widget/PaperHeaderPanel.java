@@ -5,11 +5,16 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperHeaderPanelElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.ContentScrollEvent;
 import com.vaadin.polymer.paper.widget.event.ContentScrollEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>paper-header-panel</code> contains a header section and a content panel section.</p>
@@ -196,16 +201,6 @@ public class PaperHeaderPanel extends PolymerWidget {
      */
     public PaperHeaderPanel(String html) {
         super(PaperHeaderPanelElement.TAG, PaperHeaderPanelElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.ContentScrollEvent.NAME,
-                new com.vaadin.polymer.paper.event.ContentScrollEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.ContentScrollEvent event) {
-                fireEvent(new ContentScrollEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -363,7 +358,7 @@ public class PaperHeaderPanel extends PolymerWidget {
      * @event content-scroll
      */
     public HandlerRegistration addContentScrollHandler(ContentScrollEventHandler handler) {
-        return addHandler(handler, ContentScrollEvent.TYPE);
+        return addDomHandler(handler, ContentScrollEvent.TYPE);
     }
 
 }

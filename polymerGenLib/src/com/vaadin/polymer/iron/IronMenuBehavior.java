@@ -5,18 +5,22 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p><code>Polymer.IronMenuBehavior</code> implements accessible menu behavior.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronMenuBehavior {
 
-    public static final String TAG = "Polymer.IronMenuBehavior";
-    public static final String SRC = "iron-menu-behavior/iron-menubar-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.IronMenuBehavior";
+    @JsOverlay public static final String SRC = "iron-menu-behavior/iron-menubar-behavior.html";
 
 
     /**
@@ -82,10 +86,10 @@ public interface IronMenuBehavior {
      *
      * JavaScript Info:
      * @method select
-     * @param {string} value  
+     * @param {(string|number)} value  
      * 
      * 
      */
-    void select(String value);
+    void select(Object value);
 
 }

@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.neon;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>&lt;neon-animatable&gt;</code> is a simple container element implementing <code>Polymer.NeonAnimatableBehavior</code>. This is a convenience element for use with <code>&lt;neon-animated-pages&gt;</code>.</p>
@@ -20,11 +22,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * &lt;/neon-animated-pages&gt;
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface NeonAnimatableElement extends HTMLElement {
 
-    public static final String TAG = "neon-animatable";
-    public static final String SRC = "neon-animation/neon-animation.html";
+    @JsOverlay public static final String TAG = "neon-animatable";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animation.html";
 
 
     /**
@@ -33,7 +35,7 @@ public interface NeonAnimatableElement extends HTMLElement {
      * JavaScript Info:
      * @property animationConfig
      * @type Object
-     * 
+     * @behavior PaperTooltip
      */
     @JsProperty JavaScriptObject getAnimationConfig();
     /**
@@ -42,7 +44,7 @@ public interface NeonAnimatableElement extends HTMLElement {
      * JavaScript Info:
      * @property animationConfig
      * @type Object
-     * 
+     * @behavior PaperTooltip
      */
     @JsProperty void setAnimationConfig(JavaScriptObject value);
 
@@ -52,7 +54,7 @@ public interface NeonAnimatableElement extends HTMLElement {
      * JavaScript Info:
      * @property entryAnimation
      * @type String
-     * 
+     * @behavior PaperTooltip
      */
     @JsProperty String getEntryAnimation();
     /**
@@ -61,7 +63,7 @@ public interface NeonAnimatableElement extends HTMLElement {
      * JavaScript Info:
      * @property entryAnimation
      * @type String
-     * 
+     * @behavior PaperTooltip
      */
     @JsProperty void setEntryAnimation(String value);
 
@@ -86,36 +88,26 @@ public interface NeonAnimatableElement extends HTMLElement {
 
 
     /**
-     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
-     *
-     * JavaScript Info:
-     * @method stopResizeNotificationsFor
-     * @param {} target  
-     * @behavior PaperTabs
-     * 
-     */
-    void stopResizeNotificationsFor(Object target);
-
-    /**
      * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
      *
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     void assignParentResizable(Object parentResizable);
 
     /**
-     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
+     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
      *
      * JavaScript Info:
-     * @method notifyResize
-     * @behavior PaperTabs
+     * @method stopResizeNotificationsFor
+     * @param {} target  
+     * @behavior VaadinComboBoxOverlay
      * 
      */
-    void notifyResize();
+    void stopResizeNotificationsFor(Object target);
 
     /**
      * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
@@ -123,9 +115,19 @@ public interface NeonAnimatableElement extends HTMLElement {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);
+
+    /**
+     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
+     *
+     * JavaScript Info:
+     * @method notifyResize
+     * @behavior VaadinComboBoxOverlay
+     * 
+     */
+    void notifyResize();
 
 }

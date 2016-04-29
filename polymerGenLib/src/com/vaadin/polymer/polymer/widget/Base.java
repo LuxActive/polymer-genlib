@@ -5,10 +5,13 @@
  */
 package com.vaadin.polymer.polymer.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
+import com.vaadin.polymer.polymer.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.polymer.BaseElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>Polymer.Base</code> acts as a base prototype for all Polymer elements. It is composed via various calls to <code>Polymer.Base._addFeature()</code>.</p>
@@ -27,7 +30,6 @@ public class Base extends PolymerWidget {
      */
     public Base(String html) {
         super(BaseElement.TAG, BaseElement.SRC, html);
-
     }
 
     /**
@@ -286,11 +288,12 @@ public class Base extends PolymerWidget {
      * @param {} href  
      * @param {} onload  
      * @param {} onerror  
+     * @param {} optAsync  
      * 
      * 
      */
-    public void importHref(Object href, Object onload, Object onerror) {
-        getPolymerElement().importHref(href, onload, onerror);
+    public void importHref(Object href, Object onload, Object onerror, Object optAsync) {
+        getPolymerElement().importHref(href, onload, onerror, optAsync);
     }
 
     /**
@@ -339,12 +342,11 @@ public class Base extends PolymerWidget {
      * @method splice
      * @param {} path  
      * @param {} start  
-     * @param {} deleteCount  
      * 
      * 
      */
-    public void splice(Object path, Object start, Object deleteCount) {
-        getPolymerElement().splice(path, start, deleteCount);
+    public void splice(Object path, Object start) {
+        getPolymerElement().splice(path, start);
     }
 
     /**
@@ -409,13 +411,16 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method distributeContent
-     * @param {} updateInsertionPoints  
+     * @method translate3d
+     * @param {} x  
+     * @param {} y  
+     * @param {} z  
+     * @param {} node  
      * 
      * 
      */
-    public void distributeContent(Object updateInsertionPoints) {
-        getPolymerElement().distributeContent(updateInsertionPoints);
+    public void translate3d(Object x, Object y, Object z, Object node) {
+        getPolymerElement().translate3d(x, y, z, node);
     }
 
     /**
@@ -437,16 +442,13 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method translate3d
-     * @param {} x  
-     * @param {} y  
-     * @param {} z  
-     * @param {} node  
+     * @method distributeContent
+     * @param {} updateInsertionPoints  
      * 
      * 
      */
-    public void translate3d(Object x, Object y, Object z, Object node) {
-        getPolymerElement().translate3d(x, y, z, node);
+    public void distributeContent(Object updateInsertionPoints) {
+        getPolymerElement().distributeContent(updateInsertionPoints);
     }
 
     /**

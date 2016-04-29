@@ -5,8 +5,13 @@
  */
 package com.vaadin.polymer.paper.widget;
 
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperToolbarElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/toolbars.html">Toolbars</a></p>
@@ -115,7 +120,6 @@ public class PaperToolbar extends PolymerWidget {
      */
     public PaperToolbar(String html) {
         super(PaperToolbarElement.TAG, PaperToolbarElement.SRC, html);
-
     }
 
     /**

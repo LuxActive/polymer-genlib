@@ -5,12 +5,16 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperButtonElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.TransitionendEvent;
 import com.vaadin.polymer.paper.widget.event.TransitionendEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/buttons.html">Buttons</a></p>
@@ -99,16 +103,6 @@ public class PaperButton extends PolymerWidget {
      */
     public PaperButton(String html) {
         super(PaperButtonElement.TAG, PaperButtonElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.TransitionendEvent.NAME,
-                new com.vaadin.polymer.paper.event.TransitionendEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.TransitionendEvent event) {
-                fireEvent(new TransitionendEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -199,7 +193,7 @@ public class PaperButton extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
@@ -210,7 +204,7 @@ public class PaperButton extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
@@ -268,7 +262,7 @@ public class PaperButton extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public boolean getStopKeyboardEventPropagation() {
         return getPolymerElement().getStopKeyboardEventPropagation();
@@ -279,7 +273,7 @@ public class PaperButton extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
@@ -463,7 +457,7 @@ public class PaperButton extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(String value) {
         getPolymerElement().setAttribute("key-event-target", value);
@@ -474,7 +468,7 @@ public class PaperButton extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyBindings(String value) {
         getPolymerElement().setAttribute("key-bindings", value);
@@ -488,25 +482,11 @@ public class PaperButton extends PolymerWidget {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
         getPolymerElement().addOwnKeyBinding(eventString, handlerName);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
     /**
@@ -538,7 +518,7 @@ public class PaperButton extends PolymerWidget {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void removeOwnKeyBindings() {
@@ -558,6 +538,20 @@ public class PaperButton extends PolymerWidget {
         getPolymerElement().ensureRipple(optTriggeringEvent);
     }
 
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
+    }
+
 
     /**
      * <pre><code>Fired when the animation finishes.
@@ -571,7 +565,7 @@ public class PaperButton extends PolymerWidget {
      * @event transitionend
      */
     public HandlerRegistration addTransitionendHandler(TransitionendEventHandler handler) {
-        return addHandler(handler, TransitionendEvent.TYPE);
+        return addDomHandler(handler, TransitionendEvent.TYPE);
     }
 
 }

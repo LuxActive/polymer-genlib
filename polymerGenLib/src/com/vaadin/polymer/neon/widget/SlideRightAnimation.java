@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.neon.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.neon.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.neon.SlideRightAnimationElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;slide-right-animation&gt;</code> animates the transform of an element from <code>none</code> to <code>translateX(100%)</code>.<br>The <code>transformOrigin</code> defaults to <code>0 50%</code>.</p>
@@ -33,7 +37,6 @@ public class SlideRightAnimation extends PolymerWidget {
      */
     public SlideRightAnimation(String html) {
         super(SlideRightAnimationElement.TAG, SlideRightAnimationElement.SRC, html);
-
     }
 
     /**
@@ -72,6 +75,29 @@ public class SlideRightAnimation extends PolymerWidget {
         getPolymerElement().setAnimationTiming(value);
     }
 
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    public boolean getIsNeonAnimation() {
+        return getPolymerElement().getIsNeonAnimation();
+    }
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    public void setIsNeonAnimation(boolean value) {
+        getPolymerElement().setIsNeonAnimation(value);
+    }
+
 
     /**
      * <p>Defines the animation timing.</p>
@@ -86,6 +112,19 @@ public class SlideRightAnimation extends PolymerWidget {
 
 
     /**
+     * <p>Returns the animation timing by mixing in properties from <code>config</code> to the defaults defined<br>by the animation.</p>
+     *
+     * JavaScript Info:
+     * @method timingFromConfig
+     * @param {} config  
+     * 
+     * 
+     */
+    public void timingFromConfig(Object config) {
+        getPolymerElement().timingFromConfig(config);
+    }
+
+    /**
      * <p>Sets <code>transform</code> and <code>transformOrigin</code> properties along with the prefixed versions.</p>
      *
      * JavaScript Info:
@@ -98,19 +137,6 @@ public class SlideRightAnimation extends PolymerWidget {
      */
     public void setPrefixedProperty(Object node, Object property, Object value) {
         getPolymerElement().setPrefixedProperty(node, property, value);
-    }
-
-    /**
-     * <p>Returns the animation timing by mixing in properties from <code>config</code> to the defaults defined<br>by the animation.</p>
-     *
-     * JavaScript Info:
-     * @method timingFromConfig
-     * @param {} config  
-     * 
-     * 
-     */
-    public void timingFromConfig(Object config) {
-        getPolymerElement().timingFromConfig(config);
     }
 
     /**

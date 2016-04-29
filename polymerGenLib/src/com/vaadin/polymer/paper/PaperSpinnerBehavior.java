@@ -5,17 +5,22 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperSpinnerBehavior {
 
-    public static final String TAG = "Polymer.PaperSpinnerBehavior";
-    public static final String SRC = "paper-spinner/paper-spinner.html";
+    @JsOverlay public static final String NAME = "Polymer.PaperSpinnerBehavior";
+    @JsOverlay public static final String SRC = "paper-spinner/paper-spinner.html";
 
 
     /**

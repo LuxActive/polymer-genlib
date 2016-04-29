@@ -5,11 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>The <code>iron-ajax</code> element exposes network request functionality.</p>
@@ -26,11 +27,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <p>Note: The <code>params</code> attribute must be double quoted JSON.</p>
  * <p>You can trigger a request explicitly by calling <code>generateRequest</code> on the<br>element.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronAjaxElement extends HTMLElement {
 
-    public static final String TAG = "iron-ajax";
-    public static final String SRC = "iron-ajax/iron-ajax.html";
+    @JsOverlay public static final String TAG = "iron-ajax";
+    @JsOverlay public static final String SRC = "iron-ajax/iron-ajax.html";
 
 
     /**
@@ -53,7 +54,45 @@ public interface IronAjaxElement extends HTMLElement {
     @JsProperty void setActiveRequests(JsArray value);
 
     /**
-     * <p>Length of time in milliseconds to debounce multiple requests.</p>
+     * <p>By default, these events do not bubble largely because the <code>error</code> event has special<br>meaning in the window object. Setting this attribute will cause iron-ajax’s request,<br>response, and error events to bubble to the window object.</p>
+     *
+     * JavaScript Info:
+     * @property bubbles
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getBubbles();
+    /**
+     * <p>By default, these events do not bubble largely because the <code>error</code> event has special<br>meaning in the window object. Setting this attribute will cause iron-ajax’s request,<br>response, and error events to bubble to the window object.</p>
+     *
+     * JavaScript Info:
+     * @property bubbles
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setBubbles(boolean value);
+
+    /**
+     * <p>Set the withCredentials flag on the request.</p>
+     *
+     * JavaScript Info:
+     * @property withCredentials
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getWithCredentials();
+    /**
+     * <p>Set the withCredentials flag on the request.</p>
+     *
+     * JavaScript Info:
+     * @property withCredentials
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setWithCredentials(boolean value);
+
+    /**
+     * <p>Length of time in milliseconds to debounce multiple automatically generated requests.</p>
      *
      * JavaScript Info:
      * @property debounceDuration
@@ -62,7 +101,7 @@ public interface IronAjaxElement extends HTMLElement {
      */
     @JsProperty double getDebounceDuration();
     /**
-     * <p>Length of time in milliseconds to debounce multiple requests.</p>
+     * <p>Length of time in milliseconds to debounce multiple automatically generated requests.</p>
      *
      * JavaScript Info:
      * @property debounceDuration
@@ -70,100 +109,6 @@ public interface IronAjaxElement extends HTMLElement {
      * 
      */
     @JsProperty void setDebounceDuration(double value);
-
-    /**
-     * <p>HTTP request headers to send.</p>
-     * <p>Example:</p>
-     * <pre><code>&lt;iron-ajax
-     *     auto
-     *     url=&quot;http://somesite.com&quot;
-     *     headers=&#39;{&quot;X-Requested-With&quot;: &quot;XMLHttpRequest&quot;}&#39;
-     *     handle-as=&quot;json&quot;
-     *     last-response-changed=&quot;{{handleResponse}}&quot;&gt;&lt;/iron-ajax&gt;
-     * 
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property headers
-     * @type Object
-     * 
-     */
-    @JsProperty JavaScriptObject getHeaders();
-    /**
-     * <p>HTTP request headers to send.</p>
-     * <p>Example:</p>
-     * <pre><code>&lt;iron-ajax
-     *     auto
-     *     url=&quot;http://somesite.com&quot;
-     *     headers=&#39;{&quot;X-Requested-With&quot;: &quot;XMLHttpRequest&quot;}&#39;
-     *     handle-as=&quot;json&quot;
-     *     last-response-changed=&quot;{{handleResponse}}&quot;&gt;&lt;/iron-ajax&gt;
-     * 
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property headers
-     * @type Object
-     * 
-     */
-    @JsProperty void setHeaders(JavaScriptObject value);
-
-    /**
-     * <p>Will be set to the most recent error that resulted from a request<br>that originated from this iron-ajax element.</p>
-     *
-     * JavaScript Info:
-     * @property lastError
-     * @type Object
-     * 
-     */
-    @JsProperty JavaScriptObject getLastError();
-    /**
-     * <p>Will be set to the most recent error that resulted from a request<br>that originated from this iron-ajax element.</p>
-     *
-     * JavaScript Info:
-     * @property lastError
-     * @type Object
-     * 
-     */
-    @JsProperty void setLastError(JavaScriptObject value);
-
-    /**
-     * <p>Will be set to the most recent request made by this iron-ajax element.</p>
-     *
-     * JavaScript Info:
-     * @property lastRequest
-     * @type Object
-     * 
-     */
-    @JsProperty JavaScriptObject getLastRequest();
-    /**
-     * <p>Will be set to the most recent request made by this iron-ajax element.</p>
-     *
-     * JavaScript Info:
-     * @property lastRequest
-     * @type Object
-     * 
-     */
-    @JsProperty void setLastRequest(JavaScriptObject value);
-
-    /**
-     * <p>An object that contains query parameters to be appended to the<br>specified <code>url</code> when generating a request.</p>
-     *
-     * JavaScript Info:
-     * @property params
-     * @type Object
-     * 
-     */
-    @JsProperty JavaScriptObject getParams();
-    /**
-     * <p>An object that contains query parameters to be appended to the<br>specified <code>url</code> when generating a request.</p>
-     *
-     * JavaScript Info:
-     * @property params
-     * @type Object
-     * 
-     */
-    @JsProperty void setParams(JavaScriptObject value);
 
     /**
      * <p>If true, error messages will automatically be logged to the console.</p>
@@ -204,23 +149,23 @@ public interface IronAjaxElement extends HTMLElement {
     @JsProperty void setAuto(boolean value);
 
     /**
-     * <p>Will be set to true if there is at least one in-flight request<br>associated with this iron-ajax element.</p>
+     * <p>Set the timeout flag on the request.</p>
      *
      * JavaScript Info:
-     * @property loading
-     * @type Boolean
+     * @property timeout
+     * @type Number
      * 
      */
-    @JsProperty boolean getLoading();
+    @JsProperty double getTimeout();
     /**
-     * <p>Will be set to true if there is at least one in-flight request<br>associated with this iron-ajax element.</p>
+     * <p>Set the timeout flag on the request.</p>
      *
      * JavaScript Info:
-     * @property loading
-     * @type Boolean
+     * @property timeout
+     * @type Number
      * 
      */
-    @JsProperty void setLoading(boolean value);
+    @JsProperty void setTimeout(double value);
 
     /**
      * <p>Toggle whether XHR is synchronous or asynchronous. Don’t change this<br>to true unless You Know What You Are Doing™.</p>
@@ -242,26 +187,47 @@ public interface IronAjaxElement extends HTMLElement {
     @JsProperty void setSync(boolean value);
 
     /**
-     * <p>Set the withCredentials flag on the request.</p>
+     * <p>lastRequest’s error, if any.</p>
      *
      * JavaScript Info:
-     * @property withCredentials
-     * @type Boolean
+     * @property lastError
+     * @type Object
      * 
      */
-    @JsProperty boolean getWithCredentials();
+    @JsProperty JavaScriptObject getLastError();
     /**
-     * <p>Set the withCredentials flag on the request.</p>
+     * <p>lastRequest’s error, if any.</p>
      *
      * JavaScript Info:
-     * @property withCredentials
-     * @type Boolean
+     * @property lastError
+     * @type Object
      * 
      */
-    @JsProperty void setWithCredentials(boolean value);
+    @JsProperty void setLastError(JavaScriptObject value);
 
     /**
-     * <p>Will be set to the most recent response received by a request<br>that originated from this iron-ajax element. The type of the response<br>is determined by the value of <code>handleas</code> at the time that the request<br>was generated.</p>
+     * <p>The most recent request made by this iron-ajax element.</p>
+     *
+     * JavaScript Info:
+     * @property lastRequest
+     * @type Object
+     * 
+     */
+    @JsProperty JavaScriptObject getLastRequest();
+    /**
+     * <p>The most recent request made by this iron-ajax element.</p>
+     *
+     * JavaScript Info:
+     * @property lastRequest
+     * @type Object
+     * 
+     */
+    @JsProperty void setLastRequest(JavaScriptObject value);
+
+    /**
+     * <p>lastRequest’s response.</p>
+     * <p>Note that lastResponse and lastError are set when lastRequest finishes,<br>so if loading is true, then lastResponse and lastError will correspond<br>to the result of the previous request.</p>
+     * <p>The type of the response is determined by the value of <code>handleAs</code> at<br>the time that the request was generated.</p>
      *
      * JavaScript Info:
      * @property lastResponse
@@ -270,7 +236,9 @@ public interface IronAjaxElement extends HTMLElement {
      */
     @JsProperty JavaScriptObject getLastResponse();
     /**
-     * <p>Will be set to the most recent response received by a request<br>that originated from this iron-ajax element. The type of the response<br>is determined by the value of <code>handleas</code> at the time that the request<br>was generated.</p>
+     * <p>lastRequest’s response.</p>
+     * <p>Note that lastResponse and lastError are set when lastRequest finishes,<br>so if loading is true, then lastResponse and lastError will correspond<br>to the result of the previous request.</p>
+     * <p>The type of the response is determined by the value of <code>handleAs</code> at<br>the time that the request was generated.</p>
      *
      * JavaScript Info:
      * @property lastResponse
@@ -278,6 +246,126 @@ public interface IronAjaxElement extends HTMLElement {
      * 
      */
     @JsProperty void setLastResponse(JavaScriptObject value);
+
+    /**
+     * <p>HTTP request headers to send.</p>
+     * <p>Example:</p>
+     * <pre><code>&lt;iron-ajax
+     *     auto
+     *     url=&quot;http://somesite.com&quot;
+     *     headers=&#39;{&quot;X-Requested-With&quot;: &quot;XMLHttpRequest&quot;}&#39;
+     *     handle-as=&quot;json&quot;&gt;&lt;/iron-ajax&gt;
+     * 
+     * 
+     * </code></pre><p>Note: setting a <code>Content-Type</code> header here will override the value<br>specified by the <code>contentType</code> property of this element.</p>
+     *
+     * JavaScript Info:
+     * @property headers
+     * @type Object
+     * 
+     */
+    @JsProperty JavaScriptObject getHeaders();
+    /**
+     * <p>HTTP request headers to send.</p>
+     * <p>Example:</p>
+     * <pre><code>&lt;iron-ajax
+     *     auto
+     *     url=&quot;http://somesite.com&quot;
+     *     headers=&#39;{&quot;X-Requested-With&quot;: &quot;XMLHttpRequest&quot;}&#39;
+     *     handle-as=&quot;json&quot;&gt;&lt;/iron-ajax&gt;
+     * 
+     * 
+     * </code></pre><p>Note: setting a <code>Content-Type</code> header here will override the value<br>specified by the <code>contentType</code> property of this element.</p>
+     *
+     * JavaScript Info:
+     * @property headers
+     * @type Object
+     * 
+     */
+    @JsProperty void setHeaders(JavaScriptObject value);
+
+    /**
+     * <p>An object that contains query parameters to be appended to the<br>specified <code>url</code> when generating a request. If you wish to set the body<br>content when making a POST request, you should use the <code>body</code> property<br>instead.</p>
+     *
+     * JavaScript Info:
+     * @property params
+     * @type Object
+     * 
+     */
+    @JsProperty JavaScriptObject getParams();
+    /**
+     * <p>An object that contains query parameters to be appended to the<br>specified <code>url</code> when generating a request. If you wish to set the body<br>content when making a POST request, you should use the <code>body</code> property<br>instead.</p>
+     *
+     * JavaScript Info:
+     * @property params
+     * @type Object
+     * 
+     */
+    @JsProperty void setParams(JavaScriptObject value);
+
+    /**
+     * <p>Body content to send with the request, typically used with “POST”<br>requests.</p>
+     * <p>If body is a string it will be sent unmodified.</p>
+     * <p>If Content-Type is set to a value listed below, then<br>the body will be encoded accordingly.</p>
+     * <ul>
+     * <li><code>content-type=&quot;application/json&quot;</code><ul>
+     * <li>body is encoded like <code>{&quot;foo&quot;:&quot;bar baz&quot;,&quot;x&quot;:1}</code></li>
+     * </ul>
+     * </li>
+     * <li><code>content-type=&quot;application/x-www-form-urlencoded&quot;</code><ul>
+     * <li>body is encoded like <code>foo=bar+baz&amp;x=1</code></li>
+     * </ul>
+     * </li>
+     * </ul>
+     * <p>Otherwise the body will be passed to the browser unmodified, and it<br>will handle any encoding (e.g. for FormData, Blob, ArrayBuffer).</p>
+     *
+     * JavaScript Info:
+     * @property body
+     * @type Object
+     * 
+     */
+    @JsProperty JavaScriptObject getBody();
+    /**
+     * <p>Body content to send with the request, typically used with “POST”<br>requests.</p>
+     * <p>If body is a string it will be sent unmodified.</p>
+     * <p>If Content-Type is set to a value listed below, then<br>the body will be encoded accordingly.</p>
+     * <ul>
+     * <li><code>content-type=&quot;application/json&quot;</code><ul>
+     * <li>body is encoded like <code>{&quot;foo&quot;:&quot;bar baz&quot;,&quot;x&quot;:1}</code></li>
+     * </ul>
+     * </li>
+     * <li><code>content-type=&quot;application/x-www-form-urlencoded&quot;</code><ul>
+     * <li>body is encoded like <code>foo=bar+baz&amp;x=1</code></li>
+     * </ul>
+     * </li>
+     * </ul>
+     * <p>Otherwise the body will be passed to the browser unmodified, and it<br>will handle any encoding (e.g. for FormData, Blob, ArrayBuffer).</p>
+     *
+     * JavaScript Info:
+     * @property body
+     * @type Object
+     * 
+     */
+    @JsProperty void setBody(JavaScriptObject value);
+
+    /**
+     * <p>True while lastRequest is in flight.</p>
+     *
+     * JavaScript Info:
+     * @property loading
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getLoading();
+    /**
+     * <p>True while lastRequest is in flight.</p>
+     *
+     * JavaScript Info:
+     * @property loading
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setLoading(boolean value);
 
     /**
      * <p>The HTTP method to use such as ‘GET’, ‘POST’, ‘PUT’, or ‘DELETE’.<br>Default is ‘GET’.</p>
@@ -299,56 +387,25 @@ public interface IronAjaxElement extends HTMLElement {
     @JsProperty void setMethod(String value);
 
     /**
-     * <p>Specifies what data to store in the <code>response</code> property, and<br>to deliver as <code>event.response</code> in <code>response</code> events.</p>
-     * <p>One of:</p>
-     * <p>   <code>text</code>: uses <code>XHR.responseText</code>.</p>
-     * <p>   <code>xml</code>: uses <code>XHR.responseXML</code>.</p>
-     * <p>   <code>json</code>: uses <code>XHR.responseText</code> parsed as JSON.</p>
-     * <p>   <code>arraybuffer</code>: uses <code>XHR.response</code>.</p>
-     * <p>   <code>blob</code>: uses <code>XHR.response</code>.</p>
-     * <p>   <code>document</code>: uses <code>XHR.response</code>.</p>
+     * <p>Prefix to be stripped from a JSON response before parsing it.</p>
+     * <p>In order to prevent an attack using CSRF with Array responses<br>(<a href="http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/">http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/</a>)<br>many backends will mitigate this by prefixing all JSON response bodies<br>with a string that would be nonsensical to a JavaScript parser.</p>
      *
      * JavaScript Info:
-     * @property handleAs
+     * @property jsonPrefix
      * @type String
      * 
      */
-    @JsProperty String getHandleAs();
+    @JsProperty String getJsonPrefix();
     /**
-     * <p>Specifies what data to store in the <code>response</code> property, and<br>to deliver as <code>event.response</code> in <code>response</code> events.</p>
-     * <p>One of:</p>
-     * <p>   <code>text</code>: uses <code>XHR.responseText</code>.</p>
-     * <p>   <code>xml</code>: uses <code>XHR.responseXML</code>.</p>
-     * <p>   <code>json</code>: uses <code>XHR.responseText</code> parsed as JSON.</p>
-     * <p>   <code>arraybuffer</code>: uses <code>XHR.response</code>.</p>
-     * <p>   <code>blob</code>: uses <code>XHR.response</code>.</p>
-     * <p>   <code>document</code>: uses <code>XHR.response</code>.</p>
+     * <p>Prefix to be stripped from a JSON response before parsing it.</p>
+     * <p>In order to prevent an attack using CSRF with Array responses<br>(<a href="http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/">http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/</a>)<br>many backends will mitigate this by prefixing all JSON response bodies<br>with a string that would be nonsensical to a JavaScript parser.</p>
      *
      * JavaScript Info:
-     * @property handleAs
+     * @property jsonPrefix
      * @type String
      * 
      */
-    @JsProperty void setHandleAs(String value);
-
-    /**
-     * <p>Content type to use when sending data. If the contenttype is set<br>and a <code>Content-Type</code> header is specified in the <code>headers</code> attribute,<br>the <code>headers</code> attribute value will take precedence.</p>
-     *
-     * JavaScript Info:
-     * @property contentType
-     * @type String
-     * 
-     */
-    @JsProperty String getContentType();
-    /**
-     * <p>Content type to use when sending data. If the contenttype is set<br>and a <code>Content-Type</code> header is specified in the <code>headers</code> attribute,<br>the <code>headers</code> attribute value will take precedence.</p>
-     *
-     * JavaScript Info:
-     * @property contentType
-     * @type String
-     * 
-     */
-    @JsProperty void setContentType(String value);
+    @JsProperty void setJsonPrefix(String value);
 
     /**
      * <p>The URL target of the request.</p>
@@ -370,90 +427,59 @@ public interface IronAjaxElement extends HTMLElement {
     @JsProperty void setUrl(String value);
 
     /**
-     * <p>Optional raw body content to send when method === “POST”.</p>
-     * <p>Example:</p>
-     * <pre><code>&lt;iron-ajax method=&quot;POST&quot; auto url=&quot;http://somesite.com&quot;
-     *     body=&#39;{&quot;foo&quot;:1, &quot;bar&quot;:2}&#39;&gt;
-     * &lt;/iron-ajax&gt;
-     * 
-     * </code></pre>
+     * <p>Specifies what data to store in the <code>response</code> property, and<br>to deliver as <code>event.detail.response</code> in <code>response</code> events.</p>
+     * <p>One of:</p>
+     * <p>   <code>text</code>: uses <code>XHR.responseText</code>.</p>
+     * <p>   <code>xml</code>: uses <code>XHR.responseXML</code>.</p>
+     * <p>   <code>json</code>: uses <code>XHR.responseText</code> parsed as JSON.</p>
+     * <p>   <code>arraybuffer</code>: uses <code>XHR.response</code>.</p>
+     * <p>   <code>blob</code>: uses <code>XHR.response</code>.</p>
+     * <p>   <code>document</code>: uses <code>XHR.response</code>.</p>
      *
      * JavaScript Info:
-     * @property body
+     * @property handleAs
      * @type String
      * 
      */
-    @JsProperty String getBody();
+    @JsProperty String getHandleAs();
     /**
-     * <p>Optional raw body content to send when method === “POST”.</p>
-     * <p>Example:</p>
-     * <pre><code>&lt;iron-ajax method=&quot;POST&quot; auto url=&quot;http://somesite.com&quot;
-     *     body=&#39;{&quot;foo&quot;:1, &quot;bar&quot;:2}&#39;&gt;
-     * &lt;/iron-ajax&gt;
-     * 
-     * </code></pre>
+     * <p>Specifies what data to store in the <code>response</code> property, and<br>to deliver as <code>event.detail.response</code> in <code>response</code> events.</p>
+     * <p>One of:</p>
+     * <p>   <code>text</code>: uses <code>XHR.responseText</code>.</p>
+     * <p>   <code>xml</code>: uses <code>XHR.responseXML</code>.</p>
+     * <p>   <code>json</code>: uses <code>XHR.responseText</code> parsed as JSON.</p>
+     * <p>   <code>arraybuffer</code>: uses <code>XHR.response</code>.</p>
+     * <p>   <code>blob</code>: uses <code>XHR.response</code>.</p>
+     * <p>   <code>document</code>: uses <code>XHR.response</code>.</p>
      *
      * JavaScript Info:
-     * @property body
+     * @property handleAs
      * @type String
      * 
      */
-    @JsProperty void setBody(String value);
-
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method discardRequest
-     * @param {} request  
-     * 
-     * 
-     */
-    void discardRequest(Object request);
+    @JsProperty void setHandleAs(String value);
 
     /**
-     * 
+     * <p>Content type to use when sending data. If the <code>contentType</code> property<br>is set and a <code>Content-Type</code> header is specified in the <code>headers</code><br>property, the <code>headers</code> property value will take precedence.</p>
+     * <p>Varies the handling of the <code>body</code> param.</p>
      *
      * JavaScript Info:
-     * @method handleError
-     * @param {} request  
-     * @param {} error  
-     * 
+     * @property contentType
+     * @type String
      * 
      */
-    void handleError(Object request, Object error);
-
+    @JsProperty String getContentType();
     /**
-     * 
+     * <p>Content type to use when sending data. If the <code>contentType</code> property<br>is set and a <code>Content-Type</code> header is specified in the <code>headers</code><br>property, the <code>headers</code> property value will take precedence.</p>
+     * <p>Varies the handling of the <code>body</code> param.</p>
      *
      * JavaScript Info:
-     * @method handleResponse
-     * @param {} request  
-     * 
+     * @property contentType
+     * @type String
      * 
      */
-    void handleResponse(Object request);
+    @JsProperty void setContentType(String value);
 
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method toRequestOptions
-     * 
-     * 
-     */
-    void toRequestOptions();
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method requestOptionsChanged
-     * 
-     * 
-     */
-    void requestOptionsChanged();
 
     /**
      * <p>Performs an AJAX request to the specified URL.</p>
@@ -461,8 +487,18 @@ public interface IronAjaxElement extends HTMLElement {
      * JavaScript Info:
      * @method generateRequest
      * 
-     * 
+     * @return {JavaScriptObject}
      */
-    void generateRequest();
+    JavaScriptObject generateRequest();
+
+    /**
+     * <p>Request options suitable for generating an <code>iron-request</code> instance based<br>on the current state of the <code>iron-ajax</code> instance’s properties.</p>
+     *
+     * JavaScript Info:
+     * @method toRequestOptions
+     * 
+     * @return {Object}
+     */
+    Object toRequestOptions();
 
 }

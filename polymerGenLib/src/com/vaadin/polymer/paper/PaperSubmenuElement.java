@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>&lt;paper-submenu&gt;</code> is a nested menu inside of a parent <code>&lt;paper-menu&gt;</code>. It<br>consists of a trigger that expands or collapses another <code>&lt;paper-menu&gt;</code>:</p>
@@ -39,11 +42,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre><p>Just like in <code>&lt;paper-menu&gt;</code>, the focused item is highlighted, and the selected<br>item has bolded text. Please see the <code>&lt;paper-menu&gt;</code> docs for which attributes<br>(such as <code>multi</code> and <code>selected</code>), and styling options are available for the<br><code>menu-content</code> menu.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperSubmenuElement extends HTMLElement {
 
-    public static final String TAG = "paper-submenu";
-    public static final String SRC = "paper-menu/paper-submenu.html";
+    @JsOverlay public static final String TAG = "paper-submenu";
+    @JsOverlay public static final String SRC = "paper-menu/paper-submenu.html";
 
 
     /**

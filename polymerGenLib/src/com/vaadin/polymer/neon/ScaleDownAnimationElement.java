@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.neon;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>&lt;scale-down-animation&gt;</code> animates the scale transform of an element from 1 to 0. By default it<br>scales in both the x and y axes.</p>
@@ -22,11 +24,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * }
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface ScaleDownAnimationElement extends HTMLElement {
 
-    public static final String TAG = "scale-down-animation";
-    public static final String SRC = "neon-animation/neon-animations.html";
+    @JsOverlay public static final String TAG = "scale-down-animation";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animations.html";
 
 
     /**
@@ -48,6 +50,36 @@ public interface ScaleDownAnimationElement extends HTMLElement {
      */
     @JsProperty void setAnimationTiming(JavaScriptObject value);
 
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    @JsProperty boolean getIsNeonAnimation();
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    @JsProperty void setIsNeonAnimation(boolean value);
+
+
+    /**
+     * <p>Returns the animation timing by mixing in properties from <code>config</code> to the defaults defined<br>by the animation.</p>
+     *
+     * JavaScript Info:
+     * @method timingFromConfig
+     * @param {} config  
+     * 
+     * 
+     */
+    void timingFromConfig(Object config);
 
     /**
      * <p>Sets <code>transform</code> and <code>transformOrigin</code> properties along with the prefixed versions.</p>
@@ -63,22 +95,11 @@ public interface ScaleDownAnimationElement extends HTMLElement {
     void setPrefixedProperty(Object node, Object property, Object value);
 
     /**
-     * <p>Returns the animation timing by mixing in properties from <code>config</code> to the defaults defined<br>by the animation.</p>
-     *
-     * JavaScript Info:
-     * @method timingFromConfig
-     * @param {} config  
-     * 
-     * 
-     */
-    void timingFromConfig(Object config);
-
-    /**
      * <p>Called when the animation finishes.</p>
      *
      * JavaScript Info:
      * @method complete
-     * 
+     * @behavior PaperMenuShrinkHeightAnimation
      * 
      */
     void complete();

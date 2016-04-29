@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/progress-activity.html">Progress &amp; activity</a></p>
@@ -40,11 +43,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperSpinnerLiteElement extends HTMLElement {
 
-    public static final String TAG = "paper-spinner-lite";
-    public static final String SRC = "paper-spinner/paper-spinner-lite.html";
+    @JsOverlay public static final String TAG = "paper-spinner-lite";
+    @JsOverlay public static final String SRC = "paper-spinner/paper-spinner-lite.html";
 
 
     /**

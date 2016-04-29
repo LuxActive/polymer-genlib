@@ -5,20 +5,19 @@
  */
 package com.vaadin.polymer.paper.widget.event;
 
+import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * <p>Fired when the narrow layout changes.</p>
  */
-public class PaperResponsiveChangeEvent extends GwtEvent<PaperResponsiveChangeEventHandler> {
+public class PaperResponsiveChangeEvent extends DomEvent<PaperResponsiveChangeEventHandler> {
 
-    public static Type<PaperResponsiveChangeEventHandler> TYPE = new Type<PaperResponsiveChangeEventHandler>();
+    public static Type<PaperResponsiveChangeEventHandler> TYPE = new Type<PaperResponsiveChangeEventHandler>(
+       com.vaadin.polymer.paper.event.PaperResponsiveChangeEvent.NAME, new PaperResponsiveChangeEvent());
 
-    private com.vaadin.polymer.paper.event.PaperResponsiveChangeEvent nativeEvent;
 
-    public PaperResponsiveChangeEvent(com.vaadin.polymer.paper.event.PaperResponsiveChangeEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public PaperResponsiveChangeEvent() {
     }
 
     public Type<PaperResponsiveChangeEventHandler> getAssociatedType() {
@@ -29,22 +28,23 @@ public class PaperResponsiveChangeEvent extends GwtEvent<PaperResponsiveChangeEv
         handler.onPaperResponsiveChange(this);
     }
 
-    public com.vaadin.polymer.paper.event.PaperResponsiveChangeEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.paper.event.PaperResponsiveChangeEvent getPolymerEvent() {
+        return (com.vaadin.polymer.paper.event.PaperResponsiveChangeEvent)super.getNativeEvent();
     }
+
 
     /**
      * 
      */
     public JavaScriptObject getDetail() {
-        return getNativeEvent().getDetail().getDetail();
+        return getPolymerEvent().getDetail().getDetail();
     }
 
     /**
      * <p>narrow: true if the panel is in narrow layout.</p>
      */
     public boolean getNarrow() {
-        return getNativeEvent().getDetail().getNarrow();
+        return getPolymerEvent().getDetail().getNarrow();
     }
 
 }

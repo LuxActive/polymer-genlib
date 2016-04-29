@@ -1,23 +1,23 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
- * from paper-toggle-button project by The Polymer Authors
- * that is licensed with http://polymer.github.io/LICENSE.txt license.
+ * from vaadin-date-picker project by Vaadin Ltd
+ * that is licensed with Apache-2.0 license.
  */
 package com.vaadin.polymer.iron.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the element is added to an <code>iron-form</code>.</p>
  */
-public class IronFormElementRegisterEvent extends GwtEvent<IronFormElementRegisterEventHandler> {
+public class IronFormElementRegisterEvent extends DomEvent<IronFormElementRegisterEventHandler> {
 
-    public static Type<IronFormElementRegisterEventHandler> TYPE = new Type<IronFormElementRegisterEventHandler>();
+    public static Type<IronFormElementRegisterEventHandler> TYPE = new Type<IronFormElementRegisterEventHandler>(
+       com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.NAME, new IronFormElementRegisterEvent());
 
-    private com.vaadin.polymer.iron.event.IronFormElementRegisterEvent nativeEvent;
 
-    public IronFormElementRegisterEvent(com.vaadin.polymer.iron.event.IronFormElementRegisterEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public IronFormElementRegisterEvent() {
     }
 
     public Type<IronFormElementRegisterEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class IronFormElementRegisterEvent extends GwtEvent<IronFormElementRegist
         handler.onIronFormElementRegister(this);
     }
 
-    public com.vaadin.polymer.iron.event.IronFormElementRegisterEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.iron.event.IronFormElementRegisterEvent getPolymerEvent() {
+        return (com.vaadin.polymer.iron.event.IronFormElementRegisterEvent)super.getNativeEvent();
     }
+
 
 }

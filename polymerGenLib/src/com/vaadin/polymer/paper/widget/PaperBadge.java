@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperBadgeElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;paper-badge&gt;</code> is a circular text badge that is displayed on the top right<br>corner of an element, representing a status or a notification. It will badge<br>the anchor element specified in the <code>for</code> attribute, or, if that doesn’t exist,<br>centered to the parent node containing it.</p>
@@ -96,7 +100,6 @@ public class PaperBadge extends PolymerWidget {
      */
     public PaperBadge(String html) {
         super(PaperBadgeElement.TAG, PaperBadgeElement.SRC, html);
-
     }
 
     /**
@@ -189,7 +192,7 @@ public class PaperBadge extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
@@ -202,7 +205,7 @@ public class PaperBadge extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -227,7 +230,7 @@ public class PaperBadge extends PolymerWidget {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void notifyResize() {
@@ -240,7 +243,7 @@ public class PaperBadge extends PolymerWidget {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {

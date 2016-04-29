@@ -5,20 +5,21 @@
  */
 package com.vaadin.polymer.polymer;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface ArraySelectorElement extends HTMLElement {
 
-    public static final String TAG = "array-selector";
-    public static final String SRC = "polymer/polymer.html";
+    @JsOverlay public static final String TAG = "array-selector";
+    @JsOverlay public static final String SRC = "polymer/polymer.html";
 
 
     /**

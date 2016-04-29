@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperMenuShrinkHeightAnimationElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * 
@@ -25,7 +29,6 @@ public class PaperMenuShrinkHeightAnimation extends PolymerWidget {
      */
     public PaperMenuShrinkHeightAnimation(String html) {
         super(PaperMenuShrinkHeightAnimationElement.TAG, PaperMenuShrinkHeightAnimationElement.SRC, html);
-
     }
 
     /**
@@ -62,6 +65,29 @@ public class PaperMenuShrinkHeightAnimation extends PolymerWidget {
      */
     public void setAnimationTiming(JavaScriptObject value) {
         getPolymerElement().setAnimationTiming(value);
+    }
+
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * @behavior PaperMenuShrinkHeightAnimation
+     */
+    public boolean getIsNeonAnimation() {
+        return getPolymerElement().getIsNeonAnimation();
+    }
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * @behavior PaperMenuShrinkHeightAnimation
+     */
+    public void setIsNeonAnimation(boolean value) {
+        getPolymerElement().setIsNeonAnimation(value);
     }
 
 

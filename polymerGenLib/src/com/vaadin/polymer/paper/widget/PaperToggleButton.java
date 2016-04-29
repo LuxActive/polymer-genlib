@@ -5,18 +5,25 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.widget.event.IronChangeEvent;
-import com.vaadin.polymer.iron.widget.event.IronChangeEventHandler;
-import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEvent;
-import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEventHandler;
-import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEvent;
-import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandler;
-import com.vaadin.polymer.paper.PaperToggleButtonElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.ChangeEvent;
 import com.vaadin.polymer.paper.widget.event.ChangeEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronChangeEvent;
+import com.vaadin.polymer.iron.widget.event.IronChangeEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEvent;
+import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEvent;
+import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/selection-controls.html#selection-controls-switch">Switch</a></p>
@@ -112,43 +119,6 @@ public class PaperToggleButton extends PolymerWidget {
      */
     public PaperToggleButton(String html) {
         super(PaperToggleButtonElement.TAG, PaperToggleButtonElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.ChangeEvent.NAME,
-                new com.vaadin.polymer.paper.event.ChangeEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.ChangeEvent event) {
-                fireEvent(new ChangeEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronChangeEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronChangeEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronChangeEvent event) {
-                fireEvent(new IronChangeEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronFormElementRegisterEvent event) {
-                fireEvent(new IronFormElementRegisterEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent event) {
-                fireEvent(new IronFormElementUnregisterEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -170,7 +140,7 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
@@ -181,33 +151,125 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
     }
 
     /**
-     * 
+     * <p>True if the last call to <code>validate</code> is invalid.</p>
      *
      * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
+     * @property invalid
+     * @type Boolean
+     * @behavior VaadinDatePicker
      */
-    public JavaScriptObject getKeyBindings() {
-        return getPolymerElement().getKeyBindings();
+    public boolean getInvalid() {
+        return getPolymerElement().getInvalid();
     }
     /**
-     * 
+     * <p>True if the last call to <code>validate</code> is invalid.</p>
      *
      * JavaScript Info:
-     * @property keyBindings
-     * @type Object
+     * @property invalid
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    public void setInvalid(boolean value) {
+        getPolymerElement().setInvalid(value);
+    }
+
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
      * @behavior PaperTab
      */
-    public void setKeyBindings(JavaScriptObject value) {
-        getPolymerElement().setKeyBindings(value);
+    public boolean getPointerDown() {
+        return getPolymerElement().getPointerDown();
+    }
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setPointerDown(boolean value) {
+        getPolymerElement().setPointerDown(value);
+    }
+
+    /**
+     * <p>If true, the user is currently holding down the button.</p>
+     *
+     * JavaScript Info:
+     * @property pressed
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getPressed() {
+        return getPolymerElement().getPressed();
+    }
+    /**
+     * <p>If true, the user is currently holding down the button.</p>
+     *
+     * JavaScript Info:
+     * @property pressed
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setPressed(boolean value) {
+        getPolymerElement().setPressed(value);
+    }
+
+    /**
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     *
+     * JavaScript Info:
+     * @property receivedFocusFromKeyboard
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getReceivedFocusFromKeyboard() {
+        return getPolymerElement().getReceivedFocusFromKeyboard();
+    }
+    /**
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     *
+     * JavaScript Info:
+     * @property receivedFocusFromKeyboard
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setReceivedFocusFromKeyboard(boolean value) {
+        getPolymerElement().setReceivedFocusFromKeyboard(value);
+    }
+
+    /**
+     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
+     *
+     * JavaScript Info:
+     * @property toggles
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getToggles() {
+        return getPolymerElement().getToggles();
+    }
+    /**
+     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
+     *
+     * JavaScript Info:
+     * @property toggles
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setToggles(boolean value) {
+        getPolymerElement().setToggles(value);
     }
 
     /**
@@ -303,52 +365,6 @@ public class PaperToggleButton extends PolymerWidget {
     }
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getStopKeyboardEventPropagation() {
-        return getPolymerElement().getStopKeyboardEventPropagation();
-    }
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setStopKeyboardEventPropagation(boolean value) {
-        getPolymerElement().setStopKeyboardEventPropagation(value);
-    }
-
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getPointerDown() {
-        return getPolymerElement().getPointerDown();
-    }
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setPointerDown(boolean value) {
-        getPolymerElement().setPointerDown(value);
-    }
-
-    /**
      * <p>Gets or sets the state, <code>true</code> is checked and <code>false</code> is unchecked.</p>
      *
      * JavaScript Info:
@@ -372,72 +388,49 @@ public class PaperToggleButton extends PolymerWidget {
     }
 
     /**
-     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property toggles
+     * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinComboBox
      */
-    public boolean getToggles() {
-        return getPolymerElement().getToggles();
+    public boolean getStopKeyboardEventPropagation() {
+        return getPolymerElement().getStopKeyboardEventPropagation();
     }
     /**
-     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property toggles
+     * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinComboBox
      */
-    public void setToggles(boolean value) {
-        getPolymerElement().setToggles(value);
-    }
-
-    /**
-     * <p>True if the last call to <code>validate</code> is invalid.</p>
-     *
-     * JavaScript Info:
-     * @property invalid
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    public boolean getInvalid() {
-        return getPolymerElement().getInvalid();
-    }
-    /**
-     * <p>True if the last call to <code>validate</code> is invalid.</p>
-     *
-     * JavaScript Info:
-     * @property invalid
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    public void setInvalid(boolean value) {
-        getPolymerElement().setInvalid(value);
+    public void setStopKeyboardEventPropagation(boolean value) {
+        getPolymerElement().setStopKeyboardEventPropagation(value);
     }
 
     /**
-     * <p>If true, the user is currently holding down the button.</p>
+     * 
      *
      * JavaScript Info:
-     * @property pressed
-     * @type Boolean
-     * @behavior PaperTab
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
      */
-    public boolean getPressed() {
-        return getPolymerElement().getPressed();
+    public JavaScriptObject getKeyBindings() {
+        return getPolymerElement().getKeyBindings();
     }
     /**
-     * <p>If true, the user is currently holding down the button.</p>
+     * 
      *
      * JavaScript Info:
-     * @property pressed
-     * @type Boolean
-     * @behavior PaperTab
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
      */
-    public void setPressed(boolean value) {
-        getPolymerElement().setPressed(value);
+    public void setKeyBindings(JavaScriptObject value) {
+        getPolymerElement().setKeyBindings(value);
     }
 
     /**
@@ -446,7 +439,7 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @property required
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public boolean getRequired() {
         return getPolymerElement().getRequired();
@@ -457,33 +450,10 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @property required
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setRequired(boolean value) {
         getPolymerElement().setRequired(value);
-    }
-
-    /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
-     *
-     * JavaScript Info:
-     * @property receivedFocusFromKeyboard
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getReceivedFocusFromKeyboard() {
-        return getPolymerElement().getReceivedFocusFromKeyboard();
-    }
-    /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
-     *
-     * JavaScript Info:
-     * @property receivedFocusFromKeyboard
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setReceivedFocusFromKeyboard(boolean value) {
-        getPolymerElement().setReceivedFocusFromKeyboard(value);
     }
 
     /**
@@ -492,7 +462,7 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @property value
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public String getValue() {
         return getPolymerElement().getValue();
@@ -503,7 +473,7 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @property value
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setValue(String value) {
         getPolymerElement().setValue(value);
@@ -515,7 +485,7 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @property name
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public String getName() {
         return getPolymerElement().getName();
@@ -526,7 +496,7 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @property name
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setName(String value) {
         getPolymerElement().setName(value);
@@ -561,7 +531,7 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @property validator
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public String getValidator() {
         return getPolymerElement().getValidator();
@@ -572,7 +542,7 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @property validator
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setValidator(String value) {
         getPolymerElement().setValidator(value);
@@ -584,7 +554,7 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @property validatorType
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public String getValidatorType() {
         return getPolymerElement().getValidatorType();
@@ -595,7 +565,7 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @property validatorType
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setValidatorType(String value) {
         getPolymerElement().setValidatorType(value);
@@ -603,25 +573,25 @@ public class PaperToggleButton extends PolymerWidget {
 
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @attribute key-bindings
-     * @behavior PaperTab
-     */
-    public void setKeyBindings(String value) {
-        getPolymerElement().setAttribute("key-bindings", value);
-    }
-
-    /**
      * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(String value) {
         getPolymerElement().setAttribute("key-event-target", value);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @attribute key-bindings
+     * @behavior VaadinComboBox
+     */
+    public void setKeyBindings(String value) {
+        getPolymerElement().setAttribute("key-bindings", value);
     }
 
 
@@ -632,7 +602,7 @@ public class PaperToggleButton extends PolymerWidget {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
@@ -640,29 +610,16 @@ public class PaperToggleButton extends PolymerWidget {
     }
 
     /**
-     * 
+     * <p>Returns true if the <code>value</code> is valid, and updates <code>invalid</code>. If you want<br>your element to have custom validation logic, do not override this method;<br>override <code>_getValidity(value)</code> instead.</p>
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
-    }
-
-    /**
-     * <p>Returns true if this element currently contains a ripple effect.</p>
-     *
-     * JavaScript Info:
-     * @method hasRipple
-     * @behavior PaperToggleButton
+     * @method validate
+     * @param {Object} value  
+     * @behavior VaadinDatePicker
      * @return {boolean}
      */
-    public boolean hasRipple() {
-        return getPolymerElement().hasRipple();
+    public boolean validate(JavaScriptObject value) {
+        return getPolymerElement().validate(value);
     }
 
     /**
@@ -678,11 +635,23 @@ public class PaperToggleButton extends PolymerWidget {
     }
 
     /**
+     * <p>Returns true if this element currently contains a ripple effect.</p>
+     *
+     * JavaScript Info:
+     * @method hasRipple
+     * @behavior PaperTab
+     * @return {boolean}
+     */
+    public boolean hasRipple() {
+        return getPolymerElement().hasRipple();
+    }
+
+    /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void removeOwnKeyBindings() {
@@ -694,7 +663,7 @@ public class PaperToggleButton extends PolymerWidget {
      *
      * JavaScript Info:
      * @method hasValidator
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      * @return {boolean}
      */
     public boolean hasValidator() {
@@ -702,16 +671,17 @@ public class PaperToggleButton extends PolymerWidget {
     }
 
     /**
-     * <p>Returns true if the <code>value</code> is valid, and updates <code>invalid</code>. If you want<br>your element to have custom validation logic, do not override this method;<br>override <code>_getValidity(value)</code> instead.</p>
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
-     * @method validate
-     * @param {Object} value  
-     * @behavior PaperToggleButton
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
      * @return {boolean}
      */
-    public boolean validate(JavaScriptObject value) {
-        return getPolymerElement().validate(value);
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
     /**
@@ -720,7 +690,7 @@ public class PaperToggleButton extends PolymerWidget {
      * JavaScript Info:
      * @method ensureRipple
      * @param {!Event=} optTriggeringEvent  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     public void ensureRipple(JavaScriptObject optTriggeringEvent) {
@@ -735,7 +705,7 @@ public class PaperToggleButton extends PolymerWidget {
      * @event change
      */
     public HandlerRegistration addChangeHandler(ChangeEventHandler handler) {
-        return addHandler(handler, ChangeEvent.TYPE);
+        return addDomHandler(handler, ChangeEvent.TYPE);
     }
 
     /**
@@ -745,7 +715,7 @@ public class PaperToggleButton extends PolymerWidget {
      * @event iron-change
      */
     public HandlerRegistration addIronChangeHandler(IronChangeEventHandler handler) {
-        return addHandler(handler, IronChangeEvent.TYPE);
+        return addDomHandler(handler, IronChangeEvent.TYPE);
     }
 
     /**
@@ -755,7 +725,7 @@ public class PaperToggleButton extends PolymerWidget {
      * @event iron-form-element-register
      */
     public HandlerRegistration addIronFormElementRegisterHandler(IronFormElementRegisterEventHandler handler) {
-        return addHandler(handler, IronFormElementRegisterEvent.TYPE);
+        return addDomHandler(handler, IronFormElementRegisterEvent.TYPE);
     }
 
     /**
@@ -765,7 +735,7 @@ public class PaperToggleButton extends PolymerWidget {
      * @event iron-form-element-unregister
      */
     public HandlerRegistration addIronFormElementUnregisterHandler(IronFormElementUnregisterEventHandler handler) {
-        return addHandler(handler, IronFormElementUnregisterEvent.TYPE);
+        return addDomHandler(handler, IronFormElementUnregisterEvent.TYPE);
     }
 
 }

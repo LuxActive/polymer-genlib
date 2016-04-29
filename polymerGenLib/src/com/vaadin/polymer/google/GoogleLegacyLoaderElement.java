@@ -5,19 +5,22 @@
  */
 package com.vaadin.polymer.google;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Dynamically loads the legacy Google JavaScript API Loader (<a href="https://developers.google.com/loader/">https://developers.google.com/loader/</a>).</p>
  * <p>Fires <code>api-load</code> event when ready.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface GoogleLegacyLoaderElement extends HTMLElement {
 
-    public static final String TAG = "google-legacy-loader";
-    public static final String SRC = "google-apis/google-apis.html";
+    @JsOverlay public static final String TAG = "google-legacy-loader";
+    @JsOverlay public static final String SRC = "google-apis/google-apis.html";
 
 
     /**

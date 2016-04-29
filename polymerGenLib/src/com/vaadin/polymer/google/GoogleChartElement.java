@@ -5,11 +5,12 @@
  */
 package com.vaadin.polymer.google;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>google-chart</code> encapsulates Google Charts as a web component, allowing you to easily visualize<br>data. From simple line charts to complex hierarchical tree maps, the chart element provides a<br>number of ready-to-use chart types.</p>
@@ -41,11 +42,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </li>
  * </ul>
  */
-@JsType
+@JsType(isNative=true)
 public interface GoogleChartElement extends HTMLElement {
 
-    public static final String TAG = "google-chart";
-    public static final String SRC = "google-chart/google-chart.html";
+    @JsOverlay public static final String TAG = "google-chart";
+    @JsOverlay public static final String SRC = "google-chart/google-chart.html";
 
 
     /**

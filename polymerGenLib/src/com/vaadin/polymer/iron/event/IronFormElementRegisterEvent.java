@@ -1,29 +1,22 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
- * from paper-toggle-button project by The Polymer Authors
- * that is licensed with http://polymer.github.io/LICENSE.txt license.
+ * from vaadin-date-picker project by Vaadin Ltd
+ * that is licensed with Apache-2.0 license.
  */
 package com.vaadin.polymer.iron.event;
 
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Event;
-import com.vaadin.polymer.elemental.EventListener;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Fired when the element is added to an <code>iron-form</code>.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronFormElementRegisterEvent extends Event {
 
-    static final String NAME = "iron-form-element-register";
+    @JsOverlay static final String NAME = "iron-form-element-register";
 
-
-    public abstract class Listener implements EventListener {
-        protected abstract void handleEvent(IronFormElementRegisterEvent event);
-
-        @Override
-        public void handleEvent(Event event) {
-            handleEvent((IronFormElementRegisterEvent) event);
-        }
-    }
 }

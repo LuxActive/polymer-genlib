@@ -5,11 +5,16 @@
  */
 package com.vaadin.polymer.google.widget;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.google.GoogleJsApiElement;
+import com.vaadin.polymer.google.*;
+
 import com.vaadin.polymer.google.widget.event.JsApiLoadEvent;
 import com.vaadin.polymer.google.widget.event.JsApiLoadEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Dynamically loads Google JavaScript API <code>gapi</code>, firing the <code>js-api-load</code> event when ready.</p>
@@ -38,16 +43,6 @@ public class GoogleJsApi extends PolymerWidget {
      */
     public GoogleJsApi(String html) {
         super(GoogleJsApiElement.TAG, GoogleJsApiElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.google.event.JsApiLoadEvent.NAME,
-                new com.vaadin.polymer.google.event.JsApiLoadEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.google.event.JsApiLoadEvent event) {
-                fireEvent(new JsApiLoadEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -119,7 +114,7 @@ public class GoogleJsApi extends PolymerWidget {
      * @event js-api-load
      */
     public HandlerRegistration addJsApiLoadHandler(JsApiLoadEventHandler handler) {
-        return addHandler(handler, JsApiLoadEvent.TYPE);
+        return addDomHandler(handler, JsApiLoadEvent.TYPE);
     }
 
 }

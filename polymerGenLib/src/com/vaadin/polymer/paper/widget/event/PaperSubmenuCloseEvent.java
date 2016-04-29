@@ -5,19 +5,19 @@
  */
 package com.vaadin.polymer.paper.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the submenu is closed.</p>
  */
-public class PaperSubmenuCloseEvent extends GwtEvent<PaperSubmenuCloseEventHandler> {
+public class PaperSubmenuCloseEvent extends DomEvent<PaperSubmenuCloseEventHandler> {
 
-    public static Type<PaperSubmenuCloseEventHandler> TYPE = new Type<PaperSubmenuCloseEventHandler>();
+    public static Type<PaperSubmenuCloseEventHandler> TYPE = new Type<PaperSubmenuCloseEventHandler>(
+       com.vaadin.polymer.paper.event.PaperSubmenuCloseEvent.NAME, new PaperSubmenuCloseEvent());
 
-    private com.vaadin.polymer.paper.event.PaperSubmenuCloseEvent nativeEvent;
 
-    public PaperSubmenuCloseEvent(com.vaadin.polymer.paper.event.PaperSubmenuCloseEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public PaperSubmenuCloseEvent() {
     }
 
     public Type<PaperSubmenuCloseEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class PaperSubmenuCloseEvent extends GwtEvent<PaperSubmenuCloseEventHandl
         handler.onPaperSubmenuClose(this);
     }
 
-    public com.vaadin.polymer.paper.event.PaperSubmenuCloseEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.paper.event.PaperSubmenuCloseEvent getPolymerEvent() {
+        return (com.vaadin.polymer.paper.event.PaperSubmenuCloseEvent)super.getNativeEvent();
     }
+
 
 }

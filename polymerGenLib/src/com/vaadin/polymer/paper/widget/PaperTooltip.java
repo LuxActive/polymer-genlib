@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperTooltipElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/tooltips.html">Tooltips</a></p>
@@ -76,7 +80,6 @@ public class PaperTooltip extends PolymerWidget {
      */
     public PaperTooltip(String html) {
         super(PaperTooltipElement.TAG, PaperTooltipElement.SRC, html);
-
     }
 
     /**

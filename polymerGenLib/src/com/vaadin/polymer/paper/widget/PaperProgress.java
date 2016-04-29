@@ -5,8 +5,13 @@
  */
 package com.vaadin.polymer.paper.widget;
 
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperProgressElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>The progress bars are for situations where the percentage completed can be<br>determined. They give users a quick sense of how much longer an operation<br>will take.</p>
@@ -117,7 +122,6 @@ public class PaperProgress extends PolymerWidget {
      */
     public PaperProgress(String html) {
         super(PaperProgressElement.TAG, PaperProgressElement.SRC, html);
-
     }
 
     /**

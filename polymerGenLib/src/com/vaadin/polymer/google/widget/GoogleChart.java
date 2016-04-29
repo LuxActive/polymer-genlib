@@ -5,15 +5,19 @@
  */
 package com.vaadin.polymer.google.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.google.GoogleChartElement;
+import com.vaadin.polymer.google.*;
+
 import com.vaadin.polymer.google.widget.event.GoogleChartRenderEvent;
 import com.vaadin.polymer.google.widget.event.GoogleChartRenderEventHandler;
+
 import com.vaadin.polymer.google.widget.event.GoogleChartSelectEvent;
 import com.vaadin.polymer.google.widget.event.GoogleChartSelectEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>google-chart</code> encapsulates Google Charts as a web component, allowing you to easily visualize<br>data. From simple line charts to complex hierarchical tree maps, the chart element provides a<br>number of ready-to-use chart types.</p>
@@ -58,25 +62,6 @@ public class GoogleChart extends PolymerWidget {
      */
     public GoogleChart(String html) {
         super(GoogleChartElement.TAG, GoogleChartElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.google.event.GoogleChartRenderEvent.NAME,
-                new com.vaadin.polymer.google.event.GoogleChartRenderEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.google.event.GoogleChartRenderEvent event) {
-                fireEvent(new GoogleChartRenderEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.google.event.GoogleChartSelectEvent.NAME,
-                new com.vaadin.polymer.google.event.GoogleChartSelectEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.google.event.GoogleChartSelectEvent event) {
-                fireEvent(new GoogleChartSelectEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -391,7 +376,7 @@ public class GoogleChart extends PolymerWidget {
      * @event google-chart-render
      */
     public HandlerRegistration addGoogleChartRenderHandler(GoogleChartRenderEventHandler handler) {
-        return addHandler(handler, GoogleChartRenderEvent.TYPE);
+        return addDomHandler(handler, GoogleChartRenderEvent.TYPE);
     }
 
     /**
@@ -401,7 +386,7 @@ public class GoogleChart extends PolymerWidget {
      * @event google-chart-select
      */
     public HandlerRegistration addGoogleChartSelectHandler(GoogleChartSelectEventHandler handler) {
-        return addHandler(handler, GoogleChartSelectEvent.TYPE);
+        return addDomHandler(handler, GoogleChartSelectEvent.TYPE);
     }
 
 }

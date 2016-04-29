@@ -5,19 +5,25 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.iron.widget.event.IronActivateEvent;
 import com.vaadin.polymer.iron.widget.event.IronActivateEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronDeselectEvent;
 import com.vaadin.polymer.iron.widget.event.IronDeselectEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronItemsChangedEvent;
 import com.vaadin.polymer.iron.widget.event.IronItemsChangedEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronSelectEvent;
 import com.vaadin.polymer.iron.widget.event.IronSelectEventHandler;
-import com.vaadin.polymer.paper.PaperTabsElement;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/tabs.html">Tabs</a></p>
@@ -67,43 +73,6 @@ public class PaperTabs extends PolymerWidget {
      */
     public PaperTabs(String html) {
         super(PaperTabsElement.TAG, PaperTabsElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronActivateEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronActivateEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronActivateEvent event) {
-                fireEvent(new IronActivateEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronDeselectEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronDeselectEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronDeselectEvent event) {
-                fireEvent(new IronDeselectEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronItemsChangedEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronItemsChangedEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronItemsChangedEvent event) {
-                fireEvent(new IronItemsChangedEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronSelectEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronSelectEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronSelectEvent event) {
-                fireEvent(new IronSelectEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -212,49 +181,26 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    public JavaScriptObject getKeyEventTarget() {
-        return getPolymerElement().getKeyEventTarget();
-    }
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    public void setKeyEventTarget(JavaScriptObject value) {
-        getPolymerElement().setKeyEventTarget(value);
-    }
-
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
+     * @property selected
+     * @type (string|number)
      * @behavior PaperTabs
      */
-    public JsArray getItems() {
-        return getPolymerElement().getItems();
+    public Object getSelected() {
+        return getPolymerElement().getSelected();
     }
     /**
-     * <p>The list of items from which a selection can be made.</p>
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @property items
-     * @type Array
+     * @property selected
+     * @type (string|number)
      * @behavior PaperTabs
      */
-    public void setItems(JsArray value) {
-        getPolymerElement().setItems(value);
+    public void setSelected(Object value) {
+        getPolymerElement().setSelected(value);
     }
 
     /**
@@ -304,12 +250,150 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    public JsArray getItems() {
+        return getPolymerElement().getItems();
+    }
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    public void setItems(JsArray value) {
+        getPolymerElement().setItems(value);
+    }
+
+    /**
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    public JavaScriptObject getKeyEventTarget() {
+        return getPolymerElement().getKeyEventTarget();
+    }
+    /**
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    public void setKeyEventTarget(JavaScriptObject value) {
+        getPolymerElement().setKeyEventTarget(value);
+    }
+
+    /**
+     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
+     *
+     * JavaScript Info:
+     * @property noBar
+     * @type Boolean
+     * 
+     */
+    public boolean getNoBar() {
+        return getPolymerElement().getNoBar();
+    }
+    /**
+     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
+     *
+     * JavaScript Info:
+     * @property noBar
+     * @type Boolean
+     * 
+     */
+    public void setNoBar(boolean value) {
+        getPolymerElement().setNoBar(value);
+    }
+
+    /**
+     * <p>If true, the slide effect for the bottom bar is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property noSlide
+     * @type Boolean
+     * 
+     */
+    public boolean getNoSlide() {
+        return getPolymerElement().getNoSlide();
+    }
+    /**
+     * <p>If true, the slide effect for the bottom bar is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property noSlide
+     * @type Boolean
+     * 
+     */
+    public void setNoSlide(boolean value) {
+        getPolymerElement().setNoSlide(value);
+    }
+
+    /**
+     * <p>If true, dragging on the tabs to scroll is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property disableDrag
+     * @type Boolean
+     * 
+     */
+    public boolean getDisableDrag() {
+        return getPolymerElement().getDisableDrag();
+    }
+    /**
+     * <p>If true, dragging on the tabs to scroll is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property disableDrag
+     * @type Boolean
+     * 
+     */
+    public void setDisableDrag(boolean value) {
+        getPolymerElement().setDisableDrag(value);
+    }
+
+    /**
+     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * 
+     */
+    public boolean getNoink() {
+        return getPolymerElement().getNoink();
+    }
+    /**
+     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * 
+     */
+    public void setNoink(boolean value) {
+        getPolymerElement().setNoink(value);
+    }
+
+    /**
      * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public boolean getStopKeyboardEventPropagation() {
         return getPolymerElement().getStopKeyboardEventPropagation();
@@ -320,7 +404,7 @@ public class PaperTabs extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
@@ -396,99 +480,30 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>If true, dragging on the tabs to scroll is disabled.</p>
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
      *
      * JavaScript Info:
-     * @property disableDrag
-     * @type Boolean
-     * 
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
      */
-    public boolean getDisableDrag() {
-        return getPolymerElement().getDisableDrag();
+    public String getFallbackSelection() {
+        return getPolymerElement().getFallbackSelection();
     }
     /**
-     * <p>If true, dragging on the tabs to scroll is disabled.</p>
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
      *
      * JavaScript Info:
-     * @property disableDrag
-     * @type Boolean
-     * 
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
      */
-    public void setDisableDrag(boolean value) {
-        getPolymerElement().setDisableDrag(value);
-    }
-
-    /**
-     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
-     *
-     * JavaScript Info:
-     * @property noBar
-     * @type Boolean
-     * 
-     */
-    public boolean getNoBar() {
-        return getPolymerElement().getNoBar();
-    }
-    /**
-     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
-     *
-     * JavaScript Info:
-     * @property noBar
-     * @type Boolean
-     * 
-     */
-    public void setNoBar(boolean value) {
-        getPolymerElement().setNoBar(value);
+    public void setFallbackSelection(String value) {
+        getPolymerElement().setFallbackSelection(value);
     }
 
     /**
-     * <p>If true, the slide effect for the bottom bar is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property noSlide
-     * @type Boolean
-     * 
-     */
-    public boolean getNoSlide() {
-        return getPolymerElement().getNoSlide();
-    }
-    /**
-     * <p>If true, the slide effect for the bottom bar is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property noSlide
-     * @type Boolean
-     * 
-     */
-    public void setNoSlide(boolean value) {
-        getPolymerElement().setNoSlide(value);
-    }
-
-    /**
-     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
-     *
-     * JavaScript Info:
-     * @property noink
-     * @type Boolean
-     * 
-     */
-    public boolean getNoink() {
-        return getPolymerElement().getNoink();
-    }
-    /**
-     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
-     *
-     * JavaScript Info:
-     * @property noink
-     * @type Boolean
-     * 
-     */
-    public void setNoink(boolean value) {
-        getPolymerElement().setNoink(value);
-    }
-
-    /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
@@ -499,7 +514,7 @@ public class PaperTabs extends PolymerWidget {
         return getPolymerElement().getAttrForSelected();
     }
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
@@ -508,29 +523,6 @@ public class PaperTabs extends PolymerWidget {
      */
     public void setAttrForSelected(String value) {
         getPolymerElement().setAttrForSelected(value);
-    }
-
-    /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @property selected
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getSelected() {
-        return getPolymerElement().getSelected();
-    }
-    /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @property selected
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setSelected(String value) {
-        getPolymerElement().setSelected(value);
     }
 
     /**
@@ -650,14 +642,14 @@ public class PaperTabs extends PolymerWidget {
 
 
     /**
-     * <p>The list of items from which a selection can be made.</p>
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @attribute items
+     * @attribute selected
      * @behavior PaperTabs
      */
-    public void setItems(String value) {
-        getPolymerElement().setAttribute("items", value);
+    public void setSelected(String value) {
+        getPolymerElement().setAttribute("selected", value);
     }
 
     /**
@@ -672,11 +664,44 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @attribute items
+     * @behavior PaperTabs
+     */
+    public void setItems(String value) {
+        getPolymerElement().setAttribute("items", value);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @attribute key-bindings
+     * @behavior VaadinComboBox
+     */
+    public void setKeyBindings(String value) {
+        getPolymerElement().setAttribute("key-bindings", value);
+    }
+
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @attribute selected-item
+     * @behavior PaperTabs
+     */
+    public void setSelectedItem(String value) {
+        getPolymerElement().setAttribute("selected-item", value);
+    }
+
+    /**
      * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(String value) {
         getPolymerElement().setAttribute("key-event-target", value);
@@ -694,28 +719,6 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @attribute selected-item
-     * @behavior PaperTabs
-     */
-    public void setSelectedItem(String value) {
-        getPolymerElement().setAttribute("selected-item", value);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @attribute key-bindings
-     * @behavior PaperTabs
-     */
-    public void setKeyBindings(String value) {
-        getPolymerElement().setAttribute("key-bindings", value);
-    }
-
-    /**
      * <p>Returns an array of currently selected items.</p>
      *
      * JavaScript Info:
@@ -726,6 +729,19 @@ public class PaperTabs extends PolymerWidget {
         getPolymerElement().setAttribute("selected-items", value);
     }
 
+
+    /**
+     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
+     *
+     * JavaScript Info:
+     * @method assignParentResizable
+     * @param {} parentResizable  
+     * @behavior VaadinComboBoxOverlay
+     * 
+     */
+    public void assignParentResizable(Object parentResizable) {
+        getPolymerElement().assignParentResizable(parentResizable);
+    }
 
     /**
      * 
@@ -741,16 +757,16 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
+     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
      *
      * JavaScript Info:
-     * @method assignParentResizable
-     * @param {} parentResizable  
+     * @method select
+     * @param {(string|number)} value  
      * @behavior PaperTabs
      * 
      */
-    public void assignParentResizable(Object parentResizable) {
-        getPolymerElement().assignParentResizable(parentResizable);
+    public void select(Object value) {
+        getPolymerElement().select(value);
     }
 
     /**
@@ -760,7 +776,7 @@ public class PaperTabs extends PolymerWidget {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
@@ -773,25 +789,11 @@ public class PaperTabs extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
         getPolymerElement().stopResizeNotificationsFor(target);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
     /**
@@ -823,7 +825,7 @@ public class PaperTabs extends PolymerWidget {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void notifyResize() {
@@ -835,11 +837,25 @@ public class PaperTabs extends PolymerWidget {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void removeOwnKeyBindings() {
         getPolymerElement().removeOwnKeyBindings();
+    }
+
+    /**
+     * <p>Force a synchronous update of the <code>items</code> property.</p>
+     * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
+     * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
+     *
+     * JavaScript Info:
+     * @method forceSynchronousItemUpdate
+     * @behavior PaperTabs
+     * 
+     */
+    public void forceSynchronousItemUpdate() {
+        getPolymerElement().forceSynchronousItemUpdate();
     }
 
     /**
@@ -848,7 +864,7 @@ public class PaperTabs extends PolymerWidget {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {
@@ -856,16 +872,17 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
-     * @method select
-     * @param {string} value  
-     * @behavior PaperTabs
-     * 
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
      */
-    public void select(String value) {
-        getPolymerElement().select(value);
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
     /**
@@ -889,7 +906,7 @@ public class PaperTabs extends PolymerWidget {
      * @event iron-activate
      */
     public HandlerRegistration addIronActivateHandler(IronActivateEventHandler handler) {
-        return addHandler(handler, IronActivateEvent.TYPE);
+        return addDomHandler(handler, IronActivateEvent.TYPE);
     }
 
     /**
@@ -899,7 +916,7 @@ public class PaperTabs extends PolymerWidget {
      * @event iron-deselect
      */
     public HandlerRegistration addIronDeselectHandler(IronDeselectEventHandler handler) {
-        return addHandler(handler, IronDeselectEvent.TYPE);
+        return addDomHandler(handler, IronDeselectEvent.TYPE);
     }
 
     /**
@@ -909,7 +926,7 @@ public class PaperTabs extends PolymerWidget {
      * @event iron-items-changed
      */
     public HandlerRegistration addIronItemsChangedHandler(IronItemsChangedEventHandler handler) {
-        return addHandler(handler, IronItemsChangedEvent.TYPE);
+        return addDomHandler(handler, IronItemsChangedEvent.TYPE);
     }
 
     /**
@@ -919,7 +936,7 @@ public class PaperTabs extends PolymerWidget {
      * @event iron-select
      */
     public HandlerRegistration addIronSelectHandler(IronSelectEventHandler handler) {
-        return addHandler(handler, IronSelectEvent.TYPE);
+        return addDomHandler(handler, IronSelectEvent.TYPE);
     }
 
 }

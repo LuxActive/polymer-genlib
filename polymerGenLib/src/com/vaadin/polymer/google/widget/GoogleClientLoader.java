@@ -5,13 +5,19 @@
  */
 package com.vaadin.polymer.google.widget;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.google.GoogleClientLoaderElement;
-import com.vaadin.polymer.google.widget.event.GoogleApiLoadErrorEvent;
-import com.vaadin.polymer.google.widget.event.GoogleApiLoadErrorEventHandler;
+import com.vaadin.polymer.google.*;
+
 import com.vaadin.polymer.google.widget.event.GoogleApiLoadEvent;
 import com.vaadin.polymer.google.widget.event.GoogleApiLoadEventHandler;
+
+import com.vaadin.polymer.google.widget.event.GoogleApiLoadErrorEvent;
+import com.vaadin.polymer.google.widget.event.GoogleApiLoadErrorEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Element for loading a specific client Google API with the JavaScript client library.</p>
@@ -49,25 +55,6 @@ public class GoogleClientLoader extends PolymerWidget {
      */
     public GoogleClientLoader(String html) {
         super(GoogleClientLoaderElement.TAG, GoogleClientLoaderElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.google.event.GoogleApiLoadEvent.NAME,
-                new com.vaadin.polymer.google.event.GoogleApiLoadEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.google.event.GoogleApiLoadEvent event) {
-                fireEvent(new GoogleApiLoadEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.google.event.GoogleApiLoadErrorEvent.NAME,
-                new com.vaadin.polymer.google.event.GoogleApiLoadErrorEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.google.event.GoogleApiLoadErrorEvent event) {
-                fireEvent(new GoogleApiLoadErrorEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -233,7 +220,7 @@ public class GoogleClientLoader extends PolymerWidget {
      * @event google-api-load
      */
     public HandlerRegistration addGoogleApiLoadHandler(GoogleApiLoadEventHandler handler) {
-        return addHandler(handler, GoogleApiLoadEvent.TYPE);
+        return addDomHandler(handler, GoogleApiLoadEvent.TYPE);
     }
 
     /**
@@ -243,7 +230,7 @@ public class GoogleClientLoader extends PolymerWidget {
      * @event google-api-load-error
      */
     public HandlerRegistration addGoogleApiLoadErrorHandler(GoogleApiLoadErrorEventHandler handler) {
-        return addHandler(handler, GoogleApiLoadErrorEvent.TYPE);
+        return addDomHandler(handler, GoogleApiLoadErrorEvent.TYPE);
     }
 
 }

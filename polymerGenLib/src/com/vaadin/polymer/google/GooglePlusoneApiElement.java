@@ -5,19 +5,22 @@
  */
 package com.vaadin.polymer.google;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Dynamically loads the Google+ JavaScript API, firing the <code>api-load</code> event when ready.</p>
  * <p>Any number of components can use <code>&lt;google-plusone-api&gt;</code> elements, and the library will only be loaded once.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface GooglePlusoneApiElement extends HTMLElement {
 
-    public static final String TAG = "google-plusone-api";
-    public static final String SRC = "google-apis/google-plusone-api.html";
+    @JsOverlay public static final String TAG = "google-plusone-api";
+    @JsOverlay public static final String SRC = "google-apis/google-plusone-api.html";
 
 
     /**

@@ -5,10 +5,13 @@
  */
 package com.vaadin.polymer.iron.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
+import com.vaadin.polymer.iron.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.IronMetaQueryElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>iron-meta</code> is a generic element you can use for sharing information across the DOM tree.<br>It uses <a href="http://c2.com/cgi/wiki?MonostatePattern">monostate pattern</a> such that any<br>instance of iron-meta has access to the shared<br>information. You can use <code>iron-meta</code> to share whatever you want (or create an extension<br>[like x-meta] for enhancements).</p>
@@ -48,7 +51,6 @@ public class IronMetaQuery extends PolymerWidget {
      */
     public IronMetaQuery(String html) {
         super(IronMetaQueryElement.TAG, IronMetaQueryElement.SRC, html);
-
     }
 
     /**

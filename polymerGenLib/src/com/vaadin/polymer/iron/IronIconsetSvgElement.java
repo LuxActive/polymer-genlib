@@ -5,11 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Element;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>The <code>iron-iconset-svg</code> element allows users to define their own icon sets<br>that contain svg icons. The svg icon elements should be children of the<br><code>iron-iconset-svg</code> element. Multiple icons should be given distinct id’s.</p>
@@ -33,11 +34,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronIconsetSvgElement extends HTMLElement {
 
-    public static final String TAG = "iron-iconset-svg";
-    public static final String SRC = "iron-iconset-svg/iron-iconset-svg.html";
+    @JsOverlay public static final String TAG = "iron-iconset-svg";
+    @JsOverlay public static final String SRC = "iron-iconset-svg/iron-iconset-svg.html";
 
 
     /**

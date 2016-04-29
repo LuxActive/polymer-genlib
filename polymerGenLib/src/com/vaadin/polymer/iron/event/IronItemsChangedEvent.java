@@ -5,25 +5,18 @@
  */
 package com.vaadin.polymer.iron.event;
 
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Event;
-import com.vaadin.polymer.elemental.EventListener;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
- * 
+ * <p>Fired when the list of selectable items changes (e.g., items are<br>added or removed). The detail of the event is a list of mutation<br>records that describe what changed.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronItemsChangedEvent extends Event {
 
-    static final String NAME = "iron-items-changed";
+    @JsOverlay static final String NAME = "iron-items-changed";
 
-
-    public abstract class Listener implements EventListener {
-        protected abstract void handleEvent(IronItemsChangedEvent event);
-
-        @Override
-        public void handleEvent(Event event) {
-            handleEvent((IronItemsChangedEvent) event);
-        }
-    }
 }

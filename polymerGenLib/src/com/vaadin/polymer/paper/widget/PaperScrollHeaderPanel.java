@@ -5,14 +5,19 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperScrollHeaderPanelElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.ContentScrollEvent;
 import com.vaadin.polymer.paper.widget.event.ContentScrollEventHandler;
+
 import com.vaadin.polymer.paper.widget.event.PaperHeaderTransformEvent;
 import com.vaadin.polymer.paper.widget.event.PaperHeaderTransformEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/patterns/scrolling-techniques.html">Scrolling techniques</a></p>
@@ -85,25 +90,6 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      */
     public PaperScrollHeaderPanel(String html) {
         super(PaperScrollHeaderPanelElement.TAG, PaperScrollHeaderPanelElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.ContentScrollEvent.NAME,
-                new com.vaadin.polymer.paper.event.ContentScrollEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.ContentScrollEvent event) {
-                fireEvent(new ContentScrollEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.PaperHeaderTransformEvent.NAME,
-                new com.vaadin.polymer.paper.event.PaperHeaderTransformEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.PaperHeaderTransformEvent event) {
-                fireEvent(new PaperHeaderTransformEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -373,7 +359,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
@@ -386,7 +372,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -424,7 +410,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void notifyResize() {
@@ -437,7 +423,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {
@@ -478,7 +464,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * @event content-scroll
      */
     public HandlerRegistration addContentScrollHandler(ContentScrollEventHandler handler) {
-        return addHandler(handler, ContentScrollEvent.TYPE);
+        return addDomHandler(handler, ContentScrollEvent.TYPE);
     }
 
     /**
@@ -488,7 +474,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * @event paper-header-transform
      */
     public HandlerRegistration addPaperHeaderTransformHandler(PaperHeaderTransformEventHandler handler) {
-        return addHandler(handler, PaperHeaderTransformEvent.TYPE);
+        return addDomHandler(handler, PaperHeaderTransformEvent.TYPE);
     }
 
 }

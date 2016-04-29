@@ -5,10 +5,13 @@
  */
 package com.vaadin.polymer.polymer.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
+import com.vaadin.polymer.polymer.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.polymer.ArraySelectorElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * 
@@ -26,7 +29,6 @@ public class ArraySelector extends PolymerWidget {
      */
     public ArraySelector(String html) {
         super(ArraySelectorElement.TAG, ArraySelectorElement.SRC, html);
-
     }
 
     /**

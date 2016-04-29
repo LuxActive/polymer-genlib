@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.neon;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>&lt;ripple-animation&gt;</code> scales and transform an element such that it appears to ripple from either<br>a shared element, or from a screen position, to full screen.</p>
@@ -25,11 +27,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * }
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface RippleAnimationElement extends HTMLElement {
 
-    public static final String TAG = "ripple-animation";
-    public static final String SRC = "neon-animation/neon-animations.html";
+    @JsOverlay public static final String TAG = "ripple-animation";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animations.html";
 
 
     /**
@@ -50,6 +52,25 @@ public interface RippleAnimationElement extends HTMLElement {
      * 
      */
     @JsProperty void setAnimationTiming(JavaScriptObject value);
+
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    @JsProperty boolean getIsNeonAnimation();
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    @JsProperty void setIsNeonAnimation(boolean value);
 
     /**
      * <p>Cached copy of shared elements.</p>
@@ -88,7 +109,7 @@ public interface RippleAnimationElement extends HTMLElement {
      * JavaScript Info:
      * @method timingFromConfig
      * @param {} config  
-     * 
+     * @behavior PaperMenuShrinkHeightAnimation
      * 
      */
     void timingFromConfig(Object config);
@@ -101,7 +122,7 @@ public interface RippleAnimationElement extends HTMLElement {
      * @param {} node  
      * @param {} property  
      * @param {} value  
-     * @behavior ReverseRippleAnimation
+     * 
      * 
      */
     void setPrefixedProperty(Object node, Object property, Object value);

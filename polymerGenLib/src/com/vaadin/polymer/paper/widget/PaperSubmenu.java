@@ -5,13 +5,19 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperSubmenuElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.PaperSubmenuCloseEvent;
 import com.vaadin.polymer.paper.widget.event.PaperSubmenuCloseEventHandler;
+
 import com.vaadin.polymer.paper.widget.event.PaperSubmenuOpenEvent;
 import com.vaadin.polymer.paper.widget.event.PaperSubmenuOpenEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;paper-submenu&gt;</code> is a nested menu inside of a parent <code>&lt;paper-menu&gt;</code>. It<br>consists of a trigger that expands or collapses another <code>&lt;paper-menu&gt;</code>:</p>
@@ -56,25 +62,6 @@ public class PaperSubmenu extends PolymerWidget {
      */
     public PaperSubmenu(String html) {
         super(PaperSubmenuElement.TAG, PaperSubmenuElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.PaperSubmenuCloseEvent.NAME,
-                new com.vaadin.polymer.paper.event.PaperSubmenuCloseEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.PaperSubmenuCloseEvent event) {
-                fireEvent(new PaperSubmenuCloseEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.PaperSubmenuOpenEvent.NAME,
-                new com.vaadin.polymer.paper.event.PaperSubmenuOpenEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.PaperSubmenuOpenEvent event) {
-                fireEvent(new PaperSubmenuOpenEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -217,7 +204,7 @@ public class PaperSubmenu extends PolymerWidget {
      * @event paper-submenu-close
      */
     public HandlerRegistration addPaperSubmenuCloseHandler(PaperSubmenuCloseEventHandler handler) {
-        return addHandler(handler, PaperSubmenuCloseEvent.TYPE);
+        return addDomHandler(handler, PaperSubmenuCloseEvent.TYPE);
     }
 
     /**
@@ -227,7 +214,7 @@ public class PaperSubmenu extends PolymerWidget {
      * @event paper-submenu-open
      */
     public HandlerRegistration addPaperSubmenuOpenHandler(PaperSubmenuOpenEventHandler handler) {
-        return addHandler(handler, PaperSubmenuOpenEvent.TYPE);
+        return addDomHandler(handler, PaperSubmenuOpenEvent.TYPE);
     }
 
 }

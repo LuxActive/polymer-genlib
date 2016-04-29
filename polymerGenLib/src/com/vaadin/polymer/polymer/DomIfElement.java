@@ -5,18 +5,21 @@
  */
 package com.vaadin.polymer.polymer;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface DomIfElement extends HTMLElement {
 
-    public static final String TAG = "dom-if";
-    public static final String SRC = "polymer/polymer.html";
+    @JsOverlay public static final String TAG = "dom-if";
+    @JsOverlay public static final String SRC = "polymer/polymer.html";
 
 
     /**
@@ -75,7 +78,7 @@ public interface DomIfElement extends HTMLElement {
      * JavaScript Info:
      * @method templatize
      * @param {} template  
-     * @behavior DomIf
+     * @behavior VaadinInfiniteScroller
      * 
      */
     void templatize(Object template);

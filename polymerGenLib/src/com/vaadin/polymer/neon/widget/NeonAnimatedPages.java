@@ -5,19 +5,25 @@
  */
 package com.vaadin.polymer.neon.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.neon.*;
+
 import com.vaadin.polymer.iron.widget.event.IronActivateEvent;
 import com.vaadin.polymer.iron.widget.event.IronActivateEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronDeselectEvent;
 import com.vaadin.polymer.iron.widget.event.IronDeselectEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronItemsChangedEvent;
 import com.vaadin.polymer.iron.widget.event.IronItemsChangedEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronSelectEvent;
 import com.vaadin.polymer.iron.widget.event.IronSelectEventHandler;
-import com.vaadin.polymer.neon.NeonAnimatedPagesElement;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/animation/meaningful-transitions.html">Meaningful transitions</a></p>
@@ -36,43 +42,6 @@ public class NeonAnimatedPages extends PolymerWidget {
      */
     public NeonAnimatedPages(String html) {
         super(NeonAnimatedPagesElement.TAG, NeonAnimatedPagesElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronActivateEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronActivateEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronActivateEvent event) {
-                fireEvent(new IronActivateEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronDeselectEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronDeselectEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronDeselectEvent event) {
-                fireEvent(new IronDeselectEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronItemsChangedEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronItemsChangedEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronItemsChangedEvent event) {
-                fireEvent(new IronItemsChangedEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronSelectEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronSelectEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronSelectEvent event) {
-                fireEvent(new IronSelectEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -87,52 +56,6 @@ public class NeonAnimatedPages extends PolymerWidget {
         }
     }
 
-
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * 
-     */
-    public JavaScriptObject getAnimationConfig() {
-        return getPolymerElement().getAnimationConfig();
-    }
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * 
-     */
-    public void setAnimationConfig(JavaScriptObject value) {
-        getPolymerElement().setAnimationConfig(value);
-    }
-
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior PaperTabs
-     */
-    public JsArray getItems() {
-        return getPolymerElement().getItems();
-    }
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior PaperTabs
-     */
-    public void setItems(JsArray value) {
-        getPolymerElement().setItems(value);
-    }
 
     /**
      * <p> if true, the initial page selection will also be animated according to its animation config.</p>
@@ -158,6 +81,52 @@ public class NeonAnimatedPages extends PolymerWidget {
     }
 
     /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @property selected
+     * @type (string|number)
+     * @behavior PaperTabs
+     */
+    public Object getSelected() {
+        return getPolymerElement().getSelected();
+    }
+    /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @property selected
+     * @type (string|number)
+     * @behavior PaperTabs
+     */
+    public void setSelected(Object value) {
+        getPolymerElement().setSelected(value);
+    }
+
+    /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    public JavaScriptObject getAnimationConfig() {
+        return getPolymerElement().getAnimationConfig();
+    }
+    /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    public void setAnimationConfig(JavaScriptObject value) {
+        getPolymerElement().setAnimationConfig(value);
+    }
+
+    /**
      * <p>Returns the currently selected item.</p>
      *
      * JavaScript Info:
@@ -178,6 +147,29 @@ public class NeonAnimatedPages extends PolymerWidget {
      */
     public void setSelectedItem(JavaScriptObject value) {
         getPolymerElement().setSelectedItem(value);
+    }
+
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    public JsArray getItems() {
+        return getPolymerElement().getItems();
+    }
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    public void setItems(JsArray value) {
+        getPolymerElement().setItems(value);
     }
 
     /**
@@ -227,29 +219,6 @@ public class NeonAnimatedPages extends PolymerWidget {
     }
 
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @property selected
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getSelected() {
-        return getPolymerElement().getSelected();
-    }
-    /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @property selected
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setSelected(String value) {
-        getPolymerElement().setSelected(value);
-    }
-
-    /**
      * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
      *
      * JavaScript Info:
@@ -273,7 +242,30 @@ public class NeonAnimatedPages extends PolymerWidget {
     }
 
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    public String getFallbackSelection() {
+        return getPolymerElement().getFallbackSelection();
+    }
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    public void setFallbackSelection(String value) {
+        getPolymerElement().setFallbackSelection(value);
+    }
+
+    /**
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
@@ -284,7 +276,7 @@ public class NeonAnimatedPages extends PolymerWidget {
         return getPolymerElement().getAttrForSelected();
     }
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
@@ -366,6 +358,17 @@ public class NeonAnimatedPages extends PolymerWidget {
 
 
     /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @attribute selected
+     * @behavior PaperTabs
+     */
+    public void setSelected(String value) {
+        getPolymerElement().setAttribute("selected", value);
+    }
+
+    /**
      * <p>Animation configuration. See README for more info.</p>
      *
      * JavaScript Info:
@@ -374,17 +377,6 @@ public class NeonAnimatedPages extends PolymerWidget {
      */
     public void setAnimationConfig(String value) {
         getPolymerElement().setAttribute("animation-config", value);
-    }
-
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @attribute items
-     * @behavior PaperTabs
-     */
-    public void setItems(String value) {
-        getPolymerElement().setAttribute("items", value);
     }
 
     /**
@@ -398,18 +390,29 @@ public class NeonAnimatedPages extends PolymerWidget {
         getPolymerElement().setAttribute("selected-item", value);
     }
 
-
     /**
-     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
+     * <p>The list of items from which a selection can be made.</p>
      *
      * JavaScript Info:
-     * @method stopResizeNotificationsFor
-     * @param {} target  
+     * @attribute items
+     * @behavior PaperTabs
+     */
+    public void setItems(String value) {
+        getPolymerElement().setAttribute("items", value);
+    }
+
+
+    /**
+     * <p>Selects the given value.</p>
+     *
+     * JavaScript Info:
+     * @method select
+     * @param {(string|number)} value  
      * @behavior PaperTabs
      * 
      */
-    public void stopResizeNotificationsFor(Object target) {
-        getPolymerElement().stopResizeNotificationsFor(target);
+    public void select(Object value) {
+        getPolymerElement().select(value);
     }
 
     /**
@@ -418,7 +421,7 @@ public class NeonAnimatedPages extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -426,42 +429,16 @@ public class NeonAnimatedPages extends PolymerWidget {
     }
 
     /**
-     * <p>Selects the given value.</p>
+     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
      *
      * JavaScript Info:
-     * @method select
-     * @param {string} value  
-     * @behavior PaperTabs
+     * @method stopResizeNotificationsFor
+     * @param {} target  
+     * @behavior VaadinComboBoxOverlay
      * 
      */
-    public void select(String value) {
-        getPolymerElement().select(value);
-    }
-
-    /**
-     * <p>Plays an animation with an optional <code>type</code>.</p>
-     *
-     * JavaScript Info:
-     * @method playAnimation
-     * @param {string=} type  
-     * @param {!Object=} cookie  
-     * 
-     * 
-     */
-    public void playAnimation(String type, JavaScriptObject cookie) {
-        getPolymerElement().playAnimation(type, cookie);
-    }
-
-    /**
-     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
-     *
-     * JavaScript Info:
-     * @method notifyResize
-     * @behavior PaperTabs
-     * 
-     */
-    public void notifyResize() {
-        getPolymerElement().notifyResize();
+    public void stopResizeNotificationsFor(Object target) {
+        getPolymerElement().stopResizeNotificationsFor(target);
     }
 
     /**
@@ -469,11 +446,25 @@ public class NeonAnimatedPages extends PolymerWidget {
      *
      * JavaScript Info:
      * @method cancelAnimation
-     * @behavior PaperTooltip
+     * 
      * 
      */
     public void cancelAnimation() {
         getPolymerElement().cancelAnimation();
+    }
+
+    /**
+     * <p>Force a synchronous update of the <code>items</code> property.</p>
+     * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
+     * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
+     *
+     * JavaScript Info:
+     * @method forceSynchronousItemUpdate
+     * @behavior PaperTabs
+     * 
+     */
+    public void forceSynchronousItemUpdate() {
+        getPolymerElement().forceSynchronousItemUpdate();
     }
 
     /**
@@ -501,16 +492,15 @@ public class NeonAnimatedPages extends PolymerWidget {
     }
 
     /**
-     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
+     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
      *
      * JavaScript Info:
-     * @method resizerShouldNotify
-     * @param {HTMLElement} element  
-     * @behavior PaperTabs
-     * @return {boolean}
+     * @method notifyResize
+     * @behavior VaadinComboBoxOverlay
+     * 
      */
-    public boolean resizerShouldNotify(JavaScriptObject element) {
-        return getPolymerElement().resizerShouldNotify(element);
+    public void notifyResize() {
+        getPolymerElement().notifyResize();
     }
 
     /**
@@ -526,6 +516,33 @@ public class NeonAnimatedPages extends PolymerWidget {
         getPolymerElement().indexOf(item);
     }
 
+    /**
+     * <p>Plays an animation with an optional <code>type</code>.</p>
+     *
+     * JavaScript Info:
+     * @method playAnimation
+     * @param {string=} type  
+     * @param {!Object=} cookie  
+     * 
+     * 
+     */
+    public void playAnimation(String type, JavaScriptObject cookie) {
+        getPolymerElement().playAnimation(type, cookie);
+    }
+
+    /**
+     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
+     *
+     * JavaScript Info:
+     * @method resizerShouldNotify
+     * @param {HTMLElement} element  
+     * @behavior VaadinComboBoxOverlay
+     * @return {boolean}
+     */
+    public boolean resizerShouldNotify(JavaScriptObject element) {
+        return getPolymerElement().resizerShouldNotify(element);
+    }
+
 
     /**
      * <p>Fired when iron-selector is activated (selected or deselected).<br>It is fired before the selected items are changed.<br>Cancel the event to abort selection.</p>
@@ -534,7 +551,7 @@ public class NeonAnimatedPages extends PolymerWidget {
      * @event iron-activate
      */
     public HandlerRegistration addIronActivateHandler(IronActivateEventHandler handler) {
-        return addHandler(handler, IronActivateEvent.TYPE);
+        return addDomHandler(handler, IronActivateEvent.TYPE);
     }
 
     /**
@@ -544,7 +561,7 @@ public class NeonAnimatedPages extends PolymerWidget {
      * @event iron-deselect
      */
     public HandlerRegistration addIronDeselectHandler(IronDeselectEventHandler handler) {
-        return addHandler(handler, IronDeselectEvent.TYPE);
+        return addDomHandler(handler, IronDeselectEvent.TYPE);
     }
 
     /**
@@ -554,7 +571,7 @@ public class NeonAnimatedPages extends PolymerWidget {
      * @event iron-items-changed
      */
     public HandlerRegistration addIronItemsChangedHandler(IronItemsChangedEventHandler handler) {
-        return addHandler(handler, IronItemsChangedEvent.TYPE);
+        return addDomHandler(handler, IronItemsChangedEvent.TYPE);
     }
 
     /**
@@ -564,7 +581,7 @@ public class NeonAnimatedPages extends PolymerWidget {
      * @event iron-select
      */
     public HandlerRegistration addIronSelectHandler(IronSelectEventHandler handler) {
-        return addHandler(handler, IronSelectEvent.TYPE);
+        return addDomHandler(handler, IronSelectEvent.TYPE);
     }
 
 }

@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.neon;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>&lt;transform-animation&gt;</code> animates a custom transform on an element. Use this to animate multiple<br>transform properties, or to apply a custom transform value.</p>
@@ -23,11 +25,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * }
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface TransformAnimationElement extends HTMLElement {
 
-    public static final String TAG = "transform-animation";
-    public static final String SRC = "neon-animation/neon-animations.html";
+    @JsOverlay public static final String TAG = "transform-animation";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animations.html";
 
 
     /**
@@ -49,6 +51,36 @@ public interface TransformAnimationElement extends HTMLElement {
      */
     @JsProperty void setAnimationTiming(JavaScriptObject value);
 
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    @JsProperty boolean getIsNeonAnimation();
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * 
+     */
+    @JsProperty void setIsNeonAnimation(boolean value);
+
+
+    /**
+     * <p>Returns the animation timing by mixing in properties from <code>config</code> to the defaults defined<br>by the animation.</p>
+     *
+     * JavaScript Info:
+     * @method timingFromConfig
+     * @param {} config  
+     * 
+     * 
+     */
+    void timingFromConfig(Object config);
 
     /**
      * <p>Sets <code>transform</code> and <code>transformOrigin</code> properties along with the prefixed versions.</p>
@@ -64,22 +96,11 @@ public interface TransformAnimationElement extends HTMLElement {
     void setPrefixedProperty(Object node, Object property, Object value);
 
     /**
-     * <p>Returns the animation timing by mixing in properties from <code>config</code> to the defaults defined<br>by the animation.</p>
-     *
-     * JavaScript Info:
-     * @method timingFromConfig
-     * @param {} config  
-     * 
-     * 
-     */
-    void timingFromConfig(Object config);
-
-    /**
      * <p>Called when the animation finishes.</p>
      *
      * JavaScript Info:
      * @method complete
-     * 
+     * @behavior PaperMenuShrinkHeightAnimation
      * 
      */
     void complete();

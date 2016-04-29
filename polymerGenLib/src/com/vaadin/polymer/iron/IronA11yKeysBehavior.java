@@ -5,20 +5,24 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p><code>Polymer.IronA11yKeysBehavior</code> provides a normalized interface for processing<br>keyboard commands that pertain to <a href="http://www.w3.org/TR/wai-aria-practices/#kbd_general_binding">WAI-ARIA best practices</a>.<br>The element takes care of browser differences with respect to Keyboard events<br>and uses an expressive syntax to filter key presses.</p>
  * <p>Use the <code>keyBindings</code> prototype property to express what combination of keys<br>will trigger the event to fire.</p>
  * <p>Use the <code>key-event-target</code> attribute to set up event handlers on a specific<br>node.<br>The <code>keys-pressed</code> event will fire when one of the key combinations set with the<br><code>keys</code> property is pressed.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronA11yKeysBehavior {
 
-    public static final String TAG = "Polymer.IronA11yKeysBehavior";
-    public static final String SRC = "iron-a11y-keys-behavior/iron-a11y-keys-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.IronA11yKeysBehavior";
+    @JsOverlay public static final String SRC = "iron-a11y-keys-behavior/iron-a11y-keys-behavior.html";
 
 
     /**
@@ -27,7 +31,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
@@ -36,7 +40,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
@@ -46,7 +50,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
@@ -55,7 +59,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
@@ -65,7 +69,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -74,7 +78,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
@@ -86,29 +90,29 @@ public interface IronA11yKeysBehavior {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
 
     /**
-     * 
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
      * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
      */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
     /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     void removeOwnKeyBindings();

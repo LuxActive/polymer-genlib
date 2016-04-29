@@ -5,11 +5,16 @@
  */
 package com.vaadin.polymer.google.widget;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.google.GoogleRealtimeApiElement;
+import com.vaadin.polymer.google.*;
+
 import com.vaadin.polymer.google.widget.event.ApiLoadEvent;
 import com.vaadin.polymer.google.widget.event.ApiLoadEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Dynamically loads the Google Drive Realtime API, firing the <code>api-load</code> event when ready.</p>
@@ -28,16 +33,6 @@ public class GoogleRealtimeApi extends PolymerWidget {
      */
     public GoogleRealtimeApi(String html) {
         super(GoogleRealtimeApiElement.TAG, GoogleRealtimeApiElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.google.event.ApiLoadEvent.NAME,
-                new com.vaadin.polymer.google.event.ApiLoadEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.google.event.ApiLoadEvent event) {
-                fireEvent(new ApiLoadEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -109,7 +104,7 @@ public class GoogleRealtimeApi extends PolymerWidget {
      * @event api-load
      */
     public HandlerRegistration addApiLoadHandler(ApiLoadEventHandler handler) {
-        return addHandler(handler, ApiLoadEvent.TYPE);
+        return addDomHandler(handler, ApiLoadEvent.TYPE);
     }
 
 }

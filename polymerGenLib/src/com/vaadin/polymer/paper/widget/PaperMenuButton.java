@@ -5,14 +5,19 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperMenuButtonElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.PaperDropdownCloseEvent;
 import com.vaadin.polymer.paper.widget.event.PaperDropdownCloseEventHandler;
+
 import com.vaadin.polymer.paper.widget.event.PaperDropdownOpenEvent;
 import com.vaadin.polymer.paper.widget.event.PaperDropdownOpenEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/buttons.html#buttons-dropdown-buttons">Dropdown buttons</a></p>
@@ -82,25 +87,6 @@ public class PaperMenuButton extends PolymerWidget {
      */
     public PaperMenuButton(String html) {
         super(PaperMenuButtonElement.TAG, PaperMenuButtonElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.PaperDropdownCloseEvent.NAME,
-                new com.vaadin.polymer.paper.event.PaperDropdownCloseEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.PaperDropdownCloseEvent event) {
-                fireEvent(new PaperDropdownCloseEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.PaperDropdownOpenEvent.NAME,
-                new com.vaadin.polymer.paper.event.PaperDropdownOpenEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.PaperDropdownOpenEvent event) {
-                fireEvent(new PaperDropdownOpenEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -191,7 +177,7 @@ public class PaperMenuButton extends PolymerWidget {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public JavaScriptObject getKeyBindings() {
         return getPolymerElement().getKeyBindings();
@@ -202,7 +188,7 @@ public class PaperMenuButton extends PolymerWidget {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyBindings(JavaScriptObject value) {
         getPolymerElement().setKeyBindings(value);
@@ -214,7 +200,7 @@ public class PaperMenuButton extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
@@ -225,7 +211,7 @@ public class PaperMenuButton extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
@@ -352,7 +338,7 @@ public class PaperMenuButton extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public boolean getStopKeyboardEventPropagation() {
         return getPolymerElement().getStopKeyboardEventPropagation();
@@ -363,7 +349,7 @@ public class PaperMenuButton extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
@@ -466,7 +452,7 @@ public class PaperMenuButton extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyBindings(String value) {
         getPolymerElement().setAttribute("key-bindings", value);
@@ -477,7 +463,7 @@ public class PaperMenuButton extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(String value) {
         getPolymerElement().setAttribute("key-event-target", value);
@@ -507,27 +493,13 @@ public class PaperMenuButton extends PolymerWidget {
 
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
-    }
-
-    /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
      *
      * JavaScript Info:
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
@@ -563,11 +535,25 @@ public class PaperMenuButton extends PolymerWidget {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void removeOwnKeyBindings() {
         getPolymerElement().removeOwnKeyBindings();
+    }
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
 
@@ -578,7 +564,7 @@ public class PaperMenuButton extends PolymerWidget {
      * @event paper-dropdown-close
      */
     public HandlerRegistration addPaperDropdownCloseHandler(PaperDropdownCloseEventHandler handler) {
-        return addHandler(handler, PaperDropdownCloseEvent.TYPE);
+        return addDomHandler(handler, PaperDropdownCloseEvent.TYPE);
     }
 
     /**
@@ -588,7 +574,7 @@ public class PaperMenuButton extends PolymerWidget {
      * @event paper-dropdown-open
      */
     public HandlerRegistration addPaperDropdownOpenHandler(PaperDropdownOpenEventHandler handler) {
-        return addHandler(handler, PaperDropdownOpenEvent.TYPE);
+        return addDomHandler(handler, PaperDropdownOpenEvent.TYPE);
     }
 
 }

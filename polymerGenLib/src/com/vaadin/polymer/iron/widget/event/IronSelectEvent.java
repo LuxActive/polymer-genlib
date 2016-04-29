@@ -5,20 +5,19 @@
  */
 package com.vaadin.polymer.iron.widget.event;
 
+import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.GwtEvent;
 
 /**
- * 
+ * <p>Fired when an item is selected</p>
  */
-public class IronSelectEvent extends GwtEvent<IronSelectEventHandler> {
+public class IronSelectEvent extends DomEvent<IronSelectEventHandler> {
 
-    public static Type<IronSelectEventHandler> TYPE = new Type<IronSelectEventHandler>();
+    public static Type<IronSelectEventHandler> TYPE = new Type<IronSelectEventHandler>(
+       com.vaadin.polymer.iron.event.IronSelectEvent.NAME, new IronSelectEvent());
 
-    private com.vaadin.polymer.iron.event.IronSelectEvent nativeEvent;
 
-    public IronSelectEvent(com.vaadin.polymer.iron.event.IronSelectEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public IronSelectEvent() {
     }
 
     public Type<IronSelectEventHandler> getAssociatedType() {
@@ -29,22 +28,23 @@ public class IronSelectEvent extends GwtEvent<IronSelectEventHandler> {
         handler.onIronSelect(this);
     }
 
-    public com.vaadin.polymer.iron.event.IronSelectEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.iron.event.IronSelectEvent getPolymerEvent() {
+        return (com.vaadin.polymer.iron.event.IronSelectEvent)super.getNativeEvent();
     }
+
 
     /**
      * 
      */
     public JavaScriptObject getDetail() {
-        return getNativeEvent().getDetail().getDetail();
+        return getPolymerEvent().getDetail().getDetail();
     }
 
     /**
      * <p>the item element</p>
      */
     public JavaScriptObject getItem() {
-        return getNativeEvent().getDetail().getItem();
+        return getPolymerEvent().getDetail().getItem();
     }
 
 }

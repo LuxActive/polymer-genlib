@@ -5,19 +5,19 @@
  */
 package com.vaadin.polymer.paper.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the slider’s immediateValue changes.</p>
  */
-public class ImmediateValueChangeEvent extends GwtEvent<ImmediateValueChangeEventHandler> {
+public class ImmediateValueChangeEvent extends DomEvent<ImmediateValueChangeEventHandler> {
 
-    public static Type<ImmediateValueChangeEventHandler> TYPE = new Type<ImmediateValueChangeEventHandler>();
+    public static Type<ImmediateValueChangeEventHandler> TYPE = new Type<ImmediateValueChangeEventHandler>(
+       com.vaadin.polymer.paper.event.ImmediateValueChangeEvent.NAME, new ImmediateValueChangeEvent());
 
-    private com.vaadin.polymer.paper.event.ImmediateValueChangeEvent nativeEvent;
 
-    public ImmediateValueChangeEvent(com.vaadin.polymer.paper.event.ImmediateValueChangeEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public ImmediateValueChangeEvent() {
     }
 
     public Type<ImmediateValueChangeEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class ImmediateValueChangeEvent extends GwtEvent<ImmediateValueChangeEven
         handler.onImmediateValueChange(this);
     }
 
-    public com.vaadin.polymer.paper.event.ImmediateValueChangeEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.paper.event.ImmediateValueChangeEvent getPolymerEvent() {
+        return (com.vaadin.polymer.paper.event.ImmediateValueChangeEvent)super.getNativeEvent();
     }
+
 
 }

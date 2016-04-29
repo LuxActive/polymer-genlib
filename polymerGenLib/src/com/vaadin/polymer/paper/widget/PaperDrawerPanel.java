@@ -5,16 +5,22 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.iron.widget.event.IronDeselectEvent;
 import com.vaadin.polymer.iron.widget.event.IronDeselectEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronSelectEvent;
 import com.vaadin.polymer.iron.widget.event.IronSelectEventHandler;
-import com.vaadin.polymer.paper.PaperDrawerPanelElement;
+
 import com.vaadin.polymer.paper.widget.event.PaperResponsiveChangeEvent;
 import com.vaadin.polymer.paper.widget.event.PaperResponsiveChangeEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/patterns/navigation-drawer.html">Navigation drawer</a></p>
@@ -156,34 +162,6 @@ public class PaperDrawerPanel extends PolymerWidget {
      */
     public PaperDrawerPanel(String html) {
         super(PaperDrawerPanelElement.TAG, PaperDrawerPanelElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronDeselectEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronDeselectEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronDeselectEvent event) {
-                fireEvent(new IronDeselectEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronSelectEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronSelectEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronSelectEvent event) {
-                fireEvent(new IronSelectEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.PaperResponsiveChangeEvent.NAME,
-                new com.vaadin.polymer.paper.event.PaperResponsiveChangeEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.PaperResponsiveChangeEvent event) {
-                fireEvent(new PaperResponsiveChangeEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -563,7 +541,7 @@ public class PaperDrawerPanel extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -576,7 +554,7 @@ public class PaperDrawerPanel extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
@@ -600,7 +578,7 @@ public class PaperDrawerPanel extends PolymerWidget {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void notifyResize() {
@@ -637,7 +615,7 @@ public class PaperDrawerPanel extends PolymerWidget {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {
@@ -653,7 +631,7 @@ public class PaperDrawerPanel extends PolymerWidget {
      * @event iron-deselect
      */
     public HandlerRegistration addIronDeselectHandler(IronDeselectEventHandler handler) {
-        return addHandler(handler, IronDeselectEvent.TYPE);
+        return addDomHandler(handler, IronDeselectEvent.TYPE);
     }
 
     /**
@@ -664,7 +642,7 @@ public class PaperDrawerPanel extends PolymerWidget {
      * @event iron-select
      */
     public HandlerRegistration addIronSelectHandler(IronSelectEventHandler handler) {
-        return addHandler(handler, IronSelectEvent.TYPE);
+        return addDomHandler(handler, IronSelectEvent.TYPE);
     }
 
     /**
@@ -674,7 +652,7 @@ public class PaperDrawerPanel extends PolymerWidget {
      * @event paper-responsive-change
      */
     public HandlerRegistration addPaperResponsiveChangeHandler(PaperResponsiveChangeEventHandler handler) {
-        return addHandler(handler, PaperResponsiveChangeEvent.TYPE);
+        return addDomHandler(handler, PaperResponsiveChangeEvent.TYPE);
     }
 
 }

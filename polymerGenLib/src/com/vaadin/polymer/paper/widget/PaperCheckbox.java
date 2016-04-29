@@ -5,18 +5,25 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.widget.event.IronChangeEvent;
-import com.vaadin.polymer.iron.widget.event.IronChangeEventHandler;
-import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEvent;
-import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEventHandler;
-import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEvent;
-import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandler;
-import com.vaadin.polymer.paper.PaperCheckboxElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.ChangeEvent;
 import com.vaadin.polymer.paper.widget.event.ChangeEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronChangeEvent;
+import com.vaadin.polymer.iron.widget.event.IronChangeEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEvent;
+import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEvent;
+import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/selection-controls.html#selection-controls-checkbox">Checkbox</a></p>
@@ -104,43 +111,6 @@ public class PaperCheckbox extends PolymerWidget {
      */
     public PaperCheckbox(String html) {
         super(PaperCheckboxElement.TAG, PaperCheckboxElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.ChangeEvent.NAME,
-                new com.vaadin.polymer.paper.event.ChangeEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.ChangeEvent event) {
-                fireEvent(new ChangeEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronChangeEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronChangeEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronChangeEvent event) {
-                fireEvent(new IronChangeEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronFormElementRegisterEvent event) {
-                fireEvent(new IronFormElementRegisterEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent event) {
-                fireEvent(new IronFormElementUnregisterEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -155,29 +125,6 @@ public class PaperCheckbox extends PolymerWidget {
         }
     }
 
-
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getStopKeyboardEventPropagation() {
-        return getPolymerElement().getStopKeyboardEventPropagation();
-    }
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setStopKeyboardEventPropagation(boolean value) {
-        getPolymerElement().setStopKeyboardEventPropagation(value);
-    }
 
     /**
      * 
@@ -208,7 +155,7 @@ public class PaperCheckbox extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
@@ -219,33 +166,10 @@ public class PaperCheckbox extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
-    }
-
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getPointerDown() {
-        return getPolymerElement().getPointerDown();
-    }
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setPointerDown(boolean value) {
-        getPolymerElement().setPointerDown(value);
     }
 
     /**
@@ -318,29 +242,6 @@ public class PaperCheckbox extends PolymerWidget {
     }
 
     /**
-     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
-     *
-     * JavaScript Info:
-     * @property noink
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    public boolean getNoink() {
-        return getPolymerElement().getNoink();
-    }
-    /**
-     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
-     *
-     * JavaScript Info:
-     * @property noink
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    public void setNoink(boolean value) {
-        getPolymerElement().setNoink(value);
-    }
-
-    /**
      * <p>If true, the button is a toggle and is currently in the active state.</p>
      *
      * JavaScript Info:
@@ -364,12 +265,35 @@ public class PaperCheckbox extends PolymerWidget {
     }
 
     /**
+     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public boolean getNoink() {
+        return getPolymerElement().getNoink();
+    }
+    /**
+     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public void setNoink(boolean value) {
+        getPolymerElement().setNoink(value);
+    }
+
+    /**
      * <p>True if the last call to <code>validate</code> is invalid.</p>
      *
      * JavaScript Info:
      * @property invalid
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public boolean getInvalid() {
         return getPolymerElement().getInvalid();
@@ -380,10 +304,33 @@ public class PaperCheckbox extends PolymerWidget {
      * JavaScript Info:
      * @property invalid
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setInvalid(boolean value) {
         getPolymerElement().setInvalid(value);
+    }
+
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getPointerDown() {
+        return getPolymerElement().getPointerDown();
+    }
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setPointerDown(boolean value) {
+        getPolymerElement().setPointerDown(value);
     }
 
     /**
@@ -461,7 +408,7 @@ public class PaperCheckbox extends PolymerWidget {
      * JavaScript Info:
      * @property required
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public boolean getRequired() {
         return getPolymerElement().getRequired();
@@ -472,10 +419,33 @@ public class PaperCheckbox extends PolymerWidget {
      * JavaScript Info:
      * @property required
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setRequired(boolean value) {
         getPolymerElement().setRequired(value);
+    }
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    public boolean getStopKeyboardEventPropagation() {
+        return getPolymerElement().getStopKeyboardEventPropagation();
+    }
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    public void setStopKeyboardEventPropagation(boolean value) {
+        getPolymerElement().setStopKeyboardEventPropagation(value);
     }
 
     /**
@@ -530,7 +500,7 @@ public class PaperCheckbox extends PolymerWidget {
      * JavaScript Info:
      * @property name
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public String getName() {
         return getPolymerElement().getName();
@@ -541,7 +511,7 @@ public class PaperCheckbox extends PolymerWidget {
      * JavaScript Info:
      * @property name
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setName(String value) {
         getPolymerElement().setName(value);
@@ -553,7 +523,7 @@ public class PaperCheckbox extends PolymerWidget {
      * JavaScript Info:
      * @property validator
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public String getValidator() {
         return getPolymerElement().getValidator();
@@ -564,7 +534,7 @@ public class PaperCheckbox extends PolymerWidget {
      * JavaScript Info:
      * @property validator
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setValidator(String value) {
         getPolymerElement().setValidator(value);
@@ -576,7 +546,7 @@ public class PaperCheckbox extends PolymerWidget {
      * JavaScript Info:
      * @property validatorType
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public String getValidatorType() {
         return getPolymerElement().getValidatorType();
@@ -587,7 +557,7 @@ public class PaperCheckbox extends PolymerWidget {
      * JavaScript Info:
      * @property validatorType
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setValidatorType(String value) {
         getPolymerElement().setValidatorType(value);
@@ -599,7 +569,7 @@ public class PaperCheckbox extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyEventTarget(String value) {
         getPolymerElement().setAttribute("key-event-target", value);
@@ -610,7 +580,7 @@ public class PaperCheckbox extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
     public void setKeyBindings(String value) {
         getPolymerElement().setAttribute("key-bindings", value);
@@ -624,49 +594,11 @@ public class PaperCheckbox extends PolymerWidget {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
         getPolymerElement().addOwnKeyBinding(eventString, handlerName);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
-    }
-
-    /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
-     *
-     * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior PaperTab
-     * 
-     */
-    public void removeOwnKeyBindings() {
-        getPolymerElement().removeOwnKeyBindings();
-    }
-
-    /**
-     * <p>Returns the <code>&lt;paper-ripple&gt;</code> element used by this element to create<br>ripple effects. The element’s ripple is created on demand, when<br>necessary, and calling this method will force the<br>ripple to be created.</p>
-     *
-     * JavaScript Info:
-     * @method getRipple
-     * @behavior PaperToggleButton
-     * 
-     */
-    public void getRipple() {
-        getPolymerElement().getRipple();
     }
 
     /**
@@ -682,11 +614,35 @@ public class PaperCheckbox extends PolymerWidget {
     }
 
     /**
+     * <p>Returns the <code>&lt;paper-ripple&gt;</code> element used by this element to create<br>ripple effects. The element’s ripple is created on demand, when<br>necessary, and calling this method will force the<br>ripple to be created.</p>
+     *
+     * JavaScript Info:
+     * @method getRipple
+     * @behavior PaperTab
+     * 
+     */
+    public void getRipple() {
+        getPolymerElement().getRipple();
+    }
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior VaadinComboBox
+     * 
+     */
+    public void removeOwnKeyBindings() {
+        getPolymerElement().removeOwnKeyBindings();
+    }
+
+    /**
      * 
      *
      * JavaScript Info:
      * @method hasValidator
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      * @return {boolean}
      */
     public boolean hasValidator() {
@@ -699,11 +655,25 @@ public class PaperCheckbox extends PolymerWidget {
      * JavaScript Info:
      * @method validate
      * @param {Object} value  
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      * @return {boolean}
      */
     public boolean validate(JavaScriptObject value) {
         return getPolymerElement().validate(value);
+    }
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
     /**
@@ -727,7 +697,7 @@ public class PaperCheckbox extends PolymerWidget {
      * @event change
      */
     public HandlerRegistration addChangeHandler(ChangeEventHandler handler) {
-        return addHandler(handler, ChangeEvent.TYPE);
+        return addDomHandler(handler, ChangeEvent.TYPE);
     }
 
     /**
@@ -737,7 +707,7 @@ public class PaperCheckbox extends PolymerWidget {
      * @event iron-change
      */
     public HandlerRegistration addIronChangeHandler(IronChangeEventHandler handler) {
-        return addHandler(handler, IronChangeEvent.TYPE);
+        return addDomHandler(handler, IronChangeEvent.TYPE);
     }
 
     /**
@@ -747,7 +717,7 @@ public class PaperCheckbox extends PolymerWidget {
      * @event iron-form-element-register
      */
     public HandlerRegistration addIronFormElementRegisterHandler(IronFormElementRegisterEventHandler handler) {
-        return addHandler(handler, IronFormElementRegisterEvent.TYPE);
+        return addDomHandler(handler, IronFormElementRegisterEvent.TYPE);
     }
 
     /**
@@ -757,7 +727,7 @@ public class PaperCheckbox extends PolymerWidget {
      * @event iron-form-element-unregister
      */
     public HandlerRegistration addIronFormElementUnregisterHandler(IronFormElementUnregisterEventHandler handler) {
-        return addHandler(handler, IronFormElementUnregisterEvent.TYPE);
+        return addDomHandler(handler, IronFormElementUnregisterEvent.TYPE);
     }
 
 }

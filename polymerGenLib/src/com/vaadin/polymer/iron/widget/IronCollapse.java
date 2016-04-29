@@ -5,8 +5,13 @@
  */
 package com.vaadin.polymer.iron.widget;
 
+import com.vaadin.polymer.iron.*;
+
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.IronCollapseElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>iron-collapse</code> creates a collapsible block of content.  By default, the content<br>will be collapsed.  Use <code>opened</code> or <code>toggle()</code> to show/hide the content.</p>
@@ -53,7 +58,6 @@ public class IronCollapse extends PolymerWidget {
      */
     public IronCollapse(String html) {
         super(IronCollapseElement.TAG, IronCollapseElement.SRC, html);
-
     }
 
     /**
@@ -141,6 +145,19 @@ public class IronCollapse extends PolymerWidget {
 
 
     /**
+     * <p>enableTransition() is deprecated, but left over so it doesn’t break existing code.<br>Please use <code>noAnimation</code> property instead.</p>
+     *
+     * JavaScript Info:
+     * @method enableTransition
+     * @param {} enabled  
+     * 
+     * 
+     */
+    public void enableTransition(Object enabled) {
+        getPolymerElement().enableTransition(enabled);
+    }
+
+    /**
      * 
      *
      * JavaScript Info:
@@ -155,16 +172,29 @@ public class IronCollapse extends PolymerWidget {
     }
 
     /**
-     * <p>enableTransition() is deprecated, but left over so it doesn’t break existing code.<br>Please use <code>noAnimation</code> property instead.</p>
+     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
      *
      * JavaScript Info:
-     * @method enableTransition
-     * @param {} enabled  
-     * 
+     * @method assignParentResizable
+     * @param {} parentResizable  
+     * @behavior VaadinComboBoxOverlay
      * 
      */
-    public void enableTransition(Object enabled) {
-        getPolymerElement().enableTransition(enabled);
+    public void assignParentResizable(Object parentResizable) {
+        getPolymerElement().assignParentResizable(parentResizable);
+    }
+
+    /**
+     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
+     *
+     * JavaScript Info:
+     * @method stopResizeNotificationsFor
+     * @param {} target  
+     * @behavior VaadinComboBoxOverlay
+     * 
+     */
+    public void stopResizeNotificationsFor(Object target) {
+        getPolymerElement().stopResizeNotificationsFor(target);
     }
 
     /**
@@ -201,6 +231,31 @@ public class IronCollapse extends PolymerWidget {
      */
     public void hide() {
         getPolymerElement().hide();
+    }
+
+    /**
+     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
+     *
+     * JavaScript Info:
+     * @method notifyResize
+     * @behavior VaadinComboBoxOverlay
+     * 
+     */
+    public void notifyResize() {
+        getPolymerElement().notifyResize();
+    }
+
+    /**
+     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
+     *
+     * JavaScript Info:
+     * @method resizerShouldNotify
+     * @param {HTMLElement} element  
+     * @behavior VaadinComboBoxOverlay
+     * @return {boolean}
+     */
+    public boolean resizerShouldNotify(JavaScriptObject element) {
+        return getPolymerElement().resizerShouldNotify(element);
     }
 
 

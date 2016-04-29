@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>iron-collapse</code> creates a collapsible block of content.  By default, the content<br>will be collapsed.  Use <code>opened</code> or <code>toggle()</code> to show/hide the content.</p>
@@ -41,11 +44,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronCollapseElement extends HTMLElement {
 
-    public static final String TAG = "iron-collapse";
-    public static final String SRC = "iron-collapse/iron-collapse.html";
+    @JsOverlay public static final String TAG = "iron-collapse";
+    @JsOverlay public static final String SRC = "iron-collapse/iron-collapse.html";
 
 
     /**
@@ -107,18 +110,6 @@ public interface IronCollapseElement extends HTMLElement {
 
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @method updateSize
-     * @param {} size  
-     * @param {} animated  
-     * 
-     * 
-     */
-    void updateSize(Object size, Object animated);
-
-    /**
      * <p>enableTransition() is deprecated, but left over so it doesn’t break existing code.<br>Please use <code>noAnimation</code> property instead.</p>
      *
      * JavaScript Info:
@@ -133,11 +124,45 @@ public interface IronCollapseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method hide
+     * @method updateSize
+     * @param {} size  
+     * @param {} animated  
      * 
      * 
      */
-    void hide();
+    void updateSize(Object size, Object animated);
+
+    /**
+     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
+     *
+     * JavaScript Info:
+     * @method assignParentResizable
+     * @param {} parentResizable  
+     * @behavior VaadinComboBoxOverlay
+     * 
+     */
+    void assignParentResizable(Object parentResizable);
+
+    /**
+     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
+     *
+     * JavaScript Info:
+     * @method stopResizeNotificationsFor
+     * @param {} target  
+     * @behavior VaadinComboBoxOverlay
+     * 
+     */
+    void stopResizeNotificationsFor(Object target);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method show
+     * 
+     * 
+     */
+    void show();
 
     /**
      * <p>Toggle the opened state.</p>
@@ -153,10 +178,31 @@ public interface IronCollapseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method show
+     * @method hide
      * 
      * 
      */
-    void show();
+    void hide();
+
+    /**
+     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
+     *
+     * JavaScript Info:
+     * @method notifyResize
+     * @behavior VaadinComboBoxOverlay
+     * 
+     */
+    void notifyResize();
+
+    /**
+     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
+     *
+     * JavaScript Info:
+     * @method resizerShouldNotify
+     * @param {HTMLElement} element  
+     * @behavior VaadinComboBoxOverlay
+     * @return {boolean}
+     */
+    boolean resizerShouldNotify(JavaScriptObject element);
 
 }

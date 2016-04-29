@@ -5,19 +5,19 @@
  */
 package com.vaadin.polymer.google.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the API library is loaded and available.</p>
  */
-public class JsApiLoadEvent extends GwtEvent<JsApiLoadEventHandler> {
+public class JsApiLoadEvent extends DomEvent<JsApiLoadEventHandler> {
 
-    public static Type<JsApiLoadEventHandler> TYPE = new Type<JsApiLoadEventHandler>();
+    public static Type<JsApiLoadEventHandler> TYPE = new Type<JsApiLoadEventHandler>(
+       com.vaadin.polymer.google.event.JsApiLoadEvent.NAME, new JsApiLoadEvent());
 
-    private com.vaadin.polymer.google.event.JsApiLoadEvent nativeEvent;
 
-    public JsApiLoadEvent(com.vaadin.polymer.google.event.JsApiLoadEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public JsApiLoadEvent() {
     }
 
     public Type<JsApiLoadEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class JsApiLoadEvent extends GwtEvent<JsApiLoadEventHandler> {
         handler.onJsApiLoad(this);
     }
 
-    public com.vaadin.polymer.google.event.JsApiLoadEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.google.event.JsApiLoadEvent getPolymerEvent() {
+        return (com.vaadin.polymer.google.event.JsApiLoadEvent)super.getNativeEvent();
     }
+
 
 }

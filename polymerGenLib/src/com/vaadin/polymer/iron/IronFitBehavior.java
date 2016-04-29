@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p>Polymer.IronFitBehavior fits an element in another element using <code>max-height</code> and <code>max-width</code>, and<br>optionally centers it in the window or another element.</p>
@@ -43,11 +47,11 @@ import com.google.gwt.core.client.js.JsType;
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronFitBehavior {
 
-    public static final String TAG = "Polymer.IronFitBehavior";
-    public static final String SRC = "iron-fit-behavior/iron-fit-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.IronFitBehavior";
+    @JsOverlay public static final String SRC = "iron-fit-behavior/iron-fit-behavior.html";
 
 
     /**

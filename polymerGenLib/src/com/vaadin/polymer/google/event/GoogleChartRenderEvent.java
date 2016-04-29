@@ -5,25 +5,18 @@
  */
 package com.vaadin.polymer.google.event;
 
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Event;
-import com.vaadin.polymer.elemental.EventListener;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Fired when the graph is displayed.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface GoogleChartRenderEvent extends Event {
 
-    static final String NAME = "google-chart-render";
+    @JsOverlay static final String NAME = "google-chart-render";
 
-
-    public abstract class Listener implements EventListener {
-        protected abstract void handleEvent(GoogleChartRenderEvent event);
-
-        @Override
-        public void handleEvent(Event event) {
-            handleEvent((GoogleChartRenderEvent) event);
-        }
-    }
 }

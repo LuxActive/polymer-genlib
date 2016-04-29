@@ -5,14 +5,19 @@
  */
 package com.vaadin.polymer.iron.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.IronAutogrowTextareaElement;
+import com.vaadin.polymer.iron.*;
+
 import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEvent;
 import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEvent;
 import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>iron-autogrow-textarea</code> is an element containing a textarea that grows in height as more<br>lines of input are entered. Unless an explicit height or the <code>maxRows</code> property is set, it will<br>never scroll.</p>
@@ -20,8 +25,7 @@ import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandle
  * <pre><code>&lt;iron-autogrow-textarea&gt;&lt;/iron-autogrow-textarea&gt;
  * 
  * 
- * </code></pre><p>Because the <code>textarea</code>‘s <code>value</code> property is not observable, you should use<br>this element’s <code>bind-value</code> instead for imperative updates.</p>
- * <h3 id="styling">Styling</h3>
+ * </code></pre><h3 id="styling">Styling</h3>
  * <p>The following custom properties and mixins are available for styling:</p>
  * <table>
  * <thead>
@@ -35,6 +39,11 @@ import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandle
  * <tr>
  * <td><code>--iron-autogrow-textarea</code></td>
  * <td>Mixin applied to the textarea</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--iron-autogrow-textarea-placeholder</code></td>
+ * <td>Mixin applied to the textarea placeholder</td>
  * <td><code>{}</code></td>
  * </tr>
  * </tbody>
@@ -53,25 +62,6 @@ public class IronAutogrowTextarea extends PolymerWidget {
      */
     public IronAutogrowTextarea(String html) {
         super(IronAutogrowTextareaElement.TAG, IronAutogrowTextareaElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronFormElementRegisterEvent event) {
-                fireEvent(new IronFormElementRegisterEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent event) {
-                fireEvent(new IronFormElementUnregisterEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -180,22 +170,22 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
+     * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
      *
      * JavaScript Info:
      * @property bindValue
-     * @type (string|number|undefined|null)
+     * @type (string|number)
      * 
      */
     public Object getBindValue() {
         return getPolymerElement().getBindValue();
     }
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
+     * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
      *
      * JavaScript Info:
      * @property bindValue
-     * @type (string|number|undefined|null)
+     * @type (string|number)
      * 
      */
     public void setBindValue(Object value) {
@@ -208,7 +198,7 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * JavaScript Info:
      * @property required
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public boolean getRequired() {
         return getPolymerElement().getRequired();
@@ -219,7 +209,7 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * JavaScript Info:
      * @property required
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setRequired(boolean value) {
         getPolymerElement().setRequired(value);
@@ -277,7 +267,7 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * JavaScript Info:
      * @property invalid
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public boolean getInvalid() {
         return getPolymerElement().getInvalid();
@@ -288,148 +278,10 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * JavaScript Info:
      * @property invalid
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     public void setInvalid(boolean value) {
         getPolymerElement().setInvalid(value);
-    }
-
-    /**
-     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * 
-     */
-    public String getAutocomplete() {
-        return getPolymerElement().getAutocomplete();
-    }
-    /**
-     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * 
-     */
-    public void setAutocomplete(String value) {
-        getPolymerElement().setAutocomplete(value);
-    }
-
-    /**
-     * <p>The value for this input, same as <code>bindValue</code></p>
-     *
-     * JavaScript Info:
-     * @property value
-     * @type String
-     * 
-     */
-    public String getValue() {
-        return getPolymerElement().getValue();
-    }
-    /**
-     * <p>The value for this input, same as <code>bindValue</code></p>
-     *
-     * JavaScript Info:
-     * @property value
-     * @type String
-     * 
-     */
-    public void setValue(String value) {
-        getPolymerElement().setValue(value);
-    }
-
-    /**
-     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property inputmode
-     * @type String
-     * 
-     */
-    public String getInputmode() {
-        return getPolymerElement().getInputmode();
-    }
-    /**
-     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property inputmode
-     * @type String
-     * 
-     */
-    public void setInputmode(String value) {
-        getPolymerElement().setInputmode(value);
-    }
-
-    /**
-     * <p>The name of this element.</p>
-     *
-     * JavaScript Info:
-     * @property name
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    public String getName() {
-        return getPolymerElement().getName();
-    }
-    /**
-     * <p>The name of this element.</p>
-     *
-     * JavaScript Info:
-     * @property name
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    public void setName(String value) {
-        getPolymerElement().setName(value);
-    }
-
-    /**
-     * <p>Namespace for this validator.</p>
-     *
-     * JavaScript Info:
-     * @property validatorType
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    public String getValidatorType() {
-        return getPolymerElement().getValidatorType();
-    }
-    /**
-     * <p>Namespace for this validator.</p>
-     *
-     * JavaScript Info:
-     * @property validatorType
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    public void setValidatorType(String value) {
-        getPolymerElement().setValidatorType(value);
-    }
-
-    /**
-     * <p>Name of the validator to use.</p>
-     *
-     * JavaScript Info:
-     * @property validator
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    public String getValidator() {
-        return getPolymerElement().getValidator();
-    }
-    /**
-     * <p>Name of the validator to use.</p>
-     *
-     * JavaScript Info:
-     * @property validator
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    public void setValidator(String value) {
-        getPolymerElement().setValidator(value);
     }
 
     /**
@@ -456,6 +308,98 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
+     * <p>The name of this element.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    public String getName() {
+        return getPolymerElement().getName();
+    }
+    /**
+     * <p>The name of this element.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    public void setName(String value) {
+        getPolymerElement().setName(value);
+    }
+
+    /**
+     * <p>Namespace for this validator.</p>
+     *
+     * JavaScript Info:
+     * @property validatorType
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    public String getValidatorType() {
+        return getPolymerElement().getValidatorType();
+    }
+    /**
+     * <p>Namespace for this validator.</p>
+     *
+     * JavaScript Info:
+     * @property validatorType
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    public void setValidatorType(String value) {
+        getPolymerElement().setValidatorType(value);
+    }
+
+    /**
+     * <p>The value for this element.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    public String getValue() {
+        return getPolymerElement().getValue();
+    }
+    /**
+     * <p>The value for this element.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    public void setValue(String value) {
+        getPolymerElement().setValue(value);
+    }
+
+    /**
+     * <p>Name of the validator to use.</p>
+     *
+     * JavaScript Info:
+     * @property validator
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    public String getValidator() {
+        return getPolymerElement().getValidator();
+    }
+    /**
+     * <p>Name of the validator to use.</p>
+     *
+     * JavaScript Info:
+     * @property validator
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    public void setValidator(String value) {
+        getPolymerElement().setValidator(value);
+    }
+
+    /**
      * <p>Bound to the textarea’s <code>readonly</code> attribute.</p>
      *
      * JavaScript Info:
@@ -478,9 +422,55 @@ public class IronAutogrowTextarea extends PolymerWidget {
         getPolymerElement().setReadonly(value);
     }
 
+    /**
+     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property autocomplete
+     * @type String
+     * 
+     */
+    public String getAutocomplete() {
+        return getPolymerElement().getAutocomplete();
+    }
+    /**
+     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property autocomplete
+     * @type String
+     * 
+     */
+    public void setAutocomplete(String value) {
+        getPolymerElement().setAutocomplete(value);
+    }
 
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
+     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property inputmode
+     * @type String
+     * 
+     */
+    public String getInputmode() {
+        return getPolymerElement().getInputmode();
+    }
+    /**
+     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property inputmode
+     * @type String
+     * 
+     */
+    public void setInputmode(String value) {
+        getPolymerElement().setInputmode(value);
+    }
+
+
+    /**
+     * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
      *
      * JavaScript Info:
      * @attribute bind-value
@@ -529,7 +519,7 @@ public class IronAutogrowTextarea extends PolymerWidget {
      *
      * JavaScript Info:
      * @method hasValidator
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      * @return {boolean}
      */
     public boolean hasValidator() {
@@ -554,7 +544,7 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * JavaScript Info:
      * @method validate
      * @param {Object} value  
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      * @return {boolean}
      */
     public boolean validate(JavaScriptObject value) {
@@ -569,7 +559,7 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * @event iron-form-element-register
      */
     public HandlerRegistration addIronFormElementRegisterHandler(IronFormElementRegisterEventHandler handler) {
-        return addHandler(handler, IronFormElementRegisterEvent.TYPE);
+        return addDomHandler(handler, IronFormElementRegisterEvent.TYPE);
     }
 
     /**
@@ -579,7 +569,7 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * @event iron-form-element-unregister
      */
     public HandlerRegistration addIronFormElementUnregisterHandler(IronFormElementUnregisterEventHandler handler) {
-        return addHandler(handler, IronFormElementUnregisterEvent.TYPE);
+        return addDomHandler(handler, IronFormElementUnregisterEvent.TYPE);
     }
 
 }

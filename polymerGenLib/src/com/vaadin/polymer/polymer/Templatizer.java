@@ -5,16 +5,22 @@
  */
 package com.vaadin.polymer.polymer;
 
-import com.google.gwt.core.client.js.JsType;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface Templatizer {
 
-    public static final String TAG = "Polymer.Templatizer";
-    public static final String SRC = "polymer/polymer.html";
+    @JsOverlay public static final String NAME = "Polymer.Templatizer";
+    @JsOverlay public static final String SRC = "polymer/polymer.html";
 
 
 
@@ -24,7 +30,7 @@ public interface Templatizer {
      * JavaScript Info:
      * @method modelForElement
      * @param {} el  
-     * @behavior DomIf
+     * @behavior VaadinInfiniteScroller
      * 
      */
     void modelForElement(Object el);
@@ -35,7 +41,7 @@ public interface Templatizer {
      * JavaScript Info:
      * @method stamp
      * @param {} model  
-     * @behavior DomIf
+     * @behavior VaadinInfiniteScroller
      * 
      */
     void stamp(Object model);
@@ -46,7 +52,7 @@ public interface Templatizer {
      * JavaScript Info:
      * @method templatize
      * @param {} template  
-     * @behavior DomIf
+     * @behavior VaadinInfiniteScroller
      * 
      */
     void templatize(Object template);

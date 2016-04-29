@@ -5,18 +5,22 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface IronButtonState {
 
-    public static final String TAG = "Polymer.IronButtonState";
-    public static final String SRC = "iron-behaviors/iron-button-state.html";
+    @JsOverlay public static final String NAME = "Polymer.IronButtonState";
+    @JsOverlay public static final String SRC = "iron-behaviors/iron-button-state.html";
 
 
     /**

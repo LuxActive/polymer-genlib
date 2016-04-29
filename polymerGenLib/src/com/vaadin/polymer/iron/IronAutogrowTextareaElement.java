@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>iron-autogrow-textarea</code> is an element containing a textarea that grows in height as more<br>lines of input are entered. Unless an explicit height or the <code>maxRows</code> property is set, it will<br>never scroll.</p>
@@ -16,8 +18,7 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <pre><code>&lt;iron-autogrow-textarea&gt;&lt;/iron-autogrow-textarea&gt;
  * 
  * 
- * </code></pre><p>Because the <code>textarea</code>‘s <code>value</code> property is not observable, you should use<br>this element’s <code>bind-value</code> instead for imperative updates.</p>
- * <h3 id="styling">Styling</h3>
+ * </code></pre><h3 id="styling">Styling</h3>
  * <p>The following custom properties and mixins are available for styling:</p>
  * <table>
  * <thead>
@@ -33,14 +34,19 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <td>Mixin applied to the textarea</td>
  * <td><code>{}</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--iron-autogrow-textarea-placeholder</code></td>
+ * <td>Mixin applied to the textarea placeholder</td>
+ * <td><code>{}</code></td>
+ * </tr>
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronAutogrowTextareaElement extends HTMLElement {
 
-    public static final String TAG = "iron-autogrow-textarea";
-    public static final String SRC = "iron-autogrow-textarea/iron-autogrow-textarea.html";
+    @JsOverlay public static final String TAG = "iron-autogrow-textarea";
+    @JsOverlay public static final String SRC = "iron-autogrow-textarea/iron-autogrow-textarea.html";
 
 
     /**
@@ -120,20 +126,20 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setMaxRows(double value);
 
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
+     * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
      *
      * JavaScript Info:
      * @property bindValue
-     * @type (string|number|undefined|null)
+     * @type (string|number)
      * 
      */
     @JsProperty Object getBindValue();
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
+     * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
      *
      * JavaScript Info:
      * @property bindValue
-     * @type (string|number|undefined|null)
+     * @type (string|number)
      * 
      */
     @JsProperty void setBindValue(Object value);
@@ -144,7 +150,7 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * JavaScript Info:
      * @property required
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty boolean getRequired();
     /**
@@ -153,7 +159,7 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * JavaScript Info:
      * @property required
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty void setRequired(boolean value);
 
@@ -201,7 +207,7 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * JavaScript Info:
      * @property invalid
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty boolean getInvalid();
     /**
@@ -210,123 +216,9 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * JavaScript Info:
      * @property invalid
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      */
     @JsProperty void setInvalid(boolean value);
-
-    /**
-     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * 
-     */
-    @JsProperty String getAutocomplete();
-    /**
-     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * 
-     */
-    @JsProperty void setAutocomplete(String value);
-
-    /**
-     * <p>The value for this input, same as <code>bindValue</code></p>
-     *
-     * JavaScript Info:
-     * @property value
-     * @type String
-     * 
-     */
-    @JsProperty String getValue();
-    /**
-     * <p>The value for this input, same as <code>bindValue</code></p>
-     *
-     * JavaScript Info:
-     * @property value
-     * @type String
-     * 
-     */
-    @JsProperty void setValue(String value);
-
-    /**
-     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property inputmode
-     * @type String
-     * 
-     */
-    @JsProperty String getInputmode();
-    /**
-     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property inputmode
-     * @type String
-     * 
-     */
-    @JsProperty void setInputmode(String value);
-
-    /**
-     * <p>The name of this element.</p>
-     *
-     * JavaScript Info:
-     * @property name
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    @JsProperty String getName();
-    /**
-     * <p>The name of this element.</p>
-     *
-     * JavaScript Info:
-     * @property name
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setName(String value);
-
-    /**
-     * <p>Namespace for this validator.</p>
-     *
-     * JavaScript Info:
-     * @property validatorType
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    @JsProperty String getValidatorType();
-    /**
-     * <p>Namespace for this validator.</p>
-     *
-     * JavaScript Info:
-     * @property validatorType
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setValidatorType(String value);
-
-    /**
-     * <p>Name of the validator to use.</p>
-     *
-     * JavaScript Info:
-     * @property validator
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    @JsProperty String getValidator();
-    /**
-     * <p>Name of the validator to use.</p>
-     *
-     * JavaScript Info:
-     * @property validator
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setValidator(String value);
 
     /**
      * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
@@ -348,6 +240,82 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setPlaceholder(String value);
 
     /**
+     * <p>The name of this element.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty String getName();
+    /**
+     * <p>The name of this element.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty void setName(String value);
+
+    /**
+     * <p>Namespace for this validator.</p>
+     *
+     * JavaScript Info:
+     * @property validatorType
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty String getValidatorType();
+    /**
+     * <p>Namespace for this validator.</p>
+     *
+     * JavaScript Info:
+     * @property validatorType
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty void setValidatorType(String value);
+
+    /**
+     * <p>The value for this element.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty String getValue();
+    /**
+     * <p>The value for this element.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty void setValue(String value);
+
+    /**
+     * <p>Name of the validator to use.</p>
+     *
+     * JavaScript Info:
+     * @property validator
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty String getValidator();
+    /**
+     * <p>Name of the validator to use.</p>
+     *
+     * JavaScript Info:
+     * @property validator
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty void setValidator(String value);
+
+    /**
      * <p>Bound to the textarea’s <code>readonly</code> attribute.</p>
      *
      * JavaScript Info:
@@ -366,13 +334,51 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      */
     @JsProperty void setReadonly(String value);
 
+    /**
+     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property autocomplete
+     * @type String
+     * 
+     */
+    @JsProperty String getAutocomplete();
+    /**
+     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property autocomplete
+     * @type String
+     * 
+     */
+    @JsProperty void setAutocomplete(String value);
+
+    /**
+     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property inputmode
+     * @type String
+     * 
+     */
+    @JsProperty String getInputmode();
+    /**
+     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property inputmode
+     * @type String
+     * 
+     */
+    @JsProperty void setInputmode(String value);
+
 
     /**
      * 
      *
      * JavaScript Info:
      * @method hasValidator
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      * @return {boolean}
      */
     boolean hasValidator();
@@ -393,7 +399,7 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * JavaScript Info:
      * @method validate
      * @param {Object} value  
-     * @behavior PaperToggleButton
+     * @behavior VaadinDatePicker
      * @return {boolean}
      */
     boolean validate(JavaScriptObject value);

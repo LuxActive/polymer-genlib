@@ -5,18 +5,25 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.widget.event.IronOverlayCanceledEvent;
-import com.vaadin.polymer.iron.widget.event.IronOverlayCanceledEventHandler;
-import com.vaadin.polymer.iron.widget.event.IronOverlayClosedEvent;
-import com.vaadin.polymer.iron.widget.event.IronOverlayClosedEventHandler;
-import com.vaadin.polymer.iron.widget.event.IronOverlayOpenedEvent;
-import com.vaadin.polymer.iron.widget.event.IronOverlayOpenedEventHandler;
-import com.vaadin.polymer.paper.PaperToastElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.IronAnnounceEvent;
 import com.vaadin.polymer.paper.widget.event.IronAnnounceEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronOverlayCanceledEvent;
+import com.vaadin.polymer.iron.widget.event.IronOverlayCanceledEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronOverlayClosedEvent;
+import com.vaadin.polymer.iron.widget.event.IronOverlayClosedEventHandler;
+
+import com.vaadin.polymer.iron.widget.event.IronOverlayOpenedEvent;
+import com.vaadin.polymer.iron.widget.event.IronOverlayOpenedEventHandler;
+
+import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/snackbars-toasts.html">Snackbards &amp; toasts</a></p>
@@ -77,43 +84,6 @@ public class PaperToast extends PolymerWidget {
      */
     public PaperToast(String html) {
         super(PaperToastElement.TAG, PaperToastElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.IronAnnounceEvent.NAME,
-                new com.vaadin.polymer.paper.event.IronAnnounceEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.IronAnnounceEvent event) {
-                fireEvent(new IronAnnounceEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronOverlayCanceledEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronOverlayCanceledEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronOverlayCanceledEvent event) {
-                fireEvent(new IronOverlayCanceledEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronOverlayClosedEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronOverlayClosedEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronOverlayClosedEvent event) {
-                fireEvent(new IronOverlayClosedEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronOverlayOpenedEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronOverlayOpenedEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronOverlayOpenedEvent event) {
-                fireEvent(new IronOverlayOpenedEvent(event));
-            }
-        });
-
     }
 
     /**
@@ -150,6 +120,52 @@ public class PaperToast extends PolymerWidget {
      */
     public void setDuration(double value) {
         getPolymerElement().setDuration(value);
+    }
+
+    /**
+     * <p>Set to true to keep overlay always on top.</p>
+     *
+     * JavaScript Info:
+     * @property alwaysOnTop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public boolean getAlwaysOnTop() {
+        return getPolymerElement().getAlwaysOnTop();
+    }
+    /**
+     * <p>Set to true to keep overlay always on top.</p>
+     *
+     * JavaScript Info:
+     * @property alwaysOnTop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public void setAlwaysOnTop(boolean value) {
+        getPolymerElement().setAlwaysOnTop(value);
+    }
+
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @property backdropElement
+     * @type Element
+     * @behavior PaperToast
+     */
+    public Element getBackdropElement() {
+        return getPolymerElement().getBackdropElement();
+    }
+    /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @property backdropElement
+     * @type Element
+     * @behavior PaperToast
+     */
+    public void setBackdropElement(Element value) {
+        getPolymerElement().setBackdropElement(value);
     }
 
     /**
@@ -268,29 +284,6 @@ public class PaperToast extends PolymerWidget {
     }
 
     /**
-     * <p>Set to true to display a backdrop behind the overlay.</p>
-     *
-     * JavaScript Info:
-     * @property withBackdrop
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public boolean getWithBackdrop() {
-        return getPolymerElement().getWithBackdrop();
-    }
-    /**
-     * <p>Set to true to display a backdrop behind the overlay.</p>
-     *
-     * JavaScript Info:
-     * @property withBackdrop
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public void setWithBackdrop(boolean value) {
-        getPolymerElement().setWithBackdrop(value);
-    }
-
-    /**
      * <p>Set to true to auto-fit on attach.</p>
      *
      * JavaScript Info:
@@ -314,26 +307,26 @@ public class PaperToast extends PolymerWidget {
     }
 
     /**
-     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
      *
      * JavaScript Info:
-     * @property sizingTarget
-     * @type !Element
+     * @property restoreFocusOnClose
+     * @type Boolean
      * @behavior PaperToast
      */
-    public JavaScriptObject getSizingTarget() {
-        return getPolymerElement().getSizingTarget();
+    public boolean getRestoreFocusOnClose() {
+        return getPolymerElement().getRestoreFocusOnClose();
     }
     /**
-     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
      *
      * JavaScript Info:
-     * @property sizingTarget
-     * @type !Element
+     * @property restoreFocusOnClose
+     * @type Boolean
      * @behavior PaperToast
      */
-    public void setSizingTarget(JavaScriptObject value) {
-        getPolymerElement().setSizingTarget(value);
+    public void setRestoreFocusOnClose(boolean value) {
+        getPolymerElement().setRestoreFocusOnClose(value);
     }
 
     /**
@@ -383,6 +376,52 @@ public class PaperToast extends PolymerWidget {
     }
 
     /**
+     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
+     *
+     * JavaScript Info:
+     * @property sizingTarget
+     * @type !Element
+     * @behavior PaperToast
+     */
+    public JavaScriptObject getSizingTarget() {
+        return getPolymerElement().getSizingTarget();
+    }
+    /**
+     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
+     *
+     * JavaScript Info:
+     * @property sizingTarget
+     * @type !Element
+     * @behavior PaperToast
+     */
+    public void setSizingTarget(JavaScriptObject value) {
+        getPolymerElement().setSizingTarget(value);
+    }
+
+    /**
+     * <p>Set to true to display a backdrop behind the overlay.</p>
+     *
+     * JavaScript Info:
+     * @property withBackdrop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public boolean getWithBackdrop() {
+        return getPolymerElement().getWithBackdrop();
+    }
+    /**
+     * <p>Set to true to display a backdrop behind the overlay.</p>
+     *
+     * JavaScript Info:
+     * @property withBackdrop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public void setWithBackdrop(boolean value) {
+        getPolymerElement().setWithBackdrop(value);
+    }
+
+    /**
      * <p>The text to display in the toast.</p>
      *
      * JavaScript Info:
@@ -418,6 +457,28 @@ public class PaperToast extends PolymerWidget {
     }
 
     /**
+     * <p>The backdrop element.</p>
+     *
+     * JavaScript Info:
+     * @attribute backdrop-element
+     * @behavior PaperToast
+     */
+    public void setBackdropElement(String value) {
+        getPolymerElement().setAttribute("backdrop-element", value);
+    }
+
+    /**
+     * <p>The element to fit <code>this</code> into.</p>
+     *
+     * JavaScript Info:
+     * @attribute fit-into
+     * @behavior PaperToast
+     */
+    public void setFitInto(String value) {
+        getPolymerElement().setAttribute("fit-into", value);
+    }
+
+    /**
      * <p>Returns the reason this dialog was last closed.</p>
      *
      * JavaScript Info:
@@ -439,17 +500,6 @@ public class PaperToast extends PolymerWidget {
         getPolymerElement().setAttribute("sizing-target", value);
     }
 
-    /**
-     * <p>The element to fit <code>this</code> into.</p>
-     *
-     * JavaScript Info:
-     * @attribute fit-into
-     * @behavior PaperToast
-     */
-    public void setFitInto(String value) {
-        getPolymerElement().setAttribute("fit-into", value);
-    }
-
 
     /**
      * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
@@ -457,7 +507,7 @@ public class PaperToast extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -470,35 +520,11 @@ public class PaperToast extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
         getPolymerElement().stopResizeNotificationsFor(target);
-    }
-
-    /**
-     * <p>Close the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method close
-     * @behavior PaperToast
-     * 
-     */
-    public void close() {
-        getPolymerElement().close();
-    }
-
-    /**
-     * <p>Cancels the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method cancel
-     * @behavior PaperToast
-     * 
-     */
-    public void cancel() {
-        getPolymerElement().cancel();
     }
 
     /**
@@ -511,6 +537,18 @@ public class PaperToast extends PolymerWidget {
      */
     public void hide() {
         getPolymerElement().hide();
+    }
+
+    /**
+     * <p>Close the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method close
+     * @behavior PaperToast
+     * 
+     */
+    public void close() {
+        getPolymerElement().close();
     }
 
     /**
@@ -578,23 +616,11 @@ public class PaperToast extends PolymerWidget {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * 
      */
     public void notifyResize() {
         getPolymerElement().notifyResize();
-    }
-
-    /**
-     * <p>Toggle the opened state of the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method toggle
-     * @behavior PaperToast
-     * 
-     */
-    public void toggle() {
-        getPolymerElement().toggle();
     }
 
     /**
@@ -622,16 +648,41 @@ public class PaperToast extends PolymerWidget {
     }
 
     /**
+     * <p>Toggle the opened state of the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method toggle
+     * @behavior PaperToast
+     * 
+     */
+    public void toggle() {
+        getPolymerElement().toggle();
+    }
+
+    /**
      * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
      *
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior VaadinComboBoxOverlay
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {
         return getPolymerElement().resizerShouldNotify(element);
+    }
+
+    /**
+     * <p>Cancels the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method cancel
+     * @param {Event=} event  
+     * @behavior PaperToast
+     * 
+     */
+    public void cancel(JavaScriptObject event) {
+        getPolymerElement().cancel(event);
     }
 
 
@@ -642,7 +693,7 @@ public class PaperToast extends PolymerWidget {
      * @event 'iron-announce'
      */
     public HandlerRegistration addIronAnnounceHandler(IronAnnounceEventHandler handler) {
-        return addHandler(handler, IronAnnounceEvent.TYPE);
+        return addDomHandler(handler, IronAnnounceEvent.TYPE);
     }
 
     /**
@@ -652,7 +703,7 @@ public class PaperToast extends PolymerWidget {
      * @event iron-overlay-canceled
      */
     public HandlerRegistration addIronOverlayCanceledHandler(IronOverlayCanceledEventHandler handler) {
-        return addHandler(handler, IronOverlayCanceledEvent.TYPE);
+        return addDomHandler(handler, IronOverlayCanceledEvent.TYPE);
     }
 
     /**
@@ -662,7 +713,7 @@ public class PaperToast extends PolymerWidget {
      * @event iron-overlay-closed
      */
     public HandlerRegistration addIronOverlayClosedHandler(IronOverlayClosedEventHandler handler) {
-        return addHandler(handler, IronOverlayClosedEvent.TYPE);
+        return addDomHandler(handler, IronOverlayClosedEvent.TYPE);
     }
 
     /**
@@ -672,7 +723,7 @@ public class PaperToast extends PolymerWidget {
      * @event iron-overlay-opened
      */
     public HandlerRegistration addIronOverlayOpenedHandler(IronOverlayOpenedEventHandler handler) {
-        return addHandler(handler, IronOverlayOpenedEvent.TYPE);
+        return addDomHandler(handler, IronOverlayOpenedEvent.TYPE);
     }
 
 }

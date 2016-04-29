@@ -5,19 +5,19 @@
  */
 package com.vaadin.polymer.paper.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the dropdown closes.</p>
  */
-public class PaperDropdownCloseEvent extends GwtEvent<PaperDropdownCloseEventHandler> {
+public class PaperDropdownCloseEvent extends DomEvent<PaperDropdownCloseEventHandler> {
 
-    public static Type<PaperDropdownCloseEventHandler> TYPE = new Type<PaperDropdownCloseEventHandler>();
+    public static Type<PaperDropdownCloseEventHandler> TYPE = new Type<PaperDropdownCloseEventHandler>(
+       com.vaadin.polymer.paper.event.PaperDropdownCloseEvent.NAME, new PaperDropdownCloseEvent());
 
-    private com.vaadin.polymer.paper.event.PaperDropdownCloseEvent nativeEvent;
 
-    public PaperDropdownCloseEvent(com.vaadin.polymer.paper.event.PaperDropdownCloseEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public PaperDropdownCloseEvent() {
     }
 
     public Type<PaperDropdownCloseEventHandler> getAssociatedType() {
@@ -28,8 +28,9 @@ public class PaperDropdownCloseEvent extends GwtEvent<PaperDropdownCloseEventHan
         handler.onPaperDropdownClose(this);
     }
 
-    public com.vaadin.polymer.paper.event.PaperDropdownCloseEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.paper.event.PaperDropdownCloseEvent getPolymerEvent() {
+        return (com.vaadin.polymer.paper.event.PaperDropdownCloseEvent)super.getNativeEvent();
     }
+
 
 }

@@ -5,25 +5,25 @@
  */
 package com.vaadin.polymer.iron.event;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Event;
-import com.vaadin.polymer.elemental.EventListener;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
- * 
+ * <p>Fired when iron-selector is activated (selected or deselected).<br>It is fired before the selected items are changed.<br>Cancel the event to abort selection.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronActivateEvent extends Event {
 
-    static final String NAME = "iron-activate";
+    @JsOverlay static final String NAME = "iron-activate";
 
     @Override
     @JsProperty
     Detail getDetail();
 
-    @JsType
+    @JsType(isNative=true)
     interface Detail extends Event.Detail {
 
         /**
@@ -38,13 +38,4 @@ public interface IronActivateEvent extends Event {
 
     }
 
-
-    public abstract class Listener implements EventListener {
-        protected abstract void handleEvent(IronActivateEvent event);
-
-        @Override
-        public void handleEvent(Event event) {
-            handleEvent((IronActivateEvent) event);
-        }
-    }
 }
