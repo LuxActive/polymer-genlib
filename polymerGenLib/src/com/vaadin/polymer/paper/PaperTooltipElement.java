@@ -112,6 +112,25 @@ public interface PaperTooltipElement extends HTMLElement {
     @JsProperty void setFitToVisibleBounds(boolean value);
 
     /**
+     * <p>Set this to true if you want to manually control when the tooltip<br>is shown or hidden.</p>
+     *
+     * JavaScript Info:
+     * @property manualMode
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getManualMode();
+    /**
+     * <p>Set this to true if you want to manually control when the tooltip<br>is shown or hidden.</p>
+     *
+     * JavaScript Info:
+     * @property manualMode
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setManualMode(boolean value);
+
+    /**
      * <p>This property is deprecated, but left over so that it doesn’t<br>break exiting code. Please use <code>offset</code> instead. If both <code>offset</code> and<br><code>marginTop</code> are provided, <code>marginTop</code> will be ignored.</p>
      *
      * JavaScript Info:
@@ -249,21 +268,21 @@ public interface PaperTooltipElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method updatePosition
-     * 
-     * 
-     */
-    void updatePosition();
-
-    /**
-     * 
-     *
-     * JavaScript Info:
      * @method hide
      * 
      * 
      */
     void hide();
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method updatePosition
+     * 
+     * 
+     */
+    void updatePosition();
 
     /**
      * 

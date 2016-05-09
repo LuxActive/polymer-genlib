@@ -81,6 +81,25 @@ public interface IronMultiSelectableBehavior {
     @JsProperty void setSelectedValues(JsArray value);
 
     /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * 
+     */
+    @JsProperty JavaScriptObject getSelectedItem();
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * 
+     */
+    @JsProperty void setSelectedItem(JavaScriptObject value);
+
+    /**
      * <p>Returns an array of currently selected items.</p>
      *
      * JavaScript Info:
@@ -117,25 +136,6 @@ public interface IronMultiSelectableBehavior {
      * 
      */
     @JsProperty void setSelected(Object value);
-
-    /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * 
-     */
-    @JsProperty JavaScriptObject getSelectedItem();
-    /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * 
-     */
-    @JsProperty void setSelectedItem(JavaScriptObject value);
 
     /**
      * <p>The class to set on elements when selected.</p>
@@ -176,25 +176,6 @@ public interface IronMultiSelectableBehavior {
     @JsProperty void setSelectedAttribute(String value);
 
     /**
-     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
-     *
-     * JavaScript Info:
-     * @property selectable
-     * @type string
-     * 
-     */
-    @JsProperty String getSelectable();
-    /**
-     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
-     *
-     * JavaScript Info:
-     * @property selectable
-     * @type string
-     * 
-     */
-    @JsProperty void setSelectable(String value);
-
-    /**
      * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
@@ -212,6 +193,25 @@ public interface IronMultiSelectableBehavior {
      * 
      */
     @JsProperty void setAttrForSelected(String value);
+
+    /**
+     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     *
+     * JavaScript Info:
+     * @property selectable
+     * @type string
+     * 
+     */
+    @JsProperty String getSelectable();
+    /**
+     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     *
+     * JavaScript Info:
+     * @property selectable
+     * @type string
+     * 
+     */
+    @JsProperty void setSelectable(String value);
 
     /**
      * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
@@ -253,6 +253,17 @@ public interface IronMultiSelectableBehavior {
 
 
     /**
+     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
+     *
+     * JavaScript Info:
+     * @method select
+     * @param {(string|number)} value  
+     * 
+     * 
+     */
+    void select(Object value);
+
+    /**
      * 
      *
      * JavaScript Info:
@@ -264,15 +275,15 @@ public interface IronMultiSelectableBehavior {
     void multiChanged(Object multi);
 
     /**
-     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
+     * <p>Selects the item at the given index.</p>
      *
      * JavaScript Info:
-     * @method select
-     * @param {(string|number)} value  
+     * @method selectIndex
+     * @param {} index  
      * 
      * 
      */
-    void select(Object value);
+    void selectIndex(Object index);
 
     /**
      * <p>Force a synchronous update of the <code>items</code> property.</p>

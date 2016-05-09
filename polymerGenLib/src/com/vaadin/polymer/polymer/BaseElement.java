@@ -307,15 +307,12 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method translate3d
-     * @param {} x  
-     * @param {} y  
-     * @param {} z  
-     * @param {} node  
+     * @method distributeContent
+     * @param {} updateInsertionPoints  
      * 
      * 
      */
-    void translate3d(Object x, Object y, Object z, Object node);
+    void distributeContent(Object updateInsertionPoints);
 
     /**
      * 
@@ -334,12 +331,15 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method distributeContent
-     * @param {} updateInsertionPoints  
+     * @method translate3d
+     * @param {} x  
+     * @param {} y  
+     * @param {} z  
+     * @param {} node  
      * 
      * 
      */
-    void distributeContent(Object updateInsertionPoints);
+    void translate3d(Object x, Object y, Object z, Object node);
 
     /**
      * 

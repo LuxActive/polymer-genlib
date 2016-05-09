@@ -12,7 +12,7 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
- * <p>Fired after the <code>iron-overlay</code> opens.</p>
+ * <p>Fired after the overlay opens.</p>
  */
 @JsType(isNative=true)
 public interface IronOverlayOpenedEvent extends Event {

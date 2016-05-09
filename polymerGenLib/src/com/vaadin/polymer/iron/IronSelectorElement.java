@@ -31,7 +31,7 @@ import jsinterop.annotations.JsType;
  *   &lt;/iron-selector&gt;
  * 
  * 
- * </code></pre><p>  If no matching element is found using <code>attForSelected</code>, use <code>fallbackSelection</code> as fallback.</p>
+ * </code></pre><p>  You can specify a default fallback with <code>fallbackSelection</code> in case the <code>selected</code> attribute does<br>  not match the <code>attrForSelected</code> attribute of any elements.</p>
  * <p>  Example:</p>
  * <pre><code>    &lt;iron-selector attr-for-selected=&quot;name&quot; selected=&quot;non-existing&quot;
  *                    fallback-selection=&quot;default&quot;&gt;
@@ -88,25 +88,6 @@ public interface IronSelectorElement extends HTMLElement {
     @JsProperty void setMulti(boolean value);
 
     /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty JavaScriptObject getSelectedItem();
-    /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelectedItem(JavaScriptObject value);
-
-    /**
      * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
@@ -126,12 +107,31 @@ public interface IronSelectorElement extends HTMLElement {
     @JsProperty void setSelected(Object value);
 
     /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * 
+     */
+    @JsProperty JavaScriptObject getSelectedItem();
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * 
+     */
+    @JsProperty void setSelectedItem(JavaScriptObject value);
+
+    /**
      * <p>The list of items from which a selection can be made.</p>
      *
      * JavaScript Info:
      * @property items
      * @type Array
-     * @behavior PaperTabs
+     * 
      */
     @JsProperty JsArray getItems();
     /**
@@ -140,28 +140,9 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property items
      * @type Array
-     * @behavior PaperTabs
+     * 
      */
     @JsProperty void setItems(JsArray value);
-
-    /**
-     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
-     *
-     * JavaScript Info:
-     * @property selectedValues
-     * @type Array
-     * @behavior PaperTabs
-     */
-    @JsProperty JsArray getSelectedValues();
-    /**
-     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
-     *
-     * JavaScript Info:
-     * @property selectedValues
-     * @type Array
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelectedValues(JsArray value);
 
     /**
      * <p>Returns an array of currently selected items.</p>
@@ -183,42 +164,23 @@ public interface IronSelectorElement extends HTMLElement {
     @JsProperty void setSelectedItems(JsArray value);
 
     /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
      *
      * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
+     * @property selectedValues
+     * @type Array
+     * 
      */
-    @JsProperty String getActivateEvent();
+    @JsProperty JsArray getSelectedValues();
     /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
      *
      * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
+     * @property selectedValues
+     * @type Array
+     * 
      */
-    @JsProperty void setActivateEvent(String value);
-
-    /**
-     * <p>The class to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedClass
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getSelectedClass();
-    /**
-     * <p>The class to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedClass
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelectedClass(String value);
+    @JsProperty void setSelectedValues(JsArray value);
 
     /**
      * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
@@ -240,6 +202,25 @@ public interface IronSelectorElement extends HTMLElement {
     @JsProperty void setAttrForSelected(String value);
 
     /**
+     * <p>The class to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedClass
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getSelectedClass();
+    /**
+     * <p>The class to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedClass
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedClass(String value);
+
+    /**
      * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
      *
      * JavaScript Info:
@@ -257,6 +238,25 @@ public interface IronSelectorElement extends HTMLElement {
      * @behavior PaperTabs
      */
     @JsProperty void setFallbackSelection(String value);
+
+    /**
+     * <p>The attribute to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedAttribute
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getSelectedAttribute();
+    /**
+     * <p>The attribute to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedAttribute
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedAttribute(String value);
 
     /**
      * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
@@ -278,23 +278,23 @@ public interface IronSelectorElement extends HTMLElement {
     @JsProperty void setSelectable(String value);
 
     /**
-     * <p>The attribute to set on elements when selected.</p>
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
      *
      * JavaScript Info:
-     * @property selectedAttribute
+     * @property activateEvent
      * @type String
      * @behavior PaperTabs
      */
-    @JsProperty String getSelectedAttribute();
+    @JsProperty String getActivateEvent();
     /**
-     * <p>The attribute to set on elements when selected.</p>
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
      *
      * JavaScript Info:
-     * @property selectedAttribute
+     * @property activateEvent
      * @type String
      * @behavior PaperTabs
      */
-    @JsProperty void setSelectedAttribute(String value);
+    @JsProperty void setActivateEvent(String value);
 
 
     /**
@@ -309,36 +309,46 @@ public interface IronSelectorElement extends HTMLElement {
     void select(Object value);
 
     /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * 
+     * 
+     */
+    void selectIndex(Object index);
+
+    /**
      * 
      *
      * JavaScript Info:
      * @method multiChanged
      * @param {} multi  
-     * @behavior PaperTabs
+     * 
      * 
      */
     void multiChanged(Object multi);
-
-    /**
-     * <p>Returns the index of the given item.</p>
-     *
-     * JavaScript Info:
-     * @method indexOf
-     * @param {Object} item  
-     * 
-     * 
-     */
-    void indexOf(JavaScriptObject item);
 
     /**
      * <p>Selects the next item.</p>
      *
      * JavaScript Info:
      * @method selectNext
-     * @behavior PaperTabs
+     * 
      * 
      */
     void selectNext();
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * 
+     * 
+     */
+    void selectPrevious();
 
     /**
      * <p>Force a synchronous update of the <code>items</code> property.</p>
@@ -353,13 +363,14 @@ public interface IronSelectorElement extends HTMLElement {
     void forceSynchronousItemUpdate();
 
     /**
-     * <p>Selects the previous item.</p>
+     * <p>Returns the index of the given item.</p>
      *
      * JavaScript Info:
-     * @method selectPrevious
+     * @method indexOf
+     * @param {Object} item  
      * 
      * 
      */
-    void selectPrevious();
+    void indexOf(JavaScriptObject item);
 
 }

@@ -436,6 +436,18 @@ public interface IronListElement extends HTMLElement {
 
 
     /**
+     * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
+     *
+     * JavaScript Info:
+     * @method addOwnKeyBinding
+     * @param {} eventString  
+     * @param {} handlerName  
+     * @behavior VaadinComboBox
+     * 
+     */
+    void addOwnKeyBinding(Object eventString, Object handlerName);
+
+    /**
      * <p>Select the list item at the given index.</p>
      *
      * JavaScript Info:
@@ -469,17 +481,6 @@ public interface IronListElement extends HTMLElement {
     void updateSizeForItem(Object item);
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @method modelForElement
-     * @param {} el  
-     * @behavior VaadinInfiniteScroller
-     * 
-     */
-    void modelForElement(Object el);
-
-    /**
      * <p>Deselects the given item list if it is already selected.</p>
      *
      * JavaScript Info:
@@ -489,6 +490,17 @@ public interface IronListElement extends HTMLElement {
      * 
      */
     void deselectItem(Object item);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method stamp
+     * @param {} model  
+     * @behavior VaadinInfiniteScroller
+     * 
+     */
+    void stamp(Object model);
 
     /**
      * 
@@ -524,27 +536,15 @@ public interface IronListElement extends HTMLElement {
     void stopResizeNotificationsFor(Object target);
 
     /**
-     * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
-     *
-     * JavaScript Info:
-     * @method addOwnKeyBinding
-     * @param {} eventString  
-     * @param {} handlerName  
-     * @behavior VaadinComboBox
-     * 
-     */
-    void addOwnKeyBinding(Object eventString, Object handlerName);
-
-    /**
      * 
      *
      * JavaScript Info:
-     * @method stamp
-     * @param {} model  
+     * @method modelForElement
+     * @param {} el  
      * @behavior VaadinInfiniteScroller
      * 
      */
-    void stamp(Object model);
+    void modelForElement(Object el);
 
     /**
      * <p>Clears the current selection state of the list.</p>

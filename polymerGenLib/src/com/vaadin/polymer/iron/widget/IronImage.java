@@ -19,7 +19,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <p>The <code>preload</code> option prevents the browser from rendering the image until the<br>image is fully loaded.  In the interim, either the element’s CSS <code>background-color</code><br>can be be used as the placeholder, or the <code>placeholder</code> property can be<br>set to a URL (preferably a data-URI, for instant rendering) for an<br>placeholder image.</p>
  * <p>The <code>fade</code> option (only valid when <code>preload</code> is set) will cause the placeholder<br>image/color to be faded out once the image is rendered.</p>
  * <p>Examples:</p>
- * <p>  Basically identical to &lt;img src=”…”&gt; tag:</p>
+ * <p>  Basically identical to <code>&lt;img src=&quot;...&quot;&gt;</code> tag:</p>
  * <pre><code>&lt;iron-image src=&quot;http://lorempixel.com/400/400&quot;&gt;&lt;/iron-image&gt;
  * 
  * 
@@ -104,26 +104,72 @@ public class IronImage extends PolymerWidget {
 
 
     /**
-     * 
+     * <p>Can be used to set the width of image (e.g. via binding); size may also be<br>set via CSS.</p>
      *
      * JavaScript Info:
-     * @property canLoad
-     * @type Boolean
+     * @property width
+     * @type Number
      * 
      */
-    public boolean getCanLoad() {
-        return getPolymerElement().getCanLoad();
+    public double getWidth() {
+        return getPolymerElement().getWidth();
     }
     /**
-     * 
+     * <p>Can be used to set the width of image (e.g. via binding); size may also be<br>set via CSS.</p>
      *
      * JavaScript Info:
-     * @property canLoad
+     * @property width
+     * @type Number
+     * 
+     */
+    public void setWidth(double value) {
+        getPolymerElement().setWidth(value);
+    }
+
+    /**
+     * <p>When <code>preload</code> is true, setting <code>fade</code> to true will cause the image to<br>fade into place.</p>
+     *
+     * JavaScript Info:
+     * @property fade
      * @type Boolean
      * 
      */
-    public void setCanLoad(boolean value) {
-        getPolymerElement().setCanLoad(value);
+    public boolean getFade() {
+        return getPolymerElement().getFade();
+    }
+    /**
+     * <p>When <code>preload</code> is true, setting <code>fade</code> to true will cause the image to<br>fade into place.</p>
+     *
+     * JavaScript Info:
+     * @property fade
+     * @type Boolean
+     * 
+     */
+    public void setFade(boolean value) {
+        getPolymerElement().setFade(value);
+    }
+
+    /**
+     * <p>Can be used to set the height of image (e.g. via binding); size may also be<br>set via CSS.</p>
+     *
+     * JavaScript Info:
+     * @property height
+     * @type Number
+     * 
+     */
+    public double getHeight() {
+        return getPolymerElement().getHeight();
+    }
+    /**
+     * <p>Can be used to set the height of image (e.g. via binding); size may also be<br>set via CSS.</p>
+     *
+     * JavaScript Info:
+     * @property height
+     * @type Number
+     * 
+     */
+    public void setHeight(double value) {
+        getPolymerElement().setHeight(value);
     }
 
     /**
@@ -173,49 +219,26 @@ public class IronImage extends PolymerWidget {
     }
 
     /**
-     * 
+     * <p>Read-only value that indicates that the last set <code>src</code> failed to load.</p>
      *
      * JavaScript Info:
-     * @property requiresPreload
+     * @property error
      * @type Boolean
      * 
      */
-    public boolean getRequiresPreload() {
-        return getPolymerElement().getRequiresPreload();
+    public boolean getError() {
+        return getPolymerElement().getError();
     }
     /**
-     * 
+     * <p>Read-only value that indicates that the last set <code>src</code> failed to load.</p>
      *
      * JavaScript Info:
-     * @property requiresPreload
+     * @property error
      * @type Boolean
      * 
      */
-    public void setRequiresPreload(boolean value) {
-        getPolymerElement().setRequiresPreload(value);
-    }
-
-    /**
-     * <p>When <code>preload</code> is true, setting <code>fade</code> to true will cause the image to<br>fade into place.</p>
-     *
-     * JavaScript Info:
-     * @property fade
-     * @type Boolean
-     * 
-     */
-    public boolean getFade() {
-        return getPolymerElement().getFade();
-    }
-    /**
-     * <p>When <code>preload</code> is true, setting <code>fade</code> to true will cause the image to<br>fade into place.</p>
-     *
-     * JavaScript Info:
-     * @property fade
-     * @type Boolean
-     * 
-     */
-    public void setFade(boolean value) {
-        getPolymerElement().setFade(value);
+    public void setError(boolean value) {
+        getPolymerElement().setError(value);
     }
 
     /**
@@ -265,72 +288,49 @@ public class IronImage extends PolymerWidget {
     }
 
     /**
-     * <p>Can be used to set the width of image (e.g. via binding); size may also be<br>set via CSS.</p>
+     * <p>A short text alternative for the image.</p>
      *
      * JavaScript Info:
-     * @property width
-     * @type Number
-     * 
-     */
-    public double getWidth() {
-        return getPolymerElement().getWidth();
-    }
-    /**
-     * <p>Can be used to set the width of image (e.g. via binding); size may also be<br>set via CSS.</p>
-     *
-     * JavaScript Info:
-     * @property width
-     * @type Number
-     * 
-     */
-    public void setWidth(double value) {
-        getPolymerElement().setWidth(value);
-    }
-
-    /**
-     * <p>Can be used to set the height of image (e.g. via binding); size may also be<br>set via CSS.</p>
-     *
-     * JavaScript Info:
-     * @property height
-     * @type Number
-     * 
-     */
-    public double getHeight() {
-        return getPolymerElement().getHeight();
-    }
-    /**
-     * <p>Can be used to set the height of image (e.g. via binding); size may also be<br>set via CSS.</p>
-     *
-     * JavaScript Info:
-     * @property height
-     * @type Number
-     * 
-     */
-    public void setHeight(double value) {
-        getPolymerElement().setHeight(value);
-    }
-
-    /**
-     * <p>This image will be used as a background/placeholder until the src image has<br>loaded.  Use of a data-URI for placeholder is encouraged for instant rendering.</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
+     * @property alt
      * @type String
      * 
      */
-    public String getPlaceholder() {
-        return getPolymerElement().getPlaceholder();
+    public String getAlt() {
+        return getPolymerElement().getAlt();
     }
     /**
-     * <p>This image will be used as a background/placeholder until the src image has<br>loaded.  Use of a data-URI for placeholder is encouraged for instant rendering.</p>
+     * <p>A short text alternative for the image.</p>
      *
      * JavaScript Info:
-     * @property placeholder
+     * @property alt
      * @type String
      * 
      */
-    public void setPlaceholder(String value) {
-        getPolymerElement().setPlaceholder(value);
+    public void setAlt(String value) {
+        getPolymerElement().setAlt(value);
+    }
+
+    /**
+     * <p>When a sizing option is used (<code>cover</code> or <code>contain</code>), this determines<br>how the image is aligned within the element bounds.</p>
+     *
+     * JavaScript Info:
+     * @property position
+     * @type String
+     * 
+     */
+    public String getPosition() {
+        return getPolymerElement().getPosition();
+    }
+    /**
+     * <p>When a sizing option is used (<code>cover</code> or <code>contain</code>), this determines<br>how the image is aligned within the element bounds.</p>
+     *
+     * JavaScript Info:
+     * @property position
+     * @type String
+     * 
+     */
+    public void setPosition(String value) {
+        getPolymerElement().setPosition(value);
     }
 
     /**
@@ -380,26 +380,26 @@ public class IronImage extends PolymerWidget {
     }
 
     /**
-     * <p>When a sizing option is used (<code>cover</code> or <code>contain</code>), this determines<br>how the image is aligned within the element bounds.</p>
+     * <p>This image will be used as a background/placeholder until the src image has<br>loaded.  Use of a data-URI for placeholder is encouraged for instant rendering.</p>
      *
      * JavaScript Info:
-     * @property position
+     * @property placeholder
      * @type String
      * 
      */
-    public String getPosition() {
-        return getPolymerElement().getPosition();
+    public String getPlaceholder() {
+        return getPolymerElement().getPlaceholder();
     }
     /**
-     * <p>When a sizing option is used (<code>cover</code> or <code>contain</code>), this determines<br>how the image is aligned within the element bounds.</p>
+     * <p>This image will be used as a background/placeholder until the src image has<br>loaded.  Use of a data-URI for placeholder is encouraged for instant rendering.</p>
      *
      * JavaScript Info:
-     * @property position
+     * @property placeholder
      * @type String
      * 
      */
-    public void setPosition(String value) {
-        getPolymerElement().setPosition(value);
+    public void setPlaceholder(String value) {
+        getPolymerElement().setPlaceholder(value);
     }
 
 

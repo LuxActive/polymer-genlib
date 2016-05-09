@@ -609,6 +609,19 @@ public class PaperMenu extends PolymerWidget {
 
 
     /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectIndex(Object index) {
+        getPolymerElement().selectIndex(index);
+    }
+
+    /**
      * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
      *
      * JavaScript Info:
@@ -649,30 +662,6 @@ public class PaperMenu extends PolymerWidget {
     }
 
     /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * @behavior PaperTabs
-     * 
-     */
-    public void selectPrevious() {
-        getPolymerElement().selectPrevious();
-    }
-
-    /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
-     *
-     * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior VaadinComboBox
-     * 
-     */
-    public void removeOwnKeyBindings() {
-        getPolymerElement().removeOwnKeyBindings();
-    }
-
-    /**
      * <p>Force a synchronous update of the <code>items</code> property.</p>
      * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
      * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
@@ -696,6 +685,30 @@ public class PaperMenu extends PolymerWidget {
      */
     public void selectNext() {
         getPolymerElement().selectNext();
+    }
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectPrevious() {
+        getPolymerElement().selectPrevious();
+    }
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior VaadinComboBox
+     * 
+     */
+    public void removeOwnKeyBindings() {
+        getPolymerElement().removeOwnKeyBindings();
     }
 
     /**

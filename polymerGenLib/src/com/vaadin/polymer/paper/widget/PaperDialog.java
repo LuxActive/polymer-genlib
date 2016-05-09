@@ -108,29 +108,6 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code>, <code>no-cancel-on-esc-key</code> and <code>with-backdrop</code>.</p>
-     *
-     * JavaScript Info:
-     * @property modal
-     * @type Boolean
-     * @behavior PaperDialog
-     */
-    public boolean getModal() {
-        return getPolymerElement().getModal();
-    }
-    /**
-     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code>, <code>no-cancel-on-esc-key</code> and <code>with-backdrop</code>.</p>
-     *
-     * JavaScript Info:
-     * @property modal
-     * @type Boolean
-     * @behavior PaperDialog
-     */
-    public void setModal(boolean value) {
-        getPolymerElement().setModal(value);
-    }
-
-    /**
      * <p>True if the overlay was canceled when it was last closed.</p>
      *
      * JavaScript Info:
@@ -177,6 +154,52 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnEscKey
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public boolean getNoCancelOnEscKey() {
+        return getPolymerElement().getNoCancelOnEscKey();
+    }
+    /**
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnEscKey
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public void setNoCancelOnEscKey(boolean value) {
+        getPolymerElement().setNoCancelOnEscKey(value);
+    }
+
+    /**
+     * <p>Will position the element around the positionTarget without overlapping it.</p>
+     *
+     * JavaScript Info:
+     * @property noOverlap
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public boolean getNoOverlap() {
+        return getPolymerElement().getNoOverlap();
+    }
+    /**
+     * <p>Will position the element around the positionTarget without overlapping it.</p>
+     *
+     * JavaScript Info:
+     * @property noOverlap
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public void setNoOverlap(boolean value) {
+        getPolymerElement().setNoOverlap(value);
+    }
+
+    /**
      * <p>Set to true to keep overlay always on top.</p>
      *
      * JavaScript Info:
@@ -197,29 +220,6 @@ public class PaperDialog extends PolymerWidget {
      */
     public void setAlwaysOnTop(boolean value) {
         getPolymerElement().setAlwaysOnTop(value);
-    }
-
-    /**
-     * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
-     *
-     * JavaScript Info:
-     * @property noCancelOnOutsideClick
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public boolean getNoCancelOnOutsideClick() {
-        return getPolymerElement().getNoCancelOnOutsideClick();
-    }
-    /**
-     * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
-     *
-     * JavaScript Info:
-     * @property noCancelOnOutsideClick
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public void setNoCancelOnOutsideClick(boolean value) {
-        getPolymerElement().setNoCancelOnOutsideClick(value);
     }
 
     /**
@@ -246,29 +246,6 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Set to true to display a backdrop behind the overlay.</p>
-     *
-     * JavaScript Info:
-     * @property withBackdrop
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public boolean getWithBackdrop() {
-        return getPolymerElement().getWithBackdrop();
-    }
-    /**
-     * <p>Set to true to display a backdrop behind the overlay.</p>
-     *
-     * JavaScript Info:
-     * @property withBackdrop
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public void setWithBackdrop(boolean value) {
-        getPolymerElement().setWithBackdrop(value);
-    }
-
-    /**
      * <p>Set to true to auto-fit on attach.</p>
      *
      * JavaScript Info:
@@ -292,53 +269,122 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code> and <code>with-backdrop</code>.</p>
      *
      * JavaScript Info:
-     * @property noCancelOnEscKey
+     * @property modal
      * @type Boolean
-     * @behavior PaperToast
+     * @behavior PaperDialog
      */
-    public boolean getNoCancelOnEscKey() {
-        return getPolymerElement().getNoCancelOnEscKey();
+    public boolean getModal() {
+        return getPolymerElement().getModal();
     }
     /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code> and <code>with-backdrop</code>.</p>
      *
      * JavaScript Info:
-     * @property noCancelOnEscKey
+     * @property modal
      * @type Boolean
-     * @behavior PaperToast
+     * @behavior PaperDialog
      */
-    public void setNoCancelOnEscKey(boolean value) {
-        getPolymerElement().setNoCancelOnEscKey(value);
+    public void setModal(boolean value) {
+        getPolymerElement().setModal(value);
     }
 
     /**
-     * <p>Animation configuration. See README for more info.</p>
+     * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
      *
      * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * @behavior PaperTooltip
+     * @property noCancelOnOutsideClick
+     * @type Boolean
+     * @behavior PaperToast
      */
-    public JavaScriptObject getAnimationConfig() {
-        return getPolymerElement().getAnimationConfig();
+    public boolean getNoCancelOnOutsideClick() {
+        return getPolymerElement().getNoCancelOnOutsideClick();
     }
     /**
-     * <p>Animation configuration. See README for more info.</p>
+     * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
      *
      * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * @behavior PaperTooltip
+     * @property noCancelOnOutsideClick
+     * @type Boolean
+     * @behavior PaperToast
      */
-    public void setAnimationConfig(JavaScriptObject value) {
-        getPolymerElement().setAnimationConfig(value);
+    public void setNoCancelOnOutsideClick(boolean value) {
+        getPolymerElement().setNoCancelOnOutsideClick(value);
     }
 
     /**
-     * <p>Returns the reason this dialog was last closed.</p>
+     * <p>The same as setting margin-left and margin-right css properties.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    public double getHorizontalOffset() {
+        return getPolymerElement().getHorizontalOffset();
+    }
+    /**
+     * <p>The same as setting margin-left and margin-right css properties.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    public void setHorizontalOffset(double value) {
+        getPolymerElement().setHorizontalOffset(value);
+    }
+
+    /**
+     * <p>The same as setting margin-top and margin-bottom css properties.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    public double getVerticalOffset() {
+        return getPolymerElement().getVerticalOffset();
+    }
+    /**
+     * <p>The same as setting margin-top and margin-bottom css properties.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    public void setVerticalOffset(double value) {
+        getPolymerElement().setVerticalOffset(value);
+    }
+
+    /**
+     * <p>True if the overlay is currently displayed.</p>
+     *
+     * JavaScript Info:
+     * @property opened
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public boolean getOpened() {
+        return getPolymerElement().getOpened();
+    }
+    /**
+     * <p>True if the overlay is currently displayed.</p>
+     *
+     * JavaScript Info:
+     * @property opened
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public void setOpened(boolean value) {
+        getPolymerElement().setOpened(value);
+    }
+
+    /**
+     * <p>Contains the reason(s) this overlay was last closed (see <code>iron-overlay-closed</code>).<br><code>IronOverlayBehavior</code> provides the <code>canceled</code> reason; implementers of the<br>behavior can provide other reasons in addition to <code>canceled</code>.</p>
      *
      * JavaScript Info:
      * @property closingReason
@@ -349,7 +395,7 @@ public class PaperDialog extends PolymerWidget {
         return getPolymerElement().getClosingReason();
     }
     /**
-     * <p>Returns the reason this dialog was last closed.</p>
+     * <p>Contains the reason(s) this overlay was last closed (see <code>iron-overlay-closed</code>).<br><code>IronOverlayBehavior</code> provides the <code>canceled</code> reason; implementers of the<br>behavior can provide other reasons in addition to <code>canceled</code>.</p>
      *
      * JavaScript Info:
      * @property closingReason
@@ -384,6 +430,52 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    public JavaScriptObject getAnimationConfig() {
+        return getPolymerElement().getAnimationConfig();
+    }
+    /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    public void setAnimationConfig(JavaScriptObject value) {
+        getPolymerElement().setAnimationConfig(value);
+    }
+
+    /**
+     * <p>The element that should be used to position the element. If not set, it will<br>default to the parent node.</p>
+     *
+     * JavaScript Info:
+     * @property positionTarget
+     * @type !Element
+     * @behavior PaperToast
+     */
+    public JavaScriptObject getPositionTarget() {
+        return getPolymerElement().getPositionTarget();
+    }
+    /**
+     * <p>The element that should be used to position the element. If not set, it will<br>default to the parent node.</p>
+     *
+     * JavaScript Info:
+     * @property positionTarget
+     * @type !Element
+     * @behavior PaperToast
+     */
+    public void setPositionTarget(JavaScriptObject value) {
+        getPolymerElement().setPositionTarget(value);
+    }
+
+    /**
      * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
      *
      * JavaScript Info:
@@ -407,26 +499,26 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>True if the overlay is currently displayed.</p>
+     * <p>Set to true to display a backdrop behind the overlay.</p>
      *
      * JavaScript Info:
-     * @property opened
+     * @property withBackdrop
      * @type Boolean
      * @behavior PaperToast
      */
-    public boolean getOpened() {
-        return getPolymerElement().getOpened();
+    public boolean getWithBackdrop() {
+        return getPolymerElement().getWithBackdrop();
     }
     /**
-     * <p>True if the overlay is currently displayed.</p>
+     * <p>Set to true to display a backdrop behind the overlay.</p>
      *
      * JavaScript Info:
-     * @property opened
+     * @property withBackdrop
      * @type Boolean
      * @behavior PaperToast
      */
-    public void setOpened(boolean value) {
-        getPolymerElement().setOpened(value);
+    public void setWithBackdrop(boolean value) {
+        getPolymerElement().setWithBackdrop(value);
     }
 
     /**
@@ -475,6 +567,52 @@ public class PaperDialog extends PolymerWidget {
         getPolymerElement().setEntryAnimation(value);
     }
 
+    /**
+     * <p>The orientation against which to align the element vertically<br>relative to the <code>positionTarget</code>. Possible values are “top”, “bottom”, “auto”.</p>
+     *
+     * JavaScript Info:
+     * @property verticalAlign
+     * @type String
+     * @behavior PaperToast
+     */
+    public String getVerticalAlign() {
+        return getPolymerElement().getVerticalAlign();
+    }
+    /**
+     * <p>The orientation against which to align the element vertically<br>relative to the <code>positionTarget</code>. Possible values are “top”, “bottom”, “auto”.</p>
+     *
+     * JavaScript Info:
+     * @property verticalAlign
+     * @type String
+     * @behavior PaperToast
+     */
+    public void setVerticalAlign(String value) {
+        getPolymerElement().setVerticalAlign(value);
+    }
+
+    /**
+     * <p>The orientation against which to align the element horizontally<br>relative to the <code>positionTarget</code>. Possible values are “left”, “right”, “auto”.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalAlign
+     * @type String
+     * @behavior PaperToast
+     */
+    public String getHorizontalAlign() {
+        return getPolymerElement().getHorizontalAlign();
+    }
+    /**
+     * <p>The orientation against which to align the element horizontally<br>relative to the <code>positionTarget</code>. Possible values are “left”, “right”, “auto”.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalAlign
+     * @type String
+     * @behavior PaperToast
+     */
+    public void setHorizontalAlign(String value) {
+        getPolymerElement().setHorizontalAlign(value);
+    }
+
 
     /**
      * <p>Animation configuration. See README for more info.</p>
@@ -488,7 +626,29 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Returns the reason this dialog was last closed.</p>
+     * <p>The same as setting margin-top and margin-bottom css properties.</p>
+     *
+     * JavaScript Info:
+     * @attribute vertical-offset
+     * @behavior PaperToast
+     */
+    public void setVerticalOffset(String value) {
+        getPolymerElement().setAttribute("vertical-offset", value);
+    }
+
+    /**
+     * <p>The same as setting margin-left and margin-right css properties.</p>
+     *
+     * JavaScript Info:
+     * @attribute horizontal-offset
+     * @behavior PaperToast
+     */
+    public void setHorizontalOffset(String value) {
+        getPolymerElement().setAttribute("horizontal-offset", value);
+    }
+
+    /**
+     * <p>Contains the reason(s) this overlay was last closed (see <code>iron-overlay-closed</code>).<br><code>IronOverlayBehavior</code> provides the <code>canceled</code> reason; implementers of the<br>behavior can provide other reasons in addition to <code>canceled</code>.</p>
      *
      * JavaScript Info:
      * @attribute closing-reason
@@ -507,6 +667,17 @@ public class PaperDialog extends PolymerWidget {
      */
     public void setFitInto(String value) {
         getPolymerElement().setAttribute("fit-into", value);
+    }
+
+    /**
+     * <p>The element that should be used to position the element. If not set, it will<br>default to the parent node.</p>
+     *
+     * JavaScript Info:
+     * @attribute position-target
+     * @behavior PaperToast
+     */
+    public void setPositionTarget(String value) {
+        getPolymerElement().setAttribute("position-target", value);
     }
 
     /**
@@ -571,19 +742,19 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Centers horizontally and vertically if not already positioned. This also sets<br><code>position:fixed</code>.</p>
+     * <p>Constrains the size of the element to <code>fitInto</code> by setting <code>max-height</code><br>and/or <code>max-width</code>.</p>
      *
      * JavaScript Info:
-     * @method center
+     * @method constrain
      * @behavior PaperToast
      * 
      */
-    public void center() {
-        getPolymerElement().center();
+    public void constrain() {
+        getPolymerElement().constrain();
     }
 
     /**
-     * <p>Fits and optionally centers the element into the window, or <code>fitInfo</code> if specified.</p>
+     * <p>Positions and fits the element into the <code>fitInto</code> element.</p>
      *
      * JavaScript Info:
      * @method fit
@@ -592,6 +763,18 @@ public class PaperDialog extends PolymerWidget {
      */
     public void fit() {
         getPolymerElement().fit();
+    }
+
+    /**
+     * <p>Open the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method open
+     * @behavior PaperToast
+     * 
+     */
+    public void open() {
+        getPolymerElement().open();
     }
 
     /**
@@ -607,7 +790,19 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Equivalent to calling <code>resetFit()</code> and <code>fit()</code>. Useful to call this after the element,<br>the window, or the <code>fitInfo</code> element has been resized.</p>
+     * <p>Positions the element according to <code>horizontalAlign, verticalAlign</code>.</p>
+     *
+     * JavaScript Info:
+     * @method position
+     * @behavior PaperToast
+     * 
+     */
+    public void position() {
+        getPolymerElement().position();
+    }
+
+    /**
+     * <p>Equivalent to calling <code>resetFit()</code> and <code>fit()</code>. Useful to call this after<br>the element or the <code>fitInto</code> element has been resized, or if any of the<br>positioning properties (e.g. <code>horizontalAlign, verticalAlign</code>) is updated.</p>
      *
      * JavaScript Info:
      * @method refit
@@ -643,6 +838,18 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
+     * <p>Centers horizontally and vertically if not already positioned. This also sets<br><code>position:fixed</code>.</p>
+     *
+     * JavaScript Info:
+     * @method center
+     * @behavior PaperToast
+     * 
+     */
+    public void center() {
+        getPolymerElement().center();
+    }
+
+    /**
      * <p>Cancels the currently running animation.</p>
      *
      * JavaScript Info:
@@ -652,30 +859,6 @@ public class PaperDialog extends PolymerWidget {
      */
     public void cancelAnimation() {
         getPolymerElement().cancelAnimation();
-    }
-
-    /**
-     * <p>Open the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method open
-     * @behavior PaperToast
-     * 
-     */
-    public void open() {
-        getPolymerElement().open();
-    }
-
-    /**
-     * <p>Constrains the size of the element to the window or <code>fitInfo</code> by setting <code>max-height</code><br>and/or <code>max-width</code>.</p>
-     *
-     * JavaScript Info:
-     * @method constrain
-     * @behavior PaperToast
-     * 
-     */
-    public void constrain() {
-        getPolymerElement().constrain();
     }
 
     /**
@@ -720,7 +903,7 @@ public class PaperDialog extends PolymerWidget {
 
 
     /**
-     * <p>Fired when the <code>iron-overlay</code> is canceled, but before it is closed.<br>Cancel the event to prevent the <code>iron-overlay</code> from closing.</p>
+     * <p>Fired when the overlay is canceled, but before it is closed.</p>
      *
      * JavaScript Info:
      * @event iron-overlay-canceled
@@ -730,7 +913,7 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Fired after the <code>iron-overlay</code> closes.</p>
+     * <p>Fired after the overlay closes.</p>
      *
      * JavaScript Info:
      * @event iron-overlay-closed
@@ -740,7 +923,7 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Fired after the <code>iron-overlay</code> opens.</p>
+     * <p>Fired after the overlay opens.</p>
      *
      * JavaScript Info:
      * @event iron-overlay-opened

@@ -44,7 +44,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  *   &lt;/iron-selector&gt;
  * 
  * 
- * </code></pre><p>  If no matching element is found using <code>attForSelected</code>, use <code>fallbackSelection</code> as fallback.</p>
+ * </code></pre><p>  You can specify a default fallback with <code>fallbackSelection</code> in case the <code>selected</code> attribute does<br>  not match the <code>attrForSelected</code> attribute of any elements.</p>
  * <p>  Example:</p>
  * <pre><code>    &lt;iron-selector attr-for-selected=&quot;name&quot; selected=&quot;non-existing&quot;
  *                    fallback-selection=&quot;default&quot;&gt;
@@ -126,29 +126,6 @@ public class IronSelector extends PolymerWidget {
     }
 
     /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    public JavaScriptObject getSelectedItem() {
-        return getPolymerElement().getSelectedItem();
-    }
-    /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    public void setSelectedItem(JavaScriptObject value) {
-        getPolymerElement().setSelectedItem(value);
-    }
-
-    /**
      * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
@@ -172,12 +149,35 @@ public class IronSelector extends PolymerWidget {
     }
 
     /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * 
+     */
+    public JavaScriptObject getSelectedItem() {
+        return getPolymerElement().getSelectedItem();
+    }
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * 
+     */
+    public void setSelectedItem(JavaScriptObject value) {
+        getPolymerElement().setSelectedItem(value);
+    }
+
+    /**
      * <p>The list of items from which a selection can be made.</p>
      *
      * JavaScript Info:
      * @property items
      * @type Array
-     * @behavior PaperTabs
+     * 
      */
     public JsArray getItems() {
         return getPolymerElement().getItems();
@@ -188,33 +188,10 @@ public class IronSelector extends PolymerWidget {
      * JavaScript Info:
      * @property items
      * @type Array
-     * @behavior PaperTabs
+     * 
      */
     public void setItems(JsArray value) {
         getPolymerElement().setItems(value);
-    }
-
-    /**
-     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
-     *
-     * JavaScript Info:
-     * @property selectedValues
-     * @type Array
-     * @behavior PaperTabs
-     */
-    public JsArray getSelectedValues() {
-        return getPolymerElement().getSelectedValues();
-    }
-    /**
-     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
-     *
-     * JavaScript Info:
-     * @property selectedValues
-     * @type Array
-     * @behavior PaperTabs
-     */
-    public void setSelectedValues(JsArray value) {
-        getPolymerElement().setSelectedValues(value);
     }
 
     /**
@@ -241,49 +218,26 @@ public class IronSelector extends PolymerWidget {
     }
 
     /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
      *
      * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
+     * @property selectedValues
+     * @type Array
+     * 
      */
-    public String getActivateEvent() {
-        return getPolymerElement().getActivateEvent();
+    public JsArray getSelectedValues() {
+        return getPolymerElement().getSelectedValues();
     }
     /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
      *
      * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
+     * @property selectedValues
+     * @type Array
+     * 
      */
-    public void setActivateEvent(String value) {
-        getPolymerElement().setActivateEvent(value);
-    }
-
-    /**
-     * <p>The class to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedClass
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getSelectedClass() {
-        return getPolymerElement().getSelectedClass();
-    }
-    /**
-     * <p>The class to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedClass
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setSelectedClass(String value) {
-        getPolymerElement().setSelectedClass(value);
+    public void setSelectedValues(JsArray value) {
+        getPolymerElement().setSelectedValues(value);
     }
 
     /**
@@ -310,6 +264,29 @@ public class IronSelector extends PolymerWidget {
     }
 
     /**
+     * <p>The class to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedClass
+     * @type String
+     * @behavior PaperTabs
+     */
+    public String getSelectedClass() {
+        return getPolymerElement().getSelectedClass();
+    }
+    /**
+     * <p>The class to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedClass
+     * @type String
+     * @behavior PaperTabs
+     */
+    public void setSelectedClass(String value) {
+        getPolymerElement().setSelectedClass(value);
+    }
+
+    /**
      * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
      *
      * JavaScript Info:
@@ -330,6 +307,29 @@ public class IronSelector extends PolymerWidget {
      */
     public void setFallbackSelection(String value) {
         getPolymerElement().setFallbackSelection(value);
+    }
+
+    /**
+     * <p>The attribute to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedAttribute
+     * @type String
+     * @behavior PaperTabs
+     */
+    public String getSelectedAttribute() {
+        return getPolymerElement().getSelectedAttribute();
+    }
+    /**
+     * <p>The attribute to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedAttribute
+     * @type String
+     * @behavior PaperTabs
+     */
+    public void setSelectedAttribute(String value) {
+        getPolymerElement().setSelectedAttribute(value);
     }
 
     /**
@@ -356,60 +356,38 @@ public class IronSelector extends PolymerWidget {
     }
 
     /**
-     * <p>The attribute to set on elements when selected.</p>
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
      *
      * JavaScript Info:
-     * @property selectedAttribute
+     * @property activateEvent
      * @type String
      * @behavior PaperTabs
      */
-    public String getSelectedAttribute() {
-        return getPolymerElement().getSelectedAttribute();
+    public String getActivateEvent() {
+        return getPolymerElement().getActivateEvent();
     }
     /**
-     * <p>The attribute to set on elements when selected.</p>
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
      *
      * JavaScript Info:
-     * @property selectedAttribute
+     * @property activateEvent
      * @type String
      * @behavior PaperTabs
      */
-    public void setSelectedAttribute(String value) {
-        getPolymerElement().setSelectedAttribute(value);
+    public void setActivateEvent(String value) {
+        getPolymerElement().setActivateEvent(value);
     }
 
-
-    /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @attribute selected
-     * @behavior PaperTabs
-     */
-    public void setSelected(String value) {
-        getPolymerElement().setAttribute("selected", value);
-    }
 
     /**
      * <p>Returns the currently selected item.</p>
      *
      * JavaScript Info:
      * @attribute selected-item
-     * 
+     * @behavior PaperTabs
      */
     public void setSelectedItem(String value) {
         getPolymerElement().setAttribute("selected-item", value);
-    }
-
-    /**
-     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
-     *
-     * JavaScript Info:
-     * @attribute selected-values
-     * 
-     */
-    public void setSelectedValues(String value) {
-        getPolymerElement().setAttribute("selected-values", value);
     }
 
     /**
@@ -417,7 +395,7 @@ public class IronSelector extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute items
-     * @behavior PaperTabs
+     * 
      */
     public void setItems(String value) {
         getPolymerElement().setAttribute("items", value);
@@ -434,6 +412,28 @@ public class IronSelector extends PolymerWidget {
         getPolymerElement().setAttribute("selected-items", value);
     }
 
+    /**
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
+     *
+     * JavaScript Info:
+     * @attribute selected-values
+     * 
+     */
+    public void setSelectedValues(String value) {
+        getPolymerElement().setAttribute("selected-values", value);
+    }
+
+    /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @attribute selected
+     * @behavior PaperTabs
+     */
+    public void setSelected(String value) {
+        getPolymerElement().setAttribute("selected", value);
+    }
+
 
     /**
      * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
@@ -446,6 +446,19 @@ public class IronSelector extends PolymerWidget {
      */
     public void select(Object value) {
         getPolymerElement().select(value);
+    }
+
+    /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * 
+     * 
+     */
+    public void selectIndex(Object index) {
+        getPolymerElement().selectIndex(index);
     }
 
     /**
@@ -474,6 +487,18 @@ public class IronSelector extends PolymerWidget {
     }
 
     /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * 
+     * 
+     */
+    public void selectPrevious() {
+        getPolymerElement().selectPrevious();
+    }
+
+    /**
      * <p>Force a synchronous update of the <code>items</code> property.</p>
      * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
      * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
@@ -485,18 +510,6 @@ public class IronSelector extends PolymerWidget {
      */
     public void forceSynchronousItemUpdate() {
         getPolymerElement().forceSynchronousItemUpdate();
-    }
-
-    /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * 
-     * 
-     */
-    public void selectPrevious() {
-        getPolymerElement().selectPrevious();
     }
 
     /**

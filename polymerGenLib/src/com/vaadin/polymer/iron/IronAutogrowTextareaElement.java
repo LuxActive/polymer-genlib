@@ -50,23 +50,23 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
 
 
     /**
-     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     * <p>Set to true to mark the textarea as required.</p>
      *
      * JavaScript Info:
-     * @property autofocus
+     * @property required
      * @type Boolean
      * 
      */
-    @JsProperty boolean getAutofocus();
+    @JsProperty boolean getRequired();
     /**
-     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     * <p>Set to true to mark the textarea as required.</p>
      *
      * JavaScript Info:
-     * @property autofocus
+     * @property required
      * @type Boolean
      * 
      */
-    @JsProperty void setAutofocus(boolean value);
+    @JsProperty void setRequired(boolean value);
 
     /**
      * <p>The maximum length of the input value.</p>
@@ -86,25 +86,6 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * 
      */
     @JsProperty void setMaxlength(double value);
-
-    /**
-     * <p>The initial number of rows.</p>
-     *
-     * JavaScript Info:
-     * @property rows
-     * @type Number
-     * 
-     */
-    @JsProperty double getRows();
-    /**
-     * <p>The initial number of rows.</p>
-     *
-     * JavaScript Info:
-     * @property rows
-     * @type Number
-     * 
-     */
-    @JsProperty void setRows(double value);
 
     /**
      * <p>The maximum number of rows this element can grow to until it<br>scrolls. 0 means no maximum.</p>
@@ -145,23 +126,23 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setBindValue(Object value);
 
     /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     * <p>The initial number of rows.</p>
      *
      * JavaScript Info:
-     * @property required
-     * @type Boolean
-     * @behavior VaadinDatePicker
+     * @property rows
+     * @type Number
+     * 
      */
-    @JsProperty boolean getRequired();
+    @JsProperty double getRows();
     /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     * <p>The initial number of rows.</p>
      *
      * JavaScript Info:
-     * @property required
-     * @type Boolean
-     * @behavior VaadinDatePicker
+     * @property rows
+     * @type Number
+     * 
      */
-    @JsProperty void setRequired(boolean value);
+    @JsProperty void setRows(double value);
 
     /**
      * <p>If true, the element currently has focus.</p>
@@ -221,23 +202,23 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setInvalid(boolean value);
 
     /**
-     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
+     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property placeholder
-     * @type String
+     * @property autofocus
+     * @type Boolean
      * 
      */
-    @JsProperty String getPlaceholder();
+    @JsProperty boolean getAutofocus();
     /**
-     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
+     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property placeholder
-     * @type String
+     * @property autofocus
+     * @type Boolean
      * 
      */
-    @JsProperty void setPlaceholder(String value);
+    @JsProperty void setAutofocus(boolean value);
 
     /**
      * <p>The name of this element.</p>
@@ -259,23 +240,23 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setName(String value);
 
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property validatorType
+     * @property autocomplete
      * @type String
-     * @behavior VaadinDatePicker
+     * 
      */
-    @JsProperty String getValidatorType();
+    @JsProperty String getAutocomplete();
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property validatorType
+     * @property autocomplete
      * @type String
-     * @behavior VaadinDatePicker
+     * 
      */
-    @JsProperty void setValidatorType(String value);
+    @JsProperty void setAutocomplete(String value);
 
     /**
      * <p>The value for this element.</p>
@@ -295,6 +276,63 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * @behavior VaadinDatePicker
      */
     @JsProperty void setValue(String value);
+
+    /**
+     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property inputmode
+     * @type String
+     * 
+     */
+    @JsProperty String getInputmode();
+    /**
+     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property inputmode
+     * @type String
+     * 
+     */
+    @JsProperty void setInputmode(String value);
+
+    /**
+     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property placeholder
+     * @type String
+     * 
+     */
+    @JsProperty String getPlaceholder();
+    /**
+     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property placeholder
+     * @type String
+     * 
+     */
+    @JsProperty void setPlaceholder(String value);
+
+    /**
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
+     *
+     * JavaScript Info:
+     * @property validatorType
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty String getValidatorType();
+    /**
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
+     *
+     * JavaScript Info:
+     * @property validatorType
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty void setValidatorType(String value);
 
     /**
      * <p>Name of the validator to use.</p>
@@ -333,44 +371,6 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * 
      */
     @JsProperty void setReadonly(String value);
-
-    /**
-     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * 
-     */
-    @JsProperty String getAutocomplete();
-    /**
-     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * 
-     */
-    @JsProperty void setAutocomplete(String value);
-
-    /**
-     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property inputmode
-     * @type String
-     * 
-     */
-    @JsProperty String getInputmode();
-    /**
-     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property inputmode
-     * @type String
-     * 
-     */
-    @JsProperty void setInputmode(String value);
 
 
     /**

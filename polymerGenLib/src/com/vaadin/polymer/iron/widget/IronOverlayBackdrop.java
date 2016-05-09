@@ -103,7 +103,7 @@ public class IronOverlayBackdrop extends PolymerWidget {
 
 
     /**
-     * <p>Hides the backdrop if needed.</p>
+     * <p>Hides the backdrop.</p>
      *
      * JavaScript Info:
      * @method close
@@ -127,7 +127,7 @@ public class IronOverlayBackdrop extends PolymerWidget {
     }
 
     /**
-     * <p>Shows the backdrop if needed.</p>
+     * <p>Shows the backdrop.</p>
      *
      * JavaScript Info:
      * @method open
@@ -139,7 +139,7 @@ public class IronOverlayBackdrop extends PolymerWidget {
     }
 
     /**
-     * <p>Appends the backdrop to document body and sets its <code>z-index</code> to be below the latest overlay.</p>
+     * <p>Appends the backdrop to document body if needed.</p>
      *
      * JavaScript Info:
      * @method prepare

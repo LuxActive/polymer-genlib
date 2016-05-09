@@ -74,7 +74,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <tr>
  * <td><code>--paper-slider-disabled-knob-color</code></td>
  * <td>The disabled knob color</td>
- * <td><code>--google-grey-500</code></td>
+ * <td><code>--paper-grey-400</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-slider-pin-color</code></td>
@@ -89,12 +89,12 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <tr>
  * <td><code>--paper-slider-disabled-active-color</code></td>
  * <td>The disabled progress bar color</td>
- * <td><code>--google-grey-500</code></td>
+ * <td><code>--paper-grey-400</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-slider-disabled-secondary-color</code></td>
  * <td>The disabled secondary progress bar color</td>
- * <td><code>--google-grey-300</code></td>
+ * <td><code>--paper-grey-400</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-slider-knob-start-color</code></td>
@@ -104,17 +104,22 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <tr>
  * <td><code>--paper-slider-knob-start-border-color</code></td>
  * <td>The border color of the knob at the far left</td>
- * <td><code>#c8c8c8</code></td>
+ * <td><code>--paper-grey-400</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-slider-pin-start-color</code></td>
  * <td>The color of the pin at the far left</td>
- * <td><code>#c8c8c8</code></td>
+ * <td><code>--paper-grey-400</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-slider-height</code></td>
  * <td>Height of the progress bar</td>
  * <td><code>2px</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-slider-input</code></td>
+ * <td>Mixin applied to the input in editable mode</td>
+ * <td><code>{}</code></td>
  * </tr>
  * </tbody>
  * </table>
@@ -217,49 +222,26 @@ public class PaperSlider extends PolymerWidget {
     }
 
     /**
-     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property toggles
+     * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
-    public boolean getToggles() {
-        return getPolymerElement().getToggles();
+    public boolean getStopKeyboardEventPropagation() {
+        return getPolymerElement().getStopKeyboardEventPropagation();
     }
     /**
-     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property toggles
+     * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior VaadinComboBox
      */
-    public void setToggles(boolean value) {
-        getPolymerElement().setToggles(value);
-    }
-
-    /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
-     *
-     * JavaScript Info:
-     * @property required
-     * @type Boolean
-     * @behavior VaadinDatePicker
-     */
-    public boolean getRequired() {
-        return getPolymerElement().getRequired();
-    }
-    /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
-     *
-     * JavaScript Info:
-     * @property required
-     * @type Boolean
-     * @behavior VaadinDatePicker
-     */
-    public void setRequired(boolean value) {
-        getPolymerElement().setRequired(value);
+    public void setStopKeyboardEventPropagation(boolean value) {
+        getPolymerElement().setStopKeyboardEventPropagation(value);
     }
 
     /**
@@ -309,98 +291,6 @@ public class PaperSlider extends PolymerWidget {
     }
 
     /**
-     * <p>If true, the slider thumb snaps to tick marks evenly spaced based<br>on the <code>step</code> property value.</p>
-     *
-     * JavaScript Info:
-     * @property snaps
-     * @type Boolean
-     * 
-     */
-    public boolean getSnaps() {
-        return getPolymerElement().getSnaps();
-    }
-    /**
-     * <p>If true, the slider thumb snaps to tick marks evenly spaced based<br>on the <code>step</code> property value.</p>
-     *
-     * JavaScript Info:
-     * @property snaps
-     * @type Boolean
-     * 
-     */
-    public void setSnaps(boolean value) {
-        getPolymerElement().setSnaps(value);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property transiting
-     * @type Boolean
-     * 
-     */
-    public boolean getTransiting() {
-        return getPolymerElement().getTransiting();
-    }
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property transiting
-     * @type Boolean
-     * 
-     */
-    public void setTransiting(boolean value) {
-        getPolymerElement().setTransiting(value);
-    }
-
-    /**
-     * <p>If true, the knob is expanded</p>
-     *
-     * JavaScript Info:
-     * @property expand
-     * @type Boolean
-     * 
-     */
-    public boolean getExpand() {
-        return getPolymerElement().getExpand();
-    }
-    /**
-     * <p>If true, the knob is expanded</p>
-     *
-     * JavaScript Info:
-     * @property expand
-     * @type Boolean
-     * 
-     */
-    public void setExpand(boolean value) {
-        getPolymerElement().setExpand(value);
-    }
-
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    public boolean getStopKeyboardEventPropagation() {
-        return getPolymerElement().getStopKeyboardEventPropagation();
-    }
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    public void setStopKeyboardEventPropagation(boolean value) {
-        getPolymerElement().setStopKeyboardEventPropagation(value);
-    }
-
-    /**
      * <p>If true, the button is a toggle and is currently in the active state.</p>
      *
      * JavaScript Info:
@@ -424,26 +314,141 @@ public class PaperSlider extends PolymerWidget {
     }
 
     /**
-     * <p>True when the user is dragging the slider.</p>
+     * <p>If true, the slider thumb snaps to tick marks evenly spaced based<br>on the <code>step</code> property value.</p>
      *
      * JavaScript Info:
-     * @property dragging
+     * @property snaps
      * @type Boolean
      * 
      */
-    public boolean getDragging() {
-        return getPolymerElement().getDragging();
+    public boolean getSnaps() {
+        return getPolymerElement().getSnaps();
     }
     /**
-     * <p>True when the user is dragging the slider.</p>
+     * <p>If true, the slider thumb snaps to tick marks evenly spaced based<br>on the <code>step</code> property value.</p>
      *
      * JavaScript Info:
-     * @property dragging
+     * @property snaps
      * @type Boolean
      * 
      */
-    public void setDragging(boolean value) {
-        getPolymerElement().setDragging(value);
+    public void setSnaps(boolean value) {
+        getPolymerElement().setSnaps(value);
+    }
+
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getPointerDown() {
+        return getPolymerElement().getPointerDown();
+    }
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setPointerDown(boolean value) {
+        getPolymerElement().setPointerDown(value);
+    }
+
+    /**
+     * <p>If true, the user is currently holding down the button.</p>
+     *
+     * JavaScript Info:
+     * @property pressed
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getPressed() {
+        return getPolymerElement().getPressed();
+    }
+    /**
+     * <p>If true, the user is currently holding down the button.</p>
+     *
+     * JavaScript Info:
+     * @property pressed
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setPressed(boolean value) {
+        getPolymerElement().setPressed(value);
+    }
+
+    /**
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     *
+     * JavaScript Info:
+     * @property receivedFocusFromKeyboard
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getReceivedFocusFromKeyboard() {
+        return getPolymerElement().getReceivedFocusFromKeyboard();
+    }
+    /**
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     *
+     * JavaScript Info:
+     * @property receivedFocusFromKeyboard
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setReceivedFocusFromKeyboard(boolean value) {
+        getPolymerElement().setReceivedFocusFromKeyboard(value);
+    }
+
+    /**
+     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
+     *
+     * JavaScript Info:
+     * @property toggles
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getToggles() {
+        return getPolymerElement().getToggles();
+    }
+    /**
+     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
+     *
+     * JavaScript Info:
+     * @property toggles
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setToggles(boolean value) {
+        getPolymerElement().setToggles(value);
+    }
+
+    /**
+     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property required
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    public boolean getRequired() {
+        return getPolymerElement().getRequired();
+    }
+    /**
+     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property required
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    public void setRequired(boolean value) {
+        getPolymerElement().setRequired(value);
     }
 
     /**
@@ -516,72 +521,118 @@ public class PaperSlider extends PolymerWidget {
     }
 
     /**
-     * <p>If true, the user is currently holding down the button.</p>
+     * 
      *
      * JavaScript Info:
-     * @property pressed
+     * @property transiting
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    public boolean getPressed() {
-        return getPolymerElement().getPressed();
+    public boolean getTransiting() {
+        return getPolymerElement().getTransiting();
     }
     /**
-     * <p>If true, the user is currently holding down the button.</p>
+     * 
      *
      * JavaScript Info:
-     * @property pressed
+     * @property transiting
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    public void setPressed(boolean value) {
-        getPolymerElement().setPressed(value);
-    }
-
-    /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
-     *
-     * JavaScript Info:
-     * @property receivedFocusFromKeyboard
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getReceivedFocusFromKeyboard() {
-        return getPolymerElement().getReceivedFocusFromKeyboard();
-    }
-    /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
-     *
-     * JavaScript Info:
-     * @property receivedFocusFromKeyboard
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setReceivedFocusFromKeyboard(boolean value) {
-        getPolymerElement().setReceivedFocusFromKeyboard(value);
+    public void setTransiting(boolean value) {
+        getPolymerElement().setTransiting(value);
     }
 
     /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     * <p>If true, the knob is expanded</p>
      *
      * JavaScript Info:
-     * @property pointerDown
+     * @property expand
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    public boolean getPointerDown() {
-        return getPolymerElement().getPointerDown();
+    public boolean getExpand() {
+        return getPolymerElement().getExpand();
     }
     /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     * <p>If true, the knob is expanded</p>
      *
      * JavaScript Info:
-     * @property pointerDown
+     * @property expand
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    public void setPointerDown(boolean value) {
-        getPolymerElement().setPointerDown(value);
+    public void setExpand(boolean value) {
+        getPolymerElement().setExpand(value);
+    }
+
+    /**
+     * <p>True when the user is dragging the slider.</p>
+     *
+     * JavaScript Info:
+     * @property dragging
+     * @type Boolean
+     * 
+     */
+    public boolean getDragging() {
+        return getPolymerElement().getDragging();
+    }
+    /**
+     * <p>True when the user is dragging the slider.</p>
+     *
+     * JavaScript Info:
+     * @property dragging
+     * @type Boolean
+     * 
+     */
+    public void setDragging(boolean value) {
+        getPolymerElement().setDragging(value);
+    }
+
+    /**
+     * <p>Specifies the value granularity of the range’s value.</p>
+     *
+     * JavaScript Info:
+     * @property step
+     * @type Number
+     * @behavior PaperSlider
+     */
+    public double getStep() {
+        return getPolymerElement().getStep();
+    }
+    /**
+     * <p>Specifies the value granularity of the range’s value.</p>
+     *
+     * JavaScript Info:
+     * @property step
+     * @type Number
+     * @behavior PaperSlider
+     */
+    public void setStep(double value) {
+        getPolymerElement().setStep(value);
+    }
+
+    /**
+     * <p>The number that represents the current value.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type Number
+     * @behavior PaperSlider
+     */
+    public double getValue() {
+        return getPolymerElement().getValue();
+    }
+    /**
+     * <p>The number that represents the current value.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type Number
+     * @behavior PaperSlider
+     */
+    public void setValue(double value) {
+        getPolymerElement().setValue(value);
     }
 
     /**
@@ -631,29 +682,6 @@ public class PaperSlider extends PolymerWidget {
     }
 
     /**
-     * <p>Specifies the value granularity of the range’s value.</p>
-     *
-     * JavaScript Info:
-     * @property step
-     * @type Number
-     * @behavior PaperSlider
-     */
-    public double getStep() {
-        return getPolymerElement().getStep();
-    }
-    /**
-     * <p>Specifies the value granularity of the range’s value.</p>
-     *
-     * JavaScript Info:
-     * @property step
-     * @type Number
-     * @behavior PaperSlider
-     */
-    public void setStep(double value) {
-        getPolymerElement().setStep(value);
-    }
-
-    /**
      * <p>The number that represents the current secondary progress.</p>
      *
      * JavaScript Info:
@@ -700,26 +728,26 @@ public class PaperSlider extends PolymerWidget {
     }
 
     /**
-     * <p>The number that represents the current value.</p>
+     * <p>The number that indicates the maximum value of the range.</p>
      *
      * JavaScript Info:
-     * @property value
+     * @property max
      * @type Number
      * @behavior PaperSlider
      */
-    public double getValue() {
-        return getPolymerElement().getValue();
+    public double getMax() {
+        return getPolymerElement().getMax();
     }
     /**
-     * <p>The number that represents the current value.</p>
+     * <p>The number that indicates the maximum value of the range.</p>
      *
      * JavaScript Info:
-     * @property value
+     * @property max
      * @type Number
      * @behavior PaperSlider
      */
-    public void setValue(double value) {
-        getPolymerElement().setValue(value);
+    public void setMax(double value) {
+        getPolymerElement().setMax(value);
     }
 
     /**
@@ -743,29 +771,6 @@ public class PaperSlider extends PolymerWidget {
      */
     public void setMin(double value) {
         getPolymerElement().setMin(value);
-    }
-
-    /**
-     * <p>The number that indicates the maximum value of the range.</p>
-     *
-     * JavaScript Info:
-     * @property max
-     * @type Number
-     * @behavior PaperSlider
-     */
-    public double getMax() {
-        return getPolymerElement().getMax();
-    }
-    /**
-     * <p>The number that indicates the maximum value of the range.</p>
-     *
-     * JavaScript Info:
-     * @property max
-     * @type Number
-     * @behavior PaperSlider
-     */
-    public void setMax(double value) {
-        getPolymerElement().setMax(value);
     }
 
     /**
@@ -860,17 +865,6 @@ public class PaperSlider extends PolymerWidget {
     }
 
     /**
-     * <p>The immediate value of the slider.  This value is updated while the user<br>is dragging the slider.</p>
-     *
-     * JavaScript Info:
-     * @attribute immediate-value
-     * 
-     */
-    public void setImmediateValue(String value) {
-        getPolymerElement().setAttribute("immediate-value", value);
-    }
-
-    /**
      * <p>Specifies the value granularity of the range’s value.</p>
      *
      * JavaScript Info:
@@ -879,6 +873,39 @@ public class PaperSlider extends PolymerWidget {
      */
     public void setStep(String value) {
         getPolymerElement().setAttribute("step", value);
+    }
+
+    /**
+     * <p>The number that represents the current value.</p>
+     *
+     * JavaScript Info:
+     * @attribute value
+     * @behavior PaperSlider
+     */
+    public void setValue(String value) {
+        getPolymerElement().setAttribute("value", value);
+    }
+
+    /**
+     * <p>The maximum number of markers</p>
+     *
+     * JavaScript Info:
+     * @attribute max-markers
+     * 
+     */
+    public void setMaxMarkers(String value) {
+        getPolymerElement().setAttribute("max-markers", value);
+    }
+
+    /**
+     * <p>The immediate value of the slider.  This value is updated while the user<br>is dragging the slider.</p>
+     *
+     * JavaScript Info:
+     * @attribute immediate-value
+     * 
+     */
+    public void setImmediateValue(String value) {
+        getPolymerElement().setAttribute("immediate-value", value);
     }
 
     /**
@@ -904,17 +931,6 @@ public class PaperSlider extends PolymerWidget {
     }
 
     /**
-     * <p>The number that represents the current value.</p>
-     *
-     * JavaScript Info:
-     * @attribute value
-     * @behavior PaperSlider
-     */
-    public void setValue(String value) {
-        getPolymerElement().setAttribute("value", value);
-    }
-
-    /**
      * <p>The number that indicates the minimum value of the range.</p>
      *
      * JavaScript Info:
@@ -923,17 +939,6 @@ public class PaperSlider extends PolymerWidget {
      */
     public void setMin(String value) {
         getPolymerElement().setAttribute("min", value);
-    }
-
-    /**
-     * <p>The maximum number of markers</p>
-     *
-     * JavaScript Info:
-     * @attribute max-markers
-     * 
-     */
-    public void setMaxMarkers(String value) {
-        getPolymerElement().setAttribute("max-markers", value);
     }
 
 
@@ -964,23 +969,11 @@ public class PaperSlider extends PolymerWidget {
     }
 
     /**
-     * <p>Returns the <code>&lt;paper-ripple&gt;</code> element used by this element to create<br>ripple effects. The element’s ripple is created on demand, when<br>necessary, and calling this method will force the<br>ripple to be created.</p>
-     *
-     * JavaScript Info:
-     * @method getRipple
-     * @behavior PaperTab
-     * 
-     */
-    public void getRipple() {
-        getPolymerElement().getRipple();
-    }
-
-    /**
      * <p>Returns true if this element currently contains a ripple effect.</p>
      *
      * JavaScript Info:
      * @method hasRipple
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * @return {boolean}
      */
     public boolean hasRipple() {
@@ -1000,6 +993,18 @@ public class PaperSlider extends PolymerWidget {
     }
 
     /**
+     * <p>Returns the <code>&lt;paper-ripple&gt;</code> element used by this element to create<br>ripple effects. The element’s ripple is created on demand, when<br>necessary, and calling this method will force the<br>ripple to be created.</p>
+     *
+     * JavaScript Info:
+     * @method getRipple
+     * @behavior PaperTab
+     * 
+     */
+    public void getRipple() {
+        getPolymerElement().getRipple();
+    }
+
+    /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
@@ -1009,19 +1014,6 @@ public class PaperSlider extends PolymerWidget {
      */
     public void removeOwnKeyBindings() {
         getPolymerElement().removeOwnKeyBindings();
-    }
-
-    /**
-     * <p>Ensures this element contains a ripple effect. For startup efficiency<br>the ripple effect is dynamically on demand when needed.</p>
-     *
-     * JavaScript Info:
-     * @method ensureRipple
-     * @param {!Event=} optTriggeringEvent  
-     * @behavior PaperToggleButton
-     * 
-     */
-    public void ensureRipple(JavaScriptObject optTriggeringEvent) {
-        getPolymerElement().ensureRipple(optTriggeringEvent);
     }
 
     /**
@@ -1036,6 +1028,19 @@ public class PaperSlider extends PolymerWidget {
      */
     public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
         return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
+    }
+
+    /**
+     * <p>Ensures this element contains a ripple effect. For startup efficiency<br>the ripple effect is dynamically on demand when needed.</p>
+     *
+     * JavaScript Info:
+     * @method ensureRipple
+     * @param {!Event=} optTriggeringEvent  
+     * @behavior PaperToggleButton
+     * 
+     */
+    public void ensureRipple(JavaScriptObject optTriggeringEvent) {
+        getPolymerElement().ensureRipple(optTriggeringEvent);
     }
 
 

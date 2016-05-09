@@ -27,7 +27,7 @@ import jsinterop.annotations.JsType;
 public interface SlideDownAnimationElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "slide-down-animation";
-    @JsOverlay public static final String SRC = "neon-animation/neon-animations.html";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animation.html";
 
 
     /**

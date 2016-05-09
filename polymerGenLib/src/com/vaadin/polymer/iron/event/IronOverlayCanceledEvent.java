@@ -12,7 +12,7 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
- * <p>Fired when the <code>iron-overlay</code> is canceled, but before it is closed.<br>Cancel the event to prevent the <code>iron-overlay</code> from closing.</p>
+ * <p>Fired when the overlay is canceled, but before it is closed.</p>
  */
 @JsType(isNative=true)
 public interface IronOverlayCanceledEvent extends Event {
@@ -27,7 +27,7 @@ public interface IronOverlayCanceledEvent extends Event {
     interface Detail extends Event.Detail {
 
         /**
-         * <p>The closing of the <code>iron-overlay</code> can be prevented<br>by calling <code>event.preventDefault()</code>. The <code>event.detail</code> is the original event that originated<br>the canceling (e.g. ESC keyboard event or click event outside the <code>iron-overlay</code>).</p>
+         * <p>The closing of the overlay can be prevented<br>by calling <code>event.preventDefault()</code>. The <code>event.detail</code> is the original event that<br>originated the canceling (e.g. ESC keyboard event or click event outside the overlay).</p>
          */
         @JsProperty JavaScriptObject getEvent();
 

@@ -9,7 +9,7 @@ import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * <p>Fired after the <code>iron-overlay</code> closes.</p>
+ * <p>Fired after the overlay closes.</p>
  */
 public class IronOverlayClosedEvent extends DomEvent<IronOverlayClosedEventHandler> {
 
@@ -34,10 +34,10 @@ public class IronOverlayClosedEvent extends DomEvent<IronOverlayClosedEventHandl
 
 
     /**
-     * <p>Contains <code>canceled</code> (whether the overlay was canceled).</p>
+     * <p>The <code>event.detail</code> is the <code>closingReason</code> property<br>(contains <code>canceled</code>, whether the overlay was canceled).</p>
      */
-    public Object getClosingReason() {
-        return getPolymerEvent().getDetail().getClosingReason();
+    public JavaScriptObject getEvent() {
+        return getPolymerEvent().getDetail().getEvent();
     }
 
 }

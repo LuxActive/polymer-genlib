@@ -29,6 +29,22 @@ import com.google.gwt.core.client.JavaScriptObject;
  * &lt;/paper-item&gt;
  * 
  * 
+ * </code></pre><p>To use <code>paper-item</code> as a link, wrap it in an anchor tag. Since <code>paper-item</code> will<br>already receive focus, you may want to prevent the anchor tag from receiving<br>focus as well by setting its tabindex to -1.</p>
+ * <pre><code>&lt;a href=&quot;https://www.polymer-project.org/&quot; tabindex=&quot;-1&quot;&gt;
+ *   &lt;paper-item raised&gt;Polymer Project&lt;/paper-item&gt;
+ * &lt;/a&gt;
+ * 
+ * 
+ * </code></pre><p>If you are concerned about performance and want to use <code>paper-item</code> in a <code>paper-listbox</code><br>with many items, you can just use a native <code>button</code> with the <code>paper-item</code> class<br>applied (provided you have correctly included the shared styles):</p>
+ * <pre><code>&lt;style is=&quot;custom-style&quot; include=&quot;paper-item-shared-styles&quot;&gt;&lt;/style&gt;
+ * 
+ * &lt;paper-listbox&gt;
+ *   &lt;button class=&quot;paper-item&quot; role=&quot;option&quot;&gt;Inbox&lt;/button&gt;
+ *   &lt;button class=&quot;paper-item&quot; role=&quot;option&quot;&gt;Starred&lt;/button&gt;
+ *   &lt;button class=&quot;paper-item&quot; role=&quot;option&quot;&gt;Sent mail&lt;/button&gt;
+ * &lt;/paper-listbox&gt;
+ * 
+ * 
  * </code></pre><h3 id="styling">Styling</h3>
  * <p>The following custom properties and mixins are available for styling:</p>
  * <table>
@@ -123,6 +139,29 @@ public class PaperItem extends PolymerWidget {
 
 
     /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    public JavaScriptObject getKeyBindings() {
+        return getPolymerElement().getKeyBindings();
+    }
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    public void setKeyBindings(JavaScriptObject value) {
+        getPolymerElement().setKeyBindings(value);
+    }
+
+    /**
      * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -143,29 +182,6 @@ public class PaperItem extends PolymerWidget {
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    public JavaScriptObject getKeyBindings() {
-        return getPolymerElement().getKeyBindings();
-    }
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    public void setKeyBindings(JavaScriptObject value) {
-        getPolymerElement().setKeyBindings(value);
     }
 
     /**
@@ -377,17 +393,6 @@ public class PaperItem extends PolymerWidget {
 
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @attribute key-event-target
-     * @behavior VaadinComboBox
-     */
-    public void setKeyEventTarget(String value) {
-        getPolymerElement().setAttribute("key-event-target", value);
-    }
-
-    /**
      * 
      *
      * JavaScript Info:
@@ -396,6 +401,17 @@ public class PaperItem extends PolymerWidget {
      */
     public void setKeyBindings(String value) {
         getPolymerElement().setAttribute("key-bindings", value);
+    }
+
+    /**
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @attribute key-event-target
+     * @behavior VaadinComboBox
+     */
+    public void setKeyEventTarget(String value) {
+        getPolymerElement().setAttribute("key-event-target", value);
     }
 
 

@@ -81,23 +81,23 @@ public interface IronSelectableBehavior {
     @JsProperty void setSelected(Object value);
 
     /**
-     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     * <p>The class to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectable
-     * @type string
+     * @property selectedClass
+     * @type String
      * 
      */
-    @JsProperty String getSelectable();
+    @JsProperty String getSelectedClass();
     /**
-     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     * <p>The class to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectable
-     * @type string
+     * @property selectedClass
+     * @type String
      * 
      */
-    @JsProperty void setSelectable(String value);
+    @JsProperty void setSelectedClass(String value);
 
     /**
      * <p>The attribute to set on elements when selected.</p>
@@ -119,25 +119,6 @@ public interface IronSelectableBehavior {
     @JsProperty void setSelectedAttribute(String value);
 
     /**
-     * <p>The class to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedClass
-     * @type String
-     * 
-     */
-    @JsProperty String getSelectedClass();
-    /**
-     * <p>The class to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedClass
-     * @type String
-     * 
-     */
-    @JsProperty void setSelectedClass(String value);
-
-    /**
      * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
@@ -155,6 +136,25 @@ public interface IronSelectableBehavior {
      * 
      */
     @JsProperty void setAttrForSelected(String value);
+
+    /**
+     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     *
+     * JavaScript Info:
+     * @property selectable
+     * @type string
+     * 
+     */
+    @JsProperty String getSelectable();
+    /**
+     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     *
+     * JavaScript Info:
+     * @property selectable
+     * @type string
+     * 
+     */
+    @JsProperty void setSelectable(String value);
 
     /**
      * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
@@ -196,6 +196,17 @@ public interface IronSelectableBehavior {
 
 
     /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * 
+     * 
+     */
+    void selectIndex(Object index);
+
+    /**
      * <p>Selects the given value.</p>
      *
      * JavaScript Info:
@@ -205,6 +216,18 @@ public interface IronSelectableBehavior {
      * 
      */
     void select(Object value);
+
+    /**
+     * <p>Force a synchronous update of the <code>items</code> property.</p>
+     * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
+     * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
+     *
+     * JavaScript Info:
+     * @method forceSynchronousItemUpdate
+     * 
+     * 
+     */
+    void forceSynchronousItemUpdate();
 
     /**
      * <p>Selects the previous item.</p>
@@ -225,18 +248,6 @@ public interface IronSelectableBehavior {
      * 
      */
     void selectNext();
-
-    /**
-     * <p>Force a synchronous update of the <code>items</code> property.</p>
-     * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
-     * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
-     *
-     * JavaScript Info:
-     * @method forceSynchronousItemUpdate
-     * 
-     * 
-     */
-    void forceSynchronousItemUpdate();
 
     /**
      * <p>Returns the index of the given item.</p>

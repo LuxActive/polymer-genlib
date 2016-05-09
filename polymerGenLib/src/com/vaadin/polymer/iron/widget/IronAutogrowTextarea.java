@@ -78,26 +78,26 @@ public class IronAutogrowTextarea extends PolymerWidget {
 
 
     /**
-     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     * <p>Set to true to mark the textarea as required.</p>
      *
      * JavaScript Info:
-     * @property autofocus
+     * @property required
      * @type Boolean
      * 
      */
-    public boolean getAutofocus() {
-        return getPolymerElement().getAutofocus();
+    public boolean getRequired() {
+        return getPolymerElement().getRequired();
     }
     /**
-     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     * <p>Set to true to mark the textarea as required.</p>
      *
      * JavaScript Info:
-     * @property autofocus
+     * @property required
      * @type Boolean
      * 
      */
-    public void setAutofocus(boolean value) {
-        getPolymerElement().setAutofocus(value);
+    public void setRequired(boolean value) {
+        getPolymerElement().setRequired(value);
     }
 
     /**
@@ -121,29 +121,6 @@ public class IronAutogrowTextarea extends PolymerWidget {
      */
     public void setMaxlength(double value) {
         getPolymerElement().setMaxlength(value);
-    }
-
-    /**
-     * <p>The initial number of rows.</p>
-     *
-     * JavaScript Info:
-     * @property rows
-     * @type Number
-     * 
-     */
-    public double getRows() {
-        return getPolymerElement().getRows();
-    }
-    /**
-     * <p>The initial number of rows.</p>
-     *
-     * JavaScript Info:
-     * @property rows
-     * @type Number
-     * 
-     */
-    public void setRows(double value) {
-        getPolymerElement().setRows(value);
     }
 
     /**
@@ -193,26 +170,26 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     * <p>The initial number of rows.</p>
      *
      * JavaScript Info:
-     * @property required
-     * @type Boolean
-     * @behavior VaadinDatePicker
+     * @property rows
+     * @type Number
+     * 
      */
-    public boolean getRequired() {
-        return getPolymerElement().getRequired();
+    public double getRows() {
+        return getPolymerElement().getRows();
     }
     /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     * <p>The initial number of rows.</p>
      *
      * JavaScript Info:
-     * @property required
-     * @type Boolean
-     * @behavior VaadinDatePicker
+     * @property rows
+     * @type Number
+     * 
      */
-    public void setRequired(boolean value) {
-        getPolymerElement().setRequired(value);
+    public void setRows(double value) {
+        getPolymerElement().setRows(value);
     }
 
     /**
@@ -285,26 +262,26 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
+     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property placeholder
-     * @type String
+     * @property autofocus
+     * @type Boolean
      * 
      */
-    public String getPlaceholder() {
-        return getPolymerElement().getPlaceholder();
+    public boolean getAutofocus() {
+        return getPolymerElement().getAutofocus();
     }
     /**
-     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
+     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property placeholder
-     * @type String
+     * @property autofocus
+     * @type Boolean
      * 
      */
-    public void setPlaceholder(String value) {
-        getPolymerElement().setPlaceholder(value);
+    public void setAutofocus(boolean value) {
+        getPolymerElement().setAutofocus(value);
     }
 
     /**
@@ -331,26 +308,26 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property validatorType
+     * @property autocomplete
      * @type String
-     * @behavior VaadinDatePicker
+     * 
      */
-    public String getValidatorType() {
-        return getPolymerElement().getValidatorType();
+    public String getAutocomplete() {
+        return getPolymerElement().getAutocomplete();
     }
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property validatorType
+     * @property autocomplete
      * @type String
-     * @behavior VaadinDatePicker
+     * 
      */
-    public void setValidatorType(String value) {
-        getPolymerElement().setValidatorType(value);
+    public void setAutocomplete(String value) {
+        getPolymerElement().setAutocomplete(value);
     }
 
     /**
@@ -374,6 +351,75 @@ public class IronAutogrowTextarea extends PolymerWidget {
      */
     public void setValue(String value) {
         getPolymerElement().setValue(value);
+    }
+
+    /**
+     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property inputmode
+     * @type String
+     * 
+     */
+    public String getInputmode() {
+        return getPolymerElement().getInputmode();
+    }
+    /**
+     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property inputmode
+     * @type String
+     * 
+     */
+    public void setInputmode(String value) {
+        getPolymerElement().setInputmode(value);
+    }
+
+    /**
+     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property placeholder
+     * @type String
+     * 
+     */
+    public String getPlaceholder() {
+        return getPolymerElement().getPlaceholder();
+    }
+    /**
+     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property placeholder
+     * @type String
+     * 
+     */
+    public void setPlaceholder(String value) {
+        getPolymerElement().setPlaceholder(value);
+    }
+
+    /**
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
+     *
+     * JavaScript Info:
+     * @property validatorType
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    public String getValidatorType() {
+        return getPolymerElement().getValidatorType();
+    }
+    /**
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
+     *
+     * JavaScript Info:
+     * @property validatorType
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    public void setValidatorType(String value) {
+        getPolymerElement().setValidatorType(value);
     }
 
     /**
@@ -422,52 +468,6 @@ public class IronAutogrowTextarea extends PolymerWidget {
         getPolymerElement().setReadonly(value);
     }
 
-    /**
-     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * 
-     */
-    public String getAutocomplete() {
-        return getPolymerElement().getAutocomplete();
-    }
-    /**
-     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * 
-     */
-    public void setAutocomplete(String value) {
-        getPolymerElement().setAutocomplete(value);
-    }
-
-    /**
-     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property inputmode
-     * @type String
-     * 
-     */
-    public String getInputmode() {
-        return getPolymerElement().getInputmode();
-    }
-    /**
-     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property inputmode
-     * @type String
-     * 
-     */
-    public void setInputmode(String value) {
-        getPolymerElement().setInputmode(value);
-    }
-
 
     /**
      * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
@@ -481,17 +481,6 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>The maximum number of rows this element can grow to until it<br>scrolls. 0 means no maximum.</p>
-     *
-     * JavaScript Info:
-     * @attribute max-rows
-     * 
-     */
-    public void setMaxRows(String value) {
-        getPolymerElement().setAttribute("max-rows", value);
-    }
-
-    /**
      * <p>The initial number of rows.</p>
      *
      * JavaScript Info:
@@ -500,6 +489,17 @@ public class IronAutogrowTextarea extends PolymerWidget {
      */
     public void setRows(String value) {
         getPolymerElement().setAttribute("rows", value);
+    }
+
+    /**
+     * <p>The maximum number of rows this element can grow to until it<br>scrolls. 0 means no maximum.</p>
+     *
+     * JavaScript Info:
+     * @attribute max-rows
+     * 
+     */
+    public void setMaxRows(String value) {
+        getPolymerElement().setAttribute("max-rows", value);
     }
 
     /**

@@ -27,14 +27,9 @@ public interface IronAnnounceEvent extends Event {
     interface Detail extends Event.Detail {
 
         /**
-         * 
+         * <p>Contains text that will be announced.</p>
          */
         @JsProperty JavaScriptObject getDetail();
-
-        /**
-         * <p>The text that will be announced.</p>
-         */
-        @JsProperty String getText();
 
     }
 

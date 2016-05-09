@@ -483,6 +483,20 @@ public class PaperRipple extends PolymerWidget {
     }
 
     /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
+    }
+
+    /**
      * <p>Provokes a ripple down effect via a UI event,<br><em>not</em> respecting the <code>noink</code> property.</p>
      *
      * JavaScript Info:
@@ -532,20 +546,6 @@ public class PaperRipple extends PolymerWidget {
      */
     public void uiDownAction(JavaScriptObject event) {
         getPolymerElement().uiDownAction(event);
-    }
-
-    /**
-     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {KeyboardEvent} event  
-     * @param {string} eventString  
-     * @behavior VaadinComboBox
-     * @return {boolean}
-     */
-    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
-        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
 

@@ -1,7 +1,7 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
  * from paper-menu-button project by The Polymer Authors
- * that is licensed with MIT license.
+ * that is licensed with http://polymer.github.io/LICENSE.txt license.
  */
 package com.vaadin.polymer.paper;
 
@@ -42,7 +42,7 @@ import jsinterop.annotations.JsType;
  * <tr>
  * <td><code>--paper-menu-button-dropdown-background</code></td>
  * <td>Background color of the paper-menu-button dropdown</td>
- * <td><code>#fff</code></td>
+ * <td><code>--primary-background-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-menu-button</code></td>
@@ -189,25 +189,6 @@ public interface PaperMenuButtonElement extends HTMLElement {
     @JsProperty void setCloseAnimationConfig(JavaScriptObject value);
 
     /**
-     * <p>Set to true to disable automatically closing the dropdown after<br>a selection has been made.</p>
-     *
-     * JavaScript Info:
-     * @property ignoreSelect
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getIgnoreSelect();
-    /**
-     * <p>Set to true to disable automatically closing the dropdown after<br>a selection has been made.</p>
-     *
-     * JavaScript Info:
-     * @property ignoreSelect
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setIgnoreSelect(boolean value);
-
-    /**
      * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
      *
      * JavaScript Info:
@@ -265,6 +246,25 @@ public interface PaperMenuButtonElement extends HTMLElement {
     @JsProperty void setDisabled(boolean value);
 
     /**
+     * <p>True if the content is currently displayed.</p>
+     *
+     * JavaScript Info:
+     * @property opened
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getOpened();
+    /**
+     * <p>True if the content is currently displayed.</p>
+     *
+     * JavaScript Info:
+     * @property opened
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setOpened(boolean value);
+
+    /**
      * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -284,23 +284,23 @@ public interface PaperMenuButtonElement extends HTMLElement {
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
     /**
-     * <p>True if the content is currently displayed.</p>
+     * <p>Set to true to disable automatically closing the dropdown after<br>a selection has been made.</p>
      *
      * JavaScript Info:
-     * @property opened
+     * @property ignoreSelect
      * @type Boolean
      * 
      */
-    @JsProperty boolean getOpened();
+    @JsProperty boolean getIgnoreSelect();
     /**
-     * <p>True if the content is currently displayed.</p>
+     * <p>Set to true to disable automatically closing the dropdown after<br>a selection has been made.</p>
      *
      * JavaScript Info:
-     * @property opened
+     * @property ignoreSelect
      * @type Boolean
      * 
      */
-    @JsProperty void setOpened(boolean value);
+    @JsProperty void setIgnoreSelect(boolean value);
 
     /**
      * <p>The orientation against which to align the menu dropdown<br>vertically relative to the dropdown trigger.</p>
@@ -354,16 +354,14 @@ public interface PaperMenuButtonElement extends HTMLElement {
     void addOwnKeyBinding(Object eventString, Object handlerName);
 
     /**
-     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     * <p>Make the dropdown content appear as an overlay positioned relative<br>to the dropdown trigger.</p>
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {KeyboardEvent} event  
-     * @param {string} eventString  
-     * @behavior VaadinComboBox
-     * @return {boolean}
+     * @method open
+     * 
+     * 
      */
-    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
+    void open();
 
     /**
      * <p>Hide the dropdown content.</p>
@@ -376,14 +374,14 @@ public interface PaperMenuButtonElement extends HTMLElement {
     void close();
 
     /**
-     * <p>Make the dropdown content appear as an overlay positioned relative<br>to the dropdown trigger.</p>
+     * <p>Toggles the drowpdown content between opened and closed.</p>
      *
      * JavaScript Info:
-     * @method open
+     * @method toggle
      * 
      * 
      */
-    void open();
+    void toggle();
 
     /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
@@ -394,5 +392,17 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * 
      */
     void removeOwnKeyBindings();
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
 }

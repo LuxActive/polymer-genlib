@@ -61,6 +61,25 @@ public interface VaadinMonthCalendarElement extends HTMLElement {
     @JsProperty void setI18n(JavaScriptObject value);
 
     /**
+     * <p>Flag stating whether taps on the component should be ignored.</p>
+     *
+     * JavaScript Info:
+     * @property ignoreTaps
+     * @type boolean
+     * 
+     */
+    @JsProperty boolean getIgnoreTaps();
+    /**
+     * <p>Flag stating whether taps on the component should be ignored.</p>
+     *
+     * JavaScript Info:
+     * @property ignoreTaps
+     * @type boolean
+     * 
+     */
+    @JsProperty void setIgnoreTaps(boolean value);
+
+    /**
      * <p>A <code>Date</code> object defining the month to be displayed. Only year and<br>month properties are actually used.</p>
      *
      * JavaScript Info:

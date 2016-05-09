@@ -12,7 +12,7 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
- * <p>Fired after the <code>iron-overlay</code> closes.</p>
+ * <p>Fired after the overlay closes.</p>
  */
 @JsType(isNative=true)
 public interface IronOverlayClosedEvent extends Event {
@@ -27,9 +27,9 @@ public interface IronOverlayClosedEvent extends Event {
     interface Detail extends Event.Detail {
 
         /**
-         * <p>Contains <code>canceled</code> (whether the overlay was canceled).</p>
+         * <p>The <code>event.detail</code> is the <code>closingReason</code> property<br>(contains <code>canceled</code>, whether the overlay was canceled).</p>
          */
-        @JsProperty Object getClosingReason();
+        @JsProperty JavaScriptObject getEvent();
 
     }
 

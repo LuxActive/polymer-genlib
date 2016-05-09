@@ -169,6 +169,138 @@ public class VaadinDatePicker extends PolymerWidget {
 
 
     /**
+     * <p>The object used to localize this component.<br>To change the default localization, replace the entire<br><em>i18n</em> object or just the property you want to modify.</p>
+     * <p>The object has the following JSON structure and default values:</p>
+     * <pre><code>  {
+     *     // An array with the full names of months starting
+     *     // with January.
+     *     monthNames: [
+     *       &#39;January&#39;, &#39;February&#39;, &#39;March&#39;, &#39;April&#39;, &#39;May&#39;,
+     *       &#39;June&#39;, &#39;July&#39;, &#39;August&#39;, &#39;September&#39;,
+     *       &#39;October&#39;, &#39;November&#39;, &#39;December&#39;
+     *     ],
+     * 
+     *     // An array with the short names of days starting
+     *     // with Sunday.
+     *     weekdaysShort: [
+     *       &#39;Sun&#39;, &#39;Mon&#39;, &#39;Tue&#39;, &#39;Wed&#39;, &#39;Thu&#39;, &#39;Fri&#39;, &#39;Sat&#39;
+     *     ],
+     * 
+     *     // An integer indicating the first day of the week
+     *     // (0 = Sunday, 1 = Monday, etc.).
+     *     firstDayOfWeek: 0,
+     * 
+     *     // Translation of the Today shortcut button text.
+     *     today: &#39;Today&#39;,
+     * 
+     *     // Translation of the Cancel button text.
+     *     cancel: &#39;Cancel&#39;,
+     * 
+     *     // A function to format given `Date` object as
+     *     // date string.
+     *     formatDate: function(d) {
+     *       // returns a string representation of the given
+     *       // Date object in &#39;MM/DD/YYYY&#39; -format
+     *     },
+     * 
+     *     // A function to format given `monthName` and
+     *     // `fullYear` integer as calendar title string.
+     *     formatTitle: function(monthName, fullYear) {
+     *       return monthName + &#39; &#39; + fullYear;
+     *     }
+     *   }
+     * 
+     * 
+     * 
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property i18n
+     * @type Object
+     * 
+     */
+    public JavaScriptObject getI18n() {
+        return getPolymerElement().getI18n();
+    }
+    /**
+     * <p>The object used to localize this component.<br>To change the default localization, replace the entire<br><em>i18n</em> object or just the property you want to modify.</p>
+     * <p>The object has the following JSON structure and default values:</p>
+     * <pre><code>  {
+     *     // An array with the full names of months starting
+     *     // with January.
+     *     monthNames: [
+     *       &#39;January&#39;, &#39;February&#39;, &#39;March&#39;, &#39;April&#39;, &#39;May&#39;,
+     *       &#39;June&#39;, &#39;July&#39;, &#39;August&#39;, &#39;September&#39;,
+     *       &#39;October&#39;, &#39;November&#39;, &#39;December&#39;
+     *     ],
+     * 
+     *     // An array with the short names of days starting
+     *     // with Sunday.
+     *     weekdaysShort: [
+     *       &#39;Sun&#39;, &#39;Mon&#39;, &#39;Tue&#39;, &#39;Wed&#39;, &#39;Thu&#39;, &#39;Fri&#39;, &#39;Sat&#39;
+     *     ],
+     * 
+     *     // An integer indicating the first day of the week
+     *     // (0 = Sunday, 1 = Monday, etc.).
+     *     firstDayOfWeek: 0,
+     * 
+     *     // Translation of the Today shortcut button text.
+     *     today: &#39;Today&#39;,
+     * 
+     *     // Translation of the Cancel button text.
+     *     cancel: &#39;Cancel&#39;,
+     * 
+     *     // A function to format given `Date` object as
+     *     // date string.
+     *     formatDate: function(d) {
+     *       // returns a string representation of the given
+     *       // Date object in &#39;MM/DD/YYYY&#39; -format
+     *     },
+     * 
+     *     // A function to format given `monthName` and
+     *     // `fullYear` integer as calendar title string.
+     *     formatTitle: function(monthName, fullYear) {
+     *       return monthName + &#39; &#39; + fullYear;
+     *     }
+     *   }
+     * 
+     * 
+     * 
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property i18n
+     * @type Object
+     * 
+     */
+    public void setI18n(JavaScriptObject value) {
+        getPolymerElement().setI18n(value);
+    }
+
+    /**
+     * <p>True if the last call to <code>validate</code> is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property invalid
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    public boolean getInvalid() {
+        return getPolymerElement().getInvalid();
+    }
+    /**
+     * <p>True if the last call to <code>validate</code> is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property invalid
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    public void setInvalid(boolean value) {
+        getPolymerElement().setInvalid(value);
+    }
+
+    /**
      * <p>Set to true to make this element read-only.</p>
      *
      * JavaScript Info:
@@ -215,126 +347,6 @@ public class VaadinDatePicker extends PolymerWidget {
     }
 
     /**
-     * <p>The object used to localize this component.<br>To change the default localization, replace the entire<br><em>i18n</em> object or just the property you want to modify.</p>
-     * <p>The object has the following JSON structure and default values:</p>
-     * <pre><code>  {
-     *     // An array with the full names of months starting
-     *     // with January.
-     *     monthNames: [
-     *       &#39;January&#39;, &#39;February&#39;, &#39;March&#39;, &#39;April&#39;, &#39;May&#39;,
-     *       &#39;June&#39;, &#39;July&#39;, &#39;August&#39;, &#39;September&#39;,
-     *       &#39;October&#39;, &#39;November&#39;, &#39;December&#39;
-     *     ],
-     * 
-     *     // An array with the short names of days starting
-     *     // with Sunday.
-     *     weekdaysShort: [
-     *       &#39;Sun&#39;, &#39;Mon&#39;, &#39;Tue&#39;, &#39;Wed&#39;, &#39;Thu&#39;, &#39;Fri&#39;, &#39;Sat&#39;
-     *     ],
-     * 
-     *     // An integer indicating the first day of the week
-     *     // (0 = Sunday, 1 = Monday, etc.).
-     *     firstDayOfWeek: 0,
-     * 
-     *     // Translation of the Today shortcut button text.
-     *     today: &#39;Today&#39;,
-     * 
-     *     // Translation of the Cancel button text.
-     *     cancel: &#39;Cancel&#39;,
-     * 
-     *     // A function to format given `Date` object as
-     *     // string.
-     *     formatDate: function(d) {
-     *       // returns a string representation of the given
-     *       // Date object in &#39;MM/DD/YYYY&#39; -format
-     *     }
-     *   }
-     * 
-     * 
-     * 
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property i18n
-     * @type Object
-     * 
-     */
-    public JavaScriptObject getI18n() {
-        return getPolymerElement().getI18n();
-    }
-    /**
-     * <p>The object used to localize this component.<br>To change the default localization, replace the entire<br><em>i18n</em> object or just the property you want to modify.</p>
-     * <p>The object has the following JSON structure and default values:</p>
-     * <pre><code>  {
-     *     // An array with the full names of months starting
-     *     // with January.
-     *     monthNames: [
-     *       &#39;January&#39;, &#39;February&#39;, &#39;March&#39;, &#39;April&#39;, &#39;May&#39;,
-     *       &#39;June&#39;, &#39;July&#39;, &#39;August&#39;, &#39;September&#39;,
-     *       &#39;October&#39;, &#39;November&#39;, &#39;December&#39;
-     *     ],
-     * 
-     *     // An array with the short names of days starting
-     *     // with Sunday.
-     *     weekdaysShort: [
-     *       &#39;Sun&#39;, &#39;Mon&#39;, &#39;Tue&#39;, &#39;Wed&#39;, &#39;Thu&#39;, &#39;Fri&#39;, &#39;Sat&#39;
-     *     ],
-     * 
-     *     // An integer indicating the first day of the week
-     *     // (0 = Sunday, 1 = Monday, etc.).
-     *     firstDayOfWeek: 0,
-     * 
-     *     // Translation of the Today shortcut button text.
-     *     today: &#39;Today&#39;,
-     * 
-     *     // Translation of the Cancel button text.
-     *     cancel: &#39;Cancel&#39;,
-     * 
-     *     // A function to format given `Date` object as
-     *     // string.
-     *     formatDate: function(d) {
-     *       // returns a string representation of the given
-     *       // Date object in &#39;MM/DD/YYYY&#39; -format
-     *     }
-     *   }
-     * 
-     * 
-     * 
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property i18n
-     * @type Object
-     * 
-     */
-    public void setI18n(JavaScriptObject value) {
-        getPolymerElement().setI18n(value);
-    }
-
-    /**
-     * <p>True if the last call to <code>validate</code> is invalid.</p>
-     *
-     * JavaScript Info:
-     * @property invalid
-     * @type Boolean
-     * @behavior VaadinDatePicker
-     */
-    public boolean getInvalid() {
-        return getPolymerElement().getInvalid();
-    }
-    /**
-     * <p>True if the last call to <code>validate</code> is invalid.</p>
-     *
-     * JavaScript Info:
-     * @property invalid
-     * @type Boolean
-     * @behavior VaadinDatePicker
-     */
-    public void setInvalid(boolean value) {
-        getPolymerElement().setInvalid(value);
-    }
-
-    /**
      * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
      *
      * JavaScript Info:
@@ -359,35 +371,48 @@ public class VaadinDatePicker extends PolymerWidget {
 
     /**
      * <p>The value for this element.</p>
-     * <p>Supported date formats:</p>
-     * <ul>
-     * <li>ISO 8601 <code>&quot;YYYY-MM-DD&quot;</code> (default)</li>
-     * <li>6-digit extended ISO 8601 <code>&quot;+YYYYYY-MM-DD&quot;</code>, <code>&quot;-YYYYYY-MM-DD&quot;</code></li>
-     * </ul>
      *
      * JavaScript Info:
      * @property value
      * @type String
-     * 
+     * @behavior VaadinDatePicker
      */
     public String getValue() {
         return getPolymerElement().getValue();
     }
     /**
      * <p>The value for this element.</p>
-     * <p>Supported date formats:</p>
-     * <ul>
-     * <li>ISO 8601 <code>&quot;YYYY-MM-DD&quot;</code> (default)</li>
-     * <li>6-digit extended ISO 8601 <code>&quot;+YYYYYY-MM-DD&quot;</code>, <code>&quot;-YYYYYY-MM-DD&quot;</code></li>
-     * </ul>
      *
      * JavaScript Info:
      * @property value
      * @type String
-     * 
+     * @behavior VaadinDatePicker
      */
     public void setValue(String value) {
         getPolymerElement().setValue(value);
+    }
+
+    /**
+     * <p>The name of this element.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    public String getName() {
+        return getPolymerElement().getName();
+    }
+    /**
+     * <p>The name of this element.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    public void setName(String value) {
+        getPolymerElement().setName(value);
     }
 
     /**
@@ -411,29 +436,6 @@ public class VaadinDatePicker extends PolymerWidget {
      */
     public void setLabel(String value) {
         getPolymerElement().setLabel(value);
-    }
-
-    /**
-     * <p>Namespace for this validator.</p>
-     *
-     * JavaScript Info:
-     * @property validatorType
-     * @type String
-     * @behavior VaadinDatePicker
-     */
-    public String getValidatorType() {
-        return getPolymerElement().getValidatorType();
-    }
-    /**
-     * <p>Namespace for this validator.</p>
-     *
-     * JavaScript Info:
-     * @property validatorType
-     * @type String
-     * @behavior VaadinDatePicker
-     */
-    public void setValidatorType(String value) {
-        getPolymerElement().setValidatorType(value);
     }
 
     /**
@@ -485,26 +487,26 @@ public class VaadinDatePicker extends PolymerWidget {
     }
 
     /**
-     * <p>The name of this element.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
-     * @property name
+     * @property validatorType
      * @type String
      * @behavior VaadinDatePicker
      */
-    public String getName() {
-        return getPolymerElement().getName();
+    public String getValidatorType() {
+        return getPolymerElement().getValidatorType();
     }
     /**
-     * <p>The name of this element.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
-     * @property name
+     * @property validatorType
      * @type String
      * @behavior VaadinDatePicker
      */
-    public void setName(String value) {
-        getPolymerElement().setName(value);
+    public void setValidatorType(String value) {
+        getPolymerElement().setValidatorType(value);
     }
 
 
@@ -537,10 +539,16 @@ public class VaadinDatePicker extends PolymerWidget {
      *     cancel: &#39;Cancel&#39;,
      * 
      *     // A function to format given `Date` object as
-     *     // string.
+     *     // date string.
      *     formatDate: function(d) {
      *       // returns a string representation of the given
      *       // Date object in &#39;MM/DD/YYYY&#39; -format
+     *     },
+     * 
+     *     // A function to format given `monthName` and
+     *     // `fullYear` integer as calendar title string.
+     *     formatTitle: function(monthName, fullYear) {
+     *       return monthName + &#39; &#39; + fullYear;
      *     }
      *   }
      * 

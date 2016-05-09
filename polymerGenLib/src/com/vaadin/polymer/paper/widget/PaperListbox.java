@@ -108,29 +108,6 @@ public class PaperListbox extends PolymerWidget {
 
 
     /**
-     * <p>Returns the currently focused item.</p>
-     *
-     * JavaScript Info:
-     * @property focusedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    public JavaScriptObject getFocusedItem() {
-        return getPolymerElement().getFocusedItem();
-    }
-    /**
-     * <p>Returns the currently focused item.</p>
-     *
-     * JavaScript Info:
-     * @property focusedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    public void setFocusedItem(JavaScriptObject value) {
-        getPolymerElement().setFocusedItem(value);
-    }
-
-    /**
      * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -246,26 +223,49 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * 
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @property keyBindings
-     * @type Object
+     * @property selected
+     * @type (string|number)
      * @behavior PaperTabs
      */
-    public JavaScriptObject getKeyBindings() {
-        return getPolymerElement().getKeyBindings();
+    public Object getSelected() {
+        return getPolymerElement().getSelected();
     }
     /**
-     * 
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @property keyBindings
-     * @type Object
+     * @property selected
+     * @type (string|number)
      * @behavior PaperTabs
      */
-    public void setKeyBindings(JavaScriptObject value) {
-        getPolymerElement().setKeyBindings(value);
+    public void setSelected(Object value) {
+        getPolymerElement().setSelected(value);
+    }
+
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    public JavaScriptObject getFocusedItem() {
+        return getPolymerElement().getFocusedItem();
+    }
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    public void setFocusedItem(JavaScriptObject value) {
+        getPolymerElement().setFocusedItem(value);
     }
 
     /**
@@ -315,49 +315,49 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     * 
      *
      * JavaScript Info:
-     * @property selected
-     * @type (string|number)
-     * @behavior PaperTabs
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
      */
-    public Object getSelected() {
-        return getPolymerElement().getSelected();
+    public JavaScriptObject getKeyBindings() {
+        return getPolymerElement().getKeyBindings();
     }
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     * 
      *
      * JavaScript Info:
-     * @property selected
-     * @type (string|number)
-     * @behavior PaperTabs
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
      */
-    public void setSelected(Object value) {
-        getPolymerElement().setSelected(value);
+    public void setKeyBindings(JavaScriptObject value) {
+        getPolymerElement().setKeyBindings(value);
     }
 
     /**
-     * <p>The attribute to set on elements when selected.</p>
+     * <p>The class to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectedAttribute
+     * @property selectedClass
      * @type String
      * @behavior PaperTabs
      */
-    public String getSelectedAttribute() {
-        return getPolymerElement().getSelectedAttribute();
+    public String getSelectedClass() {
+        return getPolymerElement().getSelectedClass();
     }
     /**
-     * <p>The attribute to set on elements when selected.</p>
+     * <p>The class to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectedAttribute
+     * @property selectedClass
      * @type String
      * @behavior PaperTabs
      */
-    public void setSelectedAttribute(String value) {
-        getPolymerElement().setSelectedAttribute(value);
+    public void setSelectedClass(String value) {
+        getPolymerElement().setSelectedClass(value);
     }
 
     /**
@@ -476,38 +476,38 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * <p>The class to set on elements when selected.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectedClass
+     * @property selectedAttribute
      * @type String
      * @behavior PaperTabs
      */
-    public String getSelectedClass() {
-        return getPolymerElement().getSelectedClass();
+    public String getSelectedAttribute() {
+        return getPolymerElement().getSelectedAttribute();
     }
     /**
-     * <p>The class to set on elements when selected.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectedClass
+     * @property selectedAttribute
      * @type String
      * @behavior PaperTabs
      */
-    public void setSelectedClass(String value) {
-        getPolymerElement().setSelectedClass(value);
+    public void setSelectedAttribute(String value) {
+        getPolymerElement().setSelectedAttribute(value);
     }
 
 
     /**
-     * <p>Returns the currently selected item.</p>
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @attribute selected-item
-     * @behavior PaperTabs
+     * @attribute key-event-target
+     * @behavior VaadinComboBox
      */
-    public void setSelectedItem(String value) {
-        getPolymerElement().setAttribute("selected-item", value);
+    public void setKeyEventTarget(String value) {
+        getPolymerElement().setAttribute("key-event-target", value);
     }
 
     /**
@@ -555,14 +555,14 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * <p>Returns the currently focused item.</p>
+     * <p>Returns the currently selected item.</p>
      *
      * JavaScript Info:
-     * @attribute focused-item
+     * @attribute selected-item
      * @behavior PaperTabs
      */
-    public void setFocusedItem(String value) {
-        getPolymerElement().setAttribute("focused-item", value);
+    public void setSelectedItem(String value) {
+        getPolymerElement().setAttribute("selected-item", value);
     }
 
     /**
@@ -577,16 +577,29 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>Returns the currently focused item.</p>
      *
      * JavaScript Info:
-     * @attribute key-event-target
-     * @behavior VaadinComboBox
+     * @attribute focused-item
+     * @behavior PaperTabs
      */
-    public void setKeyEventTarget(String value) {
-        getPolymerElement().setAttribute("key-event-target", value);
+    public void setFocusedItem(String value) {
+        getPolymerElement().setAttribute("focused-item", value);
     }
 
+
+    /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectIndex(Object index) {
+        getPolymerElement().selectIndex(index);
+    }
 
     /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
@@ -629,30 +642,6 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * <p>Selects the next item.</p>
-     *
-     * JavaScript Info:
-     * @method selectNext
-     * @behavior PaperTabs
-     * 
-     */
-    public void selectNext() {
-        getPolymerElement().selectNext();
-    }
-
-    /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * @behavior PaperTabs
-     * 
-     */
-    public void selectPrevious() {
-        getPolymerElement().selectPrevious();
-    }
-
-    /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
@@ -676,6 +665,30 @@ public class PaperListbox extends PolymerWidget {
      */
     public void forceSynchronousItemUpdate() {
         getPolymerElement().forceSynchronousItemUpdate();
+    }
+
+    /**
+     * <p>Selects the next item.</p>
+     *
+     * JavaScript Info:
+     * @method selectNext
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectNext() {
+        getPolymerElement().selectNext();
+    }
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectPrevious() {
+        getPolymerElement().selectPrevious();
     }
 
     /**

@@ -125,42 +125,42 @@ public interface PaperFabElement extends HTMLElement {
     @JsProperty void setElevation(double value);
 
     /**
-     * <p>Set this to true to style this is a “mini” FAB.</p>
+     * 
      *
      * JavaScript Info:
-     * @property mini
-     * @type Boolean
-     * 
+     * @property keyBindings
+     * @type Object
+     * @behavior PaperTab
      */
-    @JsProperty boolean getMini();
+    @JsProperty JavaScriptObject getKeyBindings();
     /**
-     * <p>Set this to true to style this is a “mini” FAB.</p>
+     * 
      *
      * JavaScript Info:
-     * @property mini
-     * @type Boolean
-     * 
+     * @property keyBindings
+     * @type Object
+     * @behavior PaperTab
      */
-    @JsProperty void setMini(boolean value);
+    @JsProperty void setKeyBindings(JavaScriptObject value);
 
     /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
+     * @property keyEventTarget
+     * @type Object
+     * @behavior VaadinComboBox
      */
-    @JsProperty boolean getActive();
+    @JsProperty JavaScriptObject getKeyEventTarget();
     /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
+     * @property keyEventTarget
+     * @type Object
+     * @behavior VaadinComboBox
      */
-    @JsProperty void setActive(boolean value);
+    @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
     /**
      * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
@@ -168,7 +168,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperFab
      */
     @JsProperty boolean getNoink();
     /**
@@ -177,7 +177,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperFab
      */
     @JsProperty void setNoink(boolean value);
 
@@ -199,25 +199,6 @@ public interface PaperFabElement extends HTMLElement {
      * @behavior PaperTab
      */
     @JsProperty void setPointerDown(boolean value);
-
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    @JsProperty boolean getStopKeyboardEventPropagation();
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
     /**
      * <p>If true, the user is currently holding down the button.</p>
@@ -258,6 +239,63 @@ public interface PaperFabElement extends HTMLElement {
     @JsProperty void setReceivedFocusFromKeyboard(boolean value);
 
     /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    @JsProperty boolean getStopKeyboardEventPropagation();
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
+
+    /**
+     * <p>Set this to true to style this is a “mini” FAB.</p>
+     *
+     * JavaScript Info:
+     * @property mini
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getMini();
+    /**
+     * <p>Set this to true to style this is a “mini” FAB.</p>
+     *
+     * JavaScript Info:
+     * @property mini
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setMini(boolean value);
+
+    /**
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     *
+     * JavaScript Info:
+     * @property active
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty boolean getActive();
+    /**
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     *
+     * JavaScript Info:
+     * @property active
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty void setActive(boolean value);
+
+    /**
      * <p>If true, the user cannot interact with this element.</p>
      *
      * JavaScript Info:
@@ -296,42 +334,23 @@ public interface PaperFabElement extends HTMLElement {
     @JsProperty void setFocused(boolean value);
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The label displayed in the badge. The label is centered, and ideally<br>should have very few characters.</p>
      *
      * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior VaadinComboBox
-     */
-    @JsProperty JavaScriptObject getKeyEventTarget();
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior VaadinComboBox
-     */
-    @JsProperty void setKeyEventTarget(JavaScriptObject value);
-
-    /**
+     * @property label
+     * @type String
      * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
      */
-    @JsProperty JavaScriptObject getKeyBindings();
+    @JsProperty String getLabel();
     /**
-     * 
+     * <p>The label displayed in the badge. The label is centered, and ideally<br>should have very few characters.</p>
      *
      * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
+     * @property label
+     * @type String
+     * 
      */
-    @JsProperty void setKeyBindings(JavaScriptObject value);
+    @JsProperty void setLabel(String value);
 
     /**
      * <p>The aria attribute to be set if the button is a toggle and in the<br>active state.</p>
@@ -408,7 +427,7 @@ public interface PaperFabElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method getRipple
-     * @behavior PaperFab
+     * @behavior PaperTab
      * 
      */
     void getRipple();
@@ -418,7 +437,7 @@ public interface PaperFabElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method hasRipple
-     * @behavior PaperFab
+     * @behavior PaperTab
      * @return {boolean}
      */
     boolean hasRipple();

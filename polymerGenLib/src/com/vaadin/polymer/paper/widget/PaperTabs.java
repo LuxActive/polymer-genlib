@@ -37,7 +37,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  * &lt;/paper-tabs&gt;
  * 
  * 
- * </code></pre><p>See <a href="#paper-tab">paper-tab</a> for more information about<br><code>paper-tab</code>.</p>
+ * </code></pre><p>See <a href="?active=paper-tab">paper-tab</a> for more information about<br><code>paper-tab</code>.</p>
  * <p>A common usage for <code>paper-tabs</code> is to use it along with <code>iron-pages</code> to switch<br>between different views.</p>
  * <pre><code>&lt;paper-tabs selected=&quot;{{selected}}&quot;&gt;
  *   &lt;paper-tab&gt;Tab 1&lt;/paper-tab&gt;
@@ -53,12 +53,57 @@ import com.google.gwt.core.client.JavaScriptObject;
  * 
  * 
  * 
- * </code></pre><p>To use links in tabs, add <code>link</code> attribute to <code>paper-tab</code> and put an <code>&lt;a&gt;</code><br>element in <code>paper-tab</code>.</p>
+ * </code></pre><p>To use links in tabs, add <code>link</code> attribute to <code>paper-tab</code> and put an <code>&lt;a&gt;</code><br>element in <code>paper-tab</code> with a <code>tabindex</code> of -1.</p>
  * <p>Example:</p>
- * <pre><code>&lt;style is=&quot;custom-style&quot;&gt;
+ * <pre><code>
+ * &lt;style is="custom-style">
  *   .link {
+ *     &#64;apply(--layout-horizontal);
+ *     &#64;apply(--layout-center-center);
+ *   }
+ * &lt;/style>
  * 
+ * &lt;paper-tabs selected="0">
+ *   &lt;paper-tab link>
+ *     &lt;a href="#link1" class="link" tabindex="-1">TAB ONE&lt;/a>
+ *   &lt;/paper-tab>
+ *   &lt;paper-tab link>
+ *     &lt;a href="#link2" class="link" tabindex="-1">TAB TWO&lt;/a>
+ *   &lt;/paper-tab>
+ *   &lt;paper-tab link>
+ *     &lt;a href="#link3" class="link" tabindex="-1">TAB THREE&lt;/a>
+ *   &lt;/paper-tab>
+ * &lt;/paper-tabs>
  * </code></pre>
+ * 
+ * <h3 id="styling">Styling</h3>
+ * <p>The following custom properties and mixins are available for styling:</p>
+ * <table>
+ * <thead>
+ * <tr>
+ * <th>Custom property</th>
+ * <th>Description</th>
+ * <th>Default</th>
+ * </tr>
+ * </thead>
+ * <tbody>
+ * <tr>
+ * <td><code>--paper-tabs-selection-bar-color</code></td>
+ * <td>Color for the selection bar</td>
+ * <td><code>--paper-yellow-a100</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-tabs-selection-bar</code></td>
+ * <td>Mixin applied to the selection bar</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-tabs</code></td>
+ * <td>Mixin applied to the tabs</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * </tbody>
+ * </table>
  */
 public class PaperTabs extends PolymerWidget {
     /**
@@ -112,95 +157,49 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>Returns the currently selected item.</p>
+     * <p>The delay (in milliseconds) between when the user stops interacting<br>with the tabs through the keyboard and when the focused item is<br>automatically selected (if <code>autoselect</code> is true).</p>
      *
      * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    public JavaScriptObject getSelectedItem() {
-        return getPolymerElement().getSelectedItem();
-    }
-    /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    public void setSelectedItem(JavaScriptObject value) {
-        getPolymerElement().setSelectedItem(value);
-    }
-
-    /**
-     * <p>Returns the currently focused item.</p>
-     *
-     * JavaScript Info:
-     * @property focusedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    public JavaScriptObject getFocusedItem() {
-        return getPolymerElement().getFocusedItem();
-    }
-    /**
-     * <p>Returns the currently focused item.</p>
-     *
-     * JavaScript Info:
-     * @property focusedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    public void setFocusedItem(JavaScriptObject value) {
-        getPolymerElement().setFocusedItem(value);
-    }
-
-    /**
+     * @property autoselectDelay
+     * @type Number
      * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTabs
      */
-    public JavaScriptObject getKeyBindings() {
-        return getPolymerElement().getKeyBindings();
+    public double getAutoselectDelay() {
+        return getPolymerElement().getAutoselectDelay();
     }
     /**
-     * 
+     * <p>The delay (in milliseconds) between when the user stops interacting<br>with the tabs through the keyboard and when the focused item is<br>automatically selected (if <code>autoselect</code> is true).</p>
      *
      * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTabs
+     * @property autoselectDelay
+     * @type Number
+     * 
      */
-    public void setKeyBindings(JavaScriptObject value) {
-        getPolymerElement().setKeyBindings(value);
+    public void setAutoselectDelay(double value) {
+        getPolymerElement().setAutoselectDelay(value);
     }
 
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     * <p>The list of items from which a selection can be made.</p>
      *
      * JavaScript Info:
-     * @property selected
-     * @type (string|number)
+     * @property items
+     * @type Array
      * @behavior PaperTabs
      */
-    public Object getSelected() {
-        return getPolymerElement().getSelected();
+    public JsArray getItems() {
+        return getPolymerElement().getItems();
     }
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     * <p>The list of items from which a selection can be made.</p>
      *
      * JavaScript Info:
-     * @property selected
-     * @type (string|number)
+     * @property items
+     * @type Array
      * @behavior PaperTabs
      */
-    public void setSelected(Object value) {
-        getPolymerElement().setSelected(value);
+    public void setItems(JsArray value) {
+        getPolymerElement().setItems(value);
     }
 
     /**
@@ -250,26 +249,95 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>The list of items from which a selection can be made.</p>
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @property items
-     * @type Array
+     * @property selected
+     * @type (string|number)
      * @behavior PaperTabs
      */
-    public JsArray getItems() {
-        return getPolymerElement().getItems();
+    public Object getSelected() {
+        return getPolymerElement().getSelected();
     }
     /**
-     * <p>The list of items from which a selection can be made.</p>
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @property items
-     * @type Array
+     * @property selected
+     * @type (string|number)
      * @behavior PaperTabs
      */
-    public void setItems(JsArray value) {
-        getPolymerElement().setItems(value);
+    public void setSelected(Object value) {
+        getPolymerElement().setSelected(value);
+    }
+
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    public JavaScriptObject getFocusedItem() {
+        return getPolymerElement().getFocusedItem();
+    }
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    public void setFocusedItem(JavaScriptObject value) {
+        getPolymerElement().setFocusedItem(value);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior PaperTabs
+     */
+    public JavaScriptObject getKeyBindings() {
+        return getPolymerElement().getKeyBindings();
+    }
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior PaperTabs
+     */
+    public void setKeyBindings(JavaScriptObject value) {
+        getPolymerElement().setKeyBindings(value);
+    }
+
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    public JavaScriptObject getSelectedItem() {
+        return getPolymerElement().getSelectedItem();
+    }
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    public void setSelectedItem(JavaScriptObject value) {
+        getPolymerElement().setSelectedItem(value);
     }
 
     /**
@@ -296,49 +364,26 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
+     * <p>If true, tabs are scrollable and the tab width is based on the label width.</p>
      *
      * JavaScript Info:
-     * @property noBar
+     * @property scrollable
      * @type Boolean
      * 
      */
-    public boolean getNoBar() {
-        return getPolymerElement().getNoBar();
+    public boolean getScrollable() {
+        return getPolymerElement().getScrollable();
     }
     /**
-     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
+     * <p>If true, tabs are scrollable and the tab width is based on the label width.</p>
      *
      * JavaScript Info:
-     * @property noBar
+     * @property scrollable
      * @type Boolean
      * 
      */
-    public void setNoBar(boolean value) {
-        getPolymerElement().setNoBar(value);
-    }
-
-    /**
-     * <p>If true, the slide effect for the bottom bar is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property noSlide
-     * @type Boolean
-     * 
-     */
-    public boolean getNoSlide() {
-        return getPolymerElement().getNoSlide();
-    }
-    /**
-     * <p>If true, the slide effect for the bottom bar is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property noSlide
-     * @type Boolean
-     * 
-     */
-    public void setNoSlide(boolean value) {
-        getPolymerElement().setNoSlide(value);
+    public void setScrollable(boolean value) {
+        getPolymerElement().setScrollable(value);
     }
 
     /**
@@ -365,72 +410,49 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     * <p>If true, tabs are automatically selected when focused using the<br>keyboard.</p>
      *
      * JavaScript Info:
-     * @property noink
+     * @property autoselect
      * @type Boolean
      * 
      */
-    public boolean getNoink() {
-        return getPolymerElement().getNoink();
+    public boolean getAutoselect() {
+        return getPolymerElement().getAutoselect();
     }
     /**
-     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     * <p>If true, tabs are automatically selected when focused using the<br>keyboard.</p>
      *
      * JavaScript Info:
-     * @property noink
+     * @property autoselect
      * @type Boolean
      * 
      */
-    public void setNoink(boolean value) {
-        getPolymerElement().setNoink(value);
+    public void setAutoselect(boolean value) {
+        getPolymerElement().setAutoselect(value);
     }
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    public boolean getStopKeyboardEventPropagation() {
-        return getPolymerElement().getStopKeyboardEventPropagation();
-    }
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    public void setStopKeyboardEventPropagation(boolean value) {
-        getPolymerElement().setStopKeyboardEventPropagation(value);
-    }
-
-    /**
-     * <p>If true, tabs are scrollable and the tab width is based on the label width.</p>
-     *
-     * JavaScript Info:
-     * @property scrollable
+     * @property hideScrollButtons
      * @type Boolean
      * 
      */
-    public boolean getScrollable() {
-        return getPolymerElement().getScrollable();
+    public boolean getHideScrollButtons() {
+        return getPolymerElement().getHideScrollButtons();
     }
     /**
-     * <p>If true, tabs are scrollable and the tab width is based on the label width.</p>
+     * <p>If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.</p>
      *
      * JavaScript Info:
-     * @property scrollable
+     * @property hideScrollButtons
      * @type Boolean
      * 
      */
-    public void setScrollable(boolean value) {
-        getPolymerElement().setScrollable(value);
+    public void setHideScrollButtons(boolean value) {
+        getPolymerElement().setHideScrollButtons(value);
     }
 
     /**
@@ -457,26 +479,141 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.</p>
+     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
      *
      * JavaScript Info:
-     * @property hideScrollButtons
+     * @property noBar
      * @type Boolean
      * 
      */
-    public boolean getHideScrollButtons() {
-        return getPolymerElement().getHideScrollButtons();
+    public boolean getNoBar() {
+        return getPolymerElement().getNoBar();
     }
     /**
-     * <p>If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.</p>
+     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
      *
      * JavaScript Info:
-     * @property hideScrollButtons
+     * @property noBar
      * @type Boolean
      * 
      */
-    public void setHideScrollButtons(boolean value) {
-        getPolymerElement().setHideScrollButtons(value);
+    public void setNoBar(boolean value) {
+        getPolymerElement().setNoBar(value);
+    }
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    public boolean getStopKeyboardEventPropagation() {
+        return getPolymerElement().getStopKeyboardEventPropagation();
+    }
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    public void setStopKeyboardEventPropagation(boolean value) {
+        getPolymerElement().setStopKeyboardEventPropagation(value);
+    }
+
+    /**
+     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * 
+     */
+    public boolean getNoink() {
+        return getPolymerElement().getNoink();
+    }
+    /**
+     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * 
+     */
+    public void setNoink(boolean value) {
+        getPolymerElement().setNoink(value);
+    }
+
+    /**
+     * <p>If true, the slide effect for the bottom bar is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property noSlide
+     * @type Boolean
+     * 
+     */
+    public boolean getNoSlide() {
+        return getPolymerElement().getNoSlide();
+    }
+    /**
+     * <p>If true, the slide effect for the bottom bar is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property noSlide
+     * @type Boolean
+     * 
+     */
+    public void setNoSlide(boolean value) {
+        getPolymerElement().setNoSlide(value);
+    }
+
+    /**
+     * <p>The class to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedClass
+     * @type String
+     * @behavior PaperTabs
+     */
+    public String getSelectedClass() {
+        return getPolymerElement().getSelectedClass();
+    }
+    /**
+     * <p>The class to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedClass
+     * @type String
+     * @behavior PaperTabs
+     */
+    public void setSelectedClass(String value) {
+        getPolymerElement().setSelectedClass(value);
+    }
+
+    /**
+     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     *
+     * JavaScript Info:
+     * @property selectable
+     * @type string
+     * @behavior PaperTabs
+     */
+    public String getSelectable() {
+        return getPolymerElement().getSelectable();
+    }
+    /**
+     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     *
+     * JavaScript Info:
+     * @property selectable
+     * @type string
+     * @behavior PaperTabs
+     */
+    public void setSelectable(String value) {
+        getPolymerElement().setSelectable(value);
     }
 
     /**
@@ -526,52 +663,6 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getSelectedAttribute() {
-        return getPolymerElement().getSelectedAttribute();
-    }
-    /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setSelectedAttribute(String value) {
-        getPolymerElement().setSelectedAttribute(value);
-    }
-
-    /**
-     * <p>The class to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedClass
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getSelectedClass() {
-        return getPolymerElement().getSelectedClass();
-    }
-    /**
-     * <p>The class to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedClass
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setSelectedClass(String value) {
-        getPolymerElement().setSelectedClass(value);
-    }
-
-    /**
      * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
      *
      * JavaScript Info:
@@ -595,26 +686,26 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectable
-     * @type string
+     * @property selectedAttribute
+     * @type String
      * @behavior PaperTabs
      */
-    public String getSelectable() {
-        return getPolymerElement().getSelectable();
+    public String getSelectedAttribute() {
+        return getPolymerElement().getSelectedAttribute();
     }
     /**
-     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectable
-     * @type string
+     * @property selectedAttribute
+     * @type String
      * @behavior PaperTabs
      */
-    public void setSelectable(String value) {
-        getPolymerElement().setSelectable(value);
+    public void setSelectedAttribute(String value) {
+        getPolymerElement().setSelectedAttribute(value);
     }
 
     /**
@@ -642,17 +733,6 @@ public class PaperTabs extends PolymerWidget {
 
 
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @attribute selected
-     * @behavior PaperTabs
-     */
-    public void setSelected(String value) {
-        getPolymerElement().setAttribute("selected", value);
-    }
-
-    /**
      * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
      *
      * JavaScript Info:
@@ -675,11 +755,44 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @attribute selected
+     * @behavior PaperTabs
+     */
+    public void setSelected(String value) {
+        getPolymerElement().setAttribute("selected", value);
+    }
+
+    /**
+     * <p>The delay (in milliseconds) between when the user stops interacting<br>with the tabs through the keyboard and when the focused item is<br>automatically selected (if <code>autoselect</code> is true).</p>
+     *
+     * JavaScript Info:
+     * @attribute autoselect-delay
+     * 
+     */
+    public void setAutoselectDelay(String value) {
+        getPolymerElement().setAttribute("autoselect-delay", value);
+    }
+
+    /**
+     * <p>Returns an array of currently selected items.</p>
+     *
+     * JavaScript Info:
+     * @attribute selected-items
+     * @behavior PaperTabs
+     */
+    public void setSelectedItems(String value) {
+        getPolymerElement().setAttribute("selected-items", value);
+    }
+
+    /**
      * 
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior VaadinComboBox
+     * @behavior PaperTabs
      */
     public void setKeyBindings(String value) {
         getPolymerElement().setAttribute("key-bindings", value);
@@ -718,43 +831,6 @@ public class PaperTabs extends PolymerWidget {
         getPolymerElement().setAttribute("focused-item", value);
     }
 
-    /**
-     * <p>Returns an array of currently selected items.</p>
-     *
-     * JavaScript Info:
-     * @attribute selected-items
-     * @behavior PaperTabs
-     */
-    public void setSelectedItems(String value) {
-        getPolymerElement().setAttribute("selected-items", value);
-    }
-
-
-    /**
-     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
-     *
-     * JavaScript Info:
-     * @method assignParentResizable
-     * @param {} parentResizable  
-     * @behavior VaadinComboBoxOverlay
-     * 
-     */
-    public void assignParentResizable(Object parentResizable) {
-        getPolymerElement().assignParentResizable(parentResizable);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method multiChanged
-     * @param {} multi  
-     * @behavior PaperTabs
-     * 
-     */
-    public void multiChanged(Object multi) {
-        getPolymerElement().multiChanged(multi);
-    }
 
     /**
      * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
@@ -767,6 +843,19 @@ public class PaperTabs extends PolymerWidget {
      */
     public void select(Object value) {
         getPolymerElement().select(value);
+    }
+
+    /**
+     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
+     *
+     * JavaScript Info:
+     * @method assignParentResizable
+     * @param {} parentResizable  
+     * @behavior VaadinComboBoxOverlay
+     * 
+     */
+    public void assignParentResizable(Object parentResizable) {
+        getPolymerElement().assignParentResizable(parentResizable);
     }
 
     /**
@@ -784,6 +873,19 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectIndex(Object index) {
+        getPolymerElement().selectIndex(index);
+    }
+
+    /**
      * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
      *
      * JavaScript Info:
@@ -797,27 +899,16 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>Selects the next item.</p>
+     * 
      *
      * JavaScript Info:
-     * @method selectNext
+     * @method multiChanged
+     * @param {} multi  
      * @behavior PaperTabs
      * 
      */
-    public void selectNext() {
-        getPolymerElement().selectNext();
-    }
-
-    /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * @behavior PaperTabs
-     * 
-     */
-    public void selectPrevious() {
-        getPolymerElement().selectPrevious();
+    public void multiChanged(Object multi) {
+        getPolymerElement().multiChanged(multi);
     }
 
     /**
@@ -833,15 +924,27 @@ public class PaperTabs extends PolymerWidget {
     }
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
+     * <p>Selects the previous item.</p>
      *
      * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior VaadinComboBox
+     * @method selectPrevious
+     * @behavior PaperTabs
      * 
      */
-    public void removeOwnKeyBindings() {
-        getPolymerElement().removeOwnKeyBindings();
+    public void selectPrevious() {
+        getPolymerElement().selectPrevious();
+    }
+
+    /**
+     * <p>Selects the next item.</p>
+     *
+     * JavaScript Info:
+     * @method selectNext
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectNext() {
+        getPolymerElement().selectNext();
     }
 
     /**
@@ -856,6 +959,18 @@ public class PaperTabs extends PolymerWidget {
      */
     public void forceSynchronousItemUpdate() {
         getPolymerElement().forceSynchronousItemUpdate();
+    }
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior VaadinComboBox
+     * 
+     */
+    public void removeOwnKeyBindings() {
+        getPolymerElement().removeOwnKeyBindings();
     }
 
     /**

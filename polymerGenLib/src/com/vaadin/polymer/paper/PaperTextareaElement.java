@@ -185,23 +185,23 @@ public interface PaperTextareaElement extends HTMLElement {
     @JsProperty void setAlwaysFloatLabel(boolean value);
 
     /**
-     * <p>Set to true to auto-validate the input value. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>autoValidate</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
      *
      * JavaScript Info:
-     * @property autoValidate
+     * @property autofocus
      * @type Boolean
      * @behavior PaperTextarea
      */
-    @JsProperty boolean getAutoValidate();
+    @JsProperty boolean getAutofocus();
     /**
-     * <p>Set to true to auto-validate the input value. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>autoValidate</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
      *
      * JavaScript Info:
-     * @property autoValidate
+     * @property autofocus
      * @type Boolean
      * @behavior PaperTextarea
      */
-    @JsProperty void setAutoValidate(boolean value);
+    @JsProperty void setAutofocus(boolean value);
 
     /**
      * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the<code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property,<br>used with type=file.</p>
@@ -242,25 +242,6 @@ public interface PaperTextareaElement extends HTMLElement {
     @JsProperty void setNoLabelFloat(boolean value);
 
     /**
-     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property autofocus
-     * @type Boolean
-     * @behavior PaperTextarea
-     */
-    @JsProperty boolean getAutofocus();
-    /**
-     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property autofocus
-     * @type Boolean
-     * @behavior PaperTextarea
-     */
-    @JsProperty void setAutofocus(boolean value);
-
-    /**
      * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -278,6 +259,25 @@ public interface PaperTextareaElement extends HTMLElement {
      * @behavior VaadinComboBox
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
+
+    /**
+     * <p>Set to true to auto-validate the input value. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>autoValidate</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autoValidate
+     * @type Boolean
+     * @behavior PaperTextarea
+     */
+    @JsProperty boolean getAutoValidate();
+    /**
+     * <p>Set to true to auto-validate the input value. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>autoValidate</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autoValidate
+     * @type Boolean
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setAutoValidate(boolean value);
 
     /**
      * <p>Set to true to prevent the user from entering invalid input. If you’re<br>using PaperInputBehavior to  implement your own paper-input-like element,<br>bind this to <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>preventInvalidInput</code> property.</p>

@@ -91,6 +91,29 @@ public class VaadinMonthCalendar extends PolymerWidget {
     }
 
     /**
+     * <p>Flag stating whether taps on the component should be ignored.</p>
+     *
+     * JavaScript Info:
+     * @property ignoreTaps
+     * @type boolean
+     * 
+     */
+    public boolean getIgnoreTaps() {
+        return getPolymerElement().getIgnoreTaps();
+    }
+    /**
+     * <p>Flag stating whether taps on the component should be ignored.</p>
+     *
+     * JavaScript Info:
+     * @property ignoreTaps
+     * @type boolean
+     * 
+     */
+    public void setIgnoreTaps(boolean value) {
+        getPolymerElement().setIgnoreTaps(value);
+    }
+
+    /**
      * <p>A <code>Date</code> object defining the month to be displayed. Only year and<br>month properties are actually used.</p>
      *
      * JavaScript Info:

@@ -66,7 +66,7 @@ public interface IronValidatableBehavior {
     @JsProperty void setValidator(String value);
 
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -75,7 +75,7 @@ public interface IronValidatableBehavior {
      */
     @JsProperty String getValidatorType();
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType

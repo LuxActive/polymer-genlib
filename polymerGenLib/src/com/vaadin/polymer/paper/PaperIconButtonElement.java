@@ -19,12 +19,18 @@ import jsinterop.annotations.JsType;
  * <pre><code>&lt;paper-icon-button icon=&quot;menu&quot;&gt;&lt;/paper-icon-button&gt;
  * 
  * 
- * </code></pre><p>See <a href="#iron-iconset"><code>iron-iconset</code></a> for more information about<br>how to use a custom icon set.</p>
+ * </code></pre><p>See <a href="iron-iconset"><code>iron-iconset</code></a> for more information about<br>how to use a custom icon set.</p>
  * <p>Example:</p>
  * <pre><code>&lt;link href=&quot;path/to/iron-icons/iron-icons.html&quot; rel=&quot;import&quot;&gt;
  * 
  * &lt;paper-icon-button icon=&quot;favorite&quot;&gt;&lt;/paper-icon-button&gt;
  * &lt;paper-icon-button src=&quot;star.png&quot;&gt;&lt;/paper-icon-button&gt;
+ * 
+ * 
+ * </code></pre><p>To use <code>paper-icon-button</code> as a link, wrap it in an anchor tag. Since <code>paper-icon-button</code><br>will already receive focus, you may want to prevent the anchor tag from receiving focus<br>as well by setting its tabindex to -1.</p>
+ * <pre><code>&lt;a href=&quot;https://www.polymer-project.org&quot; tabindex=&quot;-1&quot;&gt;
+ *   &lt;paper-icon-button icon=&quot;polymer&quot;&gt;&lt;/paper-icon-button&gt;
+ * &lt;/a&gt;
  * 
  * 
  * </code></pre><h3 id="styling">Styling</h3>

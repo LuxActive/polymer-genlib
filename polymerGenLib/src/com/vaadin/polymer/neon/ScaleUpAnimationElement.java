@@ -28,7 +28,7 @@ import jsinterop.annotations.JsType;
 public interface ScaleUpAnimationElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "scale-up-animation";
-    @JsOverlay public static final String SRC = "neon-animation/neon-animations.html";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animation.html";
 
 
     /**

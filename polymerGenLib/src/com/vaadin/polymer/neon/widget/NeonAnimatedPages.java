@@ -58,6 +58,29 @@ public class NeonAnimatedPages extends PolymerWidget {
 
 
     /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    public JavaScriptObject getAnimationConfig() {
+        return getPolymerElement().getAnimationConfig();
+    }
+    /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    public void setAnimationConfig(JavaScriptObject value) {
+        getPolymerElement().setAnimationConfig(value);
+    }
+
+    /**
      * <p> if true, the initial page selection will also be animated according to its animation config.</p>
      *
      * JavaScript Info:
@@ -101,29 +124,6 @@ public class NeonAnimatedPages extends PolymerWidget {
      */
     public void setSelected(Object value) {
         getPolymerElement().setSelected(value);
-    }
-
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * @behavior PaperTooltip
-     */
-    public JavaScriptObject getAnimationConfig() {
-        return getPolymerElement().getAnimationConfig();
-    }
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * @behavior PaperTooltip
-     */
-    public void setAnimationConfig(JavaScriptObject value) {
-        getPolymerElement().setAnimationConfig(value);
     }
 
     /**
@@ -358,6 +358,17 @@ public class NeonAnimatedPages extends PolymerWidget {
 
 
     /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @attribute animation-config
+     * 
+     */
+    public void setAnimationConfig(String value) {
+        getPolymerElement().setAttribute("animation-config", value);
+    }
+
+    /**
      * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
@@ -366,17 +377,6 @@ public class NeonAnimatedPages extends PolymerWidget {
      */
     public void setSelected(String value) {
         getPolymerElement().setAttribute("selected", value);
-    }
-
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @attribute animation-config
-     * @behavior PaperTooltip
-     */
-    public void setAnimationConfig(String value) {
-        getPolymerElement().setAttribute("animation-config", value);
     }
 
     /**
@@ -429,6 +429,19 @@ public class NeonAnimatedPages extends PolymerWidget {
     }
 
     /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectIndex(Object index) {
+        getPolymerElement().selectIndex(index);
+    }
+
+    /**
      * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
      *
      * JavaScript Info:
@@ -442,11 +455,35 @@ public class NeonAnimatedPages extends PolymerWidget {
     }
 
     /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectPrevious() {
+        getPolymerElement().selectPrevious();
+    }
+
+    /**
+     * <p>Selects the next item.</p>
+     *
+     * JavaScript Info:
+     * @method selectNext
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectNext() {
+        getPolymerElement().selectNext();
+    }
+
+    /**
      * <p>Cancels the currently running animation.</p>
      *
      * JavaScript Info:
      * @method cancelAnimation
-     * 
+     * @behavior PaperTooltip
      * 
      */
     public void cancelAnimation() {
@@ -468,30 +505,6 @@ public class NeonAnimatedPages extends PolymerWidget {
     }
 
     /**
-     * <p>Selects the next item.</p>
-     *
-     * JavaScript Info:
-     * @method selectNext
-     * @behavior PaperTabs
-     * 
-     */
-    public void selectNext() {
-        getPolymerElement().selectNext();
-    }
-
-    /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * @behavior PaperTabs
-     * 
-     */
-    public void selectPrevious() {
-        getPolymerElement().selectPrevious();
-    }
-
-    /**
      * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
      *
      * JavaScript Info:
@@ -501,6 +514,19 @@ public class NeonAnimatedPages extends PolymerWidget {
      */
     public void notifyResize() {
         getPolymerElement().notifyResize();
+    }
+
+    /**
+     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
+     *
+     * JavaScript Info:
+     * @method resizerShouldNotify
+     * @param {HTMLElement} element  
+     * @behavior VaadinComboBoxOverlay
+     * @return {boolean}
+     */
+    public boolean resizerShouldNotify(JavaScriptObject element) {
+        return getPolymerElement().resizerShouldNotify(element);
     }
 
     /**
@@ -528,19 +554,6 @@ public class NeonAnimatedPages extends PolymerWidget {
      */
     public void playAnimation(String type, JavaScriptObject cookie) {
         getPolymerElement().playAnimation(type, cookie);
-    }
-
-    /**
-     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
-     *
-     * JavaScript Info:
-     * @method resizerShouldNotify
-     * @param {HTMLElement} element  
-     * @behavior VaadinComboBoxOverlay
-     * @return {boolean}
-     */
-    public boolean resizerShouldNotify(JavaScriptObject element) {
-        return getPolymerElement().resizerShouldNotify(element);
     }
 
 

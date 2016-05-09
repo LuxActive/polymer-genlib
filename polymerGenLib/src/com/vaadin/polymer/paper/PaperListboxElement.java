@@ -74,25 +74,6 @@ public interface PaperListboxElement extends HTMLElement {
 
 
     /**
-     * <p>Returns the currently focused item.</p>
-     *
-     * JavaScript Info:
-     * @property focusedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty JavaScriptObject getFocusedItem();
-    /**
-     * <p>Returns the currently focused item.</p>
-     *
-     * JavaScript Info:
-     * @property focusedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty void setFocusedItem(JavaScriptObject value);
-
-    /**
      * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -188,23 +169,42 @@ public interface PaperListboxElement extends HTMLElement {
     @JsProperty void setSelectedValues(JsArray value);
 
     /**
-     * 
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @property keyBindings
-     * @type Object
+     * @property selected
+     * @type (string|number)
      * @behavior PaperTabs
      */
-    @JsProperty JavaScriptObject getKeyBindings();
+    @JsProperty Object getSelected();
     /**
-     * 
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @property keyBindings
-     * @type Object
+     * @property selected
+     * @type (string|number)
      * @behavior PaperTabs
      */
-    @JsProperty void setKeyBindings(JavaScriptObject value);
+    @JsProperty void setSelected(Object value);
+
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty JavaScriptObject getFocusedItem();
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty void setFocusedItem(JavaScriptObject value);
 
     /**
      * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
@@ -245,42 +245,42 @@ public interface PaperListboxElement extends HTMLElement {
     @JsProperty void setSelectedItem(JavaScriptObject value);
 
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     * 
      *
      * JavaScript Info:
-     * @property selected
-     * @type (string|number)
-     * @behavior PaperTabs
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
      */
-    @JsProperty Object getSelected();
+    @JsProperty JavaScriptObject getKeyBindings();
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     * 
      *
      * JavaScript Info:
-     * @property selected
-     * @type (string|number)
-     * @behavior PaperTabs
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
      */
-    @JsProperty void setSelected(Object value);
+    @JsProperty void setKeyBindings(JavaScriptObject value);
 
     /**
-     * <p>The attribute to set on elements when selected.</p>
+     * <p>The class to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectedAttribute
+     * @property selectedClass
      * @type String
      * @behavior PaperTabs
      */
-    @JsProperty String getSelectedAttribute();
+    @JsProperty String getSelectedClass();
     /**
-     * <p>The attribute to set on elements when selected.</p>
+     * <p>The class to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectedAttribute
+     * @property selectedClass
      * @type String
      * @behavior PaperTabs
      */
-    @JsProperty void setSelectedAttribute(String value);
+    @JsProperty void setSelectedClass(String value);
 
     /**
      * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
@@ -378,24 +378,35 @@ public interface PaperListboxElement extends HTMLElement {
     @JsProperty void setAttrForItemTitle(String value);
 
     /**
-     * <p>The class to set on elements when selected.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectedClass
+     * @property selectedAttribute
      * @type String
      * @behavior PaperTabs
      */
-    @JsProperty String getSelectedClass();
+    @JsProperty String getSelectedAttribute();
     /**
-     * <p>The class to set on elements when selected.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectedClass
+     * @property selectedAttribute
      * @type String
      * @behavior PaperTabs
      */
-    @JsProperty void setSelectedClass(String value);
+    @JsProperty void setSelectedAttribute(String value);
 
+
+    /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
+     * 
+     */
+    void selectIndex(Object index);
 
     /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
@@ -432,26 +443,6 @@ public interface PaperListboxElement extends HTMLElement {
     void multiChanged(Object multi);
 
     /**
-     * <p>Selects the next item.</p>
-     *
-     * JavaScript Info:
-     * @method selectNext
-     * @behavior PaperTabs
-     * 
-     */
-    void selectNext();
-
-    /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * @behavior PaperTabs
-     * 
-     */
-    void selectPrevious();
-
-    /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
@@ -472,6 +463,26 @@ public interface PaperListboxElement extends HTMLElement {
      * 
      */
     void forceSynchronousItemUpdate();
+
+    /**
+     * <p>Selects the next item.</p>
+     *
+     * JavaScript Info:
+     * @method selectNext
+     * @behavior PaperTabs
+     * 
+     */
+    void selectNext();
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * @behavior PaperTabs
+     * 
+     */
+    void selectPrevious();
 
     /**
      * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>

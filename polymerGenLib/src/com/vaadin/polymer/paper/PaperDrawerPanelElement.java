@@ -147,25 +147,6 @@ public interface PaperDrawerPanelElement extends HTMLElement {
 
 
     /**
-     * <p>If true, swipe to open/close the drawer is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property disableSwipe
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getDisableSwipe();
-    /**
-     * <p>If true, swipe to open/close the drawer is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property disableSwipe
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setDisableSwipe(boolean value);
-
-    /**
      * <p>Whether the user is dragging the drawer interactively.</p>
      *
      * JavaScript Info:
@@ -223,80 +204,23 @@ public interface PaperDrawerPanelElement extends HTMLElement {
     @JsProperty void setForceNarrow(boolean value);
 
     /**
-     * <p>Whether the browser has support for the transform CSS property.</p>
+     * <p>If true, swipe to open/close the drawer is disabled.</p>
      *
      * JavaScript Info:
-     * @property hasTransform
+     * @property disableSwipe
      * @type Boolean
      * 
      */
-    @JsProperty boolean getHasTransform();
+    @JsProperty boolean getDisableSwipe();
     /**
-     * <p>Whether the browser has support for the transform CSS property.</p>
+     * <p>If true, swipe to open/close the drawer is disabled.</p>
      *
      * JavaScript Info:
-     * @property hasTransform
+     * @property disableSwipe
      * @type Boolean
      * 
      */
-    @JsProperty void setHasTransform(boolean value);
-
-    /**
-     * <p>If true, swipe from the edge is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property disableEdgeSwipe
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getDisableEdgeSwipe();
-    /**
-     * <p>If true, swipe from the edge is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property disableEdgeSwipe
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setDisableEdgeSwipe(boolean value);
-
-    /**
-     * <p>Returns true if the panel is in narrow layout.  This is useful if you<br>need to show/hide elements based on the layout.</p>
-     *
-     * JavaScript Info:
-     * @property narrow
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getNarrow();
-    /**
-     * <p>Returns true if the panel is in narrow layout.  This is useful if you<br>need to show/hide elements based on the layout.</p>
-     *
-     * JavaScript Info:
-     * @property narrow
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setNarrow(boolean value);
-
-    /**
-     * <p>If true, position the drawer to the right.</p>
-     *
-     * JavaScript Info:
-     * @property rightDrawer
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getRightDrawer();
-    /**
-     * <p>If true, position the drawer to the right.</p>
-     *
-     * JavaScript Info:
-     * @property rightDrawer
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setRightDrawer(boolean value);
+    @JsProperty void setDisableSwipe(boolean value);
 
     /**
      * <p>Whether the browser has support for the will-change CSS property.</p>
@@ -318,6 +242,25 @@ public interface PaperDrawerPanelElement extends HTMLElement {
     @JsProperty void setHasWillChange(boolean value);
 
     /**
+     * <p>Returns true if the panel is in narrow layout.  This is useful if you<br>need to show/hide elements based on the layout.</p>
+     *
+     * JavaScript Info:
+     * @property narrow
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNarrow();
+    /**
+     * <p>Returns true if the panel is in narrow layout.  This is useful if you<br>need to show/hide elements based on the layout.</p>
+     *
+     * JavaScript Info:
+     * @property narrow
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNarrow(boolean value);
+
+    /**
      * <p>Whether the drawer is peeking out from the edge.</p>
      *
      * JavaScript Info:
@@ -337,23 +280,80 @@ public interface PaperDrawerPanelElement extends HTMLElement {
     @JsProperty void setPeeking(boolean value);
 
     /**
-     * <p>The panel that is being selected. <code>drawer</code> for the drawer panel and<br><code>main</code> for the main panel.</p>
+     * <p>If true, position the drawer to the right.</p>
      *
      * JavaScript Info:
-     * @property selected
-     * @type String
+     * @property rightDrawer
+     * @type Boolean
      * 
      */
-    @JsProperty String getSelected();
+    @JsProperty boolean getRightDrawer();
+    /**
+     * <p>If true, position the drawer to the right.</p>
+     *
+     * JavaScript Info:
+     * @property rightDrawer
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setRightDrawer(boolean value);
+
     /**
      * <p>The panel that is being selected. <code>drawer</code> for the drawer panel and<br><code>main</code> for the main panel.</p>
      *
      * JavaScript Info:
      * @property selected
-     * @type String
+     * @type (string|null)
      * 
      */
-    @JsProperty void setSelected(String value);
+    @JsProperty Object getSelected();
+    /**
+     * <p>The panel that is being selected. <code>drawer</code> for the drawer panel and<br><code>main</code> for the main panel.</p>
+     *
+     * JavaScript Info:
+     * @property selected
+     * @type (string|null)
+     * 
+     */
+    @JsProperty void setSelected(Object value);
+
+    /**
+     * <p>If true, swipe from the edge is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property disableEdgeSwipe
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getDisableEdgeSwipe();
+    /**
+     * <p>If true, swipe from the edge is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property disableEdgeSwipe
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setDisableEdgeSwipe(boolean value);
+
+    /**
+     * <p>Whether the browser has support for the transform CSS property.</p>
+     *
+     * JavaScript Info:
+     * @property hasTransform
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getHasTransform();
+    /**
+     * <p>Whether the browser has support for the transform CSS property.</p>
+     *
+     * JavaScript Info:
+     * @property hasTransform
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setHasTransform(boolean value);
 
     /**
      * <p>Max-width when the panel changes to narrow layout.</p>
@@ -431,17 +431,27 @@ public interface PaperDrawerPanelElement extends HTMLElement {
      */
     @JsProperty void setDrawerToggleAttribute(String value);
 
-
     /**
-     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
+     * <p>The CSS selector for the element that should receive focus when the drawer is open.<br>By default, when the drawer opens, it focuses the first tabbable element. That is,<br>the first element that can receive focus.</p>
+     * <p>To disable this behavior, you can set <code>drawerFocusSelector</code> to <code>null</code> or an empty string.</p>
      *
      * JavaScript Info:
-     * @method assignParentResizable
-     * @param {} parentResizable  
-     * @behavior VaadinComboBoxOverlay
+     * @property drawerFocusSelector
+     * @type String
      * 
      */
-    void assignParentResizable(Object parentResizable);
+    @JsProperty String getDrawerFocusSelector();
+    /**
+     * <p>The CSS selector for the element that should receive focus when the drawer is open.<br>By default, when the drawer opens, it focuses the first tabbable element. That is,<br>the first element that can receive focus.</p>
+     * <p>To disable this behavior, you can set <code>drawerFocusSelector</code> to <code>null</code> or an empty string.</p>
+     *
+     * JavaScript Info:
+     * @property drawerFocusSelector
+     * @type String
+     * 
+     */
+    @JsProperty void setDrawerFocusSelector(String value);
+
 
     /**
      * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
@@ -455,6 +465,17 @@ public interface PaperDrawerPanelElement extends HTMLElement {
     void stopResizeNotificationsFor(Object target);
 
     /**
+     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
+     *
+     * JavaScript Info:
+     * @method assignParentResizable
+     * @param {} parentResizable  
+     * @behavior VaadinComboBoxOverlay
+     * 
+     */
+    void assignParentResizable(Object parentResizable);
+
+    /**
      * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
      *
      * JavaScript Info:
@@ -464,26 +485,6 @@ public interface PaperDrawerPanelElement extends HTMLElement {
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);
-
-    /**
-     * <p>Closes the drawer.</p>
-     *
-     * JavaScript Info:
-     * @method closeDrawer
-     * 
-     * 
-     */
-    void closeDrawer();
-
-    /**
-     * <p>Opens the drawer.</p>
-     *
-     * JavaScript Info:
-     * @method openDrawer
-     * 
-     * 
-     */
-    void openDrawer();
 
     /**
      * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
@@ -496,6 +497,16 @@ public interface PaperDrawerPanelElement extends HTMLElement {
     void notifyResize();
 
     /**
+     * <p>Opens the drawer.</p>
+     *
+     * JavaScript Info:
+     * @method openDrawer
+     * 
+     * 
+     */
+    void openDrawer();
+
+    /**
      * <p>Toggles the panel open and closed.</p>
      *
      * JavaScript Info:
@@ -504,5 +515,15 @@ public interface PaperDrawerPanelElement extends HTMLElement {
      * 
      */
     void togglePanel();
+
+    /**
+     * <p>Closes the drawer.</p>
+     *
+     * JavaScript Info:
+     * @method closeDrawer
+     * 
+     * 
+     */
+    void closeDrawer();
 
 }

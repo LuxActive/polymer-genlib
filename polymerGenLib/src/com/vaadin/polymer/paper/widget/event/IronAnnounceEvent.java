@@ -34,17 +34,10 @@ public class IronAnnounceEvent extends DomEvent<IronAnnounceEventHandler> {
 
 
     /**
-     * 
+     * <p>Contains text that will be announced.</p>
      */
     public JavaScriptObject getDetail() {
         return getPolymerEvent().getDetail().getDetail();
-    }
-
-    /**
-     * <p>The text that will be announced.</p>
-     */
-    public String getText() {
-        return getPolymerEvent().getDetail().getText();
     }
 
 }

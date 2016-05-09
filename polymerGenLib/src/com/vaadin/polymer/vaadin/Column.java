@@ -1,7 +1,7 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
  * from vaadin-grid project by Vaadin Ltd
- * that is licensed with Apache License 2.0 license.
+ * that is licensed with Apache-2.0 license.
  */
 package com.vaadin.polymer.vaadin;
 
@@ -16,7 +16,7 @@ import jsinterop.annotations.JsType;
 /**
  * <p>Object for controlling and accessing a column in a <code>vaadin-grid</code>.</p>
  * <h4 id="example-">Example:</h4>
- * <pre><code class="lang-js">var grid = document.querySelector(&quot;vaadin-grid&quot;);
+ * <pre><code class="lang-js">var grid = document.querySelector(&#39;vaadin-grid&#39;);
  * 
  * // First get a reference to one column object, which has
  * // all the properties described in this documentation
@@ -34,35 +34,43 @@ public interface Column {
 
 
     /**
-     * <p>Maximum width of the column in pixels.</p>
+     * <p>Flex ratio of the column, used to distribute any available horizontal<br>space among all flexed columns.</p>
      * <h4 id="javascript-example-">JavaScript example:</h4>
-     * <pre><code class="lang-js">grid.columns[0].maxWidth = 400;
+     * <pre><code class="lang-js">grid.columns[0].flex = 2;
      * </code></pre>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;col max-width=&quot;400&quot;&gt;
+     * <pre><code class="lang-html">&lt;!-- If you omit the value of the attribute,
+     *      it is considered as &quot;1&quot; --&gt;
+     * &lt;col&gt;
+     * &lt;col flex&gt;
+     * &lt;col flex=&quot;2&quot;&gt;
      * </code></pre>
      *
      * JavaScript Info:
-     * @property maxWidth
+     * @property flex
      * @type number
      * 
      */
-    @JsProperty double getMaxWidth();
+    @JsProperty double getFlex();
     /**
-     * <p>Maximum width of the column in pixels.</p>
+     * <p>Flex ratio of the column, used to distribute any available horizontal<br>space among all flexed columns.</p>
      * <h4 id="javascript-example-">JavaScript example:</h4>
-     * <pre><code class="lang-js">grid.columns[0].maxWidth = 400;
+     * <pre><code class="lang-js">grid.columns[0].flex = 2;
      * </code></pre>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;col max-width=&quot;400&quot;&gt;
+     * <pre><code class="lang-html">&lt;!-- If you omit the value of the attribute,
+     *      it is considered as &quot;1&quot; --&gt;
+     * &lt;col&gt;
+     * &lt;col flex&gt;
+     * &lt;col flex=&quot;2&quot;&gt;
      * </code></pre>
      *
      * JavaScript Info:
-     * @property maxWidth
+     * @property flex
      * @type number
      * 
      */
-    @JsProperty void setMaxWidth(double value);
+    @JsProperty void setFlex(double value);
 
     /**
      * <p>Set whether it is possible for the user to hide this column or not.</p>
@@ -127,82 +135,66 @@ public interface Column {
     @JsProperty void setHidden(boolean value);
 
     /**
-     * <p>Enables sorting the column data by the end user.</p>
-     * <p>To programmatically or declaratively sort the columns, use the<br><code>grid.sortOrder</code>property, or the <code>sort-direction</code> attribute. Columns<br>can be sorted even if this property is <code>false</code>, it only controls the<br>end user sorting.</p>
+     * <p>Maximum width of the column in pixels.</p>
      * <h4 id="javascript-example-">JavaScript example:</h4>
-     * <pre><code class="lang-js">grid.columns[0].sortable = true;
-     * grid.sortOrder = [{column: 0, direction: &quot;asc&quot;}];
+     * <pre><code class="lang-js">grid.columns[0].maxWidth = 400;
      * </code></pre>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;col sortable sort-direction=&quot;asc&quot;&gt;
+     * <pre><code class="lang-html">&lt;col max-width=&quot;400&quot;&gt;
      * </code></pre>
      *
      * JavaScript Info:
-     * @property sortable
-     * @type boolean
+     * @property maxWidth
+     * @type number
      * 
      */
-    @JsProperty boolean getSortable();
+    @JsProperty double getMaxWidth();
     /**
-     * <p>Enables sorting the column data by the end user.</p>
-     * <p>To programmatically or declaratively sort the columns, use the<br><code>grid.sortOrder</code>property, or the <code>sort-direction</code> attribute. Columns<br>can be sorted even if this property is <code>false</code>, it only controls the<br>end user sorting.</p>
+     * <p>Maximum width of the column in pixels.</p>
      * <h4 id="javascript-example-">JavaScript example:</h4>
-     * <pre><code class="lang-js">grid.columns[0].sortable = true;
-     * grid.sortOrder = [{column: 0, direction: &quot;asc&quot;}];
+     * <pre><code class="lang-js">grid.columns[0].maxWidth = 400;
      * </code></pre>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;col sortable sort-direction=&quot;asc&quot;&gt;
+     * <pre><code class="lang-html">&lt;col max-width=&quot;400&quot;&gt;
      * </code></pre>
      *
      * JavaScript Info:
-     * @property sortable
-     * @type boolean
+     * @property maxWidth
+     * @type number
      * 
      */
-    @JsProperty void setSortable(boolean value);
+    @JsProperty void setMaxWidth(double value);
 
     /**
-     * <p>Content of the column in the default header row (a column can have<br>multiple headers). Can be a String or a reference to an HTML element.</p>
-     * <p>Defaults to the column name property.</p>
+     * <p>Minimum width of the column in pixels.</p>
      * <h4 id="javascript-example-">JavaScript example:</h4>
-     * <pre><code class="lang-js">// Set to a string value
-     * grid.columns[0].headerContent = &quot;First Name&quot;;
-     * 
-     * // Set to an HTML element
-     * grid.columns[0].headerContent = document.createElement(&quot;input&quot;);
+     * <pre><code class="lang-js">grid.columns[0].minWidth = 100;
      * </code></pre>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;!-- The declarative API supports string values only --&gt;
-     * &lt;col header-text=&quot;First Name&quot;&gt;
+     * <pre><code class="lang-html">&lt;col min-width=&quot;100&quot;&gt;
      * </code></pre>
      *
      * JavaScript Info:
-     * @property headerContent
-     * @type (Object|string)
+     * @property minWidth
+     * @type number
      * 
      */
-    @JsProperty Object getHeaderContent();
+    @JsProperty double getMinWidth();
     /**
-     * <p>Content of the column in the default header row (a column can have<br>multiple headers). Can be a String or a reference to an HTML element.</p>
-     * <p>Defaults to the column name property.</p>
+     * <p>Minimum width of the column in pixels.</p>
      * <h4 id="javascript-example-">JavaScript example:</h4>
-     * <pre><code class="lang-js">// Set to a string value
-     * grid.columns[0].headerContent = &quot;First Name&quot;;
-     * 
-     * // Set to an HTML element
-     * grid.columns[0].headerContent = document.createElement(&quot;input&quot;);
+     * <pre><code class="lang-js">grid.columns[0].minWidth = 100;
      * </code></pre>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;!-- The declarative API supports string values only --&gt;
-     * &lt;col header-text=&quot;First Name&quot;&gt;
+     * <pre><code class="lang-html">&lt;col min-width=&quot;100&quot;&gt;
      * </code></pre>
      *
      * JavaScript Info:
-     * @property headerContent
-     * @type (Object|string)
+     * @property minWidth
+     * @type number
      * 
      */
-    @JsProperty void setHeaderContent(Object value);
+    @JsProperty void setMinWidth(double value);
 
     /**
      * <p>Custom render function for the column’s data items. Default is<br>undefined.</p>
@@ -238,74 +230,39 @@ public interface Column {
     @JsProperty void setRenderer(Function value);
 
     /**
-     * <p>Minimum width of the column in pixels.</p>
+     * <p>Enables sorting the column data by the end user.</p>
+     * <p>To programmatically or declaratively sort the columns, use the<br><code>grid.sortOrder</code>property, or the <code>sort-direction</code> attribute. Columns<br>can be sorted even if this property is <code>false</code>, it only controls the<br>end user sorting.</p>
      * <h4 id="javascript-example-">JavaScript example:</h4>
-     * <pre><code class="lang-js">grid.columns[0].minWidth = 100;
+     * <pre><code class="lang-js">grid.columns[0].sortable = true;
+     * grid.sortOrder = [{column: 0, direction: &quot;asc&quot;}];
      * </code></pre>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;col min-width=&quot;100&quot;&gt;
+     * <pre><code class="lang-html">&lt;col sortable sort-direction=&quot;asc&quot;&gt;
      * </code></pre>
      *
      * JavaScript Info:
-     * @property minWidth
-     * @type number
+     * @property sortable
+     * @type boolean
      * 
      */
-    @JsProperty double getMinWidth();
+    @JsProperty boolean getSortable();
     /**
-     * <p>Minimum width of the column in pixels.</p>
+     * <p>Enables sorting the column data by the end user.</p>
+     * <p>To programmatically or declaratively sort the columns, use the<br><code>grid.sortOrder</code>property, or the <code>sort-direction</code> attribute. Columns<br>can be sorted even if this property is <code>false</code>, it only controls the<br>end user sorting.</p>
      * <h4 id="javascript-example-">JavaScript example:</h4>
-     * <pre><code class="lang-js">grid.columns[0].minWidth = 100;
+     * <pre><code class="lang-js">grid.columns[0].sortable = true;
+     * grid.sortOrder = [{column: 0, direction: &quot;asc&quot;}];
      * </code></pre>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;col min-width=&quot;100&quot;&gt;
+     * <pre><code class="lang-html">&lt;col sortable sort-direction=&quot;asc&quot;&gt;
      * </code></pre>
      *
      * JavaScript Info:
-     * @property minWidth
-     * @type number
+     * @property sortable
+     * @type boolean
      * 
      */
-    @JsProperty void setMinWidth(double value);
-
-    /**
-     * <p>Flex ratio of the column, used to distribute any available horizontal<br>space among all flexed columns.</p>
-     * <h4 id="javascript-example-">JavaScript example:</h4>
-     * <pre><code class="lang-js">grid.columns[0].flex = 2;
-     * </code></pre>
-     * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;!-- If you omit the value of the attribute,
-     *      it is considered as &quot;1&quot; --&gt;
-     * &lt;col&gt;
-     * &lt;col flex&gt;
-     * &lt;col flex=&quot;2&quot;&gt;
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property flex
-     * @type number
-     * 
-     */
-    @JsProperty double getFlex();
-    /**
-     * <p>Flex ratio of the column, used to distribute any available horizontal<br>space among all flexed columns.</p>
-     * <h4 id="javascript-example-">JavaScript example:</h4>
-     * <pre><code class="lang-js">grid.columns[0].flex = 2;
-     * </code></pre>
-     * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;!-- If you omit the value of the attribute,
-     *      it is considered as &quot;1&quot; --&gt;
-     * &lt;col&gt;
-     * &lt;col flex&gt;
-     * &lt;col flex=&quot;2&quot;&gt;
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property flex
-     * @type number
-     * 
-     */
-    @JsProperty void setFlex(double value);
+    @JsProperty void setSortable(boolean value);
 
     /**
      * <p>Width of the column in pixels.</p>
@@ -339,39 +296,6 @@ public interface Column {
     @JsProperty void setWidth(double value);
 
     /**
-     * <p>Name of the column, used in mapping the column to a property in the row<br>item/object provided by the <code>items</code> property.</p>
-     * <p>Must be a valid JavaScript object reference<br>(e.g. “user.name.first”, “url”)</p>
-     * <h4 id="javascript-example-">JavaScript example:</h4>
-     * <pre><code class="lang-js">grid.columns[0].name = &quot;user.name.first&quot;;
-     * </code></pre>
-     * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;col name=&quot;user.name.first&quot;&gt;
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property name
-     * @type string
-     * 
-     */
-    @JsProperty String getName();
-    /**
-     * <p>Name of the column, used in mapping the column to a property in the row<br>item/object provided by the <code>items</code> property.</p>
-     * <p>Must be a valid JavaScript object reference<br>(e.g. “user.name.first”, “url”)</p>
-     * <h4 id="javascript-example-">JavaScript example:</h4>
-     * <pre><code class="lang-js">grid.columns[0].name = &quot;user.name.first&quot;;
-     * </code></pre>
-     * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;col name=&quot;user.name.first&quot;&gt;
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property name
-     * @type string
-     * 
-     */
-    @JsProperty void setName(String value);
-
-    /**
      * <p>Sets the hiding toggle’s caption for this column. Shown in the grid’s<br>column hiding dropdown menu if the column is hidable. Useful if the<br>header content is something else than text (i.e. a DOM element) or<br>empty.</p>
      * <p>If not specified, the default column header content/text is used.</p>
      * <h4 id="javascript-example-">JavaScript example:</h4>
@@ -403,6 +327,39 @@ public interface Column {
      * 
      */
     @JsProperty void setHidingToggleText(String value);
+
+    /**
+     * <p>Name of the column, used in mapping the column to a property in the row<br>item/object provided by the <code>items</code> property.</p>
+     * <p>Must be a valid JavaScript object reference<br>(e.g. “user.name.first”, “url”)</p>
+     * <h4 id="javascript-example-">JavaScript example:</h4>
+     * <pre><code class="lang-js">grid.columns[0].name = &quot;user.name.first&quot;;
+     * </code></pre>
+     * <h4 id="declarative-example-">Declarative example:</h4>
+     * <pre><code class="lang-html">&lt;col name=&quot;user.name.first&quot;&gt;
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type string
+     * 
+     */
+    @JsProperty String getName();
+    /**
+     * <p>Name of the column, used in mapping the column to a property in the row<br>item/object provided by the <code>items</code> property.</p>
+     * <p>Must be a valid JavaScript object reference<br>(e.g. “user.name.first”, “url”)</p>
+     * <h4 id="javascript-example-">JavaScript example:</h4>
+     * <pre><code class="lang-js">grid.columns[0].name = &quot;user.name.first&quot;;
+     * </code></pre>
+     * <h4 id="declarative-example-">Declarative example:</h4>
+     * <pre><code class="lang-html">&lt;col name=&quot;user.name.first&quot;&gt;
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type string
+     * 
+     */
+    @JsProperty void setName(String value);
 
 
 }

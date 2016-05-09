@@ -22,8 +22,14 @@ import jsinterop.annotations.JsType;
  * 
  * </code></pre><p>Also <code>open()</code> or <code>show()</code> can be used to show the toast:</p>
  * <p>Example:</p>
- * <pre><code>&lt;paper-toast id=&quot;toast0&quot; text=&quot;Welcome back!&quot;&gt;&lt;/paper-toast&gt;
- * &lt;button onclick=&quot;document.querySelector(&#39;#toast0&#39;).open()&quot;&gt;Login&lt;/button&gt;
+ * <pre><code>&lt;paper-button on-click=&quot;openToast&quot;&gt;Open Toast&lt;/paper-button&gt;
+ * &lt;paper-toast id=&quot;toast&quot; text=&quot;Hello world!&quot;&gt;&lt;/paper-toast&gt;
+ * 
+ * ...
+ * 
+ * openToast: function() {
+ *   this.$.toast.open();
+ * }
  * 
  * 
  * </code></pre><p>Set <code>duration</code> to 0, a negative number or Infinity to persist the toast on screen:</p>
@@ -57,6 +63,7 @@ import jsinterop.annotations.JsType;
  * </tr>
  * </tbody>
  * </table>
+ * <p>This element applies the mixin <code>--paper-font-common-base</code> but does not import <code>paper-styles/typography.html</code>.<br>In order to apply the <code>Roboto</code> font to this element, make sure you’ve imported <code>paper-styles/typography.html</code>.</p>
  */
 @JsType(isNative=true)
 public interface PaperToastElement extends HTMLElement {
@@ -64,44 +71,6 @@ public interface PaperToastElement extends HTMLElement {
     @JsOverlay public static final String TAG = "paper-toast";
     @JsOverlay public static final String SRC = "paper-toast/paper-toast.html";
 
-
-    /**
-     * <p>The duration in milliseconds to show the toast.<br>Set to <code>0</code>, a negative number, or <code>Infinity</code>, to disable the<br>toast auto-closing.</p>
-     *
-     * JavaScript Info:
-     * @property duration
-     * @type Number
-     * 
-     */
-    @JsProperty double getDuration();
-    /**
-     * <p>The duration in milliseconds to show the toast.<br>Set to <code>0</code>, a negative number, or <code>Infinity</code>, to disable the<br>toast auto-closing.</p>
-     *
-     * JavaScript Info:
-     * @property duration
-     * @type Number
-     * 
-     */
-    @JsProperty void setDuration(double value);
-
-    /**
-     * <p>Set to true to keep overlay always on top.</p>
-     *
-     * JavaScript Info:
-     * @property alwaysOnTop
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getAlwaysOnTop();
-    /**
-     * <p>Set to true to keep overlay always on top.</p>
-     *
-     * JavaScript Info:
-     * @property alwaysOnTop
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setAlwaysOnTop(boolean value);
 
     /**
      * <p>The backdrop element.</p>
@@ -121,6 +90,25 @@ public interface PaperToastElement extends HTMLElement {
      * @behavior PaperToast
      */
     @JsProperty void setBackdropElement(Element value);
+
+    /**
+     * <p>Will position the element around the positionTarget without overlapping it.</p>
+     *
+     * JavaScript Info:
+     * @property noOverlap
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getNoOverlap();
+    /**
+     * <p>Will position the element around the positionTarget without overlapping it.</p>
+     *
+     * JavaScript Info:
+     * @property noOverlap
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setNoOverlap(boolean value);
 
     /**
      * <p>True if the overlay was canceled when it was last closed.</p>
@@ -180,61 +168,23 @@ public interface PaperToastElement extends HTMLElement {
     @JsProperty void setNoCancelOnEscKey(boolean value);
 
     /**
-     * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
+     * <p>Set to true to keep overlay always on top.</p>
      *
      * JavaScript Info:
-     * @property noCancelOnOutsideClick
+     * @property alwaysOnTop
      * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty boolean getNoCancelOnOutsideClick();
+    @JsProperty boolean getAlwaysOnTop();
     /**
-     * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
+     * <p>Set to true to keep overlay always on top.</p>
      *
      * JavaScript Info:
-     * @property noCancelOnOutsideClick
+     * @property alwaysOnTop
      * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty void setNoCancelOnOutsideClick(boolean value);
-
-    /**
-     * <p>True if the overlay is currently displayed.</p>
-     *
-     * JavaScript Info:
-     * @property opened
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getOpened();
-    /**
-     * <p>True if the overlay is currently displayed.</p>
-     *
-     * JavaScript Info:
-     * @property opened
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setOpened(boolean value);
-
-    /**
-     * <p>Set to true to auto-fit on attach.</p>
-     *
-     * JavaScript Info:
-     * @property autoFitOnAttach
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getAutoFitOnAttach();
-    /**
-     * <p>Set to true to auto-fit on attach.</p>
-     *
-     * JavaScript Info:
-     * @property autoFitOnAttach
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setAutoFitOnAttach(boolean value);
+    @JsProperty void setAlwaysOnTop(boolean value);
 
     /**
      * <p>Set to true to enable restoring of focus when overlay is closed.</p>
@@ -256,6 +206,82 @@ public interface PaperToastElement extends HTMLElement {
     @JsProperty void setRestoreFocusOnClose(boolean value);
 
     /**
+     * <p>Set to true to display a backdrop behind the overlay.</p>
+     *
+     * JavaScript Info:
+     * @property withBackdrop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getWithBackdrop();
+    /**
+     * <p>Set to true to display a backdrop behind the overlay.</p>
+     *
+     * JavaScript Info:
+     * @property withBackdrop
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setWithBackdrop(boolean value);
+
+    /**
+     * <p>Set to true to auto-fit on attach.</p>
+     *
+     * JavaScript Info:
+     * @property autoFitOnAttach
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getAutoFitOnAttach();
+    /**
+     * <p>Set to true to auto-fit on attach.</p>
+     *
+     * JavaScript Info:
+     * @property autoFitOnAttach
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setAutoFitOnAttach(boolean value);
+
+    /**
+     * <p>Overridden from <code>IronOverlayBehavior</code>.<br>Set to false to enable closing of the toast by clicking outside it.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnOutsideClick
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNoCancelOnOutsideClick();
+    /**
+     * <p>Overridden from <code>IronOverlayBehavior</code>.<br>Set to false to enable closing of the toast by clicking outside it.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnOutsideClick
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNoCancelOnOutsideClick(boolean value);
+
+    /**
+     * <p>Contains the reason(s) this overlay was last closed (see <code>iron-overlay-closed</code>).<br><code>IronOverlayBehavior</code> provides the <code>canceled</code> reason; implementers of the<br>behavior can provide other reasons in addition to <code>canceled</code>.</p>
+     *
+     * JavaScript Info:
+     * @property closingReason
+     * @type Object
+     * @behavior PaperToast
+     */
+    @JsProperty JavaScriptObject getClosingReason();
+    /**
+     * <p>Contains the reason(s) this overlay was last closed (see <code>iron-overlay-closed</code>).<br><code>IronOverlayBehavior</code> provides the <code>canceled</code> reason; implementers of the<br>behavior can provide other reasons in addition to <code>canceled</code>.</p>
+     *
+     * JavaScript Info:
+     * @property closingReason
+     * @type Object
+     * @behavior PaperToast
+     */
+    @JsProperty void setClosingReason(JavaScriptObject value);
+
+    /**
      * <p>The element to fit <code>this</code> into.</p>
      *
      * JavaScript Info:
@@ -273,25 +299,6 @@ public interface PaperToastElement extends HTMLElement {
      * @behavior PaperToast
      */
     @JsProperty void setFitInto(JavaScriptObject value);
-
-    /**
-     * <p>Returns the reason this dialog was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property closingReason
-     * @type Object
-     * @behavior PaperToast
-     */
-    @JsProperty JavaScriptObject getClosingReason();
-    /**
-     * <p>Returns the reason this dialog was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property closingReason
-     * @type Object
-     * @behavior PaperToast
-     */
-    @JsProperty void setClosingReason(JavaScriptObject value);
 
     /**
      * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
@@ -313,23 +320,137 @@ public interface PaperToastElement extends HTMLElement {
     @JsProperty void setSizingTarget(JavaScriptObject value);
 
     /**
-     * <p>Set to true to display a backdrop behind the overlay.</p>
+     * <p>The element that should be used to position the element. If not set, it will<br>default to the parent node.</p>
      *
      * JavaScript Info:
-     * @property withBackdrop
-     * @type Boolean
+     * @property positionTarget
+     * @type !Element
      * @behavior PaperToast
      */
-    @JsProperty boolean getWithBackdrop();
+    @JsProperty JavaScriptObject getPositionTarget();
     /**
-     * <p>Set to true to display a backdrop behind the overlay.</p>
+     * <p>The element that should be used to position the element. If not set, it will<br>default to the parent node.</p>
      *
      * JavaScript Info:
-     * @property withBackdrop
+     * @property positionTarget
+     * @type !Element
+     * @behavior PaperToast
+     */
+    @JsProperty void setPositionTarget(JavaScriptObject value);
+
+    /**
+     * <p>The duration in milliseconds to show the toast.<br>Set to <code>0</code>, a negative number, or <code>Infinity</code>, to disable the<br>toast auto-closing.</p>
+     *
+     * JavaScript Info:
+     * @property duration
+     * @type Number
+     * 
+     */
+    @JsProperty double getDuration();
+    /**
+     * <p>The duration in milliseconds to show the toast.<br>Set to <code>0</code>, a negative number, or <code>Infinity</code>, to disable the<br>toast auto-closing.</p>
+     *
+     * JavaScript Info:
+     * @property duration
+     * @type Number
+     * 
+     */
+    @JsProperty void setDuration(double value);
+
+    /**
+     * <p>The same as setting margin-top and margin-bottom css properties.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    @JsProperty double getVerticalOffset();
+    /**
+     * <p>The same as setting margin-top and margin-bottom css properties.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    @JsProperty void setVerticalOffset(double value);
+
+    /**
+     * <p>The same as setting margin-left and margin-right css properties.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    @JsProperty double getHorizontalOffset();
+    /**
+     * <p>The same as setting margin-left and margin-right css properties.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    @JsProperty void setHorizontalOffset(double value);
+
+    /**
+     * <p>True if the overlay is currently displayed.</p>
+     *
+     * JavaScript Info:
+     * @property opened
      * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty void setWithBackdrop(boolean value);
+    @JsProperty boolean getOpened();
+    /**
+     * <p>True if the overlay is currently displayed.</p>
+     *
+     * JavaScript Info:
+     * @property opened
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setOpened(boolean value);
+
+    /**
+     * <p>The orientation against which to align the element vertically<br>relative to the <code>positionTarget</code>. Possible values are “top”, “bottom”, “auto”.</p>
+     *
+     * JavaScript Info:
+     * @property verticalAlign
+     * @type String
+     * @behavior PaperToast
+     */
+    @JsProperty String getVerticalAlign();
+    /**
+     * <p>The orientation against which to align the element vertically<br>relative to the <code>positionTarget</code>. Possible values are “top”, “bottom”, “auto”.</p>
+     *
+     * JavaScript Info:
+     * @property verticalAlign
+     * @type String
+     * @behavior PaperToast
+     */
+    @JsProperty void setVerticalAlign(String value);
+
+    /**
+     * <p>The orientation against which to align the element horizontally<br>relative to the <code>positionTarget</code>. Possible values are “left”, “right”, “auto”.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalAlign
+     * @type String
+     * @behavior PaperToast
+     */
+    @JsProperty String getHorizontalAlign();
+    /**
+     * <p>The orientation against which to align the element horizontally<br>relative to the <code>positionTarget</code>. Possible values are “left”, “right”, “auto”.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalAlign
+     * @type String
+     * @behavior PaperToast
+     */
+    @JsProperty void setHorizontalAlign(String value);
 
     /**
      * <p>The text to display in the toast.</p>
@@ -350,6 +471,17 @@ public interface PaperToastElement extends HTMLElement {
      */
     @JsProperty void setText(String value);
 
+
+    /**
+     * <p>Show the toast. Without arguments, this is the same as <code>open()</code> from <code>IronOverlayBehavior</code>.</p>
+     *
+     * JavaScript Info:
+     * @method show
+     * @param {(Object|string)=} properties  
+     * 
+     * 
+     */
+    void show(Object properties);
 
     /**
      * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
@@ -374,34 +506,14 @@ public interface PaperToastElement extends HTMLElement {
     void assignParentResizable(Object parentResizable);
 
     /**
-     * <p>Show the toast. Same as <code>open()</code> from <code>IronOverlayBehavior</code>.</p>
+     * <p>Overridden from <code>IronFitBehavior</code>.<br>Positions the toast at the bottom left of fitInto.</p>
      *
      * JavaScript Info:
-     * @method show
+     * @method center
      * 
      * 
      */
-    void show();
-
-    /**
-     * <p>Open the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method open
-     * @behavior PaperToast
-     * 
-     */
-    void open();
-
-    /**
-     * <p>Toggle the opened state of the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method toggle
-     * @behavior PaperToast
-     * 
-     */
-    void toggle();
+    void center();
 
     /**
      * <p>Hide the toast. Same as <code>close()</code> from <code>IronOverlayBehavior</code>.</p>
@@ -414,27 +526,7 @@ public interface PaperToastElement extends HTMLElement {
     void hide();
 
     /**
-     * <p>Close the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method close
-     * @behavior PaperToast
-     * 
-     */
-    void close();
-
-    /**
-     * <p>Centers horizontally and vertically if not already positioned. This also sets<br><code>position:fixed</code>.</p>
-     *
-     * JavaScript Info:
-     * @method center
-     * @behavior PaperToast
-     * 
-     */
-    void center();
-
-    /**
-     * <p>Constrains the size of the element to the window or <code>fitInfo</code> by setting <code>max-height</code><br>and/or <code>max-width</code>.</p>
+     * <p>Constrains the size of the element to <code>fitInto</code> by setting <code>max-height</code><br>and/or <code>max-width</code>.</p>
      *
      * JavaScript Info:
      * @method constrain
@@ -444,7 +536,7 @@ public interface PaperToastElement extends HTMLElement {
     void constrain();
 
     /**
-     * <p>Fits and optionally centers the element into the window, or <code>fitInfo</code> if specified.</p>
+     * <p>Positions and fits the element into the <code>fitInto</code> element.</p>
      *
      * JavaScript Info:
      * @method fit
@@ -454,7 +546,27 @@ public interface PaperToastElement extends HTMLElement {
     void fit();
 
     /**
-     * <p>Equivalent to calling <code>resetFit()</code> and <code>fit()</code>. Useful to call this after the element,<br>the window, or the <code>fitInfo</code> element has been resized.</p>
+     * <p>Open the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method open
+     * @behavior PaperToast
+     * 
+     */
+    void open();
+
+    /**
+     * <p>Positions the element according to <code>horizontalAlign, verticalAlign</code>.</p>
+     *
+     * JavaScript Info:
+     * @method position
+     * @behavior PaperToast
+     * 
+     */
+    void position();
+
+    /**
+     * <p>Equivalent to calling <code>resetFit()</code> and <code>fit()</code>. Useful to call this after<br>the element or the <code>fitInto</code> element has been resized, or if any of the<br>positioning properties (e.g. <code>horizontalAlign, verticalAlign</code>) is updated.</p>
      *
      * JavaScript Info:
      * @method refit
@@ -472,6 +584,26 @@ public interface PaperToastElement extends HTMLElement {
      * 
      */
     void resetFit();
+
+    /**
+     * <p>Toggle the opened state of the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method toggle
+     * @behavior PaperToast
+     * 
+     */
+    void toggle();
+
+    /**
+     * <p>Close the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method close
+     * @behavior PaperToast
+     * 
+     */
+    void close();
 
     /**
      * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>

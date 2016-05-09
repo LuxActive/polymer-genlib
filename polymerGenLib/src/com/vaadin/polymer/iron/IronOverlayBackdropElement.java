@@ -76,7 +76,7 @@ public interface IronOverlayBackdropElement extends HTMLElement {
 
 
     /**
-     * <p>Hides the backdrop if needed.</p>
+     * <p>Hides the backdrop.</p>
      *
      * JavaScript Info:
      * @method close
@@ -96,7 +96,7 @@ public interface IronOverlayBackdropElement extends HTMLElement {
     void complete();
 
     /**
-     * <p>Shows the backdrop if needed.</p>
+     * <p>Shows the backdrop.</p>
      *
      * JavaScript Info:
      * @method open
@@ -106,7 +106,7 @@ public interface IronOverlayBackdropElement extends HTMLElement {
     void open();
 
     /**
-     * <p>Appends the backdrop to document body and sets its <code>z-index</code> to be below the latest overlay.</p>
+     * <p>Appends the backdrop to document body if needed.</p>
      *
      * JavaScript Info:
      * @method prepare

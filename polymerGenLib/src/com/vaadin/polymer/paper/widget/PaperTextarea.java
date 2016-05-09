@@ -248,26 +248,26 @@ public class PaperTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>Set to true to auto-validate the input value. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>autoValidate</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
      *
      * JavaScript Info:
-     * @property autoValidate
+     * @property autofocus
      * @type Boolean
      * @behavior PaperTextarea
      */
-    public boolean getAutoValidate() {
-        return getPolymerElement().getAutoValidate();
+    public boolean getAutofocus() {
+        return getPolymerElement().getAutofocus();
     }
     /**
-     * <p>Set to true to auto-validate the input value. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>autoValidate</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
      *
      * JavaScript Info:
-     * @property autoValidate
+     * @property autofocus
      * @type Boolean
      * @behavior PaperTextarea
      */
-    public void setAutoValidate(boolean value) {
-        getPolymerElement().setAutoValidate(value);
+    public void setAutofocus(boolean value) {
+        getPolymerElement().setAutofocus(value);
     }
 
     /**
@@ -317,29 +317,6 @@ public class PaperTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property autofocus
-     * @type Boolean
-     * @behavior PaperTextarea
-     */
-    public boolean getAutofocus() {
-        return getPolymerElement().getAutofocus();
-    }
-    /**
-     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property autofocus
-     * @type Boolean
-     * @behavior PaperTextarea
-     */
-    public void setAutofocus(boolean value) {
-        getPolymerElement().setAutofocus(value);
-    }
-
-    /**
      * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -360,6 +337,29 @@ public class PaperTextarea extends PolymerWidget {
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
+    }
+
+    /**
+     * <p>Set to true to auto-validate the input value. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>autoValidate</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autoValidate
+     * @type Boolean
+     * @behavior PaperTextarea
+     */
+    public boolean getAutoValidate() {
+        return getPolymerElement().getAutoValidate();
+    }
+    /**
+     * <p>Set to true to auto-validate the input value. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>autoValidate</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autoValidate
+     * @type Boolean
+     * @behavior PaperTextarea
+     */
+    public void setAutoValidate(boolean value) {
+        getPolymerElement().setAutoValidate(value);
     }
 
     /**

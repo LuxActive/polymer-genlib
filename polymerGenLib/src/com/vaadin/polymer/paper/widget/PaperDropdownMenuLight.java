@@ -21,16 +21,17 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/buttons.html#buttons-dropdown-buttons">Dropdown menus</a></p>
- * <p><code>paper-dropdown-menu</code> is similar to a native browser select element.<br><code>paper-dropdown-menu</code> works with selectable content. The currently selected<br>item is displayed in the control. If no item is selected, the <code>label</code> is<br>displayed instead.</p>
+ * <p>This is a faster, lighter version of <code>paper-dropdown-menu</code>, that does not<br>use a <code>&lt;paper-input&gt;</code> internally. Use this element if you’re concerned about<br>the performance of this element, i.e., if you plan on using many dropdowns on<br>the same page. Note that this element has a slightly different styling API<br>than <code>paper-dropdown-menu</code>.</p>
+ * <p><code>paper-dropdown-menu-light</code> is similar to a native browser select element.<br><code>paper-dropdown-menu-light</code> works with selectable content. The currently selected<br>item is displayed in the control. If no item is selected, the <code>label</code> is<br>displayed instead.</p>
  * <p>Example:</p>
- * <pre><code>&lt;paper-dropdown-menu label=&quot;Your favourite pastry&quot;&gt;
+ * <pre><code>&lt;paper-dropdown-menu-light label=&quot;Your favourite pastry&quot;&gt;
  *   &lt;paper-listbox class=&quot;dropdown-content&quot;&gt;
  *     &lt;paper-item&gt;Croissant&lt;/paper-item&gt;
  *     &lt;paper-item&gt;Donut&lt;/paper-item&gt;
  *     &lt;paper-item&gt;Financier&lt;/paper-item&gt;
  *     &lt;paper-item&gt;Madeleine&lt;/paper-item&gt;
  *   &lt;/paper-listbox&gt;
- * &lt;/paper-dropdown-menu&gt;
+ * &lt;/paper-dropdown-menu-light&gt;
  * 
  * 
  * </code></pre><p>This example renders a dropdown menu with 4 options.</p>
@@ -69,40 +70,74 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <td><code>{}</code></td>
  * </tr>
  * <tr>
- * <td><code>--paper-dropdown-menu-input</code></td>
- * <td>A mixin that is applied to the internal paper input</td>
- * <td><code>{}</code></td>
- * </tr>
- * <tr>
  * <td><code>--paper-dropdown-menu-icon</code></td>
  * <td>A mixin that is applied to the internal icon</td>
  * <td><code>{}</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--paper-dropdown-menu-disabled-opacity</code></td>
+ * <td>The opacity of the dropdown when disabled</td>
+ * <td><code>0.33</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-dropdown-menu-color</code></td>
+ * <td>The color of the input/label/underline when the dropdown is unfocused</td>
+ * <td><code>--primary-text-color</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-dropdown-menu-focus-color</code></td>
+ * <td>The color of the label/underline when the dropdown is focused</td>
+ * <td><code>--primary-color</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-dropdown-error-color</code></td>
+ * <td>The color of the label/underline when the dropdown is invalid</td>
+ * <td><code>--error-color</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-dropdown-menu-label</code></td>
+ * <td>Mixin applied to the label</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-dropdown-menu-input</code></td>
+ * <td>Mixin appled to the input</td>
+ * <td><code>{}</code></td>
+ * </tr>
  * </tbody>
  * </table>
- * <p>You can also use any of the <code>paper-input-container</code> and <code>paper-menu-button</code><br>style mixins and custom properties to style the internal input and menu button<br>respectively.</p>
+ * <p>Note that in this element, the underline is just the bottom border of the “input”.<br>To style it:</p>
+ * <pre><code>&lt;style is=custom-style&gt;
+ *   paper-dropdown-menu-light.custom {
+ *     --paper-dropdown-menu-input: {
+ *       border-bottom: 2px dashed lavender;
+ *     };
+ * &lt;/style&gt;
+ * 
+ * 
+ * </code></pre>
  */
-public class PaperDropdownMenu extends PolymerWidget {
+public class PaperDropdownMenuLight extends PolymerWidget {
     /**
      * Default Constructor.
      */
-    public PaperDropdownMenu() {
+    public PaperDropdownMenuLight() {
        this("");
     }
 
     /**
      * Constructor used by UIBinder to create widgets with content.
      */
-    public PaperDropdownMenu(String html) {
-        super(PaperDropdownMenuElement.TAG, PaperDropdownMenuElement.SRC, html);
+    public PaperDropdownMenuLight(String html) {
+        super(PaperDropdownMenuLightElement.TAG, PaperDropdownMenuLightElement.SRC, html);
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
-    public PaperDropdownMenuElement getPolymerElement() {
+    public PaperDropdownMenuLightElement getPolymerElement() {
         try {
-            return (PaperDropdownMenuElement) getElement();
+            return (PaperDropdownMenuLightElement) getElement();
         } catch (ClassCastException e) {
             jsinteropError();
             return null;
@@ -111,26 +146,26 @@ public class PaperDropdownMenu extends PolymerWidget {
 
 
     /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     * <p>Set to true to always float the label. Bind this to the<br><code>&lt;paper-input-container&gt;</code>‘s <code>alwaysFloatLabel</code> property.</p>
      *
      * JavaScript Info:
-     * @property receivedFocusFromKeyboard
+     * @property alwaysFloatLabel
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    public boolean getReceivedFocusFromKeyboard() {
-        return getPolymerElement().getReceivedFocusFromKeyboard();
+    public boolean getAlwaysFloatLabel() {
+        return getPolymerElement().getAlwaysFloatLabel();
     }
     /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     * <p>Set to true to always float the label. Bind this to the<br><code>&lt;paper-input-container&gt;</code>‘s <code>alwaysFloatLabel</code> property.</p>
      *
      * JavaScript Info:
-     * @property receivedFocusFromKeyboard
+     * @property alwaysFloatLabel
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    public void setReceivedFocusFromKeyboard(boolean value) {
-        getPolymerElement().setReceivedFocusFromKeyboard(value);
+    public void setAlwaysFloatLabel(boolean value) {
+        getPolymerElement().setAlwaysFloatLabel(value);
     }
 
     /**
@@ -203,6 +238,167 @@ public class PaperDropdownMenu extends PolymerWidget {
     }
 
     /**
+     * <p>True if the last call to <code>validate</code> is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property invalid
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    public boolean getInvalid() {
+        return getPolymerElement().getInvalid();
+    }
+    /**
+     * <p>True if the last call to <code>validate</code> is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property invalid
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    public void setInvalid(boolean value) {
+        getPolymerElement().setInvalid(value);
+    }
+
+    /**
+     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property required
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    public boolean getRequired() {
+        return getPolymerElement().getRequired();
+    }
+    /**
+     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property required
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    public void setRequired(boolean value) {
+        getPolymerElement().setRequired(value);
+    }
+
+    /**
+     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getNoink() {
+        return getPolymerElement().getNoink();
+    }
+    /**
+     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setNoink(boolean value) {
+        getPolymerElement().setNoink(value);
+    }
+
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getFocused() {
+        return getPolymerElement().getFocused();
+    }
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setFocused(boolean value) {
+        getPolymerElement().setFocused(value);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property hasContent
+     * @type Boolean
+     * 
+     */
+    public boolean getHasContent() {
+        return getPolymerElement().getHasContent();
+    }
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property hasContent
+     * @type Boolean
+     * 
+     */
+    public void setHasContent(boolean value) {
+        getPolymerElement().setHasContent(value);
+    }
+
+    /**
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     *
+     * JavaScript Info:
+     * @property active
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getActive() {
+        return getPolymerElement().getActive();
+    }
+    /**
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     *
+     * JavaScript Info:
+     * @property active
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setActive(boolean value) {
+        getPolymerElement().setActive(value);
+    }
+
+    /**
+     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property noAnimations
+     * @type Boolean
+     * 
+     */
+    public boolean getNoAnimations() {
+        return getPolymerElement().getNoAnimations();
+    }
+    /**
+     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property noAnimations
+     * @type Boolean
+     * 
+     */
+    public void setNoAnimations(boolean value) {
+        getPolymerElement().setNoAnimations(value);
+    }
+
+    /**
      * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
      *
      * JavaScript Info:
@@ -249,26 +445,26 @@ public class PaperDropdownMenu extends PolymerWidget {
     }
 
     /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
      *
      * JavaScript Info:
-     * @property required
+     * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior VaadinDatePicker
+     * @behavior PaperTab
      */
-    public boolean getRequired() {
-        return getPolymerElement().getRequired();
+    public boolean getReceivedFocusFromKeyboard() {
+        return getPolymerElement().getReceivedFocusFromKeyboard();
     }
     /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
      *
      * JavaScript Info:
-     * @property required
+     * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior VaadinDatePicker
+     * @behavior PaperTab
      */
-    public void setRequired(boolean value) {
-        getPolymerElement().setRequired(value);
+    public void setReceivedFocusFromKeyboard(boolean value) {
+        getPolymerElement().setReceivedFocusFromKeyboard(value);
     }
 
     /**
@@ -295,52 +491,6 @@ public class PaperDropdownMenu extends PolymerWidget {
     }
 
     /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getFocused() {
-        return getPolymerElement().getFocused();
-    }
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setFocused(boolean value) {
-        getPolymerElement().setFocused(value);
-    }
-
-    /**
-     * <p>If true, the user cannot interact with this element.</p>
-     *
-     * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getDisabled() {
-        return getPolymerElement().getDisabled();
-    }
-    /**
-     * <p>If true, the user cannot interact with this element.</p>
-     *
-     * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setDisabled(boolean value) {
-        getPolymerElement().setDisabled(value);
-    }
-
-    /**
      * <p>Set to true to disable the floating label. Bind this to the<br><code>&lt;paper-input-container&gt;</code>‘s <code>noLabelFloat</code> property.</p>
      *
      * JavaScript Info:
@@ -361,29 +511,6 @@ public class PaperDropdownMenu extends PolymerWidget {
      */
     public void setNoLabelFloat(boolean value) {
         getPolymerElement().setNoLabelFloat(value);
-    }
-
-    /**
-     * <p>True if the last call to <code>validate</code> is invalid.</p>
-     *
-     * JavaScript Info:
-     * @property invalid
-     * @type Boolean
-     * @behavior VaadinDatePicker
-     */
-    public boolean getInvalid() {
-        return getPolymerElement().getInvalid();
-    }
-    /**
-     * <p>True if the last call to <code>validate</code> is invalid.</p>
-     *
-     * JavaScript Info:
-     * @property invalid
-     * @type Boolean
-     * @behavior VaadinDatePicker
-     */
-    public void setInvalid(boolean value) {
-        getPolymerElement().setInvalid(value);
     }
 
     /**
@@ -410,29 +537,6 @@ public class PaperDropdownMenu extends PolymerWidget {
     }
 
     /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
-     *
-     * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getActive() {
-        return getPolymerElement().getActive();
-    }
-    /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
-     *
-     * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setActive(boolean value) {
-        getPolymerElement().setActive(value);
-    }
-
-    /**
      * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -456,49 +560,26 @@ public class PaperDropdownMenu extends PolymerWidget {
     }
 
     /**
-     * <p>Set to true to always float the label. Bind this to the<br><code>&lt;paper-input-container&gt;</code>‘s <code>alwaysFloatLabel</code> property.</p>
+     * <p>If true, the user cannot interact with this element.</p>
      *
      * JavaScript Info:
-     * @property alwaysFloatLabel
+     * @property disabled
      * @type Boolean
-     * 
+     * @behavior PaperTab
      */
-    public boolean getAlwaysFloatLabel() {
-        return getPolymerElement().getAlwaysFloatLabel();
+    public boolean getDisabled() {
+        return getPolymerElement().getDisabled();
     }
     /**
-     * <p>Set to true to always float the label. Bind this to the<br><code>&lt;paper-input-container&gt;</code>‘s <code>alwaysFloatLabel</code> property.</p>
+     * <p>If true, the user cannot interact with this element.</p>
      *
      * JavaScript Info:
-     * @property alwaysFloatLabel
+     * @property disabled
      * @type Boolean
-     * 
+     * @behavior PaperTab
      */
-    public void setAlwaysFloatLabel(boolean value) {
-        getPolymerElement().setAlwaysFloatLabel(value);
-    }
-
-    /**
-     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property noAnimations
-     * @type Boolean
-     * 
-     */
-    public boolean getNoAnimations() {
-        return getPolymerElement().getNoAnimations();
-    }
-    /**
-     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property noAnimations
-     * @type Boolean
-     * 
-     */
-    public void setNoAnimations(boolean value) {
-        getPolymerElement().setNoAnimations(value);
+    public void setDisabled(boolean value) {
+        getPolymerElement().setDisabled(value);
     }
 
     /**
@@ -525,29 +606,6 @@ public class PaperDropdownMenu extends PolymerWidget {
     }
 
     /**
-     * <p>The value for this element that will be used when submitting in<br>a form. It is read only, and will always have the same value<br>as <code>selectedItemLabel</code>.</p>
-     *
-     * JavaScript Info:
-     * @property value
-     * @type String
-     * 
-     */
-    public String getValue() {
-        return getPolymerElement().getValue();
-    }
-    /**
-     * <p>The value for this element that will be used when submitting in<br>a form. It is read only, and will always have the same value<br>as <code>selectedItemLabel</code>.</p>
-     *
-     * JavaScript Info:
-     * @property value
-     * @type String
-     * 
-     */
-    public void setValue(String value) {
-        getPolymerElement().setValue(value);
-    }
-
-    /**
      * <p>The name of this element.</p>
      *
      * JavaScript Info:
@@ -568,6 +626,29 @@ public class PaperDropdownMenu extends PolymerWidget {
      */
     public void setName(String value) {
         getPolymerElement().setName(value);
+    }
+
+    /**
+     * <p>The value for this element that will be used when submitting in<br>a form. It is read only, and will always have the same value<br>as <code>selectedItemLabel</code>.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type String
+     * 
+     */
+    public String getValue() {
+        return getPolymerElement().getValue();
+    }
+    /**
+     * <p>The value for this element that will be used when submitting in<br>a form. It is read only, and will always have the same value<br>as <code>selectedItemLabel</code>.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type String
+     * 
+     */
+    public void setValue(String value) {
+        getPolymerElement().setValue(value);
     }
 
     /**
@@ -594,29 +675,6 @@ public class PaperDropdownMenu extends PolymerWidget {
     }
 
     /**
-     * <p>The placeholder for the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * 
-     */
-    public String getPlaceholder() {
-        return getPolymerElement().getPlaceholder();
-    }
-    /**
-     * <p>The placeholder for the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * 
-     */
-    public void setPlaceholder(String value) {
-        getPolymerElement().setPlaceholder(value);
-    }
-
-    /**
      * <p>The orientation against which to align the menu dropdown<br>vertically relative to the dropdown trigger.</p>
      *
      * JavaScript Info:
@@ -640,6 +698,29 @@ public class PaperDropdownMenu extends PolymerWidget {
     }
 
     /**
+     * <p>The label for the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property label
+     * @type String
+     * 
+     */
+    public String getLabel() {
+        return getPolymerElement().getLabel();
+    }
+    /**
+     * <p>The label for the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property label
+     * @type String
+     * 
+     */
+    public void setLabel(String value) {
+        getPolymerElement().setLabel(value);
+    }
+
+    /**
      * <p>The orientation against which to align the menu dropdown<br>horizontally relative to the dropdown trigger.</p>
      *
      * JavaScript Info:
@@ -660,29 +741,6 @@ public class PaperDropdownMenu extends PolymerWidget {
      */
     public void setHorizontalAlign(String value) {
         getPolymerElement().setHorizontalAlign(value);
-    }
-
-    /**
-     * <p>The error message to display when invalid.</p>
-     *
-     * JavaScript Info:
-     * @property errorMessage
-     * @type String
-     * 
-     */
-    public String getErrorMessage() {
-        return getPolymerElement().getErrorMessage();
-    }
-    /**
-     * <p>The error message to display when invalid.</p>
-     *
-     * JavaScript Info:
-     * @property errorMessage
-     * @type String
-     * 
-     */
-    public void setErrorMessage(String value) {
-        getPolymerElement().setErrorMessage(value);
     }
 
     /**
@@ -732,26 +790,26 @@ public class PaperDropdownMenu extends PolymerWidget {
     }
 
     /**
-     * <p>The label for the dropdown.</p>
+     * <p>The placeholder for the dropdown.</p>
      *
      * JavaScript Info:
-     * @property label
+     * @property placeholder
      * @type String
      * 
      */
-    public String getLabel() {
-        return getPolymerElement().getLabel();
+    public String getPlaceholder() {
+        return getPolymerElement().getPlaceholder();
     }
     /**
-     * <p>The label for the dropdown.</p>
+     * <p>The placeholder for the dropdown.</p>
      *
      * JavaScript Info:
-     * @property label
+     * @property placeholder
      * @type String
      * 
      */
-    public void setLabel(String value) {
-        getPolymerElement().setLabel(value);
+    public void setPlaceholder(String value) {
+        getPolymerElement().setPlaceholder(value);
     }
 
 
@@ -840,6 +898,30 @@ public class PaperDropdownMenu extends PolymerWidget {
     }
 
     /**
+     * <p>Returns true if this element currently contains a ripple effect.</p>
+     *
+     * JavaScript Info:
+     * @method hasRipple
+     * @behavior PaperTab
+     * @return {boolean}
+     */
+    public boolean hasRipple() {
+        return getPolymerElement().hasRipple();
+    }
+
+    /**
+     * <p>Returns the <code>&lt;paper-ripple&gt;</code> element used by this element to create<br>ripple effects. The element’s ripple is created on demand, when<br>necessary, and calling this method will force the<br>ripple to be created.</p>
+     *
+     * JavaScript Info:
+     * @method getRipple
+     * @behavior PaperTab
+     * 
+     */
+    public void getRipple() {
+        getPolymerElement().getRipple();
+    }
+
+    /**
      * <p>Show the dropdown content.</p>
      *
      * JavaScript Info:
@@ -849,6 +931,20 @@ public class PaperDropdownMenu extends PolymerWidget {
      */
     public void open() {
         getPolymerElement().open();
+    }
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
     /**
@@ -865,17 +961,16 @@ public class PaperDropdownMenu extends PolymerWidget {
     }
 
     /**
-     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     * <p>Ensures this element contains a ripple effect. For startup efficiency<br>the ripple effect is dynamically on demand when needed.</p>
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {KeyboardEvent} event  
-     * @param {string} eventString  
-     * @behavior VaadinComboBox
-     * @return {boolean}
+     * @method ensureRipple
+     * @param {!Event=} optTriggeringEvent  
+     * @behavior PaperTab
+     * 
      */
-    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
-        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
+    public void ensureRipple(JavaScriptObject optTriggeringEvent) {
+        getPolymerElement().ensureRipple(optTriggeringEvent);
     }
 
 

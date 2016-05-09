@@ -55,6 +55,7 @@ import jsinterop.annotations.JsType;
  * </tr>
  * </tbody>
  * </table>
+ * <p>This element applies the mixin <code>--paper-font-common-base</code> but does not import <code>paper-styles/typography.html</code>.<br>In order to apply the <code>Roboto</code> font to this element, make sure you’ve imported <code>paper-styles/typography.html</code>.</p>
  */
 @JsType(isNative=true)
 public interface PaperTabElement extends HTMLElement {
@@ -62,6 +63,25 @@ public interface PaperTabElement extends HTMLElement {
     @JsOverlay public static final String TAG = "paper-tab";
     @JsOverlay public static final String SRC = "paper-tabs/paper-tabs.html";
 
+
+    /**
+     * <p>If true, the tab will forward keyboard clicks (enter/space) to<br>the first anchor element found in its descendants</p>
+     *
+     * JavaScript Info:
+     * @property link
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getLink();
+    /**
+     * <p>If true, the tab will forward keyboard clicks (enter/space) to<br>the first anchor element found in its descendants</p>
+     *
+     * JavaScript Info:
+     * @property link
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setLink(boolean value);
 
     /**
      * 
@@ -119,6 +139,63 @@ public interface PaperTabElement extends HTMLElement {
      * @behavior PaperTab
      */
     @JsProperty void setDisabled(boolean value);
+
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty boolean getPointerDown();
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty void setPointerDown(boolean value);
+
+    /**
+     * <p>If true, the user is currently holding down the button.</p>
+     *
+     * JavaScript Info:
+     * @property pressed
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty boolean getPressed();
+    /**
+     * <p>If true, the user is currently holding down the button.</p>
+     *
+     * JavaScript Info:
+     * @property pressed
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty void setPressed(boolean value);
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    @JsProperty boolean getStopKeyboardEventPropagation();
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
     /**
      * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
@@ -197,63 +274,6 @@ public interface PaperTabElement extends HTMLElement {
     @JsProperty void setActive(boolean value);
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    @JsProperty boolean getStopKeyboardEventPropagation();
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
-
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getPointerDown();
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setPointerDown(boolean value);
-
-    /**
-     * <p>If true, the user is currently holding down the button.</p>
-     *
-     * JavaScript Info:
-     * @property pressed
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getPressed();
-    /**
-     * <p>If true, the user is currently holding down the button.</p>
-     *
-     * JavaScript Info:
-     * @property pressed
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setPressed(boolean value);
-
-    /**
      * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
      *
      * JavaScript Info:
@@ -305,16 +325,6 @@ public interface PaperTabElement extends HTMLElement {
     void addOwnKeyBinding(Object eventString, Object handlerName);
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
-     *
-     * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior VaadinComboBox
-     * 
-     */
-    void removeOwnKeyBindings();
-
-    /**
      * <p>Returns true if this element currently contains a ripple effect.</p>
      *
      * JavaScript Info:
@@ -335,16 +345,14 @@ public interface PaperTabElement extends HTMLElement {
     void getRipple();
 
     /**
-     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {KeyboardEvent} event  
-     * @param {string} eventString  
+     * @method removeOwnKeyBindings
      * @behavior VaadinComboBox
-     * @return {boolean}
+     * 
      */
-    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
+    void removeOwnKeyBindings();
 
     /**
      * <p>Ensures this element contains a ripple effect. For startup efficiency<br>the ripple effect is dynamically on demand when needed.</p>
@@ -356,5 +364,17 @@ public interface PaperTabElement extends HTMLElement {
      * 
      */
     void ensureRipple(JavaScriptObject optTriggeringEvent);
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
 }

@@ -181,6 +181,11 @@ import jsinterop.annotations.JsType;
  * <td>Mixin applied to the container when in tall waterfall mode</td>
  * <td><code>{}</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--paper-header-panel-shadow</code></td>
+ * <td>Mixin applied to the waterfall shadow</td>
+ * <td><code>{}</code></td>
+ * </tr>
  * </tbody>
  * </table>
  */

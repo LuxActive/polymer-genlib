@@ -80,25 +80,6 @@ public interface PaperRadioGroupElement extends HTMLElement {
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
     /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty JavaScriptObject getSelectedItem();
-    /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelectedItem(JavaScriptObject value);
-
-    /**
      * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -135,6 +116,25 @@ public interface PaperRadioGroupElement extends HTMLElement {
      * @behavior VaadinComboBox
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
+
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty JavaScriptObject getSelectedItem();
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedItem(JavaScriptObject value);
 
     /**
      * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
@@ -175,63 +175,6 @@ public interface PaperRadioGroupElement extends HTMLElement {
     @JsProperty void setItems(JsArray value);
 
     /**
-     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
-     *
-     * JavaScript Info:
-     * @property fallbackSelection
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getFallbackSelection();
-    /**
-     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
-     *
-     * JavaScript Info:
-     * @property fallbackSelection
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setFallbackSelection(String value);
-
-    /**
-     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
-     *
-     * JavaScript Info:
-     * @property attrForSelected
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getAttrForSelected();
-    /**
-     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
-     *
-     * JavaScript Info:
-     * @property attrForSelected
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setAttrForSelected(String value);
-
-    /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
-     *
-     * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getActivateEvent();
-    /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
-     *
-     * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setActivateEvent(String value);
-
-    /**
      * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
      *
      * JavaScript Info:
@@ -249,6 +192,25 @@ public interface PaperRadioGroupElement extends HTMLElement {
      * @behavior PaperTabs
      */
     @JsProperty void setSelectable(String value);
+
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getFallbackSelection();
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setFallbackSelection(String value);
 
     /**
      * <p>The attribute to set on elements when selected.</p>
@@ -288,6 +250,44 @@ public interface PaperRadioGroupElement extends HTMLElement {
      */
     @JsProperty void setSelectedClass(String value);
 
+    /**
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
+     *
+     * JavaScript Info:
+     * @property attrForSelected
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getAttrForSelected();
+    /**
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
+     *
+     * JavaScript Info:
+     * @property attrForSelected
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setAttrForSelected(String value);
+
+    /**
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     *
+     * JavaScript Info:
+     * @property activateEvent
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getActivateEvent();
+    /**
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     *
+     * JavaScript Info:
+     * @property activateEvent
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setActivateEvent(String value);
+
 
     /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
@@ -306,31 +306,32 @@ public interface PaperRadioGroupElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method select
-     * @param {(string|number)} value  
-     * @behavior PaperTabs
+     * @param {} value  
+     * 
      * 
      */
     void select(Object value);
 
     /**
-     * <p>Selects the next item. If the next item is disabled, then it is<br>skipped, and the next item after it is selected.</p>
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
+     * 
+     */
+    void selectIndex(Object index);
+
+    /**
+     * <p>Selects the next item.</p>
      *
      * JavaScript Info:
      * @method selectNext
-     * 
+     * @behavior PaperTabs
      * 
      */
     void selectNext();
-
-    /**
-     * <p>Selects the previous item. If the previous item is disabled, then it is<br>skipped, and its previous item is selected</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * 
-     * 
-     */
-    void selectPrevious();
 
     /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
@@ -341,6 +342,16 @@ public interface PaperRadioGroupElement extends HTMLElement {
      * 
      */
     void removeOwnKeyBindings();
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * @behavior PaperTabs
+     * 
+     */
+    void selectPrevious();
 
     /**
      * <p>Force a synchronous update of the <code>items</code> property.</p>

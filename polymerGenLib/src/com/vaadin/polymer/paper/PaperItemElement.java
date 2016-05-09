@@ -28,6 +28,22 @@ import jsinterop.annotations.JsType;
  * &lt;/paper-item&gt;
  * 
  * 
+ * </code></pre><p>To use <code>paper-item</code> as a link, wrap it in an anchor tag. Since <code>paper-item</code> will<br>already receive focus, you may want to prevent the anchor tag from receiving<br>focus as well by setting its tabindex to -1.</p>
+ * <pre><code>&lt;a href=&quot;https://www.polymer-project.org/&quot; tabindex=&quot;-1&quot;&gt;
+ *   &lt;paper-item raised&gt;Polymer Project&lt;/paper-item&gt;
+ * &lt;/a&gt;
+ * 
+ * 
+ * </code></pre><p>If you are concerned about performance and want to use <code>paper-item</code> in a <code>paper-listbox</code><br>with many items, you can just use a native <code>button</code> with the <code>paper-item</code> class<br>applied (provided you have correctly included the shared styles):</p>
+ * <pre><code>&lt;style is=&quot;custom-style&quot; include=&quot;paper-item-shared-styles&quot;&gt;&lt;/style&gt;
+ * 
+ * &lt;paper-listbox&gt;
+ *   &lt;button class=&quot;paper-item&quot; role=&quot;option&quot;&gt;Inbox&lt;/button&gt;
+ *   &lt;button class=&quot;paper-item&quot; role=&quot;option&quot;&gt;Starred&lt;/button&gt;
+ *   &lt;button class=&quot;paper-item&quot; role=&quot;option&quot;&gt;Sent mail&lt;/button&gt;
+ * &lt;/paper-listbox&gt;
+ * 
+ * 
  * </code></pre><h3 id="styling">Styling</h3>
  * <p>The following custom properties and mixins are available for styling:</p>
  * <table>
@@ -101,6 +117,25 @@ public interface PaperItemElement extends HTMLElement {
 
 
     /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    @JsProperty JavaScriptObject getKeyBindings();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    @JsProperty void setKeyBindings(JavaScriptObject value);
+
+    /**
      * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -118,25 +153,6 @@ public interface PaperItemElement extends HTMLElement {
      * @behavior VaadinComboBox
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty JavaScriptObject getKeyBindings();
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty void setKeyBindings(JavaScriptObject value);
 
     /**
      * <p>If true, the element currently has focus.</p>
@@ -323,16 +339,6 @@ public interface PaperItemElement extends HTMLElement {
     void addOwnKeyBinding(Object eventString, Object handlerName);
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
-     *
-     * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior VaadinComboBox
-     * 
-     */
-    void removeOwnKeyBindings();
-
-    /**
      * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
@@ -343,5 +349,15 @@ public interface PaperItemElement extends HTMLElement {
      * @return {boolean}
      */
     boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior VaadinComboBox
+     * 
+     */
+    void removeOwnKeyBindings();
 
 }

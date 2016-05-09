@@ -14,16 +14,17 @@ import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/buttons.html#buttons-dropdown-buttons">Dropdown menus</a></p>
- * <p><code>paper-dropdown-menu</code> is similar to a native browser select element.<br><code>paper-dropdown-menu</code> works with selectable content. The currently selected<br>item is displayed in the control. If no item is selected, the <code>label</code> is<br>displayed instead.</p>
+ * <p>This is a faster, lighter version of <code>paper-dropdown-menu</code>, that does not<br>use a <code>&lt;paper-input&gt;</code> internally. Use this element if you’re concerned about<br>the performance of this element, i.e., if you plan on using many dropdowns on<br>the same page. Note that this element has a slightly different styling API<br>than <code>paper-dropdown-menu</code>.</p>
+ * <p><code>paper-dropdown-menu-light</code> is similar to a native browser select element.<br><code>paper-dropdown-menu-light</code> works with selectable content. The currently selected<br>item is displayed in the control. If no item is selected, the <code>label</code> is<br>displayed instead.</p>
  * <p>Example:</p>
- * <pre><code>&lt;paper-dropdown-menu label=&quot;Your favourite pastry&quot;&gt;
+ * <pre><code>&lt;paper-dropdown-menu-light label=&quot;Your favourite pastry&quot;&gt;
  *   &lt;paper-listbox class=&quot;dropdown-content&quot;&gt;
  *     &lt;paper-item&gt;Croissant&lt;/paper-item&gt;
  *     &lt;paper-item&gt;Donut&lt;/paper-item&gt;
  *     &lt;paper-item&gt;Financier&lt;/paper-item&gt;
  *     &lt;paper-item&gt;Madeleine&lt;/paper-item&gt;
  *   &lt;/paper-listbox&gt;
- * &lt;/paper-dropdown-menu&gt;
+ * &lt;/paper-dropdown-menu-light&gt;
  * 
  * 
  * </code></pre><p>This example renders a dropdown menu with 4 options.</p>
@@ -62,44 +63,78 @@ import jsinterop.annotations.JsType;
  * <td><code>{}</code></td>
  * </tr>
  * <tr>
- * <td><code>--paper-dropdown-menu-input</code></td>
- * <td>A mixin that is applied to the internal paper input</td>
- * <td><code>{}</code></td>
- * </tr>
- * <tr>
  * <td><code>--paper-dropdown-menu-icon</code></td>
  * <td>A mixin that is applied to the internal icon</td>
  * <td><code>{}</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--paper-dropdown-menu-disabled-opacity</code></td>
+ * <td>The opacity of the dropdown when disabled</td>
+ * <td><code>0.33</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-dropdown-menu-color</code></td>
+ * <td>The color of the input/label/underline when the dropdown is unfocused</td>
+ * <td><code>--primary-text-color</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-dropdown-menu-focus-color</code></td>
+ * <td>The color of the label/underline when the dropdown is focused</td>
+ * <td><code>--primary-color</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-dropdown-error-color</code></td>
+ * <td>The color of the label/underline when the dropdown is invalid</td>
+ * <td><code>--error-color</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-dropdown-menu-label</code></td>
+ * <td>Mixin applied to the label</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-dropdown-menu-input</code></td>
+ * <td>Mixin appled to the input</td>
+ * <td><code>{}</code></td>
+ * </tr>
  * </tbody>
  * </table>
- * <p>You can also use any of the <code>paper-input-container</code> and <code>paper-menu-button</code><br>style mixins and custom properties to style the internal input and menu button<br>respectively.</p>
+ * <p>Note that in this element, the underline is just the bottom border of the “input”.<br>To style it:</p>
+ * <pre><code>&lt;style is=custom-style&gt;
+ *   paper-dropdown-menu-light.custom {
+ *     --paper-dropdown-menu-input: {
+ *       border-bottom: 2px dashed lavender;
+ *     };
+ * &lt;/style&gt;
+ * 
+ * 
+ * </code></pre>
  */
 @JsType(isNative=true)
-public interface PaperDropdownMenuElement extends HTMLElement {
+public interface PaperDropdownMenuLightElement extends HTMLElement {
 
-    @JsOverlay public static final String TAG = "paper-dropdown-menu";
-    @JsOverlay public static final String SRC = "paper-dropdown-menu/paper-dropdown-menu.html";
+    @JsOverlay public static final String TAG = "paper-dropdown-menu-light";
+    @JsOverlay public static final String SRC = "paper-dropdown-menu/paper-dropdown-menu-light.html";
 
 
     /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     * <p>Set to true to always float the label. Bind this to the<br><code>&lt;paper-input-container&gt;</code>‘s <code>alwaysFloatLabel</code> property.</p>
      *
      * JavaScript Info:
-     * @property receivedFocusFromKeyboard
+     * @property alwaysFloatLabel
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    @JsProperty boolean getReceivedFocusFromKeyboard();
+    @JsProperty boolean getAlwaysFloatLabel();
     /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     * <p>Set to true to always float the label. Bind this to the<br><code>&lt;paper-input-container&gt;</code>‘s <code>alwaysFloatLabel</code> property.</p>
      *
      * JavaScript Info:
-     * @property receivedFocusFromKeyboard
+     * @property alwaysFloatLabel
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    @JsProperty void setReceivedFocusFromKeyboard(boolean value);
+    @JsProperty void setAlwaysFloatLabel(boolean value);
 
     /**
      * 
@@ -159,6 +194,139 @@ public interface PaperDropdownMenuElement extends HTMLElement {
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
     /**
+     * <p>True if the last call to <code>validate</code> is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property invalid
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty boolean getInvalid();
+    /**
+     * <p>True if the last call to <code>validate</code> is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property invalid
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty void setInvalid(boolean value);
+
+    /**
+     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property required
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty boolean getRequired();
+    /**
+     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property required
+     * @type Boolean
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty void setRequired(boolean value);
+
+    /**
+     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty boolean getNoink();
+    /**
+     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty void setNoink(boolean value);
+
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty boolean getFocused();
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty void setFocused(boolean value);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property hasContent
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getHasContent();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property hasContent
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setHasContent(boolean value);
+
+    /**
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     *
+     * JavaScript Info:
+     * @property active
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty boolean getActive();
+    /**
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     *
+     * JavaScript Info:
+     * @property active
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty void setActive(boolean value);
+
+    /**
+     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property noAnimations
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNoAnimations();
+    /**
+     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property noAnimations
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNoAnimations(boolean value);
+
+    /**
      * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
      *
      * JavaScript Info:
@@ -197,23 +365,23 @@ public interface PaperDropdownMenuElement extends HTMLElement {
     @JsProperty void setPressed(boolean value);
 
     /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
      *
      * JavaScript Info:
-     * @property required
+     * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior VaadinDatePicker
+     * @behavior PaperTab
      */
-    @JsProperty boolean getRequired();
+    @JsProperty boolean getReceivedFocusFromKeyboard();
     /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
      *
      * JavaScript Info:
-     * @property required
+     * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior VaadinDatePicker
+     * @behavior PaperTab
      */
-    @JsProperty void setRequired(boolean value);
+    @JsProperty void setReceivedFocusFromKeyboard(boolean value);
 
     /**
      * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
@@ -235,44 +403,6 @@ public interface PaperDropdownMenuElement extends HTMLElement {
     @JsProperty void setToggles(boolean value);
 
     /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getFocused();
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setFocused(boolean value);
-
-    /**
-     * <p>If true, the user cannot interact with this element.</p>
-     *
-     * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getDisabled();
-    /**
-     * <p>If true, the user cannot interact with this element.</p>
-     *
-     * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setDisabled(boolean value);
-
-    /**
      * <p>Set to true to disable the floating label. Bind this to the<br><code>&lt;paper-input-container&gt;</code>‘s <code>noLabelFloat</code> property.</p>
      *
      * JavaScript Info:
@@ -290,25 +420,6 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * 
      */
     @JsProperty void setNoLabelFloat(boolean value);
-
-    /**
-     * <p>True if the last call to <code>validate</code> is invalid.</p>
-     *
-     * JavaScript Info:
-     * @property invalid
-     * @type Boolean
-     * @behavior VaadinDatePicker
-     */
-    @JsProperty boolean getInvalid();
-    /**
-     * <p>True if the last call to <code>validate</code> is invalid.</p>
-     *
-     * JavaScript Info:
-     * @property invalid
-     * @type Boolean
-     * @behavior VaadinDatePicker
-     */
-    @JsProperty void setInvalid(boolean value);
 
     /**
      * <p>True if the dropdown is open. Otherwise, false.</p>
@@ -330,25 +441,6 @@ public interface PaperDropdownMenuElement extends HTMLElement {
     @JsProperty void setOpened(boolean value);
 
     /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
-     *
-     * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getActive();
-    /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
-     *
-     * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setActive(boolean value);
-
-    /**
      * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -368,42 +460,23 @@ public interface PaperDropdownMenuElement extends HTMLElement {
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
     /**
-     * <p>Set to true to always float the label. Bind this to the<br><code>&lt;paper-input-container&gt;</code>‘s <code>alwaysFloatLabel</code> property.</p>
+     * <p>If true, the user cannot interact with this element.</p>
      *
      * JavaScript Info:
-     * @property alwaysFloatLabel
+     * @property disabled
      * @type Boolean
-     * 
+     * @behavior PaperTab
      */
-    @JsProperty boolean getAlwaysFloatLabel();
+    @JsProperty boolean getDisabled();
     /**
-     * <p>Set to true to always float the label. Bind this to the<br><code>&lt;paper-input-container&gt;</code>‘s <code>alwaysFloatLabel</code> property.</p>
+     * <p>If true, the user cannot interact with this element.</p>
      *
      * JavaScript Info:
-     * @property alwaysFloatLabel
+     * @property disabled
      * @type Boolean
-     * 
+     * @behavior PaperTab
      */
-    @JsProperty void setAlwaysFloatLabel(boolean value);
-
-    /**
-     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property noAnimations
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getNoAnimations();
-    /**
-     * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property noAnimations
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setNoAnimations(boolean value);
+    @JsProperty void setDisabled(boolean value);
 
     /**
      * <p>The aria attribute to be set if the button is a toggle and in the<br>active state.</p>
@@ -425,25 +498,6 @@ public interface PaperDropdownMenuElement extends HTMLElement {
     @JsProperty void setAriaActiveAttribute(String value);
 
     /**
-     * <p>The value for this element that will be used when submitting in<br>a form. It is read only, and will always have the same value<br>as <code>selectedItemLabel</code>.</p>
-     *
-     * JavaScript Info:
-     * @property value
-     * @type String
-     * 
-     */
-    @JsProperty String getValue();
-    /**
-     * <p>The value for this element that will be used when submitting in<br>a form. It is read only, and will always have the same value<br>as <code>selectedItemLabel</code>.</p>
-     *
-     * JavaScript Info:
-     * @property value
-     * @type String
-     * 
-     */
-    @JsProperty void setValue(String value);
-
-    /**
      * <p>The name of this element.</p>
      *
      * JavaScript Info:
@@ -461,6 +515,25 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * @behavior VaadinDatePicker
      */
     @JsProperty void setName(String value);
+
+    /**
+     * <p>The value for this element that will be used when submitting in<br>a form. It is read only, and will always have the same value<br>as <code>selectedItemLabel</code>.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type String
+     * 
+     */
+    @JsProperty String getValue();
+    /**
+     * <p>The value for this element that will be used when submitting in<br>a form. It is read only, and will always have the same value<br>as <code>selectedItemLabel</code>.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type String
+     * 
+     */
+    @JsProperty void setValue(String value);
 
     /**
      * <p>The derived “label” of the currently selected item. This value<br>is the <code>label</code> property on the selected item if set, or else the<br>trimmed text content of the selected item.</p>
@@ -482,25 +555,6 @@ public interface PaperDropdownMenuElement extends HTMLElement {
     @JsProperty void setSelectedItemLabel(String value);
 
     /**
-     * <p>The placeholder for the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * 
-     */
-    @JsProperty String getPlaceholder();
-    /**
-     * <p>The placeholder for the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * 
-     */
-    @JsProperty void setPlaceholder(String value);
-
-    /**
      * <p>The orientation against which to align the menu dropdown<br>vertically relative to the dropdown trigger.</p>
      *
      * JavaScript Info:
@@ -520,6 +574,25 @@ public interface PaperDropdownMenuElement extends HTMLElement {
     @JsProperty void setVerticalAlign(String value);
 
     /**
+     * <p>The label for the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property label
+     * @type String
+     * 
+     */
+    @JsProperty String getLabel();
+    /**
+     * <p>The label for the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @property label
+     * @type String
+     * 
+     */
+    @JsProperty void setLabel(String value);
+
+    /**
      * <p>The orientation against which to align the menu dropdown<br>horizontally relative to the dropdown trigger.</p>
      *
      * JavaScript Info:
@@ -537,25 +610,6 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * 
      */
     @JsProperty void setHorizontalAlign(String value);
-
-    /**
-     * <p>The error message to display when invalid.</p>
-     *
-     * JavaScript Info:
-     * @property errorMessage
-     * @type String
-     * 
-     */
-    @JsProperty String getErrorMessage();
-    /**
-     * <p>The error message to display when invalid.</p>
-     *
-     * JavaScript Info:
-     * @property errorMessage
-     * @type String
-     * 
-     */
-    @JsProperty void setErrorMessage(String value);
 
     /**
      * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
@@ -596,23 +650,23 @@ public interface PaperDropdownMenuElement extends HTMLElement {
     @JsProperty void setValidator(String value);
 
     /**
-     * <p>The label for the dropdown.</p>
+     * <p>The placeholder for the dropdown.</p>
      *
      * JavaScript Info:
-     * @property label
+     * @property placeholder
      * @type String
      * 
      */
-    @JsProperty String getLabel();
+    @JsProperty String getPlaceholder();
     /**
-     * <p>The label for the dropdown.</p>
+     * <p>The placeholder for the dropdown.</p>
      *
      * JavaScript Info:
-     * @property label
+     * @property placeholder
      * @type String
      * 
      */
-    @JsProperty void setLabel(String value);
+    @JsProperty void setPlaceholder(String value);
 
 
     /**
@@ -628,16 +682,6 @@ public interface PaperDropdownMenuElement extends HTMLElement {
     void addOwnKeyBinding(Object eventString, Object handlerName);
 
     /**
-     * <p>Show the dropdown content.</p>
-     *
-     * JavaScript Info:
-     * @method open
-     * 
-     * 
-     */
-    void open();
-
-    /**
      * <p>Hide the dropdown content.</p>
      *
      * JavaScript Info:
@@ -646,6 +690,16 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * 
      */
     void close();
+
+    /**
+     * <p>Show the dropdown content.</p>
+     *
+     * JavaScript Info:
+     * @method open
+     * 
+     * 
+     */
+    void open();
 
     /**
      * 
@@ -668,15 +722,24 @@ public interface PaperDropdownMenuElement extends HTMLElement {
     void removeOwnKeyBindings();
 
     /**
-     * <p>Returns true if the <code>value</code> is valid, and updates <code>invalid</code>. If you want<br>your element to have custom validation logic, do not override this method;<br>override <code>_getValidity(value)</code> instead.</p>
+     * <p>Returns true if this element currently contains a ripple effect.</p>
      *
      * JavaScript Info:
-     * @method validate
-     * @param {Object} value  
-     * @behavior VaadinDatePicker
+     * @method hasRipple
+     * @behavior PaperTab
      * @return {boolean}
      */
-    boolean validate(JavaScriptObject value);
+    boolean hasRipple();
+
+    /**
+     * <p>Returns the <code>&lt;paper-ripple&gt;</code> element used by this element to create<br>ripple effects. The element’s ripple is created on demand, when<br>necessary, and calling this method will force the<br>ripple to be created.</p>
+     *
+     * JavaScript Info:
+     * @method getRipple
+     * @behavior PaperTab
+     * 
+     */
+    void getRipple();
 
     /**
      * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
@@ -689,5 +752,27 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * @return {boolean}
      */
     boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
+
+    /**
+     * <p>Returns true if the <code>value</code> is valid, and updates <code>invalid</code>. If you want<br>your element to have custom validation logic, do not override this method;<br>override <code>_getValidity(value)</code> instead.</p>
+     *
+     * JavaScript Info:
+     * @method validate
+     * @param {Object} value  
+     * @behavior VaadinDatePicker
+     * @return {boolean}
+     */
+    boolean validate(JavaScriptObject value);
+
+    /**
+     * <p>Ensures this element contains a ripple effect. For startup efficiency<br>the ripple effect is dynamically on demand when needed.</p>
+     *
+     * JavaScript Info:
+     * @method ensureRipple
+     * @param {!Event=} optTriggeringEvent  
+     * @behavior PaperTab
+     * 
+     */
+    void ensureRipple(JavaScriptObject optTriggeringEvent);
 
 }

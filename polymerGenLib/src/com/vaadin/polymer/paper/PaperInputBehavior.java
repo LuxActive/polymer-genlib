@@ -101,23 +101,23 @@ public interface PaperInputBehavior {
     @JsProperty void setAlwaysFloatLabel(boolean value);
 
     /**
-     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the<code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property,<br>used with type=file.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
      *
      * JavaScript Info:
-     * @property multiple
+     * @property autofocus
      * @type Boolean
      * 
      */
-    @JsProperty boolean getMultiple();
+    @JsProperty boolean getAutofocus();
     /**
-     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the<code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property,<br>used with type=file.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
      *
      * JavaScript Info:
-     * @property multiple
+     * @property autofocus
      * @type Boolean
      * 
      */
-    @JsProperty void setMultiple(boolean value);
+    @JsProperty void setAutofocus(boolean value);
 
     /**
      * <p>Returns true if the value is invalid. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to both the<br><code>&lt;paper-input-container&gt;</code>‘s and the input’s <code>invalid</code> property.</p>
@@ -141,23 +141,23 @@ public interface PaperInputBehavior {
     @JsProperty void setInvalid(boolean value);
 
     /**
-     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the<code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property,<br>used with type=file.</p>
      *
      * JavaScript Info:
-     * @property autofocus
+     * @property multiple
      * @type Boolean
      * 
      */
-    @JsProperty boolean getAutofocus();
+    @JsProperty boolean getMultiple();
     /**
-     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the<code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property,<br>used with type=file.</p>
      *
      * JavaScript Info:
-     * @property autofocus
+     * @property multiple
      * @type Boolean
      * 
      */
-    @JsProperty void setAutofocus(boolean value);
+    @JsProperty void setMultiple(boolean value);
 
     /**
      * <p>Set to true to mark the input as required. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>required</code> property.</p>

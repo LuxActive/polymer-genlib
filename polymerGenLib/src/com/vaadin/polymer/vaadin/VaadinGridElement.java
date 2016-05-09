@@ -1,7 +1,7 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
  * from vaadin-grid project by Vaadin Ltd
- * that is licensed with Apache License 2.0 license.
+ * that is licensed with Apache-2.0 license.
  */
 package com.vaadin.polymer.vaadin;
 
@@ -45,10 +45,10 @@ import jsinterop.annotations.JsType;
  * &lt;/vaadin-grid&gt;
  * </code></pre>
  * <h3 id="styling">Styling</h3>
- * <p>The grid uses <code>--default-primary-color</code> from <a href="https://github.com/PolymerElements/paper-styles">paper-styles</a> as a highlight color. You can customize the color by defining your own primary default color.</p>
+ * <p>The grid uses <code>--primary-color</code> from <a href="https://github.com/PolymerElements/paper-styles">paper-styles</a> as a highlight color. You can customize the color by defining your own primary default color.</p>
  * <pre><code class="lang-html">&lt;style is=&quot;custom-style&quot;&gt;
  *   vaadin-grid {
- *     --default-primary-color: red;
+ *     --primary-color: red;
  *   }
  * &lt;/style&gt;
  * </code></pre>
@@ -77,6 +77,11 @@ import jsinterop.annotations.JsType;
  * <td style="text-align:left">Footer row height</td>
  * <td style="text-align:right"><code>56px</code></td>
  * </tr>
+ * <tr>
+ * <td style="text-align:left"><code>--vaadin-grid-selected-row-cell</code></td>
+ * <td style="text-align:left">Mixin which applies to the cell elements of a selected row</td>
+ * <td style="text-align:right">{}</td>
+ * </tr>
  * </tbody>
  * </table>
  * <p>See the <a href="demo/index.html">demo</a> for use case examples.</p>
@@ -85,8 +90,41 @@ import jsinterop.annotations.JsType;
 public interface VaadinGridElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "vaadin-grid";
-    @JsOverlay public static final String SRC = "vaadin-grid/vaadin-grid.html";
+    @JsOverlay public static final String SRC = "vaadin-grid/vaadin-grid-doc.html";
 
+
+    /**
+     * <p>The row details generator is used for generating detail content for<br>data rows. The details element is added directly under the row.</p>
+     * <h4 id="example-">Example:</h4>
+     * <pre><code class="lang-js">grid.rowDetailsGenerator = function(rowIndex) {
+     *   var detail = document.createElement(&quot;div&quot;);
+     *   detail.textContent = &quot;Row detail content for row &quot; + rowIndex;
+     *   return detail;
+     * };
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property rowDetailsGenerator
+     * @type function
+     * 
+     */
+    @JsProperty Function getRowDetailsGenerator();
+    /**
+     * <p>The row details generator is used for generating detail content for<br>data rows. The details element is added directly under the row.</p>
+     * <h4 id="example-">Example:</h4>
+     * <pre><code class="lang-js">grid.rowDetailsGenerator = function(rowIndex) {
+     *   var detail = document.createElement(&quot;div&quot;);
+     *   detail.textContent = &quot;Row detail content for row &quot; + rowIndex;
+     *   return detail;
+     * };
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property rowDetailsGenerator
+     * @type function
+     * 
+     */
+    @JsProperty void setRowDetailsGenerator(Function value);
 
     /**
      * <p>Disables the grid.</p>
@@ -135,52 +173,25 @@ public interface VaadinGridElement extends HTMLElement {
     @JsProperty void setFooter(Footer value);
 
     /**
-     * <p>The index of the last frozen columns in this grid. A frozen column will<br>always stay visible in the grid viewport when the user scrolls the grid<br>viewport horizontally.</p>
-     * <p>Setting the property to 0 means that no columns will be frozen,<br>but the built-in selection checkbox column will still be frozen if<br>it’s in use. Setting the count to -1 will unfreeze the selection<br>column also.</p>
-     * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;vaadin-grid frozen-columns=&quot;2&quot;&gt;...&lt;/vaadin-grid&gt;
-     * </code></pre>
+     * <p>The array of columns attached to the grid.</p>
+     * <p>See the API documentation for “column” for more details about the<br>column objects.</p>
      *
      * JavaScript Info:
-     * @property frozenColumns
-     * @type number
+     * @property columns
+     * @type Array.<object>
      * 
      */
-    @JsProperty double getFrozenColumns();
+    @JsProperty JsArray getColumns();
     /**
-     * <p>The index of the last frozen columns in this grid. A frozen column will<br>always stay visible in the grid viewport when the user scrolls the grid<br>viewport horizontally.</p>
-     * <p>Setting the property to 0 means that no columns will be frozen,<br>but the built-in selection checkbox column will still be frozen if<br>it’s in use. Setting the count to -1 will unfreeze the selection<br>column also.</p>
-     * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;vaadin-grid frozen-columns=&quot;2&quot;&gt;...&lt;/vaadin-grid&gt;
-     * </code></pre>
+     * <p>The array of columns attached to the grid.</p>
+     * <p>See the API documentation for “column” for more details about the<br>column objects.</p>
      *
      * JavaScript Info:
-     * @property frozenColumns
-     * @type number
+     * @property columns
+     * @type Array.<object>
      * 
      */
-    @JsProperty void setFrozenColumns(double value);
-
-    /**
-     * <p>Object for controlling and accessing the header rows in the grid.</p>
-     * <p>See the API documentation for “header” for more details.</p>
-     *
-     * JavaScript Info:
-     * @property header
-     * @type header
-     * 
-     */
-    @JsProperty Header getHeader();
-    /**
-     * <p>Object for controlling and accessing the header rows in the grid.</p>
-     * <p>See the API documentation for “header” for more details.</p>
-     *
-     * JavaScript Info:
-     * @property header
-     * @type header
-     * 
-     */
-    @JsProperty void setHeader(Header value);
+    @JsProperty void setColumns(JsArray value);
 
     /**
      * <p>An array or a function containing or returning items determining<br>the row data in the grid (i.e. the data source).</p>
@@ -244,46 +255,25 @@ public interface VaadinGridElement extends HTMLElement {
     @JsProperty void setItems(Object value);
 
     /**
-     * <p>The array of columns attached to the grid.</p>
-     * <p>See the API documentation for “column” for more details about the<br>column objects.</p>
+     * <p>Object for controlling and accessing the selected rows in the grid.</p>
+     * <p>See the API documentation for the “selection” object for more details.</p>
      *
      * JavaScript Info:
-     * @property columns
-     * @type Array.<object>
+     * @property selection
+     * @type selection
      * 
      */
-    @JsProperty JsArray getColumns();
+    @JsProperty Selection getSelection();
     /**
-     * <p>The array of columns attached to the grid.</p>
-     * <p>See the API documentation for “column” for more details about the<br>column objects.</p>
+     * <p>Object for controlling and accessing the selected rows in the grid.</p>
+     * <p>See the API documentation for the “selection” object for more details.</p>
      *
      * JavaScript Info:
-     * @property columns
-     * @type Array.<object>
+     * @property selection
+     * @type selection
      * 
      */
-    @JsProperty void setColumns(JsArray value);
-
-    /**
-     * <p>Explicitly sets the number of records the <code>items</code> array/function<br>provides for the grid to display.</p>
-     * <p>This may also be set indirectly by passing the value as the second<br>parameter for data request callback function.</p>
-     *
-     * JavaScript Info:
-     * @property size
-     * @type Number
-     * 
-     */
-    @JsProperty double getSize();
-    /**
-     * <p>Explicitly sets the number of records the <code>items</code> array/function<br>provides for the grid to display.</p>
-     * <p>This may also be set indirectly by passing the value as the second<br>parameter for data request callback function.</p>
-     *
-     * JavaScript Info:
-     * @property size
-     * @type Number
-     * 
-     */
-    @JsProperty void setSize(double value);
+    @JsProperty void setSelection(Selection value);
 
     /**
      * <p>An array defining the sorting of columns. The order of the objects in<br>the array defines the order of sort (if the grid is sorted by<br>multiple columns).</p>
@@ -309,7 +299,7 @@ public interface VaadinGridElement extends HTMLElement {
     /**
      * <p>Sets the height of the grid so that the specified amount of data rows<br>is visible. Overrides any height specified in CSS.</p>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;vaadin-grid rows=&quot;5&quot;&gt;...&lt;/vaadin-grid&gt;
+     * <pre><code class="lang-html">&lt;vaadin-grid visible-rows=&quot;5&quot;&gt;...&lt;/vaadin-grid&gt;
      * </code></pre>
      *
      * JavaScript Info:
@@ -321,7 +311,7 @@ public interface VaadinGridElement extends HTMLElement {
     /**
      * <p>Sets the height of the grid so that the specified amount of data rows<br>is visible. Overrides any height specified in CSS.</p>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;vaadin-grid rows=&quot;5&quot;&gt;...&lt;/vaadin-grid&gt;
+     * <pre><code class="lang-html">&lt;vaadin-grid visible-rows=&quot;5&quot;&gt;...&lt;/vaadin-grid&gt;
      * </code></pre>
      *
      * JavaScript Info:
@@ -332,25 +322,106 @@ public interface VaadinGridElement extends HTMLElement {
     @JsProperty void setVisibleRows(double value);
 
     /**
-     * <p>Object for controlling and accessing the selected rows in the grid.</p>
-     * <p>See the API documentation for the “selection” object for more details.</p>
+     * <p>Explicitly sets the number of records the <code>items</code> array/function<br>provides for the grid to display.</p>
+     * <p>This may also be set indirectly by passing the value as the second<br>parameter for data request callback function.</p>
      *
      * JavaScript Info:
-     * @property selection
-     * @type selection
+     * @property size
+     * @type Number
      * 
      */
-    @JsProperty Selection getSelection();
+    @JsProperty double getSize();
     /**
-     * <p>Object for controlling and accessing the selected rows in the grid.</p>
-     * <p>See the API documentation for the “selection” object for more details.</p>
+     * <p>Explicitly sets the number of records the <code>items</code> array/function<br>provides for the grid to display.</p>
+     * <p>This may also be set indirectly by passing the value as the second<br>parameter for data request callback function.</p>
      *
      * JavaScript Info:
-     * @property selection
-     * @type selection
+     * @property size
+     * @type Number
      * 
      */
-    @JsProperty void setSelection(Selection value);
+    @JsProperty void setSize(double value);
+
+    /**
+     * <p>The index of the last frozen columns in this grid. A frozen column will<br>always stay visible in the grid viewport when the user scrolls the grid<br>viewport horizontally.</p>
+     * <p>Setting the property to 0 means that no columns will be frozen,<br>but the built-in selection checkbox column will still be frozen if<br>it’s in use. Setting the count to -1 will unfreeze the selection<br>column also.</p>
+     * <h4 id="declarative-example-">Declarative example:</h4>
+     * <pre><code class="lang-html">&lt;vaadin-grid frozen-columns=&quot;2&quot;&gt;...&lt;/vaadin-grid&gt;
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property frozenColumns
+     * @type number
+     * 
+     */
+    @JsProperty double getFrozenColumns();
+    /**
+     * <p>The index of the last frozen columns in this grid. A frozen column will<br>always stay visible in the grid viewport when the user scrolls the grid<br>viewport horizontally.</p>
+     * <p>Setting the property to 0 means that no columns will be frozen,<br>but the built-in selection checkbox column will still be frozen if<br>it’s in use. Setting the count to -1 will unfreeze the selection<br>column also.</p>
+     * <h4 id="declarative-example-">Declarative example:</h4>
+     * <pre><code class="lang-html">&lt;vaadin-grid frozen-columns=&quot;2&quot;&gt;...&lt;/vaadin-grid&gt;
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property frozenColumns
+     * @type number
+     * 
+     */
+    @JsProperty void setFrozenColumns(double value);
+
+    /**
+     * <p>Object for controlling and accessing the header rows in the grid.</p>
+     * <p>See the API documentation for “header” for more details.</p>
+     *
+     * JavaScript Info:
+     * @property header
+     * @type header
+     * 
+     */
+    @JsProperty Header getHeader();
+    /**
+     * <p>Object for controlling and accessing the header rows in the grid.</p>
+     * <p>See the API documentation for “header” for more details.</p>
+     *
+     * JavaScript Info:
+     * @property header
+     * @type header
+     * 
+     */
+    @JsProperty void setHeader(Header value);
+
+    /**
+     * <p>A function which is used for generating CSS class names for data rows.</p>
+     * <p>See the API documentation for the “row” object for more details about<br>the parameter of this function.</p>
+     * <h4 id="example-">Example:</h4>
+     * <pre><code class="lang-js">grid.rowClassGenerator = function(row) {
+     *   var activity = row.data[2];
+     *   return &quot;activity-&quot; + activity.toLowerCase();
+     * };
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property rowClassGenerator
+     * @type function
+     * 
+     */
+    @JsProperty Function getRowClassGenerator();
+    /**
+     * <p>A function which is used for generating CSS class names for data rows.</p>
+     * <p>See the API documentation for the “row” object for more details about<br>the parameter of this function.</p>
+     * <h4 id="example-">Example:</h4>
+     * <pre><code class="lang-js">grid.rowClassGenerator = function(row) {
+     *   var activity = row.data[2];
+     *   return &quot;activity-&quot; + activity.toLowerCase();
+     * };
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property rowClassGenerator
+     * @type function
+     * 
+     */
+    @JsProperty void setRowClassGenerator(Function value);
 
     /**
      * <p>A function which is used for generating CSS class names for data cells.</p>
@@ -387,109 +458,6 @@ public interface VaadinGridElement extends HTMLElement {
      */
     @JsProperty void setCellClassGenerator(Function value);
 
-    /**
-     * <p>A function which is used for generating CSS class names for data rows.</p>
-     * <p>See the API documentation for the “row” object for more details about<br>the parameter of this function.</p>
-     * <h4 id="example-">Example:</h4>
-     * <pre><code class="lang-js">grid.rowClassGenerator = function(row) {
-     *   var activity = row.data[2];
-     *   return &quot;activity-&quot; + activity.toLowerCase();
-     * };
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property rowClassGenerator
-     * @type function
-     * 
-     */
-    @JsProperty Function getRowClassGenerator();
-    /**
-     * <p>A function which is used for generating CSS class names for data rows.</p>
-     * <p>See the API documentation for the “row” object for more details about<br>the parameter of this function.</p>
-     * <h4 id="example-">Example:</h4>
-     * <pre><code class="lang-js">grid.rowClassGenerator = function(row) {
-     *   var activity = row.data[2];
-     *   return &quot;activity-&quot; + activity.toLowerCase();
-     * };
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property rowClassGenerator
-     * @type function
-     * 
-     */
-    @JsProperty void setRowClassGenerator(Function value);
-
-    /**
-     * <p>The row details generator is used for generating detail content for<br>data rows. The details element is added directly under the row.</p>
-     * <h4 id="example-">Example:</h4>
-     * <pre><code class="lang-js">grid.rowDetails.detailsGenerator = function(rowIndex) {
-     *   var detail = document.createElement(&quot;div&quot;);
-     *   detail.textContent = &quot;Row detail content for row &quot; + rowIndex;
-     *   return detail;
-     * };
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property rowDetailsGenerator
-     * @type function
-     * 
-     */
-    @JsProperty Function getRowDetailsGenerator();
-    /**
-     * <p>The row details generator is used for generating detail content for<br>data rows. The details element is added directly under the row.</p>
-     * <h4 id="example-">Example:</h4>
-     * <pre><code class="lang-js">grid.rowDetails.detailsGenerator = function(rowIndex) {
-     *   var detail = document.createElement(&quot;div&quot;);
-     *   detail.textContent = &quot;Row detail content for row &quot; + rowIndex;
-     *   return detail;
-     * };
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property rowDetailsGenerator
-     * @type function
-     * 
-     */
-    @JsProperty void setRowDetailsGenerator(Function value);
-
-
-    /**
-     * <p>Shows or hides row details for the row at the given index.</p>
-     *
-     * JavaScript Info:
-     * @method setRowDetailsVisible
-     * @param {number} rowIndex  
-     * @param {boolean} visible  
-     * 
-     * 
-     */
-    void setRowDetailsVisible(double rowIndex, boolean visible);
-
-    /**
-     * <p>Scrolls to the beginning of the grid.</p>
-     * <p>Scrolling happens asynchronously, so this method returns a ‘thenable’<br>which can be used to be notified when the scrolling is finished.</p>
-     * <h4 id="example-">Example:</h4>
-     * <pre><code class="lang-js">grid.scrollToStart().then(function() {...});
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @method scrollToStart
-     * 
-     * @return {VaadinGridElement}
-     */
-    VaadinGridElement scrollToStart();
-
-    /**
-     * <p>Clears the grid’s internal data cache, causing it to request the<br>visible items in the grid viewport from the <code>items</code> property or the<br><code>datasource</code> function, and to scroll back to the top of the grid viewport.</p>
-     * <p>Needs to be called whenever the data items are modified in some way<br>(added, removed, updated, re-ordered etc.).</p>
-     *
-     * JavaScript Info:
-     * @method refreshItems
-     * 
-     * 
-     */
-    void refreshItems();
 
     /**
      * <p>Scrolls to the end of the grid.</p>
@@ -506,16 +474,29 @@ public interface VaadinGridElement extends HTMLElement {
     VaadinGridElement scrollToEnd();
 
     /**
-     * <p>Adds a new column. Column is added at the end if <code>beforeColumn</code> is not defined.</p>
+     * <p>Scrolls to the beginning of the grid.</p>
+     * <p>Scrolling happens asynchronously, so this method returns a ‘thenable’<br>which can be used to be notified when the scrolling is finished.</p>
+     * <h4 id="example-">Example:</h4>
+     * <pre><code class="lang-js">grid.scrollToStart().then(function() {...});
+     * </code></pre>
      *
      * JavaScript Info:
-     * @method addColumn
-     * @param {column} column  
-     * @param {string} beforeColumn  
+     * @method scrollToStart
+     * 
+     * @return {VaadinGridElement}
+     */
+    VaadinGridElement scrollToStart();
+
+    /**
+     * <p>Clears the grid’s internal data cache, causing it to request the<br>visible items in the grid viewport from the <code>items</code> property or the<br><code>datasource</code> function.</p>
+     * <p>Needs to be called whenever the data items are modified in some way<br>(added, removed, updated, re-ordered etc.).</p>
+     *
+     * JavaScript Info:
+     * @method refreshItems
      * 
      * 
      */
-    void addColumn(Column column, String beforeColumn);
+    void refreshItems();
 
     /**
      * <p>Scrolls to a certain row, using user-specified scroll destination.</p>
@@ -534,17 +515,27 @@ public interface VaadinGridElement extends HTMLElement {
     VaadinGridElement scrollToRow(double index, String scrollDestination);
 
     /**
-     * <p>Invokes the callback with row data of the provided row index as the<br>parameter. If the row is not cached, it’s fetched from the data source<br>first.</p>
+     * <p>Adds a new column. Column is added at the end if <code>beforeColumn</code> is not defined.</p>
      *
      * JavaScript Info:
-     * @method getItem
-     * @param {number} rowIndex  
-     * @param {Function} callback  
-     * @param {boolean} onlyCached  
+     * @method addColumn
+     * @param {column} column  
+     * @param {string} beforeColumn  
      * 
      * 
      */
-    void getItem(double rowIndex, Function callback, boolean onlyCached);
+    void addColumn(Column column, String beforeColumn);
+
+    /**
+     * <p>Removes a column with certain id</p>
+     *
+     * JavaScript Info:
+     * @method removeColumn
+     * @param {string} id  
+     * 
+     * 
+     */
+    void removeColumn(String id);
 
     /**
      * <p>Executes a callback when the grid has finished any pending work.</p>
@@ -558,14 +549,28 @@ public interface VaadinGridElement extends HTMLElement {
     JavaScriptObject then(Function callback);
 
     /**
-     * <p>Removes a column with certain id</p>
+     * <p>Shows or hides row details for the row at the given index.</p>
      *
      * JavaScript Info:
-     * @method removeColumn
-     * @param {string} id  
+     * @method setRowDetailsVisible
+     * @param {number} rowIndex  
+     * @param {boolean} visible  
      * 
      * 
      */
-    void removeColumn(String id);
+    void setRowDetailsVisible(double rowIndex, boolean visible);
+
+    /**
+     * <p>Invokes the callback with row data of the provided row index as the<br>parameter. If the row is not cached, it’s fetched from the data source<br>first.</p>
+     *
+     * JavaScript Info:
+     * @method getItem
+     * @param {number} rowIndex  
+     * @param {Function} callback  
+     * @param {boolean} onlyCached  
+     * 
+     * 
+     */
+    void getItem(double rowIndex, Function callback, boolean onlyCached);
 
 }

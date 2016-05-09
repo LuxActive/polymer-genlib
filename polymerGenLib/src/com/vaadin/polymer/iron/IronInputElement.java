@@ -82,25 +82,6 @@ public interface IronInputElement extends HTMLElement {
     @JsProperty void setInvalid(boolean value);
 
     /**
-     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
-     *
-     * JavaScript Info:
-     * @property allowedPattern
-     * @type String
-     * 
-     */
-    @JsProperty String getAllowedPattern();
-    /**
-     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
-     *
-     * JavaScript Info:
-     * @property allowedPattern
-     * @type String
-     * 
-     */
-    @JsProperty void setAllowedPattern(String value);
-
-    /**
      * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
      *
      * JavaScript Info:
@@ -139,7 +120,7 @@ public interface IronInputElement extends HTMLElement {
     @JsProperty void setValidator(String value);
 
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -148,7 +129,7 @@ public interface IronInputElement extends HTMLElement {
      */
     @JsProperty String getValidatorType();
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -157,17 +138,25 @@ public interface IronInputElement extends HTMLElement {
      */
     @JsProperty void setValidatorType(String value);
 
-
     /**
-     * <p>Returns true if the <code>value</code> is valid, and updates <code>invalid</code>. If you want<br>your element to have custom validation logic, do not override this method;<br>override <code>_getValidity(value)</code> instead.</p>
+     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
      *
      * JavaScript Info:
-     * @method validate
-     * @param {Object} value  
-     * @behavior VaadinDatePicker
-     * @return {boolean}
+     * @property allowedPattern
+     * @type String
+     * 
      */
-    boolean validate(JavaScriptObject value);
+    @JsProperty String getAllowedPattern();
+    /**
+     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
+     *
+     * JavaScript Info:
+     * @property allowedPattern
+     * @type String
+     * 
+     */
+    @JsProperty void setAllowedPattern(String value);
+
 
     /**
      * <p>Returns true if <code>value</code> is valid. The validator provided in <code>validator</code> will be used first,<br>then any constraints.</p>
@@ -188,5 +177,16 @@ public interface IronInputElement extends HTMLElement {
      * @return {boolean}
      */
     boolean hasValidator();
+
+    /**
+     * <p>Returns true if the <code>value</code> is valid, and updates <code>invalid</code>. If you want<br>your element to have custom validation logic, do not override this method;<br>override <code>_getValidity(value)</code> instead.</p>
+     *
+     * JavaScript Info:
+     * @method validate
+     * @param {Object} value  
+     * @behavior VaadinDatePicker
+     * @return {boolean}
+     */
+    boolean validate(JavaScriptObject value);
 
 }

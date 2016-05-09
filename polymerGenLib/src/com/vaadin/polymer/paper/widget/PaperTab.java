@@ -56,6 +56,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  * </tr>
  * </tbody>
  * </table>
+ * <p>This element applies the mixin <code>--paper-font-common-base</code> but does not import <code>paper-styles/typography.html</code>.<br>In order to apply the <code>Roboto</code> font to this element, make sure you’ve imported <code>paper-styles/typography.html</code>.</p>
  */
 public class PaperTab extends PolymerWidget {
     /**
@@ -84,6 +85,29 @@ public class PaperTab extends PolymerWidget {
         }
     }
 
+
+    /**
+     * <p>If true, the tab will forward keyboard clicks (enter/space) to<br>the first anchor element found in its descendants</p>
+     *
+     * JavaScript Info:
+     * @property link
+     * @type Boolean
+     * 
+     */
+    public boolean getLink() {
+        return getPolymerElement().getLink();
+    }
+    /**
+     * <p>If true, the tab will forward keyboard clicks (enter/space) to<br>the first anchor element found in its descendants</p>
+     *
+     * JavaScript Info:
+     * @property link
+     * @type Boolean
+     * 
+     */
+    public void setLink(boolean value) {
+        getPolymerElement().setLink(value);
+    }
 
     /**
      * 
@@ -152,6 +176,75 @@ public class PaperTab extends PolymerWidget {
      */
     public void setDisabled(boolean value) {
         getPolymerElement().setDisabled(value);
+    }
+
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getPointerDown() {
+        return getPolymerElement().getPointerDown();
+    }
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setPointerDown(boolean value) {
+        getPolymerElement().setPointerDown(value);
+    }
+
+    /**
+     * <p>If true, the user is currently holding down the button.</p>
+     *
+     * JavaScript Info:
+     * @property pressed
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getPressed() {
+        return getPolymerElement().getPressed();
+    }
+    /**
+     * <p>If true, the user is currently holding down the button.</p>
+     *
+     * JavaScript Info:
+     * @property pressed
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setPressed(boolean value) {
+        getPolymerElement().setPressed(value);
+    }
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    public boolean getStopKeyboardEventPropagation() {
+        return getPolymerElement().getStopKeyboardEventPropagation();
+    }
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    public void setStopKeyboardEventPropagation(boolean value) {
+        getPolymerElement().setStopKeyboardEventPropagation(value);
     }
 
     /**
@@ -247,75 +340,6 @@ public class PaperTab extends PolymerWidget {
     }
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    public boolean getStopKeyboardEventPropagation() {
-        return getPolymerElement().getStopKeyboardEventPropagation();
-    }
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    public void setStopKeyboardEventPropagation(boolean value) {
-        getPolymerElement().setStopKeyboardEventPropagation(value);
-    }
-
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getPointerDown() {
-        return getPolymerElement().getPointerDown();
-    }
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setPointerDown(boolean value) {
-        getPolymerElement().setPointerDown(value);
-    }
-
-    /**
-     * <p>If true, the user is currently holding down the button.</p>
-     *
-     * JavaScript Info:
-     * @property pressed
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getPressed() {
-        return getPolymerElement().getPressed();
-    }
-    /**
-     * <p>If true, the user is currently holding down the button.</p>
-     *
-     * JavaScript Info:
-     * @property pressed
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setPressed(boolean value) {
-        getPolymerElement().setPressed(value);
-    }
-
-    /**
      * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
      *
      * JavaScript Info:
@@ -400,18 +424,6 @@ public class PaperTab extends PolymerWidget {
     }
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
-     *
-     * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior VaadinComboBox
-     * 
-     */
-    public void removeOwnKeyBindings() {
-        getPolymerElement().removeOwnKeyBindings();
-    }
-
-    /**
      * <p>Returns true if this element currently contains a ripple effect.</p>
      *
      * JavaScript Info:
@@ -433,6 +445,18 @@ public class PaperTab extends PolymerWidget {
      */
     public void getRipple() {
         getPolymerElement().getRipple();
+    }
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior VaadinComboBox
+     * 
+     */
+    public void removeOwnKeyBindings() {
+        getPolymerElement().removeOwnKeyBindings();
     }
 
     /**

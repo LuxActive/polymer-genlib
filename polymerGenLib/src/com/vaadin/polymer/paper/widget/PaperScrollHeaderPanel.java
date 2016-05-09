@@ -43,7 +43,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  * </code></pre>
  * <p><code>paper-scroll-header-panel</code> works well with <code>paper-toolbar</code> but can use any element<br>that represents a header by adding a <code>paper-header</code> class to it.</p>
  * <pre><code class="lang-html">&lt;paper-scroll-header-panel&gt;
- *   &lt;paper-toolbar&gt;Header&lt;/paper-toolbar&gt;
+ *   &lt;div class=&quot;paper-header&quot;&gt;Header&lt;/div&gt;
  *   &lt;div&gt;Content goes here...&lt;/div&gt;
  * &lt;/paper-scroll-header-panel&gt;
  * </code></pre>

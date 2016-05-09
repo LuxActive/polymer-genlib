@@ -178,29 +178,6 @@ public class PaperDrawerPanel extends PolymerWidget {
 
 
     /**
-     * <p>If true, swipe to open/close the drawer is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property disableSwipe
-     * @type Boolean
-     * 
-     */
-    public boolean getDisableSwipe() {
-        return getPolymerElement().getDisableSwipe();
-    }
-    /**
-     * <p>If true, swipe to open/close the drawer is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property disableSwipe
-     * @type Boolean
-     * 
-     */
-    public void setDisableSwipe(boolean value) {
-        getPolymerElement().setDisableSwipe(value);
-    }
-
-    /**
      * <p>Whether the user is dragging the drawer interactively.</p>
      *
      * JavaScript Info:
@@ -270,95 +247,26 @@ public class PaperDrawerPanel extends PolymerWidget {
     }
 
     /**
-     * <p>Whether the browser has support for the transform CSS property.</p>
+     * <p>If true, swipe to open/close the drawer is disabled.</p>
      *
      * JavaScript Info:
-     * @property hasTransform
+     * @property disableSwipe
      * @type Boolean
      * 
      */
-    public boolean getHasTransform() {
-        return getPolymerElement().getHasTransform();
+    public boolean getDisableSwipe() {
+        return getPolymerElement().getDisableSwipe();
     }
     /**
-     * <p>Whether the browser has support for the transform CSS property.</p>
+     * <p>If true, swipe to open/close the drawer is disabled.</p>
      *
      * JavaScript Info:
-     * @property hasTransform
+     * @property disableSwipe
      * @type Boolean
      * 
      */
-    public void setHasTransform(boolean value) {
-        getPolymerElement().setHasTransform(value);
-    }
-
-    /**
-     * <p>If true, swipe from the edge is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property disableEdgeSwipe
-     * @type Boolean
-     * 
-     */
-    public boolean getDisableEdgeSwipe() {
-        return getPolymerElement().getDisableEdgeSwipe();
-    }
-    /**
-     * <p>If true, swipe from the edge is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property disableEdgeSwipe
-     * @type Boolean
-     * 
-     */
-    public void setDisableEdgeSwipe(boolean value) {
-        getPolymerElement().setDisableEdgeSwipe(value);
-    }
-
-    /**
-     * <p>Returns true if the panel is in narrow layout.  This is useful if you<br>need to show/hide elements based on the layout.</p>
-     *
-     * JavaScript Info:
-     * @property narrow
-     * @type Boolean
-     * 
-     */
-    public boolean getNarrow() {
-        return getPolymerElement().getNarrow();
-    }
-    /**
-     * <p>Returns true if the panel is in narrow layout.  This is useful if you<br>need to show/hide elements based on the layout.</p>
-     *
-     * JavaScript Info:
-     * @property narrow
-     * @type Boolean
-     * 
-     */
-    public void setNarrow(boolean value) {
-        getPolymerElement().setNarrow(value);
-    }
-
-    /**
-     * <p>If true, position the drawer to the right.</p>
-     *
-     * JavaScript Info:
-     * @property rightDrawer
-     * @type Boolean
-     * 
-     */
-    public boolean getRightDrawer() {
-        return getPolymerElement().getRightDrawer();
-    }
-    /**
-     * <p>If true, position the drawer to the right.</p>
-     *
-     * JavaScript Info:
-     * @property rightDrawer
-     * @type Boolean
-     * 
-     */
-    public void setRightDrawer(boolean value) {
-        getPolymerElement().setRightDrawer(value);
+    public void setDisableSwipe(boolean value) {
+        getPolymerElement().setDisableSwipe(value);
     }
 
     /**
@@ -385,6 +293,29 @@ public class PaperDrawerPanel extends PolymerWidget {
     }
 
     /**
+     * <p>Returns true if the panel is in narrow layout.  This is useful if you<br>need to show/hide elements based on the layout.</p>
+     *
+     * JavaScript Info:
+     * @property narrow
+     * @type Boolean
+     * 
+     */
+    public boolean getNarrow() {
+        return getPolymerElement().getNarrow();
+    }
+    /**
+     * <p>Returns true if the panel is in narrow layout.  This is useful if you<br>need to show/hide elements based on the layout.</p>
+     *
+     * JavaScript Info:
+     * @property narrow
+     * @type Boolean
+     * 
+     */
+    public void setNarrow(boolean value) {
+        getPolymerElement().setNarrow(value);
+    }
+
+    /**
      * <p>Whether the drawer is peeking out from the edge.</p>
      *
      * JavaScript Info:
@@ -408,14 +339,37 @@ public class PaperDrawerPanel extends PolymerWidget {
     }
 
     /**
+     * <p>If true, position the drawer to the right.</p>
+     *
+     * JavaScript Info:
+     * @property rightDrawer
+     * @type Boolean
+     * 
+     */
+    public boolean getRightDrawer() {
+        return getPolymerElement().getRightDrawer();
+    }
+    /**
+     * <p>If true, position the drawer to the right.</p>
+     *
+     * JavaScript Info:
+     * @property rightDrawer
+     * @type Boolean
+     * 
+     */
+    public void setRightDrawer(boolean value) {
+        getPolymerElement().setRightDrawer(value);
+    }
+
+    /**
      * <p>The panel that is being selected. <code>drawer</code> for the drawer panel and<br><code>main</code> for the main panel.</p>
      *
      * JavaScript Info:
      * @property selected
-     * @type String
+     * @type (string|null)
      * 
      */
-    public String getSelected() {
+    public Object getSelected() {
         return getPolymerElement().getSelected();
     }
     /**
@@ -423,11 +377,57 @@ public class PaperDrawerPanel extends PolymerWidget {
      *
      * JavaScript Info:
      * @property selected
-     * @type String
+     * @type (string|null)
      * 
      */
-    public void setSelected(String value) {
+    public void setSelected(Object value) {
         getPolymerElement().setSelected(value);
+    }
+
+    /**
+     * <p>If true, swipe from the edge is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property disableEdgeSwipe
+     * @type Boolean
+     * 
+     */
+    public boolean getDisableEdgeSwipe() {
+        return getPolymerElement().getDisableEdgeSwipe();
+    }
+    /**
+     * <p>If true, swipe from the edge is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property disableEdgeSwipe
+     * @type Boolean
+     * 
+     */
+    public void setDisableEdgeSwipe(boolean value) {
+        getPolymerElement().setDisableEdgeSwipe(value);
+    }
+
+    /**
+     * <p>Whether the browser has support for the transform CSS property.</p>
+     *
+     * JavaScript Info:
+     * @property hasTransform
+     * @type Boolean
+     * 
+     */
+    public boolean getHasTransform() {
+        return getPolymerElement().getHasTransform();
+    }
+    /**
+     * <p>Whether the browser has support for the transform CSS property.</p>
+     *
+     * JavaScript Info:
+     * @property hasTransform
+     * @type Boolean
+     * 
+     */
+    public void setHasTransform(boolean value) {
+        getPolymerElement().setHasTransform(value);
     }
 
     /**
@@ -522,6 +522,31 @@ public class PaperDrawerPanel extends PolymerWidget {
         getPolymerElement().setDrawerToggleAttribute(value);
     }
 
+    /**
+     * <p>The CSS selector for the element that should receive focus when the drawer is open.<br>By default, when the drawer opens, it focuses the first tabbable element. That is,<br>the first element that can receive focus.</p>
+     * <p>To disable this behavior, you can set <code>drawerFocusSelector</code> to <code>null</code> or an empty string.</p>
+     *
+     * JavaScript Info:
+     * @property drawerFocusSelector
+     * @type String
+     * 
+     */
+    public String getDrawerFocusSelector() {
+        return getPolymerElement().getDrawerFocusSelector();
+    }
+    /**
+     * <p>The CSS selector for the element that should receive focus when the drawer is open.<br>By default, when the drawer opens, it focuses the first tabbable element. That is,<br>the first element that can receive focus.</p>
+     * <p>To disable this behavior, you can set <code>drawerFocusSelector</code> to <code>null</code> or an empty string.</p>
+     *
+     * JavaScript Info:
+     * @property drawerFocusSelector
+     * @type String
+     * 
+     */
+    public void setDrawerFocusSelector(String value) {
+        getPolymerElement().setDrawerFocusSelector(value);
+    }
+
 
     /**
      * <p>How many pixels on the side of the screen are sensitive to edge<br>swipes and peek.</p>
@@ -534,19 +559,17 @@ public class PaperDrawerPanel extends PolymerWidget {
         getPolymerElement().setAttribute("edge-swipe-sensitivity", value);
     }
 
-
     /**
-     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
+     * <p>The panel that is being selected. <code>drawer</code> for the drawer panel and<br><code>main</code> for the main panel.</p>
      *
      * JavaScript Info:
-     * @method assignParentResizable
-     * @param {} parentResizable  
-     * @behavior VaadinComboBoxOverlay
+     * @attribute selected
      * 
      */
-    public void assignParentResizable(Object parentResizable) {
-        getPolymerElement().assignParentResizable(parentResizable);
+    public void setSelected(String value) {
+        getPolymerElement().setAttribute("selected", value);
     }
+
 
     /**
      * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
@@ -562,15 +585,16 @@ public class PaperDrawerPanel extends PolymerWidget {
     }
 
     /**
-     * <p>Closes the drawer.</p>
+     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
      *
      * JavaScript Info:
-     * @method closeDrawer
-     * 
+     * @method assignParentResizable
+     * @param {} parentResizable  
+     * @behavior VaadinComboBoxOverlay
      * 
      */
-    public void closeDrawer() {
-        getPolymerElement().closeDrawer();
+    public void assignParentResizable(Object parentResizable) {
+        getPolymerElement().assignParentResizable(parentResizable);
     }
 
     /**
@@ -595,6 +619,18 @@ public class PaperDrawerPanel extends PolymerWidget {
      */
     public void togglePanel() {
         getPolymerElement().togglePanel();
+    }
+
+    /**
+     * <p>Closes the drawer.</p>
+     *
+     * JavaScript Info:
+     * @method closeDrawer
+     * 
+     * 
+     */
+    public void closeDrawer() {
+        getPolymerElement().closeDrawer();
     }
 
     /**

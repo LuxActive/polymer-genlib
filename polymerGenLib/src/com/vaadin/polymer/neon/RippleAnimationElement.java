@@ -31,7 +31,7 @@ import jsinterop.annotations.JsType;
 public interface RippleAnimationElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "ripple-animation";
-    @JsOverlay public static final String SRC = "neon-animation/neon-animations.html";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animation.html";
 
 
     /**

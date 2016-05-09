@@ -138,44 +138,6 @@ public interface VaadinDatePickerElement extends HTMLElement {
 
 
     /**
-     * <p>Set to true to make this element read-only.</p>
-     *
-     * JavaScript Info:
-     * @property readonly
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getReadonly();
-    /**
-     * <p>Set to true to make this element read-only.</p>
-     *
-     * JavaScript Info:
-     * @property readonly
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setReadonly(boolean value);
-
-    /**
-     * <p>Set to true to disable this element.</p>
-     *
-     * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getDisabled();
-    /**
-     * <p>Set to true to disable this element.</p>
-     *
-     * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setDisabled(boolean value);
-
-    /**
      * <p>The object used to localize this component.<br>To change the default localization, replace the entire<br><em>i18n</em> object or just the property you want to modify.</p>
      * <p>The object has the following JSON structure and default values:</p>
      * <pre><code>  {
@@ -204,10 +166,16 @@ public interface VaadinDatePickerElement extends HTMLElement {
      *     cancel: &#39;Cancel&#39;,
      * 
      *     // A function to format given `Date` object as
-     *     // string.
+     *     // date string.
      *     formatDate: function(d) {
      *       // returns a string representation of the given
      *       // Date object in &#39;MM/DD/YYYY&#39; -format
+     *     },
+     * 
+     *     // A function to format given `monthName` and
+     *     // `fullYear` integer as calendar title string.
+     *     formatTitle: function(monthName, fullYear) {
+     *       return monthName + &#39; &#39; + fullYear;
      *     }
      *   }
      * 
@@ -250,10 +218,16 @@ public interface VaadinDatePickerElement extends HTMLElement {
      *     cancel: &#39;Cancel&#39;,
      * 
      *     // A function to format given `Date` object as
-     *     // string.
+     *     // date string.
      *     formatDate: function(d) {
      *       // returns a string representation of the given
      *       // Date object in &#39;MM/DD/YYYY&#39; -format
+     *     },
+     * 
+     *     // A function to format given `monthName` and
+     *     // `fullYear` integer as calendar title string.
+     *     formatTitle: function(monthName, fullYear) {
+     *       return monthName + &#39; &#39; + fullYear;
      *     }
      *   }
      * 
@@ -288,6 +262,44 @@ public interface VaadinDatePickerElement extends HTMLElement {
     @JsProperty void setInvalid(boolean value);
 
     /**
+     * <p>Set to true to make this element read-only.</p>
+     *
+     * JavaScript Info:
+     * @property readonly
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getReadonly();
+    /**
+     * <p>Set to true to make this element read-only.</p>
+     *
+     * JavaScript Info:
+     * @property readonly
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setReadonly(boolean value);
+
+    /**
+     * <p>Set to true to disable this element.</p>
+     *
+     * JavaScript Info:
+     * @property disabled
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getDisabled();
+    /**
+     * <p>Set to true to disable this element.</p>
+     *
+     * JavaScript Info:
+     * @property disabled
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setDisabled(boolean value);
+
+    /**
      * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
      *
      * JavaScript Info:
@@ -308,32 +320,41 @@ public interface VaadinDatePickerElement extends HTMLElement {
 
     /**
      * <p>The value for this element.</p>
-     * <p>Supported date formats:</p>
-     * <ul>
-     * <li>ISO 8601 <code>&quot;YYYY-MM-DD&quot;</code> (default)</li>
-     * <li>6-digit extended ISO 8601 <code>&quot;+YYYYYY-MM-DD&quot;</code>, <code>&quot;-YYYYYY-MM-DD&quot;</code></li>
-     * </ul>
      *
      * JavaScript Info:
      * @property value
      * @type String
-     * 
+     * @behavior VaadinDatePicker
      */
     @JsProperty String getValue();
     /**
      * <p>The value for this element.</p>
-     * <p>Supported date formats:</p>
-     * <ul>
-     * <li>ISO 8601 <code>&quot;YYYY-MM-DD&quot;</code> (default)</li>
-     * <li>6-digit extended ISO 8601 <code>&quot;+YYYYYY-MM-DD&quot;</code>, <code>&quot;-YYYYYY-MM-DD&quot;</code></li>
-     * </ul>
      *
      * JavaScript Info:
      * @property value
      * @type String
-     * 
+     * @behavior VaadinDatePicker
      */
     @JsProperty void setValue(String value);
+
+    /**
+     * <p>The name of this element.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty String getName();
+    /**
+     * <p>The name of this element.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior VaadinDatePicker
+     */
+    @JsProperty void setName(String value);
 
     /**
      * <p>The label for this element.</p>
@@ -353,25 +374,6 @@ public interface VaadinDatePickerElement extends HTMLElement {
      * 
      */
     @JsProperty void setLabel(String value);
-
-    /**
-     * <p>Namespace for this validator.</p>
-     *
-     * JavaScript Info:
-     * @property validatorType
-     * @type String
-     * @behavior VaadinDatePicker
-     */
-    @JsProperty String getValidatorType();
-    /**
-     * <p>Namespace for this validator.</p>
-     *
-     * JavaScript Info:
-     * @property validatorType
-     * @type String
-     * @behavior VaadinDatePicker
-     */
-    @JsProperty void setValidatorType(String value);
 
     /**
      * <p>Date which should be visible when there is no value selected.</p>
@@ -414,23 +416,23 @@ public interface VaadinDatePickerElement extends HTMLElement {
     @JsProperty void setValidator(String value);
 
     /**
-     * <p>The name of this element.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
-     * @property name
+     * @property validatorType
      * @type String
      * @behavior VaadinDatePicker
      */
-    @JsProperty String getName();
+    @JsProperty String getValidatorType();
     /**
-     * <p>The name of this element.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
-     * @property name
+     * @property validatorType
      * @type String
      * @behavior VaadinDatePicker
      */
-    @JsProperty void setName(String value);
+    @JsProperty void setValidatorType(String value);
 
 
     /**
@@ -445,16 +447,6 @@ public interface VaadinDatePickerElement extends HTMLElement {
     void open(Object e);
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @method hasValidator
-     * @behavior VaadinDatePicker
-     * @return {boolean}
-     */
-    boolean hasValidator();
-
-    /**
      * <p>Closes the dropdown.</p>
      *
      * JavaScript Info:
@@ -463,6 +455,16 @@ public interface VaadinDatePickerElement extends HTMLElement {
      * 
      */
     void close();
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method hasValidator
+     * @behavior VaadinDatePicker
+     * @return {boolean}
+     */
+    boolean hasValidator();
 
     /**
      * <p>Returns true if the <code>value</code> is valid, and updates <code>invalid</code>. If you want<br>your element to have custom validation logic, do not override this method;<br>override <code>_getValidity(value)</code> instead.</p>

@@ -125,29 +125,6 @@ public class PaperRadioGroup extends PolymerWidget {
     }
 
     /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    public JavaScriptObject getSelectedItem() {
-        return getPolymerElement().getSelectedItem();
-    }
-    /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    public void setSelectedItem(JavaScriptObject value) {
-        getPolymerElement().setSelectedItem(value);
-    }
-
-    /**
      * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -191,6 +168,29 @@ public class PaperRadioGroup extends PolymerWidget {
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
+    }
+
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    public JavaScriptObject getSelectedItem() {
+        return getPolymerElement().getSelectedItem();
+    }
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    public void setSelectedItem(JavaScriptObject value) {
+        getPolymerElement().setSelectedItem(value);
     }
 
     /**
@@ -240,75 +240,6 @@ public class PaperRadioGroup extends PolymerWidget {
     }
 
     /**
-     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
-     *
-     * JavaScript Info:
-     * @property fallbackSelection
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getFallbackSelection() {
-        return getPolymerElement().getFallbackSelection();
-    }
-    /**
-     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
-     *
-     * JavaScript Info:
-     * @property fallbackSelection
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setFallbackSelection(String value) {
-        getPolymerElement().setFallbackSelection(value);
-    }
-
-    /**
-     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
-     *
-     * JavaScript Info:
-     * @property attrForSelected
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getAttrForSelected() {
-        return getPolymerElement().getAttrForSelected();
-    }
-    /**
-     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
-     *
-     * JavaScript Info:
-     * @property attrForSelected
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setAttrForSelected(String value) {
-        getPolymerElement().setAttrForSelected(value);
-    }
-
-    /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
-     *
-     * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getActivateEvent() {
-        return getPolymerElement().getActivateEvent();
-    }
-    /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
-     *
-     * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setActivateEvent(String value) {
-        getPolymerElement().setActivateEvent(value);
-    }
-
-    /**
      * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
      *
      * JavaScript Info:
@@ -329,6 +260,29 @@ public class PaperRadioGroup extends PolymerWidget {
      */
     public void setSelectable(String value) {
         getPolymerElement().setSelectable(value);
+    }
+
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    public String getFallbackSelection() {
+        return getPolymerElement().getFallbackSelection();
+    }
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    public void setFallbackSelection(String value) {
+        getPolymerElement().setFallbackSelection(value);
     }
 
     /**
@@ -377,17 +331,52 @@ public class PaperRadioGroup extends PolymerWidget {
         getPolymerElement().setSelectedClass(value);
     }
 
-
     /**
-     * <p>Returns the currently selected item.</p>
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
-     * @attribute selected-item
+     * @property attrForSelected
+     * @type String
      * @behavior PaperTabs
      */
-    public void setSelectedItem(String value) {
-        getPolymerElement().setAttribute("selected-item", value);
+    public String getAttrForSelected() {
+        return getPolymerElement().getAttrForSelected();
     }
+    /**
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
+     *
+     * JavaScript Info:
+     * @property attrForSelected
+     * @type String
+     * @behavior PaperTabs
+     */
+    public void setAttrForSelected(String value) {
+        getPolymerElement().setAttrForSelected(value);
+    }
+
+    /**
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     *
+     * JavaScript Info:
+     * @property activateEvent
+     * @type String
+     * @behavior PaperTabs
+     */
+    public String getActivateEvent() {
+        return getPolymerElement().getActivateEvent();
+    }
+    /**
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     *
+     * JavaScript Info:
+     * @property activateEvent
+     * @type String
+     * @behavior PaperTabs
+     */
+    public void setActivateEvent(String value) {
+        getPolymerElement().setActivateEvent(value);
+    }
+
 
     /**
      * 
@@ -409,6 +398,17 @@ public class PaperRadioGroup extends PolymerWidget {
      */
     public void setKeyEventTarget(String value) {
         getPolymerElement().setAttribute("key-event-target", value);
+    }
+
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @attribute selected-item
+     * @behavior PaperTabs
+     */
+    public void setSelectedItem(String value) {
+        getPolymerElement().setAttribute("selected-item", value);
     }
 
     /**
@@ -453,8 +453,8 @@ public class PaperRadioGroup extends PolymerWidget {
      *
      * JavaScript Info:
      * @method select
-     * @param {(string|number)} value  
-     * @behavior PaperTabs
+     * @param {} value  
+     * 
      * 
      */
     public void select(Object value) {
@@ -462,27 +462,28 @@ public class PaperRadioGroup extends PolymerWidget {
     }
 
     /**
-     * <p>Selects the next item. If the next item is disabled, then it is<br>skipped, and the next item after it is selected.</p>
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectIndex(Object index) {
+        getPolymerElement().selectIndex(index);
+    }
+
+    /**
+     * <p>Selects the next item.</p>
      *
      * JavaScript Info:
      * @method selectNext
-     * 
+     * @behavior PaperTabs
      * 
      */
     public void selectNext() {
         getPolymerElement().selectNext();
-    }
-
-    /**
-     * <p>Selects the previous item. If the previous item is disabled, then it is<br>skipped, and its previous item is selected</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * 
-     * 
-     */
-    public void selectPrevious() {
-        getPolymerElement().selectPrevious();
     }
 
     /**
@@ -495,6 +496,18 @@ public class PaperRadioGroup extends PolymerWidget {
      */
     public void removeOwnKeyBindings() {
         getPolymerElement().removeOwnKeyBindings();
+    }
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectPrevious() {
+        getPolymerElement().selectPrevious();
     }
 
     /**

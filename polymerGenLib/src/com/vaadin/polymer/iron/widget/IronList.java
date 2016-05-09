@@ -639,6 +639,20 @@ public class IronList extends PolymerWidget {
 
 
     /**
+     * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
+     *
+     * JavaScript Info:
+     * @method addOwnKeyBinding
+     * @param {} eventString  
+     * @param {} handlerName  
+     * @behavior VaadinComboBox
+     * 
+     */
+    public void addOwnKeyBinding(Object eventString, Object handlerName) {
+        getPolymerElement().addOwnKeyBinding(eventString, handlerName);
+    }
+
+    /**
      * <p>Select the list item at the given index.</p>
      *
      * JavaScript Info:
@@ -678,19 +692,6 @@ public class IronList extends PolymerWidget {
     }
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @method modelForElement
-     * @param {} el  
-     * @behavior VaadinInfiniteScroller
-     * 
-     */
-    public void modelForElement(Object el) {
-        getPolymerElement().modelForElement(el);
-    }
-
-    /**
      * <p>Deselects the given item list if it is already selected.</p>
      *
      * JavaScript Info:
@@ -701,6 +702,19 @@ public class IronList extends PolymerWidget {
      */
     public void deselectItem(Object item) {
         getPolymerElement().deselectItem(item);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method stamp
+     * @param {} model  
+     * @behavior VaadinInfiniteScroller
+     * 
+     */
+    public void stamp(Object model) {
+        getPolymerElement().stamp(model);
     }
 
     /**
@@ -743,30 +757,16 @@ public class IronList extends PolymerWidget {
     }
 
     /**
-     * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
-     *
-     * JavaScript Info:
-     * @method addOwnKeyBinding
-     * @param {} eventString  
-     * @param {} handlerName  
-     * @behavior VaadinComboBox
-     * 
-     */
-    public void addOwnKeyBinding(Object eventString, Object handlerName) {
-        getPolymerElement().addOwnKeyBinding(eventString, handlerName);
-    }
-
-    /**
      * 
      *
      * JavaScript Info:
-     * @method stamp
-     * @param {} model  
+     * @method modelForElement
+     * @param {} el  
      * @behavior VaadinInfiniteScroller
      * 
      */
-    public void stamp(Object model) {
-        getPolymerElement().stamp(model);
+    public void modelForElement(Object el) {
+        getPolymerElement().modelForElement(el);
     }
 
     /**

@@ -418,6 +418,17 @@ public interface PaperMenuElement extends HTMLElement {
 
 
     /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
+     * 
+     */
+    void selectIndex(Object index);
+
+    /**
      * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
      *
      * JavaScript Info:
@@ -452,26 +463,6 @@ public interface PaperMenuElement extends HTMLElement {
     void multiChanged(Object multi);
 
     /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * @behavior PaperTabs
-     * 
-     */
-    void selectPrevious();
-
-    /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
-     *
-     * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior VaadinComboBox
-     * 
-     */
-    void removeOwnKeyBindings();
-
-    /**
      * <p>Force a synchronous update of the <code>items</code> property.</p>
      * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
      * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
@@ -492,6 +483,26 @@ public interface PaperMenuElement extends HTMLElement {
      * 
      */
     void selectNext();
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * @behavior PaperTabs
+     * 
+     */
+    void selectPrevious();
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior VaadinComboBox
+     * 
+     */
+    void removeOwnKeyBindings();
 
     /**
      * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>

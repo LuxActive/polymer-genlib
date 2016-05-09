@@ -9,7 +9,7 @@ import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * <p>Fired when the <code>iron-overlay</code> is canceled, but before it is closed.<br>Cancel the event to prevent the <code>iron-overlay</code> from closing.</p>
+ * <p>Fired when the overlay is canceled, but before it is closed.</p>
  */
 public class IronOverlayCanceledEvent extends DomEvent<IronOverlayCanceledEventHandler> {
 
@@ -34,7 +34,7 @@ public class IronOverlayCanceledEvent extends DomEvent<IronOverlayCanceledEventH
 
 
     /**
-     * <p>The closing of the <code>iron-overlay</code> can be prevented<br>by calling <code>event.preventDefault()</code>. The <code>event.detail</code> is the original event that originated<br>the canceling (e.g. ESC keyboard event or click event outside the <code>iron-overlay</code>).</p>
+     * <p>The closing of the overlay can be prevented<br>by calling <code>event.preventDefault()</code>. The <code>event.detail</code> is the original event that<br>originated the canceling (e.g. ESC keyboard event or click event outside the overlay).</p>
      */
     public JavaScriptObject getEvent() {
         return getPolymerEvent().getDetail().getEvent();

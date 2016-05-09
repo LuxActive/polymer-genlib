@@ -41,6 +41,11 @@ import jsinterop.annotations.JsType;
  * <td><code>56px</code></td>
  * </tr>
  * <tr>
+ * <td><code>--paper-item-icon</code></td>
+ * <td>Mixin applied to the icon area</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
  * <td><code>--paper-icon-item</code></td>
  * <td>Mixin applied to the item</td>
  * <td><code>{}</code></td>
@@ -86,6 +91,25 @@ public interface PaperIconItemElement extends HTMLElement {
 
 
     /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    @JsProperty JavaScriptObject getKeyBindings();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    @JsProperty void setKeyBindings(JavaScriptObject value);
+
+    /**
      * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -103,25 +127,6 @@ public interface PaperIconItemElement extends HTMLElement {
      * @behavior VaadinComboBox
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty JavaScriptObject getKeyBindings();
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty void setKeyBindings(JavaScriptObject value);
 
     /**
      * <p>If true, the element currently has focus.</p>
@@ -308,16 +313,6 @@ public interface PaperIconItemElement extends HTMLElement {
     void addOwnKeyBinding(Object eventString, Object handlerName);
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
-     *
-     * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior VaadinComboBox
-     * 
-     */
-    void removeOwnKeyBindings();
-
-    /**
      * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
@@ -328,5 +323,15 @@ public interface PaperIconItemElement extends HTMLElement {
      * @return {boolean}
      */
     boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior VaadinComboBox
+     * 
+     */
+    void removeOwnKeyBindings();
 
 }

@@ -73,25 +73,6 @@ public interface PaperDialogElement extends HTMLElement {
     @JsProperty void setBackdropElement(Element value);
 
     /**
-     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code>, <code>no-cancel-on-esc-key</code> and <code>with-backdrop</code>.</p>
-     *
-     * JavaScript Info:
-     * @property modal
-     * @type Boolean
-     * @behavior PaperDialog
-     */
-    @JsProperty boolean getModal();
-    /**
-     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code>, <code>no-cancel-on-esc-key</code> and <code>with-backdrop</code>.</p>
-     *
-     * JavaScript Info:
-     * @property modal
-     * @type Boolean
-     * @behavior PaperDialog
-     */
-    @JsProperty void setModal(boolean value);
-
-    /**
      * <p>True if the overlay was canceled when it was last closed.</p>
      *
      * JavaScript Info:
@@ -130,6 +111,44 @@ public interface PaperDialogElement extends HTMLElement {
     @JsProperty void setNoAutoFocus(boolean value);
 
     /**
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnEscKey
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getNoCancelOnEscKey();
+    /**
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnEscKey
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setNoCancelOnEscKey(boolean value);
+
+    /**
+     * <p>Will position the element around the positionTarget without overlapping it.</p>
+     *
+     * JavaScript Info:
+     * @property noOverlap
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getNoOverlap();
+    /**
+     * <p>Will position the element around the positionTarget without overlapping it.</p>
+     *
+     * JavaScript Info:
+     * @property noOverlap
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setNoOverlap(boolean value);
+
+    /**
      * <p>Set to true to keep overlay always on top.</p>
      *
      * JavaScript Info:
@@ -147,25 +166,6 @@ public interface PaperDialogElement extends HTMLElement {
      * @behavior PaperToast
      */
     @JsProperty void setAlwaysOnTop(boolean value);
-
-    /**
-     * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
-     *
-     * JavaScript Info:
-     * @property noCancelOnOutsideClick
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getNoCancelOnOutsideClick();
-    /**
-     * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
-     *
-     * JavaScript Info:
-     * @property noCancelOnOutsideClick
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setNoCancelOnOutsideClick(boolean value);
 
     /**
      * <p>Set to true to enable restoring of focus when overlay is closed.</p>
@@ -187,25 +187,6 @@ public interface PaperDialogElement extends HTMLElement {
     @JsProperty void setRestoreFocusOnClose(boolean value);
 
     /**
-     * <p>Set to true to display a backdrop behind the overlay.</p>
-     *
-     * JavaScript Info:
-     * @property withBackdrop
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getWithBackdrop();
-    /**
-     * <p>Set to true to display a backdrop behind the overlay.</p>
-     *
-     * JavaScript Info:
-     * @property withBackdrop
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setWithBackdrop(boolean value);
-
-    /**
      * <p>Set to true to auto-fit on attach.</p>
      *
      * JavaScript Info:
@@ -225,45 +206,102 @@ public interface PaperDialogElement extends HTMLElement {
     @JsProperty void setAutoFitOnAttach(boolean value);
 
     /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code> and <code>with-backdrop</code>.</p>
      *
      * JavaScript Info:
-     * @property noCancelOnEscKey
+     * @property modal
+     * @type Boolean
+     * @behavior PaperDialog
+     */
+    @JsProperty boolean getModal();
+    /**
+     * <p>If <code>modal</code> is true, this implies <code>no-cancel-on-outside-click</code> and <code>with-backdrop</code>.</p>
+     *
+     * JavaScript Info:
+     * @property modal
+     * @type Boolean
+     * @behavior PaperDialog
+     */
+    @JsProperty void setModal(boolean value);
+
+    /**
+     * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnOutsideClick
      * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty boolean getNoCancelOnEscKey();
+    @JsProperty boolean getNoCancelOnOutsideClick();
     /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
      *
      * JavaScript Info:
-     * @property noCancelOnEscKey
+     * @property noCancelOnOutsideClick
      * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty void setNoCancelOnEscKey(boolean value);
+    @JsProperty void setNoCancelOnOutsideClick(boolean value);
 
     /**
-     * <p>Animation configuration. See README for more info.</p>
+     * <p>The same as setting margin-left and margin-right css properties.</p>
      *
      * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * @behavior PaperTooltip
+     * @property horizontalOffset
+     * @type Number
+     * @behavior PaperToast
      */
-    @JsProperty JavaScriptObject getAnimationConfig();
+    @JsProperty double getHorizontalOffset();
     /**
-     * <p>Animation configuration. See README for more info.</p>
+     * <p>The same as setting margin-left and margin-right css properties.</p>
      *
      * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * @behavior PaperTooltip
+     * @property horizontalOffset
+     * @type Number
+     * @behavior PaperToast
      */
-    @JsProperty void setAnimationConfig(JavaScriptObject value);
+    @JsProperty void setHorizontalOffset(double value);
 
     /**
-     * <p>Returns the reason this dialog was last closed.</p>
+     * <p>The same as setting margin-top and margin-bottom css properties.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    @JsProperty double getVerticalOffset();
+    /**
+     * <p>The same as setting margin-top and margin-bottom css properties.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    @JsProperty void setVerticalOffset(double value);
+
+    /**
+     * <p>True if the overlay is currently displayed.</p>
+     *
+     * JavaScript Info:
+     * @property opened
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getOpened();
+    /**
+     * <p>True if the overlay is currently displayed.</p>
+     *
+     * JavaScript Info:
+     * @property opened
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setOpened(boolean value);
+
+    /**
+     * <p>Contains the reason(s) this overlay was last closed (see <code>iron-overlay-closed</code>).<br><code>IronOverlayBehavior</code> provides the <code>canceled</code> reason; implementers of the<br>behavior can provide other reasons in addition to <code>canceled</code>.</p>
      *
      * JavaScript Info:
      * @property closingReason
@@ -272,7 +310,7 @@ public interface PaperDialogElement extends HTMLElement {
      */
     @JsProperty JavaScriptObject getClosingReason();
     /**
-     * <p>Returns the reason this dialog was last closed.</p>
+     * <p>Contains the reason(s) this overlay was last closed (see <code>iron-overlay-closed</code>).<br><code>IronOverlayBehavior</code> provides the <code>canceled</code> reason; implementers of the<br>behavior can provide other reasons in addition to <code>canceled</code>.</p>
      *
      * JavaScript Info:
      * @property closingReason
@@ -301,6 +339,44 @@ public interface PaperDialogElement extends HTMLElement {
     @JsProperty void setFitInto(JavaScriptObject value);
 
     /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    @JsProperty JavaScriptObject getAnimationConfig();
+    /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    @JsProperty void setAnimationConfig(JavaScriptObject value);
+
+    /**
+     * <p>The element that should be used to position the element. If not set, it will<br>default to the parent node.</p>
+     *
+     * JavaScript Info:
+     * @property positionTarget
+     * @type !Element
+     * @behavior PaperToast
+     */
+    @JsProperty JavaScriptObject getPositionTarget();
+    /**
+     * <p>The element that should be used to position the element. If not set, it will<br>default to the parent node.</p>
+     *
+     * JavaScript Info:
+     * @property positionTarget
+     * @type !Element
+     * @behavior PaperToast
+     */
+    @JsProperty void setPositionTarget(JavaScriptObject value);
+
+    /**
      * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
      *
      * JavaScript Info:
@@ -320,23 +396,23 @@ public interface PaperDialogElement extends HTMLElement {
     @JsProperty void setSizingTarget(JavaScriptObject value);
 
     /**
-     * <p>True if the overlay is currently displayed.</p>
+     * <p>Set to true to display a backdrop behind the overlay.</p>
      *
      * JavaScript Info:
-     * @property opened
+     * @property withBackdrop
      * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty boolean getOpened();
+    @JsProperty boolean getWithBackdrop();
     /**
-     * <p>True if the overlay is currently displayed.</p>
+     * <p>Set to true to display a backdrop behind the overlay.</p>
      *
      * JavaScript Info:
-     * @property opened
+     * @property withBackdrop
      * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty void setOpened(boolean value);
+    @JsProperty void setWithBackdrop(boolean value);
 
     /**
      * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
@@ -376,6 +452,44 @@ public interface PaperDialogElement extends HTMLElement {
      */
     @JsProperty void setEntryAnimation(String value);
 
+    /**
+     * <p>The orientation against which to align the element vertically<br>relative to the <code>positionTarget</code>. Possible values are “top”, “bottom”, “auto”.</p>
+     *
+     * JavaScript Info:
+     * @property verticalAlign
+     * @type String
+     * @behavior PaperToast
+     */
+    @JsProperty String getVerticalAlign();
+    /**
+     * <p>The orientation against which to align the element vertically<br>relative to the <code>positionTarget</code>. Possible values are “top”, “bottom”, “auto”.</p>
+     *
+     * JavaScript Info:
+     * @property verticalAlign
+     * @type String
+     * @behavior PaperToast
+     */
+    @JsProperty void setVerticalAlign(String value);
+
+    /**
+     * <p>The orientation against which to align the element horizontally<br>relative to the <code>positionTarget</code>. Possible values are “left”, “right”, “auto”.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalAlign
+     * @type String
+     * @behavior PaperToast
+     */
+    @JsProperty String getHorizontalAlign();
+    /**
+     * <p>The orientation against which to align the element horizontally<br>relative to the <code>positionTarget</code>. Possible values are “left”, “right”, “auto”.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalAlign
+     * @type String
+     * @behavior PaperToast
+     */
+    @JsProperty void setHorizontalAlign(String value);
+
 
     /**
      * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
@@ -410,17 +524,17 @@ public interface PaperDialogElement extends HTMLElement {
     void close();
 
     /**
-     * <p>Centers horizontally and vertically if not already positioned. This also sets<br><code>position:fixed</code>.</p>
+     * <p>Constrains the size of the element to <code>fitInto</code> by setting <code>max-height</code><br>and/or <code>max-width</code>.</p>
      *
      * JavaScript Info:
-     * @method center
+     * @method constrain
      * @behavior PaperToast
      * 
      */
-    void center();
+    void constrain();
 
     /**
-     * <p>Fits and optionally centers the element into the window, or <code>fitInfo</code> if specified.</p>
+     * <p>Positions and fits the element into the <code>fitInto</code> element.</p>
      *
      * JavaScript Info:
      * @method fit
@@ -428,6 +542,16 @@ public interface PaperDialogElement extends HTMLElement {
      * 
      */
     void fit();
+
+    /**
+     * <p>Open the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method open
+     * @behavior PaperToast
+     * 
+     */
+    void open();
 
     /**
      * <p>Toggle the opened state of the overlay.</p>
@@ -440,7 +564,17 @@ public interface PaperDialogElement extends HTMLElement {
     void toggle();
 
     /**
-     * <p>Equivalent to calling <code>resetFit()</code> and <code>fit()</code>. Useful to call this after the element,<br>the window, or the <code>fitInfo</code> element has been resized.</p>
+     * <p>Positions the element according to <code>horizontalAlign, verticalAlign</code>.</p>
+     *
+     * JavaScript Info:
+     * @method position
+     * @behavior PaperToast
+     * 
+     */
+    void position();
+
+    /**
+     * <p>Equivalent to calling <code>resetFit()</code> and <code>fit()</code>. Useful to call this after<br>the element or the <code>fitInto</code> element has been resized, or if any of the<br>positioning properties (e.g. <code>horizontalAlign, verticalAlign</code>) is updated.</p>
      *
      * JavaScript Info:
      * @method refit
@@ -470,6 +604,16 @@ public interface PaperDialogElement extends HTMLElement {
     void notifyResize();
 
     /**
+     * <p>Centers horizontally and vertically if not already positioned. This also sets<br><code>position:fixed</code>.</p>
+     *
+     * JavaScript Info:
+     * @method center
+     * @behavior PaperToast
+     * 
+     */
+    void center();
+
+    /**
      * <p>Cancels the currently running animation.</p>
      *
      * JavaScript Info:
@@ -478,26 +622,6 @@ public interface PaperDialogElement extends HTMLElement {
      * 
      */
     void cancelAnimation();
-
-    /**
-     * <p>Open the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method open
-     * @behavior PaperToast
-     * 
-     */
-    void open();
-
-    /**
-     * <p>Constrains the size of the element to the window or <code>fitInfo</code> by setting <code>max-height</code><br>and/or <code>max-width</code>.</p>
-     *
-     * JavaScript Info:
-     * @method constrain
-     * @behavior PaperToast
-     * 
-     */
-    void constrain();
 
     /**
      * <p>Cancels the overlay.</p>

@@ -29,7 +29,7 @@ import jsinterop.annotations.JsType;
 public interface ReverseRippleAnimationElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "reverse-ripple-animation";
-    @JsOverlay public static final String SRC = "neon-animation/neon-animations.html";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animation.html";
 
 
     /**

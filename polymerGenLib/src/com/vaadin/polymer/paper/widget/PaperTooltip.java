@@ -142,6 +142,29 @@ public class PaperTooltip extends PolymerWidget {
     }
 
     /**
+     * <p>Set this to true if you want to manually control when the tooltip<br>is shown or hidden.</p>
+     *
+     * JavaScript Info:
+     * @property manualMode
+     * @type Boolean
+     * 
+     */
+    public boolean getManualMode() {
+        return getPolymerElement().getManualMode();
+    }
+    /**
+     * <p>Set this to true if you want to manually control when the tooltip<br>is shown or hidden.</p>
+     *
+     * JavaScript Info:
+     * @property manualMode
+     * @type Boolean
+     * 
+     */
+    public void setManualMode(boolean value) {
+        getPolymerElement().setManualMode(value);
+    }
+
+    /**
      * <p>This property is deprecated, but left over so that it doesn’t<br>break exiting code. Please use <code>offset</code> instead. If both <code>offset</code> and<br><code>marginTop</code> are provided, <code>marginTop</code> will be ignored.</p>
      *
      * JavaScript Info:
@@ -352,24 +375,24 @@ public class PaperTooltip extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method updatePosition
-     * 
-     * 
-     */
-    public void updatePosition() {
-        getPolymerElement().updatePosition();
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
      * @method hide
      * 
      * 
      */
     public void hide() {
         getPolymerElement().hide();
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method updatePosition
+     * 
+     * 
+     */
+    public void updatePosition() {
+        getPolymerElement().updatePosition();
     }
 
     /**

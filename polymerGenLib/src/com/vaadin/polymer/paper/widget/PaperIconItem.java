@@ -42,6 +42,11 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <td><code>56px</code></td>
  * </tr>
  * <tr>
+ * <td><code>--paper-item-icon</code></td>
+ * <td>Mixin applied to the icon area</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
  * <td><code>--paper-icon-item</code></td>
  * <td>Mixin applied to the item</td>
  * <td><code>{}</code></td>
@@ -108,6 +113,29 @@ public class PaperIconItem extends PolymerWidget {
 
 
     /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    public JavaScriptObject getKeyBindings() {
+        return getPolymerElement().getKeyBindings();
+    }
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior VaadinComboBox
+     */
+    public void setKeyBindings(JavaScriptObject value) {
+        getPolymerElement().setKeyBindings(value);
+    }
+
+    /**
      * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
@@ -128,29 +156,6 @@ public class PaperIconItem extends PolymerWidget {
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    public JavaScriptObject getKeyBindings() {
-        return getPolymerElement().getKeyBindings();
-    }
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    public void setKeyBindings(JavaScriptObject value) {
-        getPolymerElement().setKeyBindings(value);
     }
 
     /**
@@ -362,17 +367,6 @@ public class PaperIconItem extends PolymerWidget {
 
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @attribute key-event-target
-     * @behavior VaadinComboBox
-     */
-    public void setKeyEventTarget(String value) {
-        getPolymerElement().setAttribute("key-event-target", value);
-    }
-
-    /**
      * 
      *
      * JavaScript Info:
@@ -381,6 +375,17 @@ public class PaperIconItem extends PolymerWidget {
      */
     public void setKeyBindings(String value) {
         getPolymerElement().setAttribute("key-bindings", value);
+    }
+
+    /**
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @attribute key-event-target
+     * @behavior VaadinComboBox
+     */
+    public void setKeyEventTarget(String value) {
+        getPolymerElement().setAttribute("key-event-target", value);
     }
 
 

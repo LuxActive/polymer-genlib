@@ -1,7 +1,7 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
  * from vaadin-grid project by Vaadin Ltd
- * that is licensed with Apache License 2.0 license.
+ * that is licensed with Apache-2.0 license.
  */
 package com.vaadin.polymer.vaadin.widget;
 
@@ -55,10 +55,10 @@ import com.google.gwt.core.client.JavaScriptObject;
  * &lt;/vaadin-grid&gt;
  * </code></pre>
  * <h3 id="styling">Styling</h3>
- * <p>The grid uses <code>--default-primary-color</code> from <a href="https://github.com/PolymerElements/paper-styles">paper-styles</a> as a highlight color. You can customize the color by defining your own primary default color.</p>
+ * <p>The grid uses <code>--primary-color</code> from <a href="https://github.com/PolymerElements/paper-styles">paper-styles</a> as a highlight color. You can customize the color by defining your own primary default color.</p>
  * <pre><code class="lang-html">&lt;style is=&quot;custom-style&quot;&gt;
  *   vaadin-grid {
- *     --default-primary-color: red;
+ *     --primary-color: red;
  *   }
  * &lt;/style&gt;
  * </code></pre>
@@ -86,6 +86,11 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <td style="text-align:left"><code>--vaadin-grid-footer-row-height</code></td>
  * <td style="text-align:left">Footer row height</td>
  * <td style="text-align:right"><code>56px</code></td>
+ * </tr>
+ * <tr>
+ * <td style="text-align:left"><code>--vaadin-grid-selected-row-cell</code></td>
+ * <td style="text-align:left">Mixin which applies to the cell elements of a selected row</td>
+ * <td style="text-align:right">{}</td>
  * </tr>
  * </tbody>
  * </table>
@@ -118,6 +123,43 @@ public class VaadinGrid extends PolymerWidget {
         }
     }
 
+
+    /**
+     * <p>The row details generator is used for generating detail content for<br>data rows. The details element is added directly under the row.</p>
+     * <h4 id="example-">Example:</h4>
+     * <pre><code class="lang-js">grid.rowDetailsGenerator = function(rowIndex) {
+     *   var detail = document.createElement(&quot;div&quot;);
+     *   detail.textContent = &quot;Row detail content for row &quot; + rowIndex;
+     *   return detail;
+     * };
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property rowDetailsGenerator
+     * @type function
+     * 
+     */
+    public Function getRowDetailsGenerator() {
+        return getPolymerElement().getRowDetailsGenerator();
+    }
+    /**
+     * <p>The row details generator is used for generating detail content for<br>data rows. The details element is added directly under the row.</p>
+     * <h4 id="example-">Example:</h4>
+     * <pre><code class="lang-js">grid.rowDetailsGenerator = function(rowIndex) {
+     *   var detail = document.createElement(&quot;div&quot;);
+     *   detail.textContent = &quot;Row detail content for row &quot; + rowIndex;
+     *   return detail;
+     * };
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property rowDetailsGenerator
+     * @type function
+     * 
+     */
+    public void setRowDetailsGenerator(Function value) {
+        getPolymerElement().setRowDetailsGenerator(value);
+    }
 
     /**
      * <p>Disables the grid.</p>
@@ -174,59 +216,28 @@ public class VaadinGrid extends PolymerWidget {
     }
 
     /**
-     * <p>The index of the last frozen columns in this grid. A frozen column will<br>always stay visible in the grid viewport when the user scrolls the grid<br>viewport horizontally.</p>
-     * <p>Setting the property to 0 means that no columns will be frozen,<br>but the built-in selection checkbox column will still be frozen if<br>it’s in use. Setting the count to -1 will unfreeze the selection<br>column also.</p>
-     * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;vaadin-grid frozen-columns=&quot;2&quot;&gt;...&lt;/vaadin-grid&gt;
-     * </code></pre>
+     * <p>The array of columns attached to the grid.</p>
+     * <p>See the API documentation for “column” for more details about the<br>column objects.</p>
      *
      * JavaScript Info:
-     * @property frozenColumns
-     * @type number
+     * @property columns
+     * @type Array.<object>
      * 
      */
-    public double getFrozenColumns() {
-        return getPolymerElement().getFrozenColumns();
+    public JsArray getColumns() {
+        return getPolymerElement().getColumns();
     }
     /**
-     * <p>The index of the last frozen columns in this grid. A frozen column will<br>always stay visible in the grid viewport when the user scrolls the grid<br>viewport horizontally.</p>
-     * <p>Setting the property to 0 means that no columns will be frozen,<br>but the built-in selection checkbox column will still be frozen if<br>it’s in use. Setting the count to -1 will unfreeze the selection<br>column also.</p>
-     * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;vaadin-grid frozen-columns=&quot;2&quot;&gt;...&lt;/vaadin-grid&gt;
-     * </code></pre>
+     * <p>The array of columns attached to the grid.</p>
+     * <p>See the API documentation for “column” for more details about the<br>column objects.</p>
      *
      * JavaScript Info:
-     * @property frozenColumns
-     * @type number
+     * @property columns
+     * @type Array.<object>
      * 
      */
-    public void setFrozenColumns(double value) {
-        getPolymerElement().setFrozenColumns(value);
-    }
-
-    /**
-     * <p>Object for controlling and accessing the header rows in the grid.</p>
-     * <p>See the API documentation for “header” for more details.</p>
-     *
-     * JavaScript Info:
-     * @property header
-     * @type header
-     * 
-     */
-    public Header getHeader() {
-        return getPolymerElement().getHeader();
-    }
-    /**
-     * <p>Object for controlling and accessing the header rows in the grid.</p>
-     * <p>See the API documentation for “header” for more details.</p>
-     *
-     * JavaScript Info:
-     * @property header
-     * @type header
-     * 
-     */
-    public void setHeader(Header value) {
-        getPolymerElement().setHeader(value);
+    public void setColumns(JsArray value) {
+        getPolymerElement().setColumns(value);
     }
 
     /**
@@ -295,53 +306,28 @@ public class VaadinGrid extends PolymerWidget {
     }
 
     /**
-     * <p>The array of columns attached to the grid.</p>
-     * <p>See the API documentation for “column” for more details about the<br>column objects.</p>
+     * <p>Object for controlling and accessing the selected rows in the grid.</p>
+     * <p>See the API documentation for the “selection” object for more details.</p>
      *
      * JavaScript Info:
-     * @property columns
-     * @type Array.<object>
+     * @property selection
+     * @type selection
      * 
      */
-    public JsArray getColumns() {
-        return getPolymerElement().getColumns();
+    public Selection getSelection() {
+        return getPolymerElement().getSelection();
     }
     /**
-     * <p>The array of columns attached to the grid.</p>
-     * <p>See the API documentation for “column” for more details about the<br>column objects.</p>
+     * <p>Object for controlling and accessing the selected rows in the grid.</p>
+     * <p>See the API documentation for the “selection” object for more details.</p>
      *
      * JavaScript Info:
-     * @property columns
-     * @type Array.<object>
+     * @property selection
+     * @type selection
      * 
      */
-    public void setColumns(JsArray value) {
-        getPolymerElement().setColumns(value);
-    }
-
-    /**
-     * <p>Explicitly sets the number of records the <code>items</code> array/function<br>provides for the grid to display.</p>
-     * <p>This may also be set indirectly by passing the value as the second<br>parameter for data request callback function.</p>
-     *
-     * JavaScript Info:
-     * @property size
-     * @type Number
-     * 
-     */
-    public double getSize() {
-        return getPolymerElement().getSize();
-    }
-    /**
-     * <p>Explicitly sets the number of records the <code>items</code> array/function<br>provides for the grid to display.</p>
-     * <p>This may also be set indirectly by passing the value as the second<br>parameter for data request callback function.</p>
-     *
-     * JavaScript Info:
-     * @property size
-     * @type Number
-     * 
-     */
-    public void setSize(double value) {
-        getPolymerElement().setSize(value);
+    public void setSelection(Selection value) {
+        getPolymerElement().setSelection(value);
     }
 
     /**
@@ -372,7 +358,7 @@ public class VaadinGrid extends PolymerWidget {
     /**
      * <p>Sets the height of the grid so that the specified amount of data rows<br>is visible. Overrides any height specified in CSS.</p>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;vaadin-grid rows=&quot;5&quot;&gt;...&lt;/vaadin-grid&gt;
+     * <pre><code class="lang-html">&lt;vaadin-grid visible-rows=&quot;5&quot;&gt;...&lt;/vaadin-grid&gt;
      * </code></pre>
      *
      * JavaScript Info:
@@ -386,7 +372,7 @@ public class VaadinGrid extends PolymerWidget {
     /**
      * <p>Sets the height of the grid so that the specified amount of data rows<br>is visible. Overrides any height specified in CSS.</p>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;vaadin-grid rows=&quot;5&quot;&gt;...&lt;/vaadin-grid&gt;
+     * <pre><code class="lang-html">&lt;vaadin-grid visible-rows=&quot;5&quot;&gt;...&lt;/vaadin-grid&gt;
      * </code></pre>
      *
      * JavaScript Info:
@@ -399,28 +385,121 @@ public class VaadinGrid extends PolymerWidget {
     }
 
     /**
-     * <p>Object for controlling and accessing the selected rows in the grid.</p>
-     * <p>See the API documentation for the “selection” object for more details.</p>
+     * <p>Explicitly sets the number of records the <code>items</code> array/function<br>provides for the grid to display.</p>
+     * <p>This may also be set indirectly by passing the value as the second<br>parameter for data request callback function.</p>
      *
      * JavaScript Info:
-     * @property selection
-     * @type selection
+     * @property size
+     * @type Number
      * 
      */
-    public Selection getSelection() {
-        return getPolymerElement().getSelection();
+    public double getSize() {
+        return getPolymerElement().getSize();
     }
     /**
-     * <p>Object for controlling and accessing the selected rows in the grid.</p>
-     * <p>See the API documentation for the “selection” object for more details.</p>
+     * <p>Explicitly sets the number of records the <code>items</code> array/function<br>provides for the grid to display.</p>
+     * <p>This may also be set indirectly by passing the value as the second<br>parameter for data request callback function.</p>
      *
      * JavaScript Info:
-     * @property selection
-     * @type selection
+     * @property size
+     * @type Number
      * 
      */
-    public void setSelection(Selection value) {
-        getPolymerElement().setSelection(value);
+    public void setSize(double value) {
+        getPolymerElement().setSize(value);
+    }
+
+    /**
+     * <p>The index of the last frozen columns in this grid. A frozen column will<br>always stay visible in the grid viewport when the user scrolls the grid<br>viewport horizontally.</p>
+     * <p>Setting the property to 0 means that no columns will be frozen,<br>but the built-in selection checkbox column will still be frozen if<br>it’s in use. Setting the count to -1 will unfreeze the selection<br>column also.</p>
+     * <h4 id="declarative-example-">Declarative example:</h4>
+     * <pre><code class="lang-html">&lt;vaadin-grid frozen-columns=&quot;2&quot;&gt;...&lt;/vaadin-grid&gt;
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property frozenColumns
+     * @type number
+     * 
+     */
+    public double getFrozenColumns() {
+        return getPolymerElement().getFrozenColumns();
+    }
+    /**
+     * <p>The index of the last frozen columns in this grid. A frozen column will<br>always stay visible in the grid viewport when the user scrolls the grid<br>viewport horizontally.</p>
+     * <p>Setting the property to 0 means that no columns will be frozen,<br>but the built-in selection checkbox column will still be frozen if<br>it’s in use. Setting the count to -1 will unfreeze the selection<br>column also.</p>
+     * <h4 id="declarative-example-">Declarative example:</h4>
+     * <pre><code class="lang-html">&lt;vaadin-grid frozen-columns=&quot;2&quot;&gt;...&lt;/vaadin-grid&gt;
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property frozenColumns
+     * @type number
+     * 
+     */
+    public void setFrozenColumns(double value) {
+        getPolymerElement().setFrozenColumns(value);
+    }
+
+    /**
+     * <p>Object for controlling and accessing the header rows in the grid.</p>
+     * <p>See the API documentation for “header” for more details.</p>
+     *
+     * JavaScript Info:
+     * @property header
+     * @type header
+     * 
+     */
+    public Header getHeader() {
+        return getPolymerElement().getHeader();
+    }
+    /**
+     * <p>Object for controlling and accessing the header rows in the grid.</p>
+     * <p>See the API documentation for “header” for more details.</p>
+     *
+     * JavaScript Info:
+     * @property header
+     * @type header
+     * 
+     */
+    public void setHeader(Header value) {
+        getPolymerElement().setHeader(value);
+    }
+
+    /**
+     * <p>A function which is used for generating CSS class names for data rows.</p>
+     * <p>See the API documentation for the “row” object for more details about<br>the parameter of this function.</p>
+     * <h4 id="example-">Example:</h4>
+     * <pre><code class="lang-js">grid.rowClassGenerator = function(row) {
+     *   var activity = row.data[2];
+     *   return &quot;activity-&quot; + activity.toLowerCase();
+     * };
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property rowClassGenerator
+     * @type function
+     * 
+     */
+    public Function getRowClassGenerator() {
+        return getPolymerElement().getRowClassGenerator();
+    }
+    /**
+     * <p>A function which is used for generating CSS class names for data rows.</p>
+     * <p>See the API documentation for the “row” object for more details about<br>the parameter of this function.</p>
+     * <h4 id="example-">Example:</h4>
+     * <pre><code class="lang-js">grid.rowClassGenerator = function(row) {
+     *   var activity = row.data[2];
+     *   return &quot;activity-&quot; + activity.toLowerCase();
+     * };
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @property rowClassGenerator
+     * @type function
+     * 
+     */
+    public void setRowClassGenerator(Function value) {
+        getPolymerElement().setRowClassGenerator(value);
     }
 
     /**
@@ -462,106 +541,17 @@ public class VaadinGrid extends PolymerWidget {
         getPolymerElement().setCellClassGenerator(value);
     }
 
-    /**
-     * <p>A function which is used for generating CSS class names for data rows.</p>
-     * <p>See the API documentation for the “row” object for more details about<br>the parameter of this function.</p>
-     * <h4 id="example-">Example:</h4>
-     * <pre><code class="lang-js">grid.rowClassGenerator = function(row) {
-     *   var activity = row.data[2];
-     *   return &quot;activity-&quot; + activity.toLowerCase();
-     * };
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property rowClassGenerator
-     * @type function
-     * 
-     */
-    public Function getRowClassGenerator() {
-        return getPolymerElement().getRowClassGenerator();
-    }
-    /**
-     * <p>A function which is used for generating CSS class names for data rows.</p>
-     * <p>See the API documentation for the “row” object for more details about<br>the parameter of this function.</p>
-     * <h4 id="example-">Example:</h4>
-     * <pre><code class="lang-js">grid.rowClassGenerator = function(row) {
-     *   var activity = row.data[2];
-     *   return &quot;activity-&quot; + activity.toLowerCase();
-     * };
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property rowClassGenerator
-     * @type function
-     * 
-     */
-    public void setRowClassGenerator(Function value) {
-        getPolymerElement().setRowClassGenerator(value);
-    }
 
     /**
-     * <p>The row details generator is used for generating detail content for<br>data rows. The details element is added directly under the row.</p>
-     * <h4 id="example-">Example:</h4>
-     * <pre><code class="lang-js">grid.rowDetails.detailsGenerator = function(rowIndex) {
-     *   var detail = document.createElement(&quot;div&quot;);
-     *   detail.textContent = &quot;Row detail content for row &quot; + rowIndex;
-     *   return detail;
-     * };
-     * </code></pre>
+     * <p>The array of columns attached to the grid.</p>
+     * <p>See the API documentation for “column” for more details about the<br>column objects.</p>
      *
      * JavaScript Info:
-     * @property rowDetailsGenerator
-     * @type function
+     * @attribute columns
      * 
      */
-    public Function getRowDetailsGenerator() {
-        return getPolymerElement().getRowDetailsGenerator();
-    }
-    /**
-     * <p>The row details generator is used for generating detail content for<br>data rows. The details element is added directly under the row.</p>
-     * <h4 id="example-">Example:</h4>
-     * <pre><code class="lang-js">grid.rowDetails.detailsGenerator = function(rowIndex) {
-     *   var detail = document.createElement(&quot;div&quot;);
-     *   detail.textContent = &quot;Row detail content for row &quot; + rowIndex;
-     *   return detail;
-     * };
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property rowDetailsGenerator
-     * @type function
-     * 
-     */
-    public void setRowDetailsGenerator(Function value) {
-        getPolymerElement().setRowDetailsGenerator(value);
-    }
-
-
-    /**
-     * <p>The index of the last frozen columns in this grid. A frozen column will<br>always stay visible in the grid viewport when the user scrolls the grid<br>viewport horizontally.</p>
-     * <p>Setting the property to 0 means that no columns will be frozen,<br>but the built-in selection checkbox column will still be frozen if<br>it’s in use. Setting the count to -1 will unfreeze the selection<br>column also.</p>
-     * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;vaadin-grid frozen-columns=&quot;2&quot;&gt;...&lt;/vaadin-grid&gt;
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @attribute frozen-columns
-     * 
-     */
-    public void setFrozenColumns(String value) {
-        getPolymerElement().setAttribute("frozen-columns", value);
-    }
-
-    /**
-     * <p>Object for controlling and accessing the header rows in the grid.</p>
-     * <p>See the API documentation for “header” for more details.</p>
-     *
-     * JavaScript Info:
-     * @attribute header
-     * 
-     */
-    public void setHeader(String value) {
-        getPolymerElement().setAttribute("header", value);
+    public void setColumns(String value) {
+        getPolymerElement().setAttribute("columns", value);
     }
 
     /**
@@ -597,15 +587,15 @@ public class VaadinGrid extends PolymerWidget {
     }
 
     /**
-     * <p>The array of columns attached to the grid.</p>
-     * <p>See the API documentation for “column” for more details about the<br>column objects.</p>
+     * <p>Object for controlling and accessing the selected rows in the grid.</p>
+     * <p>See the API documentation for the “selection” object for more details.</p>
      *
      * JavaScript Info:
-     * @attribute columns
+     * @attribute selection
      * 
      */
-    public void setColumns(String value) {
-        getPolymerElement().setAttribute("columns", value);
+    public void setSelection(String value) {
+        getPolymerElement().setAttribute("selection", value);
     }
 
     /**
@@ -621,21 +611,9 @@ public class VaadinGrid extends PolymerWidget {
     }
 
     /**
-     * <p>An array defining the sorting of columns. The order of the objects in<br>the array defines the order of sort (if the grid is sorted by<br>multiple columns).</p>
-     * <p>See the API documentation for the “sort-order” object for more details.</p>
-     *
-     * JavaScript Info:
-     * @attribute sort-order
-     * 
-     */
-    public void setSortOrder(String value) {
-        getPolymerElement().setAttribute("sort-order", value);
-    }
-
-    /**
      * <p>Sets the height of the grid so that the specified amount of data rows<br>is visible. Overrides any height specified in CSS.</p>
      * <h4 id="declarative-example-">Declarative example:</h4>
-     * <pre><code class="lang-html">&lt;vaadin-grid rows=&quot;5&quot;&gt;...&lt;/vaadin-grid&gt;
+     * <pre><code class="lang-html">&lt;vaadin-grid visible-rows=&quot;5&quot;&gt;...&lt;/vaadin-grid&gt;
      * </code></pre>
      *
      * JavaScript Info:
@@ -644,18 +622,6 @@ public class VaadinGrid extends PolymerWidget {
      */
     public void setVisibleRows(String value) {
         getPolymerElement().setAttribute("visible-rows", value);
-    }
-
-    /**
-     * <p>Object for controlling and accessing the selected rows in the grid.</p>
-     * <p>See the API documentation for the “selection” object for more details.</p>
-     *
-     * JavaScript Info:
-     * @attribute selection
-     * 
-     */
-    public void setSelection(String value) {
-        getPolymerElement().setAttribute("selection", value);
     }
 
     /**
@@ -668,6 +634,45 @@ public class VaadinGrid extends PolymerWidget {
      */
     public void setSize(String value) {
         getPolymerElement().setAttribute("size", value);
+    }
+
+    /**
+     * <p>The index of the last frozen columns in this grid. A frozen column will<br>always stay visible in the grid viewport when the user scrolls the grid<br>viewport horizontally.</p>
+     * <p>Setting the property to 0 means that no columns will be frozen,<br>but the built-in selection checkbox column will still be frozen if<br>it’s in use. Setting the count to -1 will unfreeze the selection<br>column also.</p>
+     * <h4 id="declarative-example-">Declarative example:</h4>
+     * <pre><code class="lang-html">&lt;vaadin-grid frozen-columns=&quot;2&quot;&gt;...&lt;/vaadin-grid&gt;
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @attribute frozen-columns
+     * 
+     */
+    public void setFrozenColumns(String value) {
+        getPolymerElement().setAttribute("frozen-columns", value);
+    }
+
+    /**
+     * <p>Object for controlling and accessing the header rows in the grid.</p>
+     * <p>See the API documentation for “header” for more details.</p>
+     *
+     * JavaScript Info:
+     * @attribute header
+     * 
+     */
+    public void setHeader(String value) {
+        getPolymerElement().setAttribute("header", value);
+    }
+
+    /**
+     * <p>An array defining the sorting of columns. The order of the objects in<br>the array defines the order of sort (if the grid is sorted by<br>multiple columns).</p>
+     * <p>See the API documentation for the “sort-order” object for more details.</p>
+     *
+     * JavaScript Info:
+     * @attribute sort-order
+     * 
+     */
+    public void setSortOrder(String value) {
+        getPolymerElement().setAttribute("sort-order", value);
     }
 
 
@@ -704,7 +709,7 @@ public class VaadinGrid extends PolymerWidget {
     }
 
     /**
-     * <p>Clears the grid’s internal data cache, causing it to request the<br>visible items in the grid viewport from the <code>items</code> property or the<br><code>datasource</code> function, and to scroll back to the top of the grid viewport.</p>
+     * <p>Clears the grid’s internal data cache, causing it to request the<br>visible items in the grid viewport from the <code>items</code> property or the<br><code>datasource</code> function.</p>
      * <p>Needs to be called whenever the data items are modified in some way<br>(added, removed, updated, re-ordered etc.).</p>
      *
      * JavaScript Info:
@@ -714,34 +719,6 @@ public class VaadinGrid extends PolymerWidget {
      */
     public void refreshItems() {
         getPolymerElement().refreshItems();
-    }
-
-    /**
-     * <p>Shows or hides row details for the row at the given index.</p>
-     *
-     * JavaScript Info:
-     * @method setRowDetailsVisible
-     * @param {number} rowIndex  
-     * @param {boolean} visible  
-     * 
-     * 
-     */
-    public void setRowDetailsVisible(double rowIndex, boolean visible) {
-        getPolymerElement().setRowDetailsVisible(rowIndex, visible);
-    }
-
-    /**
-     * <p>Adds a new column. Column is added at the end if <code>beforeColumn</code> is not defined.</p>
-     *
-     * JavaScript Info:
-     * @method addColumn
-     * @param {column} column  
-     * @param {string} beforeColumn  
-     * 
-     * 
-     */
-    public void addColumn(Column column, String beforeColumn) {
-        getPolymerElement().addColumn(column, beforeColumn);
     }
 
     /**
@@ -763,18 +740,30 @@ public class VaadinGrid extends PolymerWidget {
     }
 
     /**
-     * <p>Invokes the callback with row data of the provided row index as the<br>parameter. If the row is not cached, it’s fetched from the data source<br>first.</p>
+     * <p>Adds a new column. Column is added at the end if <code>beforeColumn</code> is not defined.</p>
      *
      * JavaScript Info:
-     * @method getItem
-     * @param {number} rowIndex  
-     * @param {Function} callback  
-     * @param {boolean} onlyCached  
+     * @method addColumn
+     * @param {column} column  
+     * @param {string} beforeColumn  
      * 
      * 
      */
-    public void getItem(double rowIndex, Function callback, boolean onlyCached) {
-        getPolymerElement().getItem(rowIndex, callback, onlyCached);
+    public void addColumn(Column column, String beforeColumn) {
+        getPolymerElement().addColumn(column, beforeColumn);
+    }
+
+    /**
+     * <p>Removes a column with certain id</p>
+     *
+     * JavaScript Info:
+     * @method removeColumn
+     * @param {string} id  
+     * 
+     * 
+     */
+    public void removeColumn(String id) {
+        getPolymerElement().removeColumn(id);
     }
 
     /**
@@ -791,16 +780,32 @@ public class VaadinGrid extends PolymerWidget {
     }
 
     /**
-     * <p>Removes a column with certain id</p>
+     * <p>Shows or hides row details for the row at the given index.</p>
      *
      * JavaScript Info:
-     * @method removeColumn
-     * @param {string} id  
+     * @method setRowDetailsVisible
+     * @param {number} rowIndex  
+     * @param {boolean} visible  
      * 
      * 
      */
-    public void removeColumn(String id) {
-        getPolymerElement().removeColumn(id);
+    public void setRowDetailsVisible(double rowIndex, boolean visible) {
+        getPolymerElement().setRowDetailsVisible(rowIndex, visible);
+    }
+
+    /**
+     * <p>Invokes the callback with row data of the provided row index as the<br>parameter. If the row is not cached, it’s fetched from the data source<br>first.</p>
+     *
+     * JavaScript Info:
+     * @method getItem
+     * @param {number} rowIndex  
+     * @param {Function} callback  
+     * @param {boolean} onlyCached  
+     * 
+     * 
+     */
+    public void getItem(double rowIndex, Function callback, boolean onlyCached) {
+        getPolymerElement().getItem(rowIndex, callback, onlyCached);
     }
 
 

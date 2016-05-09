@@ -155,49 +155,49 @@ public class PaperFab extends PolymerWidget {
     }
 
     /**
-     * <p>Set this to true to style this is a “mini” FAB.</p>
+     * 
      *
      * JavaScript Info:
-     * @property mini
-     * @type Boolean
-     * 
+     * @property keyBindings
+     * @type Object
+     * @behavior PaperTab
      */
-    public boolean getMini() {
-        return getPolymerElement().getMini();
+    public JavaScriptObject getKeyBindings() {
+        return getPolymerElement().getKeyBindings();
     }
     /**
-     * <p>Set this to true to style this is a “mini” FAB.</p>
+     * 
      *
      * JavaScript Info:
-     * @property mini
-     * @type Boolean
-     * 
+     * @property keyBindings
+     * @type Object
+     * @behavior PaperTab
      */
-    public void setMini(boolean value) {
-        getPolymerElement().setMini(value);
+    public void setKeyBindings(JavaScriptObject value) {
+        getPolymerElement().setKeyBindings(value);
     }
 
     /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
+     * @property keyEventTarget
+     * @type Object
+     * @behavior VaadinComboBox
      */
-    public boolean getActive() {
-        return getPolymerElement().getActive();
+    public JavaScriptObject getKeyEventTarget() {
+        return getPolymerElement().getKeyEventTarget();
     }
     /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
+     * @property keyEventTarget
+     * @type Object
+     * @behavior VaadinComboBox
      */
-    public void setActive(boolean value) {
-        getPolymerElement().setActive(value);
+    public void setKeyEventTarget(JavaScriptObject value) {
+        getPolymerElement().setKeyEventTarget(value);
     }
 
     /**
@@ -206,7 +206,7 @@ public class PaperFab extends PolymerWidget {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperFab
      */
     public boolean getNoink() {
         return getPolymerElement().getNoink();
@@ -217,7 +217,7 @@ public class PaperFab extends PolymerWidget {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperFab
      */
     public void setNoink(boolean value) {
         getPolymerElement().setNoink(value);
@@ -244,29 +244,6 @@ public class PaperFab extends PolymerWidget {
      */
     public void setPointerDown(boolean value) {
         getPolymerElement().setPointerDown(value);
-    }
-
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    public boolean getStopKeyboardEventPropagation() {
-        return getPolymerElement().getStopKeyboardEventPropagation();
-    }
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    public void setStopKeyboardEventPropagation(boolean value) {
-        getPolymerElement().setStopKeyboardEventPropagation(value);
     }
 
     /**
@@ -316,6 +293,75 @@ public class PaperFab extends PolymerWidget {
     }
 
     /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    public boolean getStopKeyboardEventPropagation() {
+        return getPolymerElement().getStopKeyboardEventPropagation();
+    }
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    public void setStopKeyboardEventPropagation(boolean value) {
+        getPolymerElement().setStopKeyboardEventPropagation(value);
+    }
+
+    /**
+     * <p>Set this to true to style this is a “mini” FAB.</p>
+     *
+     * JavaScript Info:
+     * @property mini
+     * @type Boolean
+     * 
+     */
+    public boolean getMini() {
+        return getPolymerElement().getMini();
+    }
+    /**
+     * <p>Set this to true to style this is a “mini” FAB.</p>
+     *
+     * JavaScript Info:
+     * @property mini
+     * @type Boolean
+     * 
+     */
+    public void setMini(boolean value) {
+        getPolymerElement().setMini(value);
+    }
+
+    /**
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     *
+     * JavaScript Info:
+     * @property active
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public boolean getActive() {
+        return getPolymerElement().getActive();
+    }
+    /**
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     *
+     * JavaScript Info:
+     * @property active
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    public void setActive(boolean value) {
+        getPolymerElement().setActive(value);
+    }
+
+    /**
      * <p>If true, the user cannot interact with this element.</p>
      *
      * JavaScript Info:
@@ -362,49 +408,26 @@ public class PaperFab extends PolymerWidget {
     }
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The label displayed in the badge. The label is centered, and ideally<br>should have very few characters.</p>
      *
      * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior VaadinComboBox
-     */
-    public JavaScriptObject getKeyEventTarget() {
-        return getPolymerElement().getKeyEventTarget();
-    }
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior VaadinComboBox
-     */
-    public void setKeyEventTarget(JavaScriptObject value) {
-        getPolymerElement().setKeyEventTarget(value);
-    }
-
-    /**
+     * @property label
+     * @type String
      * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
      */
-    public JavaScriptObject getKeyBindings() {
-        return getPolymerElement().getKeyBindings();
+    public String getLabel() {
+        return getPolymerElement().getLabel();
     }
     /**
-     * 
+     * <p>The label displayed in the badge. The label is centered, and ideally<br>should have very few characters.</p>
      *
      * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
+     * @property label
+     * @type String
+     * 
      */
-    public void setKeyBindings(JavaScriptObject value) {
-        getPolymerElement().setKeyBindings(value);
+    public void setLabel(String value) {
+        getPolymerElement().setLabel(value);
     }
 
     /**
@@ -478,22 +501,11 @@ public class PaperFab extends PolymerWidget {
 
 
     /**
-     * <p>The z-depth of this element, from 0-5. Setting to 0 will remove the<br>shadow, and each increasing number greater than 0 will be “deeper”<br>than the last.</p>
-     *
-     * JavaScript Info:
-     * @attribute elevation
-     * @behavior PaperFab
-     */
-    public void setElevation(String value) {
-        getPolymerElement().setAttribute("elevation", value);
-    }
-
-    /**
      * 
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior VaadinComboBox
+     * @behavior PaperTab
      */
     public void setKeyBindings(String value) {
         getPolymerElement().setAttribute("key-bindings", value);
@@ -508,6 +520,17 @@ public class PaperFab extends PolymerWidget {
      */
     public void setKeyEventTarget(String value) {
         getPolymerElement().setAttribute("key-event-target", value);
+    }
+
+    /**
+     * <p>The z-depth of this element, from 0-5. Setting to 0 will remove the<br>shadow, and each increasing number greater than 0 will be “deeper”<br>than the last.</p>
+     *
+     * JavaScript Info:
+     * @attribute elevation
+     * @behavior PaperFab
+     */
+    public void setElevation(String value) {
+        getPolymerElement().setAttribute("elevation", value);
     }
 
 
@@ -526,18 +549,6 @@ public class PaperFab extends PolymerWidget {
     }
 
     /**
-     * <p>Returns true if this element currently contains a ripple effect.</p>
-     *
-     * JavaScript Info:
-     * @method hasRipple
-     * @behavior PaperFab
-     * @return {boolean}
-     */
-    public boolean hasRipple() {
-        return getPolymerElement().hasRipple();
-    }
-
-    /**
      * <p>Returns the <code>&lt;paper-ripple&gt;</code> element used by this element to create<br>ripple effects. The element’s ripple is created on demand, when<br>necessary, and calling this method will force the<br>ripple to be created.</p>
      *
      * JavaScript Info:
@@ -547,6 +558,18 @@ public class PaperFab extends PolymerWidget {
      */
     public void getRipple() {
         getPolymerElement().getRipple();
+    }
+
+    /**
+     * <p>Returns true if this element currently contains a ripple effect.</p>
+     *
+     * JavaScript Info:
+     * @method hasRipple
+     * @behavior PaperTab
+     * @return {boolean}
+     */
+    public boolean hasRipple() {
+        return getPolymerElement().hasRipple();
     }
 
     /**
@@ -567,7 +590,7 @@ public class PaperFab extends PolymerWidget {
      * JavaScript Info:
      * @method ensureRipple
      * @param {!Event=} optTriggeringEvent  
-     * @behavior PaperTab
+     * @behavior PaperFab
      * 
      */
     public void ensureRipple(JavaScriptObject optTriggeringEvent) {

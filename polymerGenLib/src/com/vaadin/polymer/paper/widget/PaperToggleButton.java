@@ -61,17 +61,17 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <tr>
  * <td><code>--paper-toggle-button-checked-bar-color</code></td>
  * <td>Slider button color when the input is checked</td>
- * <td><code>--default-primary-color</code></td>
+ * <td><code>--primary-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-toggle-button-checked-button-color</code></td>
  * <td>Button color when the input is checked</td>
- * <td><code>--default-primary-color</code></td>
+ * <td><code>--primary-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-toggle-button-checked-ink-color</code></td>
  * <td>Selected/focus ripple color when the input is checked</td>
- * <td><code>--default-primary-color</code></td>
+ * <td><code>--primary-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-toggle-button-unchecked-bar</code></td>
@@ -105,6 +105,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  * </tr>
  * </tbody>
  * </table>
+ * <p>This element applies the mixin <code>--paper-font-common-base</code> but does not import <code>paper-styles/typography.html</code>.<br>In order to apply the <code>Roboto</code> font to this element, make sure you’ve imported <code>paper-styles/typography.html</code>.</p>
  */
 public class PaperToggleButton extends PolymerWidget {
     /**
@@ -549,7 +550,7 @@ public class PaperToggleButton extends PolymerWidget {
     }
 
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -560,7 +561,7 @@ public class PaperToggleButton extends PolymerWidget {
         return getPolymerElement().getValidatorType();
     }
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType

@@ -24,7 +24,7 @@ import jsinterop.annotations.JsType;
  * &lt;/paper-tabs&gt;
  * 
  * 
- * </code></pre><p>See <a href="#paper-tab">paper-tab</a> for more information about<br><code>paper-tab</code>.</p>
+ * </code></pre><p>See <a href="?active=paper-tab">paper-tab</a> for more information about<br><code>paper-tab</code>.</p>
  * <p>A common usage for <code>paper-tabs</code> is to use it along with <code>iron-pages</code> to switch<br>between different views.</p>
  * <pre><code>&lt;paper-tabs selected=&quot;{{selected}}&quot;&gt;
  *   &lt;paper-tab&gt;Tab 1&lt;/paper-tab&gt;
@@ -40,12 +40,57 @@ import jsinterop.annotations.JsType;
  * 
  * 
  * 
- * </code></pre><p>To use links in tabs, add <code>link</code> attribute to <code>paper-tab</code> and put an <code>&lt;a&gt;</code><br>element in <code>paper-tab</code>.</p>
+ * </code></pre><p>To use links in tabs, add <code>link</code> attribute to <code>paper-tab</code> and put an <code>&lt;a&gt;</code><br>element in <code>paper-tab</code> with a <code>tabindex</code> of -1.</p>
  * <p>Example:</p>
- * <pre><code>&lt;style is=&quot;custom-style&quot;&gt;
+ * <pre><code>
+ * &lt;style is="custom-style">
  *   .link {
+ *     &#64;apply(--layout-horizontal);
+ *     &#64;apply(--layout-center-center);
+ *   }
+ * &lt;/style>
  * 
+ * &lt;paper-tabs selected="0">
+ *   &lt;paper-tab link>
+ *     &lt;a href="#link1" class="link" tabindex="-1">TAB ONE&lt;/a>
+ *   &lt;/paper-tab>
+ *   &lt;paper-tab link>
+ *     &lt;a href="#link2" class="link" tabindex="-1">TAB TWO&lt;/a>
+ *   &lt;/paper-tab>
+ *   &lt;paper-tab link>
+ *     &lt;a href="#link3" class="link" tabindex="-1">TAB THREE&lt;/a>
+ *   &lt;/paper-tab>
+ * &lt;/paper-tabs>
  * </code></pre>
+ * 
+ * <h3 id="styling">Styling</h3>
+ * <p>The following custom properties and mixins are available for styling:</p>
+ * <table>
+ * <thead>
+ * <tr>
+ * <th>Custom property</th>
+ * <th>Description</th>
+ * <th>Default</th>
+ * </tr>
+ * </thead>
+ * <tbody>
+ * <tr>
+ * <td><code>--paper-tabs-selection-bar-color</code></td>
+ * <td>Color for the selection bar</td>
+ * <td><code>--paper-yellow-a100</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-tabs-selection-bar</code></td>
+ * <td>Mixin applied to the selection bar</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-tabs</code></td>
+ * <td>Mixin applied to the tabs</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * </tbody>
+ * </table>
  */
 @JsType(isNative=true)
 public interface PaperTabsElement extends HTMLElement {
@@ -74,80 +119,42 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setMulti(boolean value);
 
     /**
-     * <p>Returns the currently selected item.</p>
+     * <p>The delay (in milliseconds) between when the user stops interacting<br>with the tabs through the keyboard and when the focused item is<br>automatically selected (if <code>autoselect</code> is true).</p>
      *
      * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty JavaScriptObject getSelectedItem();
-    /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelectedItem(JavaScriptObject value);
-
-    /**
-     * <p>Returns the currently focused item.</p>
-     *
-     * JavaScript Info:
-     * @property focusedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty JavaScriptObject getFocusedItem();
-    /**
-     * <p>Returns the currently focused item.</p>
-     *
-     * JavaScript Info:
-     * @property focusedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty void setFocusedItem(JavaScriptObject value);
-
-    /**
+     * @property autoselectDelay
+     * @type Number
      * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTabs
      */
-    @JsProperty JavaScriptObject getKeyBindings();
+    @JsProperty double getAutoselectDelay();
     /**
-     * 
+     * <p>The delay (in milliseconds) between when the user stops interacting<br>with the tabs through the keyboard and when the focused item is<br>automatically selected (if <code>autoselect</code> is true).</p>
      *
      * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTabs
+     * @property autoselectDelay
+     * @type Number
+     * 
      */
-    @JsProperty void setKeyBindings(JavaScriptObject value);
+    @JsProperty void setAutoselectDelay(double value);
 
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     * <p>The list of items from which a selection can be made.</p>
      *
      * JavaScript Info:
-     * @property selected
-     * @type (string|number)
+     * @property items
+     * @type Array
      * @behavior PaperTabs
      */
-    @JsProperty Object getSelected();
+    @JsProperty JsArray getItems();
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     * <p>The list of items from which a selection can be made.</p>
      *
      * JavaScript Info:
-     * @property selected
-     * @type (string|number)
+     * @property items
+     * @type Array
      * @behavior PaperTabs
      */
-    @JsProperty void setSelected(Object value);
+    @JsProperty void setItems(JsArray value);
 
     /**
      * <p>Returns an array of currently selected items.</p>
@@ -188,23 +195,80 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setSelectedValues(JsArray value);
 
     /**
-     * <p>The list of items from which a selection can be made.</p>
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @property items
-     * @type Array
+     * @property selected
+     * @type (string|number)
      * @behavior PaperTabs
      */
-    @JsProperty JsArray getItems();
+    @JsProperty Object getSelected();
     /**
-     * <p>The list of items from which a selection can be made.</p>
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
-     * @property items
-     * @type Array
+     * @property selected
+     * @type (string|number)
      * @behavior PaperTabs
      */
-    @JsProperty void setItems(JsArray value);
+    @JsProperty void setSelected(Object value);
+
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty JavaScriptObject getFocusedItem();
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty void setFocusedItem(JavaScriptObject value);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior PaperTabs
+     */
+    @JsProperty JavaScriptObject getKeyBindings();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior PaperTabs
+     */
+    @JsProperty void setKeyBindings(JavaScriptObject value);
+
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty JavaScriptObject getSelectedItem();
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedItem(JavaScriptObject value);
 
     /**
      * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
@@ -226,42 +290,23 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
     /**
-     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
+     * <p>If true, tabs are scrollable and the tab width is based on the label width.</p>
      *
      * JavaScript Info:
-     * @property noBar
+     * @property scrollable
      * @type Boolean
      * 
      */
-    @JsProperty boolean getNoBar();
+    @JsProperty boolean getScrollable();
     /**
-     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
+     * <p>If true, tabs are scrollable and the tab width is based on the label width.</p>
      *
      * JavaScript Info:
-     * @property noBar
+     * @property scrollable
      * @type Boolean
      * 
      */
-    @JsProperty void setNoBar(boolean value);
-
-    /**
-     * <p>If true, the slide effect for the bottom bar is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property noSlide
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getNoSlide();
-    /**
-     * <p>If true, the slide effect for the bottom bar is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property noSlide
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setNoSlide(boolean value);
+    @JsProperty void setScrollable(boolean value);
 
     /**
      * <p>If true, dragging on the tabs to scroll is disabled.</p>
@@ -283,61 +328,42 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setDisableDrag(boolean value);
 
     /**
-     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     * <p>If true, tabs are automatically selected when focused using the<br>keyboard.</p>
      *
      * JavaScript Info:
-     * @property noink
+     * @property autoselect
      * @type Boolean
      * 
      */
-    @JsProperty boolean getNoink();
+    @JsProperty boolean getAutoselect();
     /**
-     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     * <p>If true, tabs are automatically selected when focused using the<br>keyboard.</p>
      *
      * JavaScript Info:
-     * @property noink
+     * @property autoselect
      * @type Boolean
      * 
      */
-    @JsProperty void setNoink(boolean value);
+    @JsProperty void setAutoselect(boolean value);
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    @JsProperty boolean getStopKeyboardEventPropagation();
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior VaadinComboBox
-     */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
-
-    /**
-     * <p>If true, tabs are scrollable and the tab width is based on the label width.</p>
-     *
-     * JavaScript Info:
-     * @property scrollable
+     * @property hideScrollButtons
      * @type Boolean
      * 
      */
-    @JsProperty boolean getScrollable();
+    @JsProperty boolean getHideScrollButtons();
     /**
-     * <p>If true, tabs are scrollable and the tab width is based on the label width.</p>
+     * <p>If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.</p>
      *
      * JavaScript Info:
-     * @property scrollable
+     * @property hideScrollButtons
      * @type Boolean
      * 
      */
-    @JsProperty void setScrollable(boolean value);
+    @JsProperty void setHideScrollButtons(boolean value);
 
     /**
      * <p>If true, the tabs are aligned to bottom (the selection bar appears at the top).</p>
@@ -359,23 +385,118 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setAlignBottom(boolean value);
 
     /**
-     * <p>If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.</p>
+     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
      *
      * JavaScript Info:
-     * @property hideScrollButtons
+     * @property noBar
      * @type Boolean
      * 
      */
-    @JsProperty boolean getHideScrollButtons();
+    @JsProperty boolean getNoBar();
     /**
-     * <p>If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.</p>
+     * <p>If true, the bottom bar to indicate the selected tab will not be shown.</p>
      *
      * JavaScript Info:
-     * @property hideScrollButtons
+     * @property noBar
      * @type Boolean
      * 
      */
-    @JsProperty void setHideScrollButtons(boolean value);
+    @JsProperty void setNoBar(boolean value);
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    @JsProperty boolean getStopKeyboardEventPropagation();
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior VaadinComboBox
+     */
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
+
+    /**
+     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNoink();
+    /**
+     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNoink(boolean value);
+
+    /**
+     * <p>If true, the slide effect for the bottom bar is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property noSlide
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNoSlide();
+    /**
+     * <p>If true, the slide effect for the bottom bar is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property noSlide
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNoSlide(boolean value);
+
+    /**
+     * <p>The class to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedClass
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getSelectedClass();
+    /**
+     * <p>The class to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedClass
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedClass(String value);
+
+    /**
+     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     *
+     * JavaScript Info:
+     * @property selectable
+     * @type string
+     * @behavior PaperTabs
+     */
+    @JsProperty String getSelectable();
+    /**
+     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     *
+     * JavaScript Info:
+     * @property selectable
+     * @type string
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectable(String value);
 
     /**
      * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
@@ -416,44 +537,6 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setAttrForSelected(String value);
 
     /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getSelectedAttribute();
-    /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelectedAttribute(String value);
-
-    /**
-     * <p>The class to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedClass
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getSelectedClass();
-    /**
-     * <p>The class to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedClass
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelectedClass(String value);
-
-    /**
      * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
      *
      * JavaScript Info:
@@ -473,23 +556,23 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setActivateEvent(String value);
 
     /**
-     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectable
-     * @type string
+     * @property selectedAttribute
+     * @type String
      * @behavior PaperTabs
      */
-    @JsProperty String getSelectable();
+    @JsProperty String getSelectedAttribute();
     /**
-     * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property selectable
-     * @type string
+     * @property selectedAttribute
+     * @type String
      * @behavior PaperTabs
      */
-    @JsProperty void setSelectable(String value);
+    @JsProperty void setSelectedAttribute(String value);
 
     /**
      * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
@@ -512,15 +595,26 @@ public interface PaperTabsElement extends HTMLElement {
 
 
     /**
-     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
+     * 
      *
      * JavaScript Info:
-     * @method select
-     * @param {(string|number)} value  
+     * @method multiChanged
+     * @param {} multi  
      * @behavior PaperTabs
      * 
      */
-    void select(Object value);
+    void multiChanged(Object multi);
+
+    /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
+     * 
+     */
+    void selectIndex(Object index);
 
     /**
      * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
@@ -532,17 +626,6 @@ public interface PaperTabsElement extends HTMLElement {
      * 
      */
     void assignParentResizable(Object parentResizable);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method multiChanged
-     * @param {} multi  
-     * @behavior PaperTabs
-     * 
-     */
-    void multiChanged(Object multi);
 
     /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
@@ -568,14 +651,25 @@ public interface PaperTabsElement extends HTMLElement {
     void stopResizeNotificationsFor(Object target);
 
     /**
-     * <p>Selects the next item.</p>
+     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
      *
      * JavaScript Info:
-     * @method selectNext
+     * @method select
+     * @param {(string|number)} value  
      * @behavior PaperTabs
      * 
      */
-    void selectNext();
+    void select(Object value);
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior VaadinComboBox
+     * 
+     */
+    void removeOwnKeyBindings();
 
     /**
      * <p>Force a synchronous update of the <code>items</code> property.</p>
@@ -590,16 +684,6 @@ public interface PaperTabsElement extends HTMLElement {
     void forceSynchronousItemUpdate();
 
     /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * @behavior PaperTabs
-     * 
-     */
-    void selectPrevious();
-
-    /**
      * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
      *
      * JavaScript Info:
@@ -610,14 +694,24 @@ public interface PaperTabsElement extends HTMLElement {
     void notifyResize();
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
+     * <p>Selects the next item.</p>
      *
      * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior VaadinComboBox
+     * @method selectNext
+     * @behavior PaperTabs
      * 
      */
-    void removeOwnKeyBindings();
+    void selectNext();
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * @behavior PaperTabs
+     * 
+     */
+    void selectPrevious();
 
     /**
      * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>

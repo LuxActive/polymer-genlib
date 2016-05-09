@@ -115,29 +115,6 @@ public class IronInput extends PolymerWidget {
     }
 
     /**
-     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
-     *
-     * JavaScript Info:
-     * @property allowedPattern
-     * @type String
-     * 
-     */
-    public String getAllowedPattern() {
-        return getPolymerElement().getAllowedPattern();
-    }
-    /**
-     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
-     *
-     * JavaScript Info:
-     * @property allowedPattern
-     * @type String
-     * 
-     */
-    public void setAllowedPattern(String value) {
-        getPolymerElement().setAllowedPattern(value);
-    }
-
-    /**
      * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
      *
      * JavaScript Info:
@@ -184,7 +161,7 @@ public class IronInput extends PolymerWidget {
     }
 
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -195,7 +172,7 @@ public class IronInput extends PolymerWidget {
         return getPolymerElement().getValidatorType();
     }
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -206,19 +183,30 @@ public class IronInput extends PolymerWidget {
         getPolymerElement().setValidatorType(value);
     }
 
-
-
     /**
-     * 
+     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
      *
      * JavaScript Info:
-     * @method hasValidator
-     * @behavior VaadinDatePicker
-     * @return {boolean}
+     * @property allowedPattern
+     * @type String
+     * 
      */
-    public boolean hasValidator() {
-        return getPolymerElement().hasValidator();
+    public String getAllowedPattern() {
+        return getPolymerElement().getAllowedPattern();
     }
+    /**
+     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
+     *
+     * JavaScript Info:
+     * @property allowedPattern
+     * @type String
+     * 
+     */
+    public void setAllowedPattern(String value) {
+        getPolymerElement().setAllowedPattern(value);
+    }
+
+
 
     /**
      * <p>Returns true if <code>value</code> is valid. The validator provided in <code>validator</code> will be used first,<br>then any constraints.</p>
@@ -230,6 +218,18 @@ public class IronInput extends PolymerWidget {
      */
     public boolean validate() {
         return getPolymerElement().validate();
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method hasValidator
+     * @behavior VaadinDatePicker
+     * @return {boolean}
+     */
+    public boolean hasValidator() {
+        return getPolymerElement().hasValidator();
     }
 
     /**

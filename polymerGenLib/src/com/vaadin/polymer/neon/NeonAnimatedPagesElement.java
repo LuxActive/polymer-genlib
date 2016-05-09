@@ -24,6 +24,25 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
 
 
     /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    @JsProperty JavaScriptObject getAnimationConfig();
+    /**
+     * <p>Animation configuration. See README for more info.</p>
+     *
+     * JavaScript Info:
+     * @property animationConfig
+     * @type Object
+     * @behavior PaperTooltip
+     */
+    @JsProperty void setAnimationConfig(JavaScriptObject value);
+
+    /**
      * <p> if true, the initial page selection will also be animated according to its animation config.</p>
      *
      * JavaScript Info:
@@ -60,25 +79,6 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
      * @behavior PaperTabs
      */
     @JsProperty void setSelected(Object value);
-
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * @behavior PaperTooltip
-     */
-    @JsProperty JavaScriptObject getAnimationConfig();
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * @behavior PaperTooltip
-     */
-    @JsProperty void setAnimationConfig(JavaScriptObject value);
 
     /**
      * <p>Returns the currently selected item.</p>
@@ -272,15 +272,15 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
 
 
     /**
-     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
+     * <p>Selects the item at the given index.</p>
      *
      * JavaScript Info:
-     * @method assignParentResizable
-     * @param {} parentResizable  
-     * @behavior VaadinComboBoxOverlay
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
      * 
      */
-    void assignParentResizable(Object parentResizable);
+    void selectIndex(Object index);
 
     /**
      * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
@@ -294,6 +294,17 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
     void stopResizeNotificationsFor(Object target);
 
     /**
+     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
+     *
+     * JavaScript Info:
+     * @method assignParentResizable
+     * @param {} parentResizable  
+     * @behavior VaadinComboBoxOverlay
+     * 
+     */
+    void assignParentResizable(Object parentResizable);
+
+    /**
      * <p>Selects the given value.</p>
      *
      * JavaScript Info:
@@ -303,6 +314,16 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
      * 
      */
     void select(Object value);
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * @behavior PaperTabs
+     * 
+     */
+    void selectPrevious();
 
     /**
      * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
@@ -315,11 +336,21 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
     void notifyResize();
 
     /**
+     * <p>Selects the next item.</p>
+     *
+     * JavaScript Info:
+     * @method selectNext
+     * @behavior PaperTabs
+     * 
+     */
+    void selectNext();
+
+    /**
      * <p>Cancels the currently running animation.</p>
      *
      * JavaScript Info:
      * @method cancelAnimation
-     * 
+     * @behavior PaperTooltip
      * 
      */
     void cancelAnimation();
@@ -335,26 +366,6 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
      * 
      */
     void forceSynchronousItemUpdate();
-
-    /**
-     * <p>Selects the next item.</p>
-     *
-     * JavaScript Info:
-     * @method selectNext
-     * @behavior PaperTabs
-     * 
-     */
-    void selectNext();
-
-    /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * @behavior PaperTabs
-     * 
-     */
-    void selectPrevious();
 
     /**
      * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
@@ -385,7 +396,7 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
      * @method playAnimation
      * @param {string=} type  
      * @param {!Object=} cookie  
-     * @behavior PaperTooltip
+     * 
      * 
      */
     void playAnimation(String type, JavaScriptObject cookie);

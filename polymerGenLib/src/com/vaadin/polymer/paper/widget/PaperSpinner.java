@@ -56,6 +56,11 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <td>Color of the fourth spinner rotation</td>
  * <td><code>--google-green-500</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--paper-spinner-stroke-width</code></td>
+ * <td>The width of the spinner stroke</td>
+ * <td>3px</td>
+ * </tr>
  * </tbody>
  * </table>
  */

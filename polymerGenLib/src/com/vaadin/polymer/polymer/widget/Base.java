@@ -411,16 +411,13 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method translate3d
-     * @param {} x  
-     * @param {} y  
-     * @param {} z  
-     * @param {} node  
+     * @method distributeContent
+     * @param {} updateInsertionPoints  
      * 
      * 
      */
-    public void translate3d(Object x, Object y, Object z, Object node) {
-        getPolymerElement().translate3d(x, y, z, node);
+    public void distributeContent(Object updateInsertionPoints) {
+        getPolymerElement().distributeContent(updateInsertionPoints);
     }
 
     /**
@@ -442,13 +439,16 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method distributeContent
-     * @param {} updateInsertionPoints  
+     * @method translate3d
+     * @param {} x  
+     * @param {} y  
+     * @param {} z  
+     * @param {} node  
      * 
      * 
      */
-    public void distributeContent(Object updateInsertionPoints) {
-        getPolymerElement().distributeContent(updateInsertionPoints);
+    public void translate3d(Object x, Object y, Object z, Object node) {
+        getPolymerElement().translate3d(x, y, z, node);
     }
 
     /**

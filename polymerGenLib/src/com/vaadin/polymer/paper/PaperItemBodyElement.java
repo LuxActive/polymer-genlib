@@ -61,7 +61,7 @@ import jsinterop.annotations.JsType;
 public interface PaperItemBodyElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "paper-item-body";
-    @JsOverlay public static final String SRC = "paper-item/all-imports.html";
+    @JsOverlay public static final String SRC = "paper-item/paper-item-body.html";
 
 
 

@@ -44,6 +44,11 @@ import jsinterop.annotations.JsType;
  * </thead>
  * <tbody>
  * <tr>
+ * <td><code>--paper-card-background-color</code></td>
+ * <td>The background color of the card</td>
+ * <td><code>--primary-background-color</code></td>
+ * </tr>
+ * <tr>
  * <td><code>--paper-card-header-color</code></td>
  * <td>The color of the header text</td>
  * <td><code>#000</code></td>

@@ -51,7 +51,7 @@ public interface IronOverlayBehavior {
     @JsProperty void setNoCancelOnOutsideClick(boolean value);
 
     /**
-     * <p>Returns the reason this dialog was last closed.</p>
+     * <p>Contains the reason(s) this overlay was last closed (see <code>iron-overlay-closed</code>).<br><code>IronOverlayBehavior</code> provides the <code>canceled</code> reason; implementers of the<br>behavior can provide other reasons in addition to <code>canceled</code>.</p>
      *
      * JavaScript Info:
      * @property closingReason
@@ -60,7 +60,7 @@ public interface IronOverlayBehavior {
      */
     @JsProperty JavaScriptObject getClosingReason();
     /**
-     * <p>Returns the reason this dialog was last closed.</p>
+     * <p>Contains the reason(s) this overlay was last closed (see <code>iron-overlay-closed</code>).<br><code>IronOverlayBehavior</code> provides the <code>canceled</code> reason; implementers of the<br>behavior can provide other reasons in addition to <code>canceled</code>.</p>
      *
      * JavaScript Info:
      * @property closingReason

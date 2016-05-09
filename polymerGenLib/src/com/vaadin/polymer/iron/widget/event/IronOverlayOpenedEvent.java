@@ -9,7 +9,7 @@ import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * <p>Fired after the <code>iron-overlay</code> opens.</p>
+ * <p>Fired after the overlay opens.</p>
  */
 public class IronOverlayOpenedEvent extends DomEvent<IronOverlayOpenedEventHandler> {
 

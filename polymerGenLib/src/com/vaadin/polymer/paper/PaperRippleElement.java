@@ -347,6 +347,18 @@ public interface PaperRippleElement extends HTMLElement {
     void removeOwnKeyBindings();
 
     /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior VaadinComboBox
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
+
+    /**
      * <p>Provokes a ripple down effect via a UI event,<br><em>not</em> respecting the <code>noink</code> property.</p>
      *
      * JavaScript Info:
@@ -389,17 +401,5 @@ public interface PaperRippleElement extends HTMLElement {
      * 
      */
     void uiDownAction(JavaScriptObject event);
-
-    /**
-     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {KeyboardEvent} event  
-     * @param {string} eventString  
-     * @behavior VaadinComboBox
-     * @return {boolean}
-     */
-    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
 }

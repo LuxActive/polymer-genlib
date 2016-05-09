@@ -26,7 +26,7 @@ import jsinterop.annotations.JsType;
 public interface FadeOutAnimationElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "fade-out-animation";
-    @JsOverlay public static final String SRC = "neon-animation/neon-animations.html";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animation.html";
 
 
     /**
