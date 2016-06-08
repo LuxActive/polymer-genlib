@@ -72,42 +72,23 @@ public interface IronFitBehavior {
 
 
     /**
-     * <p>Set to true to auto-fit on attach.</p>
+     * <p>Will position the element around the positionTarget without overlapping it.</p>
      *
      * JavaScript Info:
-     * @property autoFitOnAttach
+     * @property noOverlap
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
-    @JsProperty boolean getAutoFitOnAttach();
+    @JsProperty boolean getNoOverlap();
     /**
-     * <p>Set to true to auto-fit on attach.</p>
+     * <p>Will position the element around the positionTarget without overlapping it.</p>
      *
      * JavaScript Info:
-     * @property autoFitOnAttach
+     * @property noOverlap
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
-    @JsProperty void setAutoFitOnAttach(boolean value);
-
-    /**
-     * <p>The element to fit <code>this</code> into.</p>
-     *
-     * JavaScript Info:
-     * @property fitInto
-     * @type Object
-     * @behavior PaperToast
-     */
-    @JsProperty JavaScriptObject getFitInto();
-    /**
-     * <p>The element to fit <code>this</code> into.</p>
-     *
-     * JavaScript Info:
-     * @property fitInto
-     * @type Object
-     * @behavior PaperToast
-     */
-    @JsProperty void setFitInto(JavaScriptObject value);
+    @JsProperty void setNoOverlap(boolean value);
 
     /**
      * <p>The same as setting margin-top and margin-bottom css properties.</p>
@@ -115,7 +96,7 @@ public interface IronFitBehavior {
      * JavaScript Info:
      * @property verticalOffset
      * @type Number
-     * @behavior PaperToast
+     * 
      */
     @JsProperty double getVerticalOffset();
     /**
@@ -124,7 +105,7 @@ public interface IronFitBehavior {
      * JavaScript Info:
      * @property verticalOffset
      * @type Number
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setVerticalOffset(double value);
 
@@ -134,7 +115,7 @@ public interface IronFitBehavior {
      * JavaScript Info:
      * @property horizontalOffset
      * @type Number
-     * @behavior PaperToast
+     * 
      */
     @JsProperty double getHorizontalOffset();
     /**
@@ -143,28 +124,9 @@ public interface IronFitBehavior {
      * JavaScript Info:
      * @property horizontalOffset
      * @type Number
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setHorizontalOffset(double value);
-
-    /**
-     * <p>Will position the element around the positionTarget without overlapping it.</p>
-     *
-     * JavaScript Info:
-     * @property noOverlap
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getNoOverlap();
-    /**
-     * <p>Will position the element around the positionTarget without overlapping it.</p>
-     *
-     * JavaScript Info:
-     * @property noOverlap
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setNoOverlap(boolean value);
 
     /**
      * <p>The element that should be used to position the element. If not set, it will<br>default to the parent node.</p>
@@ -172,7 +134,7 @@ public interface IronFitBehavior {
      * JavaScript Info:
      * @property positionTarget
      * @type !Element
-     * @behavior PaperToast
+     * 
      */
     @JsProperty JavaScriptObject getPositionTarget();
     /**
@@ -181,7 +143,7 @@ public interface IronFitBehavior {
      * JavaScript Info:
      * @property positionTarget
      * @type !Element
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setPositionTarget(JavaScriptObject value);
 
@@ -191,7 +153,7 @@ public interface IronFitBehavior {
      * JavaScript Info:
      * @property sizingTarget
      * @type !Element
-     * @behavior PaperToast
+     * 
      */
     @JsProperty JavaScriptObject getSizingTarget();
     /**
@@ -200,9 +162,66 @@ public interface IronFitBehavior {
      * JavaScript Info:
      * @property sizingTarget
      * @type !Element
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setSizingTarget(JavaScriptObject value);
+
+    /**
+     * <p>The element to fit <code>this</code> into.</p>
+     *
+     * JavaScript Info:
+     * @property fitInto
+     * @type Object
+     * 
+     */
+    @JsProperty JavaScriptObject getFitInto();
+    /**
+     * <p>The element to fit <code>this</code> into.</p>
+     *
+     * JavaScript Info:
+     * @property fitInto
+     * @type Object
+     * 
+     */
+    @JsProperty void setFitInto(JavaScriptObject value);
+
+    /**
+     * <p>Set to true to auto-fit on attach.</p>
+     *
+     * JavaScript Info:
+     * @property autoFitOnAttach
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getAutoFitOnAttach();
+    /**
+     * <p>Set to true to auto-fit on attach.</p>
+     *
+     * JavaScript Info:
+     * @property autoFitOnAttach
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setAutoFitOnAttach(boolean value);
+
+    /**
+     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
+     *
+     * JavaScript Info:
+     * @property dynamicAlign
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getDynamicAlign();
+    /**
+     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
+     *
+     * JavaScript Info:
+     * @property dynamicAlign
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setDynamicAlign(boolean value);
 
     /**
      * <p>The orientation against which to align the element vertically<br>relative to the <code>positionTarget</code>. Possible values are “top”, “bottom”, “auto”.</p>
@@ -210,7 +229,7 @@ public interface IronFitBehavior {
      * JavaScript Info:
      * @property verticalAlign
      * @type String
-     * @behavior PaperToast
+     * 
      */
     @JsProperty String getVerticalAlign();
     /**
@@ -219,7 +238,7 @@ public interface IronFitBehavior {
      * JavaScript Info:
      * @property verticalAlign
      * @type String
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setVerticalAlign(String value);
 
@@ -229,7 +248,7 @@ public interface IronFitBehavior {
      * JavaScript Info:
      * @property horizontalAlign
      * @type String
-     * @behavior PaperToast
+     * 
      */
     @JsProperty String getHorizontalAlign();
     /**
@@ -238,37 +257,37 @@ public interface IronFitBehavior {
      * JavaScript Info:
      * @property horizontalAlign
      * @type String
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setHorizontalAlign(String value);
 
-
-    /**
-     * <p>Centers horizontally and vertically if not already positioned. This also sets<br><code>position:fixed</code>.</p>
-     *
-     * JavaScript Info:
-     * @method center
-     * @behavior PaperToast
-     * 
-     */
-    void center();
 
     /**
      * <p>Constrains the size of the element to <code>fitInto</code> by setting <code>max-height</code><br>and/or <code>max-width</code>.</p>
      *
      * JavaScript Info:
      * @method constrain
-     * @behavior PaperToast
+     * 
      * 
      */
     void constrain();
 
     /**
-     * <p>Equivalent to calling <code>resetFit()</code> and <code>fit()</code>. Useful to call this after<br>the element or the <code>fitInto</code> element has been resized, or if any of the<br>positioning properties (e.g. <code>horizontalAlign, verticalAlign</code>) is updated.</p>
+     * <p>Positions the element according to <code>horizontalAlign, verticalAlign</code>.</p>
+     *
+     * JavaScript Info:
+     * @method position
+     * 
+     * 
+     */
+    void position();
+
+    /**
+     * <p>Equivalent to calling <code>resetFit()</code> and <code>fit()</code>. Useful to call this after<br>the element or the <code>fitInto</code> element has been resized, or if any of the<br>positioning properties (e.g. <code>horizontalAlign, verticalAlign</code>) is updated.<br>It preserves the scroll position of the sizingTarget.</p>
      *
      * JavaScript Info:
      * @method refit
-     * @behavior PaperToast
+     * 
      * 
      */
     void refit();
@@ -278,7 +297,7 @@ public interface IronFitBehavior {
      *
      * JavaScript Info:
      * @method resetFit
-     * @behavior PaperToast
+     * 
      * 
      */
     void resetFit();
@@ -288,19 +307,19 @@ public interface IronFitBehavior {
      *
      * JavaScript Info:
      * @method fit
-     * @behavior PaperToast
+     * 
      * 
      */
     void fit();
 
     /**
-     * <p>Positions the element according to <code>horizontalAlign, verticalAlign</code>.</p>
+     * <p>Centers horizontally and vertically if not already positioned. This also sets<br><code>position:fixed</code>.</p>
      *
      * JavaScript Info:
-     * @method position
-     * @behavior PaperToast
+     * @method center
+     * 
      * 
      */
-    void position();
+    void center();
 
 }

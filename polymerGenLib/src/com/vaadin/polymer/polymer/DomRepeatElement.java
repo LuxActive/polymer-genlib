@@ -219,7 +219,7 @@ public interface DomRepeatElement extends HTMLElement {
      * JavaScript Info:
      * @method stamp
      * @param {} model  
-     * @behavior VaadinInfiniteScroller
+     * @behavior DomIf
      * 
      */
     void stamp(Object model);
@@ -274,7 +274,7 @@ public interface DomRepeatElement extends HTMLElement {
      * JavaScript Info:
      * @method templatize
      * @param {} template  
-     * @behavior VaadinInfiniteScroller
+     * @behavior DomIf
      * 
      */
     void templatize(Object template);

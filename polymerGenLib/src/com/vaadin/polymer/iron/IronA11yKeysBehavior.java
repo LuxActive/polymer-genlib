@@ -31,7 +31,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior VaadinComboBox
+     * 
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
@@ -40,7 +40,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior VaadinComboBox
+     * 
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
@@ -50,7 +50,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior VaadinComboBox
+     * 
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
@@ -59,7 +59,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property keyEventTarget
      * @type Object
-     * @behavior VaadinComboBox
+     * 
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
@@ -69,7 +69,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior VaadinComboBox
+     * 
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -78,7 +78,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior VaadinComboBox
+     * 
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
@@ -90,7 +90,7 @@ public interface IronA11yKeysBehavior {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior VaadinComboBox
+     * 
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
@@ -102,7 +102,7 @@ public interface IronA11yKeysBehavior {
      * @method keyboardEventMatchesKeys
      * @param {KeyboardEvent} event  
      * @param {string} eventString  
-     * @behavior VaadinComboBox
+     * 
      * @return {boolean}
      */
     boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
@@ -112,7 +112,7 @@ public interface IronA11yKeysBehavior {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior VaadinComboBox
+     * 
      * 
      */
     void removeOwnKeyBindings();

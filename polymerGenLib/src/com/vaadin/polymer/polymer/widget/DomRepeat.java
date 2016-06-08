@@ -337,7 +337,7 @@ public class DomRepeat extends PolymerWidget {
      * JavaScript Info:
      * @method stamp
      * @param {} model  
-     * @behavior VaadinInfiniteScroller
+     * @behavior DomIf
      * 
      */
     public void stamp(Object model) {
@@ -402,7 +402,7 @@ public class DomRepeat extends PolymerWidget {
      * JavaScript Info:
      * @method templatize
      * @param {} template  
-     * @behavior VaadinInfiniteScroller
+     * @behavior DomIf
      * 
      */
     public void templatize(Object template) {

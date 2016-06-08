@@ -37,7 +37,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property noCancelOnOutsideClick
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty boolean getNoCancelOnOutsideClick();
     /**
@@ -46,7 +46,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property noCancelOnOutsideClick
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setNoCancelOnOutsideClick(boolean value);
 
@@ -56,7 +56,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property closingReason
      * @type Object
-     * @behavior PaperToast
+     * 
      */
     @JsProperty JavaScriptObject getClosingReason();
     /**
@@ -65,7 +65,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property closingReason
      * @type Object
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setClosingReason(JavaScriptObject value);
 
@@ -75,7 +75,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property backdropElement
      * @type Element
-     * @behavior PaperToast
+     * 
      */
     @JsProperty Element getBackdropElement();
     /**
@@ -84,7 +84,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property backdropElement
      * @type Element
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setBackdropElement(Element value);
 
@@ -94,7 +94,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property canceled
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty boolean getCanceled();
     /**
@@ -103,7 +103,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property canceled
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setCanceled(boolean value);
 
@@ -113,7 +113,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property opened
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty boolean getOpened();
     /**
@@ -122,7 +122,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property opened
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setOpened(boolean value);
 
@@ -132,7 +132,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property restoreFocusOnClose
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty boolean getRestoreFocusOnClose();
     /**
@@ -141,7 +141,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property restoreFocusOnClose
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setRestoreFocusOnClose(boolean value);
 
@@ -151,7 +151,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property noAutoFocus
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty boolean getNoAutoFocus();
     /**
@@ -160,7 +160,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property noAutoFocus
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setNoAutoFocus(boolean value);
 
@@ -170,7 +170,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property withBackdrop
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty boolean getWithBackdrop();
     /**
@@ -179,7 +179,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property withBackdrop
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setWithBackdrop(boolean value);
 
@@ -189,7 +189,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property noCancelOnEscKey
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty boolean getNoCancelOnEscKey();
     /**
@@ -198,7 +198,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property noCancelOnEscKey
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setNoCancelOnEscKey(boolean value);
 
@@ -208,7 +208,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property alwaysOnTop
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty boolean getAlwaysOnTop();
     /**
@@ -217,7 +217,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @property alwaysOnTop
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
     @JsProperty void setAlwaysOnTop(boolean value);
 
@@ -227,7 +227,7 @@ public interface IronOverlayBehavior {
      *
      * JavaScript Info:
      * @method close
-     * @behavior PaperToast
+     * 
      * 
      */
     void close();
@@ -237,7 +237,7 @@ public interface IronOverlayBehavior {
      *
      * JavaScript Info:
      * @method open
-     * @behavior PaperToast
+     * 
      * 
      */
     void open();
@@ -247,7 +247,7 @@ public interface IronOverlayBehavior {
      *
      * JavaScript Info:
      * @method toggle
-     * @behavior PaperToast
+     * 
      * 
      */
     void toggle();
@@ -258,7 +258,7 @@ public interface IronOverlayBehavior {
      * JavaScript Info:
      * @method cancel
      * @param {Event=} event  
-     * @behavior PaperToast
+     * 
      * 
      */
     void cancel(JavaScriptObject event);

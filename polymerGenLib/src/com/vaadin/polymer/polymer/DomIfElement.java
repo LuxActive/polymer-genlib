@@ -78,7 +78,7 @@ public interface DomIfElement extends HTMLElement {
      * JavaScript Info:
      * @method templatize
      * @param {} template  
-     * @behavior VaadinInfiniteScroller
+     * @behavior DomIf
      * 
      */
     void templatize(Object template);

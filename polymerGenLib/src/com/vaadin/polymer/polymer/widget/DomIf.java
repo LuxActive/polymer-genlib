@@ -111,7 +111,7 @@ public class DomIf extends PolymerWidget {
      * JavaScript Info:
      * @method templatize
      * @param {} template  
-     * @behavior VaadinInfiniteScroller
+     * @behavior DomIf
      * 
      */
     public void templatize(Object template) {
