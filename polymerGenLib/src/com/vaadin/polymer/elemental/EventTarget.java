@@ -6,4 +6,5 @@ import jsinterop.annotations.JsType;
 @JsType(isNative=true, namespace=GLOBAL)
 public interface EventTarget {
     void addEventListener(String type, EventListener listener);
+    void removeEventListener(String type, EventListener listener);
 }
