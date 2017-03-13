@@ -5,17 +5,22 @@
  */
 package com.vaadin.polymer.iron;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p>Use <code>Polymer.IronCheckedElementBehavior</code> to implement a custom element<br>that has a <code>checked</code> property, which can be used for validation if the<br>element is also <code>required</code>. Element instances implementing this behavior<br>will also be registered for use in an <code>iron-form</code> element.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronCheckedElementBehavior {
 
-    public static final String TAG = "Polymer.IronCheckedElementBehavior";
-    public static final String SRC = "iron-checked-element-behavior/iron-checked-element-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.IronCheckedElementBehavior";
+    @JsOverlay public static final String SRC = "iron-checked-element-behavior/iron-checked-element-behavior.html";
 
 
     /**

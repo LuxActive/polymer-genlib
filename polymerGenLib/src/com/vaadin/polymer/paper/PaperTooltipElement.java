@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/tooltips.html">Tooltips</a></p>
@@ -64,11 +66,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperTooltipElement extends HTMLElement {
 
-    public static final String TAG = "paper-tooltip";
-    public static final String SRC = "paper-tooltip/paper-tooltip.html";
+    @JsOverlay public static final String TAG = "paper-tooltip";
+    @JsOverlay public static final String SRC = "paper-tooltip/paper-tooltip.html";
 
 
     /**
@@ -108,6 +110,25 @@ public interface PaperTooltipElement extends HTMLElement {
      * 
      */
     @JsProperty void setFitToVisibleBounds(boolean value);
+
+    /**
+     * <p>Set this to true if you want to manually control when the tooltip<br>is shown or hidden.</p>
+     *
+     * JavaScript Info:
+     * @property manualMode
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getManualMode();
+    /**
+     * <p>Set this to true if you want to manually control when the tooltip<br>is shown or hidden.</p>
+     *
+     * JavaScript Info:
+     * @property manualMode
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setManualMode(boolean value);
 
     /**
      * <p>This property is deprecated, but left over so that it doesn’t<br>break exiting code. Please use <code>offset</code> instead. If both <code>offset</code> and<br><code>marginTop</code> are provided, <code>marginTop</code> will be ignored.</p>
@@ -167,44 +188,6 @@ public interface PaperTooltipElement extends HTMLElement {
     @JsProperty void setAnimationDelay(double value);
 
     /**
-     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property entryAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    @JsProperty String getEntryAnimation();
-    /**
-     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property entryAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    @JsProperty void setEntryAnimation(String value);
-
-    /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property exitAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    @JsProperty String getExitAnimation();
-    /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property exitAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    @JsProperty void setExitAnimation(String value);
-
-    /**
      * <p>Positions the tooltip to the top, right, bottom, left of its content.</p>
      *
      * JavaScript Info:
@@ -242,16 +225,44 @@ public interface PaperTooltipElement extends HTMLElement {
      */
     @JsProperty void setFor(String value);
 
-
     /**
-     * 
+     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
      *
      * JavaScript Info:
-     * @method updatePosition
-     * 
-     * 
+     * @property entryAnimation
+     * @type String
+     * @behavior PaperTooltip
      */
-    void updatePosition();
+    @JsProperty String getEntryAnimation();
+    /**
+     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property entryAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    @JsProperty void setEntryAnimation(String value);
+
+    /**
+     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property exitAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    @JsProperty String getExitAnimation();
+    /**
+     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property exitAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    @JsProperty void setExitAnimation(String value);
+
 
     /**
      * 
@@ -274,7 +285,7 @@ public interface PaperTooltipElement extends HTMLElement {
     void show();
 
     /**
-     * <p>Cancels the currently running animation.</p>
+     * <p>Cancels the currently running animations.</p>
      *
      * JavaScript Info:
      * @method cancelAnimation
@@ -282,6 +293,16 @@ public interface PaperTooltipElement extends HTMLElement {
      * 
      */
     void cancelAnimation();
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method updatePosition
+     * 
+     * 
+     */
+    void updatePosition();
 
     /**
      * <p>Plays an animation with an optional <code>type</code>.</p>

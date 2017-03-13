@@ -5,41 +5,23 @@
  */
 package com.vaadin.polymer.polymer;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>Polymer.Base</code> acts as a base prototype for all Polymer elements. It is composed via various calls to <code>Polymer.Base._addFeature()</code>.</p>
  * <p>The properties reflected here are the combined view of all features found in this library. There may be more properties added via other libraries, as well.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface BaseElement extends HTMLElement {
 
-    public static final String TAG = "Polymer.Base";
-    public static final String SRC = "polymer/polymer.html";
+    @JsOverlay public static final String TAG = "Polymer.Base";
+    @JsOverlay public static final String SRC = "polymer/polymer.html";
 
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property behaviors
-     * @type Array
-     * 
-     */
-    @JsProperty JsArray getBehaviors();
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property behaviors
-     * @type Array
-     * 
-     */
-    @JsProperty void setBehaviors(JsArray value);
 
     /**
      * 
@@ -79,239 +61,6 @@ public interface BaseElement extends HTMLElement {
      */
     @JsProperty void setListeners(JavaScriptObject value);
 
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property properties
-     * @type Object
-     * 
-     */
-    @JsProperty JavaScriptObject getProperties();
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property properties
-     * @type Object
-     * 
-     */
-    @JsProperty void setProperties(JavaScriptObject value);
-
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method isLightDescendant
-     * @param {} node  
-     * 
-     * 
-     */
-    void isLightDescendant(Object node);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method getComputedStyleValue
-     * @param {} property  
-     * 
-     * 
-     */
-    void getComputedStyleValue(Object property);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method transform
-     * @param {} transform  
-     * @param {} node  
-     * 
-     * 
-     */
-    void transform(Object transform, Object node);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method toggleClass
-     * @param {} name  
-     * @param {} bool  
-     * @param {} node  
-     * 
-     * 
-     */
-    void toggleClass(Object name, Object bool, Object node);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method toggleAttribute
-     * @param {} name  
-     * @param {} bool  
-     * @param {} node  
-     * 
-     * 
-     */
-    void toggleAttribute(Object name, Object bool, Object node);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method get
-     * @param {} path  
-     * @param {} root  
-     * 
-     * 
-     */
-    void get(Object path, Object root);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method getPropertyInfo
-     * @param {} property  
-     * 
-     * 
-     */
-    void getPropertyInfo(Object property);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method importHref
-     * @param {} href  
-     * @param {} onload  
-     * @param {} onerror  
-     * 
-     * 
-     */
-    void importHref(Object href, Object onload, Object onerror);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method instanceTemplate
-     * @param {} template  
-     * 
-     * 
-     */
-    void instanceTemplate(Object template);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method isDebouncerActive
-     * @param {} jobName  
-     * 
-     * 
-     */
-    void isDebouncerActive(Object jobName);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method splice
-     * @param {} path  
-     * @param {} start  
-     * @param {} deleteCount  
-     * 
-     * 
-     */
-    void splice(Object path, Object start, Object deleteCount);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method flushDebouncer
-     * @param {} jobName  
-     * 
-     * 
-     */
-    void flushDebouncer(Object jobName);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method isLocalDescendant
-     * @param {} node  
-     * 
-     * 
-     */
-    void isLocalDescendant(Object node);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method fire
-     * @param {} type  
-     * @param {} detail  
-     * @param {} options  
-     * 
-     * 
-     */
-    void fire(Object type, Object detail, Object options);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method linkPaths
-     * @param {} to  
-     * @param {} from  
-     * 
-     * 
-     */
-    void linkPaths(Object to, Object from);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method elementMatches
-     * @param {} selector  
-     * @param {} node  
-     * 
-     * 
-     */
-    void elementMatches(Object selector, Object node);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method listen
-     * @param {} node  
-     * @param {} eventName  
-     * @param {} methodName  
-     * 
-     * 
-     */
-    void listen(Object node, Object eventName, Object methodName);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method distributeContent
-     * @param {} updateInsertionPoints  
-     * 
-     * 
-     */
-    void distributeContent(Object updateInsertionPoints);
 
     /**
      * 
@@ -344,62 +93,63 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method notifySplices
-     * @param {} path  
-     * @param {} splices  
+     * @method importHref
+     * @param {} href  
+     * @param {} onload  
+     * @param {} onerror  
+     * @param {} optAsync  
      * 
      * 
      */
-    void notifySplices(Object path, Object splices);
+    void importHref(Object href, Object onload, Object onerror, Object optAsync);
 
     /**
      * 
      *
      * JavaScript Info:
-     * @method deserialize
-     * @param {} value  
-     * @param {} type  
+     * @method isLightDescendant
+     * @param {} node  
      * 
      * 
      */
-    void deserialize(Object value, Object type);
+    void isLightDescendant(Object node);
 
     /**
      * 
      *
      * JavaScript Info:
-     * @method prepareModelNotifyPath
-     * @param {} model  
+     * @method getComputedStyleValue
+     * @param {} property  
      * 
      * 
      */
-    void prepareModelNotifyPath(Object model);
+    void getComputedStyleValue(Object property);
 
     /**
      * 
      *
      * JavaScript Info:
-     * @method debounce
-     * @param {} jobName  
-     * @param {} callback  
-     * @param {} wait  
+     * @method unlisten
+     * @param {} node  
+     * @param {} eventName  
+     * @param {} methodName  
      * 
      * 
      */
-    void debounce(Object jobName, Object callback, Object wait);
+    void unlisten(Object node, Object eventName, Object methodName);
 
     /**
      * 
      *
      * JavaScript Info:
-     * @method attributeFollows
-     * @param {} name  
-     * @param {} toElement  
-     * @param {} fromElement  
+     * @method listen
+     * @param {} node  
+     * @param {} eventName  
+     * @param {} methodName  
      * 
      * 
      */
-    void attributeFollows(Object name, Object toElement, Object fromElement);
+    void listen(Object node, Object eventName, Object methodName);
 
     /**
      * 
@@ -417,68 +167,47 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method push
+     * @method transform
+     * @param {} transform  
+     * @param {} node  
+     * 
+     * 
+     */
+    void transform(Object transform, Object node);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method notifySplices
      * @param {} path  
+     * @param {} splices  
      * 
      * 
      */
-    void push(Object path);
+    void notifySplices(Object path, Object splices);
 
     /**
      * 
      *
      * JavaScript Info:
-     * @method pop
-     * @param {} path  
+     * @method prepareModelNotifyPath
+     * @param {} model  
      * 
      * 
      */
-    void pop(Object path);
+    void prepareModelNotifyPath(Object model);
 
     /**
      * 
      *
      * JavaScript Info:
-     * @method shift
-     * @param {} path  
+     * @method cancelAsync
+     * @param {} handle  
      * 
      * 
      */
-    void shift(Object path);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method unshift
-     * @param {} path  
-     * 
-     * 
-     */
-    void unshift(Object path);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method create
-     * @param {} tag  
-     * @param {} props  
-     * 
-     * 
-     */
-    void create(Object tag, Object props);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method getContentChildNodes
-     * @param {} slctr  
-     * 
-     * 
-     */
-    void getContentChildNodes(Object slctr);
+    void cancelAsync(Object handle);
 
     /**
      * 
@@ -506,6 +235,17 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
+     * @method getContentChildNodes
+     * @param {} slctr  
+     * 
+     * 
+     */
+    void getContentChildNodes(Object slctr);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
      * @method queryAllEffectiveChildren
      * @param {} slctr  
      * 
@@ -517,38 +257,13 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method classFollows
-     * @param {} name  
-     * @param {} toElement  
-     * @param {} fromElement  
+     * @method get
+     * @param {} path  
+     * @param {} root  
      * 
      * 
      */
-    void classFollows(Object name, Object toElement, Object fromElement);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method reflectPropertyToAttribute
-     * @param {} property  
-     * @param {} attribute  
-     * @param {} value  
-     * 
-     * 
-     */
-    void reflectPropertyToAttribute(Object property, Object attribute, Object value);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method cancelDebouncer
-     * @param {} jobName  
-     * 
-     * 
-     */
-    void cancelDebouncer(Object jobName);
+    void get(Object path, Object root);
 
     /**
      * 
@@ -565,12 +280,14 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method cancelAsync
-     * @param {} handle  
+     * @method fire
+     * @param {} type  
+     * @param {} detail  
+     * @param {} options  
      * 
      * 
      */
-    void cancelAsync(Object handle);
+    void fire(Object type, Object detail, Object options);
 
     /**
      * 
@@ -599,28 +316,6 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method serialize
-     * @param {} value  
-     * 
-     * 
-     */
-    void serialize(Object value);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method unlinkPaths
-     * @param {} path  
-     * 
-     * 
-     */
-    void unlinkPaths(Object path);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
      * @method serializeValueToAttribute
      * @param {} value  
      * @param {} attribute  
@@ -634,14 +329,13 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method unlisten
-     * @param {} node  
-     * @param {} eventName  
-     * @param {} methodName  
+     * @method create
+     * @param {} tag  
+     * @param {} props  
      * 
      * 
      */
-    void unlisten(Object node, Object eventName, Object methodName);
+    void create(Object tag, Object props);
 
     /**
      * 
@@ -660,12 +354,14 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method updateStyles
-     * @param {} properties  
+     * @method classFollows
+     * @param {} name  
+     * @param {} toElement  
+     * @param {} fromElement  
      * 
      * 
      */
-    void updateStyles(Object properties);
+    void classFollows(Object name, Object toElement, Object fromElement);
 
     /**
      * 
@@ -683,12 +379,141 @@ public interface BaseElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method getNativePrototype
-     * @param {} tag  
+     * @method isLocalDescendant
+     * @param {} node  
      * 
      * 
      */
-    void getNativePrototype(Object tag);
+    void isLocalDescendant(Object node);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method push
+     * @param {} path  
+     * 
+     * 
+     */
+    void push(Object path);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method shift
+     * @param {} path  
+     * 
+     * 
+     */
+    void shift(Object path);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method pop
+     * @param {} path  
+     * 
+     * 
+     */
+    void pop(Object path);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method unlinkPaths
+     * @param {} path  
+     * 
+     * 
+     */
+    void unlinkPaths(Object path);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method attributeFollows
+     * @param {} name  
+     * @param {} toElement  
+     * @param {} fromElement  
+     * 
+     * 
+     */
+    void attributeFollows(Object name, Object toElement, Object fromElement);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method splice
+     * @param {} path  
+     * @param {} start  
+     * 
+     * 
+     */
+    void splice(Object path, Object start);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method unshift
+     * @param {} path  
+     * 
+     * 
+     */
+    void unshift(Object path);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method toggleClass
+     * @param {} name  
+     * @param {} bool  
+     * @param {} node  
+     * 
+     * 
+     */
+    void toggleClass(Object name, Object bool, Object node);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method toggleAttribute
+     * @param {} name  
+     * @param {} bool  
+     * @param {} node  
+     * 
+     * 
+     */
+    void toggleAttribute(Object name, Object bool, Object node);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method linkPaths
+     * @param {} to  
+     * @param {} from  
+     * 
+     * 
+     */
+    void linkPaths(Object to, Object from);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method updateStyles
+     * @param {} properties  
+     * 
+     * 
+     */
+    void updateStyles(Object properties);
 
     /**
      * 
@@ -701,16 +526,6 @@ public interface BaseElement extends HTMLElement {
      * 
      */
     void arrayDelete(Object path, Object item);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method attachedCallback
-     * 
-     * 
-     */
-    void attachedCallback();
 
     /**
      * 
@@ -741,15 +556,5 @@ public interface BaseElement extends HTMLElement {
      * 
      */
     void getEffectiveChildNodes();
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method distributeContent
-     * 
-     * 
-     */
-    void distributeContent();
 
 }

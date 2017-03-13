@@ -5,9 +5,14 @@
  */
 package com.vaadin.polymer.neon.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.neon.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.neon.NeonAnimatableElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;neon-animatable&gt;</code> is a simple container element implementing <code>Polymer.NeonAnimatableBehavior</code>. This is a convenience element for use with <code>&lt;neon-animated-pages&gt;</code>.</p>
@@ -32,19 +37,13 @@ public class NeonAnimatable extends PolymerWidget {
      */
     public NeonAnimatable(String html) {
         super(NeonAnimatableElement.TAG, NeonAnimatableElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public NeonAnimatableElement getPolymerElement() {
-        try {
-            return (NeonAnimatableElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (NeonAnimatableElement) getElement();
     }
 
 
@@ -54,7 +53,7 @@ public class NeonAnimatable extends PolymerWidget {
      * JavaScript Info:
      * @property animationConfig
      * @type Object
-     * 
+     * @behavior PaperTooltip
      */
     public JavaScriptObject getAnimationConfig() {
         return getPolymerElement().getAnimationConfig();
@@ -65,7 +64,7 @@ public class NeonAnimatable extends PolymerWidget {
      * JavaScript Info:
      * @property animationConfig
      * @type Object
-     * 
+     * @behavior PaperTooltip
      */
     public void setAnimationConfig(JavaScriptObject value) {
         getPolymerElement().setAnimationConfig(value);
@@ -77,7 +76,7 @@ public class NeonAnimatable extends PolymerWidget {
      * JavaScript Info:
      * @property entryAnimation
      * @type String
-     * 
+     * @behavior PaperTooltip
      */
     public String getEntryAnimation() {
         return getPolymerElement().getEntryAnimation();
@@ -88,7 +87,7 @@ public class NeonAnimatable extends PolymerWidget {
      * JavaScript Info:
      * @property entryAnimation
      * @type String
-     * 
+     * @behavior PaperTooltip
      */
     public void setEntryAnimation(String value) {
         getPolymerElement().setEntryAnimation(value);
@@ -118,30 +117,18 @@ public class NeonAnimatable extends PolymerWidget {
     }
 
 
+    // Needed in UIBinder
     /**
      * <p>Animation configuration. See README for more info.</p>
      *
      * JavaScript Info:
      * @attribute animation-config
-     * 
+     * @behavior PaperTooltip
      */
     public void setAnimationConfig(String value) {
-        getPolymerElement().setAttribute("animation-config", value);
+        Polymer.property(this.getPolymerElement(), "animationConfig", value);
     }
 
-
-    /**
-     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
-     *
-     * JavaScript Info:
-     * @method stopResizeNotificationsFor
-     * @param {} target  
-     * @behavior PaperTabs
-     * 
-     */
-    public void stopResizeNotificationsFor(Object target) {
-        getPolymerElement().stopResizeNotificationsFor(target);
-    }
 
     /**
      * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
@@ -149,7 +136,7 @@ public class NeonAnimatable extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior PaperTimePicker
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -157,11 +144,24 @@ public class NeonAnimatable extends PolymerWidget {
     }
 
     /**
+     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
+     *
+     * JavaScript Info:
+     * @method stopResizeNotificationsFor
+     * @param {} target  
+     * @behavior PaperTimePicker
+     * 
+     */
+    public void stopResizeNotificationsFor(Object target) {
+        getPolymerElement().stopResizeNotificationsFor(target);
+    }
+
+    /**
      * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior PaperTimePicker
      * 
      */
     public void notifyResize() {
@@ -174,7 +174,7 @@ public class NeonAnimatable extends PolymerWidget {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior PaperTimePicker
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {

@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>&lt;iron-input&gt;</code> adds two-way binding and custom validators using <code>Polymer.IronValidatorBehavior</code><br>to <code>&lt;input&gt;</code>.</p>
@@ -34,15 +36,15 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronInputElement extends HTMLElement {
 
-    public static final String TAG = "iron-input";
-    public static final String SRC = "iron-input/iron-input.html";
+    @JsOverlay public static final String TAG = "iron-input";
+    @JsOverlay public static final String SRC = "iron-input/iron-input.html";
 
 
     /**
-     * <p>Set to true to prevent the user from entering invalid input. The new input characters are<br>matched with <code>allowedPattern</code> if it is set, otherwise it will use the <code>pattern</code> attribute if<br>set, or the <code>type</code> attribute (only supported for <code>type=number</code>).</p>
+     * <p>Set to true to prevent the user from entering invalid input. If <code>allowedPattern</code> is set,<br>any character typed by the user will be matched against that pattern, and rejected if it’s not a match.<br>Pasted input will have each character checked individually; if any character<br>doesn’t match <code>allowedPattern</code>, the entire pasted string will be rejected.<br>If <code>allowedPattern</code> is not set, it will use the <code>type</code> attribute (only supported for <code>type=number</code>).</p>
      *
      * JavaScript Info:
      * @property preventInvalidInput
@@ -51,7 +53,7 @@ public interface IronInputElement extends HTMLElement {
      */
     @JsProperty boolean getPreventInvalidInput();
     /**
-     * <p>Set to true to prevent the user from entering invalid input. The new input characters are<br>matched with <code>allowedPattern</code> if it is set, otherwise it will use the <code>pattern</code> attribute if<br>set, or the <code>type</code> attribute (only supported for <code>type=number</code>).</p>
+     * <p>Set to true to prevent the user from entering invalid input. If <code>allowedPattern</code> is set,<br>any character typed by the user will be matched against that pattern, and rejected if it’s not a match.<br>Pasted input will have each character checked individually; if any character<br>doesn’t match <code>allowedPattern</code>, the entire pasted string will be rejected.<br>If <code>allowedPattern</code> is not set, it will use the <code>type</code> attribute (only supported for <code>type=number</code>).</p>
      *
      * JavaScript Info:
      * @property preventInvalidInput
@@ -78,25 +80,6 @@ public interface IronInputElement extends HTMLElement {
      * @behavior PaperToggleButton
      */
     @JsProperty void setInvalid(boolean value);
-
-    /**
-     * <p>Regular expression to match valid input characters.</p>
-     *
-     * JavaScript Info:
-     * @property allowedPattern
-     * @type String
-     * 
-     */
-    @JsProperty String getAllowedPattern();
-    /**
-     * <p>Regular expression to match valid input characters.</p>
-     *
-     * JavaScript Info:
-     * @property allowedPattern
-     * @type String
-     * 
-     */
-    @JsProperty void setAllowedPattern(String value);
 
     /**
      * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
@@ -137,7 +120,7 @@ public interface IronInputElement extends HTMLElement {
     @JsProperty void setValidator(String value);
 
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -146,7 +129,7 @@ public interface IronInputElement extends HTMLElement {
      */
     @JsProperty String getValidatorType();
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -155,17 +138,25 @@ public interface IronInputElement extends HTMLElement {
      */
     @JsProperty void setValidatorType(String value);
 
-
     /**
-     * <p>Returns true if the <code>value</code> is valid, and updates <code>invalid</code>. If you want<br>your element to have custom validation logic, do not override this method;<br>override <code>_getValidity(value)</code> instead.</p>
+     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
      *
      * JavaScript Info:
-     * @method validate
-     * @param {Object} value  
-     * @behavior PaperToggleButton
-     * @return {boolean}
+     * @property allowedPattern
+     * @type String
+     * 
      */
-    boolean validate(JavaScriptObject value);
+    @JsProperty String getAllowedPattern();
+    /**
+     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
+     *
+     * JavaScript Info:
+     * @property allowedPattern
+     * @type String
+     * 
+     */
+    @JsProperty void setAllowedPattern(String value);
+
 
     /**
      * <p>Returns true if <code>value</code> is valid. The validator provided in <code>validator</code> will be used first,<br>then any constraints.</p>
@@ -186,5 +177,16 @@ public interface IronInputElement extends HTMLElement {
      * @return {boolean}
      */
     boolean hasValidator();
+
+    /**
+     * <p>Returns true if the <code>value</code> is valid, and updates <code>invalid</code>. If you want<br>your element to have custom validation logic, do not override this method;<br>override <code>_getValidity(value)</code> instead.</p>
+     *
+     * JavaScript Info:
+     * @method validate
+     * @param {Object} value  
+     * @behavior PaperToggleButton
+     * @return {boolean}
+     */
+    boolean validate(JavaScriptObject value);
 
 }

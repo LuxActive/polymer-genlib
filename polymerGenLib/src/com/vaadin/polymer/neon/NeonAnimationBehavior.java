@@ -5,18 +5,22 @@
  */
 package com.vaadin.polymer.neon;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p>Use <code>Polymer.NeonAnimationBehavior</code> to implement an animation.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface NeonAnimationBehavior {
 
-    public static final String TAG = "Polymer.NeonAnimationBehavior";
-    public static final String SRC = "neon-animation/neon-shared-element-animatable-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.NeonAnimationBehavior";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animation-behavior.html";
 
 
     /**
@@ -25,7 +29,7 @@ public interface NeonAnimationBehavior {
      * JavaScript Info:
      * @property animationTiming
      * @type Object
-     * 
+     * @behavior PaperMenuShrinkHeightAnimation
      */
     @JsProperty JavaScriptObject getAnimationTiming();
     /**
@@ -34,9 +38,28 @@ public interface NeonAnimationBehavior {
      * JavaScript Info:
      * @property animationTiming
      * @type Object
-     * 
+     * @behavior PaperMenuShrinkHeightAnimation
      */
     @JsProperty void setAnimationTiming(JavaScriptObject value);
+
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * @behavior PaperMenuShrinkHeightAnimation
+     */
+    @JsProperty boolean getIsNeonAnimation();
+    /**
+     * <p>Can be used to determine that elements implement this behavior.</p>
+     *
+     * JavaScript Info:
+     * @property isNeonAnimation
+     * @type boolean
+     * @behavior PaperMenuShrinkHeightAnimation
+     */
+    @JsProperty void setIsNeonAnimation(boolean value);
 
 
     /**
@@ -47,7 +70,7 @@ public interface NeonAnimationBehavior {
      * @param {} node  
      * @param {} property  
      * @param {} value  
-     * 
+     * @behavior PaperMenuShrinkHeightAnimation
      * 
      */
     void setPrefixedProperty(Object node, Object property, Object value);
@@ -58,7 +81,7 @@ public interface NeonAnimationBehavior {
      * JavaScript Info:
      * @method timingFromConfig
      * @param {} config  
-     * 
+     * @behavior PaperMenuShrinkHeightAnimation
      * 
      */
     void timingFromConfig(Object config);
@@ -68,7 +91,7 @@ public interface NeonAnimationBehavior {
      *
      * JavaScript Info:
      * @method complete
-     * 
+     * @behavior PaperMenuShrinkHeightAnimation
      * 
      */
     void complete();

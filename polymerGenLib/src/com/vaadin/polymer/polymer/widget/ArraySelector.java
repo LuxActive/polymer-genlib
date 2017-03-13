@@ -5,10 +5,14 @@
  */
 package com.vaadin.polymer.polymer.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
+import com.vaadin.polymer.polymer.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.polymer.ArraySelectorElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * 
@@ -26,19 +30,13 @@ public class ArraySelector extends PolymerWidget {
      */
     public ArraySelector(String html) {
         super(ArraySelectorElement.TAG, ArraySelectorElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public ArraySelectorElement getPolymerElement() {
-        try {
-            return (ArraySelectorElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (ArraySelectorElement) getElement();
     }
 
 
@@ -158,6 +156,7 @@ public class ArraySelector extends PolymerWidget {
     }
 
 
+    // Needed in UIBinder
     /**
      * 
      *
@@ -166,9 +165,10 @@ public class ArraySelector extends PolymerWidget {
      * 
      */
     public void setItems(String value) {
-        getPolymerElement().setAttribute("items", value);
+        Polymer.property(this.getPolymerElement(), "items", value);
     }
 
+    // Needed in UIBinder
     /**
      * 
      *
@@ -177,9 +177,10 @@ public class ArraySelector extends PolymerWidget {
      * 
      */
     public void setSelected(String value) {
-        getPolymerElement().setAttribute("selected", value);
+        Polymer.property(this.getPolymerElement(), "selected", value);
     }
 
+    // Needed in UIBinder
     /**
      * 
      *
@@ -188,7 +189,7 @@ public class ArraySelector extends PolymerWidget {
      * 
      */
     public void setSelectedItem(String value) {
-        getPolymerElement().setAttribute("selected-item", value);
+        Polymer.property(this.getPolymerElement(), "selectedItem", value);
     }
 
 

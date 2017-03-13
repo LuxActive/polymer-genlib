@@ -5,8 +5,14 @@
  */
 package com.vaadin.polymer.iron.widget;
 
+import com.vaadin.polymer.iron.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.IronA11yAnnouncerElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>iron-a11y-announcer</code> is a singleton element that is intended to add a11y<br>to features that require on-demand announcement from screen readers. In<br>order to make use of the announcer, it is best to request its availability<br>in the announcing element.</p>
@@ -45,19 +51,13 @@ public class IronA11yAnnouncer extends PolymerWidget {
      */
     public IronA11yAnnouncer(String html) {
         super(IronA11yAnnouncerElement.TAG, IronA11yAnnouncerElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public IronA11yAnnouncerElement getPolymerElement() {
-        try {
-            return (IronA11yAnnouncerElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (IronA11yAnnouncerElement) getElement();
     }
 
 

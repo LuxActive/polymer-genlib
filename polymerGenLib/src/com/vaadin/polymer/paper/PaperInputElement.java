@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/text-fields.html">Text fields</a></p>
@@ -28,7 +30,7 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * &lt;/paper-input&gt;
  * 
  * 
- * </code></pre><p>A <code>paper-input</code> can use the native <code>type=search</code> or <code>type=file</code> features.<br>However, since we can’t control the native styling of the input, in these cases<br>it’s recommended to use a placeholder text, or <code>always-float-label</code>,<br>as to not overlap the native UI (search icon, file button, etc.).</p>
+ * </code></pre><p>A <code>paper-input</code> can use the native <code>type=search</code> or <code>type=file</code> features.<br>However, since we can’t control the native styling of the input (search icon,<br>file button, date placeholder, etc.), in these cases the label will be<br>automatically floated. The <code>placeholder</code> attribute can still be used for<br>additional informational text.</p>
  * <pre><code>&lt;paper-input label=&quot;search!&quot; type=&quot;search&quot;
  *     placeholder=&quot;search for cats&quot; autosave=&quot;test&quot; results=&quot;5&quot;&gt;
  * &lt;/paper-input&gt;
@@ -40,15 +42,72 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <h3 id="styling">Styling</h3>
  * <p>See <code>Polymer.PaperInputContainer</code> for a list of custom properties used to<br>style this element.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperInputElement extends HTMLElement {
 
-    public static final String TAG = "paper-input";
-    public static final String SRC = "paper-input/paper-input.html";
+    @JsOverlay public static final String TAG = "paper-input";
+    @JsOverlay public static final String SRC = "paper-input/paper-input.html";
 
 
     /**
-     * <p>The maximum length of the input value. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>maxlength</code> property.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
+     */
+    @JsProperty JavaScriptObject getKeyEventTarget();
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setKeyEventTarget(JavaScriptObject value);
+
+    /**
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type !Object
+     * @behavior PaperToggleButton
+     */
+    @JsProperty JavaScriptObject getKeyBindings();
+    /**
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type !Object
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setKeyBindings(JavaScriptObject value);
+
+    /**
+     * <p>The minimum length of the input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>minlength</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property minlength
+     * @type Number
+     * @behavior PaperTextarea
+     */
+    @JsProperty double getMinlength();
+    /**
+     * <p>The minimum length of the input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>minlength</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property minlength
+     * @type Number
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setMinlength(double value);
+
+    /**
+     * <p>The maximum length of the input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>maxlength</code> property.</p>
      *
      * JavaScript Info:
      * @property maxlength
@@ -57,7 +116,7 @@ public interface PaperInputElement extends HTMLElement {
      */
     @JsProperty double getMaxlength();
     /**
-     * <p>The maximum length of the input value. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>maxlength</code> property.</p>
+     * <p>The maximum length of the input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>maxlength</code> property.</p>
      *
      * JavaScript Info:
      * @property maxlength
@@ -67,7 +126,7 @@ public interface PaperInputElement extends HTMLElement {
     @JsProperty void setMaxlength(double value);
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>results</code> property, used with type=search.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>results</code> property,<br>used with type=search.</p>
      *
      * JavaScript Info:
      * @property results
@@ -76,7 +135,7 @@ public interface PaperInputElement extends HTMLElement {
      */
     @JsProperty double getResults();
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>results</code> property, used with type=search.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>results</code> property,<br>used with type=search.</p>
      *
      * JavaScript Info:
      * @property results
@@ -86,7 +145,7 @@ public interface PaperInputElement extends HTMLElement {
     @JsProperty void setResults(double value);
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>size</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>size</code> property.</p>
      *
      * JavaScript Info:
      * @property size
@@ -95,7 +154,7 @@ public interface PaperInputElement extends HTMLElement {
      */
     @JsProperty double getSize();
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>size</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>size</code> property.</p>
      *
      * JavaScript Info:
      * @property size
@@ -105,137 +164,61 @@ public interface PaperInputElement extends HTMLElement {
     @JsProperty void setSize(double value);
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>minlength</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property minlength
-     * @type Number
-     * 
-     */
-    @JsProperty double getMinlength();
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>minlength</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property minlength
-     * @type Number
-     * 
-     */
-    @JsProperty void setMinlength(double value);
-
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty JavaScriptObject getKeyEventTarget();
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty void setKeyEventTarget(JavaScriptObject value);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty JavaScriptObject getKeyBindings();
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty void setKeyBindings(JavaScriptObject value);
-
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
      *
      * JavaScript Info:
      * @property autofocus
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     @JsProperty boolean getAutofocus();
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
      *
      * JavaScript Info:
      * @property autofocus
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     @JsProperty void setAutofocus(boolean value);
 
     /**
-     * <p>Set to true to auto-validate the input value. Bind this to the <code>&lt;paper-input-container&gt;</code>‘s<br><code>autoValidate</code> property.</p>
+     * <p>Set to true to disable the floating label. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>noLabelFloat</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property noLabelFloat
+     * @type Boolean
+     * @behavior PaperTextarea
+     */
+    @JsProperty boolean getNoLabelFloat();
+    /**
+     * <p>Set to true to disable the floating label. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>noLabelFloat</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property noLabelFloat
+     * @type Boolean
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setNoLabelFloat(boolean value);
+
+    /**
+     * <p>Set to true to auto-validate the input value. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>autoValidate</code> property.</p>
      *
      * JavaScript Info:
      * @property autoValidate
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     @JsProperty boolean getAutoValidate();
     /**
-     * <p>Set to true to auto-validate the input value. Bind this to the <code>&lt;paper-input-container&gt;</code>‘s<br><code>autoValidate</code> property.</p>
+     * <p>Set to true to auto-validate the input value. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>autoValidate</code> property.</p>
      *
      * JavaScript Info:
      * @property autoValidate
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     @JsProperty void setAutoValidate(boolean value);
-
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getFocused();
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setFocused(boolean value);
-
-    /**
-     * <p>If true, the user cannot interact with this element.</p>
-     *
-     * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getDisabled();
-    /**
-     * <p>If true, the user cannot interact with this element.</p>
-     *
-     * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setDisabled(boolean value);
 
     /**
      * <p>Set to true to show a character counter.</p>
@@ -243,7 +226,7 @@ public interface PaperInputElement extends HTMLElement {
      * JavaScript Info:
      * @property charCounter
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     @JsProperty boolean getCharCounter();
     /**
@@ -252,107 +235,128 @@ public interface PaperInputElement extends HTMLElement {
      * JavaScript Info:
      * @property charCounter
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     @JsProperty void setCharCounter(boolean value);
 
     /**
-     * <p>Set to true to mark the input as required. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>required</code> property.</p>
+     * <p>Set to true to disable this input. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>both the <code>&lt;paper-input-container&gt;</code>‘s and the input’s <code>disabled</code> property.</p>
      *
      * JavaScript Info:
-     * @property required
+     * @property disabled
      * @type Boolean
      * @behavior PaperTextarea
      */
-    @JsProperty boolean getRequired();
+    @JsProperty boolean getDisabled();
     /**
-     * <p>Set to true to mark the input as required. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>required</code> property.</p>
+     * <p>Set to true to disable this input. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>both the <code>&lt;paper-input-container&gt;</code>‘s and the input’s <code>disabled</code> property.</p>
      *
      * JavaScript Info:
-     * @property required
+     * @property disabled
      * @type Boolean
      * @behavior PaperTextarea
      */
-    @JsProperty void setRequired(boolean value);
+    @JsProperty void setDisabled(boolean value);
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property, used with type=file.</p>
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getStopKeyboardEventPropagation();
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
+
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the<code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property,<br>used with type=file.</p>
      *
      * JavaScript Info:
      * @property multiple
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     @JsProperty boolean getMultiple();
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property, used with type=file.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the<code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property,<br>used with type=file.</p>
      *
      * JavaScript Info:
      * @property multiple
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     @JsProperty void setMultiple(boolean value);
 
     /**
-     * <p>Set to true to always float the label. Bind this to the <code>&lt;paper-input-container&gt;</code>‘s<br><code>alwaysFloatLabel</code> property.</p>
+     * <p>If true, the element currently has focus.</p>
      *
      * JavaScript Info:
-     * @property alwaysFloatLabel
+     * @property focused
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
-    @JsProperty boolean getAlwaysFloatLabel();
+    @JsProperty boolean getFocused();
     /**
-     * <p>Set to true to always float the label. Bind this to the <code>&lt;paper-input-container&gt;</code>‘s<br><code>alwaysFloatLabel</code> property.</p>
+     * <p>If true, the element currently has focus.</p>
      *
      * JavaScript Info:
-     * @property alwaysFloatLabel
+     * @property focused
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
-    @JsProperty void setAlwaysFloatLabel(boolean value);
+    @JsProperty void setFocused(boolean value);
 
     /**
-     * <p>Set to true to disable the floating label. Bind this to the <code>&lt;paper-input-container&gt;</code>‘s<br><code>noLabelFloat</code> property.</p>
+     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
      *
      * JavaScript Info:
-     * @property noLabelFloat
+     * @property required
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
-    @JsProperty boolean getNoLabelFloat();
+    @JsProperty boolean getRequired();
     /**
-     * <p>Set to true to disable the floating label. Bind this to the <code>&lt;paper-input-container&gt;</code>‘s<br><code>noLabelFloat</code> property.</p>
+     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
      *
      * JavaScript Info:
-     * @property noLabelFloat
+     * @property required
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
-    @JsProperty void setNoLabelFloat(boolean value);
+    @JsProperty void setRequired(boolean value);
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>readonly</code> property.</p>
+     * <p>Returns true if the value is invalid. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to both the<br><code>&lt;paper-input-container&gt;</code>‘s and the input’s <code>invalid</code> property.</p>
+     * <p>If <code>autoValidate</code> is true, the <code>invalid</code> attribute is managed automatically,<br>which can clobber attempts to manage it manually.</p>
      *
      * JavaScript Info:
-     * @property readonly
+     * @property invalid
      * @type Boolean
      * @behavior PaperTextarea
      */
-    @JsProperty boolean getReadonly();
+    @JsProperty boolean getInvalid();
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>readonly</code> property.</p>
+     * <p>Returns true if the value is invalid. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to both the<br><code>&lt;paper-input-container&gt;</code>‘s and the input’s <code>invalid</code> property.</p>
+     * <p>If <code>autoValidate</code> is true, the <code>invalid</code> attribute is managed automatically,<br>which can clobber attempts to manage it manually.</p>
      *
      * JavaScript Info:
-     * @property readonly
+     * @property invalid
      * @type Boolean
      * @behavior PaperTextarea
      */
-    @JsProperty void setReadonly(boolean value);
+    @JsProperty void setInvalid(boolean value);
 
     /**
-     * <p>Set to true to prevent the user from entering invalid input. Bind this to the<br><code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>preventInvalidInput</code> property.</p>
+     * <p>Set to true to prevent the user from entering invalid input. If you’re<br>using PaperInputBehavior to  implement your own paper-input-like element,<br>bind this to <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>preventInvalidInput</code> property.</p>
      *
      * JavaScript Info:
      * @property preventInvalidInput
@@ -361,7 +365,7 @@ public interface PaperInputElement extends HTMLElement {
      */
     @JsProperty boolean getPreventInvalidInput();
     /**
-     * <p>Set to true to prevent the user from entering invalid input. Bind this to the<br><code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>preventInvalidInput</code> property.</p>
+     * <p>Set to true to prevent the user from entering invalid input. If you’re<br>using PaperInputBehavior to  implement your own paper-input-like element,<br>bind this to <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>preventInvalidInput</code> property.</p>
      *
      * JavaScript Info:
      * @property preventInvalidInput
@@ -371,102 +375,45 @@ public interface PaperInputElement extends HTMLElement {
     @JsProperty void setPreventInvalidInput(boolean value);
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>readonly</code> property.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
+     * @property readonly
      * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getStopKeyboardEventPropagation();
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
-
-    /**
-     * <p>Returns true if the value is invalid. Bind this to both the <code>&lt;paper-input-container&gt;</code>‘s<br>and the input’s <code>invalid</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property invalid
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getInvalid();
-    /**
-     * <p>Returns true if the value is invalid. Bind this to both the <code>&lt;paper-input-container&gt;</code>‘s<br>and the input’s <code>invalid</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property invalid
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setInvalid(boolean value);
-
-    /**
-     * <p>The type of the input. The supported types are <code>text</code>, <code>number</code> and <code>password</code>. Bind this<br>to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>type</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property type
-     * @type String
-     * 
-     */
-    @JsProperty String getType();
-    /**
-     * <p>The type of the input. The supported types are <code>text</code>, <code>number</code> and <code>password</code>. Bind this<br>to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>type</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property type
-     * @type String
-     * 
-     */
-    @JsProperty void setType(String value);
-
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autosave</code> property, used with type=search.</p>
-     *
-     * JavaScript Info:
-     * @property autosave
-     * @type String
      * @behavior PaperTextarea
      */
-    @JsProperty String getAutosave();
+    @JsProperty boolean getReadonly();
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autosave</code> property, used with type=search.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>readonly</code> property.</p>
      *
      * JavaScript Info:
-     * @property autosave
-     * @type String
+     * @property readonly
+     * @type Boolean
      * @behavior PaperTextarea
      */
-    @JsProperty void setAutosave(String value);
+    @JsProperty void setReadonly(boolean value);
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocapitalize</code> property.</p>
+     * <p>Set to true to always float the label. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>alwaysFloatLabel</code> property.</p>
      *
      * JavaScript Info:
-     * @property autocapitalize
-     * @type String
-     * 
+     * @property alwaysFloatLabel
+     * @type Boolean
+     * @behavior PaperTextarea
      */
-    @JsProperty String getAutocapitalize();
+    @JsProperty boolean getAlwaysFloatLabel();
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocapitalize</code> property.</p>
+     * <p>Set to true to always float the label. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>alwaysFloatLabel</code> property.</p>
      *
      * JavaScript Info:
-     * @property autocapitalize
-     * @type String
-     * 
+     * @property alwaysFloatLabel
+     * @type Boolean
+     * @behavior PaperTextarea
      */
-    @JsProperty void setAutocapitalize(String value);
+    @JsProperty void setAlwaysFloatLabel(boolean value);
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>inputmode</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>inputmode</code> property.</p>
      *
      * JavaScript Info:
      * @property inputmode
@@ -475,7 +422,7 @@ public interface PaperInputElement extends HTMLElement {
      */
     @JsProperty String getInputmode();
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>inputmode</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>inputmode</code> property.</p>
      *
      * JavaScript Info:
      * @property inputmode
@@ -483,196 +430,6 @@ public interface PaperInputElement extends HTMLElement {
      * @behavior PaperTextarea
      */
     @JsProperty void setInputmode(String value);
-
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocorrect</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property autocorrect
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty String getAutocorrect();
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocorrect</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property autocorrect
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty void setAutocorrect(String value);
-
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocomplete</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty String getAutocomplete();
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocomplete</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty void setAutocomplete(String value);
-
-    /**
-     * <p>The label for this input. Bind this to <code>&lt;label&gt;</code>‘s content and <code>hidden</code> property, e.g.<br><code>&lt;label hidden$=&quot;[[!label]]&quot;&gt;[[label]]&lt;/label&gt;</code> in your <code>template</code></p>
-     *
-     * JavaScript Info:
-     * @property label
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty String getLabel();
-    /**
-     * <p>The label for this input. Bind this to <code>&lt;label&gt;</code>‘s content and <code>hidden</code> property, e.g.<br><code>&lt;label hidden$=&quot;[[!label]]&quot;&gt;[[label]]&lt;/label&gt;</code> in your <code>template</code></p>
-     *
-     * JavaScript Info:
-     * @property label
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty void setLabel(String value);
-
-    /**
-     * <p>The datalist of the input (if any). This should match the id of an existing <code>&lt;datalist&gt;</code>. Bind this<br>to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>list</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property list
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty String getList();
-    /**
-     * <p>The datalist of the input (if any). This should match the id of an existing <code>&lt;datalist&gt;</code>. Bind this<br>to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>list</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property list
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty void setList(String value);
-
-    /**
-     * <p>The maximum (numeric or date-time) input value.<br>Can be a String (e.g. <code>&quot;2000-1-1&quot;</code>) or a Number (e.g. <code>2</code>).<br>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>max</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property max
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty String getMax();
-    /**
-     * <p>The maximum (numeric or date-time) input value.<br>Can be a String (e.g. <code>&quot;2000-1-1&quot;</code>) or a Number (e.g. <code>2</code>).<br>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>max</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property max
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty void setMax(String value);
-
-    /**
-     * <p>The minimum (numeric or date-time) input value.<br>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>min</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property min
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty String getMin();
-    /**
-     * <p>The minimum (numeric or date-time) input value.<br>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>min</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property min
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty void setMin(String value);
-
-    /**
-     * <p>Set this to specify the pattern allowed by <code>preventInvalidInput</code>. Bind this to the<br><code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>allowedPattern</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property allowedPattern
-     * @type String
-     * 
-     */
-    @JsProperty String getAllowedPattern();
-    /**
-     * <p>Set this to specify the pattern allowed by <code>preventInvalidInput</code>. Bind this to the<br><code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>allowedPattern</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property allowedPattern
-     * @type String
-     * 
-     */
-    @JsProperty void setAllowedPattern(String value);
-
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>name</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property name
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty String getName();
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>name</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property name
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty void setName(String value);
-
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>accept</code> property, used with type=file.</p>
-     *
-     * JavaScript Info:
-     * @property accept
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty String getAccept();
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>accept</code> property, used with type=file.</p>
-     *
-     * JavaScript Info:
-     * @property accept
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty void setAccept(String value);
-
-    /**
-     * <p>A pattern to validate the <code>input</code> with. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>pattern</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property pattern
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty String getPattern();
-    /**
-     * <p>A pattern to validate the <code>input</code> with. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>pattern</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property pattern
-     * @type String
-     * @behavior PaperTextarea
-     */
-    @JsProperty void setPattern(String value);
 
     /**
      * <p>A placeholder string in addition to the label. If this is set, the label will always float.</p>
@@ -694,45 +451,197 @@ public interface PaperInputElement extends HTMLElement {
     @JsProperty void setPlaceholder(String value);
 
     /**
-     * <p>The value for this element.</p>
+     * <p>The type of the input. The supported types are <code>text</code>, <code>number</code> and <code>password</code>.<br>If you’re using PaperInputBehavior to implement your own paper-input-like element,<br>bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>type</code> property.</p>
      *
      * JavaScript Info:
-     * @property value
+     * @property type
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTextarea
      */
-    @JsProperty String getValue();
+    @JsProperty String getType();
     /**
-     * <p>The value for this element.</p>
+     * <p>The type of the input. The supported types are <code>text</code>, <code>number</code> and <code>password</code>.<br>If you’re using PaperInputBehavior to implement your own paper-input-like element,<br>bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>type</code> property.</p>
      *
      * JavaScript Info:
-     * @property value
+     * @property type
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTextarea
      */
-    @JsProperty void setValue(String value);
+    @JsProperty void setType(String value);
 
     /**
-     * <p>Name of the validator to use. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>validator</code><br>property.</p>
+     * <p>A pattern to validate the <code>input</code> with. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>pattern</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property pattern
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty String getPattern();
+    /**
+     * <p>A pattern to validate the <code>input</code> with. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>pattern</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property pattern
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setPattern(String value);
+
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>name</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty String getName();
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>name</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setName(String value);
+
+    /**
+     * <p>Name of the validator to use. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>validator</code> property.</p>
      *
      * JavaScript Info:
      * @property validator
      * @type String
-     * 
+     * @behavior PaperTextarea
      */
     @JsProperty String getValidator();
     /**
-     * <p>Name of the validator to use. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>validator</code><br>property.</p>
+     * <p>Name of the validator to use. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>validator</code> property.</p>
      *
      * JavaScript Info:
      * @property validator
      * @type String
-     * 
+     * @behavior PaperTextarea
      */
     @JsProperty void setValidator(String value);
 
     /**
-     * <p>The error message to display when the input is invalid. Bind this to the<br><code>&lt;paper-input-error&gt;</code>‘s content, if using.</p>
+     * <p>The value for this input. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>bindValue</code><br>property, or the value property of your input that is <code>notify:true</code>.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty String getValue();
+    /**
+     * <p>The value for this input. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>bindValue</code><br>property, or the value property of your input that is <code>notify:true</code>.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setValue(String value);
+
+    /**
+     * <p>The minimum (numeric or date-time) input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>min</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property min
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty String getMin();
+    /**
+     * <p>The minimum (numeric or date-time) input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>min</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property min
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setMin(String value);
+
+    /**
+     * <p>The maximum (numeric or date-time) input value.<br>Can be a String (e.g. <code>&quot;2000-01-01&quot;</code>) or a Number (e.g. <code>2</code>).<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>max</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property max
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty String getMax();
+    /**
+     * <p>The maximum (numeric or date-time) input value.<br>Can be a String (e.g. <code>&quot;2000-01-01&quot;</code>) or a Number (e.g. <code>2</code>).<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>max</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property max
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setMax(String value);
+
+    /**
+     * <p>The datalist of the input (if any). This should match the id of an existing <code>&lt;datalist&gt;</code>.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>list</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property list
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty String getList();
+    /**
+     * <p>The datalist of the input (if any). This should match the id of an existing <code>&lt;datalist&gt;</code>.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>list</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property list
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setList(String value);
+
+    /**
+     * <p>The label for this input. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br><code>&lt;label&gt;</code>‘s content and <code>hidden</code> property, e.g.<br><code>&lt;label hidden$=&quot;[[!label]]&quot;&gt;[[label]]&lt;/label&gt;</code> in your <code>template</code></p>
+     *
+     * JavaScript Info:
+     * @property label
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty String getLabel();
+    /**
+     * <p>The label for this input. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br><code>&lt;label&gt;</code>‘s content and <code>hidden</code> property, e.g.<br><code>&lt;label hidden$=&quot;[[!label]]&quot;&gt;[[label]]&lt;/label&gt;</code> in your <code>template</code></p>
+     *
+     * JavaScript Info:
+     * @property label
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setLabel(String value);
+
+    /**
+     * <p>Limits the numeric or date-time increments.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>step</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property step
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty String getStep();
+    /**
+     * <p>Limits the numeric or date-time increments.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>step</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property step
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setStep(String value);
+
+    /**
+     * <p>The error message to display when the input is invalid. If you’re using<br>PaperInputBehavior to implement your own paper-input-like element,<br>bind this to the <code>&lt;paper-input-error&gt;</code>‘s content, if using.</p>
      *
      * JavaScript Info:
      * @property errorMessage
@@ -741,7 +650,7 @@ public interface PaperInputElement extends HTMLElement {
      */
     @JsProperty String getErrorMessage();
     /**
-     * <p>The error message to display when the input is invalid. Bind this to the<br><code>&lt;paper-input-error&gt;</code>‘s content, if using.</p>
+     * <p>The error message to display when the input is invalid. If you’re using<br>PaperInputBehavior to implement your own paper-input-like element,<br>bind this to the <code>&lt;paper-input-error&gt;</code>‘s content, if using.</p>
      *
      * JavaScript Info:
      * @property errorMessage
@@ -751,36 +660,119 @@ public interface PaperInputElement extends HTMLElement {
     @JsProperty void setErrorMessage(String value);
 
     /**
-     * <p>Limits the numeric or date-time increments.<br>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>step</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autosave</code> property,<br>used with type=search.</p>
      *
      * JavaScript Info:
-     * @property step
+     * @property autosave
      * @type String
      * @behavior PaperTextarea
      */
-    @JsProperty String getStep();
+    @JsProperty String getAutosave();
     /**
-     * <p>Limits the numeric or date-time increments.<br>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>step</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autosave</code> property,<br>used with type=search.</p>
      *
      * JavaScript Info:
-     * @property step
+     * @property autosave
      * @type String
      * @behavior PaperTextarea
      */
-    @JsProperty void setStep(String value);
-
+    @JsProperty void setAutosave(String value);
 
     /**
-     * 
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocorrect</code> property.</p>
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
+     * @property autocorrect
+     * @type String
+     * @behavior PaperTextarea
      */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
+    @JsProperty String getAutocorrect();
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocorrect</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autocorrect
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setAutocorrect(String value);
+
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocomplete</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autocomplete
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty String getAutocomplete();
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocomplete</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autocomplete
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setAutocomplete(String value);
+
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocapitalize</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autocapitalize
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty String getAutocapitalize();
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocapitalize</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autocapitalize
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setAutocapitalize(String value);
+
+    /**
+     * <p>Set this to specify the pattern allowed by <code>preventInvalidInput</code>. If<br>you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>allowedPattern</code><br>property.</p>
+     *
+     * JavaScript Info:
+     * @property allowedPattern
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty String getAllowedPattern();
+    /**
+     * <p>Set this to specify the pattern allowed by <code>preventInvalidInput</code>. If<br>you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>allowedPattern</code><br>property.</p>
+     *
+     * JavaScript Info:
+     * @property allowedPattern
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setAllowedPattern(String value);
+
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>accept</code> property,<br>used with type=file.</p>
+     *
+     * JavaScript Info:
+     * @property accept
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty String getAccept();
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>accept</code> property,<br>used with type=file.</p>
+     *
+     * JavaScript Info:
+     * @property accept
+     * @type String
+     * @behavior PaperTextarea
+     */
+    @JsProperty void setAccept(String value);
+
 
     /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
@@ -789,10 +781,20 @@ public interface PaperInputElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior PaperToggleButton
+     * 
+     */
+    void removeOwnKeyBindings();
 
     /**
      * <p>Validates the input element and sets an error style if needed.</p>
@@ -805,14 +807,16 @@ public interface PaperInputElement extends HTMLElement {
     boolean validate();
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior PaperTab
-     * 
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
      */
-    void removeOwnKeyBindings();
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
     /**
      * <p>Restores the cursor to its original position after updating the value.</p>
@@ -820,7 +824,7 @@ public interface PaperInputElement extends HTMLElement {
      * JavaScript Info:
      * @method updateValueAndPreserveCaret
      * @param {string} newValue  
-     * 
+     * @behavior PaperTextarea
      * 
      */
     void updateValueAndPreserveCaret(String newValue);

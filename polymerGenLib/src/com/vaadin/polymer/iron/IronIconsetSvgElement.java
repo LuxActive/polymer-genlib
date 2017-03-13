@@ -5,11 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Element;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>The <code>iron-iconset-svg</code> element allows users to define their own icon sets<br>that contain svg icons. The svg icon elements should be children of the<br><code>iron-iconset-svg</code> element. Multiple icons should be given distinct id’s.</p>
@@ -33,12 +34,33 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronIconsetSvgElement extends HTMLElement {
 
-    public static final String TAG = "iron-iconset-svg";
-    public static final String SRC = "iron-iconset-svg/iron-iconset-svg.html";
+    @JsOverlay public static final String TAG = "iron-iconset-svg";
+    @JsOverlay public static final String SRC = "iron-iconset-svg/iron-iconset-svg.html";
 
+
+    /**
+     * <p>Set to true to enable mirroring of icons where specified when they are<br>stamped. Icons that should be mirrored should be decorated with a<br><code>mirror-in-rtl</code> attribute.</p>
+     * <p>NOTE: For performance reasons, direction will be resolved once per<br>document per iconset, so moving icons in and out of RTL subtrees will<br>not cause their mirrored state to change.</p>
+     *
+     * JavaScript Info:
+     * @property rtlMirroring
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getRtlMirroring();
+    /**
+     * <p>Set to true to enable mirroring of icons where specified when they are<br>stamped. Icons that should be mirrored should be decorated with a<br><code>mirror-in-rtl</code> attribute.</p>
+     * <p>NOTE: For performance reasons, direction will be resolved once per<br>document per iconset, so moving icons in and out of RTL subtrees will<br>not cause their mirrored state to change.</p>
+     *
+     * JavaScript Info:
+     * @property rtlMirroring
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setRtlMirroring(boolean value);
 
     /**
      * <p>The size of an individual icon. Note that icons must be square.</p>
@@ -103,6 +125,7 @@ public interface IronIconsetSvgElement extends HTMLElement {
     /**
      * <p>Applies an icon to the given element.</p>
      * <p>An svg icon is prepended to the element’s shadowRoot if it exists,<br>otherwise to the element itself.</p>
+     * <p>If RTL mirroring is enabled, and the icon is marked to be mirrored in<br>RTL, the element will be tested (once and only once ever for each<br>iconset) to determine the direction of the subtree the element is in.<br>This direction will apply to all future icon applications, although only<br>icons marked to be mirrored will be affected.</p>
      *
      * JavaScript Info:
      * @method applyIcon

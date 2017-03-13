@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>iron-autogrow-textarea</code> is an element containing a textarea that grows in height as more<br>lines of input are entered. Unless an explicit height or the <code>maxRows</code> property is set, it will<br>never scroll.</p>
@@ -16,8 +18,7 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <pre><code>&lt;iron-autogrow-textarea&gt;&lt;/iron-autogrow-textarea&gt;
  * 
  * 
- * </code></pre><p>Because the <code>textarea</code>‘s <code>value</code> property is not observable, you should use<br>this element’s <code>bind-value</code> instead for imperative updates.</p>
- * <h3 id="styling">Styling</h3>
+ * </code></pre><h3 id="styling">Styling</h3>
  * <p>The following custom properties and mixins are available for styling:</p>
  * <table>
  * <thead>
@@ -33,34 +34,39 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <td>Mixin applied to the textarea</td>
  * <td><code>{}</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--iron-autogrow-textarea-placeholder</code></td>
+ * <td>Mixin applied to the textarea placeholder</td>
+ * <td><code>{}</code></td>
+ * </tr>
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronAutogrowTextareaElement extends HTMLElement {
 
-    public static final String TAG = "iron-autogrow-textarea";
-    public static final String SRC = "iron-autogrow-textarea/iron-autogrow-textarea.html";
+    @JsOverlay public static final String TAG = "iron-autogrow-textarea";
+    @JsOverlay public static final String SRC = "iron-autogrow-textarea/iron-autogrow-textarea.html";
 
 
     /**
-     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     * <p>Set to true to mark the textarea as required.</p>
      *
      * JavaScript Info:
-     * @property autofocus
+     * @property required
      * @type Boolean
      * 
      */
-    @JsProperty boolean getAutofocus();
+    @JsProperty boolean getRequired();
     /**
-     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     * <p>Set to true to mark the textarea as required.</p>
      *
      * JavaScript Info:
-     * @property autofocus
+     * @property required
      * @type Boolean
      * 
      */
-    @JsProperty void setAutofocus(boolean value);
+    @JsProperty void setRequired(boolean value);
 
     /**
      * <p>The maximum length of the input value.</p>
@@ -82,25 +88,6 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setMaxlength(double value);
 
     /**
-     * <p>The initial number of rows.</p>
-     *
-     * JavaScript Info:
-     * @property rows
-     * @type Number
-     * 
-     */
-    @JsProperty double getRows();
-    /**
-     * <p>The initial number of rows.</p>
-     *
-     * JavaScript Info:
-     * @property rows
-     * @type Number
-     * 
-     */
-    @JsProperty void setRows(double value);
-
-    /**
      * <p>The maximum number of rows this element can grow to until it<br>scrolls. 0 means no maximum.</p>
      *
      * JavaScript Info:
@@ -120,61 +107,61 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setMaxRows(double value);
 
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
+     * <p>The minimum length of the input value.</p>
+     *
+     * JavaScript Info:
+     * @property minlength
+     * @type Number
+     * 
+     */
+    @JsProperty double getMinlength();
+    /**
+     * <p>The minimum length of the input value.</p>
+     *
+     * JavaScript Info:
+     * @property minlength
+     * @type Number
+     * 
+     */
+    @JsProperty void setMinlength(double value);
+
+    /**
+     * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
      *
      * JavaScript Info:
      * @property bindValue
-     * @type (string|number|undefined|null)
+     * @type (string|number)
      * 
      */
     @JsProperty Object getBindValue();
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
+     * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
      *
      * JavaScript Info:
      * @property bindValue
-     * @type (string|number|undefined|null)
+     * @type (string|number)
      * 
      */
     @JsProperty void setBindValue(Object value);
 
     /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     * <p>The initial number of rows.</p>
      *
      * JavaScript Info:
-     * @property required
-     * @type Boolean
-     * @behavior PaperToggleButton
+     * @property rows
+     * @type Number
+     * 
      */
-    @JsProperty boolean getRequired();
+    @JsProperty double getRows();
     /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     * <p>The initial number of rows.</p>
      *
      * JavaScript Info:
-     * @property required
-     * @type Boolean
-     * @behavior PaperToggleButton
+     * @property rows
+     * @type Number
+     * 
      */
-    @JsProperty void setRequired(boolean value);
-
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getFocused();
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setFocused(boolean value);
+    @JsProperty void setRows(double value);
 
     /**
      * <p>If true, the user cannot interact with this element.</p>
@@ -182,7 +169,7 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getDisabled();
     /**
@@ -191,9 +178,28 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setDisabled(boolean value);
+
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getFocused();
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setFocused(boolean value);
 
     /**
      * <p>True if the last call to <code>validate</code> is invalid.</p>
@@ -215,6 +221,44 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setInvalid(boolean value);
 
     /**
+     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property autofocus
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getAutofocus();
+    /**
+     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property autofocus
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setAutofocus(boolean value);
+
+    /**
+     * <p>The name of this element.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior PaperToggleButton
+     */
+    @JsProperty String getName();
+    /**
+     * <p>The name of this element.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setName(String value);
+
+    /**
      * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
      *
      * JavaScript Info:
@@ -234,21 +278,21 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setAutocomplete(String value);
 
     /**
-     * <p>The value for this input, same as <code>bindValue</code></p>
+     * <p>The value for this element.</p>
      *
      * JavaScript Info:
      * @property value
      * @type String
-     * 
+     * @behavior PaperToggleButton
      */
     @JsProperty String getValue();
     /**
-     * <p>The value for this input, same as <code>bindValue</code></p>
+     * <p>The value for this element.</p>
      *
      * JavaScript Info:
      * @property value
      * @type String
-     * 
+     * @behavior PaperToggleButton
      */
     @JsProperty void setValue(String value);
 
@@ -272,26 +316,26 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setInputmode(String value);
 
     /**
-     * <p>The name of this element.</p>
+     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property name
+     * @property placeholder
      * @type String
-     * @behavior PaperToggleButton
+     * 
      */
-    @JsProperty String getName();
+    @JsProperty String getPlaceholder();
     /**
-     * <p>The name of this element.</p>
+     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property name
+     * @property placeholder
      * @type String
-     * @behavior PaperToggleButton
+     * 
      */
-    @JsProperty void setName(String value);
+    @JsProperty void setPlaceholder(String value);
 
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -300,7 +344,7 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      */
     @JsProperty String getValidatorType();
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -327,25 +371,6 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * @behavior PaperToggleButton
      */
     @JsProperty void setValidator(String value);
-
-    /**
-     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * 
-     */
-    @JsProperty String getPlaceholder();
-    /**
-     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * 
-     */
-    @JsProperty void setPlaceholder(String value);
 
     /**
      * <p>Bound to the textarea’s <code>readonly</code> attribute.</p>

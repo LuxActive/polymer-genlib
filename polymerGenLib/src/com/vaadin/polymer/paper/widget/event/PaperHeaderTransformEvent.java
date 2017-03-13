@@ -5,19 +5,20 @@
  */
 package com.vaadin.polymer.paper.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the header is transformed.</p>
  */
-public class PaperHeaderTransformEvent extends GwtEvent<PaperHeaderTransformEventHandler> {
+public class PaperHeaderTransformEvent extends DomEvent<PaperHeaderTransformEventHandler> {
 
-    public static Type<PaperHeaderTransformEventHandler> TYPE = new Type<PaperHeaderTransformEventHandler>();
+    public static Type<PaperHeaderTransformEventHandler> TYPE = new Type<PaperHeaderTransformEventHandler>(
+       com.vaadin.polymer.paper.event.PaperHeaderTransformEvent.NAME, new PaperHeaderTransformEvent());
 
-    private com.vaadin.polymer.paper.event.PaperHeaderTransformEvent nativeEvent;
 
-    public PaperHeaderTransformEvent(com.vaadin.polymer.paper.event.PaperHeaderTransformEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public PaperHeaderTransformEvent() {
     }
 
     public Type<PaperHeaderTransformEventHandler> getAssociatedType() {
@@ -28,8 +29,9 @@ public class PaperHeaderTransformEvent extends GwtEvent<PaperHeaderTransformEven
         handler.onPaperHeaderTransform(this);
     }
 
-    public com.vaadin.polymer.paper.event.PaperHeaderTransformEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.paper.event.PaperHeaderTransformEvent getPolymerEvent() {
+        return (com.vaadin.polymer.paper.event.PaperHeaderTransformEvent)super.getNativeEvent();
     }
+
 
 }

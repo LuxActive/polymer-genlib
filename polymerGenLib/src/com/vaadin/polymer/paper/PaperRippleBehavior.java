@@ -5,19 +5,23 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p><code>Polymer.PaperRippleBehavior</code> dynamically implements a ripple<br>when the element has focus via pointer or keyboard.</p>
  * <p>NOTE: This behavior is intended to be used in conjunction with and after<br><code>Polymer.IronButtonState</code> and <code>Polymer.IronControlState</code>.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperRippleBehavior {
 
-    public static final String TAG = "Polymer.PaperRippleBehavior";
-    public static final String SRC = "paper-behaviors/paper-checked-element-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.PaperRippleBehavior";
+    @JsOverlay public static final String SRC = "paper-behaviors/paper-ripple-behavior.html";
 
 
     /**
@@ -26,7 +30,7 @@ public interface PaperRippleBehavior {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getNoink();
     /**
@@ -35,7 +39,7 @@ public interface PaperRippleBehavior {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
     @JsProperty void setNoink(boolean value);
 
@@ -45,7 +49,7 @@ public interface PaperRippleBehavior {
      *
      * JavaScript Info:
      * @method getRipple
-     * 
+     * @behavior PaperToggleButton
      * 
      */
     void getRipple();
@@ -55,7 +59,7 @@ public interface PaperRippleBehavior {
      *
      * JavaScript Info:
      * @method hasRipple
-     * 
+     * @behavior PaperToggleButton
      * @return {boolean}
      */
     boolean hasRipple();
@@ -66,7 +70,7 @@ public interface PaperRippleBehavior {
      * JavaScript Info:
      * @method ensureRipple
      * @param {!Event=} optTriggeringEvent  
-     * 
+     * @behavior PaperToggleButton
      * 
      */
     void ensureRipple(JavaScriptObject optTriggeringEvent);

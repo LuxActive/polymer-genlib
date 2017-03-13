@@ -5,46 +5,33 @@
  */
 package com.vaadin.polymer.paper.event;
 
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Event;
-import com.vaadin.polymer.elemental.EventListener;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Fired when <code>paper-toast</code> is opened.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronAnnounceEvent extends Event {
 
-    static final String NAME = "iron-announce";
+    @JsOverlay static final String NAME = "iron-announce";
 
     @Override
     @JsProperty
     Detail getDetail();
 
-    @JsType
+    @JsType(isNative=true)
     interface Detail extends Event.Detail {
 
         /**
-         * 
+         * <p>Contains text that will be announced.</p>
          */
         @JsProperty JavaScriptObject getDetail();
 
-        /**
-         * <p>The text that will be announced.</p>
-         */
-        @JsProperty String getText();
-
     }
 
-
-    public abstract class Listener implements EventListener {
-        protected abstract void handleEvent(IronAnnounceEvent event);
-
-        @Override
-        public void handleEvent(Event event) {
-            handleEvent((IronAnnounceEvent) event);
-        }
-    }
 }

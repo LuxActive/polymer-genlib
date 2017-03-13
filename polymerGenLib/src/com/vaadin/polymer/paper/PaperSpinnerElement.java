@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/progress-activity.html">Progress &amp; activity</a></p>
@@ -52,14 +55,19 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <td>Color of the fourth spinner rotation</td>
  * <td><code>--google-green-500</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--paper-spinner-stroke-width</code></td>
+ * <td>The width of the spinner stroke</td>
+ * <td>3px</td>
+ * </tr>
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperSpinnerElement extends HTMLElement {
 
-    public static final String TAG = "paper-spinner";
-    public static final String SRC = "paper-spinner/paper-spinner.html";
+    @JsOverlay public static final String TAG = "paper-spinner";
+    @JsOverlay public static final String SRC = "paper-spinner/paper-spinner.html";
 
 
     /**
@@ -68,7 +76,7 @@ public interface PaperSpinnerElement extends HTMLElement {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * 
+     * @behavior PaperSpinner
      */
     @JsProperty boolean getActive();
     /**
@@ -77,7 +85,7 @@ public interface PaperSpinnerElement extends HTMLElement {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * 
+     * @behavior PaperSpinner
      */
     @JsProperty void setActive(boolean value);
 
@@ -87,7 +95,7 @@ public interface PaperSpinnerElement extends HTMLElement {
      * JavaScript Info:
      * @property alt
      * @type String
-     * 
+     * @behavior PaperSpinner
      */
     @JsProperty String getAlt();
     /**
@@ -96,7 +104,7 @@ public interface PaperSpinnerElement extends HTMLElement {
      * JavaScript Info:
      * @property alt
      * @type String
-     * 
+     * @behavior PaperSpinner
      */
     @JsProperty void setAlt(String value);
 

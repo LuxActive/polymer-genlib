@@ -5,19 +5,20 @@
  */
 package com.vaadin.polymer.paper.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the content has been scrolled.</p>
  */
-public class ContentScrollEvent extends GwtEvent<ContentScrollEventHandler> {
+public class ContentScrollEvent extends DomEvent<ContentScrollEventHandler> {
 
-    public static Type<ContentScrollEventHandler> TYPE = new Type<ContentScrollEventHandler>();
+    public static Type<ContentScrollEventHandler> TYPE = new Type<ContentScrollEventHandler>(
+       com.vaadin.polymer.paper.event.ContentScrollEvent.NAME, new ContentScrollEvent());
 
-    private com.vaadin.polymer.paper.event.ContentScrollEvent nativeEvent;
 
-    public ContentScrollEvent(com.vaadin.polymer.paper.event.ContentScrollEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public ContentScrollEvent() {
     }
 
     public Type<ContentScrollEventHandler> getAssociatedType() {
@@ -28,8 +29,9 @@ public class ContentScrollEvent extends GwtEvent<ContentScrollEventHandler> {
         handler.onContentScroll(this);
     }
 
-    public com.vaadin.polymer.paper.event.ContentScrollEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.paper.event.ContentScrollEvent getPolymerEvent() {
+        return (com.vaadin.polymer.paper.event.ContentScrollEvent)super.getNativeEvent();
     }
+
 
 }

@@ -5,10 +5,17 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
+import com.vaadin.polymer.paper.*;
+
+import com.vaadin.polymer.paper.widget.event.TransitionendEvent;
+import com.vaadin.polymer.paper.widget.event.TransitionendEventHandler;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperRippleElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/animation/responsive-interaction.html#responsive-interaction-surface-reaction">Surface reaction</a></p>
@@ -25,7 +32,7 @@ import com.vaadin.polymer.paper.PaperRippleElement;
  * <pre><code>&lt;paper-ripple id=&quot;ripple&quot; style=&quot;pointer-events: none;&quot;&gt;&lt;/paper-ripple&gt;
  * ...
  * downAction: function(e) {
- *   this.$.ripple.downAction({x: e.x, y: e.y});
+ *   this.$.ripple.downAction({detail: {x: e.x, y: e.y}});
  * },
  * upAction: function(e) {
  *   this.$.ripple.upAction();
@@ -67,19 +74,13 @@ public class PaperRipple extends PolymerWidget {
      */
     public PaperRipple(String html) {
         super(PaperRippleElement.TAG, PaperRippleElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperRippleElement getPolymerElement() {
-        try {
-            return (PaperRippleElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperRippleElement) getElement();
     }
 
 
@@ -176,23 +177,23 @@ public class PaperRipple extends PolymerWidget {
     }
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
     }
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
@@ -250,7 +251,7 @@ public class PaperRipple extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public boolean getStopKeyboardEventPropagation() {
         return getPolymerElement().getStopKeyboardEventPropagation();
@@ -261,7 +262,7 @@ public class PaperRipple extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
@@ -337,6 +338,7 @@ public class PaperRipple extends PolymerWidget {
     }
 
 
+    // Needed in UIBinder
     /**
      * <p>A list of the visual ripples.</p>
      *
@@ -345,31 +347,34 @@ public class PaperRipple extends PolymerWidget {
      * 
      */
     public void setRipples(String value) {
-        getPolymerElement().setAttribute("ripples", value);
+        Polymer.property(this.getPolymerElement(), "ripples", value);
     }
 
+    // Needed in UIBinder
     /**
-     * 
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setKeyBindings(String value) {
-        getPolymerElement().setAttribute("key-bindings", value);
+        Polymer.property(this.getPolymerElement(), "keyBindings", value);
     }
 
+    // Needed in UIBinder
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setKeyEventTarget(String value) {
-        getPolymerElement().setAttribute("key-event-target", value);
+        Polymer.property(this.getPolymerElement(), "keyEventTarget", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>How fast (opacity per second) the wave fades out.</p>
      *
@@ -378,9 +383,10 @@ public class PaperRipple extends PolymerWidget {
      * 
      */
     public void setOpacityDecayVelocity(String value) {
-        getPolymerElement().setAttribute("opacity-decay-velocity", value);
+        Polymer.property(this.getPolymerElement(), "opacityDecayVelocity", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>The initial opacity set on the wave.</p>
      *
@@ -389,7 +395,7 @@ public class PaperRipple extends PolymerWidget {
      * 
      */
     public void setInitialOpacity(String value) {
-        getPolymerElement().setAttribute("initial-opacity", value);
+        Polymer.property(this.getPolymerElement(), "initialOpacity", value);
     }
 
 
@@ -413,25 +419,11 @@ public class PaperRipple extends PolymerWidget {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
         getPolymerElement().addOwnKeyBinding(eventString, handlerName);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
     /**
@@ -459,7 +451,7 @@ public class PaperRipple extends PolymerWidget {
     }
 
     /**
-     * 
+     * <p>This conflicts with Element#antimate().<br><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/animate">https://developer.mozilla.org/en-US/docs/Web/API/Element/animate</a></p>
      *
      * JavaScript Info:
      * @method animate
@@ -487,11 +479,25 @@ public class PaperRipple extends PolymerWidget {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     public void removeOwnKeyBindings() {
         getPolymerElement().removeOwnKeyBindings();
+    }
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
+     */
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
     /**
@@ -546,5 +552,20 @@ public class PaperRipple extends PolymerWidget {
         getPolymerElement().uiDownAction(event);
     }
 
+
+    /**
+     * <pre><code>  Fired when the animation finishes.
+     *   This is useful if you want to wait until
+     *   the ripple animation finishes to perform some action.
+     * 
+     * 
+     * </code></pre>
+     *
+     * JavaScript Info:
+     * @event transitionend
+     */
+    public HandlerRegistration addTransitionendHandler(TransitionendEventHandler handler) {
+        return addDomHandler(handler, TransitionendEvent.TYPE);
+    }
 
 }

@@ -5,11 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/animation/responsive-interaction.html#responsive-interaction-surface-reaction">Surface reaction</a></p>
@@ -26,7 +27,7 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <pre><code>&lt;paper-ripple id=&quot;ripple&quot; style=&quot;pointer-events: none;&quot;&gt;&lt;/paper-ripple&gt;
  * ...
  * downAction: function(e) {
- *   this.$.ripple.downAction({x: e.x, y: e.y});
+ *   this.$.ripple.downAction({detail: {x: e.x, y: e.y}});
  * },
  * upAction: function(e) {
  *   this.$.ripple.upAction();
@@ -55,11 +56,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperRippleElement extends HTMLElement {
 
-    public static final String TAG = "paper-ripple";
-    public static final String SRC = "paper-ripple/paper-ripple.html";
+    @JsOverlay public static final String TAG = "paper-ripple";
+    @JsOverlay public static final String SRC = "paper-ripple/paper-ripple.html";
 
 
     /**
@@ -139,21 +140,21 @@ public interface PaperRippleElement extends HTMLElement {
     @JsProperty void setRipples(JsArray value);
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
@@ -201,7 +202,7 @@ public interface PaperRippleElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -210,7 +211,7 @@ public interface PaperRippleElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
@@ -290,25 +291,13 @@ public interface PaperRippleElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
-
-    /**
-     * 
+     * <p>This conflicts with Element#antimate().<br><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/animate">https://developer.mozilla.org/en-US/docs/Web/API/Element/animate</a></p>
      *
      * JavaScript Info:
      * @method animate
@@ -352,10 +341,22 @@ public interface PaperRippleElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void removeOwnKeyBindings();
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
     /**
      * <p>Provokes a ripple down effect via a UI event,<br><em>not</em> respecting the <code>noink</code> property.</p>

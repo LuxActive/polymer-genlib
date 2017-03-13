@@ -5,25 +5,20 @@
  */
 package com.vaadin.polymer.paper.event;
 
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Event;
-import com.vaadin.polymer.elemental.EventListener;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
- * <p>Fired when the slider’s immediateValue changes.</p>
+ * <p>Fired when the slider’s immediateValue changes. Only occurs while the<br>user is dragging.</p>
+ * <p>To detect changes to immediateValue that happen for any input (i.e.<br>dragging, tapping, clicking, etc.) listen for immediate-value-changed<br>instead.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface ImmediateValueChangeEvent extends Event {
 
-    static final String NAME = "immediate-value-change";
+    @JsOverlay static final String NAME = "immediate-value-change";
 
-
-    public abstract class Listener implements EventListener {
-        protected abstract void handleEvent(ImmediateValueChangeEvent event);
-
-        @Override
-        public void handleEvent(Event event) {
-            handleEvent((ImmediateValueChangeEvent) event);
-        }
-    }
 }

@@ -5,25 +5,19 @@
  */
 package com.vaadin.polymer.iron.event;
 
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Event;
-import com.vaadin.polymer.elemental.EventListener;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Fired when the element is removed from an <code>iron-form</code>.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronFormElementUnregisterEvent extends Event {
 
-    static final String NAME = "iron-form-element-unregister";
+    @JsOverlay static final String NAME = "iron-form-element-unregister";
 
-
-    public abstract class Listener implements EventListener {
-        protected abstract void handleEvent(IronFormElementUnregisterEvent event);
-
-        @Override
-        public void handleEvent(Event event) {
-            handleEvent((IronFormElementUnregisterEvent) event);
-        }
-    }
 }

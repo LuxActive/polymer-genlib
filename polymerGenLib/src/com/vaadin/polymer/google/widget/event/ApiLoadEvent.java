@@ -1,23 +1,24 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
  * from google-apis project by Scott Miles <sjmiles@google.com>,Eric Bidelman <ebidel@gmail.com>
- * that is licensed with Apache2 license.
+ * that is licensed with Apache-2.0 license.
  */
 package com.vaadin.polymer.google.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the API library is loaded and available.</p>
  */
-public class ApiLoadEvent extends GwtEvent<ApiLoadEventHandler> {
+public class ApiLoadEvent extends DomEvent<ApiLoadEventHandler> {
 
-    public static Type<ApiLoadEventHandler> TYPE = new Type<ApiLoadEventHandler>();
+    public static Type<ApiLoadEventHandler> TYPE = new Type<ApiLoadEventHandler>(
+       com.vaadin.polymer.google.event.ApiLoadEvent.NAME, new ApiLoadEvent());
 
-    private com.vaadin.polymer.google.event.ApiLoadEvent nativeEvent;
 
-    public ApiLoadEvent(com.vaadin.polymer.google.event.ApiLoadEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public ApiLoadEvent() {
     }
 
     public Type<ApiLoadEventHandler> getAssociatedType() {
@@ -28,8 +29,9 @@ public class ApiLoadEvent extends GwtEvent<ApiLoadEventHandler> {
         handler.onApiLoad(this);
     }
 
-    public com.vaadin.polymer.google.event.ApiLoadEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.google.event.ApiLoadEvent getPolymerEvent() {
+        return (com.vaadin.polymer.google.event.ApiLoadEvent)super.getNativeEvent();
     }
+
 
 }

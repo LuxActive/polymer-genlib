@@ -5,10 +5,14 @@
  */
 package com.vaadin.polymer.iron.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.iron.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.elemental.Element;
-import com.vaadin.polymer.iron.IronIconsetSvgElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>The <code>iron-iconset-svg</code> element allows users to define their own icon sets<br>that contain svg icons. The svg icon elements should be children of the<br><code>iron-iconset-svg</code> element. Multiple icons should be given distinct id’s.</p>
@@ -45,21 +49,40 @@ public class IronIconsetSvg extends PolymerWidget {
      */
     public IronIconsetSvg(String html) {
         super(IronIconsetSvgElement.TAG, IronIconsetSvgElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public IronIconsetSvgElement getPolymerElement() {
-        try {
-            return (IronIconsetSvgElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (IronIconsetSvgElement) getElement();
     }
 
+
+    /**
+     * <p>Set to true to enable mirroring of icons where specified when they are<br>stamped. Icons that should be mirrored should be decorated with a<br><code>mirror-in-rtl</code> attribute.</p>
+     * <p>NOTE: For performance reasons, direction will be resolved once per<br>document per iconset, so moving icons in and out of RTL subtrees will<br>not cause their mirrored state to change.</p>
+     *
+     * JavaScript Info:
+     * @property rtlMirroring
+     * @type Boolean
+     * 
+     */
+    public boolean getRtlMirroring() {
+        return getPolymerElement().getRtlMirroring();
+    }
+    /**
+     * <p>Set to true to enable mirroring of icons where specified when they are<br>stamped. Icons that should be mirrored should be decorated with a<br><code>mirror-in-rtl</code> attribute.</p>
+     * <p>NOTE: For performance reasons, direction will be resolved once per<br>document per iconset, so moving icons in and out of RTL subtrees will<br>not cause their mirrored state to change.</p>
+     *
+     * JavaScript Info:
+     * @property rtlMirroring
+     * @type Boolean
+     * 
+     */
+    public void setRtlMirroring(boolean value) {
+        getPolymerElement().setRtlMirroring(value);
+    }
 
     /**
      * <p>The size of an individual icon. Note that icons must be square.</p>
@@ -108,6 +131,7 @@ public class IronIconsetSvg extends PolymerWidget {
     }
 
 
+    // Needed in UIBinder
     /**
      * <p>The size of an individual icon. Note that icons must be square.</p>
      *
@@ -116,7 +140,7 @@ public class IronIconsetSvg extends PolymerWidget {
      * 
      */
     public void setSize(String value) {
-        getPolymerElement().setAttribute("size", value);
+        Polymer.property(this.getPolymerElement(), "size", value);
     }
 
 
@@ -148,6 +172,7 @@ public class IronIconsetSvg extends PolymerWidget {
     /**
      * <p>Applies an icon to the given element.</p>
      * <p>An svg icon is prepended to the element’s shadowRoot if it exists,<br>otherwise to the element itself.</p>
+     * <p>If RTL mirroring is enabled, and the icon is marked to be mirrored in<br>RTL, the element will be tested (once and only once ever for each<br>iconset) to determine the direction of the subtree the element is in.<br>This direction will apply to all future icon applications, although only<br>icons marked to be mirrored will be affected.</p>
      *
      * JavaScript Info:
      * @method applyIcon

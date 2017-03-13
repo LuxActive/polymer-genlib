@@ -5,10 +5,17 @@
  */
 package com.vaadin.polymer.paper.widget;
 
+import com.vaadin.polymer.paper.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperProgressElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
+ * <p>Material design: <a href="https://www.google.com/design/spec/components/progress-activity.html">Progress &amp; activity</a></p>
  * <p>The progress bars are for situations where the percentage completed can be<br>determined. They give users a quick sense of how much longer an operation<br>will take.</p>
  * <p>Example:</p>
  * <pre><code>&lt;paper-progress value=&quot;10&quot;&gt;&lt;/paper-progress&gt;
@@ -46,6 +53,12 @@ import com.vaadin.polymer.paper.PaperProgressElement;
  * }
  * 
  * 
+ * </code></pre><p>To change the duration of the indeterminate cycle:</p>
+ * <pre><code>paper-progress {
+ *   --paper-progress-indeterminate-cycle-duration: 2s;
+ * }
+ * 
+ * 
  * </code></pre><p>The following mixins are available for styling:</p>
  * <table>
  * <thead>
@@ -57,49 +70,59 @@ import com.vaadin.polymer.paper.PaperProgressElement;
  * </thead>
  * <tbody>
  * <tr>
- * <td>–paper-progress-container-color</td>
+ * <td><code>--paper-progress-container</code></td>
  * <td>Mixin applied to container</td>
- * <td>–google-grey-300</td>
+ * <td><code>{}</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-transition-duration</td>
+ * <td><code>--paper-progress-transition-duration</code></td>
  * <td>Duration of the transition</td>
- * <td>0.008s</td>
+ * <td><code>0.008s</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-transition-timing-function</td>
+ * <td><code>--paper-progress-transition-timing-function</code></td>
  * <td>The timing function for the transition</td>
- * <td>ease</td>
+ * <td><code>ease</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-transition-delay</td>
+ * <td><code>--paper-progress-transition-delay</code></td>
  * <td>delay for the transition</td>
- * <td>0s</td>
+ * <td><code>0s</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-active-color</td>
+ * <td><code>--paper-progress-container-color</code></td>
+ * <td>Color of the container</td>
+ * <td><code>--google-grey-300</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-progress-active-color</code></td>
  * <td>The color of the active bar</td>
- * <td>–google-green-500</td>
+ * <td><code>--google-green-500</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-secondary-color</td>
+ * <td><code>--paper-progress-secondary-color</code></td>
  * <td>The color of the secondary bar</td>
- * <td>–google-green-100</td>
+ * <td><code>--google-green-100</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-disabled-active-color</td>
+ * <td><code>--paper-progress-disabled-active-color</code></td>
  * <td>The color of the active bar if disabled</td>
- * <td>–google-grey-500</td>
+ * <td><code>--google-grey-500</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-disabled-secondary-color</td>
+ * <td><code>--paper-progress-disabled-secondary-color</code></td>
  * <td>The color of the secondary bar if disabled</td>
- * <td>–google-grey-300</td>
+ * <td><code>--google-grey-300</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-height</td>
+ * <td><code>--paper-progress-height</code></td>
  * <td>The height of the progress bar</td>
- * <td>4px</td>
+ * <td><code>4px</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-progress-indeterminate-cycle-duration</code></td>
+ * <td>Duration of an indeterminate cycle</td>
+ * <td><code>2s</code></td>
  * </tr>
  * </tbody>
  * </table>
@@ -117,19 +140,13 @@ public class PaperProgress extends PolymerWidget {
      */
     public PaperProgress(String html) {
         super(PaperProgressElement.TAG, PaperProgressElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperProgressElement getPolymerElement() {
-        try {
-            return (PaperProgressElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperProgressElement) getElement();
     }
 
 
@@ -341,6 +358,7 @@ public class PaperProgress extends PolymerWidget {
     }
 
 
+    // Needed in UIBinder
     /**
      * <p>The number that represents the current secondary progress.</p>
      *
@@ -349,9 +367,10 @@ public class PaperProgress extends PolymerWidget {
      * 
      */
     public void setSecondaryProgress(String value) {
-        getPolymerElement().setAttribute("secondary-progress", value);
+        Polymer.property(this.getPolymerElement(), "secondaryProgress", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>The secondary ratio</p>
      *
@@ -360,9 +379,10 @@ public class PaperProgress extends PolymerWidget {
      * 
      */
     public void setSecondaryRatio(String value) {
-        getPolymerElement().setAttribute("secondary-ratio", value);
+        Polymer.property(this.getPolymerElement(), "secondaryRatio", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>The number that indicates the maximum value of the range.</p>
      *
@@ -371,9 +391,10 @@ public class PaperProgress extends PolymerWidget {
      * @behavior PaperSlider
      */
     public void setMax(String value) {
-        getPolymerElement().setAttribute("max", value);
+        Polymer.property(this.getPolymerElement(), "max", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>The number that indicates the minimum value of the range.</p>
      *
@@ -382,9 +403,10 @@ public class PaperProgress extends PolymerWidget {
      * @behavior PaperSlider
      */
     public void setMin(String value) {
-        getPolymerElement().setAttribute("min", value);
+        Polymer.property(this.getPolymerElement(), "min", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>Returns the ratio of the value.</p>
      *
@@ -393,9 +415,10 @@ public class PaperProgress extends PolymerWidget {
      * @behavior PaperSlider
      */
     public void setRatio(String value) {
-        getPolymerElement().setAttribute("ratio", value);
+        Polymer.property(this.getPolymerElement(), "ratio", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>Specifies the value granularity of the range’s value.</p>
      *
@@ -404,9 +427,10 @@ public class PaperProgress extends PolymerWidget {
      * @behavior PaperSlider
      */
     public void setStep(String value) {
-        getPolymerElement().setAttribute("step", value);
+        Polymer.property(this.getPolymerElement(), "step", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>The number that represents the current value.</p>
      *
@@ -415,7 +439,7 @@ public class PaperProgress extends PolymerWidget {
      * @behavior PaperSlider
      */
     public void setValue(String value) {
-        getPolymerElement().setAttribute("value", value);
+        Polymer.property(this.getPolymerElement(), "value", value);
     }
 
 

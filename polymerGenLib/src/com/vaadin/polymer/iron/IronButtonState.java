@@ -5,18 +5,22 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface IronButtonState {
 
-    public static final String TAG = "Polymer.IronButtonState";
-    public static final String SRC = "iron-behaviors/iron-button-state.html";
+    @JsOverlay public static final String NAME = "Polymer.IronButtonState";
+    @JsOverlay public static final String SRC = "iron-behaviors/iron-button-state.html";
 
 
     /**
@@ -25,7 +29,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getActive();
     /**
@@ -34,7 +38,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setActive(boolean value);
 
@@ -44,7 +48,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
@@ -53,7 +57,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
@@ -63,7 +67,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getPointerDown();
     /**
@@ -72,7 +76,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setPointerDown(boolean value);
 
@@ -82,7 +86,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getPressed();
     /**
@@ -91,7 +95,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setPressed(boolean value);
 
@@ -101,7 +105,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getReceivedFocusFromKeyboard();
     /**
@@ -110,7 +114,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setReceivedFocusFromKeyboard(boolean value);
 
@@ -120,7 +124,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getToggles();
     /**
@@ -129,7 +133,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setToggles(boolean value);
 
@@ -139,7 +143,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty String getAriaActiveAttribute();
     /**
@@ -148,7 +152,7 @@ public interface IronButtonState {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setAriaActiveAttribute(String value);
 

@@ -5,16 +5,23 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEvent;
 import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEvent;
 import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandler;
-import com.vaadin.polymer.paper.PaperInputElement;
+
 import com.vaadin.polymer.paper.widget.event.ChangeEvent;
 import com.vaadin.polymer.paper.widget.event.ChangeEventHandler;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
+import com.vaadin.polymer.PolymerWidget;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/text-fields.html">Text fields</a></p>
@@ -34,7 +41,7 @@ import com.vaadin.polymer.paper.widget.event.ChangeEventHandler;
  * &lt;/paper-input&gt;
  * 
  * 
- * </code></pre><p>A <code>paper-input</code> can use the native <code>type=search</code> or <code>type=file</code> features.<br>However, since we can’t control the native styling of the input, in these cases<br>it’s recommended to use a placeholder text, or <code>always-float-label</code>,<br>as to not overlap the native UI (search icon, file button, etc.).</p>
+ * </code></pre><p>A <code>paper-input</code> can use the native <code>type=search</code> or <code>type=file</code> features.<br>However, since we can’t control the native styling of the input (search icon,<br>file button, date placeholder, etc.), in these cases the label will be<br>automatically floated. The <code>placeholder</code> attribute can still be used for<br>additional informational text.</p>
  * <pre><code>&lt;paper-input label=&quot;search!&quot; type=&quot;search&quot;
  *     placeholder=&quot;search for cats&quot; autosave=&quot;test&quot; results=&quot;5&quot;&gt;
  * &lt;/paper-input&gt;
@@ -59,51 +66,87 @@ public class PaperInput extends PolymerWidget {
      */
     public PaperInput(String html) {
         super(PaperInputElement.TAG, PaperInputElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.ChangeEvent.NAME,
-                new com.vaadin.polymer.paper.event.ChangeEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.ChangeEvent event) {
-                fireEvent(new ChangeEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronFormElementRegisterEvent event) {
-                fireEvent(new IronFormElementRegisterEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent event) {
-                fireEvent(new IronFormElementUnregisterEvent(event));
-            }
-        });
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperInputElement getPolymerElement() {
-        try {
-            return (PaperInputElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperInputElement) getElement();
     }
 
 
     /**
-     * <p>The maximum length of the input value. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>maxlength</code> property.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
+     */
+    public JavaScriptObject getKeyEventTarget() {
+        return getPolymerElement().getKeyEventTarget();
+    }
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
+     */
+    public void setKeyEventTarget(JavaScriptObject value) {
+        getPolymerElement().setKeyEventTarget(value);
+    }
+
+    /**
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type !Object
+     * @behavior PaperToggleButton
+     */
+    public JavaScriptObject getKeyBindings() {
+        return getPolymerElement().getKeyBindings();
+    }
+    /**
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type !Object
+     * @behavior PaperToggleButton
+     */
+    public void setKeyBindings(JavaScriptObject value) {
+        getPolymerElement().setKeyBindings(value);
+    }
+
+    /**
+     * <p>The minimum length of the input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>minlength</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property minlength
+     * @type Number
+     * @behavior PaperTextarea
+     */
+    public double getMinlength() {
+        return getPolymerElement().getMinlength();
+    }
+    /**
+     * <p>The minimum length of the input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>minlength</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property minlength
+     * @type Number
+     * @behavior PaperTextarea
+     */
+    public void setMinlength(double value) {
+        getPolymerElement().setMinlength(value);
+    }
+
+    /**
+     * <p>The maximum length of the input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>maxlength</code> property.</p>
      *
      * JavaScript Info:
      * @property maxlength
@@ -114,7 +157,7 @@ public class PaperInput extends PolymerWidget {
         return getPolymerElement().getMaxlength();
     }
     /**
-     * <p>The maximum length of the input value. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>maxlength</code> property.</p>
+     * <p>The maximum length of the input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>maxlength</code> property.</p>
      *
      * JavaScript Info:
      * @property maxlength
@@ -126,7 +169,7 @@ public class PaperInput extends PolymerWidget {
     }
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>results</code> property, used with type=search.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>results</code> property,<br>used with type=search.</p>
      *
      * JavaScript Info:
      * @property results
@@ -137,7 +180,7 @@ public class PaperInput extends PolymerWidget {
         return getPolymerElement().getResults();
     }
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>results</code> property, used with type=search.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>results</code> property,<br>used with type=search.</p>
      *
      * JavaScript Info:
      * @property results
@@ -149,7 +192,7 @@ public class PaperInput extends PolymerWidget {
     }
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>size</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>size</code> property.</p>
      *
      * JavaScript Info:
      * @property size
@@ -160,7 +203,7 @@ public class PaperInput extends PolymerWidget {
         return getPolymerElement().getSize();
     }
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>size</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>size</code> property.</p>
      *
      * JavaScript Info:
      * @property size
@@ -172,164 +215,72 @@ public class PaperInput extends PolymerWidget {
     }
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>minlength</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property minlength
-     * @type Number
-     * 
-     */
-    public double getMinlength() {
-        return getPolymerElement().getMinlength();
-    }
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>minlength</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property minlength
-     * @type Number
-     * 
-     */
-    public void setMinlength(double value) {
-        getPolymerElement().setMinlength(value);
-    }
-
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    public JavaScriptObject getKeyEventTarget() {
-        return getPolymerElement().getKeyEventTarget();
-    }
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    public void setKeyEventTarget(JavaScriptObject value) {
-        getPolymerElement().setKeyEventTarget(value);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    public JavaScriptObject getKeyBindings() {
-        return getPolymerElement().getKeyBindings();
-    }
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    public void setKeyBindings(JavaScriptObject value) {
-        getPolymerElement().setKeyBindings(value);
-    }
-
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
      *
      * JavaScript Info:
      * @property autofocus
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     public boolean getAutofocus() {
         return getPolymerElement().getAutofocus();
     }
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autofocus</code> property.</p>
      *
      * JavaScript Info:
      * @property autofocus
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     public void setAutofocus(boolean value) {
         getPolymerElement().setAutofocus(value);
     }
 
     /**
-     * <p>Set to true to auto-validate the input value. Bind this to the <code>&lt;paper-input-container&gt;</code>‘s<br><code>autoValidate</code> property.</p>
+     * <p>Set to true to disable the floating label. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>noLabelFloat</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property noLabelFloat
+     * @type Boolean
+     * @behavior PaperTextarea
+     */
+    public boolean getNoLabelFloat() {
+        return getPolymerElement().getNoLabelFloat();
+    }
+    /**
+     * <p>Set to true to disable the floating label. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>noLabelFloat</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property noLabelFloat
+     * @type Boolean
+     * @behavior PaperTextarea
+     */
+    public void setNoLabelFloat(boolean value) {
+        getPolymerElement().setNoLabelFloat(value);
+    }
+
+    /**
+     * <p>Set to true to auto-validate the input value. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>autoValidate</code> property.</p>
      *
      * JavaScript Info:
      * @property autoValidate
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     public boolean getAutoValidate() {
         return getPolymerElement().getAutoValidate();
     }
     /**
-     * <p>Set to true to auto-validate the input value. Bind this to the <code>&lt;paper-input-container&gt;</code>‘s<br><code>autoValidate</code> property.</p>
+     * <p>Set to true to auto-validate the input value. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>autoValidate</code> property.</p>
      *
      * JavaScript Info:
      * @property autoValidate
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     public void setAutoValidate(boolean value) {
         getPolymerElement().setAutoValidate(value);
-    }
-
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getFocused() {
-        return getPolymerElement().getFocused();
-    }
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setFocused(boolean value) {
-        getPolymerElement().setFocused(value);
-    }
-
-    /**
-     * <p>If true, the user cannot interact with this element.</p>
-     *
-     * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getDisabled() {
-        return getPolymerElement().getDisabled();
-    }
-    /**
-     * <p>If true, the user cannot interact with this element.</p>
-     *
-     * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setDisabled(boolean value) {
-        getPolymerElement().setDisabled(value);
     }
 
     /**
@@ -338,7 +289,7 @@ public class PaperInput extends PolymerWidget {
      * JavaScript Info:
      * @property charCounter
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     public boolean getCharCounter() {
         return getPolymerElement().getCharCounter();
@@ -349,129 +300,154 @@ public class PaperInput extends PolymerWidget {
      * JavaScript Info:
      * @property charCounter
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     public void setCharCounter(boolean value) {
         getPolymerElement().setCharCounter(value);
     }
 
     /**
-     * <p>Set to true to mark the input as required. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>required</code> property.</p>
+     * <p>Set to true to disable this input. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>both the <code>&lt;paper-input-container&gt;</code>‘s and the input’s <code>disabled</code> property.</p>
      *
      * JavaScript Info:
-     * @property required
+     * @property disabled
      * @type Boolean
      * @behavior PaperTextarea
      */
-    public boolean getRequired() {
-        return getPolymerElement().getRequired();
+    public boolean getDisabled() {
+        return getPolymerElement().getDisabled();
     }
     /**
-     * <p>Set to true to mark the input as required. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>required</code> property.</p>
+     * <p>Set to true to disable this input. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>both the <code>&lt;paper-input-container&gt;</code>‘s and the input’s <code>disabled</code> property.</p>
      *
      * JavaScript Info:
-     * @property required
+     * @property disabled
      * @type Boolean
      * @behavior PaperTextarea
      */
-    public void setRequired(boolean value) {
-        getPolymerElement().setRequired(value);
+    public void setDisabled(boolean value) {
+        getPolymerElement().setDisabled(value);
     }
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property, used with type=file.</p>
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public boolean getStopKeyboardEventPropagation() {
+        return getPolymerElement().getStopKeyboardEventPropagation();
+    }
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public void setStopKeyboardEventPropagation(boolean value) {
+        getPolymerElement().setStopKeyboardEventPropagation(value);
+    }
+
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the<code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property,<br>used with type=file.</p>
      *
      * JavaScript Info:
      * @property multiple
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     public boolean getMultiple() {
         return getPolymerElement().getMultiple();
     }
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property, used with type=file.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the<code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>multiple</code> property,<br>used with type=file.</p>
      *
      * JavaScript Info:
      * @property multiple
      * @type Boolean
-     * 
+     * @behavior PaperTextarea
      */
     public void setMultiple(boolean value) {
         getPolymerElement().setMultiple(value);
     }
 
     /**
-     * <p>Set to true to always float the label. Bind this to the <code>&lt;paper-input-container&gt;</code>‘s<br><code>alwaysFloatLabel</code> property.</p>
+     * <p>If true, the element currently has focus.</p>
      *
      * JavaScript Info:
-     * @property alwaysFloatLabel
+     * @property focused
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
-    public boolean getAlwaysFloatLabel() {
-        return getPolymerElement().getAlwaysFloatLabel();
+    public boolean getFocused() {
+        return getPolymerElement().getFocused();
     }
     /**
-     * <p>Set to true to always float the label. Bind this to the <code>&lt;paper-input-container&gt;</code>‘s<br><code>alwaysFloatLabel</code> property.</p>
+     * <p>If true, the element currently has focus.</p>
      *
      * JavaScript Info:
-     * @property alwaysFloatLabel
+     * @property focused
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
-    public void setAlwaysFloatLabel(boolean value) {
-        getPolymerElement().setAlwaysFloatLabel(value);
-    }
-
-    /**
-     * <p>Set to true to disable the floating label. Bind this to the <code>&lt;paper-input-container&gt;</code>‘s<br><code>noLabelFloat</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property noLabelFloat
-     * @type Boolean
-     * 
-     */
-    public boolean getNoLabelFloat() {
-        return getPolymerElement().getNoLabelFloat();
-    }
-    /**
-     * <p>Set to true to disable the floating label. Bind this to the <code>&lt;paper-input-container&gt;</code>‘s<br><code>noLabelFloat</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property noLabelFloat
-     * @type Boolean
-     * 
-     */
-    public void setNoLabelFloat(boolean value) {
-        getPolymerElement().setNoLabelFloat(value);
+    public void setFocused(boolean value) {
+        getPolymerElement().setFocused(value);
     }
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>readonly</code> property.</p>
+     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
      *
      * JavaScript Info:
-     * @property readonly
+     * @property required
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public boolean getRequired() {
+        return getPolymerElement().getRequired();
+    }
+    /**
+     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property required
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public void setRequired(boolean value) {
+        getPolymerElement().setRequired(value);
+    }
+
+    /**
+     * <p>Returns true if the value is invalid. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to both the<br><code>&lt;paper-input-container&gt;</code>‘s and the input’s <code>invalid</code> property.</p>
+     * <p>If <code>autoValidate</code> is true, the <code>invalid</code> attribute is managed automatically,<br>which can clobber attempts to manage it manually.</p>
+     *
+     * JavaScript Info:
+     * @property invalid
      * @type Boolean
      * @behavior PaperTextarea
      */
-    public boolean getReadonly() {
-        return getPolymerElement().getReadonly();
+    public boolean getInvalid() {
+        return getPolymerElement().getInvalid();
     }
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>readonly</code> property.</p>
+     * <p>Returns true if the value is invalid. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to both the<br><code>&lt;paper-input-container&gt;</code>‘s and the input’s <code>invalid</code> property.</p>
+     * <p>If <code>autoValidate</code> is true, the <code>invalid</code> attribute is managed automatically,<br>which can clobber attempts to manage it manually.</p>
      *
      * JavaScript Info:
-     * @property readonly
+     * @property invalid
      * @type Boolean
      * @behavior PaperTextarea
      */
-    public void setReadonly(boolean value) {
-        getPolymerElement().setReadonly(value);
+    public void setInvalid(boolean value) {
+        getPolymerElement().setInvalid(value);
     }
 
     /**
-     * <p>Set to true to prevent the user from entering invalid input. Bind this to the<br><code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>preventInvalidInput</code> property.</p>
+     * <p>Set to true to prevent the user from entering invalid input. If you’re<br>using PaperInputBehavior to  implement your own paper-input-like element,<br>bind this to <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>preventInvalidInput</code> property.</p>
      *
      * JavaScript Info:
      * @property preventInvalidInput
@@ -482,7 +458,7 @@ public class PaperInput extends PolymerWidget {
         return getPolymerElement().getPreventInvalidInput();
     }
     /**
-     * <p>Set to true to prevent the user from entering invalid input. Bind this to the<br><code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>preventInvalidInput</code> property.</p>
+     * <p>Set to true to prevent the user from entering invalid input. If you’re<br>using PaperInputBehavior to  implement your own paper-input-like element,<br>bind this to <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>preventInvalidInput</code> property.</p>
      *
      * JavaScript Info:
      * @property preventInvalidInput
@@ -494,122 +470,53 @@ public class PaperInput extends PolymerWidget {
     }
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>readonly</code> property.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
+     * @property readonly
      * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getStopKeyboardEventPropagation() {
-        return getPolymerElement().getStopKeyboardEventPropagation();
-    }
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setStopKeyboardEventPropagation(boolean value) {
-        getPolymerElement().setStopKeyboardEventPropagation(value);
-    }
-
-    /**
-     * <p>Returns true if the value is invalid. Bind this to both the <code>&lt;paper-input-container&gt;</code>‘s<br>and the input’s <code>invalid</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property invalid
-     * @type Boolean
-     * 
-     */
-    public boolean getInvalid() {
-        return getPolymerElement().getInvalid();
-    }
-    /**
-     * <p>Returns true if the value is invalid. Bind this to both the <code>&lt;paper-input-container&gt;</code>‘s<br>and the input’s <code>invalid</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property invalid
-     * @type Boolean
-     * 
-     */
-    public void setInvalid(boolean value) {
-        getPolymerElement().setInvalid(value);
-    }
-
-    /**
-     * <p>The type of the input. The supported types are <code>text</code>, <code>number</code> and <code>password</code>. Bind this<br>to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>type</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property type
-     * @type String
-     * 
-     */
-    public String getType() {
-        return getPolymerElement().getType();
-    }
-    /**
-     * <p>The type of the input. The supported types are <code>text</code>, <code>number</code> and <code>password</code>. Bind this<br>to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>type</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property type
-     * @type String
-     * 
-     */
-    public void setType(String value) {
-        getPolymerElement().setType(value);
-    }
-
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autosave</code> property, used with type=search.</p>
-     *
-     * JavaScript Info:
-     * @property autosave
-     * @type String
      * @behavior PaperTextarea
      */
-    public String getAutosave() {
-        return getPolymerElement().getAutosave();
+    public boolean getReadonly() {
+        return getPolymerElement().getReadonly();
     }
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autosave</code> property, used with type=search.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>readonly</code> property.</p>
      *
      * JavaScript Info:
-     * @property autosave
-     * @type String
+     * @property readonly
+     * @type Boolean
      * @behavior PaperTextarea
      */
-    public void setAutosave(String value) {
-        getPolymerElement().setAutosave(value);
+    public void setReadonly(boolean value) {
+        getPolymerElement().setReadonly(value);
     }
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocapitalize</code> property.</p>
+     * <p>Set to true to always float the label. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>alwaysFloatLabel</code> property.</p>
      *
      * JavaScript Info:
-     * @property autocapitalize
-     * @type String
-     * 
+     * @property alwaysFloatLabel
+     * @type Boolean
+     * @behavior PaperTextarea
      */
-    public String getAutocapitalize() {
-        return getPolymerElement().getAutocapitalize();
+    public boolean getAlwaysFloatLabel() {
+        return getPolymerElement().getAlwaysFloatLabel();
     }
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocapitalize</code> property.</p>
+     * <p>Set to true to always float the label. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;paper-input-container&gt;</code>‘s <code>alwaysFloatLabel</code> property.</p>
      *
      * JavaScript Info:
-     * @property autocapitalize
-     * @type String
-     * 
+     * @property alwaysFloatLabel
+     * @type Boolean
+     * @behavior PaperTextarea
      */
-    public void setAutocapitalize(String value) {
-        getPolymerElement().setAutocapitalize(value);
+    public void setAlwaysFloatLabel(boolean value) {
+        getPolymerElement().setAlwaysFloatLabel(value);
     }
 
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>inputmode</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>inputmode</code> property.</p>
      *
      * JavaScript Info:
      * @property inputmode
@@ -620,7 +527,7 @@ public class PaperInput extends PolymerWidget {
         return getPolymerElement().getInputmode();
     }
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>inputmode</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>inputmode</code> property.</p>
      *
      * JavaScript Info:
      * @property inputmode
@@ -629,236 +536,6 @@ public class PaperInput extends PolymerWidget {
      */
     public void setInputmode(String value) {
         getPolymerElement().setInputmode(value);
-    }
-
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocorrect</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property autocorrect
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public String getAutocorrect() {
-        return getPolymerElement().getAutocorrect();
-    }
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocorrect</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property autocorrect
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public void setAutocorrect(String value) {
-        getPolymerElement().setAutocorrect(value);
-    }
-
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocomplete</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public String getAutocomplete() {
-        return getPolymerElement().getAutocomplete();
-    }
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocomplete</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public void setAutocomplete(String value) {
-        getPolymerElement().setAutocomplete(value);
-    }
-
-    /**
-     * <p>The label for this input. Bind this to <code>&lt;label&gt;</code>‘s content and <code>hidden</code> property, e.g.<br><code>&lt;label hidden$=&quot;[[!label]]&quot;&gt;[[label]]&lt;/label&gt;</code> in your <code>template</code></p>
-     *
-     * JavaScript Info:
-     * @property label
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public String getLabel() {
-        return getPolymerElement().getLabel();
-    }
-    /**
-     * <p>The label for this input. Bind this to <code>&lt;label&gt;</code>‘s content and <code>hidden</code> property, e.g.<br><code>&lt;label hidden$=&quot;[[!label]]&quot;&gt;[[label]]&lt;/label&gt;</code> in your <code>template</code></p>
-     *
-     * JavaScript Info:
-     * @property label
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public void setLabel(String value) {
-        getPolymerElement().setLabel(value);
-    }
-
-    /**
-     * <p>The datalist of the input (if any). This should match the id of an existing <code>&lt;datalist&gt;</code>. Bind this<br>to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>list</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property list
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public String getList() {
-        return getPolymerElement().getList();
-    }
-    /**
-     * <p>The datalist of the input (if any). This should match the id of an existing <code>&lt;datalist&gt;</code>. Bind this<br>to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>list</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property list
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public void setList(String value) {
-        getPolymerElement().setList(value);
-    }
-
-    /**
-     * <p>The maximum (numeric or date-time) input value.<br>Can be a String (e.g. <code>&quot;2000-1-1&quot;</code>) or a Number (e.g. <code>2</code>).<br>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>max</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property max
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public String getMax() {
-        return getPolymerElement().getMax();
-    }
-    /**
-     * <p>The maximum (numeric or date-time) input value.<br>Can be a String (e.g. <code>&quot;2000-1-1&quot;</code>) or a Number (e.g. <code>2</code>).<br>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>max</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property max
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public void setMax(String value) {
-        getPolymerElement().setMax(value);
-    }
-
-    /**
-     * <p>The minimum (numeric or date-time) input value.<br>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>min</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property min
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public String getMin() {
-        return getPolymerElement().getMin();
-    }
-    /**
-     * <p>The minimum (numeric or date-time) input value.<br>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>min</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property min
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public void setMin(String value) {
-        getPolymerElement().setMin(value);
-    }
-
-    /**
-     * <p>Set this to specify the pattern allowed by <code>preventInvalidInput</code>. Bind this to the<br><code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>allowedPattern</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property allowedPattern
-     * @type String
-     * 
-     */
-    public String getAllowedPattern() {
-        return getPolymerElement().getAllowedPattern();
-    }
-    /**
-     * <p>Set this to specify the pattern allowed by <code>preventInvalidInput</code>. Bind this to the<br><code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>allowedPattern</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property allowedPattern
-     * @type String
-     * 
-     */
-    public void setAllowedPattern(String value) {
-        getPolymerElement().setAllowedPattern(value);
-    }
-
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>name</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property name
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public String getName() {
-        return getPolymerElement().getName();
-    }
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>name</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property name
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public void setName(String value) {
-        getPolymerElement().setName(value);
-    }
-
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>accept</code> property, used with type=file.</p>
-     *
-     * JavaScript Info:
-     * @property accept
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public String getAccept() {
-        return getPolymerElement().getAccept();
-    }
-    /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>accept</code> property, used with type=file.</p>
-     *
-     * JavaScript Info:
-     * @property accept
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public void setAccept(String value) {
-        getPolymerElement().setAccept(value);
-    }
-
-    /**
-     * <p>A pattern to validate the <code>input</code> with. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>pattern</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property pattern
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public String getPattern() {
-        return getPolymerElement().getPattern();
-    }
-    /**
-     * <p>A pattern to validate the <code>input</code> with. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>pattern</code> property.</p>
-     *
-     * JavaScript Info:
-     * @property pattern
-     * @type String
-     * @behavior PaperTextarea
-     */
-    public void setPattern(String value) {
-        getPolymerElement().setPattern(value);
     }
 
     /**
@@ -885,53 +562,237 @@ public class PaperInput extends PolymerWidget {
     }
 
     /**
-     * <p>The value for this element.</p>
+     * <p>The type of the input. The supported types are <code>text</code>, <code>number</code> and <code>password</code>.<br>If you’re using PaperInputBehavior to implement your own paper-input-like element,<br>bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>type</code> property.</p>
      *
      * JavaScript Info:
-     * @property value
+     * @property type
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTextarea
      */
-    public String getValue() {
-        return getPolymerElement().getValue();
+    public String getType() {
+        return getPolymerElement().getType();
     }
     /**
-     * <p>The value for this element.</p>
+     * <p>The type of the input. The supported types are <code>text</code>, <code>number</code> and <code>password</code>.<br>If you’re using PaperInputBehavior to implement your own paper-input-like element,<br>bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>type</code> property.</p>
      *
      * JavaScript Info:
-     * @property value
+     * @property type
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTextarea
      */
-    public void setValue(String value) {
-        getPolymerElement().setValue(value);
+    public void setType(String value) {
+        getPolymerElement().setType(value);
     }
 
     /**
-     * <p>Name of the validator to use. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>validator</code><br>property.</p>
+     * <p>A pattern to validate the <code>input</code> with. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>pattern</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property pattern
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public String getPattern() {
+        return getPolymerElement().getPattern();
+    }
+    /**
+     * <p>A pattern to validate the <code>input</code> with. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>pattern</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property pattern
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setPattern(String value) {
+        getPolymerElement().setPattern(value);
+    }
+
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>name</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public String getName() {
+        return getPolymerElement().getName();
+    }
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>name</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setName(String value) {
+        getPolymerElement().setName(value);
+    }
+
+    /**
+     * <p>Name of the validator to use. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>validator</code> property.</p>
      *
      * JavaScript Info:
      * @property validator
      * @type String
-     * 
+     * @behavior PaperTextarea
      */
     public String getValidator() {
         return getPolymerElement().getValidator();
     }
     /**
-     * <p>Name of the validator to use. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>validator</code><br>property.</p>
+     * <p>Name of the validator to use. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>validator</code> property.</p>
      *
      * JavaScript Info:
      * @property validator
      * @type String
-     * 
+     * @behavior PaperTextarea
      */
     public void setValidator(String value) {
         getPolymerElement().setValidator(value);
     }
 
     /**
-     * <p>The error message to display when the input is invalid. Bind this to the<br><code>&lt;paper-input-error&gt;</code>‘s content, if using.</p>
+     * <p>The value for this input. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>bindValue</code><br>property, or the value property of your input that is <code>notify:true</code>.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public String getValue() {
+        return getPolymerElement().getValue();
+    }
+    /**
+     * <p>The value for this input. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br>the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>bindValue</code><br>property, or the value property of your input that is <code>notify:true</code>.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setValue(String value) {
+        getPolymerElement().setValue(value);
+    }
+
+    /**
+     * <p>The minimum (numeric or date-time) input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>min</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property min
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public String getMin() {
+        return getPolymerElement().getMin();
+    }
+    /**
+     * <p>The minimum (numeric or date-time) input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>min</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property min
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setMin(String value) {
+        getPolymerElement().setMin(value);
+    }
+
+    /**
+     * <p>The maximum (numeric or date-time) input value.<br>Can be a String (e.g. <code>&quot;2000-01-01&quot;</code>) or a Number (e.g. <code>2</code>).<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>max</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property max
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public String getMax() {
+        return getPolymerElement().getMax();
+    }
+    /**
+     * <p>The maximum (numeric or date-time) input value.<br>Can be a String (e.g. <code>&quot;2000-01-01&quot;</code>) or a Number (e.g. <code>2</code>).<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>max</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property max
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setMax(String value) {
+        getPolymerElement().setMax(value);
+    }
+
+    /**
+     * <p>The datalist of the input (if any). This should match the id of an existing <code>&lt;datalist&gt;</code>.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>list</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property list
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public String getList() {
+        return getPolymerElement().getList();
+    }
+    /**
+     * <p>The datalist of the input (if any). This should match the id of an existing <code>&lt;datalist&gt;</code>.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>list</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property list
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setList(String value) {
+        getPolymerElement().setList(value);
+    }
+
+    /**
+     * <p>The label for this input. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br><code>&lt;label&gt;</code>‘s content and <code>hidden</code> property, e.g.<br><code>&lt;label hidden$=&quot;[[!label]]&quot;&gt;[[label]]&lt;/label&gt;</code> in your <code>template</code></p>
+     *
+     * JavaScript Info:
+     * @property label
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public String getLabel() {
+        return getPolymerElement().getLabel();
+    }
+    /**
+     * <p>The label for this input. If you’re using PaperInputBehavior to<br>implement your own paper-input-like element, bind this to<br><code>&lt;label&gt;</code>‘s content and <code>hidden</code> property, e.g.<br><code>&lt;label hidden$=&quot;[[!label]]&quot;&gt;[[label]]&lt;/label&gt;</code> in your <code>template</code></p>
+     *
+     * JavaScript Info:
+     * @property label
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setLabel(String value) {
+        getPolymerElement().setLabel(value);
+    }
+
+    /**
+     * <p>Limits the numeric or date-time increments.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>step</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property step
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public String getStep() {
+        return getPolymerElement().getStep();
+    }
+    /**
+     * <p>Limits the numeric or date-time increments.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>step</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property step
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setStep(String value) {
+        getPolymerElement().setStep(value);
+    }
+
+    /**
+     * <p>The error message to display when the input is invalid. If you’re using<br>PaperInputBehavior to implement your own paper-input-like element,<br>bind this to the <code>&lt;paper-input-error&gt;</code>‘s content, if using.</p>
      *
      * JavaScript Info:
      * @property errorMessage
@@ -942,7 +803,7 @@ public class PaperInput extends PolymerWidget {
         return getPolymerElement().getErrorMessage();
     }
     /**
-     * <p>The error message to display when the input is invalid. Bind this to the<br><code>&lt;paper-input-error&gt;</code>‘s content, if using.</p>
+     * <p>The error message to display when the input is invalid. If you’re using<br>PaperInputBehavior to implement your own paper-input-like element,<br>bind this to the <code>&lt;paper-input-error&gt;</code>‘s content, if using.</p>
      *
      * JavaScript Info:
      * @property errorMessage
@@ -954,93 +815,214 @@ public class PaperInput extends PolymerWidget {
     }
 
     /**
-     * <p>Limits the numeric or date-time increments.<br>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>step</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autosave</code> property,<br>used with type=search.</p>
      *
      * JavaScript Info:
-     * @property step
+     * @property autosave
      * @type String
      * @behavior PaperTextarea
      */
-    public String getStep() {
-        return getPolymerElement().getStep();
+    public String getAutosave() {
+        return getPolymerElement().getAutosave();
     }
     /**
-     * <p>Limits the numeric or date-time increments.<br>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>step</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autosave</code> property,<br>used with type=search.</p>
      *
      * JavaScript Info:
-     * @property step
+     * @property autosave
      * @type String
      * @behavior PaperTextarea
      */
-    public void setStep(String value) {
-        getPolymerElement().setStep(value);
+    public void setAutosave(String value) {
+        getPolymerElement().setAutosave(value);
     }
 
-
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocorrect</code> property.</p>
      *
      * JavaScript Info:
-     * @attribute key-event-target
-     * @behavior PaperTab
+     * @property autocorrect
+     * @type String
+     * @behavior PaperTextarea
      */
-    public void setKeyEventTarget(String value) {
-        getPolymerElement().setAttribute("key-event-target", value);
+    public String getAutocorrect() {
+        return getPolymerElement().getAutocorrect();
+    }
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocorrect</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autocorrect
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setAutocorrect(String value) {
+        getPolymerElement().setAutocorrect(value);
     }
 
     /**
-     * 
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocomplete</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autocomplete
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public String getAutocomplete() {
+        return getPolymerElement().getAutocomplete();
+    }
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocomplete</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autocomplete
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setAutocomplete(String value) {
+        getPolymerElement().setAutocomplete(value);
+    }
+
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocapitalize</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autocapitalize
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public String getAutocapitalize() {
+        return getPolymerElement().getAutocapitalize();
+    }
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>autocapitalize</code> property.</p>
+     *
+     * JavaScript Info:
+     * @property autocapitalize
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setAutocapitalize(String value) {
+        getPolymerElement().setAutocapitalize(value);
+    }
+
+    /**
+     * <p>Set this to specify the pattern allowed by <code>preventInvalidInput</code>. If<br>you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>allowedPattern</code><br>property.</p>
+     *
+     * JavaScript Info:
+     * @property allowedPattern
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public String getAllowedPattern() {
+        return getPolymerElement().getAllowedPattern();
+    }
+    /**
+     * <p>Set this to specify the pattern allowed by <code>preventInvalidInput</code>. If<br>you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>allowedPattern</code><br>property.</p>
+     *
+     * JavaScript Info:
+     * @property allowedPattern
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setAllowedPattern(String value) {
+        getPolymerElement().setAllowedPattern(value);
+    }
+
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>accept</code> property,<br>used with type=file.</p>
+     *
+     * JavaScript Info:
+     * @property accept
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public String getAccept() {
+        return getPolymerElement().getAccept();
+    }
+    /**
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>accept</code> property,<br>used with type=file.</p>
+     *
+     * JavaScript Info:
+     * @property accept
+     * @type String
+     * @behavior PaperTextarea
+     */
+    public void setAccept(String value) {
+        getPolymerElement().setAccept(value);
+    }
+
+
+    // Needed in UIBinder
+    /**
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setKeyBindings(String value) {
-        getPolymerElement().setAttribute("key-bindings", value);
+        Polymer.property(this.getPolymerElement(), "keyBindings", value);
     }
 
+    // Needed in UIBinder
     /**
-     * <p>The maximum length of the input value. Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s<br><code>maxlength</code> property.</p>
+     * <p>The minimum length of the input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>minlength</code> property.</p>
+     *
+     * JavaScript Info:
+     * @attribute minlength
+     * @behavior PaperTextarea
+     */
+    public void setMinlength(String value) {
+        Polymer.property(this.getPolymerElement(), "minlength", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>The maximum length of the input value.<br>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>maxlength</code> property.</p>
      *
      * JavaScript Info:
      * @attribute maxlength
      * @behavior PaperTextarea
      */
     public void setMaxlength(String value) {
-        getPolymerElement().setAttribute("maxlength", value);
+        Polymer.property(this.getPolymerElement(), "maxlength", value);
     }
 
+    // Needed in UIBinder
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>results</code> property, used with type=search.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>results</code> property,<br>used with type=search.</p>
      *
      * JavaScript Info:
      * @attribute results
      * @behavior PaperTextarea
      */
     public void setResults(String value) {
-        getPolymerElement().setAttribute("results", value);
+        Polymer.property(this.getPolymerElement(), "results", value);
     }
 
+    // Needed in UIBinder
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>size</code> property.</p>
+     * <p>If you’re using PaperInputBehavior to implement your own paper-input-like<br>element, bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>size</code> property.</p>
      *
      * JavaScript Info:
      * @attribute size
      * @behavior PaperTextarea
      */
     public void setSize(String value) {
-        getPolymerElement().setAttribute("size", value);
+        Polymer.property(this.getPolymerElement(), "size", value);
     }
 
+    // Needed in UIBinder
     /**
-     * <p>Bind this to the <code>&lt;input is=&quot;iron-input&quot;&gt;</code>‘s <code>minlength</code> property.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
-     * @attribute minlength
-     * 
+     * @attribute key-event-target
+     * @behavior PaperToggleButton
      */
-    public void setMinlength(String value) {
-        getPolymerElement().setAttribute("minlength", value);
+    public void setKeyEventTarget(String value) {
+        Polymer.property(this.getPolymerElement(), "keyEventTarget", value);
     }
 
 
@@ -1051,7 +1033,7 @@ public class PaperInput extends PolymerWidget {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
@@ -1059,17 +1041,15 @@ public class PaperInput extends PolymerWidget {
     }
 
     /**
-     * 
+     * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
+     * @method removeOwnKeyBindings
+     * @behavior PaperToggleButton
      * 
      */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
+    public void removeOwnKeyBindings() {
+        getPolymerElement().removeOwnKeyBindings();
     }
 
     /**
@@ -1085,40 +1065,32 @@ public class PaperInput extends PolymerWidget {
     }
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
-     *
-     * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior PaperTab
-     * 
-     */
-    public void removeOwnKeyBindings() {
-        getPolymerElement().removeOwnKeyBindings();
-    }
-
-    /**
      * <p>Restores the cursor to its original position after updating the value.</p>
      *
      * JavaScript Info:
      * @method updateValueAndPreserveCaret
      * @param {string} newValue  
-     * 
+     * @behavior PaperTextarea
      * 
      */
     public void updateValueAndPreserveCaret(String newValue) {
         getPolymerElement().updateValueAndPreserveCaret(newValue);
     }
 
-
     /**
-     * <p>Fired when the input changes due to user interaction.</p>
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
-     * @event change
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
      */
-    public HandlerRegistration addChangeHandler(ChangeEventHandler handler) {
-        return addHandler(handler, ChangeEvent.TYPE);
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
+
 
     /**
      * <p>Fired when the element is added to an <code>iron-form</code>.</p>
@@ -1127,7 +1099,7 @@ public class PaperInput extends PolymerWidget {
      * @event iron-form-element-register
      */
     public HandlerRegistration addIronFormElementRegisterHandler(IronFormElementRegisterEventHandler handler) {
-        return addHandler(handler, IronFormElementRegisterEvent.TYPE);
+        return addDomHandler(handler, IronFormElementRegisterEvent.TYPE);
     }
 
     /**
@@ -1137,7 +1109,17 @@ public class PaperInput extends PolymerWidget {
      * @event iron-form-element-unregister
      */
     public HandlerRegistration addIronFormElementUnregisterHandler(IronFormElementUnregisterEventHandler handler) {
-        return addHandler(handler, IronFormElementUnregisterEvent.TYPE);
+        return addDomHandler(handler, IronFormElementUnregisterEvent.TYPE);
+    }
+
+    /**
+     * <p>Fired when the input changes due to user interaction.</p>
+     *
+     * JavaScript Info:
+     * @event change
+     */
+    public HandlerRegistration addChangeHandler(ChangeEventHandler handler) {
+        return addDomHandler(handler, ChangeEvent.TYPE);
     }
 
 }

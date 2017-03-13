@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>The <code>iron-icon</code> element displays an icon. By default an icon renders as a 24px square.</p>
@@ -18,24 +21,22 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </code></pre><p>Example setting size to 32px x 32px:</p>
  * <pre><code>&lt;iron-icon class=&quot;big&quot; src=&quot;big_star.png&quot;&gt;&lt;/iron-icon&gt;
  * 
- * &lt;style&gt;
+ * &lt;style is=&quot;custom-style&quot;&gt;
  *   .big {
- *     height: 32px;
- *     width: 32px;
+ *     --iron-icon-height: 32px;
+ *     --iron-icon-width: 32px;
  *   }
  * &lt;/style&gt;
  * 
  * 
- * </code></pre><p>The iron elements include several sets of icons.<br>To use the default set of icons, import  <code>iron-icons.html</code> and use the <code>icon</code> attribute to specify an icon:</p>
- * <pre><code>&amp;lt;!-- import default iconset and iron-icon --&amp;gt;
- * &lt;link rel=&quot;import&quot; href=&quot;/components/iron-icons/iron-icons.html&quot;&gt;
+ * </code></pre><p>The iron elements include several sets of icons.<br>To use the default set of icons, import <code>iron-icons.html</code> and use the <code>icon</code> attribute to specify an icon:</p>
+ * <pre><code>&lt;link rel=&quot;import&quot; href=&quot;/components/iron-icons/iron-icons.html&quot;&gt;
  * 
  * &lt;iron-icon icon=&quot;menu&quot;&gt;&lt;/iron-icon&gt;
  * 
  * 
- * </code></pre><p>To use a different built-in set of icons, import  <code>iron-icons/&lt;iconset&gt;-icons.html</code>, and<br>specify the icon as <code>&lt;iconset&gt;:&lt;icon&gt;</code>. For example:</p>
- * <pre><code>&amp;lt;!-- import communication iconset and iron-icon --&amp;gt;
- * &lt;link rel=&quot;import&quot; href=&quot;/components/iron-icons/communication-icons.html&quot;&gt;
+ * </code></pre><p>To use a different built-in set of icons, import the specific <code>iron-icons/&lt;iconset&gt;-icons.html</code>, and<br>specify the icon as <code>&lt;iconset&gt;:&lt;icon&gt;</code>. For example, to use a communication icon, you would<br>use:</p>
+ * <pre><code>&lt;link rel=&quot;import&quot; href=&quot;/components/iron-icons/communication-icons.html&quot;&gt;
  * 
  * &lt;iron-icon icon=&quot;communication:email&quot;&gt;&lt;/iron-icon&gt;
  * 
@@ -45,8 +46,9 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <pre><code>&lt;iron-icon icon=&quot;fruit:cherry&quot;&gt;&lt;/iron-icon&gt;
  * 
  * 
- * </code></pre><p>See <a href="#iron-iconset">iron-iconset</a> and <a href="#iron-iconset-svg">iron-iconset-svg</a> for more information about<br>how to create a custom iconset.</p>
- * <p>See <a href="http://www.polymer-project.org/components/iron-icons/demo.html">iron-icons</a> for the default set of icons.</p>
+ * </code></pre><p>See <a href="iron-iconset">iron-iconset</a> and <a href="iron-iconset-svg">iron-iconset-svg</a> for more information about<br>how to create a custom iconset.</p>
+ * <p>See the <a href="iron-icons?view=demo:demo/index.html">iron-icons demo</a> to see the icons available<br>in the various iconsets.</p>
+ * <p>To load a subset of icons from one of the default <code>iron-icons</code> sets, you can<br>use the <a href="https://poly-icon.appspot.com/">poly-icon</a> tool. It allows you<br>to select individual icons, and creates an iconset from them that you can<br>use directly in your elements.</p>
  * <h3 id="styling">Styling</h3>
  * <p>The following custom properties are available for styling:</p>
  * <table>
@@ -59,6 +61,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </thead>
  * <tbody>
  * <tr>
+ * <td><code>--iron-icon</code></td>
+ * <td>Mixin applied to the icon</td>
+ * <td>{}</td>
+ * </tr>
+ * <tr>
  * <td><code>--iron-icon-width</code></td>
  * <td>Width of the icon</td>
  * <td><code>24px</code></td>
@@ -68,14 +75,24 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <td>Height of the icon</td>
  * <td><code>24px</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--iron-icon-fill-color</code></td>
+ * <td>Fill color of the svg icon</td>
+ * <td><code>currentcolor</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--iron-icon-stroke-color</code></td>
+ * <td>Stroke color of the svg icon</td>
+ * <td>none</td>
+ * </tr>
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronIconElement extends HTMLElement {
 
-    public static final String TAG = "iron-icon";
-    public static final String SRC = "iron-icon/iron-icon.html";
+    @JsOverlay public static final String TAG = "iron-icon";
+    @JsOverlay public static final String SRC = "iron-icon/iron-icon.html";
 
 
     /**

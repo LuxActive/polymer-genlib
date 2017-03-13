@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>iron-image</code> is an element for displaying an image that provides useful sizing and<br>preloading options not found on the standard <code>&lt;img&gt;</code> tag.</p>
@@ -15,7 +18,7 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <p>The <code>preload</code> option prevents the browser from rendering the image until the<br>image is fully loaded.  In the interim, either the element’s CSS <code>background-color</code><br>can be be used as the placeholder, or the <code>placeholder</code> property can be<br>set to a URL (preferably a data-URI, for instant rendering) for an<br>placeholder image.</p>
  * <p>The <code>fade</code> option (only valid when <code>preload</code> is set) will cause the placeholder<br>image/color to be faded out once the image is rendered.</p>
  * <p>Examples:</p>
- * <p>  Basically identical to &lt;img src=”…”&gt; tag:</p>
+ * <p>  Basically identical to <code>&lt;img src=&quot;...&quot;&gt;</code> tag:</p>
  * <pre><code>&lt;iron-image src=&quot;http://lorempixel.com/400/400&quot;&gt;&lt;/iron-image&gt;
  * 
  * 
@@ -71,31 +74,69 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronImageElement extends HTMLElement {
 
-    public static final String TAG = "iron-image";
-    public static final String SRC = "iron-image/iron-image.html";
+    @JsOverlay public static final String TAG = "iron-image";
+    @JsOverlay public static final String SRC = "iron-image/iron-image.html";
 
 
     /**
-     * 
+     * <p>Can be used to set the width of image (e.g. via binding); size may also be<br>set via CSS.</p>
      *
      * JavaScript Info:
-     * @property canLoad
-     * @type Boolean
+     * @property width
+     * @type Number
      * 
      */
-    @JsProperty boolean getCanLoad();
+    @JsProperty double getWidth();
     /**
-     * 
+     * <p>Can be used to set the width of image (e.g. via binding); size may also be<br>set via CSS.</p>
      *
      * JavaScript Info:
-     * @property canLoad
+     * @property width
+     * @type Number
+     * 
+     */
+    @JsProperty void setWidth(double value);
+
+    /**
+     * <p>When <code>preload</code> is true, setting <code>fade</code> to true will cause the image to<br>fade into place.</p>
+     *
+     * JavaScript Info:
+     * @property fade
      * @type Boolean
      * 
      */
-    @JsProperty void setCanLoad(boolean value);
+    @JsProperty boolean getFade();
+    /**
+     * <p>When <code>preload</code> is true, setting <code>fade</code> to true will cause the image to<br>fade into place.</p>
+     *
+     * JavaScript Info:
+     * @property fade
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setFade(boolean value);
+
+    /**
+     * <p>Can be used to set the height of image (e.g. via binding); size may also be<br>set via CSS.</p>
+     *
+     * JavaScript Info:
+     * @property height
+     * @type Number
+     * 
+     */
+    @JsProperty double getHeight();
+    /**
+     * <p>Can be used to set the height of image (e.g. via binding); size may also be<br>set via CSS.</p>
+     *
+     * JavaScript Info:
+     * @property height
+     * @type Number
+     * 
+     */
+    @JsProperty void setHeight(double value);
 
     /**
      * <p>Read-only value that is true when the image is loaded.</p>
@@ -136,42 +177,23 @@ public interface IronImageElement extends HTMLElement {
     @JsProperty void setLoading(boolean value);
 
     /**
-     * 
+     * <p>Read-only value that indicates that the last set <code>src</code> failed to load.</p>
      *
      * JavaScript Info:
-     * @property requiresPreload
+     * @property error
      * @type Boolean
      * 
      */
-    @JsProperty boolean getRequiresPreload();
+    @JsProperty boolean getError();
     /**
-     * 
+     * <p>Read-only value that indicates that the last set <code>src</code> failed to load.</p>
      *
      * JavaScript Info:
-     * @property requiresPreload
+     * @property error
      * @type Boolean
      * 
      */
-    @JsProperty void setRequiresPreload(boolean value);
-
-    /**
-     * <p>When <code>preload</code> is true, setting <code>fade</code> to true will cause the image to<br>fade into place.</p>
-     *
-     * JavaScript Info:
-     * @property fade
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getFade();
-    /**
-     * <p>When <code>preload</code> is true, setting <code>fade</code> to true will cause the image to<br>fade into place.</p>
-     *
-     * JavaScript Info:
-     * @property fade
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setFade(boolean value);
+    @JsProperty void setError(boolean value);
 
     /**
      * <p>When <code>true</code>, any change to the <code>src</code> property will cause the <code>placeholder</code><br>image to be shown until the new image has loaded.</p>
@@ -212,61 +234,42 @@ public interface IronImageElement extends HTMLElement {
     @JsProperty void setPreventLoad(boolean value);
 
     /**
-     * <p>Can be used to set the width of image (e.g. via binding); size may also be<br>set via CSS.</p>
+     * <p>A short text alternative for the image.</p>
      *
      * JavaScript Info:
-     * @property width
-     * @type Number
-     * 
-     */
-    @JsProperty double getWidth();
-    /**
-     * <p>Can be used to set the width of image (e.g. via binding); size may also be<br>set via CSS.</p>
-     *
-     * JavaScript Info:
-     * @property width
-     * @type Number
-     * 
-     */
-    @JsProperty void setWidth(double value);
-
-    /**
-     * <p>Can be used to set the height of image (e.g. via binding); size may also be<br>set via CSS.</p>
-     *
-     * JavaScript Info:
-     * @property height
-     * @type Number
-     * 
-     */
-    @JsProperty double getHeight();
-    /**
-     * <p>Can be used to set the height of image (e.g. via binding); size may also be<br>set via CSS.</p>
-     *
-     * JavaScript Info:
-     * @property height
-     * @type Number
-     * 
-     */
-    @JsProperty void setHeight(double value);
-
-    /**
-     * <p>This image will be used as a background/placeholder until the src image has<br>loaded.  Use of a data-URI for placeholder is encouraged for instant rendering.</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
+     * @property alt
      * @type String
      * 
      */
-    @JsProperty String getPlaceholder();
+    @JsProperty String getAlt();
     /**
-     * <p>This image will be used as a background/placeholder until the src image has<br>loaded.  Use of a data-URI for placeholder is encouraged for instant rendering.</p>
+     * <p>A short text alternative for the image.</p>
      *
      * JavaScript Info:
-     * @property placeholder
+     * @property alt
      * @type String
      * 
      */
-    @JsProperty void setPlaceholder(String value);
+    @JsProperty void setAlt(String value);
+
+    /**
+     * <p>When a sizing option is used (<code>cover</code> or <code>contain</code>), this determines<br>how the image is aligned within the element bounds.</p>
+     *
+     * JavaScript Info:
+     * @property position
+     * @type String
+     * 
+     */
+    @JsProperty String getPosition();
+    /**
+     * <p>When a sizing option is used (<code>cover</code> or <code>contain</code>), this determines<br>how the image is aligned within the element bounds.</p>
+     *
+     * JavaScript Info:
+     * @property position
+     * @type String
+     * 
+     */
+    @JsProperty void setPosition(String value);
 
     /**
      * <p>Sets a sizing option for the image.  Valid values are <code>contain</code> (full<br>aspect ratio of the image is contained within the element and<br>letterboxed) or <code>cover</code> (image is cropped in order to fully cover the<br>bounds of the element), or <code>null</code> (default: image takes natural size).</p>
@@ -307,23 +310,23 @@ public interface IronImageElement extends HTMLElement {
     @JsProperty void setSrc(String value);
 
     /**
-     * <p>When a sizing option is used (<code>cover</code> or <code>contain</code>), this determines<br>how the image is aligned within the element bounds.</p>
+     * <p>This image will be used as a background/placeholder until the src image has<br>loaded.  Use of a data-URI for placeholder is encouraged for instant rendering.</p>
      *
      * JavaScript Info:
-     * @property position
+     * @property placeholder
      * @type String
      * 
      */
-    @JsProperty String getPosition();
+    @JsProperty String getPlaceholder();
     /**
-     * <p>When a sizing option is used (<code>cover</code> or <code>contain</code>), this determines<br>how the image is aligned within the element bounds.</p>
+     * <p>This image will be used as a background/placeholder until the src image has<br>loaded.  Use of a data-URI for placeholder is encouraged for instant rendering.</p>
      *
      * JavaScript Info:
-     * @property position
+     * @property placeholder
      * @type String
      * 
      */
-    @JsProperty void setPosition(String value);
+    @JsProperty void setPlaceholder(String value);
 
 
 }

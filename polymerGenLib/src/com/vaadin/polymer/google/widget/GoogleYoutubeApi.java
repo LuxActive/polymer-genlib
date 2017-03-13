@@ -1,15 +1,21 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
  * from google-apis project by Scott Miles <sjmiles@google.com>,Eric Bidelman <ebidel@gmail.com>
- * that is licensed with Apache2 license.
+ * that is licensed with Apache-2.0 license.
  */
 package com.vaadin.polymer.google.widget;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.google.GoogleYoutubeApiElement;
+import com.vaadin.polymer.google.*;
+
 import com.vaadin.polymer.google.widget.event.ApiLoadEvent;
 import com.vaadin.polymer.google.widget.event.ApiLoadEventHandler;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
+import com.vaadin.polymer.PolymerWidget;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Dynamically loads the Google Youtube Iframe API, firing the <code>api-load</code> event when ready.</p>
@@ -29,28 +35,13 @@ public class GoogleYoutubeApi extends PolymerWidget {
      */
     public GoogleYoutubeApi(String html) {
         super(GoogleYoutubeApiElement.TAG, GoogleYoutubeApiElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.google.event.ApiLoadEvent.NAME,
-                new com.vaadin.polymer.google.event.ApiLoadEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.google.event.ApiLoadEvent event) {
-                fireEvent(new ApiLoadEvent(event));
-            }
-        });
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public GoogleYoutubeApiElement getPolymerElement() {
-        try {
-            return (GoogleYoutubeApiElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (GoogleYoutubeApiElement) getElement();
     }
 
 
@@ -133,7 +124,7 @@ public class GoogleYoutubeApi extends PolymerWidget {
      * @event api-load
      */
     public HandlerRegistration addApiLoadHandler(ApiLoadEventHandler handler) {
-        return addHandler(handler, ApiLoadEvent.TYPE);
+        return addDomHandler(handler, ApiLoadEvent.TYPE);
     }
 
 }

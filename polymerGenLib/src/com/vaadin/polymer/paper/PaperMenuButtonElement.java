@@ -1,14 +1,16 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
  * from paper-menu-button project by The Polymer Authors
- * that is licensed with MIT license.
+ * that is licensed with http://polymer.github.io/LICENSE.txt license.
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/buttons.html#buttons-dropdown-buttons">Dropdown buttons</a></p>
@@ -40,7 +42,7 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <tr>
  * <td><code>--paper-menu-button-dropdown-background</code></td>
  * <td>Background color of the paper-menu-button dropdown</td>
- * <td><code>#fff</code></td>
+ * <td><code>--primary-background-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-menu-button</code></td>
@@ -65,12 +67,31 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperMenuButtonElement extends HTMLElement {
 
-    public static final String TAG = "paper-menu-button";
-    public static final String SRC = "paper-menu-button/paper-menu-button.html";
+    @JsOverlay public static final String TAG = "paper-menu-button";
+    @JsOverlay public static final String SRC = "paper-menu-button/paper-menu-button.html";
 
+
+    /**
+     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
+     *
+     * JavaScript Info:
+     * @property allowOutsideScroll
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getAllowOutsideScroll();
+    /**
+     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
+     *
+     * JavaScript Info:
+     * @property allowOutsideScroll
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setAllowOutsideScroll(boolean value);
 
     /**
      * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>. Use a negative value to offset to the<br>left, or a positive value to offset to the right.</p>
@@ -111,63 +132,6 @@ public interface PaperMenuButtonElement extends HTMLElement {
     @JsProperty void setOpenAnimationConfig(JavaScriptObject value);
 
     /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>. Use a negative value to offset towards the<br>top, or a positive value to offset towards the bottom.</p>
-     *
-     * JavaScript Info:
-     * @property verticalOffset
-     * @type Number
-     * 
-     */
-    @JsProperty double getVerticalOffset();
-    /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>. Use a negative value to offset towards the<br>top, or a positive value to offset towards the bottom.</p>
-     *
-     * JavaScript Info:
-     * @property verticalOffset
-     * @type Number
-     * 
-     */
-    @JsProperty void setVerticalOffset(double value);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty JavaScriptObject getKeyBindings();
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty void setKeyBindings(JavaScriptObject value);
-
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty JavaScriptObject getKeyEventTarget();
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty void setKeyEventTarget(JavaScriptObject value);
-
-    /**
      * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
      *
      * JavaScript Info:
@@ -185,6 +149,63 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * 
      */
     @JsProperty void setCloseAnimationConfig(JavaScriptObject value);
+
+    /**
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type !Object
+     * @behavior PaperToggleButton
+     */
+    @JsProperty JavaScriptObject getKeyBindings();
+    /**
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type !Object
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setKeyBindings(JavaScriptObject value);
+
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
+     */
+    @JsProperty JavaScriptObject getKeyEventTarget();
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setKeyEventTarget(JavaScriptObject value);
+
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>. Use a negative value to offset towards the<br>top, or a positive value to offset towards the bottom.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * 
+     */
+    @JsProperty double getVerticalOffset();
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>. Use a negative value to offset towards the<br>top, or a positive value to offset towards the bottom.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * 
+     */
+    @JsProperty void setVerticalOffset(double value);
 
     /**
      * <p>Set to true to disable automatically closing the dropdown after<br>a selection has been made.</p>
@@ -225,23 +246,23 @@ public interface PaperMenuButtonElement extends HTMLElement {
     @JsProperty void setNoAnimations(boolean value);
 
     /**
-     * <p>If true, the element currently has focus.</p>
+     * <p>If true, the dropdown will be positioned so that it doesn’t overlap<br>the button.</p>
      *
      * JavaScript Info:
-     * @property focused
+     * @property noOverlap
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    @JsProperty boolean getFocused();
+    @JsProperty boolean getNoOverlap();
     /**
-     * <p>If true, the element currently has focus.</p>
+     * <p>If true, the dropdown will be positioned so that it doesn’t overlap<br>the button.</p>
      *
      * JavaScript Info:
-     * @property focused
+     * @property noOverlap
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    @JsProperty void setFocused(boolean value);
+    @JsProperty void setNoOverlap(boolean value);
 
     /**
      * <p>If true, the user cannot interact with this element.</p>
@@ -249,7 +270,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getDisabled();
     /**
@@ -258,28 +279,28 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setDisabled(boolean value);
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>If true, the <code>horizontalAlign</code> and <code>verticalAlign</code> properties will<br>be considered preferences instead of strict requirements when<br>positioning the dropdown and may be changed if doing so reduces<br>the area of the dropdown falling outside of <code>fitInto</code>.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
+     * @property dynamicAlign
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    @JsProperty boolean getStopKeyboardEventPropagation();
+    @JsProperty boolean getDynamicAlign();
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>If true, the <code>horizontalAlign</code> and <code>verticalAlign</code> properties will<br>be considered preferences instead of strict requirements when<br>positioning the dropdown and may be changed if doing so reduces<br>the area of the dropdown falling outside of <code>fitInto</code>.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
+     * @property dynamicAlign
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
+    @JsProperty void setDynamicAlign(boolean value);
 
     /**
      * <p>True if the content is currently displayed.</p>
@@ -299,6 +320,82 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * 
      */
     @JsProperty void setOpened(boolean value);
+
+    /**
+     * <p>Whether focus should be restored to the button when the menu closes.</p>
+     *
+     * JavaScript Info:
+     * @property restoreFocusOnClose
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getRestoreFocusOnClose();
+    /**
+     * <p>Whether focus should be restored to the button when the menu closes.</p>
+     *
+     * JavaScript Info:
+     * @property restoreFocusOnClose
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setRestoreFocusOnClose(boolean value);
+
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getFocused();
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setFocused(boolean value);
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getStopKeyboardEventPropagation();
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
+
+    /**
+     * <p>Set to true to enable automatically closing the dropdown after an<br>item has been activated, even if the selection did not change.</p>
+     *
+     * JavaScript Info:
+     * @property closeOnActivate
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getCloseOnActivate();
+    /**
+     * <p>Set to true to enable automatically closing the dropdown after an<br>item has been activated, even if the selection did not change.</p>
+     *
+     * JavaScript Info:
+     * @property closeOnActivate
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setCloseOnActivate(boolean value);
 
     /**
      * <p>The orientation against which to align the menu dropdown<br>vertically relative to the dropdown trigger.</p>
@@ -340,38 +437,26 @@ public interface PaperMenuButtonElement extends HTMLElement {
 
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
-
-    /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
      *
      * JavaScript Info:
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
 
     /**
-     * <p>Hide the dropdown content.</p>
+     * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
-     * @method close
-     * 
+     * @method removeOwnKeyBindings
+     * @behavior PaperToggleButton
      * 
      */
-    void close();
+    void removeOwnKeyBindings();
 
     /**
      * <p>Make the dropdown content appear as an overlay positioned relative<br>to the dropdown trigger.</p>
@@ -384,13 +469,35 @@ public interface PaperMenuButtonElement extends HTMLElement {
     void open();
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
+     * <p>Hide the dropdown content.</p>
      *
      * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @method close
+     * 
      * 
      */
-    void removeOwnKeyBindings();
+    void close();
+
+    /**
+     * <p>Toggles the drowpdown content between opened and closed.</p>
+     *
+     * JavaScript Info:
+     * @method toggle
+     * 
+     * 
+     */
+    void toggle();
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
 }

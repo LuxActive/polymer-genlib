@@ -5,8 +5,14 @@
  */
 package com.vaadin.polymer.polymer.widget;
 
+import com.vaadin.polymer.polymer.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.polymer.DomTemplateElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * 
@@ -24,19 +30,13 @@ public class DomTemplate extends PolymerWidget {
      */
     public DomTemplate(String html) {
         super(DomTemplateElement.TAG, DomTemplateElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public DomTemplateElement getPolymerElement() {
-        try {
-            return (DomTemplateElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (DomTemplateElement) getElement();
     }
 
 

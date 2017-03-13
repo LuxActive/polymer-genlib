@@ -5,10 +5,14 @@
  */
 package com.vaadin.polymer.polymer.widget;
 
-import com.google.gwt.core.client.JsArray;
+import com.vaadin.polymer.polymer.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.elemental.Function;
-import com.vaadin.polymer.polymer.DomRepeatElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * 
@@ -26,19 +30,13 @@ public class DomRepeat extends PolymerWidget {
      */
     public DomRepeat(String html) {
         super(DomRepeatElement.TAG, DomRepeatElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public DomRepeatElement getPolymerElement() {
-        try {
-            return (DomRepeatElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (DomRepeatElement) getElement();
     }
 
 
@@ -92,6 +90,29 @@ public class DomRepeat extends PolymerWidget {
      * 
      *
      * JavaScript Info:
+     * @property notifyDomChange
+     * @type Boolean
+     * 
+     */
+    public boolean getNotifyDomChange() {
+        return getPolymerElement().getNotifyDomChange();
+    }
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property notifyDomChange
+     * @type Boolean
+     * 
+     */
+    public void setNotifyDomChange(boolean value) {
+        getPolymerElement().setNotifyDomChange(value);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
      * @property delay
      * @type number
      * 
@@ -109,6 +130,29 @@ public class DomRepeat extends PolymerWidget {
      */
     public void setDelay(double value) {
         getPolymerElement().setDelay(value);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property renderedItemCount
+     * @type Number
+     * 
+     */
+    public double getRenderedItemCount() {
+        return getPolymerElement().getRenderedItemCount();
+    }
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property renderedItemCount
+     * @type Number
+     * 
+     */
+    public void setRenderedItemCount(double value) {
+        getPolymerElement().setRenderedItemCount(value);
     }
 
     /**
@@ -250,6 +294,7 @@ public class DomRepeat extends PolymerWidget {
     }
 
 
+    // Needed in UIBinder
     /**
      * 
      *
@@ -258,9 +303,10 @@ public class DomRepeat extends PolymerWidget {
      * 
      */
     public void setItems(String value) {
-        getPolymerElement().setAttribute("items", value);
+        Polymer.property(this.getPolymerElement(), "items", value);
     }
 
+    // Needed in UIBinder
     /**
      * 
      *
@@ -269,9 +315,22 @@ public class DomRepeat extends PolymerWidget {
      * 
      */
     public void setDelay(String value) {
-        getPolymerElement().setAttribute("delay", value);
+        Polymer.property(this.getPolymerElement(), "delay", value);
     }
 
+    // Needed in UIBinder
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @attribute rendered-item-count
+     * 
+     */
+    public void setRenderedItemCount(String value) {
+        Polymer.property(this.getPolymerElement(), "renderedItemCount", value);
+    }
+
+    // Needed in UIBinder
     /**
      * 
      *
@@ -280,9 +339,10 @@ public class DomRepeat extends PolymerWidget {
      * 
      */
     public void setTargetFramerate(String value) {
-        getPolymerElement().setAttribute("target-framerate", value);
+        Polymer.property(this.getPolymerElement(), "targetFramerate", value);
     }
 
+    // Needed in UIBinder
     /**
      * 
      *
@@ -291,9 +351,48 @@ public class DomRepeat extends PolymerWidget {
      * 
      */
     public void setInitialCount(String value) {
-        getPolymerElement().setAttribute("initial-count", value);
+        Polymer.property(this.getPolymerElement(), "initialCount", value);
     }
 
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method indexForElement
+     * @param {} el  
+     * 
+     * 
+     */
+    public void indexForElement(Object el) {
+        getPolymerElement().indexForElement(el);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method keyForElement
+     * @param {} el  
+     * 
+     * 
+     */
+    public void keyForElement(Object el) {
+        getPolymerElement().keyForElement(el);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method modelForElement
+     * @param {} el  
+     * 
+     * 
+     */
+    public void modelForElement(Object el) {
+        getPolymerElement().modelForElement(el);
+    }
 
     /**
      * 
@@ -332,45 +431,6 @@ public class DomRepeat extends PolymerWidget {
      */
     public void itemForElement(Object el) {
         getPolymerElement().itemForElement(el);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyForElement
-     * @param {} el  
-     * 
-     * 
-     */
-    public void keyForElement(Object el) {
-        getPolymerElement().keyForElement(el);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method modelForElement
-     * @param {} el  
-     * 
-     * 
-     */
-    public void modelForElement(Object el) {
-        getPolymerElement().modelForElement(el);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method indexForElement
-     * @param {} el  
-     * 
-     * 
-     */
-    public void indexForElement(Object el) {
-        getPolymerElement().indexForElement(el);
     }
 
     /**

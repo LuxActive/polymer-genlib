@@ -5,11 +5,15 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
+ * <p>Material design: <a href="https://www.google.com/design/spec/components/progress-activity.html">Progress &amp; activity</a></p>
  * <p>The progress bars are for situations where the percentage completed can be<br>determined. They give users a quick sense of how much longer an operation<br>will take.</p>
  * <p>Example:</p>
  * <pre><code>&lt;paper-progress value=&quot;10&quot;&gt;&lt;/paper-progress&gt;
@@ -47,6 +51,12 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * }
  * 
  * 
+ * </code></pre><p>To change the duration of the indeterminate cycle:</p>
+ * <pre><code>paper-progress {
+ *   --paper-progress-indeterminate-cycle-duration: 2s;
+ * }
+ * 
+ * 
  * </code></pre><p>The following mixins are available for styling:</p>
  * <table>
  * <thead>
@@ -58,58 +68,68 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </thead>
  * <tbody>
  * <tr>
- * <td>–paper-progress-container-color</td>
+ * <td><code>--paper-progress-container</code></td>
  * <td>Mixin applied to container</td>
- * <td>–google-grey-300</td>
+ * <td><code>{}</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-transition-duration</td>
+ * <td><code>--paper-progress-transition-duration</code></td>
  * <td>Duration of the transition</td>
- * <td>0.008s</td>
+ * <td><code>0.008s</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-transition-timing-function</td>
+ * <td><code>--paper-progress-transition-timing-function</code></td>
  * <td>The timing function for the transition</td>
- * <td>ease</td>
+ * <td><code>ease</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-transition-delay</td>
+ * <td><code>--paper-progress-transition-delay</code></td>
  * <td>delay for the transition</td>
- * <td>0s</td>
+ * <td><code>0s</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-active-color</td>
+ * <td><code>--paper-progress-container-color</code></td>
+ * <td>Color of the container</td>
+ * <td><code>--google-grey-300</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-progress-active-color</code></td>
  * <td>The color of the active bar</td>
- * <td>–google-green-500</td>
+ * <td><code>--google-green-500</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-secondary-color</td>
+ * <td><code>--paper-progress-secondary-color</code></td>
  * <td>The color of the secondary bar</td>
- * <td>–google-green-100</td>
+ * <td><code>--google-green-100</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-disabled-active-color</td>
+ * <td><code>--paper-progress-disabled-active-color</code></td>
  * <td>The color of the active bar if disabled</td>
- * <td>–google-grey-500</td>
+ * <td><code>--google-grey-500</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-disabled-secondary-color</td>
+ * <td><code>--paper-progress-disabled-secondary-color</code></td>
  * <td>The color of the secondary bar if disabled</td>
- * <td>–google-grey-300</td>
+ * <td><code>--google-grey-300</code></td>
  * </tr>
  * <tr>
- * <td>–paper-progress-height</td>
+ * <td><code>--paper-progress-height</code></td>
  * <td>The height of the progress bar</td>
- * <td>4px</td>
+ * <td><code>4px</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-progress-indeterminate-cycle-duration</code></td>
+ * <td>Duration of an indeterminate cycle</td>
+ * <td><code>2s</code></td>
  * </tr>
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperProgressElement extends HTMLElement {
 
-    public static final String TAG = "paper-progress";
-    public static final String SRC = "paper-progress/paper-progress.html";
+    @JsOverlay public static final String TAG = "paper-progress";
+    @JsOverlay public static final String SRC = "paper-progress/paper-progress.html";
 
 
     /**

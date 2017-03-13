@@ -5,16 +5,22 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsType;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperItemBehavior {
 
-    public static final String TAG = "Polymer.PaperItemBehavior";
-    public static final String SRC = "paper-item/paper-item.html";
+    @JsOverlay public static final String NAME = "Polymer.PaperItemBehavior";
+    @JsOverlay public static final String SRC = "paper-item/paper-item-behavior.html";
 
 
 

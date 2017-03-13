@@ -5,19 +5,20 @@
  */
 package com.vaadin.polymer.iron.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when an error is received.</p>
  */
-public class ErrorEvent extends GwtEvent<ErrorEventHandler> {
+public class ErrorEvent extends DomEvent<ErrorEventHandler> {
 
-    public static Type<ErrorEventHandler> TYPE = new Type<ErrorEventHandler>();
+    public static Type<ErrorEventHandler> TYPE = new Type<ErrorEventHandler>(
+       com.vaadin.polymer.iron.event.ErrorEvent.NAME, new ErrorEvent());
 
-    private com.vaadin.polymer.iron.event.ErrorEvent nativeEvent;
 
-    public ErrorEvent(com.vaadin.polymer.iron.event.ErrorEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public ErrorEvent() {
     }
 
     public Type<ErrorEventHandler> getAssociatedType() {
@@ -28,8 +29,9 @@ public class ErrorEvent extends GwtEvent<ErrorEventHandler> {
         handler.onError(this);
     }
 
-    public com.vaadin.polymer.iron.event.ErrorEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.iron.event.ErrorEvent getPolymerEvent() {
+        return (com.vaadin.polymer.iron.event.ErrorEvent)super.getNativeEvent();
     }
+
 
 }

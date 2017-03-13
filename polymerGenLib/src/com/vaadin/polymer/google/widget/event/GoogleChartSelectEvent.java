@@ -1,25 +1,24 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
- * from google-chart project by Sérgio Gomes
- * that is licensed with Apache2 license.
+ * from google-chart project by Wes Alvaro,Sérgio Gomes
+ * that is licensed with Apache-2.0 license.
  */
 package com.vaadin.polymer.google.widget.event;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the user makes a selection in the chart.</p>
  */
-public class GoogleChartSelectEvent extends GwtEvent<GoogleChartSelectEventHandler> {
+public class GoogleChartSelectEvent extends DomEvent<GoogleChartSelectEventHandler> {
 
-    public static Type<GoogleChartSelectEventHandler> TYPE = new Type<GoogleChartSelectEventHandler>();
+    public static Type<GoogleChartSelectEventHandler> TYPE = new Type<GoogleChartSelectEventHandler>(
+       com.vaadin.polymer.google.event.GoogleChartSelectEvent.NAME, new GoogleChartSelectEvent());
 
-    private com.vaadin.polymer.google.event.GoogleChartSelectEvent nativeEvent;
 
-    public GoogleChartSelectEvent(com.vaadin.polymer.google.event.GoogleChartSelectEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public GoogleChartSelectEvent() {
     }
 
     public Type<GoogleChartSelectEventHandler> getAssociatedType() {
@@ -30,22 +29,16 @@ public class GoogleChartSelectEvent extends GwtEvent<GoogleChartSelectEventHandl
         handler.onGoogleChartSelect(this);
     }
 
-    public com.vaadin.polymer.google.event.GoogleChartSelectEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.google.event.GoogleChartSelectEvent getPolymerEvent() {
+        return (com.vaadin.polymer.google.event.GoogleChartSelectEvent)super.getNativeEvent();
     }
 
-    /**
-     * 
-     */
-    public JavaScriptObject getDetail() {
-        return getNativeEvent().getDetail().getDetail();
-    }
 
     /**
-     * <p>The user-defined selection.</p>
+     * <p>raw chart object.</p>
      */
-    public JsArray getSelection() {
-        return getNativeEvent().getDetail().getSelection();
+    public JavaScriptObject getThe() {
+        return getPolymerEvent().getDetail().getThe();
     }
 
 }

@@ -5,19 +5,20 @@
  */
 package com.vaadin.polymer.iron.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when a response is received.</p>
  */
-public class ResponseEvent extends GwtEvent<ResponseEventHandler> {
+public class ResponseEvent extends DomEvent<ResponseEventHandler> {
 
-    public static Type<ResponseEventHandler> TYPE = new Type<ResponseEventHandler>();
+    public static Type<ResponseEventHandler> TYPE = new Type<ResponseEventHandler>(
+       com.vaadin.polymer.iron.event.ResponseEvent.NAME, new ResponseEvent());
 
-    private com.vaadin.polymer.iron.event.ResponseEvent nativeEvent;
 
-    public ResponseEvent(com.vaadin.polymer.iron.event.ResponseEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public ResponseEvent() {
     }
 
     public Type<ResponseEventHandler> getAssociatedType() {
@@ -28,8 +29,9 @@ public class ResponseEvent extends GwtEvent<ResponseEventHandler> {
         handler.onResponse(this);
     }
 
-    public com.vaadin.polymer.iron.event.ResponseEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.iron.event.ResponseEvent getPolymerEvent() {
+        return (com.vaadin.polymer.iron.event.ResponseEvent)super.getNativeEvent();
     }
+
 
 }

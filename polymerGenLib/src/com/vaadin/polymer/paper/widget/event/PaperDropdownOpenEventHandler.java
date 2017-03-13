@@ -1,7 +1,7 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
  * from paper-menu-button project by The Polymer Authors
- * that is licensed with MIT license.
+ * that is licensed with http://polymer.github.io/LICENSE.txt license.
  */
 package com.vaadin.polymer.paper.widget.event;
 

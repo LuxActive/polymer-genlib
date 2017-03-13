@@ -5,14 +5,20 @@
  */
 package com.vaadin.polymer.iron.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.IronAutogrowTextareaElement;
+import com.vaadin.polymer.iron.*;
+
 import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEvent;
 import com.vaadin.polymer.iron.widget.event.IronFormElementRegisterEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEvent;
 import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandler;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
+import com.vaadin.polymer.PolymerWidget;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>iron-autogrow-textarea</code> is an element containing a textarea that grows in height as more<br>lines of input are entered. Unless an explicit height or the <code>maxRows</code> property is set, it will<br>never scroll.</p>
@@ -20,8 +26,7 @@ import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandle
  * <pre><code>&lt;iron-autogrow-textarea&gt;&lt;/iron-autogrow-textarea&gt;
  * 
  * 
- * </code></pre><p>Because the <code>textarea</code>‘s <code>value</code> property is not observable, you should use<br>this element’s <code>bind-value</code> instead for imperative updates.</p>
- * <h3 id="styling">Styling</h3>
+ * </code></pre><h3 id="styling">Styling</h3>
  * <p>The following custom properties and mixins are available for styling:</p>
  * <table>
  * <thead>
@@ -35,6 +40,11 @@ import com.vaadin.polymer.iron.widget.event.IronFormElementUnregisterEventHandle
  * <tr>
  * <td><code>--iron-autogrow-textarea</code></td>
  * <td>Mixin applied to the textarea</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--iron-autogrow-textarea-placeholder</code></td>
+ * <td>Mixin applied to the textarea placeholder</td>
  * <td><code>{}</code></td>
  * </tr>
  * </tbody>
@@ -53,61 +63,37 @@ public class IronAutogrowTextarea extends PolymerWidget {
      */
     public IronAutogrowTextarea(String html) {
         super(IronAutogrowTextareaElement.TAG, IronAutogrowTextareaElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronFormElementRegisterEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronFormElementRegisterEvent event) {
-                fireEvent(new IronFormElementRegisterEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronFormElementUnregisterEvent event) {
-                fireEvent(new IronFormElementUnregisterEvent(event));
-            }
-        });
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public IronAutogrowTextareaElement getPolymerElement() {
-        try {
-            return (IronAutogrowTextareaElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (IronAutogrowTextareaElement) getElement();
     }
 
 
     /**
-     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     * <p>Set to true to mark the textarea as required.</p>
      *
      * JavaScript Info:
-     * @property autofocus
+     * @property required
      * @type Boolean
      * 
      */
-    public boolean getAutofocus() {
-        return getPolymerElement().getAutofocus();
+    public boolean getRequired() {
+        return getPolymerElement().getRequired();
     }
     /**
-     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     * <p>Set to true to mark the textarea as required.</p>
      *
      * JavaScript Info:
-     * @property autofocus
+     * @property required
      * @type Boolean
      * 
      */
-    public void setAutofocus(boolean value) {
-        getPolymerElement().setAutofocus(value);
+    public void setRequired(boolean value) {
+        getPolymerElement().setRequired(value);
     }
 
     /**
@@ -134,29 +120,6 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>The initial number of rows.</p>
-     *
-     * JavaScript Info:
-     * @property rows
-     * @type Number
-     * 
-     */
-    public double getRows() {
-        return getPolymerElement().getRows();
-    }
-    /**
-     * <p>The initial number of rows.</p>
-     *
-     * JavaScript Info:
-     * @property rows
-     * @type Number
-     * 
-     */
-    public void setRows(double value) {
-        getPolymerElement().setRows(value);
-    }
-
-    /**
      * <p>The maximum number of rows this element can grow to until it<br>scrolls. 0 means no maximum.</p>
      *
      * JavaScript Info:
@@ -180,22 +143,45 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
+     * <p>The minimum length of the input value.</p>
+     *
+     * JavaScript Info:
+     * @property minlength
+     * @type Number
+     * 
+     */
+    public double getMinlength() {
+        return getPolymerElement().getMinlength();
+    }
+    /**
+     * <p>The minimum length of the input value.</p>
+     *
+     * JavaScript Info:
+     * @property minlength
+     * @type Number
+     * 
+     */
+    public void setMinlength(double value) {
+        getPolymerElement().setMinlength(value);
+    }
+
+    /**
+     * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
      *
      * JavaScript Info:
      * @property bindValue
-     * @type (string|number|undefined|null)
+     * @type (string|number)
      * 
      */
     public Object getBindValue() {
         return getPolymerElement().getBindValue();
     }
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
+     * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
      *
      * JavaScript Info:
      * @property bindValue
-     * @type (string|number|undefined|null)
+     * @type (string|number)
      * 
      */
     public void setBindValue(Object value) {
@@ -203,49 +189,26 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     * <p>The initial number of rows.</p>
      *
      * JavaScript Info:
-     * @property required
-     * @type Boolean
-     * @behavior PaperToggleButton
+     * @property rows
+     * @type Number
+     * 
      */
-    public boolean getRequired() {
-        return getPolymerElement().getRequired();
+    public double getRows() {
+        return getPolymerElement().getRows();
     }
     /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
+     * <p>The initial number of rows.</p>
      *
      * JavaScript Info:
-     * @property required
-     * @type Boolean
-     * @behavior PaperToggleButton
+     * @property rows
+     * @type Number
+     * 
      */
-    public void setRequired(boolean value) {
-        getPolymerElement().setRequired(value);
-    }
-
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getFocused() {
-        return getPolymerElement().getFocused();
-    }
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setFocused(boolean value) {
-        getPolymerElement().setFocused(value);
+    public void setRows(double value) {
+        getPolymerElement().setRows(value);
     }
 
     /**
@@ -254,7 +217,7 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public boolean getDisabled() {
         return getPolymerElement().getDisabled();
@@ -265,10 +228,33 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setDisabled(boolean value) {
         getPolymerElement().setDisabled(value);
+    }
+
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public boolean getFocused() {
+        return getPolymerElement().getFocused();
+    }
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public void setFocused(boolean value) {
+        getPolymerElement().setFocused(value);
     }
 
     /**
@@ -295,6 +281,52 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
+     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property autofocus
+     * @type Boolean
+     * 
+     */
+    public boolean getAutofocus() {
+        return getPolymerElement().getAutofocus();
+    }
+    /**
+     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property autofocus
+     * @type Boolean
+     * 
+     */
+    public void setAutofocus(boolean value) {
+        getPolymerElement().setAutofocus(value);
+    }
+
+    /**
+     * <p>The name of this element.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior PaperToggleButton
+     */
+    public String getName() {
+        return getPolymerElement().getName();
+    }
+    /**
+     * <p>The name of this element.</p>
+     *
+     * JavaScript Info:
+     * @property name
+     * @type String
+     * @behavior PaperToggleButton
+     */
+    public void setName(String value) {
+        getPolymerElement().setName(value);
+    }
+
+    /**
      * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
      *
      * JavaScript Info:
@@ -318,23 +350,23 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>The value for this input, same as <code>bindValue</code></p>
+     * <p>The value for this element.</p>
      *
      * JavaScript Info:
      * @property value
      * @type String
-     * 
+     * @behavior PaperToggleButton
      */
     public String getValue() {
         return getPolymerElement().getValue();
     }
     /**
-     * <p>The value for this input, same as <code>bindValue</code></p>
+     * <p>The value for this element.</p>
      *
      * JavaScript Info:
      * @property value
      * @type String
-     * 
+     * @behavior PaperToggleButton
      */
     public void setValue(String value) {
         getPolymerElement().setValue(value);
@@ -364,30 +396,30 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>The name of this element.</p>
+     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property name
+     * @property placeholder
      * @type String
-     * @behavior PaperToggleButton
+     * 
      */
-    public String getName() {
-        return getPolymerElement().getName();
+    public String getPlaceholder() {
+        return getPolymerElement().getPlaceholder();
     }
     /**
-     * <p>The name of this element.</p>
+     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property name
+     * @property placeholder
      * @type String
-     * @behavior PaperToggleButton
+     * 
      */
-    public void setName(String value) {
-        getPolymerElement().setName(value);
+    public void setPlaceholder(String value) {
+        getPolymerElement().setPlaceholder(value);
     }
 
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -398,7 +430,7 @@ public class IronAutogrowTextarea extends PolymerWidget {
         return getPolymerElement().getValidatorType();
     }
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -433,29 +465,6 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
     /**
-     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * 
-     */
-    public String getPlaceholder() {
-        return getPolymerElement().getPlaceholder();
-    }
-    /**
-     * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * 
-     */
-    public void setPlaceholder(String value) {
-        getPolymerElement().setPlaceholder(value);
-    }
-
-    /**
      * <p>Bound to the textarea’s <code>readonly</code> attribute.</p>
      *
      * JavaScript Info:
@@ -479,28 +488,31 @@ public class IronAutogrowTextarea extends PolymerWidget {
     }
 
 
+    // Needed in UIBinder
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
+     * <p>The minimum length of the input value.</p>
+     *
+     * JavaScript Info:
+     * @attribute minlength
+     * 
+     */
+    public void setMinlength(String value) {
+        Polymer.property(this.getPolymerElement(), "minlength", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
      *
      * JavaScript Info:
      * @attribute bind-value
      * 
      */
     public void setBindValue(String value) {
-        getPolymerElement().setAttribute("bind-value", value);
+        Polymer.property(this.getPolymerElement(), "bindValue", value);
     }
 
-    /**
-     * <p>The maximum number of rows this element can grow to until it<br>scrolls. 0 means no maximum.</p>
-     *
-     * JavaScript Info:
-     * @attribute max-rows
-     * 
-     */
-    public void setMaxRows(String value) {
-        getPolymerElement().setAttribute("max-rows", value);
-    }
-
+    // Needed in UIBinder
     /**
      * <p>The initial number of rows.</p>
      *
@@ -509,9 +521,22 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * 
      */
     public void setRows(String value) {
-        getPolymerElement().setAttribute("rows", value);
+        Polymer.property(this.getPolymerElement(), "rows", value);
     }
 
+    // Needed in UIBinder
+    /**
+     * <p>The maximum number of rows this element can grow to until it<br>scrolls. 0 means no maximum.</p>
+     *
+     * JavaScript Info:
+     * @attribute max-rows
+     * 
+     */
+    public void setMaxRows(String value) {
+        Polymer.property(this.getPolymerElement(), "maxRows", value);
+    }
+
+    // Needed in UIBinder
     /**
      * <p>The maximum length of the input value.</p>
      *
@@ -520,7 +545,7 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * 
      */
     public void setMaxlength(String value) {
-        getPolymerElement().setAttribute("maxlength", value);
+        Polymer.property(this.getPolymerElement(), "maxlength", value);
     }
 
 
@@ -569,7 +594,7 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * @event iron-form-element-register
      */
     public HandlerRegistration addIronFormElementRegisterHandler(IronFormElementRegisterEventHandler handler) {
-        return addHandler(handler, IronFormElementRegisterEvent.TYPE);
+        return addDomHandler(handler, IronFormElementRegisterEvent.TYPE);
     }
 
     /**
@@ -579,7 +604,7 @@ public class IronAutogrowTextarea extends PolymerWidget {
      * @event iron-form-element-unregister
      */
     public HandlerRegistration addIronFormElementUnregisterHandler(IronFormElementUnregisterEventHandler handler) {
-        return addHandler(handler, IronFormElementUnregisterEvent.TYPE);
+        return addDomHandler(handler, IronFormElementUnregisterEvent.TYPE);
     }
 
 }

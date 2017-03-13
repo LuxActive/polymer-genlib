@@ -5,11 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>iron-meta</code> is a generic element you can use for sharing information across the DOM tree.<br>It uses <a href="http://c2.com/cgi/wiki?MonostatePattern">monostate pattern</a> such that any<br>instance of iron-meta has access to the shared<br>information. You can use <code>iron-meta</code> to share whatever you want (or create an extension<br>[like x-meta] for enhancements).</p>
@@ -21,26 +22,26 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre><p>Note that value=”foo/bar” is the metadata I’ve defined. I could define more<br>attributes or use child nodes to define additional metadata.</p>
  * <p>Now I can access that element (and it’s metadata) from any iron-meta instance<br>via the byKey method, e.g.</p>
- * <pre><code>meta.byKey(&#39;info&#39;).getAttribute(&#39;value&#39;);
+ * <pre><code>meta.byKey(&#39;info&#39;);
  * 
  * 
  * </code></pre><p>Pure imperative form would be like:</p>
- * <pre><code>document.createElement(&#39;iron-meta&#39;).byKey(&#39;info&#39;).getAttribute(&#39;value&#39;);
+ * <pre><code>document.createElement(&#39;iron-meta&#39;).byKey(&#39;info&#39;);
  * 
  * 
  * </code></pre><p>Or, in a Polymer element, you can include a meta in your template:</p>
  * <pre><code>&lt;iron-meta id=&quot;meta&quot;&gt;&lt;/iron-meta&gt;
  * ...
- * this.$.meta.byKey(&#39;info&#39;).getAttribute(&#39;value&#39;);
+ * this.$.meta.byKey(&#39;info&#39;);
  * 
  * 
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronMetaQueryElement extends HTMLElement {
 
-    public static final String TAG = "iron-meta-query";
-    public static final String SRC = "iron-meta/iron-meta.html";
+    @JsOverlay public static final String TAG = "iron-meta-query";
+    @JsOverlay public static final String SRC = "iron-meta/iron-meta.html";
 
 
     /**

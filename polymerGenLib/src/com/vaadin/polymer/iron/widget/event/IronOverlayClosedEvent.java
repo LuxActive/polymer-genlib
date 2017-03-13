@@ -5,19 +5,20 @@
  */
 package com.vaadin.polymer.iron.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * <p>Fired after the <code>iron-overlay</code> closes.</p>
+ * <p>Fired after the overlay closes.</p>
  */
-public class IronOverlayClosedEvent extends GwtEvent<IronOverlayClosedEventHandler> {
+public class IronOverlayClosedEvent extends DomEvent<IronOverlayClosedEventHandler> {
 
-    public static Type<IronOverlayClosedEventHandler> TYPE = new Type<IronOverlayClosedEventHandler>();
+    public static Type<IronOverlayClosedEventHandler> TYPE = new Type<IronOverlayClosedEventHandler>(
+       com.vaadin.polymer.iron.event.IronOverlayClosedEvent.NAME, new IronOverlayClosedEvent());
 
-    private com.vaadin.polymer.iron.event.IronOverlayClosedEvent nativeEvent;
 
-    public IronOverlayClosedEvent(com.vaadin.polymer.iron.event.IronOverlayClosedEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public IronOverlayClosedEvent() {
     }
 
     public Type<IronOverlayClosedEventHandler> getAssociatedType() {
@@ -28,15 +29,16 @@ public class IronOverlayClosedEvent extends GwtEvent<IronOverlayClosedEventHandl
         handler.onIronOverlayClosed(this);
     }
 
-    public com.vaadin.polymer.iron.event.IronOverlayClosedEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.iron.event.IronOverlayClosedEvent getPolymerEvent() {
+        return (com.vaadin.polymer.iron.event.IronOverlayClosedEvent)super.getNativeEvent();
     }
 
+
     /**
-     * <p>to the <code>closingReason</code> attribute</p>
+     * <p>The <code>event.detail</code> is the <code>closingReason</code> property<br>(contains <code>canceled</code>, whether the overlay was canceled).</p>
      */
-    public Object getSet() {
-        return getNativeEvent().getDetail().getSet();
+    public JavaScriptObject getEvent() {
+        return getPolymerEvent().getDetail().getEvent();
     }
 
 }

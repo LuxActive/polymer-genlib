@@ -1,18 +1,24 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
  * from paper-menu-button project by The Polymer Authors
- * that is licensed with MIT license.
+ * that is licensed with http://polymer.github.io/LICENSE.txt license.
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperMenuButtonElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.PaperDropdownCloseEvent;
 import com.vaadin.polymer.paper.widget.event.PaperDropdownCloseEventHandler;
+
 import com.vaadin.polymer.paper.widget.event.PaperDropdownOpenEvent;
 import com.vaadin.polymer.paper.widget.event.PaperDropdownOpenEventHandler;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
+import com.vaadin.polymer.PolymerWidget;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/buttons.html#buttons-dropdown-buttons">Dropdown buttons</a></p>
@@ -44,7 +50,7 @@ import com.vaadin.polymer.paper.widget.event.PaperDropdownOpenEventHandler;
  * <tr>
  * <td><code>--paper-menu-button-dropdown-background</code></td>
  * <td>Background color of the paper-menu-button dropdown</td>
- * <td><code>#fff</code></td>
+ * <td><code>--primary-background-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-menu-button</code></td>
@@ -82,39 +88,38 @@ public class PaperMenuButton extends PolymerWidget {
      */
     public PaperMenuButton(String html) {
         super(PaperMenuButtonElement.TAG, PaperMenuButtonElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.PaperDropdownCloseEvent.NAME,
-                new com.vaadin.polymer.paper.event.PaperDropdownCloseEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.PaperDropdownCloseEvent event) {
-                fireEvent(new PaperDropdownCloseEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.PaperDropdownOpenEvent.NAME,
-                new com.vaadin.polymer.paper.event.PaperDropdownOpenEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.PaperDropdownOpenEvent event) {
-                fireEvent(new PaperDropdownOpenEvent(event));
-            }
-        });
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperMenuButtonElement getPolymerElement() {
-        try {
-            return (PaperMenuButtonElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperMenuButtonElement) getElement();
     }
 
+
+    /**
+     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
+     *
+     * JavaScript Info:
+     * @property allowOutsideScroll
+     * @type Boolean
+     * 
+     */
+    public boolean getAllowOutsideScroll() {
+        return getPolymerElement().getAllowOutsideScroll();
+    }
+    /**
+     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
+     *
+     * JavaScript Info:
+     * @property allowOutsideScroll
+     * @type Boolean
+     * 
+     */
+    public void setAllowOutsideScroll(boolean value) {
+        getPolymerElement().setAllowOutsideScroll(value);
+    }
 
     /**
      * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>. Use a negative value to offset to the<br>left, or a positive value to offset to the right.</p>
@@ -163,75 +168,6 @@ public class PaperMenuButton extends PolymerWidget {
     }
 
     /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>. Use a negative value to offset towards the<br>top, or a positive value to offset towards the bottom.</p>
-     *
-     * JavaScript Info:
-     * @property verticalOffset
-     * @type Number
-     * 
-     */
-    public double getVerticalOffset() {
-        return getPolymerElement().getVerticalOffset();
-    }
-    /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>. Use a negative value to offset towards the<br>top, or a positive value to offset towards the bottom.</p>
-     *
-     * JavaScript Info:
-     * @property verticalOffset
-     * @type Number
-     * 
-     */
-    public void setVerticalOffset(double value) {
-        getPolymerElement().setVerticalOffset(value);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    public JavaScriptObject getKeyBindings() {
-        return getPolymerElement().getKeyBindings();
-    }
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
-     */
-    public void setKeyBindings(JavaScriptObject value) {
-        getPolymerElement().setKeyBindings(value);
-    }
-
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    public JavaScriptObject getKeyEventTarget() {
-        return getPolymerElement().getKeyEventTarget();
-    }
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    public void setKeyEventTarget(JavaScriptObject value) {
-        getPolymerElement().setKeyEventTarget(value);
-    }
-
-    /**
      * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
      *
      * JavaScript Info:
@@ -252,6 +188,75 @@ public class PaperMenuButton extends PolymerWidget {
      */
     public void setCloseAnimationConfig(JavaScriptObject value) {
         getPolymerElement().setCloseAnimationConfig(value);
+    }
+
+    /**
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type !Object
+     * @behavior PaperToggleButton
+     */
+    public JavaScriptObject getKeyBindings() {
+        return getPolymerElement().getKeyBindings();
+    }
+    /**
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type !Object
+     * @behavior PaperToggleButton
+     */
+    public void setKeyBindings(JavaScriptObject value) {
+        getPolymerElement().setKeyBindings(value);
+    }
+
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
+     */
+    public JavaScriptObject getKeyEventTarget() {
+        return getPolymerElement().getKeyEventTarget();
+    }
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
+     */
+    public void setKeyEventTarget(JavaScriptObject value) {
+        getPolymerElement().setKeyEventTarget(value);
+    }
+
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>. Use a negative value to offset towards the<br>top, or a positive value to offset towards the bottom.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * 
+     */
+    public double getVerticalOffset() {
+        return getPolymerElement().getVerticalOffset();
+    }
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>. Use a negative value to offset towards the<br>top, or a positive value to offset towards the bottom.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * 
+     */
+    public void setVerticalOffset(double value) {
+        getPolymerElement().setVerticalOffset(value);
     }
 
     /**
@@ -301,26 +306,26 @@ public class PaperMenuButton extends PolymerWidget {
     }
 
     /**
-     * <p>If true, the element currently has focus.</p>
+     * <p>If true, the dropdown will be positioned so that it doesn’t overlap<br>the button.</p>
      *
      * JavaScript Info:
-     * @property focused
+     * @property noOverlap
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    public boolean getFocused() {
-        return getPolymerElement().getFocused();
+    public boolean getNoOverlap() {
+        return getPolymerElement().getNoOverlap();
     }
     /**
-     * <p>If true, the element currently has focus.</p>
+     * <p>If true, the dropdown will be positioned so that it doesn’t overlap<br>the button.</p>
      *
      * JavaScript Info:
-     * @property focused
+     * @property noOverlap
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    public void setFocused(boolean value) {
-        getPolymerElement().setFocused(value);
+    public void setNoOverlap(boolean value) {
+        getPolymerElement().setNoOverlap(value);
     }
 
     /**
@@ -329,7 +334,7 @@ public class PaperMenuButton extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public boolean getDisabled() {
         return getPolymerElement().getDisabled();
@@ -340,33 +345,33 @@ public class PaperMenuButton extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setDisabled(boolean value) {
         getPolymerElement().setDisabled(value);
     }
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>If true, the <code>horizontalAlign</code> and <code>verticalAlign</code> properties will<br>be considered preferences instead of strict requirements when<br>positioning the dropdown and may be changed if doing so reduces<br>the area of the dropdown falling outside of <code>fitInto</code>.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
+     * @property dynamicAlign
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    public boolean getStopKeyboardEventPropagation() {
-        return getPolymerElement().getStopKeyboardEventPropagation();
+    public boolean getDynamicAlign() {
+        return getPolymerElement().getDynamicAlign();
     }
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>If true, the <code>horizontalAlign</code> and <code>verticalAlign</code> properties will<br>be considered preferences instead of strict requirements when<br>positioning the dropdown and may be changed if doing so reduces<br>the area of the dropdown falling outside of <code>fitInto</code>.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
+     * @property dynamicAlign
      * @type Boolean
-     * @behavior PaperTab
+     * 
      */
-    public void setStopKeyboardEventPropagation(boolean value) {
-        getPolymerElement().setStopKeyboardEventPropagation(value);
+    public void setDynamicAlign(boolean value) {
+        getPolymerElement().setDynamicAlign(value);
     }
 
     /**
@@ -390,6 +395,98 @@ public class PaperMenuButton extends PolymerWidget {
      */
     public void setOpened(boolean value) {
         getPolymerElement().setOpened(value);
+    }
+
+    /**
+     * <p>Whether focus should be restored to the button when the menu closes.</p>
+     *
+     * JavaScript Info:
+     * @property restoreFocusOnClose
+     * @type Boolean
+     * 
+     */
+    public boolean getRestoreFocusOnClose() {
+        return getPolymerElement().getRestoreFocusOnClose();
+    }
+    /**
+     * <p>Whether focus should be restored to the button when the menu closes.</p>
+     *
+     * JavaScript Info:
+     * @property restoreFocusOnClose
+     * @type Boolean
+     * 
+     */
+    public void setRestoreFocusOnClose(boolean value) {
+        getPolymerElement().setRestoreFocusOnClose(value);
+    }
+
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public boolean getFocused() {
+        return getPolymerElement().getFocused();
+    }
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public void setFocused(boolean value) {
+        getPolymerElement().setFocused(value);
+    }
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public boolean getStopKeyboardEventPropagation() {
+        return getPolymerElement().getStopKeyboardEventPropagation();
+    }
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public void setStopKeyboardEventPropagation(boolean value) {
+        getPolymerElement().setStopKeyboardEventPropagation(value);
+    }
+
+    /**
+     * <p>Set to true to enable automatically closing the dropdown after an<br>item has been activated, even if the selection did not change.</p>
+     *
+     * JavaScript Info:
+     * @property closeOnActivate
+     * @type Boolean
+     * 
+     */
+    public boolean getCloseOnActivate() {
+        return getPolymerElement().getCloseOnActivate();
+    }
+    /**
+     * <p>Set to true to enable automatically closing the dropdown after an<br>item has been activated, even if the selection did not change.</p>
+     *
+     * JavaScript Info:
+     * @property closeOnActivate
+     * @type Boolean
+     * 
+     */
+    public void setCloseOnActivate(boolean value) {
+        getPolymerElement().setCloseOnActivate(value);
     }
 
     /**
@@ -439,61 +536,7 @@ public class PaperMenuButton extends PolymerWidget {
     }
 
 
-    /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>. Use a negative value to offset towards the<br>top, or a positive value to offset towards the bottom.</p>
-     *
-     * JavaScript Info:
-     * @attribute vertical-offset
-     * 
-     */
-    public void setVerticalOffset(String value) {
-        getPolymerElement().setAttribute("vertical-offset", value);
-    }
-
-    /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>. Use a negative value to offset to the<br>left, or a positive value to offset to the right.</p>
-     *
-     * JavaScript Info:
-     * @attribute horizontal-offset
-     * 
-     */
-    public void setHorizontalOffset(String value) {
-        getPolymerElement().setAttribute("horizontal-offset", value);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @attribute key-bindings
-     * @behavior PaperTab
-     */
-    public void setKeyBindings(String value) {
-        getPolymerElement().setAttribute("key-bindings", value);
-    }
-
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @attribute key-event-target
-     * @behavior PaperTab
-     */
-    public void setKeyEventTarget(String value) {
-        getPolymerElement().setAttribute("key-event-target", value);
-    }
-
-    /**
-     * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown.</p>
-     *
-     * JavaScript Info:
-     * @attribute open-animation-config
-     * 
-     */
-    public void setOpenAnimationConfig(String value) {
-        getPolymerElement().setAttribute("open-animation-config", value);
-    }
-
+    // Needed in UIBinder
     /**
      * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown.</p>
      *
@@ -502,23 +545,69 @@ public class PaperMenuButton extends PolymerWidget {
      * 
      */
     public void setCloseAnimationConfig(String value) {
-        getPolymerElement().setAttribute("close-animation-config", value);
+        Polymer.property(this.getPolymerElement(), "closeAnimationConfig", value);
     }
 
-
+    // Needed in UIBinder
     /**
-     * 
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
+     * @attribute key-bindings
+     * @behavior PaperToggleButton
+     */
+    public void setKeyBindings(String value) {
+        Polymer.property(this.getPolymerElement(), "keyBindings", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @attribute key-event-target
+     * @behavior PaperToggleButton
+     */
+    public void setKeyEventTarget(String value) {
+        Polymer.property(this.getPolymerElement(), "keyEventTarget", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>. Use a negative value to offset to the<br>left, or a positive value to offset to the right.</p>
+     *
+     * JavaScript Info:
+     * @attribute horizontal-offset
      * 
      */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
+    public void setHorizontalOffset(String value) {
+        Polymer.property(this.getPolymerElement(), "horizontalOffset", value);
     }
+
+    // Needed in UIBinder
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>. Use a negative value to offset towards the<br>top, or a positive value to offset towards the bottom.</p>
+     *
+     * JavaScript Info:
+     * @attribute vertical-offset
+     * 
+     */
+    public void setVerticalOffset(String value) {
+        Polymer.property(this.getPolymerElement(), "verticalOffset", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown.</p>
+     *
+     * JavaScript Info:
+     * @attribute open-animation-config
+     * 
+     */
+    public void setOpenAnimationConfig(String value) {
+        Polymer.property(this.getPolymerElement(), "openAnimationConfig", value);
+    }
+
 
     /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
@@ -527,23 +616,11 @@ public class PaperMenuButton extends PolymerWidget {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
         getPolymerElement().addOwnKeyBinding(eventString, handlerName);
-    }
-
-    /**
-     * <p>Make the dropdown content appear as an overlay positioned relative<br>to the dropdown trigger.</p>
-     *
-     * JavaScript Info:
-     * @method open
-     * 
-     * 
-     */
-    public void open() {
-        getPolymerElement().open();
     }
 
     /**
@@ -563,11 +640,49 @@ public class PaperMenuButton extends PolymerWidget {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     public void removeOwnKeyBindings() {
         getPolymerElement().removeOwnKeyBindings();
+    }
+
+    /**
+     * <p>Make the dropdown content appear as an overlay positioned relative<br>to the dropdown trigger.</p>
+     *
+     * JavaScript Info:
+     * @method open
+     * 
+     * 
+     */
+    public void open() {
+        getPolymerElement().open();
+    }
+
+    /**
+     * <p>Toggles the drowpdown content between opened and closed.</p>
+     *
+     * JavaScript Info:
+     * @method toggle
+     * 
+     * 
+     */
+    public void toggle() {
+        getPolymerElement().toggle();
+    }
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
+     */
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
 
@@ -578,7 +693,7 @@ public class PaperMenuButton extends PolymerWidget {
      * @event paper-dropdown-close
      */
     public HandlerRegistration addPaperDropdownCloseHandler(PaperDropdownCloseEventHandler handler) {
-        return addHandler(handler, PaperDropdownCloseEvent.TYPE);
+        return addDomHandler(handler, PaperDropdownCloseEvent.TYPE);
     }
 
     /**
@@ -588,7 +703,7 @@ public class PaperMenuButton extends PolymerWidget {
      * @event paper-dropdown-open
      */
     public HandlerRegistration addPaperDropdownOpenHandler(PaperDropdownOpenEventHandler handler) {
-        return addHandler(handler, PaperDropdownOpenEvent.TYPE);
+        return addDomHandler(handler, PaperDropdownOpenEvent.TYPE);
     }
 
 }

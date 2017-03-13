@@ -5,19 +5,20 @@
  */
 package com.vaadin.polymer.iron.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the checked state changes.</p>
  */
-public class IronChangeEvent extends GwtEvent<IronChangeEventHandler> {
+public class IronChangeEvent extends DomEvent<IronChangeEventHandler> {
 
-    public static Type<IronChangeEventHandler> TYPE = new Type<IronChangeEventHandler>();
+    public static Type<IronChangeEventHandler> TYPE = new Type<IronChangeEventHandler>(
+       com.vaadin.polymer.iron.event.IronChangeEvent.NAME, new IronChangeEvent());
 
-    private com.vaadin.polymer.iron.event.IronChangeEvent nativeEvent;
 
-    public IronChangeEvent(com.vaadin.polymer.iron.event.IronChangeEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public IronChangeEvent() {
     }
 
     public Type<IronChangeEventHandler> getAssociatedType() {
@@ -28,8 +29,9 @@ public class IronChangeEvent extends GwtEvent<IronChangeEventHandler> {
         handler.onIronChange(this);
     }
 
-    public com.vaadin.polymer.iron.event.IronChangeEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.iron.event.IronChangeEvent getPolymerEvent() {
+        return (com.vaadin.polymer.iron.event.IronChangeEvent)super.getNativeEvent();
     }
+
 
 }

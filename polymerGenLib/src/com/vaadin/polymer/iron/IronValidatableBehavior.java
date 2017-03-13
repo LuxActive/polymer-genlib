@@ -5,9 +5,13 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p><code>Use Polymer.IronValidatableBehavior</code> to implement an element that validates user input.<br>Use the related <code>Polymer.IronValidatorBehavior</code> to add custom validation logic to an iron-input.</p>
@@ -16,11 +20,11 @@ import com.google.gwt.core.client.js.JsType;
  * <h3 id="accessibility">Accessibility</h3>
  * <p>Changing the <code>invalid</code> property, either manually or by calling <code>validate()</code> will update the<br><code>aria-invalid</code> attribute.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronValidatableBehavior {
 
-    public static final String TAG = "Polymer.IronValidatableBehavior";
-    public static final String SRC = "iron-validatable-behavior/iron-validatable-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.IronValidatableBehavior";
+    @JsOverlay public static final String SRC = "iron-validatable-behavior/iron-validatable-behavior.html";
 
 
     /**
@@ -62,7 +66,7 @@ public interface IronValidatableBehavior {
     @JsProperty void setValidator(String value);
 
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -71,7 +75,7 @@ public interface IronValidatableBehavior {
      */
     @JsProperty String getValidatorType();
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType

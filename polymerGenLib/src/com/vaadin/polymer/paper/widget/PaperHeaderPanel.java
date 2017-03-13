@@ -5,11 +5,17 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperHeaderPanelElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.ContentScrollEvent;
 import com.vaadin.polymer.paper.widget.event.ContentScrollEventHandler;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
+import com.vaadin.polymer.PolymerWidget;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>paper-header-panel</code> contains a header section and a content panel section.</p>
@@ -102,6 +108,13 @@ import com.vaadin.polymer.paper.widget.event.ContentScrollEventHandler;
  * }
  * 
  * 
+ * </code></pre><p>To change the panel container:</p>
+ * <pre><code>paper-header-panel {
+ *   --paper-header-panel-container: {
+ *     border: 1px solid gray;
+ *   };
+ * 
+ * 
  * </code></pre><p>To change the panel container in different modes:</p>
  * <pre><code>paper-header-panel {
  *   --paper-header-panel-standard-container: {
@@ -151,6 +164,11 @@ import com.vaadin.polymer.paper.widget.event.ContentScrollEventHandler;
  * <td><code>{}</code></td>
  * </tr>
  * <tr>
+ * <td><code>--paper-header-panel-container</code></td>
+ * <td>Mixin applied to the container in any mode</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
  * <td><code>--paper-header-panel-scroll-container</code></td>
  * <td>Mixin applied to the container when in scroll mode</td>
  * <td><code>{}</code></td>
@@ -180,6 +198,11 @@ import com.vaadin.polymer.paper.widget.event.ContentScrollEventHandler;
  * <td>Mixin applied to the container when in tall waterfall mode</td>
  * <td><code>{}</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--paper-header-panel-shadow</code></td>
+ * <td>Mixin applied to the waterfall shadow</td>
+ * <td><code>{}</code></td>
+ * </tr>
  * </tbody>
  * </table>
  */
@@ -196,28 +219,13 @@ public class PaperHeaderPanel extends PolymerWidget {
      */
     public PaperHeaderPanel(String html) {
         super(PaperHeaderPanelElement.TAG, PaperHeaderPanelElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.ContentScrollEvent.NAME,
-                new com.vaadin.polymer.paper.event.ContentScrollEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.ContentScrollEvent event) {
-                fireEvent(new ContentScrollEvent(event));
-            }
-        });
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperHeaderPanelElement getPolymerElement() {
-        try {
-            return (PaperHeaderPanelElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperHeaderPanelElement) getElement();
     }
 
 
@@ -363,7 +371,7 @@ public class PaperHeaderPanel extends PolymerWidget {
      * @event content-scroll
      */
     public HandlerRegistration addContentScrollHandler(ContentScrollEventHandler handler) {
-        return addHandler(handler, ContentScrollEvent.TYPE);
+        return addDomHandler(handler, ContentScrollEvent.TYPE);
     }
 
 }

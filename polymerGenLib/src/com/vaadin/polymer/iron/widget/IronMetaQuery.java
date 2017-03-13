@@ -5,10 +5,14 @@
  */
 package com.vaadin.polymer.iron.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
+import com.vaadin.polymer.iron.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.IronMetaQueryElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>iron-meta</code> is a generic element you can use for sharing information across the DOM tree.<br>It uses <a href="http://c2.com/cgi/wiki?MonostatePattern">monostate pattern</a> such that any<br>instance of iron-meta has access to the shared<br>information. You can use <code>iron-meta</code> to share whatever you want (or create an extension<br>[like x-meta] for enhancements).</p>
@@ -20,17 +24,17 @@ import com.vaadin.polymer.iron.IronMetaQueryElement;
  * 
  * </code></pre><p>Note that value=”foo/bar” is the metadata I’ve defined. I could define more<br>attributes or use child nodes to define additional metadata.</p>
  * <p>Now I can access that element (and it’s metadata) from any iron-meta instance<br>via the byKey method, e.g.</p>
- * <pre><code>meta.byKey(&#39;info&#39;).getAttribute(&#39;value&#39;);
+ * <pre><code>meta.byKey(&#39;info&#39;);
  * 
  * 
  * </code></pre><p>Pure imperative form would be like:</p>
- * <pre><code>document.createElement(&#39;iron-meta&#39;).byKey(&#39;info&#39;).getAttribute(&#39;value&#39;);
+ * <pre><code>document.createElement(&#39;iron-meta&#39;).byKey(&#39;info&#39;);
  * 
  * 
  * </code></pre><p>Or, in a Polymer element, you can include a meta in your template:</p>
  * <pre><code>&lt;iron-meta id=&quot;meta&quot;&gt;&lt;/iron-meta&gt;
  * ...
- * this.$.meta.byKey(&#39;info&#39;).getAttribute(&#39;value&#39;);
+ * this.$.meta.byKey(&#39;info&#39;);
  * 
  * 
  * </code></pre>
@@ -48,19 +52,13 @@ public class IronMetaQuery extends PolymerWidget {
      */
     public IronMetaQuery(String html) {
         super(IronMetaQueryElement.TAG, IronMetaQueryElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public IronMetaQueryElement getPolymerElement() {
-        try {
-            return (IronMetaQueryElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (IronMetaQueryElement) getElement();
     }
 
 
@@ -157,6 +155,7 @@ public class IronMetaQuery extends PolymerWidget {
     }
 
 
+    // Needed in UIBinder
     /**
      * <p>Array of all meta-data values for the given type.</p>
      *
@@ -165,9 +164,10 @@ public class IronMetaQuery extends PolymerWidget {
      * 
      */
     public void setList(String value) {
-        getPolymerElement().setAttribute("list", value);
+        Polymer.property(this.getPolymerElement(), "list", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>The meta-data to store or retrieve.</p>
      *
@@ -176,7 +176,7 @@ public class IronMetaQuery extends PolymerWidget {
      * 
      */
     public void setValue(String value) {
-        getPolymerElement().setAttribute("value", value);
+        Polymer.property(this.getPolymerElement(), "value", value);
     }
 
 

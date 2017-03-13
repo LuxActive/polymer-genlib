@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>iron-overlay-backdrop</code> is a backdrop used by <code>Polymer.IronOverlayBehavior</code>. It should be a<br>singleton.</p>
@@ -45,11 +48,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronOverlayBackdropElement extends HTMLElement {
 
-    public static final String TAG = "iron-overlay-backdrop";
-    public static final String SRC = "iron-overlay-behavior/iron-overlay-behavior.html";
+    @JsOverlay public static final String TAG = "iron-overlay-backdrop";
+    @JsOverlay public static final String SRC = "iron-overlay-behavior/iron-overlay-backdrop.html";
 
 
     /**
@@ -73,7 +76,7 @@ public interface IronOverlayBackdropElement extends HTMLElement {
 
 
     /**
-     * <p>Hides the backdrop if needed.</p>
+     * <p>Hides the backdrop.</p>
      *
      * JavaScript Info:
      * @method close
@@ -93,7 +96,7 @@ public interface IronOverlayBackdropElement extends HTMLElement {
     void complete();
 
     /**
-     * <p>Shows the backdrop if needed.</p>
+     * <p>Shows the backdrop.</p>
      *
      * JavaScript Info:
      * @method open
@@ -103,7 +106,7 @@ public interface IronOverlayBackdropElement extends HTMLElement {
     void open();
 
     /**
-     * <p>Appends the backdrop to document body and sets its <code>z-index</code> to be below the latest overlay.</p>
+     * <p>Appends the backdrop to document body if needed.</p>
      *
      * JavaScript Info:
      * @method prepare

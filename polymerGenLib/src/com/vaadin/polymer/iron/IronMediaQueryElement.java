@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.iron;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>iron-media-query</code> can be used to data bind to a CSS media query.<br>The <code>query</code> property is a bare CSS media query.<br>The <code>query-matches</code> property is a boolean representing whether the page matches that media query.</p>
@@ -17,11 +20,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronMediaQueryElement extends HTMLElement {
 
-    public static final String TAG = "iron-media-query";
-    public static final String SRC = "iron-media-query/iron-media-query.html";
+    @JsOverlay public static final String TAG = "iron-media-query";
+    @JsOverlay public static final String SRC = "iron-media-query/iron-media-query.html";
 
 
     /**

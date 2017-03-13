@@ -5,17 +5,24 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
- * <p><code>IronResizableBehavior</code> is a behavior that can be used in Polymer elements to<br>coordinate the flow of resize events between “resizers” (elements that control the<br>size or hidden state of their children) and “resizables” (elements that need to be<br>notified when they are resized or un-hidden by their parents in order to take<br>action on their new measurements).<br>Elements that perform measurement should add the <code>IronResizableBehavior</code> behavior to<br>their element definition and listen for the <code>iron-resize</code> event on themselves.<br>This event will be fired when they become showing after having been hidden,<br>when they are resized explicitly by another resizable, or when the window has been<br>resized.<br>Note, the <code>iron-resize</code> event is non-bubbling.</p>
+ * <p><code>IronResizableBehavior</code> is a behavior that can be used in Polymer elements to<br>coordinate the flow of resize events between “resizers” (elements that control the<br>size or hidden state of their children) and “resizables” (elements that need to be<br>notified when they are resized or un-hidden by their parents in order to take<br>action on their new measurements).</p>
+ * <p>Elements that perform measurement should add the <code>IronResizableBehavior</code> behavior to<br>their element definition and listen for the <code>iron-resize</code> event on themselves.<br>This event will be fired when they become showing after having been hidden,<br>when they are resized explicitly by another resizable, or when the window has been<br>resized.</p>
+ * <p>Note, the <code>iron-resize</code> event is non-bubbling.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronResizableBehavior {
 
-    public static final String TAG = "Polymer.IronResizableBehavior";
-    public static final String SRC = "iron-resizable-behavior/iron-resizable-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.IronResizableBehavior";
+    @JsOverlay public static final String SRC = "iron-resizable-behavior/iron-resizable-behavior.html";
 
 
 
@@ -25,7 +32,7 @@ public interface IronResizableBehavior {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * 
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -36,7 +43,7 @@ public interface IronResizableBehavior {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * 
      * 
      */
     void stopResizeNotificationsFor(Object target);
@@ -47,7 +54,7 @@ public interface IronResizableBehavior {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * 
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);
@@ -57,7 +64,7 @@ public interface IronResizableBehavior {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * 
      * 
      */
     void notifyResize();

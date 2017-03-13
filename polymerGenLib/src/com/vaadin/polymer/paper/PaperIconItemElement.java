@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>&lt;paper-icon-item&gt;</code> is a convenience element to make an item with icon. It is an interactive list<br>item with a fixed-width icon area, according to Material Design. This is useful if the icons are of<br>varying widths, but you want the item bodies to line up. Use this like a <code>&lt;paper-item&gt;</code>. The child<br>node with the attribute <code>item-icon</code> is placed in the icon area.</p>
@@ -37,6 +39,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <td><code>--paper-item-icon-width</code></td>
  * <td>Width of the icon area</td>
  * <td><code>56px</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-item-icon</code></td>
+ * <td>Mixin applied to the icon area</td>
+ * <td><code>{}</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-icon-item</code></td>
@@ -76,69 +83,31 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperIconItemElement extends HTMLElement {
 
-    public static final String TAG = "paper-icon-item";
-    public static final String SRC = "paper-item/all-imports.html";
+    @JsOverlay public static final String TAG = "paper-icon-item";
+    @JsOverlay public static final String SRC = "paper-item/paper-icon-item.html";
 
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty JavaScriptObject getKeyEventTarget();
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty void setKeyEventTarget(JavaScriptObject value);
-
-    /**
-     * 
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
      *
      * JavaScript Info:
      * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
+     * @type !Object
+     * @behavior PaperToggleButton
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
-     * 
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
      *
      * JavaScript Info:
      * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
+     * @type !Object
+     * @behavior PaperToggleButton
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
-
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getFocused();
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setFocused(boolean value);
 
     /**
      * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
@@ -146,7 +115,7 @@ public interface PaperIconItemElement extends HTMLElement {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getPointerDown();
     /**
@@ -155,7 +124,7 @@ public interface PaperIconItemElement extends HTMLElement {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setPointerDown(boolean value);
 
@@ -165,7 +134,7 @@ public interface PaperIconItemElement extends HTMLElement {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getPressed();
     /**
@@ -174,7 +143,7 @@ public interface PaperIconItemElement extends HTMLElement {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setPressed(boolean value);
 
@@ -184,7 +153,7 @@ public interface PaperIconItemElement extends HTMLElement {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getReceivedFocusFromKeyboard();
     /**
@@ -193,28 +162,9 @@ public interface PaperIconItemElement extends HTMLElement {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setReceivedFocusFromKeyboard(boolean value);
-
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getStopKeyboardEventPropagation();
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
     /**
      * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
@@ -222,7 +172,7 @@ public interface PaperIconItemElement extends HTMLElement {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getToggles();
     /**
@@ -231,28 +181,9 @@ public interface PaperIconItemElement extends HTMLElement {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setToggles(boolean value);
-
-    /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
-     *
-     * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getActive();
-    /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
-     *
-     * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setActive(boolean value);
 
     /**
      * <p>If true, the user cannot interact with this element.</p>
@@ -260,7 +191,7 @@ public interface PaperIconItemElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getDisabled();
     /**
@@ -269,9 +200,85 @@ public interface PaperIconItemElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setDisabled(boolean value);
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getStopKeyboardEventPropagation();
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
+
+    /**
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     *
+     * JavaScript Info:
+     * @property active
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getActive();
+    /**
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     *
+     * JavaScript Info:
+     * @property active
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setActive(boolean value);
+
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
+     */
+    @JsProperty JavaScriptObject getKeyEventTarget();
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setKeyEventTarget(JavaScriptObject value);
+
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getFocused();
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setFocused(boolean value);
 
     /**
      * <p>The aria attribute to be set if the button is a toggle and in the<br>active state.</p>
@@ -279,7 +286,7 @@ public interface PaperIconItemElement extends HTMLElement {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty String getAriaActiveAttribute();
     /**
@@ -288,22 +295,10 @@ public interface PaperIconItemElement extends HTMLElement {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setAriaActiveAttribute(String value);
 
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
 
     /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
@@ -312,7 +307,7 @@ public interface PaperIconItemElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
@@ -322,9 +317,21 @@ public interface PaperIconItemElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void removeOwnKeyBindings();
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
 }

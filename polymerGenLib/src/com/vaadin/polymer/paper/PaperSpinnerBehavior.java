@@ -5,17 +5,22 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperSpinnerBehavior {
 
-    public static final String TAG = "Polymer.PaperSpinnerBehavior";
-    public static final String SRC = "paper-spinner/paper-spinner.html";
+    @JsOverlay public static final String NAME = "Polymer.PaperSpinnerBehavior";
+    @JsOverlay public static final String SRC = "paper-spinner/paper-spinner-behavior.html";
 
 
     /**
@@ -24,7 +29,7 @@ public interface PaperSpinnerBehavior {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * 
+     * @behavior PaperSpinner
      */
     @JsProperty boolean getActive();
     /**
@@ -33,7 +38,7 @@ public interface PaperSpinnerBehavior {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * 
+     * @behavior PaperSpinner
      */
     @JsProperty void setActive(boolean value);
 
@@ -43,7 +48,7 @@ public interface PaperSpinnerBehavior {
      * JavaScript Info:
      * @property alt
      * @type String
-     * 
+     * @behavior PaperSpinner
      */
     @JsProperty String getAlt();
     /**
@@ -52,7 +57,7 @@ public interface PaperSpinnerBehavior {
      * JavaScript Info:
      * @property alt
      * @type String
-     * 
+     * @behavior PaperSpinner
      */
     @JsProperty void setAlt(String value);
 

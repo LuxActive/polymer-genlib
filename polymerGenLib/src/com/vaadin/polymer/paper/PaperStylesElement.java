@@ -5,8 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>The <code>&lt;paper-styles&gt;</code> component provides simple ways to use Material Design CSS styles<br>in your application. The following imports are available:</p>
@@ -24,11 +28,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </ol>
  * <p>We recommend importing each of these individual files, and using the style mixins<br>available in each ones, rather than the aggregated <code>paper-styles.html</code> as a whole.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperStylesElement extends HTMLElement {
 
-    public static final String TAG = "paper-styles";
-    public static final String SRC = "paper-styles/paper-styles.html";
+    @JsOverlay public static final String TAG = "paper-styles";
+    @JsOverlay public static final String SRC = "paper-styles/paper-styles.html";
 
 
 

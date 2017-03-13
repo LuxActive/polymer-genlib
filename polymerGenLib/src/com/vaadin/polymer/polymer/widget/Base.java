@@ -5,10 +5,14 @@
  */
 package com.vaadin.polymer.polymer.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
+import com.vaadin.polymer.polymer.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.polymer.BaseElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>Polymer.Base</code> acts as a base prototype for all Polymer elements. It is composed via various calls to <code>Polymer.Base._addFeature()</code>.</p>
@@ -27,44 +31,15 @@ public class Base extends PolymerWidget {
      */
     public Base(String html) {
         super(BaseElement.TAG, BaseElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public BaseElement getPolymerElement() {
-        try {
-            return (BaseElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (BaseElement) getElement();
     }
 
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property behaviors
-     * @type Array
-     * 
-     */
-    public JsArray getBehaviors() {
-        return getPolymerElement().getBehaviors();
-    }
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property behaviors
-     * @type Array
-     * 
-     */
-    public void setBehaviors(JsArray value) {
-        getPolymerElement().setBehaviors(value);
-    }
 
     /**
      * 
@@ -112,41 +87,8 @@ public class Base extends PolymerWidget {
         getPolymerElement().setListeners(value);
     }
 
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property properties
-     * @type Object
-     * 
-     */
-    public JavaScriptObject getProperties() {
-        return getPolymerElement().getProperties();
-    }
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property properties
-     * @type Object
-     * 
-     */
-    public void setProperties(JavaScriptObject value) {
-        getPolymerElement().setProperties(value);
-    }
 
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @attribute custom-style
-     * 
-     */
-    public void setCustomStyle(String value) {
-        getPolymerElement().setAttribute("custom-style", value);
-    }
-
+    // Needed in UIBinder
     /**
      * 
      *
@@ -155,29 +97,19 @@ public class Base extends PolymerWidget {
      * 
      */
     public void setListeners(String value) {
-        getPolymerElement().setAttribute("listeners", value);
+        Polymer.property(this.getPolymerElement(), "listeners", value);
     }
 
+    // Needed in UIBinder
     /**
      * 
      *
      * JavaScript Info:
-     * @attribute properties
+     * @attribute custom-style
      * 
      */
-    public void setProperties(String value) {
-        getPolymerElement().setAttribute("properties", value);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @attribute behaviors
-     * 
-     */
-    public void setBehaviors(String value) {
-        getPolymerElement().setAttribute("behaviors", value);
+    public void setCustomStyle(String value) {
+        Polymer.property(this.getPolymerElement(), "customStyle", value);
     }
 
 
@@ -193,244 +125,6 @@ public class Base extends PolymerWidget {
      */
     public void arrayDelete(Object path, Object item) {
         getPolymerElement().arrayDelete(path, item);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method getComputedStyleValue
-     * @param {} property  
-     * 
-     * 
-     */
-    public void getComputedStyleValue(Object property) {
-        getPolymerElement().getComputedStyleValue(property);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method transform
-     * @param {} transform  
-     * @param {} node  
-     * 
-     * 
-     */
-    public void transform(Object transform, Object node) {
-        getPolymerElement().transform(transform, node);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method toggleClass
-     * @param {} name  
-     * @param {} bool  
-     * @param {} node  
-     * 
-     * 
-     */
-    public void toggleClass(Object name, Object bool, Object node) {
-        getPolymerElement().toggleClass(name, bool, node);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method get
-     * @param {} path  
-     * @param {} root  
-     * 
-     * 
-     */
-    public void get(Object path, Object root) {
-        getPolymerElement().get(path, root);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method async
-     * @param {} callback  
-     * @param {} waitTime  
-     * 
-     * 
-     */
-    public void async(Object callback, Object waitTime) {
-        getPolymerElement().async(callback, waitTime);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method getPropertyInfo
-     * @param {} property  
-     * 
-     * 
-     */
-    public void getPropertyInfo(Object property) {
-        getPolymerElement().getPropertyInfo(property);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method importHref
-     * @param {} href  
-     * @param {} onload  
-     * @param {} onerror  
-     * 
-     * 
-     */
-    public void importHref(Object href, Object onload, Object onerror) {
-        getPolymerElement().importHref(href, onload, onerror);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method instanceTemplate
-     * @param {} template  
-     * 
-     * 
-     */
-    public void instanceTemplate(Object template) {
-        getPolymerElement().instanceTemplate(template);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method isDebouncerActive
-     * @param {} jobName  
-     * 
-     * 
-     */
-    public void isDebouncerActive(Object jobName) {
-        getPolymerElement().isDebouncerActive(jobName);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method flushDebouncer
-     * @param {} jobName  
-     * 
-     * 
-     */
-    public void flushDebouncer(Object jobName) {
-        getPolymerElement().flushDebouncer(jobName);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method splice
-     * @param {} path  
-     * @param {} start  
-     * @param {} deleteCount  
-     * 
-     * 
-     */
-    public void splice(Object path, Object start, Object deleteCount) {
-        getPolymerElement().splice(path, start, deleteCount);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method fire
-     * @param {} type  
-     * @param {} detail  
-     * @param {} options  
-     * 
-     * 
-     */
-    public void fire(Object type, Object detail, Object options) {
-        getPolymerElement().fire(type, detail, options);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method linkPaths
-     * @param {} to  
-     * @param {} from  
-     * 
-     * 
-     */
-    public void linkPaths(Object to, Object from) {
-        getPolymerElement().linkPaths(to, from);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method elementMatches
-     * @param {} selector  
-     * @param {} node  
-     * 
-     * 
-     */
-    public void elementMatches(Object selector, Object node) {
-        getPolymerElement().elementMatches(selector, node);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method listen
-     * @param {} node  
-     * @param {} eventName  
-     * @param {} methodName  
-     * 
-     * 
-     */
-    public void listen(Object node, Object eventName, Object methodName) {
-        getPolymerElement().listen(node, eventName, methodName);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method distributeContent
-     * @param {} updateInsertionPoints  
-     * 
-     * 
-     */
-    public void distributeContent(Object updateInsertionPoints) {
-        getPolymerElement().distributeContent(updateInsertionPoints);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method notifyPath
-     * @param {} path  
-     * @param {} value  
-     * @param {} fromAbove  
-     * 
-     * 
-     */
-    public void notifyPath(Object path, Object value, Object fromAbove) {
-        getPolymerElement().notifyPath(path, value, fromAbove);
     }
 
     /**
@@ -453,6 +147,106 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
+     * @method importHref
+     * @param {} href  
+     * @param {} onload  
+     * @param {} onerror  
+     * @param {} optAsync  
+     * 
+     * 
+     */
+    public void importHref(Object href, Object onload, Object onerror, Object optAsync) {
+        getPolymerElement().importHref(href, onload, onerror, optAsync);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method isLightDescendant
+     * @param {} node  
+     * 
+     * 
+     */
+    public void isLightDescendant(Object node) {
+        getPolymerElement().isLightDescendant(node);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method getComputedStyleValue
+     * @param {} property  
+     * 
+     * 
+     */
+    public void getComputedStyleValue(Object property) {
+        getPolymerElement().getComputedStyleValue(property);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method unlisten
+     * @param {} node  
+     * @param {} eventName  
+     * @param {} methodName  
+     * 
+     * 
+     */
+    public void unlisten(Object node, Object eventName, Object methodName) {
+        getPolymerElement().unlisten(node, eventName, methodName);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method listen
+     * @param {} node  
+     * @param {} eventName  
+     * @param {} methodName  
+     * 
+     * 
+     */
+    public void listen(Object node, Object eventName, Object methodName) {
+        getPolymerElement().listen(node, eventName, methodName);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method async
+     * @param {} callback  
+     * @param {} waitTime  
+     * 
+     * 
+     */
+    public void async(Object callback, Object waitTime) {
+        getPolymerElement().async(callback, waitTime);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method transform
+     * @param {} transform  
+     * @param {} node  
+     * 
+     * 
+     */
+    public void transform(Object transform, Object node) {
+        getPolymerElement().transform(transform, node);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
      * @method notifySplices
      * @param {} path  
      * @param {} splices  
@@ -461,20 +255,6 @@ public class Base extends PolymerWidget {
      */
     public void notifySplices(Object path, Object splices) {
         getPolymerElement().notifySplices(path, splices);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method deserialize
-     * @param {} value  
-     * @param {} type  
-     * 
-     * 
-     */
-    public void deserialize(Object value, Object type) {
-        getPolymerElement().deserialize(value, type);
     }
 
     /**
@@ -494,109 +274,26 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method debounce
-     * @param {} jobName  
-     * @param {} callback  
-     * @param {} wait  
+     * @method cancelAsync
+     * @param {} handle  
      * 
      * 
      */
-    public void debounce(Object jobName, Object callback, Object wait) {
-        getPolymerElement().debounce(jobName, callback, wait);
+    public void cancelAsync(Object handle) {
+        getPolymerElement().cancelAsync(handle);
     }
 
     /**
      * 
      *
      * JavaScript Info:
-     * @method attributeFollows
-     * @param {} name  
-     * @param {} toElement  
-     * @param {} fromElement  
+     * @method getContentChildren
+     * @param {} slctr  
      * 
      * 
      */
-    public void attributeFollows(Object name, Object toElement, Object fromElement) {
-        getPolymerElement().attributeFollows(name, toElement, fromElement);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method create
-     * @param {} tag  
-     * @param {} props  
-     * 
-     * 
-     */
-    public void create(Object tag, Object props) {
-        getPolymerElement().create(tag, props);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method unshift
-     * @param {} path  
-     * 
-     * 
-     */
-    public void unshift(Object path) {
-        getPolymerElement().unshift(path);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method pop
-     * @param {} path  
-     * 
-     * 
-     */
-    public void pop(Object path) {
-        getPolymerElement().pop(path);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method shift
-     * @param {} path  
-     * 
-     * 
-     */
-    public void shift(Object path) {
-        getPolymerElement().shift(path);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method push
-     * @param {} path  
-     * 
-     * 
-     */
-    public void push(Object path) {
-        getPolymerElement().push(path);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method unlinkPaths
-     * @param {} path  
-     * 
-     * 
-     */
-    public void unlinkPaths(Object path) {
-        getPolymerElement().unlinkPaths(path);
+    public void getContentChildren(Object slctr) {
+        getPolymerElement().getContentChildren(slctr);
     }
 
     /**
@@ -629,19 +326,6 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method getContentChildren
-     * @param {} slctr  
-     * 
-     * 
-     */
-    public void getContentChildren(Object slctr) {
-        getPolymerElement().getContentChildren(slctr);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
      * @method queryAllEffectiveChildren
      * @param {} slctr  
      * 
@@ -655,43 +339,14 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method classFollows
-     * @param {} name  
-     * @param {} toElement  
-     * @param {} fromElement  
+     * @method get
+     * @param {} path  
+     * @param {} root  
      * 
      * 
      */
-    public void classFollows(Object name, Object toElement, Object fromElement) {
-        getPolymerElement().classFollows(name, toElement, fromElement);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method reflectPropertyToAttribute
-     * @param {} property  
-     * @param {} attribute  
-     * @param {} value  
-     * 
-     * 
-     */
-    public void reflectPropertyToAttribute(Object property, Object attribute, Object value) {
-        getPolymerElement().reflectPropertyToAttribute(property, attribute, value);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method cancelDebouncer
-     * @param {} jobName  
-     * 
-     * 
-     */
-    public void cancelDebouncer(Object jobName) {
-        getPolymerElement().cancelDebouncer(jobName);
+    public void get(Object path, Object root) {
+        getPolymerElement().get(path, root);
     }
 
     /**
@@ -711,13 +366,15 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method cancelAsync
-     * @param {} handle  
+     * @method fire
+     * @param {} type  
+     * @param {} detail  
+     * @param {} options  
      * 
      * 
      */
-    public void cancelAsync(Object handle) {
-        getPolymerElement().cancelAsync(handle);
+    public void fire(Object type, Object detail, Object options) {
+        getPolymerElement().fire(type, detail, options);
     }
 
     /**
@@ -751,34 +408,6 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method serialize
-     * @param {} value  
-     * 
-     * 
-     */
-    public void serialize(Object value) {
-        getPolymerElement().serialize(value);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method toggleAttribute
-     * @param {} name  
-     * @param {} bool  
-     * @param {} node  
-     * 
-     * 
-     */
-    public void toggleAttribute(Object name, Object bool, Object node) {
-        getPolymerElement().toggleAttribute(name, bool, node);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
      * @method serializeValueToAttribute
      * @param {} value  
      * @param {} attribute  
@@ -794,15 +423,14 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method unlisten
-     * @param {} node  
-     * @param {} eventName  
-     * @param {} methodName  
+     * @method create
+     * @param {} tag  
+     * @param {} props  
      * 
      * 
      */
-    public void unlisten(Object node, Object eventName, Object methodName) {
-        getPolymerElement().unlisten(node, eventName, methodName);
+    public void create(Object tag, Object props) {
+        getPolymerElement().create(tag, props);
     }
 
     /**
@@ -824,13 +452,15 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method updateStyles
-     * @param {} properties  
+     * @method classFollows
+     * @param {} name  
+     * @param {} toElement  
+     * @param {} fromElement  
      * 
      * 
      */
-    public void updateStyles(Object properties) {
-        getPolymerElement().updateStyles(properties);
+    public void classFollows(Object name, Object toElement, Object fromElement) {
+        getPolymerElement().classFollows(name, toElement, fromElement);
     }
 
     /**
@@ -851,19 +481,6 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method getNativePrototype
-     * @param {} tag  
-     * 
-     * 
-     */
-    public void getNativePrototype(Object tag) {
-        getPolymerElement().getNativePrototype(tag);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
      * @method isLocalDescendant
      * @param {} node  
      * 
@@ -877,25 +494,166 @@ public class Base extends PolymerWidget {
      * 
      *
      * JavaScript Info:
-     * @method isLightDescendant
-     * @param {} node  
+     * @method push
+     * @param {} path  
      * 
      * 
      */
-    public void isLightDescendant(Object node) {
-        getPolymerElement().isLightDescendant(node);
+    public void push(Object path) {
+        getPolymerElement().push(path);
     }
 
     /**
      * 
      *
      * JavaScript Info:
-     * @method attachedCallback
+     * @method shift
+     * @param {} path  
      * 
      * 
      */
-    public void attachedCallback() {
-        getPolymerElement().attachedCallback();
+    public void shift(Object path) {
+        getPolymerElement().shift(path);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method pop
+     * @param {} path  
+     * 
+     * 
+     */
+    public void pop(Object path) {
+        getPolymerElement().pop(path);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method unlinkPaths
+     * @param {} path  
+     * 
+     * 
+     */
+    public void unlinkPaths(Object path) {
+        getPolymerElement().unlinkPaths(path);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method attributeFollows
+     * @param {} name  
+     * @param {} toElement  
+     * @param {} fromElement  
+     * 
+     * 
+     */
+    public void attributeFollows(Object name, Object toElement, Object fromElement) {
+        getPolymerElement().attributeFollows(name, toElement, fromElement);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method splice
+     * @param {} path  
+     * @param {} start  
+     * 
+     * 
+     */
+    public void splice(Object path, Object start) {
+        getPolymerElement().splice(path, start);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method unshift
+     * @param {} path  
+     * 
+     * 
+     */
+    public void unshift(Object path) {
+        getPolymerElement().unshift(path);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method toggleClass
+     * @param {} name  
+     * @param {} bool  
+     * @param {} node  
+     * 
+     * 
+     */
+    public void toggleClass(Object name, Object bool, Object node) {
+        getPolymerElement().toggleClass(name, bool, node);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method toggleAttribute
+     * @param {} name  
+     * @param {} bool  
+     * @param {} node  
+     * 
+     * 
+     */
+    public void toggleAttribute(Object name, Object bool, Object node) {
+        getPolymerElement().toggleAttribute(name, bool, node);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method linkPaths
+     * @param {} to  
+     * @param {} from  
+     * 
+     * 
+     */
+    public void linkPaths(Object to, Object from) {
+        getPolymerElement().linkPaths(to, from);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method updateStyles
+     * @param {} properties  
+     * 
+     * 
+     */
+    public void updateStyles(Object properties) {
+        getPolymerElement().updateStyles(properties);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method notifyPath
+     * @param {} path  
+     * @param {} value  
+     * @param {} fromAbove  
+     * 
+     * 
+     */
+    public void notifyPath(Object path, Object value, Object fromAbove) {
+        getPolymerElement().notifyPath(path, value, fromAbove);
     }
 
     /**
@@ -932,18 +690,6 @@ public class Base extends PolymerWidget {
      */
     public void getEffectiveChildNodes() {
         getPolymerElement().getEffectiveChildNodes();
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method distributeContent
-     * 
-     * 
-     */
-    public void distributeContent() {
-        getPolymerElement().distributeContent();
     }
 
 

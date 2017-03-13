@@ -5,46 +5,34 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
+ * <p>iron-request can be used to perform XMLHttpRequests.</p>
+ * <pre><code>&lt;iron-request id=&quot;xhr&quot;&gt;&lt;/iron-request&gt;
+ * ...
+ * this.$.xhr.send({url: url, body: params});
  * 
+ * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronRequestElement extends HTMLElement {
 
-    public static final String TAG = "iron-request";
-    public static final String SRC = "iron-ajax/iron-ajax.html";
+    @JsOverlay public static final String TAG = "iron-request";
+    @JsOverlay public static final String SRC = "iron-ajax/iron-request.html";
 
-
-    /**
-     * <p>Aborted will be true if an abort of the request is attempted.</p>
-     *
-     * JavaScript Info:
-     * @property aborted
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getAborted();
-    /**
-     * <p>Aborted will be true if an abort of the request is attempted.</p>
-     *
-     * JavaScript Info:
-     * @property aborted
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setAborted(boolean value);
 
     /**
      * <p>A promise that resolves when the <code>xhr</code> response comes back, or rejects<br>if there is an error before the <code>xhr</code> completes.</p>
      *
      * JavaScript Info:
      * @property completes
-     * @type Object
+     * @type Promise
      * 
      */
     @JsProperty JavaScriptObject getCompletes();
@@ -53,10 +41,29 @@ public interface IronRequestElement extends HTMLElement {
      *
      * JavaScript Info:
      * @property completes
-     * @type Object
+     * @type Promise
      * 
      */
     @JsProperty void setCompletes(JavaScriptObject value);
+
+    /**
+     * <p>Errored will be true if the browser fired an error event from the<br>XHR object (mainly network errors).</p>
+     *
+     * JavaScript Info:
+     * @property errored
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getErrored();
+    /**
+     * <p>Errored will be true if the browser fired an error event from the<br>XHR object (mainly network errors).</p>
+     *
+     * JavaScript Info:
+     * @property errored
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setErrored(boolean value);
 
     /**
      * <p>An object that contains progress information emitted by the XHR if<br>available.</p>
@@ -82,7 +89,7 @@ public interface IronRequestElement extends HTMLElement {
      *
      * JavaScript Info:
      * @property response
-     * @type Object
+     * @type *
      * 
      */
     @JsProperty JavaScriptObject getResponse();
@@ -91,17 +98,55 @@ public interface IronRequestElement extends HTMLElement {
      *
      * JavaScript Info:
      * @property response
-     * @type Object
+     * @type *
      * 
      */
     @JsProperty void setResponse(JavaScriptObject value);
+
+    /**
+     * <p>Aborted will be true if an abort of the request is attempted.</p>
+     *
+     * JavaScript Info:
+     * @property aborted
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getAborted();
+    /**
+     * <p>Aborted will be true if an abort of the request is attempted.</p>
+     *
+     * JavaScript Info:
+     * @property aborted
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setAborted(boolean value);
+
+    /**
+     * <p>A reference to the status code, if the <code>xhr</code> has completely resolved.</p>
+     *
+     * JavaScript Info:
+     * @property status
+     * @type Number
+     * 
+     */
+    @JsProperty double getStatus();
+    /**
+     * <p>A reference to the status code, if the <code>xhr</code> has completely resolved.</p>
+     *
+     * JavaScript Info:
+     * @property status
+     * @type Number
+     * 
+     */
+    @JsProperty void setStatus(double value);
 
     /**
      * <p>A reference to the XMLHttpRequest instance used to generate the<br>network request.</p>
      *
      * JavaScript Info:
      * @property xhr
-     * @type Object
+     * @type XMLHttpRequest
      * 
      */
     @JsProperty JavaScriptObject getXhr();
@@ -110,25 +155,64 @@ public interface IronRequestElement extends HTMLElement {
      *
      * JavaScript Info:
      * @property xhr
-     * @type Object
+     * @type XMLHttpRequest
      * 
      */
     @JsProperty void setXhr(JavaScriptObject value);
 
+    /**
+     * <p>TimedOut will be true if the XHR threw a timeout event.</p>
+     *
+     * JavaScript Info:
+     * @property timedOut
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getTimedOut();
+    /**
+     * <p>TimedOut will be true if the XHR threw a timeout event.</p>
+     *
+     * JavaScript Info:
+     * @property timedOut
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setTimedOut(boolean value);
+
+    /**
+     * <p>A reference to the status text, if the <code>xhr</code> has completely resolved.</p>
+     *
+     * JavaScript Info:
+     * @property statusText
+     * @type String
+     * 
+     */
+    @JsProperty String getStatusText();
+    /**
+     * <p>A reference to the status text, if the <code>xhr</code> has completely resolved.</p>
+     *
+     * JavaScript Info:
+     * @property statusText
+     * @type String
+     * 
+     */
+    @JsProperty void setStatusText(String value);
+
 
     /**
      * <p>Sends an HTTP request to the server and returns the XHR object.</p>
+     * <p>The handling of the <code>body</code> parameter will vary based on the Content-Type<br>header. See the docs for iron-ajax’s <code>body</code> param for details.</p>
      *
      * JavaScript Info:
      * @method send
-     * @param {{url: string, method: (string|undefined), async: (boolean|undefined), body: (ArrayBuffer|ArrayBufferView|Blob|Document|FormData|null|string|undefined), headers: (Object|undefined), handleAs: (string|undefined), withCredentials: (boolean|undefined)}} options  
+     * @param {{url: string, method: (string|undefined), async: (boolean|undefined), body: (ArrayBuffer|ArrayBufferView|Blob|Document|FormData|null|string|undefined|Object), headers: (Object|undefined), handleAs: (string|undefined), jsonPrefix: (string|undefined), withCredentials: (boolean|undefined)}} options  
      * 
-     * 
+     * @return {JavaScriptObject}
      */
-    void send(Object options);
+    JavaScriptObject send(Object options);
 
     /**
-     * 
+     * <p>Aborts the request.</p>
      *
      * JavaScript Info:
      * @method abort
@@ -138,13 +222,13 @@ public interface IronRequestElement extends HTMLElement {
     void abort();
 
     /**
-     * 
+     * <p>Attempts to parse the response body of the XHR. If parsing succeeds,<br>the value returned will be deserialized based on the <code>responseType</code><br>set on the XHR.</p>
      *
      * JavaScript Info:
      * @method parseResponse
      * 
-     * 
+     * @return {JavaScriptObject}
      */
-    void parseResponse();
+    JavaScriptObject parseResponse();
 
 }

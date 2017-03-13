@@ -5,14 +5,20 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperScrollHeaderPanelElement;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.paper.widget.event.ContentScrollEvent;
 import com.vaadin.polymer.paper.widget.event.ContentScrollEventHandler;
+
 import com.vaadin.polymer.paper.widget.event.PaperHeaderTransformEvent;
 import com.vaadin.polymer.paper.widget.event.PaperHeaderTransformEventHandler;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
+import com.vaadin.polymer.PolymerWidget;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/patterns/scrolling-techniques.html">Scrolling techniques</a></p>
@@ -37,8 +43,13 @@ import com.vaadin.polymer.paper.widget.event.PaperHeaderTransformEventHandler;
  * }
  * </code></pre>
  * <p><code>paper-scroll-header-panel</code> works well with <code>paper-toolbar</code> but can use any element<br>that represents a header by adding a <code>paper-header</code> class to it.</p>
+ * <p>Note: If the class <code>paper-header</code> is used, the header must be positioned relative or absolute. e.g.</p>
+ * <pre><code class="lang-css">.paper-header {
+ *   position: relative;
+ * }
+ * </code></pre>
  * <pre><code class="lang-html">&lt;paper-scroll-header-panel&gt;
- *   &lt;paper-toolbar&gt;Header&lt;/paper-toolbar&gt;
+ *   &lt;div class=&quot;paper-header&quot;&gt;Header&lt;/div&gt;
  *   &lt;div&gt;Content goes here...&lt;/div&gt;
  * &lt;/paper-scroll-header-panel&gt;
  * </code></pre>
@@ -65,8 +76,13 @@ import com.vaadin.polymer.paper.widget.event.PaperHeaderTransformEventHandler;
  * <td>{}</td>
  * </tr>
  * <tr>
- * <td>–paper-scroll-header-container</td>
+ * <td>–paper-scroll-header-panel-container</td>
  * <td>To override or add container styles</td>
+ * <td>{}</td>
+ * </tr>
+ * <tr>
+ * <td>–paper-scroll-header-panel-header-container</td>
+ * <td>To override or add header styles</td>
  * <td>{}</td>
  * </tr>
  * </tbody>
@@ -85,37 +101,13 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      */
     public PaperScrollHeaderPanel(String html) {
         super(PaperScrollHeaderPanelElement.TAG, PaperScrollHeaderPanelElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.ContentScrollEvent.NAME,
-                new com.vaadin.polymer.paper.event.ContentScrollEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.ContentScrollEvent event) {
-                fireEvent(new ContentScrollEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.paper.event.PaperHeaderTransformEvent.NAME,
-                new com.vaadin.polymer.paper.event.PaperHeaderTransformEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.paper.event.PaperHeaderTransformEvent event) {
-                fireEvent(new PaperHeaderTransformEvent(event));
-            }
-        });
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperScrollHeaderPanelElement getPolymerElement() {
-        try {
-            return (PaperScrollHeaderPanelElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperScrollHeaderPanelElement) getElement();
     }
 
 
@@ -331,6 +323,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
     }
 
 
+    // Needed in UIBinder
     /**
      * <p>The state of the header. Depending on the configuration and the <code>scrollTop</code> value,<br>the header state could change to<br>     Polymer.PaperScrollHeaderPanel.HEADER_STATE_EXPANDED<br>     Polymer.PaperScrollHeaderPanel.HEADER_STATE_HIDDEN<br>     Polymer.PaperScrollHeaderPanel.HEADER_STATE_CONDENSED<br>     Polymer.PaperScrollHeaderPanel.HEADER_STATE_INTERPOLATED</p>
      *
@@ -339,9 +332,10 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * 
      */
     public void setHeaderState(String value) {
-        getPolymerElement().setAttribute("header-state", value);
+        Polymer.property(this.getPolymerElement(), "headerState", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>The height of the header when it is at its full size.</p>
      * <p>By default, the height will be measured when it is ready.  If the height<br>changes later the user needs to either set this value to reflect the<br>new height or invoke <code>measureHeaderHeight()</code>.</p>
@@ -351,9 +345,10 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * 
      */
     public void setHeaderHeight(String value) {
-        getPolymerElement().setAttribute("header-height", value);
+        Polymer.property(this.getPolymerElement(), "headerHeight", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>The height of the header when it is condensed.</p>
      * <p>By default, <code>condensedHeaderHeight</code> is 1/3 of <code>headerHeight</code> unless<br>this is specified.</p>
@@ -363,7 +358,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * 
      */
     public void setCondensedHeaderHeight(String value) {
-        getPolymerElement().setAttribute("condensed-header-height", value);
+        Polymer.property(this.getPolymerElement(), "condensedHeaderHeight", value);
     }
 
 
@@ -373,7 +368,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * @behavior PaperTimePicker
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
@@ -386,7 +381,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior PaperTimePicker
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -424,7 +419,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior PaperTimePicker
      * 
      */
     public void notifyResize() {
@@ -437,7 +432,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior PaperTimePicker
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {
@@ -478,7 +473,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * @event content-scroll
      */
     public HandlerRegistration addContentScrollHandler(ContentScrollEventHandler handler) {
-        return addHandler(handler, ContentScrollEvent.TYPE);
+        return addDomHandler(handler, ContentScrollEvent.TYPE);
     }
 
     /**
@@ -488,7 +483,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * @event paper-header-transform
      */
     public HandlerRegistration addPaperHeaderTransformHandler(PaperHeaderTransformEventHandler handler) {
-        return addHandler(handler, PaperHeaderTransformEvent.TYPE);
+        return addDomHandler(handler, PaperHeaderTransformEvent.TYPE);
     }
 
 }

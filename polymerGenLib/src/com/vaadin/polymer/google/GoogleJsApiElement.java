@@ -1,13 +1,16 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
  * from google-apis project by Scott Miles <sjmiles@google.com>,Eric Bidelman <ebidel@gmail.com>
- * that is licensed with Apache2 license.
+ * that is licensed with Apache-2.0 license.
  */
 package com.vaadin.polymer.google;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Dynamically loads Google JavaScript API <code>gapi</code>, firing the <code>js-api-load</code> event when ready.</p>
@@ -23,11 +26,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * </code></pre>
  */
-@JsType
+@JsType(isNative=true)
 public interface GoogleJsApiElement extends HTMLElement {
 
-    public static final String TAG = "google-js-api";
-    public static final String SRC = "google-apis/google-apis.html";
+    @JsOverlay public static final String TAG = "google-js-api";
+    @JsOverlay public static final String SRC = "google-apis/google-js-api.html";
 
 
     /**

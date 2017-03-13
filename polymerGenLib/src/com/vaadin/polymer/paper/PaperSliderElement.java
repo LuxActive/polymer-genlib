@@ -5,11 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/sliders.html">Sliders</a></p>
@@ -35,6 +36,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </thead>
  * <tbody>
  * <tr>
+ * <td><code>--paper-slider-container-color</code></td>
+ * <td>The background color of the bar</td>
+ * <td><code>--paper-grey-400</code></td>
+ * </tr>
+ * <tr>
  * <td><code>--paper-slider-bar-color</code></td>
  * <td>The background color of the slider</td>
  * <td><code>transparent</code></td>
@@ -57,7 +63,7 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <tr>
  * <td><code>--paper-slider-disabled-knob-color</code></td>
  * <td>The disabled knob color</td>
- * <td><code>--google-grey-500</code></td>
+ * <td><code>--paper-grey-400</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-slider-pin-color</code></td>
@@ -70,14 +76,19 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <td><code>#fff</code></td>
  * </tr>
  * <tr>
+ * <td><code>--paper-slider-markers-color</code></td>
+ * <td>The snaps markers color</td>
+ * <td><code>#000</code></td>
+ * </tr>
+ * <tr>
  * <td><code>--paper-slider-disabled-active-color</code></td>
  * <td>The disabled progress bar color</td>
- * <td><code>--google-grey-500</code></td>
+ * <td><code>--paper-grey-400</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-slider-disabled-secondary-color</code></td>
  * <td>The disabled secondary progress bar color</td>
- * <td><code>--google-grey-300</code></td>
+ * <td><code>--paper-grey-400</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-slider-knob-start-color</code></td>
@@ -87,26 +98,31 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <tr>
  * <td><code>--paper-slider-knob-start-border-color</code></td>
  * <td>The border color of the knob at the far left</td>
- * <td><code>#c8c8c8</code></td>
+ * <td><code>--paper-grey-400</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-slider-pin-start-color</code></td>
  * <td>The color of the pin at the far left</td>
- * <td><code>#c8c8c8</code></td>
+ * <td><code>--paper-grey-400</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-slider-height</code></td>
  * <td>Height of the progress bar</td>
  * <td><code>2px</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--paper-slider-input</code></td>
+ * <td>Mixin applied to the input in editable mode</td>
+ * <td><code>{}</code></td>
+ * </tr>
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperSliderElement extends HTMLElement {
 
-    public static final String TAG = "paper-slider";
-    public static final String SRC = "paper-slider/paper-slider.html";
+    @JsOverlay public static final String TAG = "paper-slider";
+    @JsOverlay public static final String SRC = "paper-slider/paper-slider.html";
 
 
     /**
@@ -148,80 +164,23 @@ public interface PaperSliderElement extends HTMLElement {
     @JsProperty void setMarkers(JsArray value);
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
-
-    /**
-     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
-     *
-     * JavaScript Info:
-     * @property toggles
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getToggles();
-    /**
-     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
-     *
-     * JavaScript Info:
-     * @property toggles
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setToggles(boolean value);
-
-    /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
-     *
-     * JavaScript Info:
-     * @property required
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty boolean getRequired();
-    /**
-     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
-     *
-     * JavaScript Info:
-     * @property required
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setRequired(boolean value);
-
-    /**
-     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
-     *
-     * JavaScript Info:
-     * @property noink
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getNoink();
-    /**
-     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
-     *
-     * JavaScript Info:
-     * @property noink
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setNoink(boolean value);
 
     /**
      * <p>If true, a pin with numeric value label is shown when the slider thumb<br>is pressed. Use for settings for which users need to know the exact<br>value of the setting.</p>
@@ -262,23 +221,23 @@ public interface PaperSliderElement extends HTMLElement {
     @JsProperty void setSnaps(boolean value);
 
     /**
-     * 
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property transiting
+     * @property stopKeyboardEventPropagation
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
-    @JsProperty boolean getTransiting();
+    @JsProperty boolean getStopKeyboardEventPropagation();
     /**
-     * 
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property transiting
+     * @property stopKeyboardEventPropagation
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
-    @JsProperty void setTransiting(boolean value);
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
     /**
      * <p>If true, the knob is expanded</p>
@@ -300,44 +259,6 @@ public interface PaperSliderElement extends HTMLElement {
     @JsProperty void setExpand(boolean value);
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getStopKeyboardEventPropagation();
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
-
-    /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
-     *
-     * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getActive();
-    /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
-     *
-     * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setActive(boolean value);
-
-    /**
      * <p>True when the user is dragging the slider.</p>
      *
      * JavaScript Info:
@@ -357,23 +278,137 @@ public interface PaperSliderElement extends HTMLElement {
     @JsProperty void setDragging(boolean value);
 
     /**
-     * <p>If true, the user cannot interact with this element.</p>
+     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
      *
      * JavaScript Info:
-     * @property disabled
+     * @property required
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
-    @JsProperty boolean getDisabled();
+    @JsProperty boolean getRequired();
     /**
-     * <p>If true, the user cannot interact with this element.</p>
+     * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
      *
      * JavaScript Info:
-     * @property disabled
+     * @property required
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
-    @JsProperty void setDisabled(boolean value);
+    @JsProperty void setRequired(boolean value);
+
+    /**
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     *
+     * JavaScript Info:
+     * @property active
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getActive();
+    /**
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     *
+     * JavaScript Info:
+     * @property active
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setActive(boolean value);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property transiting
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getTransiting();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property transiting
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setTransiting(boolean value);
+
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getPointerDown();
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setPointerDown(boolean value);
+
+    /**
+     * <p>If true, the user is currently holding down the button.</p>
+     *
+     * JavaScript Info:
+     * @property pressed
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getPressed();
+    /**
+     * <p>If true, the user is currently holding down the button.</p>
+     *
+     * JavaScript Info:
+     * @property pressed
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setPressed(boolean value);
+
+    /**
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     *
+     * JavaScript Info:
+     * @property receivedFocusFromKeyboard
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getReceivedFocusFromKeyboard();
+    /**
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     *
+     * JavaScript Info:
+     * @property receivedFocusFromKeyboard
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setReceivedFocusFromKeyboard(boolean value);
+
+    /**
+     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
+     *
+     * JavaScript Info:
+     * @property toggles
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getToggles();
+    /**
+     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
+     *
+     * JavaScript Info:
+     * @property toggles
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setToggles(boolean value);
 
     /**
      * <p>If true, the element currently has focus.</p>
@@ -381,7 +416,7 @@ public interface PaperSliderElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getFocused();
     /**
@@ -390,9 +425,28 @@ public interface PaperSliderElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setFocused(boolean value);
+
+    /**
+     * <p>If true, the user cannot interact with this element.</p>
+     *
+     * JavaScript Info:
+     * @property disabled
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getDisabled();
+    /**
+     * <p>If true, the user cannot interact with this element.</p>
+     *
+     * JavaScript Info:
+     * @property disabled
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setDisabled(boolean value);
 
     /**
      * <p>If true, an input is shown and user can use it to set the slider value.</p>
@@ -414,61 +468,23 @@ public interface PaperSliderElement extends HTMLElement {
     @JsProperty void setEditable(boolean value);
 
     /**
-     * <p>If true, the user is currently holding down the button.</p>
+     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
      *
      * JavaScript Info:
-     * @property pressed
+     * @property noink
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
-    @JsProperty boolean getPressed();
+    @JsProperty boolean getNoink();
     /**
-     * <p>If true, the user is currently holding down the button.</p>
+     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
      *
      * JavaScript Info:
-     * @property pressed
+     * @property noink
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
-    @JsProperty void setPressed(boolean value);
-
-    /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
-     *
-     * JavaScript Info:
-     * @property receivedFocusFromKeyboard
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getReceivedFocusFromKeyboard();
-    /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
-     *
-     * JavaScript Info:
-     * @property receivedFocusFromKeyboard
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setReceivedFocusFromKeyboard(boolean value);
-
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getPointerDown();
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setPointerDown(boolean value);
+    @JsProperty void setNoink(boolean value);
 
     /**
      * <p>The maximum number of markers</p>
@@ -490,25 +506,6 @@ public interface PaperSliderElement extends HTMLElement {
     @JsProperty void setMaxMarkers(double value);
 
     /**
-     * <p>The immediate value of the slider.  This value is updated while the user<br>is dragging the slider.</p>
-     *
-     * JavaScript Info:
-     * @property immediateValue
-     * @type Number
-     * 
-     */
-    @JsProperty double getImmediateValue();
-    /**
-     * <p>The immediate value of the slider.  This value is updated while the user<br>is dragging the slider.</p>
-     *
-     * JavaScript Info:
-     * @property immediateValue
-     * @type Number
-     * 
-     */
-    @JsProperty void setImmediateValue(double value);
-
-    /**
      * <p>Specifies the value granularity of the range’s value.</p>
      *
      * JavaScript Info:
@@ -526,6 +523,25 @@ public interface PaperSliderElement extends HTMLElement {
      * @behavior PaperSlider
      */
     @JsProperty void setStep(double value);
+
+    /**
+     * <p>The immediate value of the slider.  This value is updated while the user<br>is dragging the slider.</p>
+     *
+     * JavaScript Info:
+     * @property immediateValue
+     * @type Number
+     * 
+     */
+    @JsProperty double getImmediateValue();
+    /**
+     * <p>The immediate value of the slider.  This value is updated while the user<br>is dragging the slider.</p>
+     *
+     * JavaScript Info:
+     * @property immediateValue
+     * @type Number
+     * 
+     */
+    @JsProperty void setImmediateValue(double value);
 
     /**
      * <p>The number that represents the current secondary progress.</p>
@@ -547,25 +563,6 @@ public interface PaperSliderElement extends HTMLElement {
     @JsProperty void setSecondaryProgress(double value);
 
     /**
-     * <p>Returns the ratio of the value.</p>
-     *
-     * JavaScript Info:
-     * @property ratio
-     * @type Number
-     * @behavior PaperSlider
-     */
-    @JsProperty double getRatio();
-    /**
-     * <p>Returns the ratio of the value.</p>
-     *
-     * JavaScript Info:
-     * @property ratio
-     * @type Number
-     * @behavior PaperSlider
-     */
-    @JsProperty void setRatio(double value);
-
-    /**
      * <p>The number that represents the current value.</p>
      *
      * JavaScript Info:
@@ -585,23 +582,23 @@ public interface PaperSliderElement extends HTMLElement {
     @JsProperty void setValue(double value);
 
     /**
-     * <p>The number that indicates the minimum value of the range.</p>
+     * <p>Returns the ratio of the value.</p>
      *
      * JavaScript Info:
-     * @property min
+     * @property ratio
      * @type Number
      * @behavior PaperSlider
      */
-    @JsProperty double getMin();
+    @JsProperty double getRatio();
     /**
-     * <p>The number that indicates the minimum value of the range.</p>
+     * <p>Returns the ratio of the value.</p>
      *
      * JavaScript Info:
-     * @property min
+     * @property ratio
      * @type Number
      * @behavior PaperSlider
      */
-    @JsProperty void setMin(double value);
+    @JsProperty void setRatio(double value);
 
     /**
      * <p>The number that indicates the maximum value of the range.</p>
@@ -623,12 +620,31 @@ public interface PaperSliderElement extends HTMLElement {
     @JsProperty void setMax(double value);
 
     /**
+     * <p>The number that indicates the minimum value of the range.</p>
+     *
+     * JavaScript Info:
+     * @property min
+     * @type Number
+     * @behavior PaperSlider
+     */
+    @JsProperty double getMin();
+    /**
+     * <p>The number that indicates the minimum value of the range.</p>
+     *
+     * JavaScript Info:
+     * @property min
+     * @type Number
+     * @behavior PaperSlider
+     */
+    @JsProperty void setMin(double value);
+
+    /**
      * <p>The aria attribute to be set if the button is a toggle and in the<br>active state.</p>
      *
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty String getAriaActiveAttribute();
     /**
@@ -637,7 +653,7 @@ public interface PaperSliderElement extends HTMLElement {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setAriaActiveAttribute(String value);
 
@@ -668,42 +684,20 @@ public interface PaperSliderElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
 
     /**
-     * 
+     * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
-
-    /**
-     * <p>Returns the <code>&lt;paper-ripple&gt;</code> element used by this element to create<br>ripple effects. The element’s ripple is created on demand, when<br>necessary, and calling this method will force the<br>ripple to be created.</p>
-     *
-     * JavaScript Info:
-     * @method getRipple
+     * @method removeOwnKeyBindings
      * @behavior PaperToggleButton
      * 
      */
-    void getRipple();
-
-    /**
-     * <p>Returns true if this element currently contains a ripple effect.</p>
-     *
-     * JavaScript Info:
-     * @method hasRipple
-     * @behavior PaperToggleButton
-     * @return {boolean}
-     */
-    boolean hasRipple();
+    void removeOwnKeyBindings();
 
     /**
      * <p>Decreases value by <code>step</code> but not below <code>min</code>.</p>
@@ -726,14 +720,36 @@ public interface PaperSliderElement extends HTMLElement {
     void increment();
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
+     * <p>Returns the <code>&lt;paper-ripple&gt;</code> element used by this element to create<br>ripple effects. The element’s ripple is created on demand, when<br>necessary, and calling this method will force the<br>ripple to be created.</p>
      *
      * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @method getRipple
+     * @behavior PaperToggleButton
      * 
      */
-    void removeOwnKeyBindings();
+    void getRipple();
+
+    /**
+     * <p>Returns true if this element currently contains a ripple effect.</p>
+     *
+     * JavaScript Info:
+     * @method hasRipple
+     * @behavior PaperToggleButton
+     * @return {boolean}
+     */
+    boolean hasRipple();
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
     /**
      * <p>Ensures this element contains a ripple effect. For startup efficiency<br>the ripple effect is dynamically on demand when needed.</p>
@@ -741,7 +757,7 @@ public interface PaperSliderElement extends HTMLElement {
      * JavaScript Info:
      * @method ensureRipple
      * @param {!Event=} optTriggeringEvent  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void ensureRipple(JavaScriptObject optTriggeringEvent);

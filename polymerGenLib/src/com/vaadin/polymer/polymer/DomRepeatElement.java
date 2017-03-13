@@ -5,20 +5,21 @@
  */
 package com.vaadin.polymer.polymer;
 
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Function;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface DomRepeatElement extends HTMLElement {
 
-    public static final String TAG = "dom-repeat";
-    public static final String SRC = "polymer/polymer.html";
+    @JsOverlay public static final String TAG = "dom-repeat";
+    @JsOverlay public static final String SRC = "polymer/polymer.html";
 
 
     /**
@@ -63,6 +64,25 @@ public interface DomRepeatElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
+     * @property notifyDomChange
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNotifyDomChange();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property notifyDomChange
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNotifyDomChange(boolean value);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
      * @property delay
      * @type number
      * 
@@ -77,6 +97,25 @@ public interface DomRepeatElement extends HTMLElement {
      * 
      */
     @JsProperty void setDelay(double value);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property renderedItemCount
+     * @type Number
+     * 
+     */
+    @JsProperty double getRenderedItemCount();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property renderedItemCount
+     * @type Number
+     * 
+     */
+    @JsProperty void setRenderedItemCount(double value);
 
     /**
      * 
@@ -197,6 +236,39 @@ public interface DomRepeatElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
+     * @method indexForElement
+     * @param {} el  
+     * 
+     * 
+     */
+    void indexForElement(Object el);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method keyForElement
+     * @param {} el  
+     * 
+     * 
+     */
+    void keyForElement(Object el);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method modelForElement
+     * @param {} el  
+     * 
+     * 
+     */
+    void modelForElement(Object el);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
      * @method stamp
      * @param {} model  
      * @behavior DomIf
@@ -225,39 +297,6 @@ public interface DomRepeatElement extends HTMLElement {
      * 
      */
     void itemForElement(Object el);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyForElement
-     * @param {} el  
-     * 
-     * 
-     */
-    void keyForElement(Object el);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method modelForElement
-     * @param {} el  
-     * 
-     * 
-     */
-    void modelForElement(Object el);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method indexForElement
-     * @param {} el  
-     * 
-     * 
-     */
-    void indexForElement(Object el);
 
     /**
      * 

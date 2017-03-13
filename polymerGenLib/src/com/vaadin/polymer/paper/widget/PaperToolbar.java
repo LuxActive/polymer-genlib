@@ -5,8 +5,14 @@
  */
 package com.vaadin.polymer.paper.widget;
 
+import com.vaadin.polymer.paper.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperToolbarElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/toolbars.html">Toolbars</a></p>
@@ -18,7 +24,7 @@ import com.vaadin.polymer.paper.PaperToolbarElement;
  *   &lt;paper-icon-button icon=&quot;more-vert&quot; on-tap=&quot;moreAction&quot;&gt;&lt;/paper-icon-button&gt;
  * &lt;/paper-toolbar&gt;
  * </code></pre>
- * <p><code>paper-toolbar</code> has a standard height, but can made be taller by setting <code>tall</code><br>class on the <code>paper-toolbar</code>.  This will make the toolbar 3x the normal height.</p>
+ * <p><code>paper-toolbar</code> has a standard height, but can made be taller by setting <code>tall</code><br>class on the <code>paper-toolbar</code>. This will make the toolbar 3x the normal height.</p>
  * <pre><code class="lang-html">&lt;paper-toolbar class=&quot;tall&quot;&gt;
  *   &lt;paper-icon-button icon=&quot;menu&quot;&gt;&lt;/paper-icon-button&gt;
  * &lt;/paper-toolbar&gt;
@@ -41,6 +47,7 @@ import com.vaadin.polymer.paper.PaperToolbarElement;
  *   &lt;div id=&quot;progressBar&quot; class=&quot;bottom fit&quot;&gt;&lt;/div&gt;
  * &lt;/paper-toolbar&gt;
  * </code></pre>
+ * <p>When inside a <code>paper-header-panel</code> element with <code>mode=&quot;waterfall-tall&quot;</code>,<br>the class <code>.animate</code> is toggled to animate the height change in the toolbar. </p>
  * <h3 id="styling">Styling</h3>
  * <p>The following custom properties and mixins are available for styling:</p>
  * <table>
@@ -60,12 +67,12 @@ import com.vaadin.polymer.paper.PaperToolbarElement;
  * <tr>
  * <td><code>--paper-toolbar-background</code></td>
  * <td>Toolbar background color</td>
- * <td><code>--default-primary-color</code></td>
+ * <td><code>--primary-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-toolbar-color</code></td>
  * <td>Toolbar foreground color</td>
- * <td><code>--text-primary-color</code></td>
+ * <td><code>--dark-theme-text-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-toolbar-height</code></td>
@@ -97,6 +104,11 @@ import com.vaadin.polymer.paper.PaperToolbarElement;
  * <td>Mixin applied to tall height toolbar</td>
  * <td><code>{}</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--paper-toolbar-transition</code></td>
+ * <td>Transition applied to the <code>.animate</code> class</td>
+ * <td><code>height 0.18s ease-in</code></td>
+ * </tr>
  * </tbody>
  * </table>
  * <h3 id="accessibility">Accessibility</h3>
@@ -115,19 +127,13 @@ public class PaperToolbar extends PolymerWidget {
      */
     public PaperToolbar(String html) {
         super(PaperToolbarElement.TAG, PaperToolbarElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperToolbarElement getPolymerElement() {
-        try {
-            return (PaperToolbarElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperToolbarElement) getElement();
     }
 
 

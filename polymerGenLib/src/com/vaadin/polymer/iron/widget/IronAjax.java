@@ -5,24 +5,30 @@
  */
 package com.vaadin.polymer.iron.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.IronAjaxElement;
+import com.vaadin.polymer.iron.*;
+
 import com.vaadin.polymer.iron.widget.event.ErrorEvent;
 import com.vaadin.polymer.iron.widget.event.ErrorEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.RequestEvent;
 import com.vaadin.polymer.iron.widget.event.RequestEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.ResponseEvent;
 import com.vaadin.polymer.iron.widget.event.ResponseEventHandler;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
+import com.vaadin.polymer.PolymerWidget;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>The <code>iron-ajax</code> element exposes network request functionality.</p>
  * <pre><code>&lt;iron-ajax
  *     auto
- *     url=&quot;http://gdata.youtube.com/feeds/api/videos/&quot;
- *     params=&#39;{&quot;alt&quot;:&quot;json&quot;, &quot;q&quot;:&quot;chrome&quot;}&#39;
+ *     url=&quot;https://www.googleapis.com/youtube/v3/search&quot;
+ *     params=&#39;{&quot;part&quot;:&quot;snippet&quot;, &quot;q&quot;:&quot;polymer&quot;, &quot;key&quot;: &quot;YOUTUBE_API_KEY&quot;, &quot;type&quot;: &quot;video&quot;}&#39;
  *     handle-as=&quot;json&quot;
  *     on-response=&quot;handleResponse&quot;
  *     debounce-duration=&quot;300&quot;&gt;&lt;/iron-ajax&gt;
@@ -45,46 +51,13 @@ public class IronAjax extends PolymerWidget {
      */
     public IronAjax(String html) {
         super(IronAjaxElement.TAG, IronAjaxElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.ErrorEvent.NAME,
-                new com.vaadin.polymer.iron.event.ErrorEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.ErrorEvent event) {
-                fireEvent(new ErrorEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.RequestEvent.NAME,
-                new com.vaadin.polymer.iron.event.RequestEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.RequestEvent event) {
-                fireEvent(new RequestEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.ResponseEvent.NAME,
-                new com.vaadin.polymer.iron.event.ResponseEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.ResponseEvent event) {
-                fireEvent(new ResponseEvent(event));
-            }
-        });
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public IronAjaxElement getPolymerElement() {
-        try {
-            return (IronAjaxElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (IronAjaxElement) getElement();
     }
 
 
@@ -112,7 +85,53 @@ public class IronAjax extends PolymerWidget {
     }
 
     /**
-     * <p>Length of time in milliseconds to debounce multiple requests.</p>
+     * <p>By default, iron-ajax’s events do not bubble. Setting this attribute will cause its<br>request and response events as well as its iron-ajax-request, -response,  and -error<br>events to bubble to the window object. The vanilla error event never bubbles when<br>using shadow dom even if this.bubbles is true because a scoped flag is not passed with<br>it (first link) and because the shadow dom spec did not used to allow certain events,<br>including events named error, to leak outside of shadow trees (second link).<br><a href="https://www.w3.org/TR/shadow-dom/#scoped-flag">https://www.w3.org/TR/shadow-dom/#scoped-flag</a><br><a href="https://www.w3.org/TR/2015/WD-shadow-dom-20151215/#events-that-are-not-leaked-into-ancestor-trees">https://www.w3.org/TR/2015/WD-shadow-dom-20151215/#events-that-are-not-leaked-into-ancestor-trees</a></p>
+     *
+     * JavaScript Info:
+     * @property bubbles
+     * @type Boolean
+     * 
+     */
+    public boolean getBubbles() {
+        return getPolymerElement().getBubbles();
+    }
+    /**
+     * <p>By default, iron-ajax’s events do not bubble. Setting this attribute will cause its<br>request and response events as well as its iron-ajax-request, -response,  and -error<br>events to bubble to the window object. The vanilla error event never bubbles when<br>using shadow dom even if this.bubbles is true because a scoped flag is not passed with<br>it (first link) and because the shadow dom spec did not used to allow certain events,<br>including events named error, to leak outside of shadow trees (second link).<br><a href="https://www.w3.org/TR/shadow-dom/#scoped-flag">https://www.w3.org/TR/shadow-dom/#scoped-flag</a><br><a href="https://www.w3.org/TR/2015/WD-shadow-dom-20151215/#events-that-are-not-leaked-into-ancestor-trees">https://www.w3.org/TR/2015/WD-shadow-dom-20151215/#events-that-are-not-leaked-into-ancestor-trees</a></p>
+     *
+     * JavaScript Info:
+     * @property bubbles
+     * @type Boolean
+     * 
+     */
+    public void setBubbles(boolean value) {
+        getPolymerElement().setBubbles(value);
+    }
+
+    /**
+     * <p>Set the withCredentials flag on the request.</p>
+     *
+     * JavaScript Info:
+     * @property withCredentials
+     * @type Boolean
+     * 
+     */
+    public boolean getWithCredentials() {
+        return getPolymerElement().getWithCredentials();
+    }
+    /**
+     * <p>Set the withCredentials flag on the request.</p>
+     *
+     * JavaScript Info:
+     * @property withCredentials
+     * @type Boolean
+     * 
+     */
+    public void setWithCredentials(boolean value) {
+        getPolymerElement().setWithCredentials(value);
+    }
+
+    /**
+     * <p>Length of time in milliseconds to debounce multiple automatically generated requests.</p>
      *
      * JavaScript Info:
      * @property debounceDuration
@@ -123,7 +142,7 @@ public class IronAjax extends PolymerWidget {
         return getPolymerElement().getDebounceDuration();
     }
     /**
-     * <p>Length of time in milliseconds to debounce multiple requests.</p>
+     * <p>Length of time in milliseconds to debounce multiple automatically generated requests.</p>
      *
      * JavaScript Info:
      * @property debounceDuration
@@ -132,116 +151,6 @@ public class IronAjax extends PolymerWidget {
      */
     public void setDebounceDuration(double value) {
         getPolymerElement().setDebounceDuration(value);
-    }
-
-    /**
-     * <p>HTTP request headers to send.</p>
-     * <p>Example:</p>
-     * <pre><code>&lt;iron-ajax
-     *     auto
-     *     url=&quot;http://somesite.com&quot;
-     *     headers=&#39;{&quot;X-Requested-With&quot;: &quot;XMLHttpRequest&quot;}&#39;
-     *     handle-as=&quot;json&quot;
-     *     last-response-changed=&quot;{{handleResponse}}&quot;&gt;&lt;/iron-ajax&gt;
-     * 
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property headers
-     * @type Object
-     * 
-     */
-    public JavaScriptObject getHeaders() {
-        return getPolymerElement().getHeaders();
-    }
-    /**
-     * <p>HTTP request headers to send.</p>
-     * <p>Example:</p>
-     * <pre><code>&lt;iron-ajax
-     *     auto
-     *     url=&quot;http://somesite.com&quot;
-     *     headers=&#39;{&quot;X-Requested-With&quot;: &quot;XMLHttpRequest&quot;}&#39;
-     *     handle-as=&quot;json&quot;
-     *     last-response-changed=&quot;{{handleResponse}}&quot;&gt;&lt;/iron-ajax&gt;
-     * 
-     * </code></pre>
-     *
-     * JavaScript Info:
-     * @property headers
-     * @type Object
-     * 
-     */
-    public void setHeaders(JavaScriptObject value) {
-        getPolymerElement().setHeaders(value);
-    }
-
-    /**
-     * <p>Will be set to the most recent error that resulted from a request<br>that originated from this iron-ajax element.</p>
-     *
-     * JavaScript Info:
-     * @property lastError
-     * @type Object
-     * 
-     */
-    public JavaScriptObject getLastError() {
-        return getPolymerElement().getLastError();
-    }
-    /**
-     * <p>Will be set to the most recent error that resulted from a request<br>that originated from this iron-ajax element.</p>
-     *
-     * JavaScript Info:
-     * @property lastError
-     * @type Object
-     * 
-     */
-    public void setLastError(JavaScriptObject value) {
-        getPolymerElement().setLastError(value);
-    }
-
-    /**
-     * <p>Will be set to the most recent request made by this iron-ajax element.</p>
-     *
-     * JavaScript Info:
-     * @property lastRequest
-     * @type Object
-     * 
-     */
-    public JavaScriptObject getLastRequest() {
-        return getPolymerElement().getLastRequest();
-    }
-    /**
-     * <p>Will be set to the most recent request made by this iron-ajax element.</p>
-     *
-     * JavaScript Info:
-     * @property lastRequest
-     * @type Object
-     * 
-     */
-    public void setLastRequest(JavaScriptObject value) {
-        getPolymerElement().setLastRequest(value);
-    }
-
-    /**
-     * <p>An object that contains query parameters to be appended to the<br>specified <code>url</code> when generating a request.</p>
-     *
-     * JavaScript Info:
-     * @property params
-     * @type Object
-     * 
-     */
-    public JavaScriptObject getParams() {
-        return getPolymerElement().getParams();
-    }
-    /**
-     * <p>An object that contains query parameters to be appended to the<br>specified <code>url</code> when generating a request.</p>
-     *
-     * JavaScript Info:
-     * @property params
-     * @type Object
-     * 
-     */
-    public void setParams(JavaScriptObject value) {
-        getPolymerElement().setParams(value);
     }
 
     /**
@@ -291,26 +200,26 @@ public class IronAjax extends PolymerWidget {
     }
 
     /**
-     * <p>Will be set to true if there is at least one in-flight request<br>associated with this iron-ajax element.</p>
+     * <p>Set the timeout flag on the request.</p>
      *
      * JavaScript Info:
-     * @property loading
-     * @type Boolean
+     * @property timeout
+     * @type Number
      * 
      */
-    public boolean getLoading() {
-        return getPolymerElement().getLoading();
+    public double getTimeout() {
+        return getPolymerElement().getTimeout();
     }
     /**
-     * <p>Will be set to true if there is at least one in-flight request<br>associated with this iron-ajax element.</p>
+     * <p>Set the timeout flag on the request.</p>
      *
      * JavaScript Info:
-     * @property loading
-     * @type Boolean
+     * @property timeout
+     * @type Number
      * 
      */
-    public void setLoading(boolean value) {
-        getPolymerElement().setLoading(value);
+    public void setTimeout(double value) {
+        getPolymerElement().setTimeout(value);
     }
 
     /**
@@ -337,30 +246,55 @@ public class IronAjax extends PolymerWidget {
     }
 
     /**
-     * <p>Set the withCredentials flag on the request.</p>
+     * <p>lastRequest’s error, if any.</p>
      *
      * JavaScript Info:
-     * @property withCredentials
-     * @type Boolean
+     * @property lastError
+     * @type Object
      * 
      */
-    public boolean getWithCredentials() {
-        return getPolymerElement().getWithCredentials();
+    public JavaScriptObject getLastError() {
+        return getPolymerElement().getLastError();
     }
     /**
-     * <p>Set the withCredentials flag on the request.</p>
+     * <p>lastRequest’s error, if any.</p>
      *
      * JavaScript Info:
-     * @property withCredentials
-     * @type Boolean
+     * @property lastError
+     * @type Object
      * 
      */
-    public void setWithCredentials(boolean value) {
-        getPolymerElement().setWithCredentials(value);
+    public void setLastError(JavaScriptObject value) {
+        getPolymerElement().setLastError(value);
     }
 
     /**
-     * <p>Will be set to the most recent response received by a request<br>that originated from this iron-ajax element. The type of the response<br>is determined by the value of <code>handleas</code> at the time that the request<br>was generated.</p>
+     * <p>The most recent request made by this iron-ajax element.</p>
+     *
+     * JavaScript Info:
+     * @property lastRequest
+     * @type Object
+     * 
+     */
+    public JavaScriptObject getLastRequest() {
+        return getPolymerElement().getLastRequest();
+    }
+    /**
+     * <p>The most recent request made by this iron-ajax element.</p>
+     *
+     * JavaScript Info:
+     * @property lastRequest
+     * @type Object
+     * 
+     */
+    public void setLastRequest(JavaScriptObject value) {
+        getPolymerElement().setLastRequest(value);
+    }
+
+    /**
+     * <p>lastRequest’s response.</p>
+     * <p>Note that lastResponse and lastError are set when lastRequest finishes,<br>so if loading is true, then lastResponse and lastError will correspond<br>to the result of the previous request.</p>
+     * <p>The type of the response is determined by the value of <code>handleAs</code> at<br>the time that the request was generated.</p>
      *
      * JavaScript Info:
      * @property lastResponse
@@ -371,7 +305,9 @@ public class IronAjax extends PolymerWidget {
         return getPolymerElement().getLastResponse();
     }
     /**
-     * <p>Will be set to the most recent response received by a request<br>that originated from this iron-ajax element. The type of the response<br>is determined by the value of <code>handleas</code> at the time that the request<br>was generated.</p>
+     * <p>lastRequest’s response.</p>
+     * <p>Note that lastResponse and lastError are set when lastRequest finishes,<br>so if loading is true, then lastResponse and lastError will correspond<br>to the result of the previous request.</p>
+     * <p>The type of the response is determined by the value of <code>handleAs</code> at<br>the time that the request was generated.</p>
      *
      * JavaScript Info:
      * @property lastResponse
@@ -380,6 +316,142 @@ public class IronAjax extends PolymerWidget {
      */
     public void setLastResponse(JavaScriptObject value) {
         getPolymerElement().setLastResponse(value);
+    }
+
+    /**
+     * <p>HTTP request headers to send.</p>
+     * <p>Example:</p>
+     * <pre><code>&lt;iron-ajax
+     *     auto
+     *     url=&quot;http://somesite.com&quot;
+     *     headers=&#39;{&quot;X-Requested-With&quot;: &quot;XMLHttpRequest&quot;}&#39;
+     *     handle-as=&quot;json&quot;&gt;&lt;/iron-ajax&gt;
+     * 
+     * 
+     * </code></pre><p>Note: setting a <code>Content-Type</code> header here will override the value<br>specified by the <code>contentType</code> property of this element.</p>
+     *
+     * JavaScript Info:
+     * @property headers
+     * @type Object
+     * 
+     */
+    public JavaScriptObject getHeaders() {
+        return getPolymerElement().getHeaders();
+    }
+    /**
+     * <p>HTTP request headers to send.</p>
+     * <p>Example:</p>
+     * <pre><code>&lt;iron-ajax
+     *     auto
+     *     url=&quot;http://somesite.com&quot;
+     *     headers=&#39;{&quot;X-Requested-With&quot;: &quot;XMLHttpRequest&quot;}&#39;
+     *     handle-as=&quot;json&quot;&gt;&lt;/iron-ajax&gt;
+     * 
+     * 
+     * </code></pre><p>Note: setting a <code>Content-Type</code> header here will override the value<br>specified by the <code>contentType</code> property of this element.</p>
+     *
+     * JavaScript Info:
+     * @property headers
+     * @type Object
+     * 
+     */
+    public void setHeaders(JavaScriptObject value) {
+        getPolymerElement().setHeaders(value);
+    }
+
+    /**
+     * <p>An object that contains query parameters to be appended to the<br>specified <code>url</code> when generating a request. If you wish to set the body<br>content when making a POST request, you should use the <code>body</code> property<br>instead.</p>
+     *
+     * JavaScript Info:
+     * @property params
+     * @type Object
+     * 
+     */
+    public JavaScriptObject getParams() {
+        return getPolymerElement().getParams();
+    }
+    /**
+     * <p>An object that contains query parameters to be appended to the<br>specified <code>url</code> when generating a request. If you wish to set the body<br>content when making a POST request, you should use the <code>body</code> property<br>instead.</p>
+     *
+     * JavaScript Info:
+     * @property params
+     * @type Object
+     * 
+     */
+    public void setParams(JavaScriptObject value) {
+        getPolymerElement().setParams(value);
+    }
+
+    /**
+     * <p>Body content to send with the request, typically used with “POST”<br>requests.</p>
+     * <p>If body is a string it will be sent unmodified.</p>
+     * <p>If Content-Type is set to a value listed below, then<br>the body will be encoded accordingly.</p>
+     * <ul>
+     * <li><code>content-type=&quot;application/json&quot;</code><ul>
+     * <li>body is encoded like <code>{&quot;foo&quot;:&quot;bar baz&quot;,&quot;x&quot;:1}</code></li>
+     * </ul>
+     * </li>
+     * <li><code>content-type=&quot;application/x-www-form-urlencoded&quot;</code><ul>
+     * <li>body is encoded like <code>foo=bar+baz&amp;x=1</code></li>
+     * </ul>
+     * </li>
+     * </ul>
+     * <p>Otherwise the body will be passed to the browser unmodified, and it<br>will handle any encoding (e.g. for FormData, Blob, ArrayBuffer).</p>
+     *
+     * JavaScript Info:
+     * @property body
+     * @type Object
+     * 
+     */
+    public JavaScriptObject getBody() {
+        return getPolymerElement().getBody();
+    }
+    /**
+     * <p>Body content to send with the request, typically used with “POST”<br>requests.</p>
+     * <p>If body is a string it will be sent unmodified.</p>
+     * <p>If Content-Type is set to a value listed below, then<br>the body will be encoded accordingly.</p>
+     * <ul>
+     * <li><code>content-type=&quot;application/json&quot;</code><ul>
+     * <li>body is encoded like <code>{&quot;foo&quot;:&quot;bar baz&quot;,&quot;x&quot;:1}</code></li>
+     * </ul>
+     * </li>
+     * <li><code>content-type=&quot;application/x-www-form-urlencoded&quot;</code><ul>
+     * <li>body is encoded like <code>foo=bar+baz&amp;x=1</code></li>
+     * </ul>
+     * </li>
+     * </ul>
+     * <p>Otherwise the body will be passed to the browser unmodified, and it<br>will handle any encoding (e.g. for FormData, Blob, ArrayBuffer).</p>
+     *
+     * JavaScript Info:
+     * @property body
+     * @type Object
+     * 
+     */
+    public void setBody(JavaScriptObject value) {
+        getPolymerElement().setBody(value);
+    }
+
+    /**
+     * <p>True while lastRequest is in flight.</p>
+     *
+     * JavaScript Info:
+     * @property loading
+     * @type Boolean
+     * 
+     */
+    public boolean getLoading() {
+        return getPolymerElement().getLoading();
+    }
+    /**
+     * <p>True while lastRequest is in flight.</p>
+     *
+     * JavaScript Info:
+     * @property loading
+     * @type Boolean
+     * 
+     */
+    public void setLoading(boolean value) {
+        getPolymerElement().setLoading(value);
     }
 
     /**
@@ -406,63 +478,28 @@ public class IronAjax extends PolymerWidget {
     }
 
     /**
-     * <p>Specifies what data to store in the <code>response</code> property, and<br>to deliver as <code>event.response</code> in <code>response</code> events.</p>
-     * <p>One of:</p>
-     * <p>   <code>text</code>: uses <code>XHR.responseText</code>.</p>
-     * <p>   <code>xml</code>: uses <code>XHR.responseXML</code>.</p>
-     * <p>   <code>json</code>: uses <code>XHR.responseText</code> parsed as JSON.</p>
-     * <p>   <code>arraybuffer</code>: uses <code>XHR.response</code>.</p>
-     * <p>   <code>blob</code>: uses <code>XHR.response</code>.</p>
-     * <p>   <code>document</code>: uses <code>XHR.response</code>.</p>
+     * <p>Prefix to be stripped from a JSON response before parsing it.</p>
+     * <p>In order to prevent an attack using CSRF with Array responses<br>(<a href="http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/">http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/</a>)<br>many backends will mitigate this by prefixing all JSON response bodies<br>with a string that would be nonsensical to a JavaScript parser.</p>
      *
      * JavaScript Info:
-     * @property handleAs
+     * @property jsonPrefix
      * @type String
      * 
      */
-    public String getHandleAs() {
-        return getPolymerElement().getHandleAs();
+    public String getJsonPrefix() {
+        return getPolymerElement().getJsonPrefix();
     }
     /**
-     * <p>Specifies what data to store in the <code>response</code> property, and<br>to deliver as <code>event.response</code> in <code>response</code> events.</p>
-     * <p>One of:</p>
-     * <p>   <code>text</code>: uses <code>XHR.responseText</code>.</p>
-     * <p>   <code>xml</code>: uses <code>XHR.responseXML</code>.</p>
-     * <p>   <code>json</code>: uses <code>XHR.responseText</code> parsed as JSON.</p>
-     * <p>   <code>arraybuffer</code>: uses <code>XHR.response</code>.</p>
-     * <p>   <code>blob</code>: uses <code>XHR.response</code>.</p>
-     * <p>   <code>document</code>: uses <code>XHR.response</code>.</p>
+     * <p>Prefix to be stripped from a JSON response before parsing it.</p>
+     * <p>In order to prevent an attack using CSRF with Array responses<br>(<a href="http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/">http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx/</a>)<br>many backends will mitigate this by prefixing all JSON response bodies<br>with a string that would be nonsensical to a JavaScript parser.</p>
      *
      * JavaScript Info:
-     * @property handleAs
+     * @property jsonPrefix
      * @type String
      * 
      */
-    public void setHandleAs(String value) {
-        getPolymerElement().setHandleAs(value);
-    }
-
-    /**
-     * <p>Content type to use when sending data. If the contenttype is set<br>and a <code>Content-Type</code> header is specified in the <code>headers</code> attribute,<br>the <code>headers</code> attribute value will take precedence.</p>
-     *
-     * JavaScript Info:
-     * @property contentType
-     * @type String
-     * 
-     */
-    public String getContentType() {
-        return getPolymerElement().getContentType();
-    }
-    /**
-     * <p>Content type to use when sending data. If the contenttype is set<br>and a <code>Content-Type</code> header is specified in the <code>headers</code> attribute,<br>the <code>headers</code> attribute value will take precedence.</p>
-     *
-     * JavaScript Info:
-     * @property contentType
-     * @type String
-     * 
-     */
-    public void setContentType(String value) {
-        getPolymerElement().setContentType(value);
+    public void setJsonPrefix(String value) {
+        getPolymerElement().setJsonPrefix(value);
     }
 
     /**
@@ -489,41 +526,69 @@ public class IronAjax extends PolymerWidget {
     }
 
     /**
-     * <p>Optional raw body content to send when method === “POST”.</p>
-     * <p>Example:</p>
-     * <pre><code>&lt;iron-ajax method=&quot;POST&quot; auto url=&quot;http://somesite.com&quot;
-     *     body=&#39;{&quot;foo&quot;:1, &quot;bar&quot;:2}&#39;&gt;
-     * &lt;/iron-ajax&gt;
-     * 
-     * </code></pre>
+     * <p>Specifies what data to store in the <code>response</code> property, and<br>to deliver as <code>event.detail.response</code> in <code>response</code> events.</p>
+     * <p>One of:</p>
+     * <p>   <code>text</code>: uses <code>XHR.responseText</code>.</p>
+     * <p>   <code>xml</code>: uses <code>XHR.responseXML</code>.</p>
+     * <p>   <code>json</code>: uses <code>XHR.responseText</code> parsed as JSON.</p>
+     * <p>   <code>arraybuffer</code>: uses <code>XHR.response</code>.</p>
+     * <p>   <code>blob</code>: uses <code>XHR.response</code>.</p>
+     * <p>   <code>document</code>: uses <code>XHR.response</code>.</p>
      *
      * JavaScript Info:
-     * @property body
+     * @property handleAs
      * @type String
      * 
      */
-    public String getBody() {
-        return getPolymerElement().getBody();
+    public String getHandleAs() {
+        return getPolymerElement().getHandleAs();
     }
     /**
-     * <p>Optional raw body content to send when method === “POST”.</p>
-     * <p>Example:</p>
-     * <pre><code>&lt;iron-ajax method=&quot;POST&quot; auto url=&quot;http://somesite.com&quot;
-     *     body=&#39;{&quot;foo&quot;:1, &quot;bar&quot;:2}&#39;&gt;
-     * &lt;/iron-ajax&gt;
-     * 
-     * </code></pre>
+     * <p>Specifies what data to store in the <code>response</code> property, and<br>to deliver as <code>event.detail.response</code> in <code>response</code> events.</p>
+     * <p>One of:</p>
+     * <p>   <code>text</code>: uses <code>XHR.responseText</code>.</p>
+     * <p>   <code>xml</code>: uses <code>XHR.responseXML</code>.</p>
+     * <p>   <code>json</code>: uses <code>XHR.responseText</code> parsed as JSON.</p>
+     * <p>   <code>arraybuffer</code>: uses <code>XHR.response</code>.</p>
+     * <p>   <code>blob</code>: uses <code>XHR.response</code>.</p>
+     * <p>   <code>document</code>: uses <code>XHR.response</code>.</p>
      *
      * JavaScript Info:
-     * @property body
+     * @property handleAs
      * @type String
      * 
      */
-    public void setBody(String value) {
-        getPolymerElement().setBody(value);
+    public void setHandleAs(String value) {
+        getPolymerElement().setHandleAs(value);
+    }
+
+    /**
+     * <p>Content type to use when sending data. If the <code>contentType</code> property<br>is set and a <code>Content-Type</code> header is specified in the <code>headers</code><br>property, the <code>headers</code> property value will take precedence.</p>
+     * <p>Varies the handling of the <code>body</code> param.</p>
+     *
+     * JavaScript Info:
+     * @property contentType
+     * @type String
+     * 
+     */
+    public String getContentType() {
+        return getPolymerElement().getContentType();
+    }
+    /**
+     * <p>Content type to use when sending data. If the <code>contentType</code> property<br>is set and a <code>Content-Type</code> header is specified in the <code>headers</code><br>property, the <code>headers</code> property value will take precedence.</p>
+     * <p>Varies the handling of the <code>body</code> param.</p>
+     *
+     * JavaScript Info:
+     * @property contentType
+     * @type String
+     * 
+     */
+    public void setContentType(String value) {
+        getPolymerElement().setContentType(value);
     }
 
 
+    // Needed in UIBinder
     /**
      * <p>An Array of all in-flight requests originating from this iron-ajax<br>element.</p>
      *
@@ -532,64 +597,60 @@ public class IronAjax extends PolymerWidget {
      * 
      */
     public void setActiveRequests(String value) {
-        getPolymerElement().setAttribute("active-requests", value);
+        Polymer.property(this.getPolymerElement(), "activeRequests", value);
     }
 
+    // Needed in UIBinder
     /**
-     * <p>Length of time in milliseconds to debounce multiple requests.</p>
+     * <p>Length of time in milliseconds to debounce multiple automatically generated requests.</p>
      *
      * JavaScript Info:
      * @attribute debounce-duration
      * 
      */
     public void setDebounceDuration(String value) {
-        getPolymerElement().setAttribute("debounce-duration", value);
+        Polymer.property(this.getPolymerElement(), "debounceDuration", value);
     }
 
+    // Needed in UIBinder
     /**
-     * <p>Will be set to the most recent request made by this iron-ajax element.</p>
+     * <p>Set the timeout flag on the request.</p>
+     *
+     * JavaScript Info:
+     * @attribute timeout
+     * 
+     */
+    public void setTimeout(String value) {
+        Polymer.property(this.getPolymerElement(), "timeout", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>The most recent request made by this iron-ajax element.</p>
      *
      * JavaScript Info:
      * @attribute last-request
      * 
      */
     public void setLastRequest(String value) {
-        getPolymerElement().setAttribute("last-request", value);
+        Polymer.property(this.getPolymerElement(), "lastRequest", value);
     }
 
+    // Needed in UIBinder
     /**
-     * <p>An object that contains query parameters to be appended to the<br>specified <code>url</code> when generating a request.</p>
-     *
-     * JavaScript Info:
-     * @attribute params
-     * 
-     */
-    public void setParams(String value) {
-        getPolymerElement().setAttribute("params", value);
-    }
-
-    /**
-     * <p>Will be set to the most recent response received by a request<br>that originated from this iron-ajax element. The type of the response<br>is determined by the value of <code>handleas</code> at the time that the request<br>was generated.</p>
+     * <p>lastRequest’s response.</p>
+     * <p>Note that lastResponse and lastError are set when lastRequest finishes,<br>so if loading is true, then lastResponse and lastError will correspond<br>to the result of the previous request.</p>
+     * <p>The type of the response is determined by the value of <code>handleAs</code> at<br>the time that the request was generated.</p>
      *
      * JavaScript Info:
      * @attribute last-response
      * 
      */
     public void setLastResponse(String value) {
-        getPolymerElement().setAttribute("last-response", value);
+        Polymer.property(this.getPolymerElement(), "lastResponse", value);
     }
 
-    /**
-     * <p>Will be set to the most recent error that resulted from a request<br>that originated from this iron-ajax element.</p>
-     *
-     * JavaScript Info:
-     * @attribute last-error
-     * 
-     */
-    public void setLastError(String value) {
-        getPolymerElement().setAttribute("last-error", value);
-    }
-
+    // Needed in UIBinder
     /**
      * <p>HTTP request headers to send.</p>
      * <p>Example:</p>
@@ -597,83 +658,68 @@ public class IronAjax extends PolymerWidget {
      *     auto
      *     url=&quot;http://somesite.com&quot;
      *     headers=&#39;{&quot;X-Requested-With&quot;: &quot;XMLHttpRequest&quot;}&#39;
-     *     handle-as=&quot;json&quot;
-     *     last-response-changed=&quot;{{handleResponse}}&quot;&gt;&lt;/iron-ajax&gt;
+     *     handle-as=&quot;json&quot;&gt;&lt;/iron-ajax&gt;
      * 
-     * </code></pre>
+     * 
+     * </code></pre><p>Note: setting a <code>Content-Type</code> header here will override the value<br>specified by the <code>contentType</code> property of this element.</p>
      *
      * JavaScript Info:
      * @attribute headers
      * 
      */
     public void setHeaders(String value) {
-        getPolymerElement().setAttribute("headers", value);
+        Polymer.property(this.getPolymerElement(), "headers", value);
     }
 
-
+    // Needed in UIBinder
     /**
-     * 
+     * <p>An object that contains query parameters to be appended to the<br>specified <code>url</code> when generating a request. If you wish to set the body<br>content when making a POST request, you should use the <code>body</code> property<br>instead.</p>
      *
      * JavaScript Info:
-     * @method handleError
-     * @param {} request  
-     * @param {} error  
-     * 
+     * @attribute params
      * 
      */
-    public void handleError(Object request, Object error) {
-        getPolymerElement().handleError(request, error);
+    public void setParams(String value) {
+        Polymer.property(this.getPolymerElement(), "params", value);
     }
 
+    // Needed in UIBinder
     /**
-     * 
+     * <p>Body content to send with the request, typically used with “POST”<br>requests.</p>
+     * <p>If body is a string it will be sent unmodified.</p>
+     * <p>If Content-Type is set to a value listed below, then<br>the body will be encoded accordingly.</p>
+     * <ul>
+     * <li><code>content-type=&quot;application/json&quot;</code><ul>
+     * <li>body is encoded like <code>{&quot;foo&quot;:&quot;bar baz&quot;,&quot;x&quot;:1}</code></li>
+     * </ul>
+     * </li>
+     * <li><code>content-type=&quot;application/x-www-form-urlencoded&quot;</code><ul>
+     * <li>body is encoded like <code>foo=bar+baz&amp;x=1</code></li>
+     * </ul>
+     * </li>
+     * </ul>
+     * <p>Otherwise the body will be passed to the browser unmodified, and it<br>will handle any encoding (e.g. for FormData, Blob, ArrayBuffer).</p>
      *
      * JavaScript Info:
-     * @method discardRequest
-     * @param {} request  
-     * 
+     * @attribute body
      * 
      */
-    public void discardRequest(Object request) {
-        getPolymerElement().discardRequest(request);
+    public void setBody(String value) {
+        Polymer.property(this.getPolymerElement(), "body", value);
     }
 
+    // Needed in UIBinder
     /**
-     * 
+     * <p>lastRequest’s error, if any.</p>
      *
      * JavaScript Info:
-     * @method handleResponse
-     * @param {} request  
-     * 
+     * @attribute last-error
      * 
      */
-    public void handleResponse(Object request) {
-        getPolymerElement().handleResponse(request);
+    public void setLastError(String value) {
+        Polymer.property(this.getPolymerElement(), "lastError", value);
     }
 
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method requestOptionsChanged
-     * 
-     * 
-     */
-    public void requestOptionsChanged() {
-        getPolymerElement().requestOptionsChanged();
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method toRequestOptions
-     * 
-     * 
-     */
-    public void toRequestOptions() {
-        getPolymerElement().toRequestOptions();
-    }
 
     /**
      * <p>Performs an AJAX request to the specified URL.</p>
@@ -681,10 +727,22 @@ public class IronAjax extends PolymerWidget {
      * JavaScript Info:
      * @method generateRequest
      * 
-     * 
+     * @return {JavaScriptObject}
      */
-    public void generateRequest() {
-        getPolymerElement().generateRequest();
+    public JavaScriptObject generateRequest() {
+        return getPolymerElement().generateRequest();
+    }
+
+    /**
+     * <p>Request options suitable for generating an <code>iron-request</code> instance based<br>on the current state of the <code>iron-ajax</code> instance’s properties.</p>
+     *
+     * JavaScript Info:
+     * @method toRequestOptions
+     * 
+     * @return {Object}
+     */
+    public Object toRequestOptions() {
+        return getPolymerElement().toRequestOptions();
     }
 
 
@@ -695,7 +753,7 @@ public class IronAjax extends PolymerWidget {
      * @event error
      */
     public HandlerRegistration addErrorHandler(ErrorEventHandler handler) {
-        return addHandler(handler, ErrorEvent.TYPE);
+        return addDomHandler(handler, ErrorEvent.TYPE);
     }
 
     /**
@@ -705,7 +763,7 @@ public class IronAjax extends PolymerWidget {
      * @event request
      */
     public HandlerRegistration addRequestHandler(RequestEventHandler handler) {
-        return addHandler(handler, RequestEvent.TYPE);
+        return addDomHandler(handler, RequestEvent.TYPE);
     }
 
     /**
@@ -715,7 +773,7 @@ public class IronAjax extends PolymerWidget {
      * @event response
      */
     public HandlerRegistration addResponseHandler(ResponseEventHandler handler) {
-        return addHandler(handler, ResponseEvent.TYPE);
+        return addDomHandler(handler, ResponseEvent.TYPE);
     }
 
 }

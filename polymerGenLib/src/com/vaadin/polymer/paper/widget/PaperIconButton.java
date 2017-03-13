@@ -5,9 +5,14 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.paper.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperIconButtonElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/buttons.html#buttons-toggle-buttons">Icon toggles</a></p>
@@ -16,12 +21,18 @@ import com.vaadin.polymer.paper.PaperIconButtonElement;
  * <pre><code>&lt;paper-icon-button icon=&quot;menu&quot;&gt;&lt;/paper-icon-button&gt;
  * 
  * 
- * </code></pre><p>See <a href="#iron-iconset"><code>iron-iconset</code></a> for more information about<br>how to use a custom icon set.</p>
+ * </code></pre><p>See <a href="iron-iconset"><code>iron-iconset</code></a> for more information about<br>how to use a custom icon set.</p>
  * <p>Example:</p>
  * <pre><code>&lt;link href=&quot;path/to/iron-icons/iron-icons.html&quot; rel=&quot;import&quot;&gt;
  * 
  * &lt;paper-icon-button icon=&quot;favorite&quot;&gt;&lt;/paper-icon-button&gt;
  * &lt;paper-icon-button src=&quot;star.png&quot;&gt;&lt;/paper-icon-button&gt;
+ * 
+ * 
+ * </code></pre><p>To use <code>paper-icon-button</code> as a link, wrap it in an anchor tag. Since <code>paper-icon-button</code><br>will already receive focus, you may want to prevent the anchor tag from receiving focus<br>as well by setting its tabindex to -1.</p>
+ * <pre><code>&lt;a href=&quot;https://www.polymer-project.org&quot; tabindex=&quot;-1&quot;&gt;
+ *   &lt;paper-icon-button icon=&quot;polymer&quot;&gt;&lt;/paper-icon-button&gt;
+ * &lt;/a&gt;
  * 
  * 
  * </code></pre><h3 id="styling">Styling</h3>
@@ -82,44 +93,15 @@ public class PaperIconButton extends PolymerWidget {
      */
     public PaperIconButton(String html) {
         super(PaperIconButtonElement.TAG, PaperIconButtonElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperIconButtonElement getPolymerElement() {
-        try {
-            return (PaperIconButtonElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperIconButtonElement) getElement();
     }
 
-
-    /**
-     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
-     *
-     * JavaScript Info:
-     * @property toggles
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getToggles() {
-        return getPolymerElement().getToggles();
-    }
-    /**
-     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
-     *
-     * JavaScript Info:
-     * @property toggles
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setToggles(boolean value) {
-        getPolymerElement().setToggles(value);
-    }
 
     /**
      * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
@@ -127,7 +109,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public boolean getNoink() {
         return getPolymerElement().getNoink();
@@ -138,10 +120,33 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setNoink(boolean value) {
         getPolymerElement().setNoink(value);
+    }
+
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public boolean getFocused() {
+        return getPolymerElement().getFocused();
+    }
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public void setFocused(boolean value) {
+        getPolymerElement().setFocused(value);
     }
 
     /**
@@ -150,7 +155,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public boolean getPointerDown() {
         return getPolymerElement().getPointerDown();
@@ -161,7 +166,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setPointerDown(boolean value) {
         getPolymerElement().setPointerDown(value);
@@ -173,7 +178,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public boolean getPressed() {
         return getPolymerElement().getPressed();
@@ -184,7 +189,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setPressed(boolean value) {
         getPolymerElement().setPressed(value);
@@ -196,7 +201,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public boolean getStopKeyboardEventPropagation() {
         return getPolymerElement().getStopKeyboardEventPropagation();
@@ -207,7 +212,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
@@ -219,7 +224,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public boolean getReceivedFocusFromKeyboard() {
         return getPolymerElement().getReceivedFocusFromKeyboard();
@@ -230,10 +235,33 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setReceivedFocusFromKeyboard(boolean value) {
         getPolymerElement().setReceivedFocusFromKeyboard(value);
+    }
+
+    /**
+     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
+     *
+     * JavaScript Info:
+     * @property toggles
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public boolean getToggles() {
+        return getPolymerElement().getToggles();
+    }
+    /**
+     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
+     *
+     * JavaScript Info:
+     * @property toggles
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public void setToggles(boolean value) {
+        getPolymerElement().setToggles(value);
     }
 
     /**
@@ -242,7 +270,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public boolean getActive() {
         return getPolymerElement().getActive();
@@ -253,7 +281,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setActive(boolean value) {
         getPolymerElement().setActive(value);
@@ -265,7 +293,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public boolean getDisabled() {
         return getPolymerElement().getDisabled();
@@ -276,33 +304,10 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setDisabled(boolean value) {
         getPolymerElement().setDisabled(value);
-    }
-
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public boolean getFocused() {
-        return getPolymerElement().getFocused();
-    }
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    public void setFocused(boolean value) {
-        getPolymerElement().setFocused(value);
     }
 
     /**
@@ -311,7 +316,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public JavaScriptObject getKeyBindings() {
         return getPolymerElement().getKeyBindings();
@@ -322,30 +327,30 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setKeyBindings(JavaScriptObject value) {
         getPolymerElement().setKeyBindings(value);
     }
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
     }
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
@@ -380,7 +385,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public String getAriaActiveAttribute() {
         return getPolymerElement().getAriaActiveAttribute();
@@ -391,7 +396,7 @@ public class PaperIconButton extends PolymerWidget {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setAriaActiveAttribute(String value) {
         getPolymerElement().setAriaActiveAttribute(value);
@@ -444,26 +449,28 @@ public class PaperIconButton extends PolymerWidget {
     }
 
 
+    // Needed in UIBinder
     /**
      * 
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setKeyBindings(String value) {
-        getPolymerElement().setAttribute("key-bindings", value);
+        Polymer.property(this.getPolymerElement(), "keyBindings", value);
     }
 
+    // Needed in UIBinder
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setKeyEventTarget(String value) {
-        getPolymerElement().setAttribute("key-event-target", value);
+        Polymer.property(this.getPolymerElement(), "keyEventTarget", value);
     }
 
 
@@ -474,7 +481,7 @@ public class PaperIconButton extends PolymerWidget {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
@@ -482,37 +489,11 @@ public class PaperIconButton extends PolymerWidget {
     }
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
-    }
-
-    /**
-     * <p>Returns true if this element currently contains a ripple effect.</p>
-     *
-     * JavaScript Info:
-     * @method hasRipple
-     * @behavior PaperTab
-     * @return {boolean}
-     */
-    public boolean hasRipple() {
-        return getPolymerElement().hasRipple();
-    }
-
-    /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     public void removeOwnKeyBindings() {
@@ -532,12 +513,38 @@ public class PaperIconButton extends PolymerWidget {
     }
 
     /**
+     * <p>Returns true if this element currently contains a ripple effect.</p>
+     *
+     * JavaScript Info:
+     * @method hasRipple
+     * @behavior PaperToggleButton
+     * @return {boolean}
+     */
+    public boolean hasRipple() {
+        return getPolymerElement().hasRipple();
+    }
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
+     */
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
+    }
+
+    /**
      * <p>Ensures this element contains a ripple effect. For startup efficiency<br>the ripple effect is dynamically on demand when needed.</p>
      *
      * JavaScript Info:
      * @method ensureRipple
      * @param {!Event=} optTriggeringEvent  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     public void ensureRipple(JavaScriptObject optTriggeringEvent) {

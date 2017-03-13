@@ -5,17 +5,22 @@
  */
 package com.vaadin.polymer.iron;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p>  Polymer.IronFormElementBehavior enables a custom element to be included<br>  in an <code>iron-form</code>.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronFormElementBehavior {
 
-    public static final String TAG = "Polymer.IronFormElementBehavior";
-    public static final String SRC = "iron-form-element-behavior/iron-form-element-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.IronFormElementBehavior";
+    @JsOverlay public static final String SRC = "iron-form-element-behavior/iron-form-element-behavior.html";
 
 
     /**

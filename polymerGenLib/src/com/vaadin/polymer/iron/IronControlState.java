@@ -5,17 +5,22 @@
  */
 package com.vaadin.polymer.iron;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface IronControlState {
 
-    public static final String TAG = "Polymer.IronControlState";
-    public static final String SRC = "iron-behaviors/iron-button-state.html";
+    @JsOverlay public static final String NAME = "Polymer.IronControlState";
+    @JsOverlay public static final String SRC = "iron-behaviors/iron-control-state.html";
 
 
     /**
@@ -24,7 +29,7 @@ public interface IronControlState {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getDisabled();
     /**
@@ -33,7 +38,7 @@ public interface IronControlState {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
     @JsProperty void setDisabled(boolean value);
 
@@ -43,7 +48,7 @@ public interface IronControlState {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getFocused();
     /**
@@ -52,7 +57,7 @@ public interface IronControlState {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * 
+     * @behavior PaperToggleButton
      */
     @JsProperty void setFocused(boolean value);
 

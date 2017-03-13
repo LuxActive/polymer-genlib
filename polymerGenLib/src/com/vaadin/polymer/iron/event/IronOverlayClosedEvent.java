@@ -5,40 +5,33 @@
  */
 package com.vaadin.polymer.iron.event;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Event;
-import com.vaadin.polymer.elemental.EventListener;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
- * <p>Fired after the <code>iron-overlay</code> closes.</p>
+ * <p>Fired after the overlay closes.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronOverlayClosedEvent extends Event {
 
-    static final String NAME = "iron-overlay-closed";
+    @JsOverlay static final String NAME = "iron-overlay-closed";
 
     @Override
     @JsProperty
     Detail getDetail();
 
-    @JsType
+    @JsType(isNative=true)
     interface Detail extends Event.Detail {
 
         /**
-         * <p>to the <code>closingReason</code> attribute</p>
+         * <p>The <code>event.detail</code> is the <code>closingReason</code> property<br>(contains <code>canceled</code>, whether the overlay was canceled).</p>
          */
-        @JsProperty Object getSet();
+        @JsProperty JavaScriptObject getEvent();
 
     }
 
-
-    public abstract class Listener implements EventListener {
-        protected abstract void handleEvent(IronOverlayClosedEvent event);
-
-        @Override
-        public void handleEvent(Event event) {
-            handleEvent((IronOverlayClosedEvent) event);
-        }
-    }
 }

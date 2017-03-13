@@ -1,6 +1,6 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
- * from paper-button project by The Polymer Authors
+ * from paper-ripple project by The Polymer Authors
  * that is licensed with http://polymer.github.io/LICENSE.txt license.
  */
 package com.vaadin.polymer.paper.widget.event;

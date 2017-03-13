@@ -5,8 +5,14 @@
  */
 package com.vaadin.polymer.paper.widget;
 
+import com.vaadin.polymer.paper.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperStylesElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>The <code>&lt;paper-styles&gt;</code> component provides simple ways to use Material Design CSS styles<br>in your application. The following imports are available:</p>
@@ -37,19 +43,13 @@ public class PaperStyles extends PolymerWidget {
      */
     public PaperStyles(String html) {
         super(PaperStylesElement.TAG, PaperStylesElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperStylesElement getPolymerElement() {
-        try {
-            return (PaperStylesElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperStylesElement) getElement();
     }
 
 

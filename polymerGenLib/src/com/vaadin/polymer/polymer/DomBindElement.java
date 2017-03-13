@@ -5,18 +5,41 @@
  */
 package com.vaadin.polymer.polymer;
 
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface DomBindElement extends HTMLElement {
 
-    public static final String TAG = "dom-bind";
-    public static final String SRC = "polymer/polymer.html";
+    @JsOverlay public static final String TAG = "dom-bind";
+    @JsOverlay public static final String SRC = "polymer/polymer.html";
 
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property notifyDomChange
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNotifyDomChange();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property notifyDomChange
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNotifyDomChange(boolean value);
 
 
     /**

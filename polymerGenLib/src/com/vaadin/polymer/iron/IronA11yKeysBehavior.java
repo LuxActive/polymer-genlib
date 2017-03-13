@@ -5,57 +5,79 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p><code>Polymer.IronA11yKeysBehavior</code> provides a normalized interface for processing<br>keyboard commands that pertain to <a href="http://www.w3.org/TR/wai-aria-practices/#kbd_general_binding">WAI-ARIA best practices</a>.<br>The element takes care of browser differences with respect to Keyboard events<br>and uses an expressive syntax to filter key presses.</p>
- * <p>Use the <code>keyBindings</code> prototype property to express what combination of keys<br>will trigger the event to fire.</p>
- * <p>Use the <code>key-event-target</code> attribute to set up event handlers on a specific<br>node.<br>The <code>keys-pressed</code> event will fire when one of the key combinations set with the<br><code>keys</code> property is pressed.</p>
+ * <p>Use the <code>keyBindings</code> prototype property to express what combination of keys<br>will trigger the callback. A key binding has the format<br><code>&quot;KEY+MODIFIER:EVENT&quot;: &quot;callback&quot;</code> (<code>&quot;KEY&quot;: &quot;callback&quot;</code> or<br><code>&quot;KEY:EVENT&quot;: &quot;callback&quot;</code> are valid as well). Some examples:</p>
+ * <pre><code> keyBindings: {
+ *    &#39;space&#39;: &#39;_onKeydown&#39;, // same as &#39;space:keydown&#39;
+ *    &#39;shift+tab&#39;: &#39;_onKeydown&#39;,
+ *    &#39;enter:keypress&#39;: &#39;_onKeypress&#39;,
+ *    &#39;esc:keyup&#39;: &#39;_onKeyup&#39;
+ *  }
+ * 
+ * 
+ * </code></pre><p>The callback will receive with an event containing the following information in <code>event.detail</code>:</p>
+ * <pre><code> _onKeydown: function(event) {
+ *    console.log(event.detail.combo); // KEY+MODIFIER, e.g. &quot;shift+tab&quot;
+ *    console.log(event.detail.key); // KEY only, e.g. &quot;tab&quot;
+ *    console.log(event.detail.event); // EVENT, e.g. &quot;keydown&quot;
+ *    console.log(event.detail.keyboardEvent); // the original KeyboardEvent
+ *  }
+ * 
+ * 
+ * </code></pre><p>Use the <code>keyEventTarget</code> attribute to set up event handlers on a specific<br>node.</p>
+ * <p>See the <a href="https://github.com/PolymerElements/iron-a11y-keys-behavior/blob/master/demo/x-key-aware.html">demo source code</a><br>for an example.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronA11yKeysBehavior {
 
-    public static final String TAG = "Polymer.IronA11yKeysBehavior";
-    public static final String SRC = "iron-a11y-keys-behavior/iron-a11y-keys-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.IronA11yKeysBehavior";
+    @JsOverlay public static final String SRC = "iron-a11y-keys-behavior/iron-a11y-keys-behavior.html";
 
 
     /**
-     * 
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
      *
      * JavaScript Info:
      * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
+     * @type !Object
+     * @behavior PaperToggleButton
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
-     * 
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
      *
      * JavaScript Info:
      * @property keyBindings
-     * @type Object
-     * @behavior PaperTab
+     * @type !Object
+     * @behavior PaperToggleButton
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
@@ -65,7 +87,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -74,7 +96,7 @@ public interface IronA11yKeysBehavior {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
@@ -86,29 +108,29 @@ public interface IronA11yKeysBehavior {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
 
     /**
-     * 
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
      * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
      */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
     /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void removeOwnKeyBindings();

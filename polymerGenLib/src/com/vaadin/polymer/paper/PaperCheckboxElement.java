@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/selection-controls.html#selection-controls-checkbox">Checkbox</a></p>
@@ -48,12 +50,12 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <tr>
  * <td><code>--paper-checkbox-checked-color</code></td>
  * <td>Checkbox color when the input is checked</td>
- * <td><code>--default-primary-color</code></td>
+ * <td><code>--primary-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-checkbox-checked-ink-color</code></td>
  * <td>Selected/focus ripple color when the input is checked</td>
- * <td><code>--default-primary-color</code></td>
+ * <td><code>--primary-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-checkbox-checkmark-color</code></td>
@@ -66,48 +68,60 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <td><code>--primary-text-color</code></td>
  * </tr>
  * <tr>
+ * <td><code>--paper-checkbox-label-checked-color</code></td>
+ * <td>Label color when the input is checked</td>
+ * <td><code>--paper-checkbox-label-color</code></td>
+ * </tr>
+ * <tr>
  * <td><code>--paper-checkbox-label-spacing</code></td>
  * <td>Spacing between the label and the checkbox</td>
  * <td><code>8px</code></td>
  * </tr>
  * <tr>
+ * <td><code>--paper-checkbox-label</code></td>
+ * <td>Mixin applied to the label</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-checkbox-label-checked</code></td>
+ * <td>Mixin applied to the label when the input is checked</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
  * <td><code>--paper-checkbox-error-color</code></td>
  * <td>Checkbox color when invalid</td>
- * <td><code>--google-red-500</code></td>
+ * <td><code>--error-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-checkbox-size</code></td>
  * <td>Size of the checkbox</td>
  * <td><code>18px</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--paper-checkbox-ink-size</code></td>
+ * <td>Size of the ripple</td>
+ * <td><code>48px</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-checkbox-margin</code></td>
+ * <td>Margin around the checkbox container</td>
+ * <td><code>initial</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-checkbox-vertical-align</code></td>
+ * <td>Vertical alignment of the checkbox container</td>
+ * <td><code>middle</code></td>
+ * </tr>
  * </tbody>
  * </table>
+ * <p>This element applies the mixin <code>--paper-font-common-base</code> but does not import <code>paper-styles/typography.html</code>.<br>In order to apply the <code>Roboto</code> font to this element, make sure you’ve imported <code>paper-styles/typography.html</code>.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperCheckboxElement extends HTMLElement {
 
-    public static final String TAG = "paper-checkbox";
-    public static final String SRC = "paper-checkbox/paper-checkbox.html";
+    @JsOverlay public static final String TAG = "paper-checkbox";
+    @JsOverlay public static final String SRC = "paper-checkbox/paper-checkbox.html";
 
-
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getStopKeyboardEventPropagation();
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
     /**
      * 
@@ -115,7 +129,7 @@ public interface PaperCheckboxElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
@@ -124,47 +138,28 @@ public interface PaperCheckboxElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
-
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getPointerDown();
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setPointerDown(boolean value);
 
     /**
      * <p>If true, the user is currently holding down the button.</p>
@@ -172,7 +167,7 @@ public interface PaperCheckboxElement extends HTMLElement {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getPressed();
     /**
@@ -181,9 +176,28 @@ public interface PaperCheckboxElement extends HTMLElement {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setPressed(boolean value);
+
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getFocused();
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setFocused(boolean value);
 
     /**
      * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
@@ -191,7 +205,7 @@ public interface PaperCheckboxElement extends HTMLElement {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getReceivedFocusFromKeyboard();
     /**
@@ -200,7 +214,7 @@ public interface PaperCheckboxElement extends HTMLElement {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setReceivedFocusFromKeyboard(boolean value);
 
@@ -210,7 +224,7 @@ public interface PaperCheckboxElement extends HTMLElement {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getToggles();
     /**
@@ -219,9 +233,28 @@ public interface PaperCheckboxElement extends HTMLElement {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setToggles(boolean value);
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getStopKeyboardEventPropagation();
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
     /**
      * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
@@ -243,23 +276,23 @@ public interface PaperCheckboxElement extends HTMLElement {
     @JsProperty void setNoink(boolean value);
 
     /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     * <p>Gets or sets the state, <code>true</code> is checked and <code>false</code> is unchecked.</p>
      *
      * JavaScript Info:
-     * @property active
+     * @property checked
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
-    @JsProperty boolean getActive();
+    @JsProperty boolean getChecked();
     /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
+     * <p>Gets or sets the state, <code>true</code> is checked and <code>false</code> is unchecked.</p>
      *
      * JavaScript Info:
-     * @property active
+     * @property checked
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
-    @JsProperty void setActive(boolean value);
+    @JsProperty void setChecked(boolean value);
 
     /**
      * <p>True if the last call to <code>validate</code> is invalid.</p>
@@ -286,7 +319,7 @@ public interface PaperCheckboxElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty boolean getDisabled();
     /**
@@ -295,47 +328,9 @@ public interface PaperCheckboxElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setDisabled(boolean value);
-
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getFocused();
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setFocused(boolean value);
-
-    /**
-     * <p>Gets or sets the state, <code>true</code> is checked and <code>false</code> is unchecked.</p>
-     *
-     * JavaScript Info:
-     * @property checked
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty boolean getChecked();
-    /**
-     * <p>Gets or sets the state, <code>true</code> is checked and <code>false</code> is unchecked.</p>
-     *
-     * JavaScript Info:
-     * @property checked
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setChecked(boolean value);
 
     /**
      * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
@@ -357,26 +352,45 @@ public interface PaperCheckboxElement extends HTMLElement {
     @JsProperty void setRequired(boolean value);
 
     /**
-     * <p>Fired when the checked state changes.</p>
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
      *
      * JavaScript Info:
-     * @property ariaActiveAttribute
-     * @type String
-     * 
+     * @property active
+     * @type Boolean
+     * @behavior PaperToggleButton
      */
-    @JsProperty String getAriaActiveAttribute();
+    @JsProperty boolean getActive();
     /**
-     * <p>Fired when the checked state changes.</p>
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
      *
      * JavaScript Info:
-     * @property ariaActiveAttribute
-     * @type String
-     * 
+     * @property active
+     * @type Boolean
+     * @behavior PaperToggleButton
      */
-    @JsProperty void setAriaActiveAttribute(String value);
+    @JsProperty void setActive(boolean value);
 
     /**
-     * <p> Overriden from Polymer.IronFormElementBehavior </p>
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getPointerDown();
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setPointerDown(boolean value);
+
+    /**
+     * <p>The value for this element.</p>
      *
      * JavaScript Info:
      * @property value
@@ -385,7 +399,7 @@ public interface PaperCheckboxElement extends HTMLElement {
      */
     @JsProperty String getValue();
     /**
-     * <p> Overriden from Polymer.IronFormElementBehavior </p>
+     * <p>The value for this element.</p>
      *
      * JavaScript Info:
      * @property value
@@ -414,6 +428,25 @@ public interface PaperCheckboxElement extends HTMLElement {
     @JsProperty void setName(String value);
 
     /**
+     * <p>The aria attribute to be set if the button is a toggle and in the<br>active state.</p>
+     *
+     * JavaScript Info:
+     * @property ariaActiveAttribute
+     * @type String
+     * @behavior PaperToggleButton
+     */
+    @JsProperty String getAriaActiveAttribute();
+    /**
+     * <p>The aria attribute to be set if the button is a toggle and in the<br>active state.</p>
+     *
+     * JavaScript Info:
+     * @property ariaActiveAttribute
+     * @type String
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setAriaActiveAttribute(String value);
+
+    /**
      * <p>Name of the validator to use.</p>
      *
      * JavaScript Info:
@@ -433,7 +466,7 @@ public interface PaperCheckboxElement extends HTMLElement {
     @JsProperty void setValidator(String value);
 
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -442,7 +475,7 @@ public interface PaperCheckboxElement extends HTMLElement {
      */
     @JsProperty String getValidatorType();
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -459,29 +492,17 @@ public interface PaperCheckboxElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
 
     /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void removeOwnKeyBindings();
@@ -515,6 +536,18 @@ public interface PaperCheckboxElement extends HTMLElement {
      * @return {boolean}
      */
     boolean hasValidator();
+
+    /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
     /**
      * <p>Returns true if the <code>value</code> is valid, and updates <code>invalid</code>. If you want<br>your element to have custom validation logic, do not override this method;<br>override <code>_getValidity(value)</code> instead.</p>

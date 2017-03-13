@@ -5,76 +5,23 @@
  */
 package com.vaadin.polymer.neon;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p><code>Polymer.NeonAnimationRunnerBehavior</code> adds a method to run animations.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface NeonAnimationRunnerBehavior {
 
-    public static final String TAG = "Polymer.NeonAnimationRunnerBehavior";
-    public static final String SRC = "neon-animation/neon-animation.html";
+    @JsOverlay public static final String NAME = "Polymer.NeonAnimationRunnerBehavior";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animation-runner-behavior.html";
 
-
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * 
-     */
-    @JsProperty JavaScriptObject getAnimationConfig();
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @property animationConfig
-     * @type Object
-     * 
-     */
-    @JsProperty void setAnimationConfig(JavaScriptObject value);
-
-    /**
-     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property entryAnimation
-     * @type String
-     * 
-     */
-    @JsProperty String getEntryAnimation();
-    /**
-     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property entryAnimation
-     * @type String
-     * 
-     */
-    @JsProperty void setEntryAnimation(String value);
-
-    /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property exitAnimation
-     * @type String
-     * 
-     */
-    @JsProperty String getExitAnimation();
-    /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property exitAnimation
-     * @type String
-     * 
-     */
-    @JsProperty void setExitAnimation(String value);
 
 
     /**
@@ -84,17 +31,17 @@ public interface NeonAnimationRunnerBehavior {
      * @method playAnimation
      * @param {string=} type  
      * @param {!Object=} cookie  
-     * 
+     * @behavior PaperTooltip
      * 
      */
     void playAnimation(String type, JavaScriptObject cookie);
 
     /**
-     * <p>Cancels the currently running animation.</p>
+     * <p>Cancels the currently running animations.</p>
      *
      * JavaScript Info:
      * @method cancelAnimation
-     * 
+     * @behavior PaperTooltip
      * 
      */
     void cancelAnimation();

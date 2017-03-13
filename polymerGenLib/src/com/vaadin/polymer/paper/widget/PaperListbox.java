@@ -5,19 +5,26 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.vaadin.polymer.PolymerWidget;
+import com.vaadin.polymer.paper.*;
+
 import com.vaadin.polymer.iron.widget.event.IronActivateEvent;
 import com.vaadin.polymer.iron.widget.event.IronActivateEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronDeselectEvent;
 import com.vaadin.polymer.iron.widget.event.IronDeselectEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronItemsChangedEvent;
 import com.vaadin.polymer.iron.widget.event.IronItemsChangedEventHandler;
+
 import com.vaadin.polymer.iron.widget.event.IronSelectEvent;
 import com.vaadin.polymer.iron.widget.event.IronSelectEventHandler;
-import com.vaadin.polymer.paper.PaperListboxElement;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
+import com.vaadin.polymer.PolymerWidget;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/menus.html">Menus</a></p>
@@ -86,80 +93,15 @@ public class PaperListbox extends PolymerWidget {
      */
     public PaperListbox(String html) {
         super(PaperListboxElement.TAG, PaperListboxElement.SRC, html);
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronActivateEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronActivateEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronActivateEvent event) {
-                fireEvent(new IronActivateEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronDeselectEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronDeselectEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronDeselectEvent event) {
-                fireEvent(new IronDeselectEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronItemsChangedEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronItemsChangedEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronItemsChangedEvent event) {
-                fireEvent(new IronItemsChangedEvent(event));
-            }
-        });
-
-        getPolymerElement().addEventListener(
-                com.vaadin.polymer.iron.event.IronSelectEvent.NAME,
-                new com.vaadin.polymer.iron.event.IronSelectEvent.Listener() {
-            @Override
-            protected void handleEvent(com.vaadin.polymer.iron.event.IronSelectEvent event) {
-                fireEvent(new IronSelectEvent(event));
-            }
-        });
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperListboxElement getPolymerElement() {
-        try {
-            return (PaperListboxElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperListboxElement) getElement();
     }
 
-
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior PaperTabs
-     */
-    public JsArray getItems() {
-        return getPolymerElement().getItems();
-    }
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior PaperTabs
-     */
-    public void setItems(JsArray value) {
-        getPolymerElement().setItems(value);
-    }
 
     /**
      * <p>If true, multiple selections are allowed.</p>
@@ -208,26 +150,72 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property selectedValues
-     * @type Array
-     * @behavior PaperTabs
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
      */
-    public JsArray getSelectedValues() {
-        return getPolymerElement().getSelectedValues();
+    public boolean getStopKeyboardEventPropagation() {
+        return getPolymerElement().getStopKeyboardEventPropagation();
     }
     /**
-     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property selectedValues
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    public void setStopKeyboardEventPropagation(boolean value) {
+        getPolymerElement().setStopKeyboardEventPropagation(value);
+    }
+
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
      * @type Array
      * @behavior PaperTabs
      */
-    public void setSelectedValues(JsArray value) {
-        getPolymerElement().setSelectedValues(value);
+    public JsArray getItems() {
+        return getPolymerElement().getItems();
+    }
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    public void setItems(JsArray value) {
+        getPolymerElement().setItems(value);
+    }
+
+    /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @property selected
+     * @type (string|number)
+     * @behavior PaperTabs
+     */
+    public Object getSelected() {
+        return getPolymerElement().getSelected();
+    }
+    /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @property selected
+     * @type (string|number)
+     * @behavior PaperTabs
+     */
+    public void setSelected(Object value) {
+        getPolymerElement().setSelected(value);
     }
 
     /**
@@ -277,23 +265,23 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
     }
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
@@ -323,26 +311,49 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
+     * @property selectedValues
+     * @type Array
+     * @behavior PaperTabs
      */
-    public boolean getStopKeyboardEventPropagation() {
-        return getPolymerElement().getStopKeyboardEventPropagation();
+    public JsArray getSelectedValues() {
+        return getPolymerElement().getSelectedValues();
     }
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
+     * @property selectedValues
+     * @type Array
+     * @behavior PaperTabs
      */
-    public void setStopKeyboardEventPropagation(boolean value) {
-        getPolymerElement().setStopKeyboardEventPropagation(value);
+    public void setSelectedValues(JsArray value) {
+        getPolymerElement().setSelectedValues(value);
+    }
+
+    /**
+     * <p>The class to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedClass
+     * @type String
+     * @behavior PaperTabs
+     */
+    public String getSelectedClass() {
+        return getPolymerElement().getSelectedClass();
+    }
+    /**
+     * <p>The class to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedClass
+     * @type String
+     * @behavior PaperTabs
+     */
+    public void setSelectedClass(String value) {
+        getPolymerElement().setSelectedClass(value);
     }
 
     /**
@@ -369,29 +380,6 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @property selected
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getSelected() {
-        return getPolymerElement().getSelected();
-    }
-    /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
-     *
-     * JavaScript Info:
-     * @property selected
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setSelected(String value) {
-        getPolymerElement().setSelected(value);
-    }
-
-    /**
      * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
      *
      * JavaScript Info:
@@ -415,7 +403,53 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
+     *
+     * JavaScript Info:
+     * @property attrForItemTitle
+     * @type String
+     * @behavior PaperTabs
+     */
+    public String getAttrForItemTitle() {
+        return getPolymerElement().getAttrForItemTitle();
+    }
+    /**
+     * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
+     *
+     * JavaScript Info:
+     * @property attrForItemTitle
+     * @type String
+     * @behavior PaperTabs
+     */
+    public void setAttrForItemTitle(String value) {
+        getPolymerElement().setAttrForItemTitle(value);
+    }
+
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    public String getFallbackSelection() {
+        return getPolymerElement().getFallbackSelection();
+    }
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    public void setFallbackSelection(String value) {
+        getPolymerElement().setFallbackSelection(value);
+    }
+
+    /**
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
@@ -426,7 +460,7 @@ public class PaperListbox extends PolymerWidget {
         return getPolymerElement().getAttrForSelected();
     }
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
@@ -460,86 +494,8 @@ public class PaperListbox extends PolymerWidget {
         getPolymerElement().setActivateEvent(value);
     }
 
-    /**
-     * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
-     *
-     * JavaScript Info:
-     * @property attrForItemTitle
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getAttrForItemTitle() {
-        return getPolymerElement().getAttrForItemTitle();
-    }
-    /**
-     * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
-     *
-     * JavaScript Info:
-     * @property attrForItemTitle
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setAttrForItemTitle(String value) {
-        getPolymerElement().setAttrForItemTitle(value);
-    }
 
-    /**
-     * <p>The class to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedClass
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getSelectedClass() {
-        return getPolymerElement().getSelectedClass();
-    }
-    /**
-     * <p>The class to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedClass
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setSelectedClass(String value) {
-        getPolymerElement().setSelectedClass(value);
-    }
-
-
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @attribute key-event-target
-     * @behavior PaperTab
-     */
-    public void setKeyEventTarget(String value) {
-        getPolymerElement().setAttribute("key-event-target", value);
-    }
-
-    /**
-     * <p>Returns an array of currently selected items.</p>
-     *
-     * JavaScript Info:
-     * @attribute selected-items
-     * @behavior PaperTabs
-     */
-    public void setSelectedItems(String value) {
-        getPolymerElement().setAttribute("selected-items", value);
-    }
-
-    /**
-     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
-     *
-     * JavaScript Info:
-     * @attribute selected-values
-     * @behavior PaperTabs
-     */
-    public void setSelectedValues(String value) {
-        getPolymerElement().setAttribute("selected-values", value);
-    }
-
+    // Needed in UIBinder
     /**
      * <p>The list of items from which a selection can be made.</p>
      *
@@ -548,9 +504,46 @@ public class PaperListbox extends PolymerWidget {
      * @behavior PaperTabs
      */
     public void setItems(String value) {
-        getPolymerElement().setAttribute("items", value);
+        Polymer.property(this.getPolymerElement(), "items", value);
     }
 
+    // Needed in UIBinder
+    /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @attribute selected
+     * @behavior PaperTabs
+     */
+    public void setSelected(String value) {
+        Polymer.property(this.getPolymerElement(), "selected", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>Returns an array of currently selected items.</p>
+     *
+     * JavaScript Info:
+     * @attribute selected-items
+     * @behavior PaperTabs
+     */
+    public void setSelectedItems(String value) {
+        Polymer.property(this.getPolymerElement(), "selectedItems", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
+     *
+     * JavaScript Info:
+     * @attribute selected-values
+     * @behavior PaperTabs
+     */
+    public void setSelectedValues(String value) {
+        Polymer.property(this.getPolymerElement(), "selectedValues", value);
+    }
+
+    // Needed in UIBinder
     /**
      * <p>Returns the currently focused item.</p>
      *
@@ -559,9 +552,22 @@ public class PaperListbox extends PolymerWidget {
      * @behavior PaperTabs
      */
     public void setFocusedItem(String value) {
-        getPolymerElement().setAttribute("focused-item", value);
+        Polymer.property(this.getPolymerElement(), "focusedItem", value);
     }
 
+    // Needed in UIBinder
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @attribute key-event-target
+     * @behavior PaperToggleButton
+     */
+    public void setKeyEventTarget(String value) {
+        Polymer.property(this.getPolymerElement(), "keyEventTarget", value);
+    }
+
+    // Needed in UIBinder
     /**
      * <p>Returns the currently selected item.</p>
      *
@@ -570,48 +576,21 @@ public class PaperListbox extends PolymerWidget {
      * @behavior PaperTabs
      */
     public void setSelectedItem(String value) {
-        getPolymerElement().setAttribute("selected-item", value);
+        Polymer.property(this.getPolymerElement(), "selectedItem", value);
     }
 
+    // Needed in UIBinder
     /**
-     * 
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     public void setKeyBindings(String value) {
-        getPolymerElement().setAttribute("key-bindings", value);
+        Polymer.property(this.getPolymerElement(), "keyBindings", value);
     }
 
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    public void keyboardEventMatchesKeys(Object event, Object eventString) {
-        getPolymerElement().keyboardEventMatchesKeys(event, eventString);
-    }
-
-    /**
-     * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
-     *
-     * JavaScript Info:
-     * @method addOwnKeyBinding
-     * @param {} eventString  
-     * @param {} handlerName  
-     * @behavior PaperTab
-     * 
-     */
-    public void addOwnKeyBinding(Object eventString, Object handlerName) {
-        getPolymerElement().addOwnKeyBinding(eventString, handlerName);
-    }
 
     /**
      * 
@@ -624,6 +603,72 @@ public class PaperListbox extends PolymerWidget {
      */
     public void multiChanged(Object multi) {
         getPolymerElement().multiChanged(multi);
+    }
+
+    /**
+     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
+     *
+     * JavaScript Info:
+     * @method select
+     * @param {(string|number)} value  
+     * @behavior PaperTabs
+     * 
+     */
+    public void select(Object value) {
+        getPolymerElement().select(value);
+    }
+
+    /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectIndex(Object index) {
+        getPolymerElement().selectIndex(index);
+    }
+
+    /**
+     * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
+     *
+     * JavaScript Info:
+     * @method addOwnKeyBinding
+     * @param {} eventString  
+     * @param {} handlerName  
+     * @behavior PaperToggleButton
+     * 
+     */
+    public void addOwnKeyBinding(Object eventString, Object handlerName) {
+        getPolymerElement().addOwnKeyBinding(eventString, handlerName);
+    }
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior PaperToggleButton
+     * 
+     */
+    public void removeOwnKeyBindings() {
+        getPolymerElement().removeOwnKeyBindings();
+    }
+
+    /**
+     * <p>Force a synchronous update of the <code>items</code> property.</p>
+     * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
+     * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
+     *
+     * JavaScript Info:
+     * @method forceSynchronousItemUpdate
+     * @behavior PaperTabs
+     * 
+     */
+    public void forceSynchronousItemUpdate() {
+        getPolymerElement().forceSynchronousItemUpdate();
     }
 
     /**
@@ -651,18 +696,6 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
-     *
-     * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior PaperTab
-     * 
-     */
-    public void removeOwnKeyBindings() {
-        getPolymerElement().removeOwnKeyBindings();
-    }
-
-    /**
      * <p>Returns the index of the given item.</p>
      *
      * JavaScript Info:
@@ -676,16 +709,17 @@ public class PaperListbox extends PolymerWidget {
     }
 
     /**
-     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
-     * @method select
-     * @param {string} value  
-     * @behavior PaperTabs
-     * 
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
      */
-    public void select(String value) {
-        getPolymerElement().select(value);
+    public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
+        return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
     }
 
 
@@ -696,7 +730,7 @@ public class PaperListbox extends PolymerWidget {
      * @event iron-activate
      */
     public HandlerRegistration addIronActivateHandler(IronActivateEventHandler handler) {
-        return addHandler(handler, IronActivateEvent.TYPE);
+        return addDomHandler(handler, IronActivateEvent.TYPE);
     }
 
     /**
@@ -706,17 +740,17 @@ public class PaperListbox extends PolymerWidget {
      * @event iron-deselect
      */
     public HandlerRegistration addIronDeselectHandler(IronDeselectEventHandler handler) {
-        return addHandler(handler, IronDeselectEvent.TYPE);
+        return addDomHandler(handler, IronDeselectEvent.TYPE);
     }
 
     /**
-     * <p>Fired when the list of selectable items changes (e.g., items are<br>added or removed). The detail of the event is a list of mutation<br>records that describe what changed.</p>
+     * <p>Fired when the list of selectable items changes (e.g., items are<br>added or removed). The detail of the event is a mutation record that<br>describes what changed.</p>
      *
      * JavaScript Info:
      * @event iron-items-changed
      */
     public HandlerRegistration addIronItemsChangedHandler(IronItemsChangedEventHandler handler) {
-        return addHandler(handler, IronItemsChangedEvent.TYPE);
+        return addDomHandler(handler, IronItemsChangedEvent.TYPE);
     }
 
     /**
@@ -726,7 +760,7 @@ public class PaperListbox extends PolymerWidget {
      * @event iron-select
      */
     public HandlerRegistration addIronSelectHandler(IronSelectEventHandler handler) {
-        return addHandler(handler, IronSelectEvent.TYPE);
+        return addDomHandler(handler, IronSelectEvent.TYPE);
     }
 
 }

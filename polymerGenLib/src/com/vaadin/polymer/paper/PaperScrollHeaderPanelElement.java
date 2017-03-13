@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/patterns/scrolling-techniques.html">Scrolling techniques</a></p>
@@ -33,8 +35,13 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * }
  * </code></pre>
  * <p><code>paper-scroll-header-panel</code> works well with <code>paper-toolbar</code> but can use any element<br>that represents a header by adding a <code>paper-header</code> class to it.</p>
+ * <p>Note: If the class <code>paper-header</code> is used, the header must be positioned relative or absolute. e.g.</p>
+ * <pre><code class="lang-css">.paper-header {
+ *   position: relative;
+ * }
+ * </code></pre>
  * <pre><code class="lang-html">&lt;paper-scroll-header-panel&gt;
- *   &lt;paper-toolbar&gt;Header&lt;/paper-toolbar&gt;
+ *   &lt;div class=&quot;paper-header&quot;&gt;Header&lt;/div&gt;
  *   &lt;div&gt;Content goes here...&lt;/div&gt;
  * &lt;/paper-scroll-header-panel&gt;
  * </code></pre>
@@ -61,18 +68,23 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <td>{}</td>
  * </tr>
  * <tr>
- * <td>–paper-scroll-header-container</td>
+ * <td>–paper-scroll-header-panel-container</td>
  * <td>To override or add container styles</td>
+ * <td>{}</td>
+ * </tr>
+ * <tr>
+ * <td>–paper-scroll-header-panel-header-container</td>
+ * <td>To override or add header styles</td>
  * <td>{}</td>
  * </tr>
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperScrollHeaderPanelElement extends HTMLElement {
 
-    public static final String TAG = "paper-scroll-header-panel";
-    public static final String SRC = "paper-scroll-header-panel/paper-scroll-header-panel.html";
+    @JsOverlay public static final String TAG = "paper-scroll-header-panel";
+    @JsOverlay public static final String SRC = "paper-scroll-header-panel/paper-scroll-header-panel.html";
 
 
     /**
@@ -257,7 +269,7 @@ public interface PaperScrollHeaderPanelElement extends HTMLElement {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTabs
+     * @behavior PaperTimePicker
      * 
      */
     void stopResizeNotificationsFor(Object target);
@@ -268,7 +280,7 @@ public interface PaperScrollHeaderPanelElement extends HTMLElement {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTabs
+     * @behavior PaperTimePicker
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -288,7 +300,7 @@ public interface PaperScrollHeaderPanelElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTabs
+     * @behavior PaperTimePicker
      * 
      */
     void notifyResize();
@@ -333,7 +345,7 @@ public interface PaperScrollHeaderPanelElement extends HTMLElement {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTabs
+     * @behavior PaperTimePicker
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);

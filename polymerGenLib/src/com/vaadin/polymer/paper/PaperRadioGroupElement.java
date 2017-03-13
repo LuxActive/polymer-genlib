@@ -5,11 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/selection-controls.html#selection-controls-radio-button">Radio button</a></p>
@@ -32,12 +33,28 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * 
  * </code></pre><p>See <a href="paper-radio-button">paper-radio-button</a> for more<br>information about <code>paper-radio-button</code>.</p>
+ * <table>
+ * <thead>
+ * <tr>
+ * <th>Custom property</th>
+ * <th>Description</th>
+ * <th>Default</th>
+ * </tr>
+ * </thead>
+ * <tbody>
+ * <tr>
+ * <td><code>--paper-radio-group-item-padding</code></td>
+ * <td>The padding of the item</td>
+ * <td><code>12px</code></td>
+ * </tr>
+ * </tbody>
+ * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperRadioGroupElement extends HTMLElement {
 
-    public static final String TAG = "paper-radio-group";
-    public static final String SRC = "paper-radio-group/paper-radio-group.html";
+    @JsOverlay public static final String TAG = "paper-radio-group";
+    @JsOverlay public static final String SRC = "paper-radio-group/paper-radio-group.html";
 
 
     /**
@@ -60,12 +77,126 @@ public interface PaperRadioGroupElement extends HTMLElement {
     @JsProperty void setAllowEmptySelection(boolean value);
 
     /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getStopKeyboardEventPropagation();
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
+
+    /**
+     * <p>If true, multiple selections are allowed.</p>
+     *
+     * JavaScript Info:
+     * @property multi
+     * @type Boolean
+     * @behavior PaperTabs
+     */
+    @JsProperty boolean getMulti();
+    /**
+     * <p>If true, multiple selections are allowed.</p>
+     *
+     * JavaScript Info:
+     * @property multi
+     * @type Boolean
+     * @behavior PaperTabs
+     */
+    @JsProperty void setMulti(boolean value);
+
+    /**
+     * <p>Returns an array of currently selected items.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItems
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty JsArray getSelectedItems();
+    /**
+     * <p>Returns an array of currently selected items.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItems
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedItems(JsArray value);
+
+    /**
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
+     *
+     * JavaScript Info:
+     * @property selectedValues
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty JsArray getSelectedValues();
+    /**
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
+     *
+     * JavaScript Info:
+     * @property selectedValues
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedValues(JsArray value);
+
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty JsArray getItems();
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty void setItems(JsArray value);
+
+    /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @property selected
+     * @type (string|number)
+     * @behavior PaperTabs
+     */
+    @JsProperty Object getSelected();
+    /**
+     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     *
+     * JavaScript Info:
+     * @property selected
+     * @type (string|number)
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelected(Object value);
+
+    /**
      * 
      *
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
@@ -74,7 +205,7 @@ public interface PaperRadioGroupElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
@@ -98,99 +229,61 @@ public interface PaperRadioGroupElement extends HTMLElement {
     @JsProperty void setSelectedItem(JavaScriptObject value);
 
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>Returns the currently focused item.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
      */
-    @JsProperty boolean getStopKeyboardEventPropagation();
+    @JsProperty JavaScriptObject getFocusedItem();
     /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     * <p>Returns the currently focused item.</p>
      *
      * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
      */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
+    @JsProperty void setFocusedItem(JavaScriptObject value);
 
     /**
-     * <p>The list of items from which a selection can be made.</p>
+     * <p>The class to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior PaperTabs
-     */
-    @JsProperty JsArray getItems();
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior PaperTabs
-     */
-    @JsProperty void setItems(JsArray value);
-
-    /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
-     *
-     * JavaScript Info:
-     * @property attrForSelected
+     * @property selectedClass
      * @type String
      * @behavior PaperTabs
      */
-    @JsProperty String getAttrForSelected();
+    @JsProperty String getSelectedClass();
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>The class to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property attrForSelected
+     * @property selectedClass
      * @type String
      * @behavior PaperTabs
      */
-    @JsProperty void setAttrForSelected(String value);
-
-    /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
-     *
-     * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getActivateEvent();
-    /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
-     *
-     * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setActivateEvent(String value);
+    @JsProperty void setSelectedClass(String value);
 
     /**
      * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
@@ -212,23 +305,42 @@ public interface PaperRadioGroupElement extends HTMLElement {
     @JsProperty void setSelectable(String value);
 
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     * <p>Overriden from Polymer.IronSelectableBehavior</p>
      *
      * JavaScript Info:
-     * @property selected
+     * @property attrForSelected
      * @type String
-     * @behavior PaperTabs
+     * 
      */
-    @JsProperty String getSelected();
+    @JsProperty String getAttrForSelected();
     /**
-     * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
+     * <p>Overriden from Polymer.IronSelectableBehavior</p>
      *
      * JavaScript Info:
-     * @property selected
+     * @property attrForSelected
+     * @type String
+     * 
+     */
+    @JsProperty void setAttrForSelected(String value);
+
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
      * @type String
      * @behavior PaperTabs
      */
-    @JsProperty void setSelected(String value);
+    @JsProperty String getFallbackSelection();
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setFallbackSelection(String value);
 
     /**
      * <p>The attribute to set on elements when selected.</p>
@@ -250,32 +362,51 @@ public interface PaperRadioGroupElement extends HTMLElement {
     @JsProperty void setSelectedAttribute(String value);
 
     /**
-     * <p>The class to set on elements when selected.</p>
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
      *
      * JavaScript Info:
-     * @property selectedClass
+     * @property activateEvent
      * @type String
      * @behavior PaperTabs
      */
-    @JsProperty String getSelectedClass();
+    @JsProperty String getActivateEvent();
     /**
-     * <p>The class to set on elements when selected.</p>
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
      *
      * JavaScript Info:
-     * @property selectedClass
+     * @property activateEvent
      * @type String
      * @behavior PaperTabs
      */
-    @JsProperty void setSelectedClass(String value);
+    @JsProperty void setActivateEvent(String value);
+
+    /**
+     * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
+     *
+     * JavaScript Info:
+     * @property attrForItemTitle
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getAttrForItemTitle();
+    /**
+     * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
+     *
+     * JavaScript Info:
+     * @property attrForItemTitle
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setAttrForItemTitle(String value);
 
 
     /**
-     * <p>Selects the given value.</p>
+     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
      *
      * JavaScript Info:
      * @method select
-     * @param {} value  
-     * 
+     * @param {(string|number)} value  
+     * @behavior PaperTabs
      * 
      */
     void select(Object value);
@@ -287,7 +418,7 @@ public interface PaperRadioGroupElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
@@ -296,13 +427,43 @@ public interface PaperRadioGroupElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
+     * @method multiChanged
+     * @param {} multi  
+     * @behavior PaperTabs
      * 
      */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
+    void multiChanged(Object multi);
+
+    /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
+     * 
+     */
+    void selectIndex(Object index);
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior PaperToggleButton
+     * 
+     */
+    void removeOwnKeyBindings();
+
+    /**
+     * <p>Selects the next item.</p>
+     *
+     * JavaScript Info:
+     * @method selectNext
+     * @behavior PaperTabs
+     * 
+     */
+    void selectNext();
 
     /**
      * <p>Selects the previous item.</p>
@@ -315,24 +476,28 @@ public interface PaperRadioGroupElement extends HTMLElement {
     void selectPrevious();
 
     /**
-     * <p>Selects the next item. If the next item is disabled, then it is<br>skipped, and the next item after it is selected.</p>
+     * <p>Force a synchronous update of the <code>items</code> property.</p>
+     * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
+     * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
      *
      * JavaScript Info:
-     * @method selectNext
-     * 
+     * @method forceSynchronousItemUpdate
+     * @behavior PaperTabs
      * 
      */
-    void selectNext();
+    void forceSynchronousItemUpdate();
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior PaperTab
-     * 
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
      */
-    void removeOwnKeyBindings();
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
     /**
      * <p>Returns the index of the given item.</p>

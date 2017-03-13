@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/cards.html">Cards</a></p>
@@ -22,7 +25,7 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * 
  * 
  * </code></pre><p>Example - top card image:</p>
- * <pre><code>&lt;paper-card heading=&quot;Card Title&quot; image=&quot;/path/to/image.png&quot;&gt;
+ * <pre><code>&lt;paper-card heading=&quot;Card Title&quot; image=&quot;/path/to/image.png&quot; alt=&quot;image&quot;&gt;
  *   ...
  * &lt;/paper-card&gt;
  * 
@@ -40,6 +43,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tr>
  * </thead>
  * <tbody>
+ * <tr>
+ * <td><code>--paper-card-background-color</code></td>
+ * <td>The background color of the card</td>
+ * <td><code>--primary-background-color</code></td>
+ * </tr>
  * <tr>
  * <td><code>--paper-card-header-color</code></td>
  * <td>The color of the header text</td>
@@ -83,11 +91,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperCardElement extends HTMLElement {
 
-    public static final String TAG = "paper-card";
-    public static final String SRC = "paper-card/paper-card.html";
+    @JsOverlay public static final String TAG = "paper-card";
+    @JsOverlay public static final String SRC = "paper-card/paper-card.html";
 
 
     /**
@@ -186,6 +194,25 @@ public interface PaperCardElement extends HTMLElement {
     @JsProperty void setPreloadImage(boolean value);
 
     /**
+     * <p>The text alternative of the card’s title image.</p>
+     *
+     * JavaScript Info:
+     * @property alt
+     * @type String
+     * 
+     */
+    @JsProperty String getAlt();
+    /**
+     * <p>The text alternative of the card’s title image.</p>
+     *
+     * JavaScript Info:
+     * @property alt
+     * @type String
+     * 
+     */
+    @JsProperty void setAlt(String value);
+
+    /**
      * <p>The title of the card.</p>
      *
      * JavaScript Info:
@@ -222,6 +249,25 @@ public interface PaperCardElement extends HTMLElement {
      * 
      */
     @JsProperty void setImage(String value);
+
+    /**
+     * <p>This image will be used as a background/placeholder until the src image has<br>loaded. Use of a data-URI for placeholder is encouraged for instant rendering.</p>
+     *
+     * JavaScript Info:
+     * @property placeholderImage
+     * @type String
+     * 
+     */
+    @JsProperty String getPlaceholderImage();
+    /**
+     * <p>This image will be used as a background/placeholder until the src image has<br>loaded. Use of a data-URI for placeholder is encouraged for instant rendering.</p>
+     *
+     * JavaScript Info:
+     * @property placeholderImage
+     * @type String
+     * 
+     */
+    @JsProperty void setPlaceholderImage(String value);
 
 
 }

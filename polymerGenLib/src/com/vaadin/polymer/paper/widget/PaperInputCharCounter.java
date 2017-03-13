@@ -5,8 +5,14 @@
  */
 package com.vaadin.polymer.paper.widget;
 
+import com.vaadin.polymer.paper.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperInputCharCounterElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>&lt;paper-input-char-counter&gt;</code> is a character counter for use with <code>&lt;paper-input-container&gt;</code>. It<br>shows the number of characters entered in the input and the max length if it is specified.</p>
@@ -48,30 +54,24 @@ public class PaperInputCharCounter extends PolymerWidget {
      */
     public PaperInputCharCounter(String html) {
         super(PaperInputCharCounterElement.TAG, PaperInputCharCounterElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperInputCharCounterElement getPolymerElement() {
-        try {
-            return (PaperInputCharCounterElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperInputCharCounterElement) getElement();
     }
 
 
 
 
     /**
-     * 
+     * <p>This overrides the update function in PaperInputAddonBehavior.</p>
      *
      * JavaScript Info:
      * @method update
-     * @param {} state  
+     * @param {{inputElement: (Element|undefined), value: (string|undefined), invalid: boolean}} state  
      * 
      * 
      */

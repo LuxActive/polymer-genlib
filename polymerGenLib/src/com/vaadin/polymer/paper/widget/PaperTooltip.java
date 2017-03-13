@@ -5,9 +5,14 @@
  */
 package com.vaadin.polymer.paper.widget;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.vaadin.polymer.paper.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperTooltipElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/tooltips.html">Tooltips</a></p>
@@ -76,19 +81,13 @@ public class PaperTooltip extends PolymerWidget {
      */
     public PaperTooltip(String html) {
         super(PaperTooltipElement.TAG, PaperTooltipElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperTooltipElement getPolymerElement() {
-        try {
-            return (PaperTooltipElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperTooltipElement) getElement();
     }
 
 
@@ -136,6 +135,29 @@ public class PaperTooltip extends PolymerWidget {
      */
     public void setFitToVisibleBounds(boolean value) {
         getPolymerElement().setFitToVisibleBounds(value);
+    }
+
+    /**
+     * <p>Set this to true if you want to manually control when the tooltip<br>is shown or hidden.</p>
+     *
+     * JavaScript Info:
+     * @property manualMode
+     * @type Boolean
+     * 
+     */
+    public boolean getManualMode() {
+        return getPolymerElement().getManualMode();
+    }
+    /**
+     * <p>Set this to true if you want to manually control when the tooltip<br>is shown or hidden.</p>
+     *
+     * JavaScript Info:
+     * @property manualMode
+     * @type Boolean
+     * 
+     */
+    public void setManualMode(boolean value) {
+        getPolymerElement().setManualMode(value);
     }
 
     /**
@@ -208,52 +230,6 @@ public class PaperTooltip extends PolymerWidget {
     }
 
     /**
-     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property entryAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    public String getEntryAnimation() {
-        return getPolymerElement().getEntryAnimation();
-    }
-    /**
-     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property entryAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    public void setEntryAnimation(String value) {
-        getPolymerElement().setEntryAnimation(value);
-    }
-
-    /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property exitAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    public String getExitAnimation() {
-        return getPolymerElement().getExitAnimation();
-    }
-    /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property exitAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    public void setExitAnimation(String value) {
-        getPolymerElement().setExitAnimation(value);
-    }
-
-    /**
      * <p>Positions the tooltip to the top, right, bottom, left of its content.</p>
      *
      * JavaScript Info:
@@ -299,7 +275,54 @@ public class PaperTooltip extends PolymerWidget {
         getPolymerElement().setFor(value);
     }
 
+    /**
+     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property entryAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    public String getEntryAnimation() {
+        return getPolymerElement().getEntryAnimation();
+    }
+    /**
+     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property entryAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    public void setEntryAnimation(String value) {
+        getPolymerElement().setEntryAnimation(value);
+    }
 
+    /**
+     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property exitAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    public String getExitAnimation() {
+        return getPolymerElement().getExitAnimation();
+    }
+    /**
+     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property exitAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    public void setExitAnimation(String value) {
+        getPolymerElement().setExitAnimation(value);
+    }
+
+
+    // Needed in UIBinder
     /**
      * <p>The entry and exit animations that will be played when showing and<br>hiding the tooltip. If you want to override this, you must ensure<br>that your animationConfig has the exact format below.</p>
      *
@@ -308,9 +331,10 @@ public class PaperTooltip extends PolymerWidget {
      * 
      */
     public void setAnimationConfig(String value) {
-        getPolymerElement().setAttribute("animation-config", value);
+        Polymer.property(this.getPolymerElement(), "animationConfig", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>This property is deprecated, but left over so that it doesn’t<br>break exiting code. Please use <code>offset</code> instead. If both <code>offset</code> and<br><code>marginTop</code> are provided, <code>marginTop</code> will be ignored.</p>
      *
@@ -319,9 +343,10 @@ public class PaperTooltip extends PolymerWidget {
      * 
      */
     public void setMarginTop(String value) {
-        getPolymerElement().setAttribute("margin-top", value);
+        Polymer.property(this.getPolymerElement(), "marginTop", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>The spacing between the top of the tooltip and the element it is<br>anchored to.</p>
      *
@@ -330,9 +355,10 @@ public class PaperTooltip extends PolymerWidget {
      * 
      */
     public void setOffset(String value) {
-        getPolymerElement().setAttribute("offset", value);
+        Polymer.property(this.getPolymerElement(), "offset", value);
     }
 
+    // Needed in UIBinder
     /**
      * <p>The delay that will be applied before the <code>entry</code> animation is<br>played when showing the tooltip.</p>
      *
@@ -341,21 +367,9 @@ public class PaperTooltip extends PolymerWidget {
      * 
      */
     public void setAnimationDelay(String value) {
-        getPolymerElement().setAttribute("animation-delay", value);
+        Polymer.property(this.getPolymerElement(), "animationDelay", value);
     }
 
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method updatePosition
-     * 
-     * 
-     */
-    public void updatePosition() {
-        getPolymerElement().updatePosition();
-    }
 
     /**
      * 
@@ -382,7 +396,7 @@ public class PaperTooltip extends PolymerWidget {
     }
 
     /**
-     * <p>Cancels the currently running animation.</p>
+     * <p>Cancels the currently running animations.</p>
      *
      * JavaScript Info:
      * @method cancelAnimation
@@ -391,6 +405,18 @@ public class PaperTooltip extends PolymerWidget {
      */
     public void cancelAnimation() {
         getPolymerElement().cancelAnimation();
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method updatePosition
+     * 
+     * 
+     */
+    public void updatePosition() {
+        getPolymerElement().updatePosition();
     }
 
     /**

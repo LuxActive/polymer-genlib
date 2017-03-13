@@ -5,19 +5,20 @@
  */
 package com.vaadin.polymer.paper.widget.event;
 
-import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.dom.client.DomEvent;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Fired when the radio group selection changes.</p>
  */
-public class PaperRadioGroupChangedEvent extends GwtEvent<PaperRadioGroupChangedEventHandler> {
+public class PaperRadioGroupChangedEvent extends DomEvent<PaperRadioGroupChangedEventHandler> {
 
-    public static Type<PaperRadioGroupChangedEventHandler> TYPE = new Type<PaperRadioGroupChangedEventHandler>();
+    public static Type<PaperRadioGroupChangedEventHandler> TYPE = new Type<PaperRadioGroupChangedEventHandler>(
+       com.vaadin.polymer.paper.event.PaperRadioGroupChangedEvent.NAME, new PaperRadioGroupChangedEvent());
 
-    private com.vaadin.polymer.paper.event.PaperRadioGroupChangedEvent nativeEvent;
 
-    public PaperRadioGroupChangedEvent(com.vaadin.polymer.paper.event.PaperRadioGroupChangedEvent nativeEvent) {
-        this.nativeEvent = nativeEvent;
+    public PaperRadioGroupChangedEvent() {
     }
 
     public Type<PaperRadioGroupChangedEventHandler> getAssociatedType() {
@@ -28,8 +29,9 @@ public class PaperRadioGroupChangedEvent extends GwtEvent<PaperRadioGroupChanged
         handler.onPaperRadioGroupChanged(this);
     }
 
-    public com.vaadin.polymer.paper.event.PaperRadioGroupChangedEvent getNativeEvent() {
-        return nativeEvent;
+    public com.vaadin.polymer.paper.event.PaperRadioGroupChangedEvent getPolymerEvent() {
+        return (com.vaadin.polymer.paper.event.PaperRadioGroupChangedEvent)super.getNativeEvent();
     }
+
 
 }

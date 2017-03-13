@@ -6,9 +6,8 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.safehtml.shared.SafeHtml;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.vaadin.polymer.elemental.Function;
+import com.vaadin.polymer.elemental.*;
 
 public class PolymerWidget extends HTMLPanel {
 
@@ -77,12 +76,42 @@ public class PolymerWidget extends HTMLPanel {
         return addDomHandler(handler, ClickEvent.getType());
     }
 
-    public void ready(Function f) {
+    public void ready(Function<?, ?> f) {
         Polymer.ready(getElement(), f);
     }
 
-    public void jsinteropError() {
-        Window.alert(
-            "GWT-Polymer ERROR: Double check that you are compiling your project with the `-XjsInteropMode JS` flag");
+    public void setClass(String clazz) {
+        getElement().setClassName(clazz);
+    }
+
+    public void setStyle(String style) {
+        getElement().setAttribute("style", style);
+    }
+
+    /**
+     * UiBinder catches the `setId` call in order to use it as a legacy way to set the `ui:field`.
+     * Since some Polymer elements use other elements id to enhance it like `paper-tooltip` we 
+     * maintain this method to directly declarative set custom ids.
+     */
+    public void setDomId(String id) {
+        getElement().setId(id);
+    }
+
+    public void setId(String id) {
+        getElement().setId(id);
+    }
+
+    public String getId() {
+        return getElement().getId();
+    }
+
+    /**
+     * Polymer’s custom property shim evaluates and applies custom property values once at element creation time.
+     * In order to have an element (and its subtree) re- evaluate custom property values due to dynamic changes
+     * such as application of CSS classes, etc., call updateStyles().
+     */
+    public void updateStyles() {
+        ((HTMLElement)getElement()).updateStyles();
     }
 }
+

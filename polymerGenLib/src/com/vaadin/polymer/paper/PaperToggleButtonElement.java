@@ -5,10 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/selection-controls.html#selection-controls-switch">Switch</a></p>
@@ -46,17 +48,32 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <tr>
  * <td><code>--paper-toggle-button-checked-bar-color</code></td>
  * <td>Slider button color when the input is checked</td>
- * <td><code>--default-primary-color</code></td>
+ * <td><code>--primary-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-toggle-button-checked-button-color</code></td>
  * <td>Button color when the input is checked</td>
- * <td><code>--default-primary-color</code></td>
+ * <td><code>--primary-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-toggle-button-checked-ink-color</code></td>
  * <td>Selected/focus ripple color when the input is checked</td>
- * <td><code>--default-primary-color</code></td>
+ * <td><code>--primary-color</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-toggle-button-invalid-bar-color</code></td>
+ * <td>Slider button color when the input is invalid</td>
+ * <td><code>--error-color</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-toggle-button-invalid-button-color</code></td>
+ * <td>Button color when the input is invalid</td>
+ * <td><code>--error-color</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-toggle-button-invalid-ink-color</code></td>
+ * <td>Selected/focus ripple color when the input is invalid</td>
+ * <td><code>--error-color</code></td>
  * </tr>
  * <tr>
  * <td><code>--paper-toggle-button-unchecked-bar</code></td>
@@ -69,6 +86,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <td><code>{}</code></td>
  * </tr>
  * <tr>
+ * <td><code>--paper-toggle-button-unchecked-ink</code></td>
+ * <td>Mixin applied to the ripple when the input is not checked</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
  * <td><code>--paper-toggle-button-checked-bar</code></td>
  * <td>Mixin applied to the slider when the input is checked</td>
  * <td><code>{}</code></td>
@@ -76,6 +98,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <tr>
  * <td><code>--paper-toggle-button-checked-button</code></td>
  * <td>Mixin applied to the slider button when the input is checked</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-toggle-button-checked-ink</code></td>
+ * <td>Mixin applied to the ripple when the input is checked</td>
  * <td><code>{}</code></td>
  * </tr>
  * <tr>
@@ -90,32 +117,14 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * </tr>
  * </tbody>
  * </table>
+ * <p>This element applies the mixin <code>--paper-font-common-base</code> but does not import <code>paper-styles/typography.html</code>.<br>In order to apply the <code>Roboto</code> font to this element, make sure you’ve imported <code>paper-styles/typography.html</code>.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperToggleButtonElement extends HTMLElement {
 
-    public static final String TAG = "paper-toggle-button";
-    public static final String SRC = "paper-toggle-button/paper-toggle-button.html";
+    @JsOverlay public static final String TAG = "paper-toggle-button";
+    @JsOverlay public static final String SRC = "paper-toggle-button/paper-toggle-button.html";
 
-
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty JavaScriptObject getKeyEventTarget();
-    /**
-     * <p>The HTMLElement that will be firing relevant KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type Object
-     * @behavior PaperTab
-     */
-    @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
     /**
      * 
@@ -123,7 +132,7 @@ public interface PaperToggleButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
@@ -132,142 +141,47 @@ public interface PaperToggleButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
     /**
-     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
-     * @property noink
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
+     */
+    @JsProperty JavaScriptObject getKeyEventTarget();
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setKeyEventTarget(JavaScriptObject value);
+
+    /**
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     *
+     * JavaScript Info:
+     * @property receivedFocusFromKeyboard
      * @type Boolean
      * @behavior PaperToggleButton
      */
-    @JsProperty boolean getNoink();
+    @JsProperty boolean getReceivedFocusFromKeyboard();
     /**
-     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
      *
      * JavaScript Info:
-     * @property noink
+     * @property receivedFocusFromKeyboard
      * @type Boolean
      * @behavior PaperToggleButton
      */
-    @JsProperty void setNoink(boolean value);
-
-    /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
-     *
-     * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getActive();
-    /**
-     * <p>If true, the button is a toggle and is currently in the active state.</p>
-     *
-     * JavaScript Info:
-     * @property active
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setActive(boolean value);
-
-    /**
-     * <p>If true, the user cannot interact with this element.</p>
-     *
-     * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getDisabled();
-    /**
-     * <p>If true, the user cannot interact with this element.</p>
-     *
-     * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setDisabled(boolean value);
-
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getFocused();
-    /**
-     * <p>If true, the element currently has focus.</p>
-     *
-     * JavaScript Info:
-     * @property focused
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setFocused(boolean value);
-
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getStopKeyboardEventPropagation();
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
-
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getPointerDown();
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setPointerDown(boolean value);
-
-    /**
-     * <p>Gets or sets the state, <code>true</code> is checked and <code>false</code> is unchecked.</p>
-     *
-     * JavaScript Info:
-     * @property checked
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty boolean getChecked();
-    /**
-     * <p>Gets or sets the state, <code>true</code> is checked and <code>false</code> is unchecked.</p>
-     *
-     * JavaScript Info:
-     * @property checked
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setChecked(boolean value);
+    @JsProperty void setReceivedFocusFromKeyboard(boolean value);
 
     /**
      * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
@@ -289,42 +203,23 @@ public interface PaperToggleButtonElement extends HTMLElement {
     @JsProperty void setToggles(boolean value);
 
     /**
-     * <p>True if the last call to <code>validate</code> is invalid.</p>
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
      *
      * JavaScript Info:
-     * @property invalid
+     * @property active
      * @type Boolean
      * @behavior PaperToggleButton
      */
-    @JsProperty boolean getInvalid();
+    @JsProperty boolean getActive();
     /**
-     * <p>True if the last call to <code>validate</code> is invalid.</p>
+     * <p>If true, the button is a toggle and is currently in the active state.</p>
      *
      * JavaScript Info:
-     * @property invalid
+     * @property active
      * @type Boolean
      * @behavior PaperToggleButton
      */
-    @JsProperty void setInvalid(boolean value);
-
-    /**
-     * <p>If true, the user is currently holding down the button.</p>
-     *
-     * JavaScript Info:
-     * @property pressed
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty boolean getPressed();
-    /**
-     * <p>If true, the user is currently holding down the button.</p>
-     *
-     * JavaScript Info:
-     * @property pressed
-     * @type Boolean
-     * @behavior PaperTab
-     */
-    @JsProperty void setPressed(boolean value);
+    @JsProperty void setActive(boolean value);
 
     /**
      * <p>Set to true to mark the input as required. If used in a form, a<br>custom element that uses this behavior should also use<br>Polymer.IronValidatableBehavior and define a custom validation method.<br>Otherwise, a <code>required</code> element will always be considered valid.<br>It’s also strongly recommended to provide a visual style for the element<br>when its value is invalid.</p>
@@ -346,23 +241,156 @@ public interface PaperToggleButtonElement extends HTMLElement {
     @JsProperty void setRequired(boolean value);
 
     /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
      *
      * JavaScript Info:
-     * @property receivedFocusFromKeyboard
+     * @property pointerDown
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
-    @JsProperty boolean getReceivedFocusFromKeyboard();
+    @JsProperty boolean getPointerDown();
     /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
      *
      * JavaScript Info:
-     * @property receivedFocusFromKeyboard
+     * @property pointerDown
      * @type Boolean
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
-    @JsProperty void setReceivedFocusFromKeyboard(boolean value);
+    @JsProperty void setPointerDown(boolean value);
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getStopKeyboardEventPropagation();
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
+
+    /**
+     * <p>If true, the user is currently holding down the button.</p>
+     *
+     * JavaScript Info:
+     * @property pressed
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getPressed();
+    /**
+     * <p>If true, the user is currently holding down the button.</p>
+     *
+     * JavaScript Info:
+     * @property pressed
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setPressed(boolean value);
+
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getFocused();
+    /**
+     * <p>If true, the element currently has focus.</p>
+     *
+     * JavaScript Info:
+     * @property focused
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setFocused(boolean value);
+
+    /**
+     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getNoink();
+    /**
+     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setNoink(boolean value);
+
+    /**
+     * <p>Gets or sets the state, <code>true</code> is checked and <code>false</code> is unchecked.</p>
+     *
+     * JavaScript Info:
+     * @property checked
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getChecked();
+    /**
+     * <p>Gets or sets the state, <code>true</code> is checked and <code>false</code> is unchecked.</p>
+     *
+     * JavaScript Info:
+     * @property checked
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setChecked(boolean value);
+
+    /**
+     * <p>True if the last call to <code>validate</code> is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property invalid
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getInvalid();
+    /**
+     * <p>True if the last call to <code>validate</code> is invalid.</p>
+     *
+     * JavaScript Info:
+     * @property invalid
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setInvalid(boolean value);
+
+    /**
+     * <p>If true, the user cannot interact with this element.</p>
+     *
+     * JavaScript Info:
+     * @property disabled
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty boolean getDisabled();
+    /**
+     * <p>If true, the user cannot interact with this element.</p>
+     *
+     * JavaScript Info:
+     * @property disabled
+     * @type Boolean
+     * @behavior PaperToggleButton
+     */
+    @JsProperty void setDisabled(boolean value);
 
     /**
      * <p>The value for this element.</p>
@@ -408,7 +436,7 @@ public interface PaperToggleButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty String getAriaActiveAttribute();
     /**
@@ -417,7 +445,7 @@ public interface PaperToggleButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      */
     @JsProperty void setAriaActiveAttribute(String value);
 
@@ -441,7 +469,7 @@ public interface PaperToggleButtonElement extends HTMLElement {
     @JsProperty void setValidator(String value);
 
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -450,7 +478,7 @@ public interface PaperToggleButtonElement extends HTMLElement {
      */
     @JsProperty String getValidatorType();
     /**
-     * <p>Namespace for this validator.</p>
+     * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
      *
      * JavaScript Info:
      * @property validatorType
@@ -467,22 +495,10 @@ public interface PaperToggleButtonElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {} event  
-     * @param {} eventString  
-     * @behavior PaperTab
-     * 
-     */
-    void keyboardEventMatchesKeys(Object event, Object eventString);
 
     /**
      * <p>Returns the <code>&lt;paper-ripple&gt;</code> element used by this element to create<br>ripple effects. The element’s ripple is created on demand, when<br>necessary, and calling this method will force the<br>ripple to be created.</p>
@@ -509,7 +525,7 @@ public interface PaperToggleButtonElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperTab
+     * @behavior PaperToggleButton
      * 
      */
     void removeOwnKeyBindings();
@@ -525,6 +541,29 @@ public interface PaperToggleButtonElement extends HTMLElement {
     boolean hasValidator();
 
     /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperToggleButton
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
+
+    /**
+     * <p>Ensures this element contains a ripple effect. For startup efficiency<br>the ripple effect is dynamically on demand when needed.</p>
+     *
+     * JavaScript Info:
+     * @method ensureRipple
+     * @param {!Event=} optTriggeringEvent  
+     * @behavior PaperToggleButton
+     * 
+     */
+    void ensureRipple(JavaScriptObject optTriggeringEvent);
+
+    /**
      * <p>Returns true if the <code>value</code> is valid, and updates <code>invalid</code>. If you want<br>your element to have custom validation logic, do not override this method;<br>override <code>_getValidity(value)</code> instead.</p>
      *
      * JavaScript Info:
@@ -534,16 +573,5 @@ public interface PaperToggleButtonElement extends HTMLElement {
      * @return {boolean}
      */
     boolean validate(JavaScriptObject value);
-
-    /**
-     * <p>Ensures this element contains a ripple effect. For startup efficiency<br>the ripple effect is dynamically on demand when needed.</p>
-     *
-     * JavaScript Info:
-     * @method ensureRipple
-     * @param {!Event=} optTriggeringEvent  
-     * @behavior PaperTab
-     * 
-     */
-    void ensureRipple(JavaScriptObject optTriggeringEvent);
 
 }

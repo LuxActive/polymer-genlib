@@ -5,18 +5,22 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * <p><code>Polymer.IronMenuBehavior</code> implements accessible menu behavior.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronMenuBehavior {
 
-    public static final String TAG = "Polymer.IronMenuBehavior";
-    public static final String SRC = "iron-menu-behavior/iron-menubar-behavior.html";
+    @JsOverlay public static final String NAME = "Polymer.IronMenuBehavior";
+    @JsOverlay public static final String SRC = "iron-menu-behavior/iron-menu-behavior.html";
 
 
     /**
@@ -25,7 +29,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @property focusedItem
      * @type ?Object
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty JavaScriptObject getFocusedItem();
     /**
@@ -34,7 +38,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @property focusedItem
      * @type ?Object
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty void setFocusedItem(JavaScriptObject value);
 
@@ -44,7 +48,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
@@ -53,7 +57,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
@@ -63,7 +67,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @property attrForItemTitle
      * @type String
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty String getAttrForItemTitle();
     /**
@@ -72,7 +76,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @property attrForItemTitle
      * @type String
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty void setAttrForItemTitle(String value);
 
@@ -82,10 +86,10 @@ public interface IronMenuBehavior {
      *
      * JavaScript Info:
      * @method select
-     * @param {string} value  
-     * 
+     * @param {(string|number)} value  
+     * @behavior PaperTabs
      * 
      */
-    void select(String value);
+    void select(Object value);
 
 }

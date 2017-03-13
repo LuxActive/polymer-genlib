@@ -5,8 +5,14 @@
  */
 package com.vaadin.polymer.iron.widget;
 
+import com.vaadin.polymer.iron.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.iron.IronMediaQueryElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p><code>iron-media-query</code> can be used to data bind to a CSS media query.<br>The <code>query</code> property is a bare CSS media query.<br>The <code>query-matches</code> property is a boolean representing whether the page matches that media query.</p>
@@ -29,19 +35,13 @@ public class IronMediaQuery extends PolymerWidget {
      */
     public IronMediaQuery(String html) {
         super(IronMediaQueryElement.TAG, IronMediaQueryElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public IronMediaQueryElement getPolymerElement() {
-        try {
-            return (IronMediaQueryElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (IronMediaQueryElement) getElement();
     }
 
 

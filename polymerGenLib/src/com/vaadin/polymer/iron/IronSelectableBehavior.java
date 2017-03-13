@@ -5,19 +5,22 @@
  */
 package com.vaadin.polymer.iron;
 
+import com.vaadin.polymer.elemental.*;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
 
 /**
  * 
  */
-@JsType
+@JsType(isNative=true)
 public interface IronSelectableBehavior {
 
-    public static final String TAG = "Polymer.IronSelectableBehavior";
-    public static final String SRC = "iron-selector/iron-selector.html";
+    @JsOverlay public static final String NAME = "Polymer.IronSelectableBehavior";
+    @JsOverlay public static final String SRC = "iron-selector/iron-selectable.html";
 
 
     /**
@@ -26,7 +29,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property items
      * @type Array
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty JsArray getItems();
     /**
@@ -35,7 +38,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property items
      * @type Array
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty void setItems(JsArray value);
 
@@ -45,7 +48,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectedItem
      * @type ?Object
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty JavaScriptObject getSelectedItem();
     /**
@@ -54,7 +57,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectedItem
      * @type ?Object
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty void setSelectedItem(JavaScriptObject value);
 
@@ -63,38 +66,19 @@ public interface IronSelectableBehavior {
      *
      * JavaScript Info:
      * @property selected
-     * @type String
-     * 
+     * @type (string|number)
+     * @behavior PaperTabs
      */
-    @JsProperty String getSelected();
+    @JsProperty Object getSelected();
     /**
      * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
      * @property selected
-     * @type String
-     * 
+     * @type (string|number)
+     * @behavior PaperTabs
      */
-    @JsProperty void setSelected(String value);
-
-    /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * 
-     */
-    @JsProperty String getSelectedAttribute();
-    /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * 
-     */
-    @JsProperty void setSelectedAttribute(String value);
+    @JsProperty void setSelected(Object value);
 
     /**
      * <p>The class to set on elements when selected.</p>
@@ -102,7 +86,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectedClass
      * @type String
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty String getSelectedClass();
     /**
@@ -111,45 +95,45 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectedClass
      * @type String
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty void setSelectedClass(String value);
 
     /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property activateEvent
+     * @property selectedAttribute
      * @type String
-     * 
+     * @behavior PaperTabs
      */
-    @JsProperty String getActivateEvent();
+    @JsProperty String getSelectedAttribute();
     /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property activateEvent
+     * @property selectedAttribute
      * @type String
-     * 
+     * @behavior PaperTabs
      */
-    @JsProperty void setActivateEvent(String value);
+    @JsProperty void setSelectedAttribute(String value);
 
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
      * @type String
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty String getAttrForSelected();
     /**
-     * <p>If you want to use the attribute value of an element for <code>selected</code> instead of the index,<br>set this to the name of the attribute.</p>
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
      *
      * JavaScript Info:
      * @property attrForSelected
      * @type String
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty void setAttrForSelected(String value);
 
@@ -159,7 +143,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectable
      * @type string
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty String getSelectable();
     /**
@@ -168,41 +152,102 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectable
      * @type string
-     * 
+     * @behavior PaperTabs
      */
     @JsProperty void setSelectable(String value);
 
-
     /**
-     * <p>Selects the next item.</p>
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
      *
      * JavaScript Info:
-     * @method selectNext
-     * 
-     * 
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
      */
-    void selectNext();
-
+    @JsProperty String getFallbackSelection();
     /**
-     * <p>Selects the previous item.</p>
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
      *
      * JavaScript Info:
-     * @method selectPrevious
-     * 
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setFallbackSelection(String value);
+
+    /**
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     *
+     * JavaScript Info:
+     * @property activateEvent
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getActivateEvent();
+    /**
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     *
+     * JavaScript Info:
+     * @property activateEvent
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setActivateEvent(String value);
+
+
+    /**
+     * <p>Selects the item at the given index.</p>
+     *
+     * JavaScript Info:
+     * @method selectIndex
+     * @param {} index  
+     * @behavior PaperTabs
      * 
      */
-    void selectPrevious();
+    void selectIndex(Object index);
 
     /**
      * <p>Selects the given value.</p>
      *
      * JavaScript Info:
      * @method select
-     * @param {string} value  
-     * 
+     * @param {(string|number)} value  
+     * @behavior PaperTabs
      * 
      */
-    void select(String value);
+    void select(Object value);
+
+    /**
+     * <p>Force a synchronous update of the <code>items</code> property.</p>
+     * <p>NOTE: Consider listening for the <code>iron-items-changed</code> event to respond to<br>updates to the set of selectable items after updates to the DOM list and<br>selection state have been made.</p>
+     * <p>WARNING: If you are using this method, you should probably consider an<br>alternate approach. Synchronously querying for items is potentially<br>slow for many use cases. The <code>items</code> property will update asynchronously<br>on its own to reflect selectable items in the DOM.</p>
+     *
+     * JavaScript Info:
+     * @method forceSynchronousItemUpdate
+     * @behavior PaperTabs
+     * 
+     */
+    void forceSynchronousItemUpdate();
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * @behavior PaperTabs
+     * 
+     */
+    void selectPrevious();
+
+    /**
+     * <p>Selects the next item.</p>
+     *
+     * JavaScript Info:
+     * @method selectNext
+     * @behavior PaperTabs
+     * 
+     */
+    void selectNext();
 
     /**
      * <p>Returns the index of the given item.</p>
@@ -210,7 +255,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @method indexOf
      * @param {Object} item  
-     * 
+     * @behavior PaperTabs
      * 
      */
     void indexOf(JavaScriptObject item);

@@ -5,25 +5,33 @@
  */
 package com.vaadin.polymer.iron.event;
 
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.Event;
-import com.vaadin.polymer.elemental.EventListener;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
- * <p>Fired when the <code>iron-overlay</code> is canceled, but before it is closed.<br>Cancel the event to prevent the <code>iron-overlay</code> from closing.</p>
+ * <p>Fired when the overlay is canceled, but before it is closed.</p>
  */
-@JsType
+@JsType(isNative=true)
 public interface IronOverlayCanceledEvent extends Event {
 
-    static final String NAME = "iron-overlay-canceled";
+    @JsOverlay static final String NAME = "iron-overlay-canceled";
 
+    @Override
+    @JsProperty
+    Detail getDetail();
 
-    public abstract class Listener implements EventListener {
-        protected abstract void handleEvent(IronOverlayCanceledEvent event);
+    @JsType(isNative=true)
+    interface Detail extends Event.Detail {
 
-        @Override
-        public void handleEvent(Event event) {
-            handleEvent((IronOverlayCanceledEvent) event);
-        }
+        /**
+         * <p>The closing of the overlay can be prevented<br>by calling <code>event.preventDefault()</code>. The <code>event.detail</code> is the original event that<br>originated the canceling (e.g. ESC keyboard event or click event outside the overlay).</p>
+         */
+        @JsProperty JavaScriptObject getEvent();
+
     }
+
 }

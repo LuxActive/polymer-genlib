@@ -5,8 +5,14 @@
  */
 package com.vaadin.polymer.polymer.widget;
 
+import com.vaadin.polymer.polymer.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.polymer.DomBindElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * 
@@ -24,21 +30,38 @@ public class DomBind extends PolymerWidget {
      */
     public DomBind(String html) {
         super(DomBindElement.TAG, DomBindElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public DomBindElement getPolymerElement() {
-        try {
-            return (DomBindElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (DomBindElement) getElement();
     }
 
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property notifyDomChange
+     * @type Boolean
+     * 
+     */
+    public boolean getNotifyDomChange() {
+        return getPolymerElement().getNotifyDomChange();
+    }
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property notifyDomChange
+     * @type Boolean
+     * 
+     */
+    public void setNotifyDomChange(boolean value) {
+        getPolymerElement().setNotifyDomChange(value);
+    }
 
 
 

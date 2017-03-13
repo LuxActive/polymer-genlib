@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>polymerGenLib</groupId>
 	<artifactId>polymerGenLib</artifactId>
-	<version>1.0</version>
+	<version>1.5</version>
 	<packaging>jar</packaging>
 
 	<properties>
-		<gwt.version>2.8.0-SNAPSHOT</gwt.version>
+		<gwt.version>2.8.0</gwt.version>
 	</properties>
 
 	<build>

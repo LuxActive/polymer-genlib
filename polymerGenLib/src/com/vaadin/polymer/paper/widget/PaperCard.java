@@ -5,8 +5,14 @@
  */
 package com.vaadin.polymer.paper.widget;
 
+import com.vaadin.polymer.paper.*;
+
+import com.vaadin.polymer.*;
+import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.PolymerWidget;
-import com.vaadin.polymer.paper.PaperCardElement;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/cards.html">Cards</a></p>
@@ -21,7 +27,7 @@ import com.vaadin.polymer.paper.PaperCardElement;
  * 
  * 
  * </code></pre><p>Example - top card image:</p>
- * <pre><code>&lt;paper-card heading=&quot;Card Title&quot; image=&quot;/path/to/image.png&quot;&gt;
+ * <pre><code>&lt;paper-card heading=&quot;Card Title&quot; image=&quot;/path/to/image.png&quot; alt=&quot;image&quot;&gt;
  *   ...
  * &lt;/paper-card&gt;
  * 
@@ -39,6 +45,11 @@ import com.vaadin.polymer.paper.PaperCardElement;
  * </tr>
  * </thead>
  * <tbody>
+ * <tr>
+ * <td><code>--paper-card-background-color</code></td>
+ * <td>The background color of the card</td>
+ * <td><code>--primary-background-color</code></td>
+ * </tr>
  * <tr>
  * <td><code>--paper-card-header-color</code></td>
  * <td>The color of the header text</td>
@@ -95,19 +106,13 @@ public class PaperCard extends PolymerWidget {
      */
     public PaperCard(String html) {
         super(PaperCardElement.TAG, PaperCardElement.SRC, html);
-
     }
 
     /**
      * Gets a handle to the Polymer object's underlying DOM element.
      */
     public PaperCardElement getPolymerElement() {
-        try {
-            return (PaperCardElement) getElement();
-        } catch (ClassCastException e) {
-            jsinteropError();
-            return null;
-        }
+        return (PaperCardElement) getElement();
     }
 
 
@@ -227,6 +232,29 @@ public class PaperCard extends PolymerWidget {
     }
 
     /**
+     * <p>The text alternative of the card’s title image.</p>
+     *
+     * JavaScript Info:
+     * @property alt
+     * @type String
+     * 
+     */
+    public String getAlt() {
+        return getPolymerElement().getAlt();
+    }
+    /**
+     * <p>The text alternative of the card’s title image.</p>
+     *
+     * JavaScript Info:
+     * @property alt
+     * @type String
+     * 
+     */
+    public void setAlt(String value) {
+        getPolymerElement().setAlt(value);
+    }
+
+    /**
      * <p>The title of the card.</p>
      *
      * JavaScript Info:
@@ -272,7 +300,31 @@ public class PaperCard extends PolymerWidget {
         getPolymerElement().setImage(value);
     }
 
+    /**
+     * <p>This image will be used as a background/placeholder until the src image has<br>loaded. Use of a data-URI for placeholder is encouraged for instant rendering.</p>
+     *
+     * JavaScript Info:
+     * @property placeholderImage
+     * @type String
+     * 
+     */
+    public String getPlaceholderImage() {
+        return getPolymerElement().getPlaceholderImage();
+    }
+    /**
+     * <p>This image will be used as a background/placeholder until the src image has<br>loaded. Use of a data-URI for placeholder is encouraged for instant rendering.</p>
+     *
+     * JavaScript Info:
+     * @property placeholderImage
+     * @type String
+     * 
+     */
+    public void setPlaceholderImage(String value) {
+        getPolymerElement().setPlaceholderImage(value);
+    }
 
+
+    // Needed in UIBinder
     /**
      * <p>The z-depth of the card, from 0-5.</p>
      *
@@ -281,7 +333,7 @@ public class PaperCard extends PolymerWidget {
      * 
      */
     public void setElevation(String value) {
-        getPolymerElement().setAttribute("elevation", value);
+        Polymer.property(this.getPolymerElement(), "elevation", value);
     }
 
 

@@ -5,9 +5,12 @@
  */
 package com.vaadin.polymer.paper;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-import com.vaadin.polymer.elemental.HTMLElement;
+import com.vaadin.polymer.elemental.*;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * <p><code>paper-header-panel</code> contains a header section and a content panel section.</p>
@@ -100,6 +103,13 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * }
  * 
  * 
+ * </code></pre><p>To change the panel container:</p>
+ * <pre><code>paper-header-panel {
+ *   --paper-header-panel-container: {
+ *     border: 1px solid gray;
+ *   };
+ * 
+ * 
  * </code></pre><p>To change the panel container in different modes:</p>
  * <pre><code>paper-header-panel {
  *   --paper-header-panel-standard-container: {
@@ -149,6 +159,11 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <td><code>{}</code></td>
  * </tr>
  * <tr>
+ * <td><code>--paper-header-panel-container</code></td>
+ * <td>Mixin applied to the container in any mode</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
  * <td><code>--paper-header-panel-scroll-container</code></td>
  * <td>Mixin applied to the container when in scroll mode</td>
  * <td><code>{}</code></td>
@@ -178,14 +193,19 @@ import com.vaadin.polymer.elemental.HTMLElement;
  * <td>Mixin applied to the container when in tall waterfall mode</td>
  * <td><code>{}</code></td>
  * </tr>
+ * <tr>
+ * <td><code>--paper-header-panel-shadow</code></td>
+ * <td>Mixin applied to the waterfall shadow</td>
+ * <td><code>{}</code></td>
+ * </tr>
  * </tbody>
  * </table>
  */
-@JsType
+@JsType(isNative=true)
 public interface PaperHeaderPanelElement extends HTMLElement {
 
-    public static final String TAG = "paper-header-panel";
-    public static final String SRC = "paper-header-panel/paper-header-panel.html";
+    @JsOverlay public static final String TAG = "paper-header-panel";
+    @JsOverlay public static final String SRC = "paper-header-panel/paper-header-panel.html";
 
 
     /**
