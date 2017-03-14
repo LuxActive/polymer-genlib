@@ -43,6 +43,7 @@
     "paper-date-picker-item": "Collaborne/paper-date-picker-item#1.3.0",
     "bwt-uploader": "bluewatertracks/bwt-uploader#0.9.9",
     "pdf-browser-viewer": "IngressoRapidoWebComponents/pdf-browser-viewer#1.0.6",
-    "transburger-icon": "kcmr/transburger-icon#2.0.0"
+    "transburger-icon": "kcmr/transburger-icon#2.0.0",
+    "iron-swipeable-pages": "GeoloeG/iron-swipeable-pages#1.2.8"
   }
 }

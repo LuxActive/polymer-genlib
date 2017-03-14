@@ -1,7 +1,7 @@
 /*
  * This code was generated with Vaadin Web Component GWT API Generator, 
- * from paper-tabs project by The Polymer Authors
- * that is licensed with http://polymer.github.io/LICENSE.txt license.
+ * from iron-swipeable-pages project by Pascal Gula aka MeTaNoV <pascal.gula@gmail.com>
+ * that is licensed with MIT license.
  */
 package com.vaadin.polymer.iron.event;
 

@@ -74,7 +74,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property multi
      * @type Boolean
-     * @behavior PaperTabs
+     * @behavior IronSelector
      */
     @JsProperty boolean getMulti();
     /**
@@ -83,7 +83,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property multi
      * @type Boolean
-     * @behavior PaperTabs
+     * @behavior IronSelector
      */
     @JsProperty void setMulti(boolean value);
 
@@ -93,7 +93,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedItems
      * @type Array
-     * @behavior PaperTabs
+     * @behavior IronSelector
      */
     @JsProperty JsArray getSelectedItems();
     /**
@@ -102,7 +102,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedItems
      * @type Array
-     * @behavior PaperTabs
+     * @behavior IronSelector
      */
     @JsProperty void setSelectedItems(JsArray value);
 
@@ -112,7 +112,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedValues
      * @type Array
-     * @behavior PaperTabs
+     * @behavior IronSelector
      */
     @JsProperty JsArray getSelectedValues();
     /**
@@ -121,7 +121,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedValues
      * @type Array
-     * @behavior PaperTabs
+     * @behavior IronSelector
      */
     @JsProperty void setSelectedValues(JsArray value);
 
@@ -131,7 +131,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property items
      * @type Array
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty JsArray getItems();
     /**
@@ -140,7 +140,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property items
      * @type Array
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty void setItems(JsArray value);
 
@@ -150,7 +150,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selected
      * @type (string|number)
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty Object getSelected();
     /**
@@ -159,7 +159,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selected
      * @type (string|number)
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty void setSelected(Object value);
 
@@ -169,7 +169,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedItem
      * @type ?Object
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty JavaScriptObject getSelectedItem();
     /**
@@ -178,7 +178,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedItem
      * @type ?Object
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty void setSelectedItem(JavaScriptObject value);
 
@@ -188,7 +188,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedClass
      * @type String
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty String getSelectedClass();
     /**
@@ -197,7 +197,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedClass
      * @type String
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty void setSelectedClass(String value);
 
@@ -207,7 +207,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedAttribute
      * @type String
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty String getSelectedAttribute();
     /**
@@ -216,7 +216,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedAttribute
      * @type String
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty void setSelectedAttribute(String value);
 
@@ -226,7 +226,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectable
      * @type string
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty String getSelectable();
     /**
@@ -235,7 +235,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectable
      * @type string
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty void setSelectable(String value);
 
@@ -245,7 +245,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property fallbackSelection
      * @type String
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty String getFallbackSelection();
     /**
@@ -254,7 +254,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property fallbackSelection
      * @type String
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty void setFallbackSelection(String value);
 
@@ -264,7 +264,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property attrForSelected
      * @type String
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty String getAttrForSelected();
     /**
@@ -273,7 +273,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property attrForSelected
      * @type String
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty void setAttrForSelected(String value);
 
@@ -283,7 +283,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property activateEvent
      * @type String
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty String getActivateEvent();
     /**
@@ -292,7 +292,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property activateEvent
      * @type String
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      */
     @JsProperty void setActivateEvent(String value);
 
@@ -303,7 +303,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @method multiChanged
      * @param {} multi  
-     * @behavior PaperTabs
+     * @behavior IronSelector
      * 
      */
     void multiChanged(Object multi);
@@ -314,7 +314,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @method selectIndex
      * @param {} index  
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      * 
      */
     void selectIndex(Object index);
@@ -325,7 +325,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @method select
      * @param {(string|number)} value  
-     * @behavior PaperTabs
+     * @behavior IronSelector
      * 
      */
     void select(Object value);
@@ -335,7 +335,7 @@ public interface IronSelectorElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method selectPrevious
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      * 
      */
     void selectPrevious();
@@ -345,7 +345,7 @@ public interface IronSelectorElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method selectNext
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      * 
      */
     void selectNext();
@@ -357,7 +357,7 @@ public interface IronSelectorElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method forceSynchronousItemUpdate
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      * 
      */
     void forceSynchronousItemUpdate();
@@ -368,7 +368,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @method indexOf
      * @param {Object} item  
-     * @behavior PaperTabs
+     * @behavior IronSwipeablePages
      * 
      */
     void indexOf(JavaScriptObject item);

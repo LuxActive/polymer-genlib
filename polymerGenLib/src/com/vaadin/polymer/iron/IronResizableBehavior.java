@@ -32,7 +32,7 @@ public interface IronResizableBehavior {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * 
+     * @behavior IronSwipeablePages
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -43,7 +43,7 @@ public interface IronResizableBehavior {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * 
+     * @behavior IronSwipeablePages
      * 
      */
     void stopResizeNotificationsFor(Object target);
@@ -54,7 +54,7 @@ public interface IronResizableBehavior {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * 
+     * @behavior IronSwipeablePages
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);
@@ -64,7 +64,7 @@ public interface IronResizableBehavior {
      *
      * JavaScript Info:
      * @method notifyResize
-     * 
+     * @behavior IronSwipeablePages
      * 
      */
     void notifyResize();

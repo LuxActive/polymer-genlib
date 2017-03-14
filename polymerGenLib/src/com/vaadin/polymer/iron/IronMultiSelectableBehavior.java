@@ -29,7 +29,7 @@ public interface IronMultiSelectableBehavior {
      * JavaScript Info:
      * @property multi
      * @type Boolean
-     * @behavior PaperTabs
+     * @behavior IronSelector
      */
     @JsProperty boolean getMulti();
     /**
@@ -38,7 +38,7 @@ public interface IronMultiSelectableBehavior {
      * JavaScript Info:
      * @property multi
      * @type Boolean
-     * @behavior PaperTabs
+     * @behavior IronSelector
      */
     @JsProperty void setMulti(boolean value);
 
@@ -48,7 +48,7 @@ public interface IronMultiSelectableBehavior {
      * JavaScript Info:
      * @property selectedItems
      * @type Array
-     * @behavior PaperTabs
+     * @behavior IronSelector
      */
     @JsProperty JsArray getSelectedItems();
     /**
@@ -57,7 +57,7 @@ public interface IronMultiSelectableBehavior {
      * JavaScript Info:
      * @property selectedItems
      * @type Array
-     * @behavior PaperTabs
+     * @behavior IronSelector
      */
     @JsProperty void setSelectedItems(JsArray value);
 
@@ -67,7 +67,7 @@ public interface IronMultiSelectableBehavior {
      * JavaScript Info:
      * @property selectedValues
      * @type Array
-     * @behavior PaperTabs
+     * @behavior IronSelector
      */
     @JsProperty JsArray getSelectedValues();
     /**
@@ -76,7 +76,7 @@ public interface IronMultiSelectableBehavior {
      * JavaScript Info:
      * @property selectedValues
      * @type Array
-     * @behavior PaperTabs
+     * @behavior IronSelector
      */
     @JsProperty void setSelectedValues(JsArray value);
 
@@ -87,7 +87,7 @@ public interface IronMultiSelectableBehavior {
      * JavaScript Info:
      * @method multiChanged
      * @param {} multi  
-     * @behavior PaperTabs
+     * @behavior IronSelector
      * 
      */
     void multiChanged(Object multi);
@@ -98,7 +98,7 @@ public interface IronMultiSelectableBehavior {
      * JavaScript Info:
      * @method select
      * @param {(string|number)} value  
-     * @behavior PaperTabs
+     * @behavior IronSelector
      * 
      */
     void select(Object value);
