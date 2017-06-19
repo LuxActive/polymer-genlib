@@ -81,56 +81,6 @@ public class PaperDialog extends PolymerWidget {
 
 
     /**
-     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
-     *
-     * JavaScript Info:
-     * @property sizingTarget
-     * @type !Element
-     * @behavior PaperToast
-     */
-    public JavaScriptObject getSizingTarget() {
-        return getPolymerElement().getSizingTarget();
-    }
-    /**
-     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
-     *
-     * JavaScript Info:
-     * @property sizingTarget
-     * @type !Element
-     * @behavior PaperToast
-     */
-    public void setSizingTarget(JavaScriptObject value) {
-        getPolymerElement().setSizingTarget(value);
-    }
-
-    /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
-     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
-     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
-     *
-     * JavaScript Info:
-     * @property horizontalOffset
-     * @type Number
-     * @behavior PaperToast
-     */
-    public double getHorizontalOffset() {
-        return getPolymerElement().getHorizontalOffset();
-    }
-    /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
-     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
-     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
-     *
-     * JavaScript Info:
-     * @property horizontalOffset
-     * @type Number
-     * @behavior PaperToast
-     */
-    public void setHorizontalOffset(double value) {
-        getPolymerElement().setHorizontalOffset(value);
-    }
-
-    /**
      * <p>The backdrop element.</p>
      *
      * JavaScript Info:
@@ -154,30 +104,72 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
-     * <p>If <code>verticalAlign</code> is “top”, this offset will increase or decrease<br>the distance to the top side of the screen: a negative offset will<br>move the dropdown upwards; a positive one, downwards.</p>
-     * <p>Conversely if <code>verticalAlign</code> is “bottom”, this offset will increase<br>or decrease the distance to the bottom side of the screen: a negative<br>offset will move the dropdown downwards; a positive one, upwards.</p>
+     * <p>True if the overlay was canceled when it was last closed.</p>
      *
      * JavaScript Info:
-     * @property verticalOffset
-     * @type Number
+     * @property canceled
+     * @type Boolean
      * @behavior PaperToast
      */
-    public double getVerticalOffset() {
-        return getPolymerElement().getVerticalOffset();
+    public boolean getCanceled() {
+        return getPolymerElement().getCanceled();
     }
     /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
-     * <p>If <code>verticalAlign</code> is “top”, this offset will increase or decrease<br>the distance to the top side of the screen: a negative offset will<br>move the dropdown upwards; a positive one, downwards.</p>
-     * <p>Conversely if <code>verticalAlign</code> is “bottom”, this offset will increase<br>or decrease the distance to the bottom side of the screen: a negative<br>offset will move the dropdown downwards; a positive one, upwards.</p>
+     * <p>True if the overlay was canceled when it was last closed.</p>
      *
      * JavaScript Info:
-     * @property verticalOffset
-     * @type Number
+     * @property canceled
+     * @type Boolean
      * @behavior PaperToast
      */
-    public void setVerticalOffset(double value) {
-        getPolymerElement().setVerticalOffset(value);
+    public void setCanceled(boolean value) {
+        getPolymerElement().setCanceled(value);
+    }
+
+    /**
+     * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
+     *
+     * JavaScript Info:
+     * @property noAutoFocus
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public boolean getNoAutoFocus() {
+        return getPolymerElement().getNoAutoFocus();
+    }
+    /**
+     * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
+     *
+     * JavaScript Info:
+     * @property noAutoFocus
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public void setNoAutoFocus(boolean value) {
+        getPolymerElement().setNoAutoFocus(value);
+    }
+
+    /**
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnEscKey
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public boolean getNoCancelOnEscKey() {
+        return getPolymerElement().getNoCancelOnEscKey();
+    }
+    /**
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnEscKey
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public void setNoCancelOnEscKey(boolean value) {
+        getPolymerElement().setNoCancelOnEscKey(value);
     }
 
     /**
@@ -296,52 +288,6 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
-     *
-     * JavaScript Info:
-     * @property dynamicAlign
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public boolean getDynamicAlign() {
-        return getPolymerElement().getDynamicAlign();
-    }
-    /**
-     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
-     *
-     * JavaScript Info:
-     * @property dynamicAlign
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public void setDynamicAlign(boolean value) {
-        getPolymerElement().setDynamicAlign(value);
-    }
-
-    /**
-     * <p>True if the overlay was canceled when it was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property canceled
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public boolean getCanceled() {
-        return getPolymerElement().getCanceled();
-    }
-    /**
-     * <p>True if the overlay was canceled when it was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property canceled
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public void setCanceled(boolean value) {
-        getPolymerElement().setCanceled(value);
-    }
-
-    /**
      * <p>Set to true to keep overlay always on top.</p>
      *
      * JavaScript Info:
@@ -362,52 +308,6 @@ public class PaperDialog extends PolymerWidget {
      */
     public void setAlwaysOnTop(boolean value) {
         getPolymerElement().setAlwaysOnTop(value);
-    }
-
-    /**
-     * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
-     *
-     * JavaScript Info:
-     * @property noAutoFocus
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public boolean getNoAutoFocus() {
-        return getPolymerElement().getNoAutoFocus();
-    }
-    /**
-     * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
-     *
-     * JavaScript Info:
-     * @property noAutoFocus
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public void setNoAutoFocus(boolean value) {
-        getPolymerElement().setNoAutoFocus(value);
-    }
-
-    /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
-     *
-     * JavaScript Info:
-     * @property noCancelOnEscKey
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public boolean getNoCancelOnEscKey() {
-        return getPolymerElement().getNoCancelOnEscKey();
-    }
-    /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
-     *
-     * JavaScript Info:
-     * @property noCancelOnEscKey
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    public void setNoCancelOnEscKey(boolean value) {
-        getPolymerElement().setNoCancelOnEscKey(value);
     }
 
     /**
@@ -457,6 +357,29 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
+     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
+     *
+     * JavaScript Info:
+     * @property dynamicAlign
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public boolean getDynamicAlign() {
+        return getPolymerElement().getDynamicAlign();
+    }
+    /**
+     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
+     *
+     * JavaScript Info:
+     * @property dynamicAlign
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    public void setDynamicAlign(boolean value) {
+        getPolymerElement().setDynamicAlign(value);
+    }
+
+    /**
      * <p>Animation configuration. See README for more info.</p>
      *
      * JavaScript Info:
@@ -477,6 +400,29 @@ public class PaperDialog extends PolymerWidget {
      */
     public void setAnimationConfig(JavaScriptObject value) {
         getPolymerElement().setAnimationConfig(value);
+    }
+
+    /**
+     * <p>The element to fit <code>this</code> into.</p>
+     *
+     * JavaScript Info:
+     * @property fitInto
+     * @type Object
+     * @behavior PaperToast
+     */
+    public JavaScriptObject getFitInto() {
+        return getPolymerElement().getFitInto();
+    }
+    /**
+     * <p>The element to fit <code>this</code> into.</p>
+     *
+     * JavaScript Info:
+     * @property fitInto
+     * @type Object
+     * @behavior PaperToast
+     */
+    public void setFitInto(JavaScriptObject value) {
+        getPolymerElement().setFitInto(value);
     }
 
     /**
@@ -526,26 +472,126 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>The element to fit <code>this</code> into.</p>
+     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
      *
      * JavaScript Info:
-     * @property fitInto
-     * @type Object
+     * @property sizingTarget
+     * @type !Element
      * @behavior PaperToast
      */
-    public JavaScriptObject getFitInto() {
-        return getPolymerElement().getFitInto();
+    public JavaScriptObject getSizingTarget() {
+        return getPolymerElement().getSizingTarget();
     }
     /**
-     * <p>The element to fit <code>this</code> into.</p>
+     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
      *
      * JavaScript Info:
-     * @property fitInto
-     * @type Object
+     * @property sizingTarget
+     * @type !Element
      * @behavior PaperToast
      */
-    public void setFitInto(JavaScriptObject value) {
-        getPolymerElement().setFitInto(value);
+    public void setSizingTarget(JavaScriptObject value) {
+        getPolymerElement().setSizingTarget(value);
+    }
+
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
+     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
+     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    public double getHorizontalOffset() {
+        return getPolymerElement().getHorizontalOffset();
+    }
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
+     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
+     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    public void setHorizontalOffset(double value) {
+        getPolymerElement().setHorizontalOffset(value);
+    }
+
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
+     * <p>If <code>verticalAlign</code> is “top”, this offset will increase or decrease<br>the distance to the top side of the screen: a negative offset will<br>move the dropdown upwards; a positive one, downwards.</p>
+     * <p>Conversely if <code>verticalAlign</code> is “bottom”, this offset will increase<br>or decrease the distance to the bottom side of the screen: a negative<br>offset will move the dropdown downwards; a positive one, upwards.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    public double getVerticalOffset() {
+        return getPolymerElement().getVerticalOffset();
+    }
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
+     * <p>If <code>verticalAlign</code> is “top”, this offset will increase or decrease<br>the distance to the top side of the screen: a negative offset will<br>move the dropdown upwards; a positive one, downwards.</p>
+     * <p>Conversely if <code>verticalAlign</code> is “bottom”, this offset will increase<br>or decrease the distance to the bottom side of the screen: a negative<br>offset will move the dropdown downwards; a positive one, upwards.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    public void setVerticalOffset(double value) {
+        getPolymerElement().setVerticalOffset(value);
+    }
+
+    /**
+     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property exitAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    public String getExitAnimation() {
+        return getPolymerElement().getExitAnimation();
+    }
+    /**
+     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property exitAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    public void setExitAnimation(String value) {
+        getPolymerElement().setExitAnimation(value);
+    }
+
+    /**
+     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property entryAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    public String getEntryAnimation() {
+        return getPolymerElement().getEntryAnimation();
+    }
+    /**
+     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property entryAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    public void setEntryAnimation(String value) {
+        getPolymerElement().setEntryAnimation(value);
     }
 
     /**
@@ -594,52 +640,54 @@ public class PaperDialog extends PolymerWidget {
         getPolymerElement().setHorizontalAlign(value);
     }
 
+
+    // Needed in UIBinder
     /**
-     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     * <p>Animation configuration. See README for more info.</p>
      *
      * JavaScript Info:
-     * @property entryAnimation
-     * @type String
+     * @attribute animation-config
      * @behavior PaperTooltip
      */
-    public String getEntryAnimation() {
-        return getPolymerElement().getEntryAnimation();
-    }
-    /**
-     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property entryAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    public void setEntryAnimation(String value) {
-        getPolymerElement().setEntryAnimation(value);
+    public void setAnimationConfig(String value) {
+        Polymer.property(this.getPolymerElement(), "animationConfig", value);
     }
 
+    // Needed in UIBinder
     /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     * <p>The element to fit <code>this</code> into.</p>
      *
      * JavaScript Info:
-     * @property exitAnimation
-     * @type String
-     * @behavior PaperTooltip
+     * @attribute fit-into
+     * @behavior PaperToast
      */
-    public String getExitAnimation() {
-        return getPolymerElement().getExitAnimation();
-    }
-    /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property exitAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    public void setExitAnimation(String value) {
-        getPolymerElement().setExitAnimation(value);
+    public void setFitInto(String value) {
+        Polymer.property(this.getPolymerElement(), "fitInto", value);
     }
 
+    // Needed in UIBinder
+    /**
+     * <p>Contains the reason(s) this overlay was last closed (see <code>iron-overlay-closed</code>).<br><code>IronOverlayBehavior</code> provides the <code>canceled</code> reason; implementers of the<br>behavior can provide other reasons in addition to <code>canceled</code>.</p>
+     *
+     * JavaScript Info:
+     * @attribute closing-reason
+     * @behavior PaperToast
+     */
+    public void setClosingReason(String value) {
+        Polymer.property(this.getPolymerElement(), "closingReason", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>The element that should be used to position the element. If not set, it will<br>default to the parent node.</p>
+     *
+     * JavaScript Info:
+     * @attribute position-target
+     * @behavior PaperToast
+     */
+    public void setPositionTarget(String value) {
+        Polymer.property(this.getPolymerElement(), "positionTarget", value);
+    }
 
     // Needed in UIBinder
     /**
@@ -667,20 +715,6 @@ public class PaperDialog extends PolymerWidget {
 
     // Needed in UIBinder
     /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
-     * <p>If <code>verticalAlign</code> is “top”, this offset will increase or decrease<br>the distance to the top side of the screen: a negative offset will<br>move the dropdown upwards; a positive one, downwards.</p>
-     * <p>Conversely if <code>verticalAlign</code> is “bottom”, this offset will increase<br>or decrease the distance to the bottom side of the screen: a negative<br>offset will move the dropdown downwards; a positive one, upwards.</p>
-     *
-     * JavaScript Info:
-     * @attribute vertical-offset
-     * @behavior PaperToast
-     */
-    public void setVerticalOffset(String value) {
-        Polymer.property(this.getPolymerElement(), "verticalOffset", value);
-    }
-
-    // Needed in UIBinder
-    /**
      * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
      * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
      * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
@@ -695,50 +729,16 @@ public class PaperDialog extends PolymerWidget {
 
     // Needed in UIBinder
     /**
-     * <p>The element to fit <code>this</code> into.</p>
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
+     * <p>If <code>verticalAlign</code> is “top”, this offset will increase or decrease<br>the distance to the top side of the screen: a negative offset will<br>move the dropdown upwards; a positive one, downwards.</p>
+     * <p>Conversely if <code>verticalAlign</code> is “bottom”, this offset will increase<br>or decrease the distance to the bottom side of the screen: a negative<br>offset will move the dropdown downwards; a positive one, upwards.</p>
      *
      * JavaScript Info:
-     * @attribute fit-into
+     * @attribute vertical-offset
      * @behavior PaperToast
      */
-    public void setFitInto(String value) {
-        Polymer.property(this.getPolymerElement(), "fitInto", value);
-    }
-
-    // Needed in UIBinder
-    /**
-     * <p>Animation configuration. See README for more info.</p>
-     *
-     * JavaScript Info:
-     * @attribute animation-config
-     * @behavior PaperTooltip
-     */
-    public void setAnimationConfig(String value) {
-        Polymer.property(this.getPolymerElement(), "animationConfig", value);
-    }
-
-    // Needed in UIBinder
-    /**
-     * <p>Contains the reason(s) this overlay was last closed (see <code>iron-overlay-closed</code>).<br><code>IronOverlayBehavior</code> provides the <code>canceled</code> reason; implementers of the<br>behavior can provide other reasons in addition to <code>canceled</code>.</p>
-     *
-     * JavaScript Info:
-     * @attribute closing-reason
-     * @behavior PaperToast
-     */
-    public void setClosingReason(String value) {
-        Polymer.property(this.getPolymerElement(), "closingReason", value);
-    }
-
-    // Needed in UIBinder
-    /**
-     * <p>The element that should be used to position the element. If not set, it will<br>default to the parent node.</p>
-     *
-     * JavaScript Info:
-     * @attribute position-target
-     * @behavior PaperToast
-     */
-    public void setPositionTarget(String value) {
-        Polymer.property(this.getPolymerElement(), "positionTarget", value);
+    public void setVerticalOffset(String value) {
+        Polymer.property(this.getPolymerElement(), "verticalOffset", value);
     }
 
 
@@ -748,7 +748,7 @@ public class PaperDialog extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -761,7 +761,7 @@ public class PaperDialog extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
@@ -769,27 +769,27 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Close the overlay.</p>
+     * <p>Open the overlay.</p>
      *
      * JavaScript Info:
-     * @method close
+     * @method open
      * @behavior PaperToast
      * 
      */
-    public void close() {
-        getPolymerElement().close();
+    public void open() {
+        getPolymerElement().open();
     }
 
     /**
-     * <p>Invalidates the cached tabbable nodes. To be called when any of the focusable<br>content changes (e.g. a button is disabled).</p>
+     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
      *
      * JavaScript Info:
-     * @method invalidateTabbables
-     * @behavior PaperToast
+     * @method notifyResize
+     * @behavior PaperClockSelector
      * 
      */
-    public void invalidateTabbables() {
-        getPolymerElement().invalidateTabbables();
+    public void notifyResize() {
+        getPolymerElement().notifyResize();
     }
 
     /**
@@ -817,15 +817,15 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Open the overlay.</p>
+     * <p>Invalidates the cached tabbable nodes. To be called when any of the focusable<br>content changes (e.g. a button is disabled).</p>
      *
      * JavaScript Info:
-     * @method open
+     * @method invalidateTabbables
      * @behavior PaperToast
      * 
      */
-    public void open() {
-        getPolymerElement().open();
+    public void invalidateTabbables() {
+        getPolymerElement().invalidateTabbables();
     }
 
     /**
@@ -838,6 +838,18 @@ public class PaperDialog extends PolymerWidget {
      */
     public void fit() {
         getPolymerElement().fit();
+    }
+
+    /**
+     * <p>Close the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method close
+     * @behavior PaperToast
+     * 
+     */
+    public void close() {
+        getPolymerElement().close();
     }
 
     /**
@@ -901,15 +913,16 @@ public class PaperDialog extends PolymerWidget {
     }
 
     /**
-     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
+     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
      *
      * JavaScript Info:
-     * @method notifyResize
-     * @behavior PaperTimePicker
-     * 
+     * @method resizerShouldNotify
+     * @param {HTMLElement} element  
+     * @behavior PaperClockSelector
+     * @return {boolean}
      */
-    public void notifyResize() {
-        getPolymerElement().notifyResize();
+    public boolean resizerShouldNotify(JavaScriptObject element) {
+        return getPolymerElement().resizerShouldNotify(element);
     }
 
     /**
@@ -937,19 +950,6 @@ public class PaperDialog extends PolymerWidget {
      */
     public void playAnimation(String type, JavaScriptObject cookie) {
         getPolymerElement().playAnimation(type, cookie);
-    }
-
-    /**
-     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
-     *
-     * JavaScript Info:
-     * @method resizerShouldNotify
-     * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
-     * @return {boolean}
-     */
-    public boolean resizerShouldNotify(JavaScriptObject element) {
-        return getPolymerElement().resizerShouldNotify(element);
     }
 
 

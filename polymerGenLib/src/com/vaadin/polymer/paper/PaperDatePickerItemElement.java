@@ -31,7 +31,7 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getFocused();
     /**
@@ -40,9 +40,47 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setFocused(boolean value);
+
+    /**
+     * <p>The maximum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property maxDate
+     * @type Date
+     * 
+     */
+    @JsProperty JavaScriptObject getMaxDate();
+    /**
+     * <p>The maximum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property maxDate
+     * @type Date
+     * 
+     */
+    @JsProperty void setMaxDate(JavaScriptObject value);
+
+    /**
+     * <p>The minimum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property minDate
+     * @type Date
+     * 
+     */
+    @JsProperty JavaScriptObject getMinDate();
+    /**
+     * <p>The minimum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property minDate
+     * @type Date
+     * 
+     */
+    @JsProperty void setMinDate(JavaScriptObject value);
 
     /**
      * <p>Date reflected by the component</p>
@@ -50,7 +88,7 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * JavaScript Info:
      * @property date
      * @type Date
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty JavaScriptObject getDate();
     /**
@@ -59,7 +97,7 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * JavaScript Info:
      * @property date
      * @type Date
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty void setDate(JavaScriptObject value);
 
@@ -69,7 +107,7 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getDisabled();
     /**
@@ -78,66 +116,9 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setDisabled(boolean value);
-
-    /**
-     * <p>Format to use for the date, adhering to momentjs.com display formats.</p>
-     *
-     * JavaScript Info:
-     * @property dateFormat
-     * @type String
-     * @behavior PaperDatetimePickerItem
-     */
-    @JsProperty String getDateFormat();
-    /**
-     * <p>Format to use for the date, adhering to momentjs.com display formats.</p>
-     *
-     * JavaScript Info:
-     * @property dateFormat
-     * @type String
-     * @behavior PaperDatetimePickerItem
-     */
-    @JsProperty void setDateFormat(String value);
-
-    /**
-     * <p>Default time if none has been specified, in a string format HH:mm</p>
-     *
-     * JavaScript Info:
-     * @property defaultTime
-     * @type string
-     * @behavior PaperDatetimePickerItem
-     */
-    @JsProperty String getDefaultTime();
-    /**
-     * <p>Default time if none has been specified, in a string format HH:mm</p>
-     *
-     * JavaScript Info:
-     * @property defaultTime
-     * @type string
-     * @behavior PaperDatetimePickerItem
-     */
-    @JsProperty void setDefaultTime(String value);
-
-    /**
-     * <p>Text for the cancel button in the edit dialog. Use this property to localize the element.</p>
-     *
-     * JavaScript Info:
-     * @property cancelButton
-     * @type String
-     * @behavior PaperDatetimePickerItem
-     */
-    @JsProperty String getCancelButton();
-    /**
-     * <p>Text for the cancel button in the edit dialog. Use this property to localize the element.</p>
-     *
-     * JavaScript Info:
-     * @property cancelButton
-     * @type String
-     * @behavior PaperDatetimePickerItem
-     */
-    @JsProperty void setCancelButton(String value);
 
     /**
      * <p>Text for the OK button in the edit dialog. Use this property to localize the element.</p>
@@ -145,7 +126,7 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * JavaScript Info:
      * @property okButton
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty String getOkButton();
     /**
@@ -154,7 +135,7 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * JavaScript Info:
      * @property okButton
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty void setOkButton(String value);
 
@@ -164,7 +145,7 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * JavaScript Info:
      * @property placeholder
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty String getPlaceholder();
     /**
@@ -173,7 +154,7 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * JavaScript Info:
      * @property placeholder
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty void setPlaceholder(String value);
 
@@ -183,7 +164,7 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * JavaScript Info:
      * @property timeFormat
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty String getTimeFormat();
     /**
@@ -192,9 +173,28 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * JavaScript Info:
      * @property timeFormat
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty void setTimeFormat(String value);
+
+    /**
+     * <p>Default time if none has been specified, in a string format HH:mm</p>
+     *
+     * JavaScript Info:
+     * @property defaultTime
+     * @type string
+     * 
+     */
+    @JsProperty String getDefaultTime();
+    /**
+     * <p>Default time if none has been specified, in a string format HH:mm</p>
+     *
+     * JavaScript Info:
+     * @property defaultTime
+     * @type string
+     * 
+     */
+    @JsProperty void setDefaultTime(String value);
 
     /**
      * <p>Icon shown left of the date</p>
@@ -216,6 +216,25 @@ public interface PaperDatePickerItemElement extends HTMLElement {
     @JsProperty void setIcon(String value);
 
     /**
+     * <p>Format to use for the date, adhering to momentjs.com display formats.</p>
+     *
+     * JavaScript Info:
+     * @property dateFormat
+     * @type String
+     * @behavior PaperDatetimePickerItem
+     */
+    @JsProperty String getDateFormat();
+    /**
+     * <p>Format to use for the date, adhering to momentjs.com display formats.</p>
+     *
+     * JavaScript Info:
+     * @property dateFormat
+     * @type String
+     * @behavior PaperDatetimePickerItem
+     */
+    @JsProperty void setDateFormat(String value);
+
+    /**
      * <p>The locale used for date and time formatting.</p>
      *
      * JavaScript Info:
@@ -233,6 +252,25 @@ public interface PaperDatePickerItemElement extends HTMLElement {
      * @behavior PaperDatetimePickerItem
      */
     @JsProperty void setLocale(String value);
+
+    /**
+     * <p>Text for the cancel button in the edit dialog. Use this property to localize the element.</p>
+     *
+     * JavaScript Info:
+     * @property cancelButton
+     * @type String
+     * 
+     */
+    @JsProperty String getCancelButton();
+    /**
+     * <p>Text for the cancel button in the edit dialog. Use this property to localize the element.</p>
+     *
+     * JavaScript Info:
+     * @property cancelButton
+     * @type String
+     * 
+     */
+    @JsProperty void setCancelButton(String value);
 
 
 }

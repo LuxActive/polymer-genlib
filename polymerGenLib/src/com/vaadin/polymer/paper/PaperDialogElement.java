@@ -54,48 +54,6 @@ public interface PaperDialogElement extends HTMLElement {
 
 
     /**
-     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
-     *
-     * JavaScript Info:
-     * @property sizingTarget
-     * @type !Element
-     * @behavior PaperToast
-     */
-    @JsProperty JavaScriptObject getSizingTarget();
-    /**
-     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
-     *
-     * JavaScript Info:
-     * @property sizingTarget
-     * @type !Element
-     * @behavior PaperToast
-     */
-    @JsProperty void setSizingTarget(JavaScriptObject value);
-
-    /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
-     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
-     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
-     *
-     * JavaScript Info:
-     * @property horizontalOffset
-     * @type Number
-     * @behavior PaperToast
-     */
-    @JsProperty double getHorizontalOffset();
-    /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
-     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
-     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
-     *
-     * JavaScript Info:
-     * @property horizontalOffset
-     * @type Number
-     * @behavior PaperToast
-     */
-    @JsProperty void setHorizontalOffset(double value);
-
-    /**
      * <p>The backdrop element.</p>
      *
      * JavaScript Info:
@@ -115,27 +73,61 @@ public interface PaperDialogElement extends HTMLElement {
     @JsProperty void setBackdropElement(Element value);
 
     /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
-     * <p>If <code>verticalAlign</code> is “top”, this offset will increase or decrease<br>the distance to the top side of the screen: a negative offset will<br>move the dropdown upwards; a positive one, downwards.</p>
-     * <p>Conversely if <code>verticalAlign</code> is “bottom”, this offset will increase<br>or decrease the distance to the bottom side of the screen: a negative<br>offset will move the dropdown downwards; a positive one, upwards.</p>
+     * <p>True if the overlay was canceled when it was last closed.</p>
      *
      * JavaScript Info:
-     * @property verticalOffset
-     * @type Number
+     * @property canceled
+     * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty double getVerticalOffset();
+    @JsProperty boolean getCanceled();
     /**
-     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
-     * <p>If <code>verticalAlign</code> is “top”, this offset will increase or decrease<br>the distance to the top side of the screen: a negative offset will<br>move the dropdown upwards; a positive one, downwards.</p>
-     * <p>Conversely if <code>verticalAlign</code> is “bottom”, this offset will increase<br>or decrease the distance to the bottom side of the screen: a negative<br>offset will move the dropdown downwards; a positive one, upwards.</p>
+     * <p>True if the overlay was canceled when it was last closed.</p>
      *
      * JavaScript Info:
-     * @property verticalOffset
-     * @type Number
+     * @property canceled
+     * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty void setVerticalOffset(double value);
+    @JsProperty void setCanceled(boolean value);
+
+    /**
+     * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
+     *
+     * JavaScript Info:
+     * @property noAutoFocus
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getNoAutoFocus();
+    /**
+     * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
+     *
+     * JavaScript Info:
+     * @property noAutoFocus
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setNoAutoFocus(boolean value);
+
+    /**
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnEscKey
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getNoCancelOnEscKey();
+    /**
+     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
+     *
+     * JavaScript Info:
+     * @property noCancelOnEscKey
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setNoCancelOnEscKey(boolean value);
 
     /**
      * <p>Set to true to disable canceling the overlay by clicking outside it.</p>
@@ -233,44 +225,6 @@ public interface PaperDialogElement extends HTMLElement {
     @JsProperty void setAutoFitOnAttach(boolean value);
 
     /**
-     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
-     *
-     * JavaScript Info:
-     * @property dynamicAlign
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getDynamicAlign();
-    /**
-     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
-     *
-     * JavaScript Info:
-     * @property dynamicAlign
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setDynamicAlign(boolean value);
-
-    /**
-     * <p>True if the overlay was canceled when it was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property canceled
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getCanceled();
-    /**
-     * <p>True if the overlay was canceled when it was last closed.</p>
-     *
-     * JavaScript Info:
-     * @property canceled
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setCanceled(boolean value);
-
-    /**
      * <p>Set to true to keep overlay always on top.</p>
      *
      * JavaScript Info:
@@ -288,44 +242,6 @@ public interface PaperDialogElement extends HTMLElement {
      * @behavior PaperToast
      */
     @JsProperty void setAlwaysOnTop(boolean value);
-
-    /**
-     * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
-     *
-     * JavaScript Info:
-     * @property noAutoFocus
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getNoAutoFocus();
-    /**
-     * <p>Set to true to disable auto-focusing the overlay or child nodes with<br>the <code>autofocus</code> attribute` when the overlay is opened.</p>
-     *
-     * JavaScript Info:
-     * @property noAutoFocus
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setNoAutoFocus(boolean value);
-
-    /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
-     *
-     * JavaScript Info:
-     * @property noCancelOnEscKey
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getNoCancelOnEscKey();
-    /**
-     * <p>Set to true to disable canceling the overlay with the ESC key.</p>
-     *
-     * JavaScript Info:
-     * @property noCancelOnEscKey
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setNoCancelOnEscKey(boolean value);
 
     /**
      * <p>Will position the element around the positionTarget without overlapping it.</p>
@@ -366,6 +282,25 @@ public interface PaperDialogElement extends HTMLElement {
     @JsProperty void setModal(boolean value);
 
     /**
+     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
+     *
+     * JavaScript Info:
+     * @property dynamicAlign
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getDynamicAlign();
+    /**
+     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
+     *
+     * JavaScript Info:
+     * @property dynamicAlign
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setDynamicAlign(boolean value);
+
+    /**
      * <p>Animation configuration. See README for more info.</p>
      *
      * JavaScript Info:
@@ -383,6 +318,25 @@ public interface PaperDialogElement extends HTMLElement {
      * @behavior PaperTooltip
      */
     @JsProperty void setAnimationConfig(JavaScriptObject value);
+
+    /**
+     * <p>The element to fit <code>this</code> into.</p>
+     *
+     * JavaScript Info:
+     * @property fitInto
+     * @type Object
+     * @behavior PaperToast
+     */
+    @JsProperty JavaScriptObject getFitInto();
+    /**
+     * <p>The element to fit <code>this</code> into.</p>
+     *
+     * JavaScript Info:
+     * @property fitInto
+     * @type Object
+     * @behavior PaperToast
+     */
+    @JsProperty void setFitInto(JavaScriptObject value);
 
     /**
      * <p>Contains the reason(s) this overlay was last closed (see <code>iron-overlay-closed</code>).<br><code>IronOverlayBehavior</code> provides the <code>canceled</code> reason; implementers of the<br>behavior can provide other reasons in addition to <code>canceled</code>.</p>
@@ -423,23 +377,107 @@ public interface PaperDialogElement extends HTMLElement {
     @JsProperty void setPositionTarget(JavaScriptObject value);
 
     /**
-     * <p>The element to fit <code>this</code> into.</p>
+     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
      *
      * JavaScript Info:
-     * @property fitInto
-     * @type Object
+     * @property sizingTarget
+     * @type !Element
      * @behavior PaperToast
      */
-    @JsProperty JavaScriptObject getFitInto();
+    @JsProperty JavaScriptObject getSizingTarget();
     /**
-     * <p>The element to fit <code>this</code> into.</p>
+     * <p>The element that will receive a <code>max-height</code>/<code>width</code>. By default it is the same as <code>this</code>,<br>but it can be set to a child element. This is useful, for example, for implementing a<br>scrolling region inside the element.</p>
      *
      * JavaScript Info:
-     * @property fitInto
-     * @type Object
+     * @property sizingTarget
+     * @type !Element
      * @behavior PaperToast
      */
-    @JsProperty void setFitInto(JavaScriptObject value);
+    @JsProperty void setSizingTarget(JavaScriptObject value);
+
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
+     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
+     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    @JsProperty double getHorizontalOffset();
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>horizontalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>horizontalAlign</code>.</p>
+     * <p>If <code>horizontalAlign</code> is “left”, this offset will increase or decrease<br>the distance to the left side of the screen: a negative offset will<br>move the dropdown to the left; a positive one, to the right.</p>
+     * <p>Conversely if <code>horizontalAlign</code> is “right”, this offset will increase<br>or decrease the distance to the right side of the screen: a negative<br>offset will move the dropdown to the right; a positive one, to the left.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    @JsProperty void setHorizontalOffset(double value);
+
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
+     * <p>If <code>verticalAlign</code> is “top”, this offset will increase or decrease<br>the distance to the top side of the screen: a negative offset will<br>move the dropdown upwards; a positive one, downwards.</p>
+     * <p>Conversely if <code>verticalAlign</code> is “bottom”, this offset will increase<br>or decrease the distance to the bottom side of the screen: a negative<br>offset will move the dropdown downwards; a positive one, upwards.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    @JsProperty double getVerticalOffset();
+    /**
+     * <p>A pixel value that will be added to the position calculated for the<br>given <code>verticalAlign</code>, in the direction of alignment. You can think<br>of it as increasing or decreasing the distance to the side of the<br>screen given by <code>verticalAlign</code>.</p>
+     * <p>If <code>verticalAlign</code> is “top”, this offset will increase or decrease<br>the distance to the top side of the screen: a negative offset will<br>move the dropdown upwards; a positive one, downwards.</p>
+     * <p>Conversely if <code>verticalAlign</code> is “bottom”, this offset will increase<br>or decrease the distance to the bottom side of the screen: a negative<br>offset will move the dropdown downwards; a positive one, upwards.</p>
+     *
+     * JavaScript Info:
+     * @property verticalOffset
+     * @type Number
+     * @behavior PaperToast
+     */
+    @JsProperty void setVerticalOffset(double value);
+
+    /**
+     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property exitAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    @JsProperty String getExitAnimation();
+    /**
+     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property exitAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    @JsProperty void setExitAnimation(String value);
+
+    /**
+     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property entryAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    @JsProperty String getEntryAnimation();
+    /**
+     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property entryAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    @JsProperty void setEntryAnimation(String value);
 
     /**
      * <p>The orientation against which to align the element vertically<br>relative to the <code>positionTarget</code>. Possible values are “top”, “bottom”, “auto”.</p>
@@ -479,44 +517,6 @@ public interface PaperDialogElement extends HTMLElement {
      */
     @JsProperty void setHorizontalAlign(String value);
 
-    /**
-     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property entryAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    @JsProperty String getEntryAnimation();
-    /**
-     * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property entryAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    @JsProperty void setEntryAnimation(String value);
-
-    /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property exitAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    @JsProperty String getExitAnimation();
-    /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property exitAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    @JsProperty void setExitAnimation(String value);
-
 
     /**
      * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
@@ -524,7 +524,7 @@ public interface PaperDialogElement extends HTMLElement {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -535,10 +535,90 @@ public interface PaperDialogElement extends HTMLElement {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void stopResizeNotificationsFor(Object target);
+
+    /**
+     * <p>Open the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method open
+     * @behavior PaperToast
+     * 
+     */
+    void open();
+
+    /**
+     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
+     *
+     * JavaScript Info:
+     * @method notifyResize
+     * @behavior PaperClockSelector
+     * 
+     */
+    void notifyResize();
+
+    /**
+     * <p>Centers horizontally and vertically if not already positioned. This also sets<br><code>position:fixed</code>.</p>
+     *
+     * JavaScript Info:
+     * @method center
+     * @behavior PaperToast
+     * 
+     */
+    void center();
+
+    /**
+     * <p>Constrains the size of the element to <code>fitInto</code> by setting <code>max-height</code><br>and/or <code>max-width</code>.</p>
+     *
+     * JavaScript Info:
+     * @method constrain
+     * @behavior PaperToast
+     * 
+     */
+    void constrain();
+
+    /**
+     * <p>Invalidates the cached tabbable nodes. To be called when any of the focusable<br>content changes (e.g. a button is disabled).</p>
+     *
+     * JavaScript Info:
+     * @method invalidateTabbables
+     * @behavior PaperToast
+     * 
+     */
+    void invalidateTabbables();
+
+    /**
+     * <p>Positions and fits the element into the <code>fitInto</code> element.</p>
+     *
+     * JavaScript Info:
+     * @method fit
+     * @behavior PaperToast
+     * 
+     */
+    void fit();
+
+    /**
+     * <p>Close the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method close
+     * @behavior PaperToast
+     * 
+     */
+    void close();
+
+    /**
+     * <p>Toggle the opened state of the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method toggle
+     * @behavior PaperToast
+     * 
+     */
+    void toggle();
 
     /**
      * <p>Positions the element according to <code>horizontalAlign, verticalAlign</code>.</p>
@@ -571,16 +651,6 @@ public interface PaperDialogElement extends HTMLElement {
     void resetFit();
 
     /**
-     * <p>Toggle the opened state of the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method toggle
-     * @behavior PaperToast
-     * 
-     */
-    void toggle();
-
-    /**
      * <p>Cancels the currently running animations.</p>
      *
      * JavaScript Info:
@@ -589,76 +659,6 @@ public interface PaperDialogElement extends HTMLElement {
      * 
      */
     void cancelAnimation();
-
-    /**
-     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
-     *
-     * JavaScript Info:
-     * @method notifyResize
-     * @behavior PaperTimePicker
-     * 
-     */
-    void notifyResize();
-
-    /**
-     * <p>Close the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method close
-     * @behavior PaperToast
-     * 
-     */
-    void close();
-
-    /**
-     * <p>Invalidates the cached tabbable nodes. To be called when any of the focusable<br>content changes (e.g. a button is disabled).</p>
-     *
-     * JavaScript Info:
-     * @method invalidateTabbables
-     * @behavior PaperToast
-     * 
-     */
-    void invalidateTabbables();
-
-    /**
-     * <p>Centers horizontally and vertically if not already positioned. This also sets<br><code>position:fixed</code>.</p>
-     *
-     * JavaScript Info:
-     * @method center
-     * @behavior PaperToast
-     * 
-     */
-    void center();
-
-    /**
-     * <p>Constrains the size of the element to <code>fitInto</code> by setting <code>max-height</code><br>and/or <code>max-width</code>.</p>
-     *
-     * JavaScript Info:
-     * @method constrain
-     * @behavior PaperToast
-     * 
-     */
-    void constrain();
-
-    /**
-     * <p>Open the overlay.</p>
-     *
-     * JavaScript Info:
-     * @method open
-     * @behavior PaperToast
-     * 
-     */
-    void open();
-
-    /**
-     * <p>Positions and fits the element into the <code>fitInto</code> element.</p>
-     *
-     * JavaScript Info:
-     * @method fit
-     * @behavior PaperToast
-     * 
-     */
-    void fit();
 
     /**
      * <p>Plays an animation with an optional <code>type</code>.</p>
@@ -678,7 +678,7 @@ public interface PaperDialogElement extends HTMLElement {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);

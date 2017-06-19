@@ -20,7 +20,7 @@ import jsinterop.annotations.JsType;
 public interface GoogleRealtimeApiElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "google-realtime-api";
-    @JsOverlay public static final String SRC = "google-apis/google-realtime-api.html";
+    @JsOverlay public static final String SRC = "google-apis/google-apis.html";
 
 
     /**

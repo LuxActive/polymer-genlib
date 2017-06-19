@@ -102,7 +102,7 @@ public class PaperSubmenu extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getDisabled() {
         return getPolymerElement().getDisabled();
@@ -113,7 +113,7 @@ public class PaperSubmenu extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setDisabled(boolean value) {
         getPolymerElement().setDisabled(value);
@@ -125,7 +125,7 @@ public class PaperSubmenu extends PolymerWidget {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getFocused() {
         return getPolymerElement().getFocused();
@@ -136,7 +136,7 @@ public class PaperSubmenu extends PolymerWidget {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setFocused(boolean value) {
         getPolymerElement().setFocused(value);
@@ -154,18 +154,6 @@ public class PaperSubmenu extends PolymerWidget {
      */
     public void close() {
         getPolymerElement().close();
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method dettached
-     * 
-     * 
-     */
-    public void dettached() {
-        getPolymerElement().dettached();
     }
 
     /**

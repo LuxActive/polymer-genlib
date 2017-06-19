@@ -33,11 +33,12 @@ import com.google.gwt.core.client.JavaScriptObject;
  *       flex: 1 1 auto;
  *     }
  *   &lt;/style&gt;
- * 
  *   &lt;app-toolbar&gt;App name&lt;/app-toolbar&gt;
  *   &lt;iron-list items=&quot;[[items]]&quot;&gt;
  *     &lt;template&gt;
- *       ...
+ *       &lt;div&gt;
+ *         ...
+ *       &lt;/div&gt;
  *     &lt;/template&gt;
  *   &lt;/iron-list&gt;
  * &lt;/template&gt;
@@ -55,7 +56,9 @@ import com.google.gwt.core.client.JavaScriptObject;
  *   &lt;/style&gt;
  *   &lt;iron-list items=&quot;[[items]]&quot;&gt;
  *     &lt;template&gt;
- *       ...
+ *       &lt;div&gt;
+ *         ...
+ *       &lt;/div&gt;
  *     &lt;/template&gt;
  *   &lt;/iron-list&gt;
  * &lt;/template&gt;
@@ -88,12 +91,15 @@ import com.google.gwt.core.client.JavaScriptObject;
  *     &lt;app-toolbar&gt;App name&lt;/app-toolbar&gt;
  *     &lt;iron-list scroll-target=&quot;document&quot; items=&quot;[[items]]&quot;&gt;
  *       &lt;template&gt;
- *         ...
+ *         &lt;div&gt;
+ *           ...
+ *         &lt;/div&gt;
  *       &lt;/template&gt;
  *     &lt;/iron-list&gt;
  *   &lt;/template&gt;
  * &lt;/body&gt;
  * </code></pre>
+ * <p><code>iron-list</code> must be given a <code>&lt;template&gt;</code> which contains exactly one element. In the examples<br>above we used a <code>&lt;div&gt;</code>, but you can provide any element (including custom elements).</p>
  * <h3 id="template-model">Template model</h3>
  * <p>List item templates should bind to template models of the following structure:</p>
  * <pre><code class="lang-js">{
@@ -333,7 +339,7 @@ public class IronList extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
@@ -344,7 +350,7 @@ public class IronList extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
@@ -483,7 +489,7 @@ public class IronList extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getStopKeyboardEventPropagation() {
         return getPolymerElement().getStopKeyboardEventPropagation();
@@ -494,7 +500,7 @@ public class IronList extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
@@ -666,7 +672,7 @@ public class IronList extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setKeyEventTarget(String value) {
         Polymer.property(this.getPolymerElement(), "keyEventTarget", value);
@@ -758,16 +764,16 @@ public class IronList extends PolymerWidget {
 
 
     /**
-     * <p>Deselects the given item list if it is already selected.</p>
+     * <p>Select the list item at the given index.</p>
      *
      * JavaScript Info:
-     * @method deselectItem
+     * @method selectItem
      * @param {(Object|number)} item  
      * 
      * 
      */
-    public void deselectItem(Object item) {
-        getPolymerElement().deselectItem(item);
+    public void selectItem(Object item) {
+        getPolymerElement().selectItem(item);
     }
 
     /**
@@ -797,51 +803,12 @@ public class IronList extends PolymerWidget {
     }
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @method modelForElement
-     * @param {} el  
-     * @behavior DomIf
-     * 
-     */
-    public void modelForElement(Object el) {
-        getPolymerElement().modelForElement(el);
-    }
-
-    /**
-     * <p>Select the list item at the given index.</p>
-     *
-     * JavaScript Info:
-     * @method selectItem
-     * @param {(Object|number)} item  
-     * 
-     * 
-     */
-    public void selectItem(Object item) {
-        getPolymerElement().selectItem(item);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method templatize
-     * @param {} template  
-     * @behavior DomIf
-     * 
-     */
-    public void templatize(Object template) {
-        getPolymerElement().templatize(template);
-    }
-
-    /**
      * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
      *
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -854,7 +821,7 @@ public class IronList extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
@@ -868,7 +835,7 @@ public class IronList extends PolymerWidget {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
@@ -876,16 +843,16 @@ public class IronList extends PolymerWidget {
     }
 
     /**
-     * 
+     * <p>Deselects the given item list if it is already selected.</p>
      *
      * JavaScript Info:
-     * @method stamp
-     * @param {} model  
-     * @behavior DomIf
+     * @method deselectItem
+     * @param {(Object|number)} item  
+     * 
      * 
      */
-    public void stamp(Object model) {
-        getPolymerElement().stamp(model);
+    public void deselectItem(Object item) {
+        getPolymerElement().deselectItem(item);
     }
 
     /**
@@ -917,7 +884,7 @@ public class IronList extends PolymerWidget {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void notifyResize() {
@@ -929,7 +896,7 @@ public class IronList extends PolymerWidget {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     public void removeOwnKeyBindings() {
@@ -950,16 +917,69 @@ public class IronList extends PolymerWidget {
     }
 
     /**
+     * <p>Returns the template “model” (<code>TemplateInstance</code>) associated with<br>a given element, which serves as the binding scope for the template<br>instance the element is contained in.  A template model should be used<br>to manipulate data associated with this template instance.</p>
+     *
+     * JavaScript Info:
+     * @method modelForElement
+     * @param {HTMLElement} el  
+     * @behavior IronList
+     * @return {JavaScriptObject}
+     */
+    public JavaScriptObject modelForElement(JavaScriptObject el) {
+        return getPolymerElement().modelForElement(el);
+    }
+
+    /**
+     * <p>Creates an instance of the template prepared by <code>templatize</code>.  The object<br>returned is an instance of the anonymous class generated by <code>templatize</code><br>whose <code>root</code> property is a document fragment containing newly cloned<br>template content, and which has property accessors corresponding to<br>properties referenced in template bindings.</p>
+     *
+     * JavaScript Info:
+     * @method stamp
+     * @param {Object=} model  
+     * @behavior IronList
+     * @return {JavaScriptObject}
+     */
+    public JavaScriptObject stamp(JavaScriptObject model) {
+        return getPolymerElement().stamp(model);
+    }
+
+    /**
+     * <p>Generates an anonymous <code>TemplateInstance</code> class (stored as <code>this.ctor</code>)<br>for the provided template.  This method should be called once per<br>template to prepare an element for stamping the template, followed<br>by <code>stamp</code> to create new instances of the template.</p>
+     *
+     * JavaScript Info:
+     * @method templatize
+     * @param {HTMLTemplateElement} template  
+     * @param {boolean=} mutableData  
+     * @behavior IronList
+     * 
+     */
+    public void templatize(JavaScriptObject template, boolean mutableData) {
+        getPolymerElement().templatize(template, mutableData);
+    }
+
+    /**
      * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
      *
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {
         return getPolymerElement().resizerShouldNotify(element);
+    }
+
+    /**
+     * <p>Enables or disables the scroll event listener.</p>
+     *
+     * JavaScript Info:
+     * @method toggleScrollListener
+     * @param {boolean} yes  
+     * @behavior IronList
+     * 
+     */
+    public void toggleScrollListener(boolean yes) {
+        getPolymerElement().toggleScrollListener(yes);
     }
 
     /**
@@ -996,24 +1016,11 @@ public class IronList extends PolymerWidget {
      * @method keyboardEventMatchesKeys
      * @param {KeyboardEvent} event  
      * @param {string} eventString  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * @return {boolean}
      */
     public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
         return getPolymerElement().keyboardEventMatchesKeys(event, eventString);
-    }
-
-    /**
-     * <p>Enables or disables the scroll event listener.</p>
-     *
-     * JavaScript Info:
-     * @method toggleScrollListener
-     * @param {boolean} yes  
-     * @behavior IronList
-     * 
-     */
-    public void toggleScrollListener(boolean yes) {
-        getPolymerElement().toggleScrollListener(yes);
     }
 
 

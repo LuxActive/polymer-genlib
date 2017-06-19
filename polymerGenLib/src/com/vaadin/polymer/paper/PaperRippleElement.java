@@ -145,7 +145,7 @@ public interface PaperRippleElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
@@ -154,7 +154,7 @@ public interface PaperRippleElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
@@ -202,7 +202,7 @@ public interface PaperRippleElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -211,7 +211,7 @@ public interface PaperRippleElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
@@ -291,7 +291,7 @@ public interface PaperRippleElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
@@ -341,7 +341,7 @@ public interface PaperRippleElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void removeOwnKeyBindings();
@@ -353,7 +353,7 @@ public interface PaperRippleElement extends HTMLElement {
      * @method keyboardEventMatchesKeys
      * @param {KeyboardEvent} event  
      * @param {string} eventString  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * @return {boolean}
      */
     boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);

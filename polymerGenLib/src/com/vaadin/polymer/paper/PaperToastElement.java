@@ -13,7 +13,7 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
- * <p>Material design: <a href="https://www.google.com/design/spec/components/snackbars-toasts.html">Snackbards &amp; toasts</a></p>
+ * <p>Material design: <a href="https://www.google.com/design/spec/components/snackbars-toasts.html">Snackbars &amp; toasts</a></p>
  * <p><code>paper-toast</code> provides a subtle notification toast. Only one <code>paper-toast</code> will<br>be visible on screen.</p>
  * <p>Use <code>opened</code> to show the toast:</p>
  * <p>Example:</p>
@@ -516,7 +516,7 @@ public interface PaperToastElement extends HTMLElement {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -527,7 +527,7 @@ public interface PaperToastElement extends HTMLElement {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void stopResizeNotificationsFor(Object target);
@@ -637,7 +637,7 @@ public interface PaperToastElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void notifyResize();
@@ -658,7 +658,7 @@ public interface PaperToastElement extends HTMLElement {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);

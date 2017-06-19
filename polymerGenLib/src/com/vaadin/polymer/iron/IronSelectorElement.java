@@ -74,7 +74,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property multi
      * @type Boolean
-     * @behavior IronSelector
+     * 
      */
     @JsProperty boolean getMulti();
     /**
@@ -83,66 +83,9 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property multi
      * @type Boolean
-     * @behavior IronSelector
+     * 
      */
     @JsProperty void setMulti(boolean value);
-
-    /**
-     * <p>Returns an array of currently selected items.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItems
-     * @type Array
-     * @behavior IronSelector
-     */
-    @JsProperty JsArray getSelectedItems();
-    /**
-     * <p>Returns an array of currently selected items.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItems
-     * @type Array
-     * @behavior IronSelector
-     */
-    @JsProperty void setSelectedItems(JsArray value);
-
-    /**
-     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
-     *
-     * JavaScript Info:
-     * @property selectedValues
-     * @type Array
-     * @behavior IronSelector
-     */
-    @JsProperty JsArray getSelectedValues();
-    /**
-     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
-     *
-     * JavaScript Info:
-     * @property selectedValues
-     * @type Array
-     * @behavior IronSelector
-     */
-    @JsProperty void setSelectedValues(JsArray value);
-
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior IronSwipeablePages
-     */
-    @JsProperty JsArray getItems();
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior IronSwipeablePages
-     */
-    @JsProperty void setItems(JsArray value);
 
     /**
      * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
@@ -150,7 +93,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selected
      * @type (string|number)
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty Object getSelected();
     /**
@@ -159,7 +102,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selected
      * @type (string|number)
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty void setSelected(Object value);
 
@@ -169,7 +112,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedItem
      * @type ?Object
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty JavaScriptObject getSelectedItem();
     /**
@@ -178,9 +121,85 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedItem
      * @type ?Object
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty void setSelectedItem(JavaScriptObject value);
+
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * 
+     */
+    @JsProperty JsArray getItems();
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * 
+     */
+    @JsProperty void setItems(JsArray value);
+
+    /**
+     * <p>Returns an array of currently selected items.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItems
+     * @type Array
+     * 
+     */
+    @JsProperty JsArray getSelectedItems();
+    /**
+     * <p>Returns an array of currently selected items.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItems
+     * @type Array
+     * 
+     */
+    @JsProperty void setSelectedItems(JsArray value);
+
+    /**
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
+     *
+     * JavaScript Info:
+     * @property selectedValues
+     * @type Array
+     * 
+     */
+    @JsProperty JsArray getSelectedValues();
+    /**
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
+     *
+     * JavaScript Info:
+     * @property selectedValues
+     * @type Array
+     * 
+     */
+    @JsProperty void setSelectedValues(JsArray value);
+
+    /**
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
+     *
+     * JavaScript Info:
+     * @property attrForSelected
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getAttrForSelected();
+    /**
+     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
+     *
+     * JavaScript Info:
+     * @property attrForSelected
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setAttrForSelected(String value);
 
     /**
      * <p>The class to set on elements when selected.</p>
@@ -188,7 +207,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedClass
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty String getSelectedClass();
     /**
@@ -197,9 +216,28 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedClass
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setSelectedClass(String value);
+
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getFallbackSelection();
+    /**
+     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
+     *
+     * JavaScript Info:
+     * @property fallbackSelection
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setFallbackSelection(String value);
 
     /**
      * <p>The attribute to set on elements when selected.</p>
@@ -207,7 +245,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedAttribute
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty String getSelectedAttribute();
     /**
@@ -216,7 +254,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedAttribute
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setSelectedAttribute(String value);
 
@@ -226,7 +264,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectable
      * @type string
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty String getSelectable();
     /**
@@ -235,47 +273,9 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property selectable
      * @type string
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setSelectable(String value);
-
-    /**
-     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
-     *
-     * JavaScript Info:
-     * @property fallbackSelection
-     * @type String
-     * @behavior IronSwipeablePages
-     */
-    @JsProperty String getFallbackSelection();
-    /**
-     * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
-     *
-     * JavaScript Info:
-     * @property fallbackSelection
-     * @type String
-     * @behavior IronSwipeablePages
-     */
-    @JsProperty void setFallbackSelection(String value);
-
-    /**
-     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
-     *
-     * JavaScript Info:
-     * @property attrForSelected
-     * @type String
-     * @behavior IronSwipeablePages
-     */
-    @JsProperty String getAttrForSelected();
-    /**
-     * <p>If you want to use an attribute value or property of an element for<br><code>selected</code> instead of the index, set this to the name of the attribute<br>or property. Hyphenated values are converted to camel case when used to<br>look up the property of a selectable element. Camel cased values are<br><em>not</em> converted to hyphenated values for attribute lookup. It’s<br>recommended that you provide the hyphenated form of the name so that<br>selection works in both cases. (Use <code>attr-or-property-name</code> instead of<br><code>attrOrPropertyName</code>.)</p>
-     *
-     * JavaScript Info:
-     * @property attrForSelected
-     * @type String
-     * @behavior IronSwipeablePages
-     */
-    @JsProperty void setAttrForSelected(String value);
 
     /**
      * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
@@ -283,7 +283,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property activateEvent
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty String getActivateEvent();
     /**
@@ -292,32 +292,10 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @property activateEvent
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setActivateEvent(String value);
 
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method multiChanged
-     * @param {} multi  
-     * @behavior IronSelector
-     * 
-     */
-    void multiChanged(Object multi);
-
-    /**
-     * <p>Selects the item at the given index.</p>
-     *
-     * JavaScript Info:
-     * @method selectIndex
-     * @param {} index  
-     * @behavior IronSwipeablePages
-     * 
-     */
-    void selectIndex(Object index);
 
     /**
      * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
@@ -325,30 +303,52 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @method select
      * @param {(string|number)} value  
-     * @behavior IronSelector
+     * @behavior PaperTabs
      * 
      */
     void select(Object value);
 
     /**
-     * <p>Selects the previous item.</p>
+     * <p>Selects the item at the given index.</p>
      *
      * JavaScript Info:
-     * @method selectPrevious
-     * @behavior IronSwipeablePages
+     * @method selectIndex
+     * @param {} index  
+     * 
      * 
      */
-    void selectPrevious();
+    void selectIndex(Object index);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method multiChanged
+     * @param {} multi  
+     * 
+     * 
+     */
+    void multiChanged(Object multi);
 
     /**
      * <p>Selects the next item.</p>
      *
      * JavaScript Info:
      * @method selectNext
-     * @behavior IronSwipeablePages
+     * 
      * 
      */
     void selectNext();
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * 
+     * 
+     */
+    void selectPrevious();
 
     /**
      * <p>Force a synchronous update of the <code>items</code> property.</p>
@@ -357,7 +357,7 @@ public interface IronSelectorElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method forceSynchronousItemUpdate
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     void forceSynchronousItemUpdate();
@@ -368,7 +368,7 @@ public interface IronSelectorElement extends HTMLElement {
      * JavaScript Info:
      * @method indexOf
      * @param {Object} item  
-     * @behavior IronSwipeablePages
+     * 
      * 
      */
     void indexOf(JavaScriptObject item);

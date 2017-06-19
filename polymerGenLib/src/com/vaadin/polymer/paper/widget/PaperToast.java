@@ -27,7 +27,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * <p>Material design: <a href="https://www.google.com/design/spec/components/snackbars-toasts.html">Snackbards &amp; toasts</a></p>
+ * <p>Material design: <a href="https://www.google.com/design/spec/components/snackbars-toasts.html">Snackbars &amp; toasts</a></p>
  * <p><code>paper-toast</code> provides a subtle notification toast. Only one <code>paper-toast</code> will<br>be visible on screen.</p>
  * <p>Use <code>opened</code> to show the toast:</p>
  * <p>Example:</p>
@@ -737,7 +737,7 @@ public class PaperToast extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -750,7 +750,7 @@ public class PaperToast extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
@@ -858,7 +858,7 @@ public class PaperToast extends PolymerWidget {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void notifyResize() {
@@ -907,7 +907,7 @@ public class PaperToast extends PolymerWidget {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {

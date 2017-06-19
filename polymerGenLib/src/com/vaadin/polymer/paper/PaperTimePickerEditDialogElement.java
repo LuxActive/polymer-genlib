@@ -19,7 +19,7 @@ import jsinterop.annotations.JsType;
 public interface PaperTimePickerEditDialogElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "paper-time-picker-edit-dialog";
-    @JsOverlay public static final String SRC = "paper-date-picker-item/paper-time-picker-edit-dialog.html";
+    @JsOverlay public static final String SRC = "paper-date-picker-item/paper-datetime-picker-item.html";
 
 
     /**

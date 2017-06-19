@@ -64,6 +64,52 @@ public class PaperDatePickerEditDialog extends PolymerWidget {
     }
 
     /**
+     * <p>The maximum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property maxDate
+     * @type Date
+     * 
+     */
+    public JavaScriptObject getMaxDate() {
+        return getPolymerElement().getMaxDate();
+    }
+    /**
+     * <p>The maximum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property maxDate
+     * @type Date
+     * 
+     */
+    public void setMaxDate(JavaScriptObject value) {
+        getPolymerElement().setMaxDate(value);
+    }
+
+    /**
+     * <p>The minimum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property minDate
+     * @type Date
+     * 
+     */
+    public JavaScriptObject getMinDate() {
+        return getPolymerElement().getMinDate();
+    }
+    /**
+     * <p>The minimum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property minDate
+     * @type Date
+     * 
+     */
+    public void setMinDate(JavaScriptObject value) {
+        getPolymerElement().setMinDate(value);
+    }
+
+    /**
      * <p>Text for the cancel button in the edit dialog. Use this property to localize the element.</p>
      *
      * JavaScript Info:
@@ -143,6 +189,30 @@ public class PaperDatePickerEditDialog extends PolymerWidget {
      */
     public void setDate(String value) {
         Polymer.property(this.getPolymerElement(), "date", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>The maximum allowed date</p>
+     *
+     * JavaScript Info:
+     * @attribute max-date
+     * 
+     */
+    public void setMaxDate(String value) {
+        Polymer.property(this.getPolymerElement(), "maxDate", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>The minimum allowed date</p>
+     *
+     * JavaScript Info:
+     * @attribute min-date
+     * 
+     */
+    public void setMinDate(String value) {
+        Polymer.property(this.getPolymerElement(), "minDate", value);
     }
 
 

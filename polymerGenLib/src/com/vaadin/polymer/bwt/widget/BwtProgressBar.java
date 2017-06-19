@@ -46,7 +46,7 @@ public class BwtProgressBar extends PolymerWidget {
      * JavaScript Info:
      * @property customClass
      * @type Boolean
-     * @behavior BwtUploader
+     * @behavior BwtProgressBar
      */
     public boolean getCustomClass() {
         return getPolymerElement().getCustomClass();
@@ -57,7 +57,7 @@ public class BwtProgressBar extends PolymerWidget {
      * JavaScript Info:
      * @property customClass
      * @type Boolean
-     * @behavior BwtUploader
+     * @behavior BwtProgressBar
      */
     public void setCustomClass(boolean value) {
         getPolymerElement().setCustomClass(value);
@@ -67,32 +67,9 @@ public class BwtProgressBar extends PolymerWidget {
      * <p> private variable</p>
      *
      * JavaScript Info:
-     * @property error
-     * @type Object
-     * @behavior BwtUploader
-     */
-    public JavaScriptObject getError() {
-        return getPolymerElement().getError();
-    }
-    /**
-     * <p> private variable</p>
-     *
-     * JavaScript Info:
-     * @property error
-     * @type Object
-     * @behavior BwtUploader
-     */
-    public void setError(JavaScriptObject value) {
-        getPolymerElement().setError(value);
-    }
-
-    /**
-     * <p> private variable</p>
-     *
-     * JavaScript Info:
      * @property file
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     public JavaScriptObject getFile() {
         return getPolymerElement().getFile();
@@ -103,10 +80,33 @@ public class BwtProgressBar extends PolymerWidget {
      * JavaScript Info:
      * @property file
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     public void setFile(JavaScriptObject value) {
         getPolymerElement().setFile(value);
+    }
+
+    /**
+     * <p> private variable</p>
+     *
+     * JavaScript Info:
+     * @property error
+     * @type Object
+     * @behavior BwtProgressBar
+     */
+    public JavaScriptObject getError() {
+        return getPolymerElement().getError();
+    }
+    /**
+     * <p> private variable</p>
+     *
+     * JavaScript Info:
+     * @property error
+     * @type Object
+     * @behavior BwtProgressBar
+     */
+    public void setError(JavaScriptObject value) {
+        getPolymerElement().setError(value);
     }
 
     /**
@@ -115,7 +115,7 @@ public class BwtProgressBar extends PolymerWidget {
      * JavaScript Info:
      * @property placeHolderRemoved
      * @type Boolean
-     * @behavior BwtUploader
+     * 
      */
     public boolean getPlaceHolderRemoved() {
         return getPolymerElement().getPlaceHolderRemoved();
@@ -126,56 +126,10 @@ public class BwtProgressBar extends PolymerWidget {
      * JavaScript Info:
      * @property placeHolderRemoved
      * @type Boolean
-     * @behavior BwtUploader
+     * 
      */
     public void setPlaceHolderRemoved(boolean value) {
         getPolymerElement().setPlaceHolderRemoved(value);
-    }
-
-    /**
-     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
-     *
-     * JavaScript Info:
-     * @property image
-     * @type String
-     * @behavior BwtUploader
-     */
-    public String getImage() {
-        return getPolymerElement().getImage();
-    }
-    /**
-     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
-     *
-     * JavaScript Info:
-     * @property image
-     * @type String
-     * @behavior BwtUploader
-     */
-    public void setImage(String value) {
-        getPolymerElement().setImage(value);
-    }
-
-    /**
-     * <p>location of the placeholder image</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * @behavior BwtUploader
-     */
-    public String getPlaceholder() {
-        return getPolymerElement().getPlaceholder();
-    }
-    /**
-     * <p>location of the placeholder image</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * @behavior BwtUploader
-     */
-    public void setPlaceholder(String value) {
-        getPolymerElement().setPlaceholder(value);
     }
 
     /**
@@ -184,7 +138,7 @@ public class BwtProgressBar extends PolymerWidget {
      * JavaScript Info:
      * @property theme
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     public String getTheme() {
         return getPolymerElement().getTheme();
@@ -195,24 +149,58 @@ public class BwtProgressBar extends PolymerWidget {
      * JavaScript Info:
      * @property theme
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     public void setTheme(String value) {
         getPolymerElement().setTheme(value);
     }
 
-
-    // Needed in UIBinder
     /**
-     * <p> private variable</p>
+     * <p>location of the placeholder image</p>
      *
      * JavaScript Info:
-     * @attribute error
-     * @behavior BwtUploader
+     * @property placeholder
+     * @type String
+     * 
      */
-    public void setError(String value) {
-        Polymer.property(this.getPolymerElement(), "error", value);
+    public String getPlaceholder() {
+        return getPolymerElement().getPlaceholder();
     }
+    /**
+     * <p>location of the placeholder image</p>
+     *
+     * JavaScript Info:
+     * @property placeholder
+     * @type String
+     * 
+     */
+    public void setPlaceholder(String value) {
+        getPolymerElement().setPlaceholder(value);
+    }
+
+    /**
+     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
+     *
+     * JavaScript Info:
+     * @property image
+     * @type String
+     * @behavior BwtProgressBar
+     */
+    public String getImage() {
+        return getPolymerElement().getImage();
+    }
+    /**
+     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
+     *
+     * JavaScript Info:
+     * @property image
+     * @type String
+     * @behavior BwtProgressBar
+     */
+    public void setImage(String value) {
+        getPolymerElement().setImage(value);
+    }
+
 
     // Needed in UIBinder
     /**
@@ -220,10 +208,22 @@ public class BwtProgressBar extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute file
-     * @behavior BwtUploader
+     * @behavior BwtProgressBar
      */
     public void setFile(String value) {
         Polymer.property(this.getPolymerElement(), "file", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p> private variable</p>
+     *
+     * JavaScript Info:
+     * @attribute error
+     * @behavior BwtProgressBar
+     */
+    public void setError(String value) {
+        Polymer.property(this.getPolymerElement(), "error", value);
     }
 
 

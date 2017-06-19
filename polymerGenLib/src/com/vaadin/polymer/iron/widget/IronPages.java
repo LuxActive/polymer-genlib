@@ -319,7 +319,7 @@ public class IronPages extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -332,7 +332,7 @@ public class IronPages extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
@@ -421,7 +421,7 @@ public class IronPages extends PolymerWidget {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void notifyResize() {
@@ -434,7 +434,7 @@ public class IronPages extends PolymerWidget {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {

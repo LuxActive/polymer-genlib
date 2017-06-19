@@ -262,7 +262,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property items
      * @type Array
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public JsArray getItems() {
         return getPolymerElement().getItems();
@@ -273,7 +273,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property items
      * @type Array
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public void setItems(JsArray value) {
         getPolymerElement().setItems(value);
@@ -308,7 +308,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property selected
      * @type (string|number)
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public Object getSelected() {
         return getPolymerElement().getSelected();
@@ -319,7 +319,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property selected
      * @type (string|number)
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public void setSelected(Object value) {
         getPolymerElement().setSelected(value);
@@ -331,7 +331,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property selectedItem
      * @type ?Object
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public JavaScriptObject getSelectedItem() {
         return getPolymerElement().getSelectedItem();
@@ -342,7 +342,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property selectedItem
      * @type ?Object
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public void setSelectedItem(JavaScriptObject value) {
         getPolymerElement().setSelectedItem(value);
@@ -354,7 +354,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property selectedAttribute
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public String getSelectedAttribute() {
         return getPolymerElement().getSelectedAttribute();
@@ -365,7 +365,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property selectedAttribute
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public void setSelectedAttribute(String value) {
         getPolymerElement().setSelectedAttribute(value);
@@ -377,7 +377,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property selectedClass
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public String getSelectedClass() {
         return getPolymerElement().getSelectedClass();
@@ -388,7 +388,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property selectedClass
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public void setSelectedClass(String value) {
         getPolymerElement().setSelectedClass(value);
@@ -400,7 +400,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property selectable
      * @type string
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public String getSelectable() {
         return getPolymerElement().getSelectable();
@@ -411,7 +411,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property selectable
      * @type string
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public void setSelectable(String value) {
         getPolymerElement().setSelectable(value);
@@ -423,7 +423,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property fallbackSelection
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public String getFallbackSelection() {
         return getPolymerElement().getFallbackSelection();
@@ -434,7 +434,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property fallbackSelection
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public void setFallbackSelection(String value) {
         getPolymerElement().setFallbackSelection(value);
@@ -446,7 +446,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property attrForSelected
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public String getAttrForSelected() {
         return getPolymerElement().getAttrForSelected();
@@ -457,7 +457,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property attrForSelected
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public void setAttrForSelected(String value) {
         getPolymerElement().setAttrForSelected(value);
@@ -469,7 +469,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property activateEvent
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public String getActivateEvent() {
         return getPolymerElement().getActivateEvent();
@@ -480,7 +480,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @property activateEvent
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public void setActivateEvent(String value) {
         getPolymerElement().setActivateEvent(value);
@@ -564,7 +564,7 @@ public class IronSwipeablePages extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute items
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public void setItems(String value) {
         Polymer.property(this.getPolymerElement(), "items", value);
@@ -588,7 +588,7 @@ public class IronSwipeablePages extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute selected
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public void setSelected(String value) {
         Polymer.property(this.getPolymerElement(), "selected", value);
@@ -600,7 +600,7 @@ public class IronSwipeablePages extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute selected-item
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     public void setSelectedItem(String value) {
         Polymer.property(this.getPolymerElement(), "selectedItem", value);
@@ -613,7 +613,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @method selectIndex
      * @param {} index  
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     public void selectIndex(Object index) {
@@ -626,7 +626,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior IronSwipeablePages
+     * @behavior PaperClockSelector
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -639,7 +639,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @method select
      * @param {(string|number)} value  
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     public void select(Object value) {
@@ -652,7 +652,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior IronSwipeablePages
+     * @behavior PaperClockSelector
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
@@ -665,7 +665,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior IronSwipeablePages
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {
@@ -677,7 +677,7 @@ public class IronSwipeablePages extends PolymerWidget {
      *
      * JavaScript Info:
      * @method selectPrevious
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     public void selectPrevious() {
@@ -689,7 +689,7 @@ public class IronSwipeablePages extends PolymerWidget {
      *
      * JavaScript Info:
      * @method selectNext
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     public void selectNext() {
@@ -703,7 +703,7 @@ public class IronSwipeablePages extends PolymerWidget {
      *
      * JavaScript Info:
      * @method forceSynchronousItemUpdate
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     public void forceSynchronousItemUpdate() {
@@ -715,7 +715,7 @@ public class IronSwipeablePages extends PolymerWidget {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior IronSwipeablePages
+     * @behavior PaperClockSelector
      * 
      */
     public void notifyResize() {
@@ -728,7 +728,7 @@ public class IronSwipeablePages extends PolymerWidget {
      * JavaScript Info:
      * @method indexOf
      * @param {Object} item  
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     public void indexOf(JavaScriptObject item) {

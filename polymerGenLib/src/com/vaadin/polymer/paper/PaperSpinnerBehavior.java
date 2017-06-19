@@ -20,7 +20,7 @@ import jsinterop.annotations.JsType;
 public interface PaperSpinnerBehavior {
 
     @JsOverlay public static final String NAME = "Polymer.PaperSpinnerBehavior";
-    @JsOverlay public static final String SRC = "paper-spinner/paper-spinner-behavior.html";
+    @JsOverlay public static final String SRC = "paper-spinner/paper-spinner.html";
 
 
     /**
@@ -29,7 +29,7 @@ public interface PaperSpinnerBehavior {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperSpinner
+     * 
      */
     @JsProperty boolean getActive();
     /**
@@ -38,7 +38,7 @@ public interface PaperSpinnerBehavior {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperSpinner
+     * 
      */
     @JsProperty void setActive(boolean value);
 
@@ -48,7 +48,7 @@ public interface PaperSpinnerBehavior {
      * JavaScript Info:
      * @property alt
      * @type String
-     * @behavior PaperSpinner
+     * 
      */
     @JsProperty String getAlt();
     /**
@@ -57,7 +57,7 @@ public interface PaperSpinnerBehavior {
      * JavaScript Info:
      * @property alt
      * @type String
-     * @behavior PaperSpinner
+     * 
      */
     @JsProperty void setAlt(String value);
 

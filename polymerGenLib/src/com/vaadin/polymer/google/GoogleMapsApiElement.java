@@ -30,7 +30,7 @@ import jsinterop.annotations.JsType;
 public interface GoogleMapsApiElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "google-maps-api";
-    @JsOverlay public static final String SRC = "google-apis/google-maps-api.html";
+    @JsOverlay public static final String SRC = "google-apis/google-apis.html";
 
 
     /**

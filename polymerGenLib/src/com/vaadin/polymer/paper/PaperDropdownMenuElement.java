@@ -17,7 +17,7 @@ import jsinterop.annotations.JsType;
  * <p><code>paper-dropdown-menu</code> is similar to a native browser select element.<br><code>paper-dropdown-menu</code> works with selectable content. The currently selected<br>item is displayed in the control. If no item is selected, the <code>label</code> is<br>displayed instead.</p>
  * <p>Example:</p>
  * <pre><code>&lt;paper-dropdown-menu label=&quot;Your favourite pastry&quot;&gt;
- *   &lt;paper-listbox class=&quot;dropdown-content&quot;&gt;
+ *   &lt;paper-listbox slot=&quot;dropdown-content&quot;&gt;
  *     &lt;paper-item&gt;Croissant&lt;/paper-item&gt;
  *     &lt;paper-item&gt;Donut&lt;/paper-item&gt;
  *     &lt;paper-item&gt;Financier&lt;/paper-item&gt;
@@ -27,7 +27,7 @@ import jsinterop.annotations.JsType;
  * 
  * 
  * </code></pre><p>This example renders a dropdown menu with 4 options.</p>
- * <p>The child element with the class <code>dropdown-content</code> is used as the dropdown<br>menu. This can be a <a href="paper-listbox"><code>paper-listbox</code></a>, or any other or<br>element that acts like an <a href="iron-selector"><code>iron-selector</code></a>.</p>
+ * <p>The child element with the slot <code>dropdown-content</code> is used as the dropdown<br>menu. This can be a <a href="paper-listbox"><code>paper-listbox</code></a>, or any other or<br>element that acts like an <a href="iron-selector"><code>iron-selector</code></a>.</p>
  * <p>Specifically, the menu child must fire an<br><a href="iron-selector#event-iron-select"><code>iron-select</code></a> event when one of its<br>children is selected, and an <a href="iron-selector#event-iron-deselect"><code>iron-deselect</code></a><br>event when a child is deselected. The selected or deselected item must<br>be passed as the event’s <code>detail.item</code> property.</p>
  * <p>Applications can listen for the <code>iron-select</code> and <code>iron-deselect</code> events<br>to react when options are selected and deselected.</p>
  * <h3 id="styling">Styling</h3>
@@ -88,7 +88,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getPressed();
     /**
@@ -97,7 +97,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setPressed(boolean value);
 
@@ -121,7 +121,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
     /**
-     * <p>The last selected item. An item is selected if the dropdown menu has<br>a child with class <code>dropdown-content</code>, and that child triggers an<br><code>iron-select</code> event with the selected <code>item</code> in the <code>detail</code>.</p>
+     * <p>The last selected item. An item is selected if the dropdown menu has<br>a child with slot <code>dropdown-content</code>, and that child triggers an<br><code>iron-select</code> event with the selected <code>item</code> in the <code>detail</code>.</p>
      *
      * JavaScript Info:
      * @property selectedItem
@@ -130,7 +130,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      */
     @JsProperty JavaScriptObject getSelectedItem();
     /**
-     * <p>The last selected item. An item is selected if the dropdown menu has<br>a child with class <code>dropdown-content</code>, and that child triggers an<br><code>iron-select</code> event with the selected <code>item</code> in the <code>detail</code>.</p>
+     * <p>The last selected item. An item is selected if the dropdown menu has<br>a child with slot <code>dropdown-content</code>, and that child triggers an<br><code>iron-select</code> event with the selected <code>item</code> in the <code>detail</code>.</p>
      *
      * JavaScript Info:
      * @property selectedItem
@@ -145,7 +145,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
@@ -154,7 +154,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
@@ -164,7 +164,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getActive();
     /**
@@ -173,7 +173,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setActive(boolean value);
 
@@ -221,7 +221,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getPointerDown();
     /**
@@ -230,7 +230,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setPointerDown(boolean value);
 
@@ -259,7 +259,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getReceivedFocusFromKeyboard();
     /**
@@ -268,7 +268,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setReceivedFocusFromKeyboard(boolean value);
 
@@ -278,7 +278,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getToggles();
     /**
@@ -287,7 +287,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setToggles(boolean value);
 
@@ -354,7 +354,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getFocused();
     /**
@@ -363,7 +363,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setFocused(boolean value);
 
@@ -373,7 +373,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getDisabled();
     /**
@@ -382,7 +382,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setDisabled(boolean value);
 
@@ -411,7 +411,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -420,7 +420,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
@@ -468,7 +468,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty String getAriaActiveAttribute();
     /**
@@ -477,7 +477,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setAriaActiveAttribute(String value);
 
@@ -679,7 +679,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
@@ -719,7 +719,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void removeOwnKeyBindings();
@@ -742,7 +742,7 @@ public interface PaperDropdownMenuElement extends HTMLElement {
      * @method keyboardEventMatchesKeys
      * @param {KeyboardEvent} event  
      * @param {string} eventString  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * @return {boolean}
      */
     boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);

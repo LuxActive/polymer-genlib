@@ -39,7 +39,7 @@ import jsinterop.annotations.JsType;
 public interface GoogleClientLoaderElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "google-client-loader";
-    @JsOverlay public static final String SRC = "google-apis/google-client-loader.html";
+    @JsOverlay public static final String SRC = "google-apis/google-apis.html";
 
 
     /**

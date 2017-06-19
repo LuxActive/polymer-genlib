@@ -52,7 +52,7 @@ import jsinterop.annotations.JsType;
 public interface IronOverlayBackdropElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "iron-overlay-backdrop";
-    @JsOverlay public static final String SRC = "iron-overlay-behavior/iron-overlay-backdrop.html";
+    @JsOverlay public static final String SRC = "iron-overlay-behavior/iron-overlay-behavior.html";
 
 
     /**

@@ -20,7 +20,7 @@ import jsinterop.annotations.JsType;
 public interface IronControlState {
 
     @JsOverlay public static final String NAME = "Polymer.IronControlState";
-    @JsOverlay public static final String SRC = "iron-behaviors/iron-control-state.html";
+    @JsOverlay public static final String SRC = "iron-behaviors/iron-button-state.html";
 
 
     /**
@@ -29,7 +29,7 @@ public interface IronControlState {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * 
      */
     @JsProperty boolean getDisabled();
     /**
@@ -38,7 +38,7 @@ public interface IronControlState {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * 
      */
     @JsProperty void setDisabled(boolean value);
 
@@ -48,7 +48,7 @@ public interface IronControlState {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * 
      */
     @JsProperty boolean getFocused();
     /**
@@ -57,7 +57,7 @@ public interface IronControlState {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * 
      */
     @JsProperty void setFocused(boolean value);
 

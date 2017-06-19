@@ -20,7 +20,7 @@ import jsinterop.annotations.JsType;
 public interface GooglePlusoneApiElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "google-plusone-api";
-    @JsOverlay public static final String SRC = "google-apis/google-plusone-api.html";
+    @JsOverlay public static final String SRC = "google-apis/google-apis.html";
 
 
     /**

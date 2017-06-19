@@ -15,22 +15,26 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * <p><code>&lt;paper-input-container&gt;</code> is a container for a <code>&lt;label&gt;</code>, an <code>&lt;input is=&quot;iron-input&quot;&gt;</code> or<br><code>&lt;textarea&gt;</code> and optional add-on elements such as an error message or character<br>counter, used to implement Material Design text fields.</p>
+ * <p><code>&lt;paper-input-container&gt;</code> is a container for a <code>&lt;label&gt;</code>, an <code>&lt;iron-input&gt;</code> or<br><code>&lt;textarea&gt;</code> and optional add-on elements such as an error message or character<br>counter, used to implement Material Design text fields.</p>
  * <p>For example:</p>
  * <pre><code>&lt;paper-input-container&gt;
- *   &lt;label&gt;Your name&lt;/label&gt;
- *   &lt;input is=&quot;iron-input&quot;&gt;
+ *   &lt;label slot=&quot;label&quot;&gt;Your name&lt;/label&gt;
+ *   &lt;iron-input slot=&quot;input&quot;&gt;
+ *     &lt;input&gt;
+ *   &lt;/iron-input&gt;
+ *   // In Polymer 1.0, you would use `&lt;input is=&quot;iron-input&quot; slot=&quot;input&quot;&gt;` instead of the above.
  * &lt;/paper-input-container&gt;
  * 
  * 
- * </code></pre><p>Do not wrap <code>&lt;paper-input-container&gt;</code> around elements that already include it, such as <code>&lt;paper-input&gt;</code>.<br>Doing so may cause events to bounce infintely between the container and its contained element.</p>
+ * </code></pre><p>You can style the nested <input> however you want; if you want it to look like a<br>Material Design input, you can style it with the –paper-input-container-shared-input-style mixin.</p>
+ * <p>Do not wrap <code>&lt;paper-input-container&gt;</code> around elements that already include it, such as <code>&lt;paper-input&gt;</code>.<br>Doing so may cause events to bounce infinitely between the container and its contained element.</p>
  * <h3 id="listening-for-input-changes">Listening for input changes</h3>
  * <p>By default, it listens for changes on the <code>bind-value</code> attribute on its children nodes and perform<br>tasks such as auto-validating and label styling when the <code>bind-value</code> changes. You can configure<br>the attribute it listens to with the <code>attr-for-value</code> attribute.</p>
  * <h3 id="using-a-custom-input-element">Using a custom input element</h3>
  * <p>You can use a custom input element in a <code>&lt;paper-input-container&gt;</code>, for example to implement a<br>compound input field like a social security number input. The custom input element should have the<br><code>paper-input-input</code> class, have a <code>notify:true</code> value property and optionally implements<br><code>Polymer.IronValidatableBehavior</code> if it is validatable.</p>
  * <pre><code>&lt;paper-input-container attr-for-value=&quot;ssn-value&quot;&gt;
- *   &lt;label&gt;Social security number&lt;/label&gt;
- *   &lt;ssn-input class=&quot;paper-input-input&quot;&gt;&lt;/ssn-input&gt;
+ *   &lt;label slot=&quot;label&quot;&gt;Social security number&lt;/label&gt;
+ *   &lt;ssn-input slot=&quot;input&quot; class=&quot;paper-input-input&quot;&gt;&lt;/ssn-input&gt;
  * &lt;/paper-input-container&gt;
  * 
  * 
@@ -43,10 +47,13 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <h3 id="prefixes-and-suffixes">Prefixes and suffixes</h3>
  * <p>These are child elements of a <code>&lt;paper-input-container&gt;</code> with the <code>prefix</code><br>or <code>suffix</code> attribute, and are displayed inline with the input, before or after.</p>
  * <pre><code>&lt;paper-input-container&gt;
- *   &lt;div prefix&gt;$&lt;/div&gt;
- *   &lt;label&gt;Total&lt;/label&gt;
- *   &lt;input is=&quot;iron-input&quot;&gt;
- *   &lt;paper-icon-button suffix icon=&quot;clear&quot;&gt;&lt;/paper-icon-button&gt;
+ *   &lt;div slot=&quot;prefix&quot;&gt;$&lt;/div&gt;
+ *   &lt;label slot=&quot;label&quot;&gt;Total&lt;/label&gt;
+ *   &lt;iron-input slot=&quot;input&quot;&gt;
+ *     &lt;input&gt;
+ *   &lt;/iron-input&gt;
+ *   // In Polymer 1.0, you would use `&lt;input is=&quot;iron-input&quot; slot=&quot;input&quot;&gt;` instead of the above.
+ *   &lt;paper-icon-button slot=&quot;suffix&quot; icon=&quot;clear&quot;&gt;&lt;/paper-icon-button&gt;
  * &lt;/paper-input-container&gt;
  * 
  * 
@@ -112,8 +119,28 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <td><code>{}</code></td>
  * </tr>
  * <tr>
+ * <td><code>--paper-input-container-input-focus</code></td>
+ * <td>Mixin applied to the input when focused</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-input-container-input-invalid</code></td>
+ * <td>Mixin applied to the input when invalid</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
  * <td><code>--paper-input-container-input-webkit-spinner</code></td>
  * <td>Mixin applied to the webkit spinner</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-input-container-input-webkit-clear</code></td>
+ * <td>Mixin applied to the webkit clear button</td>
+ * <td><code>{}</code></td>
+ * </tr>
+ * <tr>
+ * <td><code>--paper-input-container-ms-clear</code></td>
+ * <td>Mixin applied to the Internet Explorer clear button</td>
  * <td><code>{}</code></td>
  * </tr>
  * <tr>

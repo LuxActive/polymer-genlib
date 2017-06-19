@@ -13,44 +13,26 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
+ * <p><em>This element has been deprecated in favor of <a href="https://github.com/PolymerElements/app-layout">app-layout</a>.*</em></p>
  * <p>Material design: <a href="https://www.google.com/design/spec/patterns/navigation-drawer.html">Navigation drawer</a></p>
- * <p><code>paper-drawer-panel</code> contains a drawer panel and a main panel.  The drawer<br>and the main panel are side-by-side with drawer on the left.  When the browser<br>window size is smaller than the <code>responsiveWidth</code>, <code>paper-drawer-panel</code><br>changes to narrow layout.  In narrow layout, the drawer will be stacked on top<br>of the main panel.  The drawer will slide in/out to hide/reveal the main<br>panel.</p>
+ * <p><code>paper-drawer-panel</code> contains a drawer panel and a main panel. The drawer<br>and the main panel are side-by-side with drawer on the left. When the browser<br>window size is smaller than the <code>responsiveWidth</code>, <code>paper-drawer-panel</code><br>changes to narrow layout. In narrow layout, the drawer will be stacked on top<br>of the main panel. The drawer will slide in/out to hide/reveal the main<br>panel.</p>
  * <p>Use the attribute <code>drawer</code> to indicate that the element is the drawer panel and<br><code>main</code> to indicate that the element is the main panel.</p>
  * <p>Example:</p>
  * <pre><code>&lt;paper-drawer-panel&gt;
- *   &lt;div drawer&gt; Drawer panel... &lt;/div&gt;
- *   &lt;div main&gt; Main panel... &lt;/div&gt;
+ *   &lt;div slot=&quot;drawer&quot;&gt; Drawer panel... &lt;/div&gt;
+ *   &lt;div slot=&quot;main&quot;&gt; Main panel... &lt;/div&gt;
  * &lt;/paper-drawer-panel&gt;
  * 
  * 
- * </code></pre><p>The drawer and the main panels are not scrollable.  You can set CSS overflow<br>property on the elements to make them scrollable or use <code>paper-header-panel</code>.</p>
+ * </code></pre><p>The drawer and the main panels are not scrollable. You can set CSS overflow<br>property on the elements to make them scrollable or use <code>paper-header-panel</code>.</p>
  * <p>Example:</p>
  * <pre><code>&lt;paper-drawer-panel&gt;
- *   &lt;paper-header-panel drawer&gt;
+ *   &lt;paper-header-panel slot=&quot;drawer&quot;&gt;
  *     &lt;paper-toolbar&gt;&lt;/paper-toolbar&gt;
  *     &lt;div&gt; Drawer content... &lt;/div&gt;
  *   &lt;/paper-header-panel&gt;
- *   &lt;paper-header-panel main&gt;
+ *   &lt;paper-header-panel slot=&quot;main&quot;&gt;
  *     &lt;paper-toolbar&gt;&lt;/paper-toolbar&gt;
- *     &lt;div&gt; Main content... &lt;/div&gt;
- *   &lt;/paper-header-panel&gt;
- * &lt;/paper-drawer-panel&gt;
- * 
- * 
- * </code></pre><p>An element that should toggle the drawer will automatically do so if it’s<br>given the <code>paper-drawer-toggle</code> attribute.  Also this element will automatically<br>be hidden in wide layout.</p>
- * <p>Example:</p>
- * <pre><code>&lt;paper-drawer-panel&gt;
- *   &lt;paper-header-panel drawer&gt;
- *     &lt;paper-toolbar&gt;
- *       &lt;div&gt;Application&lt;/div&gt;
- *     &lt;/paper-toolbar&gt;
- *     &lt;div&gt; Drawer content... &lt;/div&gt;
- *   &lt;/paper-header-panel&gt;
- *   &lt;paper-header-panel main&gt;
- *     &lt;paper-toolbar&gt;
- *       &lt;paper-icon-button icon=&quot;menu&quot; paper-drawer-toggle&gt;&lt;/paper-icon-button&gt;
- *       &lt;div&gt;Title&lt;/div&gt;
- *     &lt;/paper-toolbar&gt;
  *     &lt;div&gt; Main content... &lt;/div&gt;
  *   &lt;/paper-header-panel&gt;
  * &lt;/paper-drawer-panel&gt;
@@ -58,8 +40,8 @@ import jsinterop.annotations.JsType;
  * 
  * </code></pre><p>To position the drawer to the right, add <code>right-drawer</code> attribute.</p>
  * <pre><code>&lt;paper-drawer-panel right-drawer&gt;
- *   &lt;div drawer&gt; Drawer panel... &lt;/div&gt;
- *   &lt;div main&gt; Main panel... &lt;/div&gt;
+ *   &lt;div slot=&quot;drawer&quot;&gt; Drawer panel... &lt;/div&gt;
+ *   &lt;div slot=&quot;main&quot;&gt; Main panel... &lt;/div&gt;
  * &lt;/paper-drawer-panel&gt;
  * 
  * 
@@ -147,6 +129,25 @@ public interface PaperDrawerPanelElement extends HTMLElement {
 
 
     /**
+     * <p>If true, swipe to open/close the drawer is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property disableSwipe
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getDisableSwipe();
+    /**
+     * <p>If true, swipe to open/close the drawer is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property disableSwipe
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setDisableSwipe(boolean value);
+
+    /**
      * <p>Whether the user is dragging the drawer interactively.</p>
      *
      * JavaScript Info:
@@ -204,42 +205,42 @@ public interface PaperDrawerPanelElement extends HTMLElement {
     @JsProperty void setForceNarrow(boolean value);
 
     /**
-     * <p>If true, swipe to open/close the drawer is disabled.</p>
+     * <p>Whether the browser has support for the transform CSS property.</p>
      *
      * JavaScript Info:
-     * @property disableSwipe
+     * @property hasTransform
      * @type Boolean
      * 
      */
-    @JsProperty boolean getDisableSwipe();
+    @JsProperty boolean getHasTransform();
     /**
-     * <p>If true, swipe to open/close the drawer is disabled.</p>
+     * <p>Whether the browser has support for the transform CSS property.</p>
      *
      * JavaScript Info:
-     * @property disableSwipe
+     * @property hasTransform
      * @type Boolean
      * 
      */
-    @JsProperty void setDisableSwipe(boolean value);
+    @JsProperty void setHasTransform(boolean value);
 
     /**
-     * <p>Whether the browser has support for the will-change CSS property.</p>
+     * <p>If true, swipe from the edge is disabled.</p>
      *
      * JavaScript Info:
-     * @property hasWillChange
+     * @property disableEdgeSwipe
      * @type Boolean
      * 
      */
-    @JsProperty boolean getHasWillChange();
+    @JsProperty boolean getDisableEdgeSwipe();
     /**
-     * <p>Whether the browser has support for the will-change CSS property.</p>
+     * <p>If true, swipe from the edge is disabled.</p>
      *
      * JavaScript Info:
-     * @property hasWillChange
+     * @property disableEdgeSwipe
      * @type Boolean
      * 
      */
-    @JsProperty void setHasWillChange(boolean value);
+    @JsProperty void setDisableEdgeSwipe(boolean value);
 
     /**
      * <p>Returns true if the panel is in narrow layout.  This is useful if you<br>need to show/hide elements based on the layout.</p>
@@ -259,25 +260,6 @@ public interface PaperDrawerPanelElement extends HTMLElement {
      * 
      */
     @JsProperty void setNarrow(boolean value);
-
-    /**
-     * <p>Whether the drawer is peeking out from the edge.</p>
-     *
-     * JavaScript Info:
-     * @property peeking
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getPeeking();
-    /**
-     * <p>Whether the drawer is peeking out from the edge.</p>
-     *
-     * JavaScript Info:
-     * @property peeking
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setPeeking(boolean value);
 
     /**
      * <p>If true, position the drawer to the right.</p>
@@ -318,42 +300,42 @@ public interface PaperDrawerPanelElement extends HTMLElement {
     @JsProperty void setSelected(Object value);
 
     /**
-     * <p>If true, swipe from the edge is disabled.</p>
+     * <p>Whether the browser has support for the will-change CSS property.</p>
      *
      * JavaScript Info:
-     * @property disableEdgeSwipe
+     * @property hasWillChange
      * @type Boolean
      * 
      */
-    @JsProperty boolean getDisableEdgeSwipe();
+    @JsProperty boolean getHasWillChange();
     /**
-     * <p>If true, swipe from the edge is disabled.</p>
+     * <p>Whether the browser has support for the will-change CSS property.</p>
      *
      * JavaScript Info:
-     * @property disableEdgeSwipe
+     * @property hasWillChange
      * @type Boolean
      * 
      */
-    @JsProperty void setDisableEdgeSwipe(boolean value);
+    @JsProperty void setHasWillChange(boolean value);
 
     /**
-     * <p>Whether the browser has support for the transform CSS property.</p>
+     * <p>Whether the drawer is peeking out from the edge.</p>
      *
      * JavaScript Info:
-     * @property hasTransform
+     * @property peeking
      * @type Boolean
      * 
      */
-    @JsProperty boolean getHasTransform();
+    @JsProperty boolean getPeeking();
     /**
-     * <p>Whether the browser has support for the transform CSS property.</p>
+     * <p>Whether the drawer is peeking out from the edge.</p>
      *
      * JavaScript Info:
-     * @property hasTransform
+     * @property peeking
      * @type Boolean
      * 
      */
-    @JsProperty void setHasTransform(boolean value);
+    @JsProperty void setPeeking(boolean value);
 
     /**
      * <p>Max-width when the panel changes to narrow layout.</p>
@@ -413,25 +395,6 @@ public interface PaperDrawerPanelElement extends HTMLElement {
     @JsProperty void setDrawerWidth(String value);
 
     /**
-     * <p>The attribute on elements that should toggle the drawer on tap, also elements will<br>automatically be hidden in wide layout.</p>
-     *
-     * JavaScript Info:
-     * @property drawerToggleAttribute
-     * @type String
-     * 
-     */
-    @JsProperty String getDrawerToggleAttribute();
-    /**
-     * <p>The attribute on elements that should toggle the drawer on tap, also elements will<br>automatically be hidden in wide layout.</p>
-     *
-     * JavaScript Info:
-     * @property drawerToggleAttribute
-     * @type String
-     * 
-     */
-    @JsProperty void setDrawerToggleAttribute(String value);
-
-    /**
      * <p>The CSS selector for the element that should receive focus when the drawer is open.<br>By default, when the drawer opens, it focuses the first tabbable element. That is,<br>the first element that can receive focus.</p>
      * <p>To disable this behavior, you can set <code>drawerFocusSelector</code> to <code>null</code> or an empty string.</p>
      *
@@ -459,7 +422,7 @@ public interface PaperDrawerPanelElement extends HTMLElement {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void stopResizeNotificationsFor(Object target);
@@ -470,7 +433,7 @@ public interface PaperDrawerPanelElement extends HTMLElement {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -481,20 +444,10 @@ public interface PaperDrawerPanelElement extends HTMLElement {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);
-
-    /**
-     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
-     *
-     * JavaScript Info:
-     * @method notifyResize
-     * @behavior PaperTimePicker
-     * 
-     */
-    void notifyResize();
 
     /**
      * <p>Opens the drawer.</p>
@@ -507,16 +460,6 @@ public interface PaperDrawerPanelElement extends HTMLElement {
     void openDrawer();
 
     /**
-     * <p>Toggles the panel open and closed.</p>
-     *
-     * JavaScript Info:
-     * @method togglePanel
-     * 
-     * 
-     */
-    void togglePanel();
-
-    /**
      * <p>Closes the drawer.</p>
      *
      * JavaScript Info:
@@ -525,5 +468,25 @@ public interface PaperDrawerPanelElement extends HTMLElement {
      * 
      */
     void closeDrawer();
+
+    /**
+     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
+     *
+     * JavaScript Info:
+     * @method notifyResize
+     * @behavior PaperClockSelector
+     * 
+     */
+    void notifyResize();
+
+    /**
+     * <p>Toggles the panel open and closed.</p>
+     *
+     * JavaScript Info:
+     * @method togglePanel
+     * 
+     * 
+     */
+    void togglePanel();
 
 }

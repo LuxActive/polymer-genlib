@@ -111,7 +111,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public JavaScriptObject getKeyBindings() {
         return getPolymerElement().getKeyBindings();
@@ -122,7 +122,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setKeyBindings(JavaScriptObject value) {
         getPolymerElement().setKeyBindings(value);
@@ -134,7 +134,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
@@ -145,7 +145,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
@@ -157,7 +157,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getDisabled() {
         return getPolymerElement().getDisabled();
@@ -168,7 +168,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setDisabled(boolean value) {
         getPolymerElement().setDisabled(value);
@@ -180,7 +180,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getPointerDown() {
         return getPolymerElement().getPointerDown();
@@ -191,7 +191,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setPointerDown(boolean value) {
         getPolymerElement().setPointerDown(value);
@@ -203,7 +203,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getPressed() {
         return getPolymerElement().getPressed();
@@ -214,7 +214,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setPressed(boolean value) {
         getPolymerElement().setPressed(value);
@@ -226,7 +226,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getStopKeyboardEventPropagation() {
         return getPolymerElement().getStopKeyboardEventPropagation();
@@ -237,7 +237,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
@@ -249,7 +249,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getReceivedFocusFromKeyboard() {
         return getPolymerElement().getReceivedFocusFromKeyboard();
@@ -260,7 +260,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setReceivedFocusFromKeyboard(boolean value) {
         getPolymerElement().setReceivedFocusFromKeyboard(value);
@@ -272,7 +272,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getToggles() {
         return getPolymerElement().getToggles();
@@ -283,7 +283,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setToggles(boolean value) {
         getPolymerElement().setToggles(value);
@@ -295,7 +295,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getFocused() {
         return getPolymerElement().getFocused();
@@ -306,7 +306,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setFocused(boolean value) {
         getPolymerElement().setFocused(value);
@@ -318,7 +318,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getActive() {
         return getPolymerElement().getActive();
@@ -329,7 +329,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setActive(boolean value) {
         getPolymerElement().setActive(value);
@@ -341,7 +341,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getNoink() {
         return getPolymerElement().getNoink();
@@ -352,7 +352,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setNoink(boolean value) {
         getPolymerElement().setNoink(value);
@@ -364,7 +364,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public String getAriaActiveAttribute() {
         return getPolymerElement().getAriaActiveAttribute();
@@ -375,7 +375,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setAriaActiveAttribute(String value) {
         getPolymerElement().setAriaActiveAttribute(value);
@@ -388,7 +388,7 @@ public class PaperTab extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setKeyBindings(String value) {
         Polymer.property(this.getPolymerElement(), "keyBindings", value);
@@ -400,7 +400,7 @@ public class PaperTab extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setKeyEventTarget(String value) {
         Polymer.property(this.getPolymerElement(), "keyEventTarget", value);
@@ -414,7 +414,7 @@ public class PaperTab extends PolymerWidget {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
@@ -426,7 +426,7 @@ public class PaperTab extends PolymerWidget {
      *
      * JavaScript Info:
      * @method hasRipple
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * @return {boolean}
      */
     public boolean hasRipple() {
@@ -438,7 +438,7 @@ public class PaperTab extends PolymerWidget {
      *
      * JavaScript Info:
      * @method getRipple
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     public void getRipple() {
@@ -450,7 +450,7 @@ public class PaperTab extends PolymerWidget {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     public void removeOwnKeyBindings() {
@@ -464,7 +464,7 @@ public class PaperTab extends PolymerWidget {
      * @method keyboardEventMatchesKeys
      * @param {KeyboardEvent} event  
      * @param {string} eventString  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * @return {boolean}
      */
     public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {
@@ -477,7 +477,7 @@ public class PaperTab extends PolymerWidget {
      * JavaScript Info:
      * @method ensureRipple
      * @param {!Event=} optTriggeringEvent  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     public void ensureRipple(JavaScriptObject optTriggeringEvent) {

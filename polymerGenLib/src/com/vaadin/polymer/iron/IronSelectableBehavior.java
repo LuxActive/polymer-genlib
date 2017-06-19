@@ -20,7 +20,7 @@ import jsinterop.annotations.JsType;
 public interface IronSelectableBehavior {
 
     @JsOverlay public static final String NAME = "Polymer.IronSelectableBehavior";
-    @JsOverlay public static final String SRC = "iron-selector/iron-selectable.html";
+    @JsOverlay public static final String SRC = "iron-selector/iron-selector.html";
 
 
     /**
@@ -29,7 +29,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property items
      * @type Array
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty JsArray getItems();
     /**
@@ -38,7 +38,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property items
      * @type Array
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty void setItems(JsArray value);
 
@@ -48,7 +48,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectedItem
      * @type ?Object
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty JavaScriptObject getSelectedItem();
     /**
@@ -57,7 +57,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectedItem
      * @type ?Object
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty void setSelectedItem(JavaScriptObject value);
 
@@ -67,7 +67,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selected
      * @type (string|number)
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty Object getSelected();
     /**
@@ -76,7 +76,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selected
      * @type (string|number)
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty void setSelected(Object value);
 
@@ -86,7 +86,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectedClass
      * @type String
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty String getSelectedClass();
     /**
@@ -95,7 +95,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectedClass
      * @type String
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty void setSelectedClass(String value);
 
@@ -105,7 +105,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectedAttribute
      * @type String
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty String getSelectedAttribute();
     /**
@@ -114,7 +114,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectedAttribute
      * @type String
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty void setSelectedAttribute(String value);
 
@@ -124,7 +124,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property attrForSelected
      * @type String
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty String getAttrForSelected();
     /**
@@ -133,7 +133,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property attrForSelected
      * @type String
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty void setAttrForSelected(String value);
 
@@ -143,7 +143,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectable
      * @type string
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty String getSelectable();
     /**
@@ -152,7 +152,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property selectable
      * @type string
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty void setSelectable(String value);
 
@@ -162,7 +162,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property fallbackSelection
      * @type String
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty String getFallbackSelection();
     /**
@@ -171,7 +171,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property fallbackSelection
      * @type String
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty void setFallbackSelection(String value);
 
@@ -181,7 +181,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property activateEvent
      * @type String
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty String getActivateEvent();
     /**
@@ -190,7 +190,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @property activateEvent
      * @type String
-     * @behavior IronSwipeablePages
+     * 
      */
     @JsProperty void setActivateEvent(String value);
 
@@ -201,7 +201,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @method selectIndex
      * @param {} index  
-     * @behavior IronSwipeablePages
+     * 
      * 
      */
     void selectIndex(Object index);
@@ -212,7 +212,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @method select
      * @param {(string|number)} value  
-     * @behavior IronSwipeablePages
+     * 
      * 
      */
     void select(Object value);
@@ -224,7 +224,7 @@ public interface IronSelectableBehavior {
      *
      * JavaScript Info:
      * @method forceSynchronousItemUpdate
-     * @behavior IronSwipeablePages
+     * 
      * 
      */
     void forceSynchronousItemUpdate();
@@ -234,7 +234,7 @@ public interface IronSelectableBehavior {
      *
      * JavaScript Info:
      * @method selectPrevious
-     * @behavior IronSwipeablePages
+     * 
      * 
      */
     void selectPrevious();
@@ -244,7 +244,7 @@ public interface IronSelectableBehavior {
      *
      * JavaScript Info:
      * @method selectNext
-     * @behavior IronSwipeablePages
+     * 
      * 
      */
     void selectNext();
@@ -255,7 +255,7 @@ public interface IronSelectableBehavior {
      * JavaScript Info:
      * @method indexOf
      * @param {Object} item  
-     * @behavior IronSwipeablePages
+     * 
      * 
      */
     void indexOf(JavaScriptObject item);

@@ -41,35 +41,12 @@ public class BwtImagePreview extends PolymerWidget {
 
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @property customClass
-     * @type Boolean
-     * @behavior BwtUploader
-     */
-    public boolean getCustomClass() {
-        return getPolymerElement().getCustomClass();
-    }
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property customClass
-     * @type Boolean
-     * @behavior BwtUploader
-     */
-    public void setCustomClass(boolean value) {
-        getPolymerElement().setCustomClass(value);
-    }
-
-    /**
      * <p> private variable</p>
      *
      * JavaScript Info:
      * @property error
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     public JavaScriptObject getError() {
         return getPolymerElement().getError();
@@ -80,7 +57,7 @@ public class BwtImagePreview extends PolymerWidget {
      * JavaScript Info:
      * @property error
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     public void setError(JavaScriptObject value) {
         getPolymerElement().setError(value);
@@ -92,7 +69,7 @@ public class BwtImagePreview extends PolymerWidget {
      * JavaScript Info:
      * @property file
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     public JavaScriptObject getFile() {
         return getPolymerElement().getFile();
@@ -103,7 +80,7 @@ public class BwtImagePreview extends PolymerWidget {
      * JavaScript Info:
      * @property file
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     public void setFile(JavaScriptObject value) {
         getPolymerElement().setFile(value);
@@ -115,7 +92,7 @@ public class BwtImagePreview extends PolymerWidget {
      * JavaScript Info:
      * @property placeHolderRemoved
      * @type Boolean
-     * @behavior BwtUploader
+     * 
      */
     public boolean getPlaceHolderRemoved() {
         return getPolymerElement().getPlaceHolderRemoved();
@@ -126,10 +103,56 @@ public class BwtImagePreview extends PolymerWidget {
      * JavaScript Info:
      * @property placeHolderRemoved
      * @type Boolean
-     * @behavior BwtUploader
+     * 
      */
     public void setPlaceHolderRemoved(boolean value) {
         getPolymerElement().setPlaceHolderRemoved(value);
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property customClass
+     * @type Boolean
+     * 
+     */
+    public boolean getCustomClass() {
+        return getPolymerElement().getCustomClass();
+    }
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property customClass
+     * @type Boolean
+     * 
+     */
+    public void setCustomClass(boolean value) {
+        getPolymerElement().setCustomClass(value);
+    }
+
+    /**
+     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
+     *
+     * JavaScript Info:
+     * @property theme
+     * @type String
+     * 
+     */
+    public String getTheme() {
+        return getPolymerElement().getTheme();
+    }
+    /**
+     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
+     *
+     * JavaScript Info:
+     * @property theme
+     * @type String
+     * 
+     */
+    public void setTheme(String value) {
+        getPolymerElement().setTheme(value);
     }
 
     /**
@@ -161,7 +184,7 @@ public class BwtImagePreview extends PolymerWidget {
      * JavaScript Info:
      * @property image
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     public String getImage() {
         return getPolymerElement().getImage();
@@ -172,7 +195,7 @@ public class BwtImagePreview extends PolymerWidget {
      * JavaScript Info:
      * @property image
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     public void setImage(String value) {
         getPolymerElement().setImage(value);
@@ -184,7 +207,7 @@ public class BwtImagePreview extends PolymerWidget {
      * JavaScript Info:
      * @property placeholder
      * @type String
-     * @behavior BwtUploader
+     * @behavior BwtProgressBar
      */
     public String getPlaceholder() {
         return getPolymerElement().getPlaceholder();
@@ -195,33 +218,10 @@ public class BwtImagePreview extends PolymerWidget {
      * JavaScript Info:
      * @property placeholder
      * @type String
-     * @behavior BwtUploader
+     * @behavior BwtProgressBar
      */
     public void setPlaceholder(String value) {
         getPolymerElement().setPlaceholder(value);
-    }
-
-    /**
-     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
-     *
-     * JavaScript Info:
-     * @property theme
-     * @type String
-     * @behavior BwtUploader
-     */
-    public String getTheme() {
-        return getPolymerElement().getTheme();
-    }
-    /**
-     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
-     *
-     * JavaScript Info:
-     * @property theme
-     * @type String
-     * @behavior BwtUploader
-     */
-    public void setTheme(String value) {
-        getPolymerElement().setTheme(value);
     }
 
 
@@ -231,7 +231,7 @@ public class BwtImagePreview extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute error
-     * @behavior BwtUploader
+     * 
      */
     public void setError(String value) {
         Polymer.property(this.getPolymerElement(), "error", value);
@@ -243,7 +243,7 @@ public class BwtImagePreview extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute file
-     * @behavior BwtUploader
+     * @behavior BwtProgressBar
      */
     public void setFile(String value) {
         Polymer.property(this.getPolymerElement(), "file", value);

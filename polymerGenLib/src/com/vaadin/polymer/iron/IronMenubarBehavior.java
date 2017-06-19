@@ -27,6 +27,44 @@ public interface IronMenubarBehavior {
      * 
      *
      * JavaScript Info:
+     * @property disabled
+     * @type Boolean
+     * @behavior PaperTabs
+     */
+    @JsProperty boolean getDisabled();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property disabled
+     * @type Boolean
+     * @behavior PaperTabs
+     */
+    @JsProperty void setDisabled(boolean value);
+
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty JavaScriptObject getFocusedItem();
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty void setFocusedItem(JavaScriptObject value);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
      * @property keyBindings
      * @type Object
      * @behavior PaperTabs
@@ -42,5 +80,35 @@ public interface IronMenubarBehavior {
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
+    /**
+     * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
+     *
+     * JavaScript Info:
+     * @property attrForItemTitle
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getAttrForItemTitle();
+    /**
+     * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
+     *
+     * JavaScript Info:
+     * @property attrForItemTitle
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setAttrForItemTitle(String value);
+
+
+    /**
+     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
+     *
+     * JavaScript Info:
+     * @method select
+     * @param {(string|number)} value  
+     * @behavior PaperTabs
+     * 
+     */
+    void select(Object value);
 
 }

@@ -20,7 +20,7 @@ import jsinterop.annotations.JsType;
 public interface PaperItemBehavior {
 
     @JsOverlay public static final String NAME = "Polymer.PaperItemBehavior";
-    @JsOverlay public static final String SRC = "paper-item/paper-item-behavior.html";
+    @JsOverlay public static final String SRC = "paper-item/all-imports.html";
 
 
 

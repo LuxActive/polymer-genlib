@@ -18,25 +18,57 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * <p><code>&lt;iron-input&gt;</code> adds two-way binding and custom validators using <code>Polymer.IronValidatorBehavior</code><br>to <code>&lt;input&gt;</code>.</p>
- * <h3 id="two-way-binding">Two-way binding</h3>
- * <p>By default you can only get notified of changes to an <code>input</code>‘s <code>value</code> due to user input:</p>
+ * <p><code>&lt;iron-input&gt;</code> is a wrapper to a native <code>&lt;input&gt;</code> element, that adds two-way binding<br>and prevention of invalid input. To use it, you must distribute a native <code>&lt;input&gt;</code><br>yourself. You can continue to use the native <code>input</code> as you would normally:</p>
+ * <pre><code>&lt;iron-input&gt;
+ *   &lt;input&gt;
+ * &lt;/iron-input&gt;
+ * 
+ * &lt;iron-input&gt;
+ *   &lt;input type=&quot;email&quot; disabled&gt;
+ * &lt;/iron-input&gt;
+ * 
+ * 
+ * </code></pre><h3 id="two-way-binding">Two-way binding</h3>
+ * <p>By default you can only get notified of changes to a native <code>&lt;input&gt;</code>‘s <code>value</code><br>due to user input:</p>
  * <pre><code>&lt;input value=&quot;{{myValue::input}}&quot;&gt;
  * 
  * 
- * </code></pre><p><code>iron-input</code> adds the <code>bind-value</code> property that mirrors the <code>value</code> property, and can be used<br>for two-way data binding. <code>bind-value</code> will notify if it is changed either by user input or by script.</p>
- * <pre><code>&lt;input is=&quot;iron-input&quot; bind-value=&quot;{{myValue}}&quot;&gt;
+ * </code></pre><p>This means that if you imperatively set the value (i.e. <code>someNativeInput.value = &#39;foo&#39;</code>),<br>no events will be fired and this change cannot be observed.</p>
+ * <p><code>iron-input</code> adds the <code>bind-value</code> property that mirrors the native <code>input</code>‘s ‘<code>value</code> property; this<br>property can be used for two-way data binding.<br><code>bind-value</code> will notify if it is changed either by user input or by script.</p>
+ * <pre><code>&lt;iron-input bind-value=&quot;{{myValue}}&quot;&gt;
+ *   &lt;input&gt;
+ * &lt;/iron-input&gt;
  * 
  * 
- * </code></pre><h3 id="custom-validators">Custom validators</h3>
- * <p>You can use custom validators that implement <code>Polymer.IronValidatorBehavior</code> with <code>&lt;iron-input&gt;</code>.</p>
- * <pre><code>&lt;input is=&quot;iron-input&quot; validator=&quot;my-custom-validator&quot;&gt;
+ * </code></pre><p>Note: this means that if you want to imperatively set the native <code>input</code>‘s, you <em>must</em><br>set <code>bind-value</code> instead, so that the wrapper <code>iron-input</code> can be notified.</p>
+ * <h3 id="validation">Validation</h3>
+ * <p><code>iron-input</code> uses the native <code>input</code>‘s validation. For simplicity, <code>iron-input</code><br>has a <code>validate()</code> method (which internally just checks the distributed <code>input</code>‘s<br>validity), which sets an <code>invalid</code> attribute that can also be used for styling.</p>
+ * <p>To validate automatically as you type, you can use the <code>auto-validate</code> attribute.</p>
+ * <p><code>iron-input</code> also fires an <code>iron-input-validate</code> event after <code>validate()</code> is<br>called. You can use it to implement a custom validator:</p>
+ * <pre><code>var CatsOnlyValidator = {
+ *   validate: function(ironInput) {
+ *     var valid = !ironInput.bindValue || ironInput.bindValue === &#39;cat&#39;;
+ *     ironInput.invalid = !valid;
+ *     return valid;
+ *   }
+ * }
+ * ironInput.addEventListener(&#39;iron-input-validate&#39;, function() {
+ *   CatsOnly.validate(input2);
+ * });
  * 
  * 
- * </code></pre><h3 id="stopping-invalid-input">Stopping invalid input</h3>
- * <p>It may be desirable to only allow users to enter certain characters. You can use the<br><code>prevent-invalid-input</code> and <code>allowed-pattern</code> attributes together to accomplish this. This feature<br>is separate from validation, and <code>allowed-pattern</code> does not affect how the input is validated.</p>
- * <pre><code>&lt;!-- only allow characters that match [0-9] --&gt;
- * &lt;input is=&quot;iron-input&quot; prevent-invalid-input allowed-pattern=&quot;[0-9]&quot;&gt;
+ * </code></pre><p>You can also use an element implementing an <a href="/element/PolymerElements/iron-validatable-behavior"><code>IronValidatorBehavior</code></a>.<br>This example can also be found in the demo for this element:</p>
+ * <pre><code>&lt;iron-input validator=&quot;cats-only&quot;&gt;
+ *   &lt;input&gt;
+ * &lt;/iron-input&gt;
+ * 
+ * 
+ * </code></pre><h3 id="preventing-invalid-input">Preventing invalid input</h3>
+ * <p>It may be desirable to only allow users to enter certain characters. You can use the<br><code>allowed-pattern</code> attribute to accomplish this. This feature<br>is separate from validation, and <code>allowed-pattern</code> does not affect how the input is validated.</p>
+ * <pre><code>// Only allow typing digits, but a valid input has exactly 5 digits.
+ * &lt;iron-input allowed-pattern=&quot;[0-9]&quot;&gt;
+ *   &lt;input pattern=&quot;\d{5}&quot;&gt;
+ * &lt;/iron-input&gt;
  * 
  * 
  * </code></pre>
@@ -65,29 +97,6 @@ public class IronInput extends PolymerWidget {
 
 
     /**
-     * <p>Set to true to prevent the user from entering invalid input. If <code>allowedPattern</code> is set,<br>any character typed by the user will be matched against that pattern, and rejected if it’s not a match.<br>Pasted input will have each character checked individually; if any character<br>doesn’t match <code>allowedPattern</code>, the entire pasted string will be rejected.<br>If <code>allowedPattern</code> is not set, it will use the <code>type</code> attribute (only supported for <code>type=number</code>).</p>
-     *
-     * JavaScript Info:
-     * @property preventInvalidInput
-     * @type Boolean
-     * 
-     */
-    public boolean getPreventInvalidInput() {
-        return getPolymerElement().getPreventInvalidInput();
-    }
-    /**
-     * <p>Set to true to prevent the user from entering invalid input. If <code>allowedPattern</code> is set,<br>any character typed by the user will be matched against that pattern, and rejected if it’s not a match.<br>Pasted input will have each character checked individually; if any character<br>doesn’t match <code>allowedPattern</code>, the entire pasted string will be rejected.<br>If <code>allowedPattern</code> is not set, it will use the <code>type</code> attribute (only supported for <code>type=number</code>).</p>
-     *
-     * JavaScript Info:
-     * @property preventInvalidInput
-     * @type Boolean
-     * 
-     */
-    public void setPreventInvalidInput(boolean value) {
-        getPolymerElement().setPreventInvalidInput(value);
-    }
-
-    /**
      * <p>True if the last call to <code>validate</code> is invalid.</p>
      *
      * JavaScript Info:
@@ -111,7 +120,53 @@ public class IronInput extends PolymerWidget {
     }
 
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
+     * <p>Computed property that echoes <code>bindValue</code> (mostly used for Polymer 1.0<br>backcompatibility, if you were one-way binding to the Polymer 1.0<br><code>input is=&quot;iron-input&quot;</code> value attribute).</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type Object
+     * 
+     */
+    public JavaScriptObject getValue() {
+        return getPolymerElement().getValue();
+    }
+    /**
+     * <p>Computed property that echoes <code>bindValue</code> (mostly used for Polymer 1.0<br>backcompatibility, if you were one-way binding to the Polymer 1.0<br><code>input is=&quot;iron-input&quot;</code> value attribute).</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type Object
+     * 
+     */
+    public void setValue(JavaScriptObject value) {
+        getPolymerElement().setValue(value);
+    }
+
+    /**
+     * <p>Set to true to auto-validate the input value as you type.</p>
+     *
+     * JavaScript Info:
+     * @property autoValidate
+     * @type Boolean
+     * 
+     */
+    public boolean getAutoValidate() {
+        return getPolymerElement().getAutoValidate();
+    }
+    /**
+     * <p>Set to true to auto-validate the input value as you type.</p>
+     *
+     * JavaScript Info:
+     * @property autoValidate
+     * @type Boolean
+     * 
+     */
+    public void setAutoValidate(boolean value) {
+        getPolymerElement().setAutoValidate(value);
+    }
+
+    /**
+     * <p>Use this property instead of <code>value</code> for two-way data binding, or to<br>set a default value for the input. <strong>Do not</strong> use the distributed<br>input’s <code>value</code> property to set a default value.</p>
      *
      * JavaScript Info:
      * @property bindValue
@@ -122,7 +177,7 @@ public class IronInput extends PolymerWidget {
         return getPolymerElement().getBindValue();
     }
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.</p>
+     * <p>Use this property instead of <code>value</code> for two-way data binding, or to<br>set a default value for the input. <strong>Do not</strong> use the distributed<br>input’s <code>value</code> property to set a default value.</p>
      *
      * JavaScript Info:
      * @property bindValue
@@ -180,7 +235,10 @@ public class IronInput extends PolymerWidget {
     }
 
     /**
-     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
+     * <p>Regex-like list of characters allowed as input; all characters not in the list<br>will be rejected. The recommended format should be a list of allowed characters,<br>for example, <code>[a-zA-Z0-9.+-!;:]</code>.</p>
+     * <p>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). If a character is not a match, it will be rejected.</p>
+     * <p>Pasted input will have each character checked individually; if any character<br>doesn’t match <code>allowedPattern</code>, the entire pasted string will be rejected.</p>
+     * <p>Note: if you were using <code>iron-input</code> in 1.0, you were also required to<br>set <code>prevent-invalid-input</code>. This is no longer needed as of Polymer 2.0,<br>and will be set automatically for you if an <code>allowedPattern</code> is provided.</p>
      *
      * JavaScript Info:
      * @property allowedPattern
@@ -191,7 +249,10 @@ public class IronInput extends PolymerWidget {
         return getPolymerElement().getAllowedPattern();
     }
     /**
-     * <p>Regular expression that list the characters allowed as input.<br>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). The recommended format should be a list of allowed characters;<br>for example, <code>[a-zA-Z0-9.+-!;:]</code></p>
+     * <p>Regex-like list of characters allowed as input; all characters not in the list<br>will be rejected. The recommended format should be a list of allowed characters,<br>for example, <code>[a-zA-Z0-9.+-!;:]</code>.</p>
+     * <p>This pattern represents the allowed characters for the field; as the user inputs text,<br>each individual character will be checked against the pattern (rather than checking<br>the entire value as a whole). If a character is not a match, it will be rejected.</p>
+     * <p>Pasted input will have each character checked individually; if any character<br>doesn’t match <code>allowedPattern</code>, the entire pasted string will be rejected.</p>
+     * <p>Note: if you were using <code>iron-input</code> in 1.0, you were also required to<br>set <code>prevent-invalid-input</code>. This is no longer needed as of Polymer 2.0,<br>and will be set automatically for you if an <code>allowedPattern</code> is provided.</p>
      *
      * JavaScript Info:
      * @property allowedPattern
@@ -202,6 +263,18 @@ public class IronInput extends PolymerWidget {
         getPolymerElement().setAllowedPattern(value);
     }
 
+
+    // Needed in UIBinder
+    /**
+     * <p>Computed property that echoes <code>bindValue</code> (mostly used for Polymer 1.0<br>backcompatibility, if you were one-way binding to the Polymer 1.0<br><code>input is=&quot;iron-input&quot;</code> value attribute).</p>
+     *
+     * JavaScript Info:
+     * @attribute value
+     * 
+     */
+    public void setValue(String value) {
+        Polymer.property(this.getPolymerElement(), "value", value);
+    }
 
 
     /**
@@ -243,7 +316,7 @@ public class IronInput extends PolymerWidget {
 
 
     /**
-     * <p>  The <code>iron-input-validate</code> event is fired whenever <code>validate()</code> is called.</p>
+     * <p>Fired whenever <code>validate()</code> is called.</p>
      *
      * JavaScript Info:
      * @event iron-input-validate

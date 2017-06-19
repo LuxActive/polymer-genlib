@@ -21,7 +21,7 @@ import jsinterop.annotations.JsType;
 public interface PaperRippleBehavior {
 
     @JsOverlay public static final String NAME = "Polymer.PaperRippleBehavior";
-    @JsOverlay public static final String SRC = "paper-behaviors/paper-ripple-behavior.html";
+    @JsOverlay public static final String SRC = "paper-behaviors/paper-checked-element-behavior.html";
 
 
     /**
@@ -30,7 +30,7 @@ public interface PaperRippleBehavior {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * @behavior PaperToggleButton
+     * 
      */
     @JsProperty boolean getNoink();
     /**
@@ -39,7 +39,7 @@ public interface PaperRippleBehavior {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * @behavior PaperToggleButton
+     * 
      */
     @JsProperty void setNoink(boolean value);
 
@@ -49,7 +49,7 @@ public interface PaperRippleBehavior {
      *
      * JavaScript Info:
      * @method getRipple
-     * @behavior PaperToggleButton
+     * 
      * 
      */
     void getRipple();
@@ -59,7 +59,7 @@ public interface PaperRippleBehavior {
      *
      * JavaScript Info:
      * @method hasRipple
-     * @behavior PaperToggleButton
+     * 
      * @return {boolean}
      */
     boolean hasRipple();
@@ -70,7 +70,7 @@ public interface PaperRippleBehavior {
      * JavaScript Info:
      * @method ensureRipple
      * @param {!Event=} optTriggeringEvent  
-     * @behavior PaperToggleButton
+     * 
      * 
      */
     void ensureRipple(JavaScriptObject optTriggeringEvent);

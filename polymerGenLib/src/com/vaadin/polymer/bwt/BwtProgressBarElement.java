@@ -19,7 +19,7 @@ import jsinterop.annotations.JsType;
 public interface BwtProgressBarElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "bwt-progress-bar";
-    @JsOverlay public static final String SRC = "bwt-uploader/bwt-progress.html";
+    @JsOverlay public static final String SRC = "bwt-uploader/bwt-uploader.html";
 
 
     /**
@@ -28,7 +28,7 @@ public interface BwtProgressBarElement extends HTMLElement {
      * JavaScript Info:
      * @property customClass
      * @type Boolean
-     * @behavior BwtUploader
+     * @behavior BwtProgressBar
      */
     @JsProperty boolean getCustomClass();
     /**
@@ -37,7 +37,7 @@ public interface BwtProgressBarElement extends HTMLElement {
      * JavaScript Info:
      * @property customClass
      * @type Boolean
-     * @behavior BwtUploader
+     * @behavior BwtProgressBar
      */
     @JsProperty void setCustomClass(boolean value);
 
@@ -45,28 +45,9 @@ public interface BwtProgressBarElement extends HTMLElement {
      * <p> private variable</p>
      *
      * JavaScript Info:
-     * @property error
-     * @type Object
-     * @behavior BwtUploader
-     */
-    @JsProperty JavaScriptObject getError();
-    /**
-     * <p> private variable</p>
-     *
-     * JavaScript Info:
-     * @property error
-     * @type Object
-     * @behavior BwtUploader
-     */
-    @JsProperty void setError(JavaScriptObject value);
-
-    /**
-     * <p> private variable</p>
-     *
-     * JavaScript Info:
      * @property file
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty JavaScriptObject getFile();
     /**
@@ -75,9 +56,28 @@ public interface BwtProgressBarElement extends HTMLElement {
      * JavaScript Info:
      * @property file
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setFile(JavaScriptObject value);
+
+    /**
+     * <p> private variable</p>
+     *
+     * JavaScript Info:
+     * @property error
+     * @type Object
+     * @behavior BwtProgressBar
+     */
+    @JsProperty JavaScriptObject getError();
+    /**
+     * <p> private variable</p>
+     *
+     * JavaScript Info:
+     * @property error
+     * @type Object
+     * @behavior BwtProgressBar
+     */
+    @JsProperty void setError(JavaScriptObject value);
 
     /**
      * 
@@ -85,7 +85,7 @@ public interface BwtProgressBarElement extends HTMLElement {
      * JavaScript Info:
      * @property placeHolderRemoved
      * @type Boolean
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty boolean getPlaceHolderRemoved();
     /**
@@ -94,47 +94,9 @@ public interface BwtProgressBarElement extends HTMLElement {
      * JavaScript Info:
      * @property placeHolderRemoved
      * @type Boolean
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setPlaceHolderRemoved(boolean value);
-
-    /**
-     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
-     *
-     * JavaScript Info:
-     * @property image
-     * @type String
-     * @behavior BwtUploader
-     */
-    @JsProperty String getImage();
-    /**
-     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
-     *
-     * JavaScript Info:
-     * @property image
-     * @type String
-     * @behavior BwtUploader
-     */
-    @JsProperty void setImage(String value);
-
-    /**
-     * <p>location of the placeholder image</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * @behavior BwtUploader
-     */
-    @JsProperty String getPlaceholder();
-    /**
-     * <p>location of the placeholder image</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * @behavior BwtUploader
-     */
-    @JsProperty void setPlaceholder(String value);
 
     /**
      * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
@@ -142,7 +104,7 @@ public interface BwtProgressBarElement extends HTMLElement {
      * JavaScript Info:
      * @property theme
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty String getTheme();
     /**
@@ -151,9 +113,47 @@ public interface BwtProgressBarElement extends HTMLElement {
      * JavaScript Info:
      * @property theme
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setTheme(String value);
+
+    /**
+     * <p>location of the placeholder image</p>
+     *
+     * JavaScript Info:
+     * @property placeholder
+     * @type String
+     * 
+     */
+    @JsProperty String getPlaceholder();
+    /**
+     * <p>location of the placeholder image</p>
+     *
+     * JavaScript Info:
+     * @property placeholder
+     * @type String
+     * 
+     */
+    @JsProperty void setPlaceholder(String value);
+
+    /**
+     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
+     *
+     * JavaScript Info:
+     * @property image
+     * @type String
+     * @behavior BwtProgressBar
+     */
+    @JsProperty String getImage();
+    /**
+     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
+     *
+     * JavaScript Info:
+     * @property image
+     * @type String
+     * @behavior BwtProgressBar
+     */
+    @JsProperty void setImage(String value);
 
 
 }

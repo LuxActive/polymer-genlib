@@ -128,5 +128,17 @@ public class PaperDialogScrollable extends PolymerWidget {
     }
 
 
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method updateScrollState
+     * 
+     * 
+     */
+    public void updateScrollState() {
+        getPolymerElement().updateScrollState();
+    }
+
 
 }

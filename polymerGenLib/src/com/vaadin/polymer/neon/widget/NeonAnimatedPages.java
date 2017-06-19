@@ -77,29 +77,6 @@ public class NeonAnimatedPages extends PolymerWidget {
     }
 
     /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior PaperTabs
-     */
-    public JsArray getItems() {
-        return getPolymerElement().getItems();
-    }
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior PaperTabs
-     */
-    public void setItems(JsArray value) {
-        getPolymerElement().setItems(value);
-    }
-
-    /**
      * <p> if true, the initial page selection will also be animated according to its animation config.</p>
      *
      * JavaScript Info:
@@ -169,6 +146,52 @@ public class NeonAnimatedPages extends PolymerWidget {
     }
 
     /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    public JsArray getItems() {
+        return getPolymerElement().getItems();
+    }
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    public void setItems(JsArray value) {
+        getPolymerElement().setItems(value);
+    }
+
+    /**
+     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property exitAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    public String getExitAnimation() {
+        return getPolymerElement().getExitAnimation();
+    }
+    /**
+     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property exitAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    public void setExitAnimation(String value) {
+        getPolymerElement().setExitAnimation(value);
+    }
+
+    /**
      * <p>The class to set on elements when selected.</p>
      *
      * JavaScript Info:
@@ -189,29 +212,6 @@ public class NeonAnimatedPages extends PolymerWidget {
      */
     public void setSelectedClass(String value) {
         getPolymerElement().setSelectedClass(value);
-    }
-
-    /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getSelectedAttribute() {
-        return getPolymerElement().getSelectedAttribute();
-    }
-    /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setSelectedAttribute(String value) {
-        getPolymerElement().setSelectedAttribute(value);
     }
 
     /**
@@ -284,29 +284,6 @@ public class NeonAnimatedPages extends PolymerWidget {
     }
 
     /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
-     *
-     * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
-     */
-    public String getActivateEvent() {
-        return getPolymerElement().getActivateEvent();
-    }
-    /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
-     *
-     * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
-     */
-    public void setActivateEvent(String value) {
-        getPolymerElement().setActivateEvent(value);
-    }
-
-    /**
      * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
      *
      * JavaScript Info:
@@ -330,26 +307,49 @@ public class NeonAnimatedPages extends PolymerWidget {
     }
 
     /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property exitAnimation
+     * @property selectedAttribute
      * @type String
-     * @behavior PaperTooltip
+     * @behavior PaperTabs
      */
-    public String getExitAnimation() {
-        return getPolymerElement().getExitAnimation();
+    public String getSelectedAttribute() {
+        return getPolymerElement().getSelectedAttribute();
     }
     /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property exitAnimation
+     * @property selectedAttribute
      * @type String
-     * @behavior PaperTooltip
+     * @behavior PaperTabs
      */
-    public void setExitAnimation(String value) {
-        getPolymerElement().setExitAnimation(value);
+    public void setSelectedAttribute(String value) {
+        getPolymerElement().setSelectedAttribute(value);
+    }
+
+    /**
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     *
+     * JavaScript Info:
+     * @property activateEvent
+     * @type String
+     * @behavior PaperTabs
+     */
+    public String getActivateEvent() {
+        return getPolymerElement().getActivateEvent();
+    }
+    /**
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     *
+     * JavaScript Info:
+     * @property activateEvent
+     * @type String
+     * @behavior PaperTabs
+     */
+    public void setActivateEvent(String value) {
+        getPolymerElement().setActivateEvent(value);
     }
 
 
@@ -359,22 +359,10 @@ public class NeonAnimatedPages extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute animation-config
-     * @behavior PaperTooltip
+     * 
      */
     public void setAnimationConfig(String value) {
         Polymer.property(this.getPolymerElement(), "animationConfig", value);
-    }
-
-    // Needed in UIBinder
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @attribute items
-     * @behavior PaperTabs
-     */
-    public void setItems(String value) {
-        Polymer.property(this.getPolymerElement(), "items", value);
     }
 
     // Needed in UIBinder
@@ -401,6 +389,18 @@ public class NeonAnimatedPages extends PolymerWidget {
         Polymer.property(this.getPolymerElement(), "selectedItem", value);
     }
 
+    // Needed in UIBinder
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @attribute items
+     * @behavior PaperTabs
+     */
+    public void setItems(String value) {
+        Polymer.property(this.getPolymerElement(), "items", value);
+    }
+
 
     /**
      * <p>Selects the given value.</p>
@@ -421,24 +421,11 @@ public class NeonAnimatedPages extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void assignParentResizable(Object parentResizable) {
         getPolymerElement().assignParentResizable(parentResizable);
-    }
-
-    /**
-     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
-     *
-     * JavaScript Info:
-     * @method stopResizeNotificationsFor
-     * @param {} target  
-     * @behavior PaperTimePicker
-     * 
-     */
-    public void stopResizeNotificationsFor(Object target) {
-        getPolymerElement().stopResizeNotificationsFor(target);
     }
 
     /**
@@ -452,6 +439,43 @@ public class NeonAnimatedPages extends PolymerWidget {
      */
     public void selectIndex(Object index) {
         getPolymerElement().selectIndex(index);
+    }
+
+    /**
+     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
+     *
+     * JavaScript Info:
+     * @method stopResizeNotificationsFor
+     * @param {} target  
+     * @behavior PaperClockSelector
+     * 
+     */
+    public void stopResizeNotificationsFor(Object target) {
+        getPolymerElement().stopResizeNotificationsFor(target);
+    }
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectPrevious() {
+        getPolymerElement().selectPrevious();
+    }
+
+    /**
+     * <p>Selects the next item.</p>
+     *
+     * JavaScript Info:
+     * @method selectNext
+     * @behavior PaperTabs
+     * 
+     */
+    public void selectNext() {
+        getPolymerElement().selectNext();
     }
 
     /**
@@ -485,35 +509,11 @@ public class NeonAnimatedPages extends PolymerWidget {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void notifyResize() {
         getPolymerElement().notifyResize();
-    }
-
-    /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * @behavior PaperTabs
-     * 
-     */
-    public void selectPrevious() {
-        getPolymerElement().selectPrevious();
-    }
-
-    /**
-     * <p>Selects the next item.</p>
-     *
-     * JavaScript Info:
-     * @method selectNext
-     * @behavior PaperTabs
-     * 
-     */
-    public void selectNext() {
-        getPolymerElement().selectNext();
     }
 
     /**
@@ -522,25 +522,11 @@ public class NeonAnimatedPages extends PolymerWidget {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {
         return getPolymerElement().resizerShouldNotify(element);
-    }
-
-    /**
-     * <p>Plays an animation with an optional <code>type</code>.</p>
-     *
-     * JavaScript Info:
-     * @method playAnimation
-     * @param {string=} type  
-     * @param {!Object=} cookie  
-     * @behavior PaperTooltip
-     * 
-     */
-    public void playAnimation(String type, JavaScriptObject cookie) {
-        getPolymerElement().playAnimation(type, cookie);
     }
 
     /**
@@ -554,6 +540,20 @@ public class NeonAnimatedPages extends PolymerWidget {
      */
     public void indexOf(JavaScriptObject item) {
         getPolymerElement().indexOf(item);
+    }
+
+    /**
+     * <p>Plays an animation with an optional <code>type</code>.</p>
+     *
+     * JavaScript Info:
+     * @method playAnimation
+     * @param {string=} type  
+     * @param {!Object=} cookie  
+     * 
+     * 
+     */
+    public void playAnimation(String type, JavaScriptObject cookie) {
+        getPolymerElement().playAnimation(type, cookie);
     }
 
 

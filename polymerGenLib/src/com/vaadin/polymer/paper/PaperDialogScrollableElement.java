@@ -93,4 +93,14 @@ public interface PaperDialogScrollableElement extends HTMLElement {
     @JsProperty void setDialogElement(JavaScriptObject value);
 
 
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method updateScrollState
+     * 
+     * 
+     */
+    void updateScrollState();
+
 }

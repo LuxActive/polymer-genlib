@@ -50,42 +50,23 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
 
 
     /**
-     * <p>Set to true to mark the textarea as required.</p>
+     * <p>If true, the user cannot interact with this element.</p>
      *
      * JavaScript Info:
-     * @property required
+     * @property disabled
      * @type Boolean
-     * 
+     * @behavior PaperTab
      */
-    @JsProperty boolean getRequired();
+    @JsProperty boolean getDisabled();
     /**
-     * <p>Set to true to mark the textarea as required.</p>
+     * <p>If true, the user cannot interact with this element.</p>
      *
      * JavaScript Info:
-     * @property required
+     * @property disabled
      * @type Boolean
-     * 
+     * @behavior PaperTab
      */
-    @JsProperty void setRequired(boolean value);
-
-    /**
-     * <p>The maximum length of the input value.</p>
-     *
-     * JavaScript Info:
-     * @property maxlength
-     * @type Number
-     * 
-     */
-    @JsProperty double getMaxlength();
-    /**
-     * <p>The maximum length of the input value.</p>
-     *
-     * JavaScript Info:
-     * @property maxlength
-     * @type Number
-     * 
-     */
-    @JsProperty void setMaxlength(double value);
+    @JsProperty void setDisabled(boolean value);
 
     /**
      * <p>The maximum number of rows this element can grow to until it<br>scrolls. 0 means no maximum.</p>
@@ -126,25 +107,6 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setMinlength(double value);
 
     /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
-     *
-     * JavaScript Info:
-     * @property bindValue
-     * @type (string|number)
-     * 
-     */
-    @JsProperty Object getBindValue();
-    /**
-     * <p>Use this property instead of <code>value</code> for two-way data binding.<br>This property will be deprecated in the future. Use <code>value</code> instead.</p>
-     *
-     * JavaScript Info:
-     * @property bindValue
-     * @type (string|number)
-     * 
-     */
-    @JsProperty void setBindValue(Object value);
-
-    /**
      * <p>The initial number of rows.</p>
      *
      * JavaScript Info:
@@ -164,23 +126,99 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setRows(double value);
 
     /**
-     * <p>If true, the user cannot interact with this element.</p>
+     * <p>The maximum length of the input value.</p>
      *
      * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * @behavior PaperToggleButton
+     * @property maxlength
+     * @type Number
+     * 
      */
-    @JsProperty boolean getDisabled();
+    @JsProperty double getMaxlength();
     /**
-     * <p>If true, the user cannot interact with this element.</p>
+     * <p>The maximum length of the input value.</p>
      *
      * JavaScript Info:
-     * @property disabled
-     * @type Boolean
-     * @behavior PaperToggleButton
+     * @property maxlength
+     * @type Number
+     * 
      */
-    @JsProperty void setDisabled(boolean value);
+    @JsProperty void setMaxlength(double value);
+
+    /**
+     * <p>This property is deprecated, and just mirrors <code>value</code>. Use <code>value</code> instead.</p>
+     *
+     * JavaScript Info:
+     * @property bindValue
+     * @type (string|number)
+     * 
+     */
+    @JsProperty Object getBindValue();
+    /**
+     * <p>This property is deprecated, and just mirrors <code>value</code>. Use <code>value</code> instead.</p>
+     *
+     * JavaScript Info:
+     * @property bindValue
+     * @type (string|number)
+     * 
+     */
+    @JsProperty void setBindValue(Object value);
+
+    /**
+     * <p>Use this property instead of <code>bind-value</code> for two-way data binding.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type (string|number)
+     * 
+     */
+    @JsProperty Object getValue();
+    /**
+     * <p>Use this property instead of <code>bind-value</code> for two-way data binding.</p>
+     *
+     * JavaScript Info:
+     * @property value
+     * @type (string|number)
+     * 
+     */
+    @JsProperty void setValue(Object value);
+
+    /**
+     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property autofocus
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getAutofocus();
+    /**
+     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property autofocus
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setAutofocus(boolean value);
+
+    /**
+     * <p>Set to true to mark the textarea as required.</p>
+     *
+     * JavaScript Info:
+     * @property required
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getRequired();
+    /**
+     * <p>Set to true to mark the textarea as required.</p>
+     *
+     * JavaScript Info:
+     * @property required
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setRequired(boolean value);
 
     /**
      * <p>If true, the element currently has focus.</p>
@@ -188,7 +226,7 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getFocused();
     /**
@@ -197,7 +235,7 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setFocused(boolean value);
 
@@ -221,101 +259,6 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setInvalid(boolean value);
 
     /**
-     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property autofocus
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getAutofocus();
-    /**
-     * <p>Bound to the textarea’s <code>autofocus</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property autofocus
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setAutofocus(boolean value);
-
-    /**
-     * <p>The name of this element.</p>
-     *
-     * JavaScript Info:
-     * @property name
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    @JsProperty String getName();
-    /**
-     * <p>The name of this element.</p>
-     *
-     * JavaScript Info:
-     * @property name
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setName(String value);
-
-    /**
-     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * 
-     */
-    @JsProperty String getAutocomplete();
-    /**
-     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property autocomplete
-     * @type String
-     * 
-     */
-    @JsProperty void setAutocomplete(String value);
-
-    /**
-     * <p>The value for this element.</p>
-     *
-     * JavaScript Info:
-     * @property value
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    @JsProperty String getValue();
-    /**
-     * <p>The value for this element.</p>
-     *
-     * JavaScript Info:
-     * @property value
-     * @type String
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setValue(String value);
-
-    /**
-     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property inputmode
-     * @type String
-     * 
-     */
-    @JsProperty String getInputmode();
-    /**
-     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
-     *
-     * JavaScript Info:
-     * @property inputmode
-     * @type String
-     * 
-     */
-    @JsProperty void setInputmode(String value);
-
-    /**
      * <p>Bound to the textarea’s <code>placeholder</code> attribute.</p>
      *
      * JavaScript Info:
@@ -333,6 +276,25 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
      * 
      */
     @JsProperty void setPlaceholder(String value);
+
+    /**
+     * <p>Bound to the textarea’s <code>readonly</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property readonly
+     * @type String
+     * 
+     */
+    @JsProperty String getReadonly();
+    /**
+     * <p>Bound to the textarea’s <code>readonly</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property readonly
+     * @type String
+     * 
+     */
+    @JsProperty void setReadonly(String value);
 
     /**
      * <p>Namespace for this validator. This property is deprecated and should<br>not be used. For all intents and purposes, please consider it a<br>read-only, config-time property.</p>
@@ -354,6 +316,25 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setValidatorType(String value);
 
     /**
+     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property inputmode
+     * @type String
+     * 
+     */
+    @JsProperty String getInputmode();
+    /**
+     * <p>Bound to the textarea’s <code>inputmode</code> attribute.</p>
+     *
+     * JavaScript Info:
+     * @property inputmode
+     * @type String
+     * 
+     */
+    @JsProperty void setInputmode(String value);
+
+    /**
      * <p>Name of the validator to use.</p>
      *
      * JavaScript Info:
@@ -373,23 +354,23 @@ public interface IronAutogrowTextareaElement extends HTMLElement {
     @JsProperty void setValidator(String value);
 
     /**
-     * <p>Bound to the textarea’s <code>readonly</code> attribute.</p>
+     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property readonly
+     * @property autocomplete
      * @type String
      * 
      */
-    @JsProperty String getReadonly();
+    @JsProperty String getAutocomplete();
     /**
-     * <p>Bound to the textarea’s <code>readonly</code> attribute.</p>
+     * <p>Bound to the textarea’s <code>autocomplete</code> attribute.</p>
      *
      * JavaScript Info:
-     * @property readonly
+     * @property autocomplete
      * @type String
      * 
      */
-    @JsProperty void setReadonly(String value);
+    @JsProperty void setAutocomplete(String value);
 
 
     /**

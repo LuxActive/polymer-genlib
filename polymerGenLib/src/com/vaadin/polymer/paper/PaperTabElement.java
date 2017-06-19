@@ -61,7 +61,7 @@ import jsinterop.annotations.JsType;
 public interface PaperTabElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "paper-tab";
-    @JsOverlay public static final String SRC = "paper-tabs/paper-tab.html";
+    @JsOverlay public static final String SRC = "paper-tabs/paper-tabs.html";
 
 
     /**
@@ -89,7 +89,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
@@ -98,7 +98,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
@@ -108,7 +108,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
@@ -117,7 +117,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
@@ -127,7 +127,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getDisabled();
     /**
@@ -136,7 +136,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setDisabled(boolean value);
 
@@ -146,7 +146,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getPointerDown();
     /**
@@ -155,7 +155,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setPointerDown(boolean value);
 
@@ -165,7 +165,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getPressed();
     /**
@@ -174,7 +174,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setPressed(boolean value);
 
@@ -184,7 +184,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -193,7 +193,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
@@ -203,7 +203,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getReceivedFocusFromKeyboard();
     /**
@@ -212,7 +212,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setReceivedFocusFromKeyboard(boolean value);
 
@@ -222,7 +222,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getToggles();
     /**
@@ -231,7 +231,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setToggles(boolean value);
 
@@ -241,7 +241,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getFocused();
     /**
@@ -250,7 +250,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setFocused(boolean value);
 
@@ -260,7 +260,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getActive();
     /**
@@ -269,7 +269,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setActive(boolean value);
 
@@ -279,7 +279,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getNoink();
     /**
@@ -288,7 +288,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property noink
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setNoink(boolean value);
 
@@ -298,7 +298,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty String getAriaActiveAttribute();
     /**
@@ -307,7 +307,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setAriaActiveAttribute(String value);
 
@@ -319,7 +319,7 @@ public interface PaperTabElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
@@ -329,7 +329,7 @@ public interface PaperTabElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method hasRipple
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * @return {boolean}
      */
     boolean hasRipple();
@@ -339,7 +339,7 @@ public interface PaperTabElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method getRipple
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void getRipple();
@@ -349,7 +349,7 @@ public interface PaperTabElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void removeOwnKeyBindings();
@@ -360,7 +360,7 @@ public interface PaperTabElement extends HTMLElement {
      * JavaScript Info:
      * @method ensureRipple
      * @param {!Event=} optTriggeringEvent  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void ensureRipple(JavaScriptObject optTriggeringEvent);
@@ -372,7 +372,7 @@ public interface PaperTabElement extends HTMLElement {
      * @method keyboardEventMatchesKeys
      * @param {KeyboardEvent} event  
      * @param {string} eventString  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * @return {boolean}
      */
     boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);

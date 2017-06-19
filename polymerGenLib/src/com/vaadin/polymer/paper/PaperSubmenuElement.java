@@ -74,7 +74,7 @@ public interface PaperSubmenuElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getDisabled();
     /**
@@ -83,7 +83,7 @@ public interface PaperSubmenuElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setDisabled(boolean value);
 
@@ -93,7 +93,7 @@ public interface PaperSubmenuElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getFocused();
     /**
@@ -102,7 +102,7 @@ public interface PaperSubmenuElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setFocused(boolean value);
 
@@ -116,16 +116,6 @@ public interface PaperSubmenuElement extends HTMLElement {
      * 
      */
     void close();
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method dettached
-     * 
-     * 
-     */
-    void dettached();
 
     /**
      * <p>Expand the submenu content.</p>

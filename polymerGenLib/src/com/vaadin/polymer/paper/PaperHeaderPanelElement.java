@@ -13,12 +13,13 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
+ * <p><em>This element has been deprecated in favor of <a href="https://github.com/PolymerElements/app-layout">app-layout</a>.*</em></p>
  * <p><code>paper-header-panel</code> contains a header section and a content panel section.</p>
  * <p><strong>Important:</strong> The <code>paper-header-panel</code> will not display if its parent does not have a height.</p>
  * <p>Using layout classes, you can make the <code>paper-header-panel</code> fill the screen</p>
  * <pre><code>&lt;body class=&quot;fullbleed layout vertical&quot;&gt;
  *   &lt;paper-header-panel class=&quot;flex&quot;&gt;
- *     &lt;paper-toolbar&gt;
+ *     &lt;paper-toolbar slot=&quot;header&quot;&gt;
  *       &lt;div&gt;Hello World!&lt;/div&gt;
  *     &lt;/paper-toolbar&gt;
  *   &lt;/paper-header-panel&gt;
@@ -28,22 +29,15 @@ import jsinterop.annotations.JsType;
  * </code></pre><p>Special support is provided for scrolling modes when one uses a paper-toolbar or equivalent for the<br>header section.</p>
  * <p>Example:</p>
  * <pre><code>&lt;paper-header-panel&gt;
- *   &lt;paper-toolbar&gt;Header&lt;/paper-toolbar&gt;
- *   &lt;div&gt;Content goes here...&lt;/div&gt;
- * &lt;/paper-header-panel&gt;
- * 
- * 
- * </code></pre><p>If you want to use other than <code>paper-toolbar</code> for the header, add <code>paper-header</code> class to that<br>element.</p>
- * <p>Example:</p>
- * <pre><code>&lt;paper-header-panel&gt;
- *   &lt;div class=&quot;paper-header&quot;&gt;Header&lt;/div&gt;
+ *   &lt;paper-toolbar slot=&quot;header&quot;&gt;Header&lt;/paper-toolbar&gt;
  *   &lt;div&gt;Content goes here...&lt;/div&gt;
  * &lt;/paper-header-panel&gt;
  * 
  * 
  * </code></pre><p>To have the content fit to the main area, use the <code>fit</code> class.</p>
+ * <p>Example:</p>
  * <pre><code>&lt;paper-header-panel&gt;
- *   &lt;div class=&quot;paper-header&quot;&gt;standard&lt;/div&gt;
+ *   &lt;div slot=&quot;header&quot;&gt;standard&lt;/div&gt;
  *   &lt;div class=&quot;fit&quot;&gt;content fits 100% below the header&lt;/div&gt;
  * &lt;/paper-header-panel&gt;
  * 
@@ -84,15 +78,7 @@ import jsinterop.annotations.JsType;
  * </tr>
  * </tbody>
  * </table>
- * <p>Example:</p>
- * <pre><code>&lt;paper-header-panel mode=&quot;waterfall&quot;&gt;
- *   &lt;div class=&quot;paper-header&quot;&gt;standard&lt;/div&gt;
- *   &lt;div class=&quot;content fit&quot;&gt;content fits 100% below the header&lt;/div&gt;
- * &lt;/paper-header-panel&gt;
- * 
- * 
- * 
- * </code></pre><h3 id="styling">Styling</h3>
+ * <h3 id="styling">Styling</h3>
  * <p>To change the shadow that shows up underneath the header:</p>
  * <pre><code>paper-header-panel {
  *   --paper-header-panel-shadow: {
@@ -255,10 +241,10 @@ public interface PaperHeaderPanelElement extends HTMLElement {
      * <p><code>scroll</code>: The header keeps its seam with the panel, and is pushed off screen.</p>
      * <p><code>cover</code>: The panel covers the whole <code>paper-header-panel</code> including the<br>header. This allows user to style the panel in such a way that the panel is<br>partially covering the header.</p>
      * <pre><code>&lt;paper-header-panel mode=&quot;cover&quot;&gt;
-     *   &lt;paper-toolbar class=&quot;tall&quot;&gt;
+     *   &lt;paper-toolbar slot=&quot;header&quot; class=&quot;tall&quot;&gt;
      *     &lt;paper-icon-button icon=&quot;menu&quot;&gt;&lt;/paper-icon-button&gt;
      *   &lt;/paper-toolbar&gt;
-     *   &lt;div class=&quot;content&quot;&gt;&lt;/div&gt;
+     *   &lt;div&gt;&lt;/div&gt;
      * &lt;/paper-header-panel&gt;
      * 
      * </code></pre>
@@ -278,10 +264,10 @@ public interface PaperHeaderPanelElement extends HTMLElement {
      * <p><code>scroll</code>: The header keeps its seam with the panel, and is pushed off screen.</p>
      * <p><code>cover</code>: The panel covers the whole <code>paper-header-panel</code> including the<br>header. This allows user to style the panel in such a way that the panel is<br>partially covering the header.</p>
      * <pre><code>&lt;paper-header-panel mode=&quot;cover&quot;&gt;
-     *   &lt;paper-toolbar class=&quot;tall&quot;&gt;
+     *   &lt;paper-toolbar slot=&quot;header&quot; class=&quot;tall&quot;&gt;
      *     &lt;paper-icon-button icon=&quot;menu&quot;&gt;&lt;/paper-icon-button&gt;
      *   &lt;/paper-toolbar&gt;
-     *   &lt;div class=&quot;content&quot;&gt;&lt;/div&gt;
+     *   &lt;div&gt;&lt;/div&gt;
      * &lt;/paper-header-panel&gt;
      * 
      * </code></pre>

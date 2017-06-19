@@ -24,7 +24,7 @@ import jsinterop.annotations.JsType;
 public interface IronRequestElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "iron-request";
-    @JsOverlay public static final String SRC = "iron-ajax/iron-request.html";
+    @JsOverlay public static final String SRC = "iron-ajax/iron-ajax.html";
 
 
     /**

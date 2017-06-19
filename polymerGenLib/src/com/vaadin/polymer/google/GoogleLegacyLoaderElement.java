@@ -20,7 +20,7 @@ import jsinterop.annotations.JsType;
 public interface GoogleLegacyLoaderElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "google-legacy-loader";
-    @JsOverlay public static final String SRC = "google-apis/google-legacy-loader.html";
+    @JsOverlay public static final String SRC = "google-apis/google-apis.html";
 
 
     /**

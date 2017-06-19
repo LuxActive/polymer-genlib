@@ -16,8 +16,8 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/tooltips.html">Tooltips</a></p>
- * <p><code>&lt;paper-tooltip&gt;</code> is a label that appears on hover and focus when the user<br>hovers over an element with the cursor or with the keyboard. It will be centered<br>to an anchor element specified in the <code>for</code> attribute, or, if that doesn’t exist,<br>centered to the parent node containing it.</p>
- * <p>Example:</p>
+ * <p><code>&lt;paper-tooltip&gt;</code> is a label that appears on hover and focus when the user<br>hovers over an element with the cursor or with the keyboard. It will be centered<br>to an anchor element specified in the <code>for</code> attribute, or, if that doesn’t exist,<br>centered to the parent node containing it. Note that as of <code>paper-tooltip#2.0.0</code>,<br>you must explicitely include the <code>web-animations</code> polyfill if you want this<br>element to work on browsers not implementing the WebAnimations spec.</p>
+ * <p>Example:<br>    // polyfill<br>    <link rel="import" href="../../neon-animation/web-animations.html"></p>
  * <pre><code>&lt;div style=&quot;display:inline-block&quot;&gt;
  *   &lt;button&gt;Click me!&lt;/button&gt;
  *   &lt;paper-tooltip&gt;Tooltip text&lt;/paper-tooltip&gt;
@@ -230,52 +230,6 @@ public class PaperTooltip extends PolymerWidget {
     }
 
     /**
-     * <p>Positions the tooltip to the top, right, bottom, left of its content.</p>
-     *
-     * JavaScript Info:
-     * @property position
-     * @type String
-     * 
-     */
-    public String getPosition() {
-        return getPolymerElement().getPosition();
-    }
-    /**
-     * <p>Positions the tooltip to the top, right, bottom, left of its content.</p>
-     *
-     * JavaScript Info:
-     * @property position
-     * @type String
-     * 
-     */
-    public void setPosition(String value) {
-        getPolymerElement().setPosition(value);
-    }
-
-    /**
-     * <p>The id of the element that the tooltip is anchored to. This element<br>must be a sibling of the tooltip.</p>
-     *
-     * JavaScript Info:
-     * @property for
-     * @type String
-     * 
-     */
-    public String getFor() {
-        return getPolymerElement().getFor();
-    }
-    /**
-     * <p>The id of the element that the tooltip is anchored to. This element<br>must be a sibling of the tooltip.</p>
-     *
-     * JavaScript Info:
-     * @property for
-     * @type String
-     * 
-     */
-    public void setFor(String value) {
-        getPolymerElement().setFor(value);
-    }
-
-    /**
      * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
      *
      * JavaScript Info:
@@ -319,6 +273,52 @@ public class PaperTooltip extends PolymerWidget {
      */
     public void setExitAnimation(String value) {
         getPolymerElement().setExitAnimation(value);
+    }
+
+    /**
+     * <p>Positions the tooltip to the top, right, bottom, left of its content.</p>
+     *
+     * JavaScript Info:
+     * @property position
+     * @type String
+     * 
+     */
+    public String getPosition() {
+        return getPolymerElement().getPosition();
+    }
+    /**
+     * <p>Positions the tooltip to the top, right, bottom, left of its content.</p>
+     *
+     * JavaScript Info:
+     * @property position
+     * @type String
+     * 
+     */
+    public void setPosition(String value) {
+        getPolymerElement().setPosition(value);
+    }
+
+    /**
+     * <p>The id of the element that the tooltip is anchored to. This element<br>must be a sibling of the tooltip.</p>
+     *
+     * JavaScript Info:
+     * @property for
+     * @type String
+     * 
+     */
+    public String getFor() {
+        return getPolymerElement().getFor();
+    }
+    /**
+     * <p>The id of the element that the tooltip is anchored to. This element<br>must be a sibling of the tooltip.</p>
+     *
+     * JavaScript Info:
+     * @property for
+     * @type String
+     * 
+     */
+    public void setFor(String value) {
+        getPolymerElement().setFor(value);
     }
 
 
@@ -387,6 +387,18 @@ public class PaperTooltip extends PolymerWidget {
      * 
      *
      * JavaScript Info:
+     * @method updatePosition
+     * 
+     * 
+     */
+    public void updatePosition() {
+        getPolymerElement().updatePosition();
+    }
+
+    /**
+     * 
+     *
+     * JavaScript Info:
      * @method show
      * 
      * 
@@ -405,18 +417,6 @@ public class PaperTooltip extends PolymerWidget {
      */
     public void cancelAnimation() {
         getPolymerElement().cancelAnimation();
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method updatePosition
-     * 
-     * 
-     */
-    public void updatePosition() {
-        getPolymerElement().updatePosition();
     }
 
     /**

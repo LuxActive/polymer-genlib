@@ -86,23 +86,61 @@ public interface BwtUploaderElement extends HTMLElement {
 
 
     /**
-     * 
+     * <p> private variable</p>
      *
      * JavaScript Info:
-     * @property placeHolderRemoved
-     * @type Boolean
-     * @behavior BwtUploader
+     * @property error
+     * @type Object
+     * 
      */
-    @JsProperty boolean getPlaceHolderRemoved();
+    @JsProperty JavaScriptObject getError();
     /**
-     * 
+     * <p> private variable</p>
      *
      * JavaScript Info:
-     * @property placeHolderRemoved
-     * @type Boolean
-     * @behavior BwtUploader
+     * @property error
+     * @type Object
+     * 
      */
-    @JsProperty void setPlaceHolderRemoved(boolean value);
+    @JsProperty void setError(JavaScriptObject value);
+
+    /**
+     * <p> private variable</p>
+     *
+     * JavaScript Info:
+     * @property file
+     * @type Object
+     * 
+     */
+    @JsProperty JavaScriptObject getFile();
+    /**
+     * <p> private variable</p>
+     *
+     * JavaScript Info:
+     * @property file
+     * @type Object
+     * 
+     */
+    @JsProperty void setFile(JavaScriptObject value);
+
+    /**
+     * <p>Additional Headers, empty by default</p>
+     *
+     * JavaScript Info:
+     * @property headers
+     * @type Object
+     * 
+     */
+    @JsProperty JavaScriptObject getHeaders();
+    /**
+     * <p>Additional Headers, empty by default</p>
+     *
+     * JavaScript Info:
+     * @property headers
+     * @type Object
+     * 
+     */
+    @JsProperty void setHeaders(JavaScriptObject value);
 
     /**
      * <pre><code>      Height of resized image in pixels, width will be adjusted proptionally
@@ -147,61 +185,23 @@ public interface BwtUploaderElement extends HTMLElement {
     @JsProperty void setMaxFileSize(double value);
 
     /**
-     * <p> Set to true if the image uploaded is to be resized if the height is found to be greater than the height property below</p>
+     * <p> Object which contains the response as well as any other properties to be passed on to the api</p>
      *
      * JavaScript Info:
-     * @property resize
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getResize();
-    /**
-     * <p> Set to true if the image uploaded is to be resized if the height is found to be greater than the height property below</p>
-     *
-     * JavaScript Info:
-     * @property resize
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setResize(boolean value);
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property customClass
-     * @type Boolean
-     * @behavior BwtUploader
-     */
-    @JsProperty boolean getCustomClass();
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property customClass
-     * @type Boolean
-     * @behavior BwtUploader
-     */
-    @JsProperty void setCustomClass(boolean value);
-
-    /**
-     * <p>Additional Headers, empty by default</p>
-     *
-     * JavaScript Info:
-     * @property headers
+     * @property body
      * @type Object
      * 
      */
-    @JsProperty JavaScriptObject getHeaders();
+    @JsProperty JavaScriptObject getBody();
     /**
-     * <p>Additional Headers, empty by default</p>
+     * <p> Object which contains the response as well as any other properties to be passed on to the api</p>
      *
      * JavaScript Info:
-     * @property headers
+     * @property body
      * @type Object
      * 
      */
-    @JsProperty void setHeaders(JavaScriptObject value);
+    @JsProperty void setBody(JavaScriptObject value);
 
     /**
      * <p>a value that the uploader expects to be data binded to</p>
@@ -223,61 +223,80 @@ public interface BwtUploaderElement extends HTMLElement {
     @JsProperty void setValue(JavaScriptObject value);
 
     /**
-     * <p> Object which contains the response as well as any other properties to be passed on to the api</p>
+     * 
      *
      * JavaScript Info:
-     * @property body
-     * @type Object
+     * @property customClass
+     * @type Boolean
      * 
      */
-    @JsProperty JavaScriptObject getBody();
+    @JsProperty boolean getCustomClass();
     /**
-     * <p> Object which contains the response as well as any other properties to be passed on to the api</p>
+     * 
      *
      * JavaScript Info:
-     * @property body
-     * @type Object
+     * @property customClass
+     * @type Boolean
      * 
      */
-    @JsProperty void setBody(JavaScriptObject value);
+    @JsProperty void setCustomClass(boolean value);
 
     /**
-     * <p> private variable</p>
+     * 
      *
      * JavaScript Info:
-     * @property error
-     * @type Object
-     * @behavior BwtUploader
+     * @property placeHolderRemoved
+     * @type Boolean
+     * @behavior BwtProgressBar
      */
-    @JsProperty JavaScriptObject getError();
+    @JsProperty boolean getPlaceHolderRemoved();
     /**
-     * <p> private variable</p>
+     * 
      *
      * JavaScript Info:
-     * @property error
-     * @type Object
-     * @behavior BwtUploader
+     * @property placeHolderRemoved
+     * @type Boolean
+     * @behavior BwtProgressBar
      */
-    @JsProperty void setError(JavaScriptObject value);
+    @JsProperty void setPlaceHolderRemoved(boolean value);
 
     /**
-     * <p> private variable</p>
+     * <p> Set to true if the image uploaded is to be resized if the height is found to be greater than the height property below</p>
      *
      * JavaScript Info:
-     * @property file
-     * @type Object
-     * @behavior BwtUploader
+     * @property resize
+     * @type Boolean
+     * 
      */
-    @JsProperty JavaScriptObject getFile();
+    @JsProperty boolean getResize();
     /**
-     * <p> private variable</p>
+     * <p> Set to true if the image uploaded is to be resized if the height is found to be greater than the height property below</p>
      *
      * JavaScript Info:
-     * @property file
-     * @type Object
-     * @behavior BwtUploader
+     * @property resize
+     * @type Boolean
+     * 
      */
-    @JsProperty void setFile(JavaScriptObject value);
+    @JsProperty void setResize(boolean value);
+
+    /**
+     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
+     *
+     * JavaScript Info:
+     * @property theme
+     * @type String
+     * 
+     */
+    @JsProperty String getTheme();
+    /**
+     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
+     *
+     * JavaScript Info:
+     * @property theme
+     * @type String
+     * 
+     */
+    @JsProperty void setTheme(String value);
 
     /**
      * <p>Plceholder text, not a lot to do but we thought it might be nice to have something just in case *</p>
@@ -297,6 +316,44 @@ public interface BwtUploaderElement extends HTMLElement {
      * 
      */
     @JsProperty void setUploadText(String value);
+
+    /**
+     * <p>location of the placeholder image</p>
+     *
+     * JavaScript Info:
+     * @property placeholder
+     * @type String
+     * 
+     */
+    @JsProperty String getPlaceholder();
+    /**
+     * <p>location of the placeholder image</p>
+     *
+     * JavaScript Info:
+     * @property placeholder
+     * @type String
+     * 
+     */
+    @JsProperty void setPlaceholder(String value);
+
+    /**
+     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
+     *
+     * JavaScript Info:
+     * @property image
+     * @type String
+     * 
+     */
+    @JsProperty String getImage();
+    /**
+     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
+     *
+     * JavaScript Info:
+     * @property image
+     * @type String
+     * 
+     */
+    @JsProperty void setImage(String value);
 
     /**
      * <p>Accepted File Types, The uploader is meant only for images and documents </p>
@@ -337,44 +394,6 @@ public interface BwtUploaderElement extends HTMLElement {
     @JsProperty void setMethod(String value);
 
     /**
-     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
-     *
-     * JavaScript Info:
-     * @property image
-     * @type String
-     * @behavior BwtUploader
-     */
-    @JsProperty String getImage();
-    /**
-     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
-     *
-     * JavaScript Info:
-     * @property image
-     * @type String
-     * @behavior BwtUploader
-     */
-    @JsProperty void setImage(String value);
-
-    /**
-     * <p>location of the placeholder image</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * @behavior BwtUploader
-     */
-    @JsProperty String getPlaceholder();
-    /**
-     * <p>location of the placeholder image</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * @behavior BwtUploader
-     */
-    @JsProperty void setPlaceholder(String value);
-
-    /**
      * <p>Ajax end point where the file should upload to eg: /api/image/upload</p>
      *
      * JavaScript Info:
@@ -392,25 +411,6 @@ public interface BwtUploaderElement extends HTMLElement {
      * 
      */
     @JsProperty void setTarget(String value);
-
-    /**
-     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
-     *
-     * JavaScript Info:
-     * @property theme
-     * @type String
-     * @behavior BwtUploader
-     */
-    @JsProperty String getTheme();
-    /**
-     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
-     *
-     * JavaScript Info:
-     * @property theme
-     * @type String
-     * @behavior BwtUploader
-     */
-    @JsProperty void setTheme(String value);
 
 
     /**

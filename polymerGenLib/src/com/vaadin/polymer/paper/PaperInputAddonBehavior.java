@@ -20,7 +20,7 @@ import jsinterop.annotations.JsType;
 public interface PaperInputAddonBehavior {
 
     @JsOverlay public static final String NAME = "Polymer.PaperInputAddonBehavior";
-    @JsOverlay public static final String SRC = "paper-input/paper-input-addon-behavior.html";
+    @JsOverlay public static final String SRC = "paper-input/paper-textarea.html";
 
 
 
@@ -30,7 +30,7 @@ public interface PaperInputAddonBehavior {
      * JavaScript Info:
      * @method update
      * @param {{inputElement: (Element|undefined), value: (string|undefined), invalid: boolean}} state  
-     * @behavior PaperInputError
+     * 
      * 
      */
     void update(Object state);

@@ -49,7 +49,7 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getFocused() {
         return getPolymerElement().getFocused();
@@ -60,10 +60,56 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setFocused(boolean value) {
         getPolymerElement().setFocused(value);
+    }
+
+    /**
+     * <p>The maximum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property maxDate
+     * @type Date
+     * 
+     */
+    public JavaScriptObject getMaxDate() {
+        return getPolymerElement().getMaxDate();
+    }
+    /**
+     * <p>The maximum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property maxDate
+     * @type Date
+     * 
+     */
+    public void setMaxDate(JavaScriptObject value) {
+        getPolymerElement().setMaxDate(value);
+    }
+
+    /**
+     * <p>The minimum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property minDate
+     * @type Date
+     * 
+     */
+    public JavaScriptObject getMinDate() {
+        return getPolymerElement().getMinDate();
+    }
+    /**
+     * <p>The minimum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property minDate
+     * @type Date
+     * 
+     */
+    public void setMinDate(JavaScriptObject value) {
+        getPolymerElement().setMinDate(value);
     }
 
     /**
@@ -72,7 +118,7 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      * JavaScript Info:
      * @property date
      * @type Date
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     public JavaScriptObject getDate() {
         return getPolymerElement().getDate();
@@ -83,7 +129,7 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      * JavaScript Info:
      * @property date
      * @type Date
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     public void setDate(JavaScriptObject value) {
         getPolymerElement().setDate(value);
@@ -95,7 +141,7 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getDisabled() {
         return getPolymerElement().getDisabled();
@@ -106,79 +152,10 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setDisabled(boolean value) {
         getPolymerElement().setDisabled(value);
-    }
-
-    /**
-     * <p>Format to use for the date, adhering to momentjs.com display formats.</p>
-     *
-     * JavaScript Info:
-     * @property dateFormat
-     * @type String
-     * @behavior PaperDatetimePickerItem
-     */
-    public String getDateFormat() {
-        return getPolymerElement().getDateFormat();
-    }
-    /**
-     * <p>Format to use for the date, adhering to momentjs.com display formats.</p>
-     *
-     * JavaScript Info:
-     * @property dateFormat
-     * @type String
-     * @behavior PaperDatetimePickerItem
-     */
-    public void setDateFormat(String value) {
-        getPolymerElement().setDateFormat(value);
-    }
-
-    /**
-     * <p>Default time if none has been specified, in a string format HH:mm</p>
-     *
-     * JavaScript Info:
-     * @property defaultTime
-     * @type string
-     * @behavior PaperDatetimePickerItem
-     */
-    public String getDefaultTime() {
-        return getPolymerElement().getDefaultTime();
-    }
-    /**
-     * <p>Default time if none has been specified, in a string format HH:mm</p>
-     *
-     * JavaScript Info:
-     * @property defaultTime
-     * @type string
-     * @behavior PaperDatetimePickerItem
-     */
-    public void setDefaultTime(String value) {
-        getPolymerElement().setDefaultTime(value);
-    }
-
-    /**
-     * <p>Text for the cancel button in the edit dialog. Use this property to localize the element.</p>
-     *
-     * JavaScript Info:
-     * @property cancelButton
-     * @type String
-     * @behavior PaperDatetimePickerItem
-     */
-    public String getCancelButton() {
-        return getPolymerElement().getCancelButton();
-    }
-    /**
-     * <p>Text for the cancel button in the edit dialog. Use this property to localize the element.</p>
-     *
-     * JavaScript Info:
-     * @property cancelButton
-     * @type String
-     * @behavior PaperDatetimePickerItem
-     */
-    public void setCancelButton(String value) {
-        getPolymerElement().setCancelButton(value);
     }
 
     /**
@@ -187,7 +164,7 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      * JavaScript Info:
      * @property okButton
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     public String getOkButton() {
         return getPolymerElement().getOkButton();
@@ -198,7 +175,7 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      * JavaScript Info:
      * @property okButton
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     public void setOkButton(String value) {
         getPolymerElement().setOkButton(value);
@@ -210,7 +187,7 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      * JavaScript Info:
      * @property placeholder
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     public String getPlaceholder() {
         return getPolymerElement().getPlaceholder();
@@ -221,7 +198,7 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      * JavaScript Info:
      * @property placeholder
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     public void setPlaceholder(String value) {
         getPolymerElement().setPlaceholder(value);
@@ -233,7 +210,7 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      * JavaScript Info:
      * @property timeFormat
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     public String getTimeFormat() {
         return getPolymerElement().getTimeFormat();
@@ -244,10 +221,33 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      * JavaScript Info:
      * @property timeFormat
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     public void setTimeFormat(String value) {
         getPolymerElement().setTimeFormat(value);
+    }
+
+    /**
+     * <p>Default time if none has been specified, in a string format HH:mm</p>
+     *
+     * JavaScript Info:
+     * @property defaultTime
+     * @type string
+     * 
+     */
+    public String getDefaultTime() {
+        return getPolymerElement().getDefaultTime();
+    }
+    /**
+     * <p>Default time if none has been specified, in a string format HH:mm</p>
+     *
+     * JavaScript Info:
+     * @property defaultTime
+     * @type string
+     * 
+     */
+    public void setDefaultTime(String value) {
+        getPolymerElement().setDefaultTime(value);
     }
 
     /**
@@ -274,6 +274,29 @@ public class PaperDatetimePickerItem extends PolymerWidget {
     }
 
     /**
+     * <p>Format to use for the date, adhering to momentjs.com display formats.</p>
+     *
+     * JavaScript Info:
+     * @property dateFormat
+     * @type String
+     * @behavior PaperDatetimePickerItem
+     */
+    public String getDateFormat() {
+        return getPolymerElement().getDateFormat();
+    }
+    /**
+     * <p>Format to use for the date, adhering to momentjs.com display formats.</p>
+     *
+     * JavaScript Info:
+     * @property dateFormat
+     * @type String
+     * @behavior PaperDatetimePickerItem
+     */
+    public void setDateFormat(String value) {
+        getPolymerElement().setDateFormat(value);
+    }
+
+    /**
      * <p>The locale used for date and time formatting.</p>
      *
      * JavaScript Info:
@@ -296,6 +319,41 @@ public class PaperDatetimePickerItem extends PolymerWidget {
         getPolymerElement().setLocale(value);
     }
 
+    /**
+     * <p>Text for the cancel button in the edit dialog. Use this property to localize the element.</p>
+     *
+     * JavaScript Info:
+     * @property cancelButton
+     * @type String
+     * 
+     */
+    public String getCancelButton() {
+        return getPolymerElement().getCancelButton();
+    }
+    /**
+     * <p>Text for the cancel button in the edit dialog. Use this property to localize the element.</p>
+     *
+     * JavaScript Info:
+     * @property cancelButton
+     * @type String
+     * 
+     */
+    public void setCancelButton(String value) {
+        getPolymerElement().setCancelButton(value);
+    }
+
+
+    // Needed in UIBinder
+    /**
+     * <p>The minimum allowed date</p>
+     *
+     * JavaScript Info:
+     * @attribute min-date
+     * 
+     */
+    public void setMinDate(String value) {
+        Polymer.property(this.getPolymerElement(), "minDate", value);
+    }
 
     // Needed in UIBinder
     /**
@@ -303,10 +361,22 @@ public class PaperDatetimePickerItem extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute date
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     public void setDate(String value) {
         Polymer.property(this.getPolymerElement(), "date", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>The maximum allowed date</p>
+     *
+     * JavaScript Info:
+     * @attribute max-date
+     * @behavior PaperDatetimePickerItem
+     */
+    public void setMaxDate(String value) {
+        Polymer.property(this.getPolymerElement(), "maxDate", value);
     }
 
 

@@ -19,7 +19,7 @@ import jsinterop.annotations.JsType;
 public interface PaperMenuShrinkWidthAnimationElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "paper-menu-shrink-width-animation";
-    @JsOverlay public static final String SRC = "paper-menu-button/paper-menu-button-animations.html";
+    @JsOverlay public static final String SRC = "paper-menu-button/paper-menu-button.html";
 
 
     /**

@@ -200,7 +200,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property items
      * @type Array
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty JsArray getItems();
     /**
@@ -209,7 +209,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property items
      * @type Array
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setItems(JsArray value);
 
@@ -238,7 +238,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property selected
      * @type (string|number)
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty Object getSelected();
     /**
@@ -247,7 +247,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property selected
      * @type (string|number)
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setSelected(Object value);
 
@@ -257,7 +257,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedItem
      * @type ?Object
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty JavaScriptObject getSelectedItem();
     /**
@@ -266,7 +266,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedItem
      * @type ?Object
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setSelectedItem(JavaScriptObject value);
 
@@ -276,7 +276,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedAttribute
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty String getSelectedAttribute();
     /**
@@ -285,7 +285,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedAttribute
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setSelectedAttribute(String value);
 
@@ -295,7 +295,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedClass
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty String getSelectedClass();
     /**
@@ -304,7 +304,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property selectedClass
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setSelectedClass(String value);
 
@@ -314,7 +314,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property selectable
      * @type string
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty String getSelectable();
     /**
@@ -323,7 +323,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property selectable
      * @type string
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setSelectable(String value);
 
@@ -333,7 +333,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property fallbackSelection
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty String getFallbackSelection();
     /**
@@ -342,7 +342,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property fallbackSelection
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setFallbackSelection(String value);
 
@@ -352,7 +352,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property attrForSelected
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty String getAttrForSelected();
     /**
@@ -361,7 +361,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property attrForSelected
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setAttrForSelected(String value);
 
@@ -371,7 +371,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property activateEvent
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty String getActivateEvent();
     /**
@@ -380,7 +380,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @property activateEvent
      * @type String
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      */
     @JsProperty void setActivateEvent(String value);
 
@@ -410,7 +410,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior IronSwipeablePages
+     * @behavior PaperClockSelector
      * 
      */
     void stopResizeNotificationsFor(Object target);
@@ -421,7 +421,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @method selectIndex
      * @param {} index  
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     void selectIndex(Object index);
@@ -432,7 +432,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior IronSwipeablePages
+     * @behavior PaperClockSelector
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -443,7 +443,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @method select
      * @param {(string|number)} value  
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     void select(Object value);
@@ -453,7 +453,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method selectNext
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     void selectNext();
@@ -463,7 +463,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior IronSwipeablePages
+     * @behavior PaperClockSelector
      * 
      */
     void notifyResize();
@@ -473,7 +473,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method selectPrevious
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     void selectPrevious();
@@ -485,7 +485,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method forceSynchronousItemUpdate
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     void forceSynchronousItemUpdate();
@@ -496,7 +496,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior IronSwipeablePages
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);
@@ -507,7 +507,7 @@ public interface IronSwipeablePagesElement extends HTMLElement {
      * JavaScript Info:
      * @method indexOf
      * @param {Object} item  
-     * @behavior IronSwipeablePages
+     * @behavior PaperTabs
      * 
      */
     void indexOf(JavaScriptObject item);

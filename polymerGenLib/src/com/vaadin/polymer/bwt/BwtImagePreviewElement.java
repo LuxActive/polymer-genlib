@@ -19,27 +19,8 @@ import jsinterop.annotations.JsType;
 public interface BwtImagePreviewElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "bwt-image-preview";
-    @JsOverlay public static final String SRC = "bwt-uploader/bwt-image-preview.html";
+    @JsOverlay public static final String SRC = "bwt-uploader/bwt-uploader.html";
 
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property customClass
-     * @type Boolean
-     * @behavior BwtUploader
-     */
-    @JsProperty boolean getCustomClass();
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property customClass
-     * @type Boolean
-     * @behavior BwtUploader
-     */
-    @JsProperty void setCustomClass(boolean value);
 
     /**
      * <p> private variable</p>
@@ -47,7 +28,7 @@ public interface BwtImagePreviewElement extends HTMLElement {
      * JavaScript Info:
      * @property error
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty JavaScriptObject getError();
     /**
@@ -56,7 +37,7 @@ public interface BwtImagePreviewElement extends HTMLElement {
      * JavaScript Info:
      * @property error
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setError(JavaScriptObject value);
 
@@ -66,7 +47,7 @@ public interface BwtImagePreviewElement extends HTMLElement {
      * JavaScript Info:
      * @property file
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty JavaScriptObject getFile();
     /**
@@ -75,7 +56,7 @@ public interface BwtImagePreviewElement extends HTMLElement {
      * JavaScript Info:
      * @property file
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setFile(JavaScriptObject value);
 
@@ -85,7 +66,7 @@ public interface BwtImagePreviewElement extends HTMLElement {
      * JavaScript Info:
      * @property placeHolderRemoved
      * @type Boolean
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty boolean getPlaceHolderRemoved();
     /**
@@ -94,9 +75,47 @@ public interface BwtImagePreviewElement extends HTMLElement {
      * JavaScript Info:
      * @property placeHolderRemoved
      * @type Boolean
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setPlaceHolderRemoved(boolean value);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property customClass
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getCustomClass();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property customClass
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setCustomClass(boolean value);
+
+    /**
+     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
+     *
+     * JavaScript Info:
+     * @property theme
+     * @type String
+     * 
+     */
+    @JsProperty String getTheme();
+    /**
+     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
+     *
+     * JavaScript Info:
+     * @property theme
+     * @type String
+     * 
+     */
+    @JsProperty void setTheme(String value);
 
     /**
      * 
@@ -123,7 +142,7 @@ public interface BwtImagePreviewElement extends HTMLElement {
      * JavaScript Info:
      * @property image
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty String getImage();
     /**
@@ -132,7 +151,7 @@ public interface BwtImagePreviewElement extends HTMLElement {
      * JavaScript Info:
      * @property image
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setImage(String value);
 
@@ -142,7 +161,7 @@ public interface BwtImagePreviewElement extends HTMLElement {
      * JavaScript Info:
      * @property placeholder
      * @type String
-     * @behavior BwtUploader
+     * @behavior BwtProgressBar
      */
     @JsProperty String getPlaceholder();
     /**
@@ -151,28 +170,9 @@ public interface BwtImagePreviewElement extends HTMLElement {
      * JavaScript Info:
      * @property placeholder
      * @type String
-     * @behavior BwtUploader
+     * @behavior BwtProgressBar
      */
     @JsProperty void setPlaceholder(String value);
-
-    /**
-     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
-     *
-     * JavaScript Info:
-     * @property theme
-     * @type String
-     * @behavior BwtUploader
-     */
-    @JsProperty String getTheme();
-    /**
-     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
-     *
-     * JavaScript Info:
-     * @property theme
-     * @type String
-     * @behavior BwtUploader
-     */
-    @JsProperty void setTheme(String value);
 
 
 }

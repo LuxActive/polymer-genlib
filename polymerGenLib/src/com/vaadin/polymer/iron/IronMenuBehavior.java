@@ -20,8 +20,27 @@ import jsinterop.annotations.JsType;
 public interface IronMenuBehavior {
 
     @JsOverlay public static final String NAME = "Polymer.IronMenuBehavior";
-    @JsOverlay public static final String SRC = "iron-menu-behavior/iron-menu-behavior.html";
+    @JsOverlay public static final String SRC = "iron-menu-behavior/iron-menubar-behavior.html";
 
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property disabled
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getDisabled();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property disabled
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setDisabled(boolean value);
 
     /**
      * <p>Returns the currently focused item.</p>
@@ -29,7 +48,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @property focusedItem
      * @type ?Object
-     * @behavior PaperTabs
+     * 
      */
     @JsProperty JavaScriptObject getFocusedItem();
     /**
@@ -38,7 +57,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @property focusedItem
      * @type ?Object
-     * @behavior PaperTabs
+     * 
      */
     @JsProperty void setFocusedItem(JavaScriptObject value);
 
@@ -48,7 +67,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTabs
+     * 
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
@@ -57,7 +76,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperTabs
+     * 
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
@@ -67,7 +86,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @property attrForItemTitle
      * @type String
-     * @behavior PaperTabs
+     * 
      */
     @JsProperty String getAttrForItemTitle();
     /**
@@ -76,7 +95,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @property attrForItemTitle
      * @type String
-     * @behavior PaperTabs
+     * 
      */
     @JsProperty void setAttrForItemTitle(String value);
 
@@ -87,7 +106,7 @@ public interface IronMenuBehavior {
      * JavaScript Info:
      * @method select
      * @param {(string|number)} value  
-     * @behavior PaperTabs
+     * 
      * 
      */
     void select(Object value);

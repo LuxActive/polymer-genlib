@@ -45,8 +45,8 @@ import jsinterop.annotations.JsType;
  * <pre><code>
  * &lt;style is="custom-style">
  *   .link {
- *     &#64;apply(--layout-horizontal);
- *     &#64;apply(--layout-center-center);
+ *     &#64;apply --layout-horizontal;
+ *     &#64;apply --layout-center-center;
  *   }
  * &lt;/style>
  * 
@@ -110,23 +110,137 @@ public interface PaperTabsElement extends HTMLElement {
 
 
     /**
-     * <p>If true, multiple selections are allowed.</p>
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property multi
+     * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperTabs
+     * @behavior PaperTab
      */
-    @JsProperty boolean getMulti();
+    @JsProperty boolean getStopKeyboardEventPropagation();
     /**
-     * <p>If true, multiple selections are allowed.</p>
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
-     * @property multi
+     * @property stopKeyboardEventPropagation
      * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
+
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
      * @behavior PaperTabs
      */
-    @JsProperty void setMulti(boolean value);
+    @JsProperty JavaScriptObject getSelectedItem();
+    /**
+     * <p>Returns the currently selected item.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedItem(JavaScriptObject value);
+
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty JavaScriptObject getFocusedItem();
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty void setFocusedItem(JavaScriptObject value);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior PaperTabs
+     */
+    @JsProperty JavaScriptObject getKeyBindings();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property keyBindings
+     * @type Object
+     * @behavior PaperTabs
+     */
+    @JsProperty void setKeyBindings(JavaScriptObject value);
+
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperTab
+     */
+    @JsProperty JavaScriptObject getKeyEventTarget();
+    /**
+     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
+     *
+     * JavaScript Info:
+     * @property keyEventTarget
+     * @type ?EventTarget
+     * @behavior PaperTab
+     */
+    @JsProperty void setKeyEventTarget(JavaScriptObject value);
+
+    /**
+     * <p>The delay (in milliseconds) between when the user stops interacting<br>with the tabs through the keyboard and when the focused item is<br>automatically selected (if <code>autoselect</code> is true).</p>
+     *
+     * JavaScript Info:
+     * @property autoselectDelay
+     * @type Number
+     * 
+     */
+    @JsProperty double getAutoselectDelay();
+    /**
+     * <p>The delay (in milliseconds) between when the user stops interacting<br>with the tabs through the keyboard and when the focused item is<br>automatically selected (if <code>autoselect</code> is true).</p>
+     *
+     * JavaScript Info:
+     * @property autoselectDelay
+     * @type Number
+     * 
+     */
+    @JsProperty void setAutoselectDelay(double value);
+
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty JsArray getItems();
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty void setItems(JsArray value);
 
     /**
      * <p>Returns an array of currently selected items.</p>
@@ -167,25 +281,6 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setSelectedValues(JsArray value);
 
     /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior PaperTabs
-     */
-    @JsProperty JsArray getItems();
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior PaperTabs
-     */
-    @JsProperty void setItems(JsArray value);
-
-    /**
      * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
@@ -208,229 +303,20 @@ public interface PaperTabsElement extends HTMLElement {
      * 
      *
      * JavaScript Info:
-     * @property keyBindings
-     * @type Object
+     * @property disabled
+     * @type Boolean
      * @behavior PaperTabs
      */
-    @JsProperty JavaScriptObject getKeyBindings();
+    @JsProperty boolean getDisabled();
     /**
      * 
      *
      * JavaScript Info:
-     * @property keyBindings
-     * @type Object
+     * @property disabled
+     * @type Boolean
      * @behavior PaperTabs
      */
-    @JsProperty void setKeyBindings(JavaScriptObject value);
-
-    /**
-     * <p>Returns the currently focused item.</p>
-     *
-     * JavaScript Info:
-     * @property focusedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty JavaScriptObject getFocusedItem();
-    /**
-     * <p>Returns the currently focused item.</p>
-     *
-     * JavaScript Info:
-     * @property focusedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty void setFocusedItem(JavaScriptObject value);
-
-    /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty JavaScriptObject getSelectedItem();
-    /**
-     * <p>Returns the currently selected item.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelectedItem(JavaScriptObject value);
-
-    /**
-     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type ?EventTarget
-     * @behavior PaperToggleButton
-     */
-    @JsProperty JavaScriptObject getKeyEventTarget();
-    /**
-     * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
-     *
-     * JavaScript Info:
-     * @property keyEventTarget
-     * @type ?EventTarget
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setKeyEventTarget(JavaScriptObject value);
-
-    /**
-     * <p>The delay (in milliseconds) between when the user stops interacting<br>with the tabs through the keyboard and when the focused item is<br>automatically selected (if <code>autoselect</code> is true).</p>
-     *
-     * JavaScript Info:
-     * @property autoselectDelay
-     * @type Number
-     * 
-     */
-    @JsProperty double getAutoselectDelay();
-    /**
-     * <p>The delay (in milliseconds) between when the user stops interacting<br>with the tabs through the keyboard and when the focused item is<br>automatically selected (if <code>autoselect</code> is true).</p>
-     *
-     * JavaScript Info:
-     * @property autoselectDelay
-     * @type Number
-     * 
-     */
-    @JsProperty void setAutoselectDelay(double value);
-
-    /**
-     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
-     *
-     * JavaScript Info:
-     * @property noink
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getNoink();
-    /**
-     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
-     *
-     * JavaScript Info:
-     * @property noink
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setNoink(boolean value);
-
-    /**
-     * <p>If true, the slide effect for the bottom bar is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property noSlide
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getNoSlide();
-    /**
-     * <p>If true, the slide effect for the bottom bar is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property noSlide
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setNoSlide(boolean value);
-
-    /**
-     * <p>If true, tabs are scrollable and the tab width is based on the label width.</p>
-     *
-     * JavaScript Info:
-     * @property scrollable
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getScrollable();
-    /**
-     * <p>If true, tabs are scrollable and the tab width is based on the label width.</p>
-     *
-     * JavaScript Info:
-     * @property scrollable
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setScrollable(boolean value);
-
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty boolean getStopKeyboardEventPropagation();
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
-
-    /**
-     * <p>If true, dragging on the tabs to scroll is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property disableDrag
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getDisableDrag();
-    /**
-     * <p>If true, dragging on the tabs to scroll is disabled.</p>
-     *
-     * JavaScript Info:
-     * @property disableDrag
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setDisableDrag(boolean value);
-
-    /**
-     * <p>If true, tabs expand to fit their container. This currently only applies when<br>scrollable is true.</p>
-     *
-     * JavaScript Info:
-     * @property fitContainer
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getFitContainer();
-    /**
-     * <p>If true, tabs expand to fit their container. This currently only applies when<br>scrollable is true.</p>
-     *
-     * JavaScript Info:
-     * @property fitContainer
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setFitContainer(boolean value);
-
-    /**
-     * <p>If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.</p>
-     *
-     * JavaScript Info:
-     * @property hideScrollButtons
-     * @type Boolean
-     * 
-     */
-    @JsProperty boolean getHideScrollButtons();
-    /**
-     * <p>If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.</p>
-     *
-     * JavaScript Info:
-     * @property hideScrollButtons
-     * @type Boolean
-     * 
-     */
-    @JsProperty void setHideScrollButtons(boolean value);
+    @JsProperty void setDisabled(boolean value);
 
     /**
      * <p>If true, the tabs are aligned to bottom (the selection bar appears at the top).</p>
@@ -490,6 +376,139 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setNoBar(boolean value);
 
     /**
+     * <p>If true, multiple selections are allowed.</p>
+     *
+     * JavaScript Info:
+     * @property multi
+     * @type Boolean
+     * @behavior PaperTabs
+     */
+    @JsProperty boolean getMulti();
+    /**
+     * <p>If true, multiple selections are allowed.</p>
+     *
+     * JavaScript Info:
+     * @property multi
+     * @type Boolean
+     * @behavior PaperTabs
+     */
+    @JsProperty void setMulti(boolean value);
+
+    /**
+     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNoink();
+    /**
+     * <p>If true, ink ripple effect is disabled. When this property is changed,<br>all descendant <code>&lt;paper-tab&gt;</code> elements have their <code>noink</code> property<br>changed to the new value as well.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNoink(boolean value);
+
+    /**
+     * <p>If true, the slide effect for the bottom bar is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property noSlide
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getNoSlide();
+    /**
+     * <p>If true, the slide effect for the bottom bar is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property noSlide
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setNoSlide(boolean value);
+
+    /**
+     * <p>If true, tabs are scrollable and the tab width is based on the label width.</p>
+     *
+     * JavaScript Info:
+     * @property scrollable
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getScrollable();
+    /**
+     * <p>If true, tabs are scrollable and the tab width is based on the label width.</p>
+     *
+     * JavaScript Info:
+     * @property scrollable
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setScrollable(boolean value);
+
+    /**
+     * <p>If true, dragging on the tabs to scroll is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property disableDrag
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getDisableDrag();
+    /**
+     * <p>If true, dragging on the tabs to scroll is disabled.</p>
+     *
+     * JavaScript Info:
+     * @property disableDrag
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setDisableDrag(boolean value);
+
+    /**
+     * <p>If true, tabs expand to fit their container. This currently only applies when<br>scrollable is true.</p>
+     *
+     * JavaScript Info:
+     * @property fitContainer
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getFitContainer();
+    /**
+     * <p>If true, tabs expand to fit their container. This currently only applies when<br>scrollable is true.</p>
+     *
+     * JavaScript Info:
+     * @property fitContainer
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setFitContainer(boolean value);
+
+    /**
+     * <p>If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.</p>
+     *
+     * JavaScript Info:
+     * @property hideScrollButtons
+     * @type Boolean
+     * 
+     */
+    @JsProperty boolean getHideScrollButtons();
+    /**
+     * <p>If true, scroll buttons (left/right arrow) will be hidden for scrollable tabs.</p>
+     *
+     * JavaScript Info:
+     * @property hideScrollButtons
+     * @type Boolean
+     * 
+     */
+    @JsProperty void setHideScrollButtons(boolean value);
+
+    /**
      * <p>The class to set on elements when selected.</p>
      *
      * JavaScript Info:
@@ -507,25 +526,6 @@ public interface PaperTabsElement extends HTMLElement {
      * @behavior PaperTabs
      */
     @JsProperty void setSelectedClass(String value);
-
-    /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getSelectedAttribute();
-    /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelectedAttribute(String value);
 
     /**
      * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
@@ -604,6 +604,25 @@ public interface PaperTabsElement extends HTMLElement {
     @JsProperty void setActivateEvent(String value);
 
     /**
+     * <p>The attribute to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedAttribute
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getSelectedAttribute();
+    /**
+     * <p>The attribute to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedAttribute
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedAttribute(String value);
+
+    /**
      * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
      *
      * JavaScript Info:
@@ -624,6 +643,17 @@ public interface PaperTabsElement extends HTMLElement {
 
 
     /**
+     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
+     *
+     * JavaScript Info:
+     * @method assignParentResizable
+     * @param {} parentResizable  
+     * @behavior PaperClockSelector
+     * 
+     */
+    void assignParentResizable(Object parentResizable);
+
+    /**
      * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
      *
      * JavaScript Info:
@@ -633,17 +663,6 @@ public interface PaperTabsElement extends HTMLElement {
      * 
      */
     void select(Object value);
-
-    /**
-     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
-     *
-     * JavaScript Info:
-     * @method stopResizeNotificationsFor
-     * @param {} target  
-     * @behavior PaperTimePicker
-     * 
-     */
-    void stopResizeNotificationsFor(Object target);
 
     /**
      * 
@@ -663,21 +682,21 @@ public interface PaperTabsElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
 
     /**
-     * <p>Used to assign the closest resizable ancestor to this resizable<br>if the ancestor detects a request for notifications.</p>
+     * <p>Used to remove a resizable descendant from the list of descendants<br>that should be notified of a resize change.</p>
      *
      * JavaScript Info:
-     * @method assignParentResizable
-     * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @method stopResizeNotificationsFor
+     * @param {} target  
+     * @behavior PaperClockSelector
      * 
      */
-    void assignParentResizable(Object parentResizable);
+    void stopResizeNotificationsFor(Object target);
 
     /**
      * <p>Selects the item at the given index.</p>
@@ -691,21 +710,11 @@ public interface PaperTabsElement extends HTMLElement {
     void selectIndex(Object index);
 
     /**
-     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
-     *
-     * JavaScript Info:
-     * @method notifyResize
-     * @behavior PaperTimePicker
-     * 
-     */
-    void notifyResize();
-
-    /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void removeOwnKeyBindings();
@@ -721,6 +730,16 @@ public interface PaperTabsElement extends HTMLElement {
      * 
      */
     void forceSynchronousItemUpdate();
+
+    /**
+     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
+     *
+     * JavaScript Info:
+     * @method notifyResize
+     * @behavior PaperClockSelector
+     * 
+     */
+    void notifyResize();
 
     /**
      * <p>Selects the next item.</p>
@@ -743,12 +762,24 @@ public interface PaperTabsElement extends HTMLElement {
     void selectPrevious();
 
     /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperTab
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
+
+    /**
      * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
      *
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);
@@ -763,17 +794,5 @@ public interface PaperTabsElement extends HTMLElement {
      * 
      */
     void indexOf(JavaScriptObject item);
-
-    /**
-     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {KeyboardEvent} event  
-     * @param {string} eventString  
-     * @behavior PaperToggleButton
-     * @return {boolean}
-     */
-    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
 }

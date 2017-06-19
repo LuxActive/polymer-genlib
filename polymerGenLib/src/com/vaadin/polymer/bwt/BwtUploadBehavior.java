@@ -20,7 +20,7 @@ import jsinterop.annotations.JsType;
 public interface BwtUploadBehavior {
 
     @JsOverlay public static final String NAME = "BwtUploadBehavior";
-    @JsOverlay public static final String SRC = "bwt-uploader/bwt-upload-behavior.html";
+    @JsOverlay public static final String SRC = "bwt-uploader/bwt-uploader.html";
 
 
     /**
@@ -29,7 +29,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property customClass
      * @type Boolean
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty boolean getCustomClass();
     /**
@@ -38,7 +38,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property customClass
      * @type Boolean
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setCustomClass(boolean value);
 
@@ -48,7 +48,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property error
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty JavaScriptObject getError();
     /**
@@ -57,7 +57,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property error
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setError(JavaScriptObject value);
 
@@ -67,7 +67,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property file
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty JavaScriptObject getFile();
     /**
@@ -76,7 +76,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property file
      * @type Object
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setFile(JavaScriptObject value);
 
@@ -86,7 +86,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property placeHolderRemoved
      * @type Boolean
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty boolean getPlaceHolderRemoved();
     /**
@@ -95,7 +95,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property placeHolderRemoved
      * @type Boolean
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setPlaceHolderRemoved(boolean value);
 
@@ -105,7 +105,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property image
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty String getImage();
     /**
@@ -114,7 +114,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property image
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setImage(String value);
 
@@ -124,7 +124,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property placeholder
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty String getPlaceholder();
     /**
@@ -133,7 +133,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property placeholder
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setPlaceholder(String value);
 
@@ -143,7 +143,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property theme
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty String getTheme();
     /**
@@ -152,7 +152,7 @@ public interface BwtUploadBehavior {
      * JavaScript Info:
      * @property theme
      * @type String
-     * @behavior BwtUploader
+     * 
      */
     @JsProperty void setTheme(String value);
 

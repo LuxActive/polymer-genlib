@@ -15,16 +15,16 @@ import jsinterop.annotations.JsType;
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/buttons.html#buttons-dropdown-buttons">Dropdown buttons</a></p>
  * <p><code>paper-menu-button</code> allows one to compose a designated “trigger” element with<br>another element that represents “content”, to create a dropdown menu that<br>displays the “content” when the “trigger” is clicked.</p>
- * <p>The child element with the class <code>dropdown-trigger</code> will be used as the<br>“trigger” element. The child element with the class <code>dropdown-content</code> will be<br>used as the “content” element.</p>
+ * <p>The child element assigned to the <code>dropdown-trigger</code> slot will be used as the<br>“trigger” element. The child element assigned to the <code>dropdown-content</code> slot will be<br>used as the “content” element.</p>
  * <p>The <code>paper-menu-button</code> is sensitive to its content’s <code>iron-select</code> events. If<br>the “content” element triggers an <code>iron-select</code> event, the <code>paper-menu-button</code><br>will close automatically.</p>
  * <p>Example:</p>
  * <pre><code>&lt;paper-menu-button&gt;
- *   &lt;paper-icon-button icon=&quot;menu&quot; class=&quot;dropdown-trigger&quot;&gt;&lt;/paper-icon-button&gt;
- *   &lt;paper-menu class=&quot;dropdown-content&quot;&gt;
+ *   &lt;paper-icon-button icon=&quot;menu&quot; slot=&quot;dropdown-trigger&quot;&gt;&lt;/paper-icon-button&gt;
+ *   &lt;paper-listbox slot=&quot;dropdown-content&quot;&gt;
  *     &lt;paper-item&gt;Share&lt;/paper-item&gt;
  *     &lt;paper-item&gt;Settings&lt;/paper-item&gt;
  *     &lt;paper-item&gt;Help&lt;/paper-item&gt;
- *   &lt;/paper-menu&gt;
+ *   &lt;/paper-listbox&gt;
  * &lt;/paper-menu-button&gt;
  * 
  * 
@@ -156,7 +156,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type !Object
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
@@ -165,7 +165,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type !Object
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
@@ -175,7 +175,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
@@ -184,7 +184,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
@@ -270,7 +270,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getDisabled();
     /**
@@ -279,7 +279,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setDisabled(boolean value);
 
@@ -346,7 +346,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getFocused();
     /**
@@ -355,7 +355,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setFocused(boolean value);
 
@@ -365,7 +365,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -374,7 +374,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
@@ -443,7 +443,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
@@ -453,7 +453,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void removeOwnKeyBindings();
@@ -495,7 +495,7 @@ public interface PaperMenuButtonElement extends HTMLElement {
      * @method keyboardEventMatchesKeys
      * @param {KeyboardEvent} event  
      * @param {string} eventString  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * @return {boolean}
      */
     boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);

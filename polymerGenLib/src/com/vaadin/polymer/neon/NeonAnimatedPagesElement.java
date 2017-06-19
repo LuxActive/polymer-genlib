@@ -20,7 +20,7 @@ import jsinterop.annotations.JsType;
 public interface NeonAnimatedPagesElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "neon-animated-pages";
-    @JsOverlay public static final String SRC = "neon-animation/neon-animated-pages.html";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animation.html";
 
 
     /**
@@ -41,25 +41,6 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
      * @behavior PaperTooltip
      */
     @JsProperty void setAnimationConfig(JavaScriptObject value);
-
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior PaperTabs
-     */
-    @JsProperty JsArray getItems();
-    /**
-     * <p>The list of items from which a selection can be made.</p>
-     *
-     * JavaScript Info:
-     * @property items
-     * @type Array
-     * @behavior PaperTabs
-     */
-    @JsProperty void setItems(JsArray value);
 
     /**
      * <p> if true, the initial page selection will also be animated according to its animation config.</p>
@@ -119,6 +100,44 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
     @JsProperty void setSelectedItem(JavaScriptObject value);
 
     /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty JsArray getItems();
+    /**
+     * <p>The list of items from which a selection can be made.</p>
+     *
+     * JavaScript Info:
+     * @property items
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty void setItems(JsArray value);
+
+    /**
+     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property exitAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    @JsProperty String getExitAnimation();
+    /**
+     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     *
+     * JavaScript Info:
+     * @property exitAnimation
+     * @type String
+     * @behavior PaperTooltip
+     */
+    @JsProperty void setExitAnimation(String value);
+
+    /**
      * <p>The class to set on elements when selected.</p>
      *
      * JavaScript Info:
@@ -136,25 +155,6 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
      * @behavior PaperTabs
      */
     @JsProperty void setSelectedClass(String value);
-
-    /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getSelectedAttribute();
-    /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelectedAttribute(String value);
 
     /**
      * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
@@ -214,25 +214,6 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
     @JsProperty void setAttrForSelected(String value);
 
     /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
-     *
-     * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getActivateEvent();
-    /**
-     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
-     *
-     * JavaScript Info:
-     * @property activateEvent
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setActivateEvent(String value);
-
-    /**
      * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
      *
      * JavaScript Info:
@@ -252,35 +233,43 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
     @JsProperty void setEntryAnimation(String value);
 
     /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
+     * <p>The attribute to set on elements when selected.</p>
      *
      * JavaScript Info:
-     * @property exitAnimation
+     * @property selectedAttribute
      * @type String
-     * @behavior PaperTooltip
-     */
-    @JsProperty String getExitAnimation();
-    /**
-     * <p>Convenience property for setting an ‘exit’ animation. Do not set <code>animationConfig.exit</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
-     *
-     * JavaScript Info:
-     * @property exitAnimation
-     * @type String
-     * @behavior PaperTooltip
-     */
-    @JsProperty void setExitAnimation(String value);
-
-
-    /**
-     * <p>Selects the given value.</p>
-     *
-     * JavaScript Info:
-     * @method select
-     * @param {(string|number)} value  
      * @behavior PaperTabs
-     * 
      */
-    void select(Object value);
+    @JsProperty String getSelectedAttribute();
+    /**
+     * <p>The attribute to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedAttribute
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedAttribute(String value);
+
+    /**
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     *
+     * JavaScript Info:
+     * @property activateEvent
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getActivateEvent();
+    /**
+     * <p>The event that fires from items when they are selected. Selectable<br>will listen for this event from items and update the selection state.<br>Set to empty string to listen to no events.</p>
+     *
+     * JavaScript Info:
+     * @property activateEvent
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setActivateEvent(String value);
+
 
     /**
      * <p>Selects the item at the given index.</p>
@@ -299,7 +288,7 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void stopResizeNotificationsFor(Object target);
@@ -310,21 +299,51 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void assignParentResizable(Object parentResizable);
 
     /**
-     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
+     * <p>Selects the given value.</p>
      *
      * JavaScript Info:
-     * @method resizerShouldNotify
-     * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
-     * @return {boolean}
+     * @method select
+     * @param {(string|number)} value  
+     * @behavior PaperTabs
+     * 
      */
-    boolean resizerShouldNotify(JavaScriptObject element);
+    void select(Object value);
+
+    /**
+     * <p>Selects the previous item.</p>
+     *
+     * JavaScript Info:
+     * @method selectPrevious
+     * @behavior PaperTabs
+     * 
+     */
+    void selectPrevious();
+
+    /**
+     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
+     *
+     * JavaScript Info:
+     * @method notifyResize
+     * @behavior PaperClockSelector
+     * 
+     */
+    void notifyResize();
+
+    /**
+     * <p>Selects the next item.</p>
+     *
+     * JavaScript Info:
+     * @method selectNext
+     * @behavior PaperTabs
+     * 
+     */
+    void selectNext();
 
     /**
      * <p>Cancels the currently running animations.</p>
@@ -349,46 +368,15 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
     void forceSynchronousItemUpdate();
 
     /**
-     * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
+     * <p>This method can be overridden to filter nested elements that should or<br>should not be notified by the current element. Return true if an element<br>should be notified, or false if it should not be notified.</p>
      *
      * JavaScript Info:
-     * @method notifyResize
-     * @behavior PaperTimePicker
-     * 
+     * @method resizerShouldNotify
+     * @param {HTMLElement} element  
+     * @behavior PaperClockSelector
+     * @return {boolean}
      */
-    void notifyResize();
-
-    /**
-     * <p>Selects the previous item.</p>
-     *
-     * JavaScript Info:
-     * @method selectPrevious
-     * @behavior PaperTabs
-     * 
-     */
-    void selectPrevious();
-
-    /**
-     * <p>Selects the next item.</p>
-     *
-     * JavaScript Info:
-     * @method selectNext
-     * @behavior PaperTabs
-     * 
-     */
-    void selectNext();
-
-    /**
-     * <p>Plays an animation with an optional <code>type</code>.</p>
-     *
-     * JavaScript Info:
-     * @method playAnimation
-     * @param {string=} type  
-     * @param {!Object=} cookie  
-     * @behavior PaperTooltip
-     * 
-     */
-    void playAnimation(String type, JavaScriptObject cookie);
+    boolean resizerShouldNotify(JavaScriptObject element);
 
     /**
      * <p>Returns the index of the given item.</p>
@@ -400,5 +388,17 @@ public interface NeonAnimatedPagesElement extends HTMLElement {
      * 
      */
     void indexOf(JavaScriptObject item);
+
+    /**
+     * <p>Plays an animation with an optional <code>type</code>.</p>
+     *
+     * JavaScript Info:
+     * @method playAnimation
+     * @param {string=} type  
+     * @param {!Object=} cookie  
+     * 
+     * 
+     */
+    void playAnimation(String type, JavaScriptObject cookie);
 
 }

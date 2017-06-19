@@ -92,23 +92,23 @@ public interface PaperFabElement extends HTMLElement {
 
 
     /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
      *
      * JavaScript Info:
-     * @property receivedFocusFromKeyboard
+     * @property toggles
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
-    @JsProperty boolean getReceivedFocusFromKeyboard();
+    @JsProperty boolean getToggles();
     /**
-     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
      *
      * JavaScript Info:
-     * @property receivedFocusFromKeyboard
+     * @property toggles
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
-    @JsProperty void setReceivedFocusFromKeyboard(boolean value);
+    @JsProperty void setToggles(boolean value);
 
     /**
      * <p>The z-depth of this element, from 0-5. Setting to 0 will remove the<br>shadow, and each increasing number greater than 0 will be “deeper”<br>than the last.</p>
@@ -135,7 +135,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
@@ -144,7 +144,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type Object
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
@@ -154,7 +154,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
@@ -163,9 +163,47 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
+
+    /**
+     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * @behavior PaperFab
+     */
+    @JsProperty boolean getNoink();
+    /**
+     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
+     *
+     * JavaScript Info:
+     * @property noink
+     * @type Boolean
+     * @behavior PaperFab
+     */
+    @JsProperty void setNoink(boolean value);
+
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty boolean getPointerDown();
+    /**
+     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
+     *
+     * JavaScript Info:
+     * @property pointerDown
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty void setPointerDown(boolean value);
 
     /**
      * <p>If true, the user is currently holding down the button.</p>
@@ -173,7 +211,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getPressed();
     /**
@@ -182,9 +220,47 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setPressed(boolean value);
+
+    /**
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     *
+     * JavaScript Info:
+     * @property receivedFocusFromKeyboard
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty boolean getReceivedFocusFromKeyboard();
+    /**
+     * <p>True if the input device that caused the element to receive focus<br>was a keyboard.</p>
+     *
+     * JavaScript Info:
+     * @property receivedFocusFromKeyboard
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty void setReceivedFocusFromKeyboard(boolean value);
+
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty boolean getStopKeyboardEventPropagation();
+    /**
+     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
+     *
+     * JavaScript Info:
+     * @property stopKeyboardEventPropagation
+     * @type Boolean
+     * @behavior PaperTab
+     */
+    @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
     /**
      * <p>Set this to true to style this is a “mini” FAB.</p>
@@ -206,31 +282,12 @@ public interface PaperFabElement extends HTMLElement {
     @JsProperty void setMini(boolean value);
 
     /**
-     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
-     *
-     * JavaScript Info:
-     * @property toggles
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty boolean getToggles();
-    /**
-     * <p>If true, the button toggles the active state with each tap or press<br>of the spacebar.</p>
-     *
-     * JavaScript Info:
-     * @property toggles
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setToggles(boolean value);
-
-    /**
      * <p>If true, the button is a toggle and is currently in the active state.</p>
      *
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getActive();
     /**
@@ -239,66 +296,9 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setActive(boolean value);
-
-    /**
-     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
-     *
-     * JavaScript Info:
-     * @property noink
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty boolean getNoink();
-    /**
-     * <p>If true, the element will not produce a ripple effect when interacted<br>with via the pointer.</p>
-     *
-     * JavaScript Info:
-     * @property noink
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setNoink(boolean value);
-
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty boolean getPointerDown();
-    /**
-     * <p>True if the element is currently being pressed by a “pointer,” which<br>is loosely defined as mouse or touch input (but specifically excluding<br>keyboard input).</p>
-     *
-     * JavaScript Info:
-     * @property pointerDown
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setPointerDown(boolean value);
-
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty boolean getStopKeyboardEventPropagation();
-    /**
-     * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
-     *
-     * JavaScript Info:
-     * @property stopKeyboardEventPropagation
-     * @type Boolean
-     * @behavior PaperToggleButton
-     */
-    @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
     /**
      * <p>If true, the user cannot interact with this element.</p>
@@ -306,7 +306,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getDisabled();
     /**
@@ -315,7 +315,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setDisabled(boolean value);
 
@@ -325,7 +325,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getFocused();
     /**
@@ -334,7 +334,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setFocused(boolean value);
 
@@ -363,7 +363,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty String getAriaActiveAttribute();
     /**
@@ -372,7 +372,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setAriaActiveAttribute(String value);
 
@@ -422,27 +422,17 @@ public interface PaperFabElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
-
-    /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
-     *
-     * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior PaperToggleButton
-     * 
-     */
-    void removeOwnKeyBindings();
 
     /**
      * <p>Returns the <code>&lt;paper-ripple&gt;</code> element used by this element to create<br>ripple effects. The element’s ripple is created on demand, when<br>necessary, and calling this method will force the<br>ripple to be created.</p>
      *
      * JavaScript Info:
      * @method getRipple
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void getRipple();
@@ -452,10 +442,20 @@ public interface PaperFabElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method hasRipple
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * @return {boolean}
      */
     boolean hasRipple();
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior PaperTab
+     * 
+     */
+    void removeOwnKeyBindings();
 
     /**
      * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
@@ -464,7 +464,7 @@ public interface PaperFabElement extends HTMLElement {
      * @method keyboardEventMatchesKeys
      * @param {KeyboardEvent} event  
      * @param {string} eventString  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * @return {boolean}
      */
     boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
@@ -475,7 +475,7 @@ public interface PaperFabElement extends HTMLElement {
      * JavaScript Info:
      * @method ensureRipple
      * @param {!Event=} optTriggeringEvent  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void ensureRipple(JavaScriptObject optTriggeringEvent);

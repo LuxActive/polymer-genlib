@@ -25,7 +25,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <p><code>paper-dropdown-menu</code> is similar to a native browser select element.<br><code>paper-dropdown-menu</code> works with selectable content. The currently selected<br>item is displayed in the control. If no item is selected, the <code>label</code> is<br>displayed instead.</p>
  * <p>Example:</p>
  * <pre><code>&lt;paper-dropdown-menu label=&quot;Your favourite pastry&quot;&gt;
- *   &lt;paper-listbox class=&quot;dropdown-content&quot;&gt;
+ *   &lt;paper-listbox slot=&quot;dropdown-content&quot;&gt;
  *     &lt;paper-item&gt;Croissant&lt;/paper-item&gt;
  *     &lt;paper-item&gt;Donut&lt;/paper-item&gt;
  *     &lt;paper-item&gt;Financier&lt;/paper-item&gt;
@@ -35,7 +35,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  * 
  * 
  * </code></pre><p>This example renders a dropdown menu with 4 options.</p>
- * <p>The child element with the class <code>dropdown-content</code> is used as the dropdown<br>menu. This can be a <a href="paper-listbox"><code>paper-listbox</code></a>, or any other or<br>element that acts like an <a href="iron-selector"><code>iron-selector</code></a>.</p>
+ * <p>The child element with the slot <code>dropdown-content</code> is used as the dropdown<br>menu. This can be a <a href="paper-listbox"><code>paper-listbox</code></a>, or any other or<br>element that acts like an <a href="iron-selector"><code>iron-selector</code></a>.</p>
  * <p>Specifically, the menu child must fire an<br><a href="iron-selector#event-iron-select"><code>iron-select</code></a> event when one of its<br>children is selected, and an <a href="iron-selector#event-iron-deselect"><code>iron-deselect</code></a><br>event when a child is deselected. The selected or deselected item must<br>be passed as the event’s <code>detail.item</code> property.</p>
  * <p>Applications can listen for the <code>iron-select</code> and <code>iron-deselect</code> events<br>to react when options are selected and deselected.</p>
  * <h3 id="styling">Styling</h3>
@@ -112,7 +112,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getPressed() {
         return getPolymerElement().getPressed();
@@ -123,7 +123,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property pressed
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setPressed(boolean value) {
         getPolymerElement().setPressed(value);
@@ -153,7 +153,7 @@ public class PaperDropdownMenu extends PolymerWidget {
     }
 
     /**
-     * <p>The last selected item. An item is selected if the dropdown menu has<br>a child with class <code>dropdown-content</code>, and that child triggers an<br><code>iron-select</code> event with the selected <code>item</code> in the <code>detail</code>.</p>
+     * <p>The last selected item. An item is selected if the dropdown menu has<br>a child with slot <code>dropdown-content</code>, and that child triggers an<br><code>iron-select</code> event with the selected <code>item</code> in the <code>detail</code>.</p>
      *
      * JavaScript Info:
      * @property selectedItem
@@ -164,7 +164,7 @@ public class PaperDropdownMenu extends PolymerWidget {
         return getPolymerElement().getSelectedItem();
     }
     /**
-     * <p>The last selected item. An item is selected if the dropdown menu has<br>a child with class <code>dropdown-content</code>, and that child triggers an<br><code>iron-select</code> event with the selected <code>item</code> in the <code>detail</code>.</p>
+     * <p>The last selected item. An item is selected if the dropdown menu has<br>a child with slot <code>dropdown-content</code>, and that child triggers an<br><code>iron-select</code> event with the selected <code>item</code> in the <code>detail</code>.</p>
      *
      * JavaScript Info:
      * @property selectedItem
@@ -181,7 +181,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public JavaScriptObject getKeyEventTarget() {
         return getPolymerElement().getKeyEventTarget();
@@ -192,7 +192,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setKeyEventTarget(JavaScriptObject value) {
         getPolymerElement().setKeyEventTarget(value);
@@ -204,7 +204,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getActive() {
         return getPolymerElement().getActive();
@@ -215,7 +215,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setActive(boolean value) {
         getPolymerElement().setActive(value);
@@ -273,7 +273,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getPointerDown() {
         return getPolymerElement().getPointerDown();
@@ -284,7 +284,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property pointerDown
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setPointerDown(boolean value) {
         getPolymerElement().setPointerDown(value);
@@ -319,7 +319,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getReceivedFocusFromKeyboard() {
         return getPolymerElement().getReceivedFocusFromKeyboard();
@@ -330,7 +330,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property receivedFocusFromKeyboard
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setReceivedFocusFromKeyboard(boolean value) {
         getPolymerElement().setReceivedFocusFromKeyboard(value);
@@ -342,7 +342,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getToggles() {
         return getPolymerElement().getToggles();
@@ -353,7 +353,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property toggles
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setToggles(boolean value) {
         getPolymerElement().setToggles(value);
@@ -434,7 +434,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getFocused() {
         return getPolymerElement().getFocused();
@@ -445,7 +445,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setFocused(boolean value) {
         getPolymerElement().setFocused(value);
@@ -457,7 +457,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getDisabled() {
         return getPolymerElement().getDisabled();
@@ -468,7 +468,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setDisabled(boolean value) {
         getPolymerElement().setDisabled(value);
@@ -503,7 +503,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public boolean getStopKeyboardEventPropagation() {
         return getPolymerElement().getStopKeyboardEventPropagation();
@@ -514,7 +514,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setStopKeyboardEventPropagation(boolean value) {
         getPolymerElement().setStopKeyboardEventPropagation(value);
@@ -572,7 +572,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public String getAriaActiveAttribute() {
         return getPolymerElement().getAriaActiveAttribute();
@@ -583,7 +583,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * JavaScript Info:
      * @property ariaActiveAttribute
      * @type String
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setAriaActiveAttribute(String value) {
         getPolymerElement().setAriaActiveAttribute(value);
@@ -826,7 +826,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-bindings
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setKeyBindings(String value) {
         Polymer.property(this.getPolymerElement(), "keyBindings", value);
@@ -838,7 +838,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      *
      * JavaScript Info:
      * @attribute key-event-target
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     public void setKeyEventTarget(String value) {
         Polymer.property(this.getPolymerElement(), "keyEventTarget", value);
@@ -846,7 +846,7 @@ public class PaperDropdownMenu extends PolymerWidget {
 
     // Needed in UIBinder
     /**
-     * <p>The last selected item. An item is selected if the dropdown menu has<br>a child with class <code>dropdown-content</code>, and that child triggers an<br><code>iron-select</code> event with the selected <code>item</code> in the <code>detail</code>.</p>
+     * <p>The last selected item. An item is selected if the dropdown menu has<br>a child with slot <code>dropdown-content</code>, and that child triggers an<br><code>iron-select</code> event with the selected <code>item</code> in the <code>detail</code>.</p>
      *
      * JavaScript Info:
      * @attribute selected-item
@@ -864,7 +864,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     public void addOwnKeyBinding(Object eventString, Object handlerName) {
@@ -912,7 +912,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     public void removeOwnKeyBindings() {
@@ -926,7 +926,7 @@ public class PaperDropdownMenu extends PolymerWidget {
      * @method keyboardEventMatchesKeys
      * @param {KeyboardEvent} event  
      * @param {string} eventString  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * @return {boolean}
      */
     public boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString) {

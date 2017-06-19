@@ -74,50 +74,12 @@ public interface PaperListboxElement extends HTMLElement {
 
 
     /**
-     * <p>If true, multiple selections are allowed.</p>
-     *
-     * JavaScript Info:
-     * @property multi
-     * @type Boolean
-     * @behavior PaperTabs
-     */
-    @JsProperty boolean getMulti();
-    /**
-     * <p>If true, multiple selections are allowed.</p>
-     *
-     * JavaScript Info:
-     * @property multi
-     * @type Boolean
-     * @behavior PaperTabs
-     */
-    @JsProperty void setMulti(boolean value);
-
-    /**
-     * <p>Returns an array of currently selected items.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItems
-     * @type Array
-     * @behavior PaperTabs
-     */
-    @JsProperty JsArray getSelectedItems();
-    /**
-     * <p>Returns an array of currently selected items.</p>
-     *
-     * JavaScript Info:
-     * @property selectedItems
-     * @type Array
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelectedItems(JsArray value);
-
-    /**
      * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -126,7 +88,7 @@ public interface PaperListboxElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
@@ -150,6 +112,82 @@ public interface PaperListboxElement extends HTMLElement {
     @JsProperty void setItems(JsArray value);
 
     /**
+     * <p>If true, multiple selections are allowed.</p>
+     *
+     * JavaScript Info:
+     * @property multi
+     * @type Boolean
+     * @behavior PaperTabs
+     */
+    @JsProperty boolean getMulti();
+    /**
+     * <p>If true, multiple selections are allowed.</p>
+     *
+     * JavaScript Info:
+     * @property multi
+     * @type Boolean
+     * @behavior PaperTabs
+     */
+    @JsProperty void setMulti(boolean value);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property disabled
+     * @type Boolean
+     * @behavior PaperTabs
+     */
+    @JsProperty boolean getDisabled();
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @property disabled
+     * @type Boolean
+     * @behavior PaperTabs
+     */
+    @JsProperty void setDisabled(boolean value);
+
+    /**
+     * <p>Returns an array of currently selected items.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItems
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty JsArray getSelectedItems();
+    /**
+     * <p>Returns an array of currently selected items.</p>
+     *
+     * JavaScript Info:
+     * @property selectedItems
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedItems(JsArray value);
+
+    /**
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
+     *
+     * JavaScript Info:
+     * @property selectedValues
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty JsArray getSelectedValues();
+    /**
+     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
+     *
+     * JavaScript Info:
+     * @property selectedValues
+     * @type Array
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedValues(JsArray value);
+
+    /**
      * <p>Gets or sets the selected element. The default is to use the index of the item.</p>
      *
      * JavaScript Info:
@@ -169,50 +207,12 @@ public interface PaperListboxElement extends HTMLElement {
     @JsProperty void setSelected(Object value);
 
     /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTabs
-     */
-    @JsProperty JavaScriptObject getKeyBindings();
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property keyBindings
-     * @type Object
-     * @behavior PaperTabs
-     */
-    @JsProperty void setKeyBindings(JavaScriptObject value);
-
-    /**
-     * <p>Returns the currently focused item.</p>
-     *
-     * JavaScript Info:
-     * @property focusedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty JavaScriptObject getFocusedItem();
-    /**
-     * <p>Returns the currently focused item.</p>
-     *
-     * JavaScript Info:
-     * @property focusedItem
-     * @type ?Object
-     * @behavior PaperTabs
-     */
-    @JsProperty void setFocusedItem(JavaScriptObject value);
-
-    /**
      * <p>The EventTarget that will be firing relevant KeyboardEvents. Set it to<br><code>null</code> to disable the listeners.</p>
      *
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
@@ -221,7 +221,7 @@ public interface PaperListboxElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
@@ -245,23 +245,42 @@ public interface PaperListboxElement extends HTMLElement {
     @JsProperty void setSelectedItem(JavaScriptObject value);
 
     /**
-     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
      *
      * JavaScript Info:
-     * @property selectedValues
-     * @type Array
-     * @behavior PaperTabs
+     * @property keyBindings
+     * @type !Object
+     * @behavior PaperTab
      */
-    @JsProperty JsArray getSelectedValues();
+    @JsProperty JavaScriptObject getKeyBindings();
     /**
-     * <p>Gets or sets the selected elements. This is used instead of <code>selected</code> when <code>multi</code><br>is true.</p>
+     * <p>To be used to express what combination of keys  will trigger the relative<br>callback. e.g. <code>keyBindings: { &#39;esc&#39;: &#39;_onEscPressed&#39;}</code></p>
      *
      * JavaScript Info:
-     * @property selectedValues
-     * @type Array
+     * @property keyBindings
+     * @type !Object
+     * @behavior PaperTab
+     */
+    @JsProperty void setKeyBindings(JavaScriptObject value);
+
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
      * @behavior PaperTabs
      */
-    @JsProperty void setSelectedValues(JsArray value);
+    @JsProperty JavaScriptObject getFocusedItem();
+    /**
+     * <p>Returns the currently focused item.</p>
+     *
+     * JavaScript Info:
+     * @property focusedItem
+     * @type ?Object
+     * @behavior PaperTabs
+     */
+    @JsProperty void setFocusedItem(JavaScriptObject value);
 
     /**
      * <p>The class to set on elements when selected.</p>
@@ -283,25 +302,6 @@ public interface PaperListboxElement extends HTMLElement {
     @JsProperty void setSelectedClass(String value);
 
     /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getSelectedAttribute();
-    /**
-     * <p>The attribute to set on elements when selected.</p>
-     *
-     * JavaScript Info:
-     * @property selectedAttribute
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setSelectedAttribute(String value);
-
-    /**
      * <p>This is a CSS selector string.  If this is set, only items that match the CSS selector<br>are selectable.</p>
      *
      * JavaScript Info:
@@ -319,25 +319,6 @@ public interface PaperListboxElement extends HTMLElement {
      * @behavior PaperTabs
      */
     @JsProperty void setSelectable(String value);
-
-    /**
-     * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
-     *
-     * JavaScript Info:
-     * @property attrForItemTitle
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty String getAttrForItemTitle();
-    /**
-     * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
-     *
-     * JavaScript Info:
-     * @property attrForItemTitle
-     * @type String
-     * @behavior PaperTabs
-     */
-    @JsProperty void setAttrForItemTitle(String value);
 
     /**
      * <p>Default fallback if the selection based on selected with <code>attrForSelected</code><br>is not found.</p>
@@ -396,28 +377,44 @@ public interface PaperListboxElement extends HTMLElement {
      */
     @JsProperty void setActivateEvent(String value);
 
-
     /**
-     * 
+     * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
      *
      * JavaScript Info:
-     * @method multiChanged
-     * @param {} multi  
+     * @property attrForItemTitle
+     * @type String
      * @behavior PaperTabs
-     * 
      */
-    void multiChanged(Object multi);
-
+    @JsProperty String getAttrForItemTitle();
     /**
-     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
+     * <p>The attribute to use on menu items to look up the item title. Typing the first<br>letter of an item when the menu is open focuses that item. If unset, <code>textContent</code><br>will be used.</p>
      *
      * JavaScript Info:
-     * @method select
-     * @param {(string|number)} value  
+     * @property attrForItemTitle
+     * @type String
      * @behavior PaperTabs
-     * 
      */
-    void select(Object value);
+    @JsProperty void setAttrForItemTitle(String value);
+
+    /**
+     * <p>The attribute to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedAttribute
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty String getSelectedAttribute();
+    /**
+     * <p>The attribute to set on elements when selected.</p>
+     *
+     * JavaScript Info:
+     * @property selectedAttribute
+     * @type String
+     * @behavior PaperTabs
+     */
+    @JsProperty void setSelectedAttribute(String value);
+
 
     /**
      * <p>Selects the item at the given index.</p>
@@ -437,17 +434,39 @@ public interface PaperListboxElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
+
+    /**
+     * <p>Selects the given value. If the <code>multi</code> property is true, then the selected state of the<br><code>value</code> will be toggled; otherwise the <code>value</code> will be selected.</p>
+     *
+     * JavaScript Info:
+     * @method select
+     * @param {(string|number)} value  
+     * @behavior PaperTabs
+     * 
+     */
+    void select(Object value);
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method multiChanged
+     * @param {} multi  
+     * @behavior PaperTabs
+     * 
+     */
+    void multiChanged(Object multi);
 
     /**
      * <p>When called, will remove all imperatively-added key bindings.</p>
      *
      * JavaScript Info:
      * @method removeOwnKeyBindings
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void removeOwnKeyBindings();
@@ -485,6 +504,18 @@ public interface PaperListboxElement extends HTMLElement {
     void selectPrevious();
 
     /**
+     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
+     *
+     * JavaScript Info:
+     * @method keyboardEventMatchesKeys
+     * @param {KeyboardEvent} event  
+     * @param {string} eventString  
+     * @behavior PaperTab
+     * @return {boolean}
+     */
+    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
+
+    /**
      * <p>Returns the index of the given item.</p>
      *
      * JavaScript Info:
@@ -494,17 +525,5 @@ public interface PaperListboxElement extends HTMLElement {
      * 
      */
     void indexOf(JavaScriptObject item);
-
-    /**
-     * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
-     *
-     * JavaScript Info:
-     * @method keyboardEventMatchesKeys
-     * @param {KeyboardEvent} event  
-     * @param {string} eventString  
-     * @behavior PaperToggleButton
-     * @return {boolean}
-     */
-    boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
 
 }

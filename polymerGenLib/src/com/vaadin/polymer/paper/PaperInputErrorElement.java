@@ -15,8 +15,8 @@ import jsinterop.annotations.JsType;
 /**
  * <p><code>&lt;paper-input-error&gt;</code> is an error message for use with <code>&lt;paper-input-container&gt;</code>. The error is<br>displayed when the <code>&lt;paper-input-container&gt;</code> is <code>invalid</code>.</p>
  * <pre><code>&lt;paper-input-container&gt;
- *   &lt;input is=&quot;iron-input&quot; pattern=&quot;[0-9]*&quot;&gt;
- *   &lt;paper-input-error&gt;Only numbers are allowed!&lt;/paper-input-error&gt;
+ *   &lt;input pattern=&quot;[0-9]*&quot;&gt;
+ *   &lt;paper-input-error slot=&quot;add-on&quot;&gt;Only numbers are allowed!&lt;/paper-input-error&gt;
  * &lt;/paper-input-container&gt;
  * 
  * 
@@ -48,7 +48,7 @@ import jsinterop.annotations.JsType;
 public interface PaperInputErrorElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "paper-input-error";
-    @JsOverlay public static final String SRC = "paper-input/paper-input-error.html";
+    @JsOverlay public static final String SRC = "paper-input/paper-textarea.html";
 
 
     /**

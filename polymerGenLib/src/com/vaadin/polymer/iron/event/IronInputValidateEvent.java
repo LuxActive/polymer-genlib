@@ -13,7 +13,7 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
- * <p>  The <code>iron-input-validate</code> event is fired whenever <code>validate()</code> is called.</p>
+ * <p>Fired whenever <code>validate()</code> is called.</p>
  */
 @JsType(isNative=true)
 public interface IronInputValidateEvent extends Event {

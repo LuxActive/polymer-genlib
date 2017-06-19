@@ -79,7 +79,7 @@ public class PaperSpinnerLite extends PolymerWidget {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperSpinner
+     * 
      */
     public boolean getActive() {
         return getPolymerElement().getActive();
@@ -90,7 +90,7 @@ public class PaperSpinnerLite extends PolymerWidget {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperSpinner
+     * 
      */
     public void setActive(boolean value) {
         getPolymerElement().setActive(value);
@@ -102,7 +102,7 @@ public class PaperSpinnerLite extends PolymerWidget {
      * JavaScript Info:
      * @property alt
      * @type String
-     * @behavior PaperSpinner
+     * 
      */
     public String getAlt() {
         return getPolymerElement().getAlt();
@@ -113,7 +113,7 @@ public class PaperSpinnerLite extends PolymerWidget {
      * JavaScript Info:
      * @property alt
      * @type String
-     * @behavior PaperSpinner
+     * 
      */
     public void setAlt(String value) {
         getPolymerElement().setAlt(value);

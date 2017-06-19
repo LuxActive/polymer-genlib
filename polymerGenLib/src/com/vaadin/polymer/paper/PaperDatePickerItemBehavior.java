@@ -20,7 +20,7 @@ import jsinterop.annotations.JsType;
 public interface PaperDatePickerItemBehavior {
 
     @JsOverlay public static final String NAME = "Polymer.PaperDatePickerItemBehavior";
-    @JsOverlay public static final String SRC = "paper-date-picker-item/paper-date-picker-behaviors.html";
+    @JsOverlay public static final String SRC = "paper-date-picker-item/paper-datetime-picker-item.html";
 
 
     /**
@@ -29,7 +29,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property date
      * @type Date
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty JavaScriptObject getDate();
     /**
@@ -38,9 +38,47 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property date
      * @type Date
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty void setDate(JavaScriptObject value);
+
+    /**
+     * <p>The maximum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property maxDate
+     * @type Date
+     * 
+     */
+    @JsProperty JavaScriptObject getMaxDate();
+    /**
+     * <p>The maximum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property maxDate
+     * @type Date
+     * 
+     */
+    @JsProperty void setMaxDate(JavaScriptObject value);
+
+    /**
+     * <p>The minimum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property minDate
+     * @type Date
+     * 
+     */
+    @JsProperty JavaScriptObject getMinDate();
+    /**
+     * <p>The minimum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property minDate
+     * @type Date
+     * 
+     */
+    @JsProperty void setMinDate(JavaScriptObject value);
 
     /**
      * <p>Text for the cancel button in the edit dialog. Use this property to localize the element.</p>
@@ -48,7 +86,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property cancelButton
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty String getCancelButton();
     /**
@@ -57,7 +95,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property cancelButton
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty void setCancelButton(String value);
 
@@ -67,7 +105,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property dateFormat
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty String getDateFormat();
     /**
@@ -76,7 +114,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property dateFormat
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty void setDateFormat(String value);
 
@@ -86,7 +124,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property defaultTime
      * @type string
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty String getDefaultTime();
     /**
@@ -95,7 +133,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property defaultTime
      * @type string
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty void setDefaultTime(String value);
 
@@ -105,7 +143,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property locale
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty String getLocale();
     /**
@@ -114,7 +152,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property locale
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty void setLocale(String value);
 
@@ -124,7 +162,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property okButton
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty String getOkButton();
     /**
@@ -133,7 +171,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property okButton
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty void setOkButton(String value);
 
@@ -143,7 +181,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property placeholder
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty String getPlaceholder();
     /**
@@ -152,7 +190,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property placeholder
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty void setPlaceholder(String value);
 
@@ -162,7 +200,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property timeFormat
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty String getTimeFormat();
     /**
@@ -171,7 +209,7 @@ public interface PaperDatePickerItemBehavior {
      * JavaScript Info:
      * @property timeFormat
      * @type String
-     * @behavior PaperDatetimePickerItem
+     * 
      */
     @JsProperty void setTimeFormat(String value);
 

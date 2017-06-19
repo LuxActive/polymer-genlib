@@ -19,7 +19,7 @@ import jsinterop.annotations.JsType;
 public interface PaperYearListElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "paper-year-list";
-    @JsOverlay public static final String SRC = "paper-date-picker/paper-year-list.html";
+    @JsOverlay public static final String SRC = "paper-date-picker/paper-date-picker.html";
 
 
     /**
@@ -105,7 +105,7 @@ public interface PaperYearListElement extends HTMLElement {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -116,7 +116,7 @@ public interface PaperYearListElement extends HTMLElement {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void stopResizeNotificationsFor(Object target);
@@ -136,7 +136,7 @@ public interface PaperYearListElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void notifyResize();
@@ -147,7 +147,7 @@ public interface PaperYearListElement extends HTMLElement {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);

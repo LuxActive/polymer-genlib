@@ -14,8 +14,8 @@ import jsinterop.annotations.JsType;
 
 /**
  * <p>Material design: <a href="https://www.google.com/design/spec/components/tooltips.html">Tooltips</a></p>
- * <p><code>&lt;paper-tooltip&gt;</code> is a label that appears on hover and focus when the user<br>hovers over an element with the cursor or with the keyboard. It will be centered<br>to an anchor element specified in the <code>for</code> attribute, or, if that doesn’t exist,<br>centered to the parent node containing it.</p>
- * <p>Example:</p>
+ * <p><code>&lt;paper-tooltip&gt;</code> is a label that appears on hover and focus when the user<br>hovers over an element with the cursor or with the keyboard. It will be centered<br>to an anchor element specified in the <code>for</code> attribute, or, if that doesn’t exist,<br>centered to the parent node containing it. Note that as of <code>paper-tooltip#2.0.0</code>,<br>you must explicitely include the <code>web-animations</code> polyfill if you want this<br>element to work on browsers not implementing the WebAnimations spec.</p>
+ * <p>Example:<br>    // polyfill<br>    <link rel="import" href="../../neon-animation/web-animations.html"></p>
  * <pre><code>&lt;div style=&quot;display:inline-block&quot;&gt;
  *   &lt;button&gt;Click me!&lt;/button&gt;
  *   &lt;paper-tooltip&gt;Tooltip text&lt;/paper-tooltip&gt;
@@ -188,44 +188,6 @@ public interface PaperTooltipElement extends HTMLElement {
     @JsProperty void setAnimationDelay(double value);
 
     /**
-     * <p>Positions the tooltip to the top, right, bottom, left of its content.</p>
-     *
-     * JavaScript Info:
-     * @property position
-     * @type String
-     * 
-     */
-    @JsProperty String getPosition();
-    /**
-     * <p>Positions the tooltip to the top, right, bottom, left of its content.</p>
-     *
-     * JavaScript Info:
-     * @property position
-     * @type String
-     * 
-     */
-    @JsProperty void setPosition(String value);
-
-    /**
-     * <p>The id of the element that the tooltip is anchored to. This element<br>must be a sibling of the tooltip.</p>
-     *
-     * JavaScript Info:
-     * @property for
-     * @type String
-     * 
-     */
-    @JsProperty String getFor();
-    /**
-     * <p>The id of the element that the tooltip is anchored to. This element<br>must be a sibling of the tooltip.</p>
-     *
-     * JavaScript Info:
-     * @property for
-     * @type String
-     * 
-     */
-    @JsProperty void setFor(String value);
-
-    /**
      * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
      *
      * JavaScript Info:
@@ -263,6 +225,44 @@ public interface PaperTooltipElement extends HTMLElement {
      */
     @JsProperty void setExitAnimation(String value);
 
+    /**
+     * <p>Positions the tooltip to the top, right, bottom, left of its content.</p>
+     *
+     * JavaScript Info:
+     * @property position
+     * @type String
+     * 
+     */
+    @JsProperty String getPosition();
+    /**
+     * <p>Positions the tooltip to the top, right, bottom, left of its content.</p>
+     *
+     * JavaScript Info:
+     * @property position
+     * @type String
+     * 
+     */
+    @JsProperty void setPosition(String value);
+
+    /**
+     * <p>The id of the element that the tooltip is anchored to. This element<br>must be a sibling of the tooltip.</p>
+     *
+     * JavaScript Info:
+     * @property for
+     * @type String
+     * 
+     */
+    @JsProperty String getFor();
+    /**
+     * <p>The id of the element that the tooltip is anchored to. This element<br>must be a sibling of the tooltip.</p>
+     *
+     * JavaScript Info:
+     * @property for
+     * @type String
+     * 
+     */
+    @JsProperty void setFor(String value);
+
 
     /**
      * 
@@ -273,6 +273,16 @@ public interface PaperTooltipElement extends HTMLElement {
      * 
      */
     void hide();
+
+    /**
+     * 
+     *
+     * JavaScript Info:
+     * @method updatePosition
+     * 
+     * 
+     */
+    void updatePosition();
 
     /**
      * 
@@ -293,16 +303,6 @@ public interface PaperTooltipElement extends HTMLElement {
      * 
      */
     void cancelAnimation();
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @method updatePosition
-     * 
-     * 
-     */
-    void updatePosition();
 
     /**
      * <p>Plays an animation with an optional <code>type</code>.</p>

@@ -113,26 +113,72 @@ public class BwtUploader extends PolymerWidget {
 
 
     /**
-     * 
+     * <p> private variable</p>
      *
      * JavaScript Info:
-     * @property placeHolderRemoved
-     * @type Boolean
-     * @behavior BwtUploader
+     * @property error
+     * @type Object
+     * 
      */
-    public boolean getPlaceHolderRemoved() {
-        return getPolymerElement().getPlaceHolderRemoved();
+    public JavaScriptObject getError() {
+        return getPolymerElement().getError();
     }
     /**
-     * 
+     * <p> private variable</p>
      *
      * JavaScript Info:
-     * @property placeHolderRemoved
-     * @type Boolean
-     * @behavior BwtUploader
+     * @property error
+     * @type Object
+     * 
      */
-    public void setPlaceHolderRemoved(boolean value) {
-        getPolymerElement().setPlaceHolderRemoved(value);
+    public void setError(JavaScriptObject value) {
+        getPolymerElement().setError(value);
+    }
+
+    /**
+     * <p> private variable</p>
+     *
+     * JavaScript Info:
+     * @property file
+     * @type Object
+     * 
+     */
+    public JavaScriptObject getFile() {
+        return getPolymerElement().getFile();
+    }
+    /**
+     * <p> private variable</p>
+     *
+     * JavaScript Info:
+     * @property file
+     * @type Object
+     * 
+     */
+    public void setFile(JavaScriptObject value) {
+        getPolymerElement().setFile(value);
+    }
+
+    /**
+     * <p>Additional Headers, empty by default</p>
+     *
+     * JavaScript Info:
+     * @property headers
+     * @type Object
+     * 
+     */
+    public JavaScriptObject getHeaders() {
+        return getPolymerElement().getHeaders();
+    }
+    /**
+     * <p>Additional Headers, empty by default</p>
+     *
+     * JavaScript Info:
+     * @property headers
+     * @type Object
+     * 
+     */
+    public void setHeaders(JavaScriptObject value) {
+        getPolymerElement().setHeaders(value);
     }
 
     /**
@@ -186,72 +232,26 @@ public class BwtUploader extends PolymerWidget {
     }
 
     /**
-     * <p> Set to true if the image uploaded is to be resized if the height is found to be greater than the height property below</p>
+     * <p> Object which contains the response as well as any other properties to be passed on to the api</p>
      *
      * JavaScript Info:
-     * @property resize
-     * @type Boolean
-     * 
-     */
-    public boolean getResize() {
-        return getPolymerElement().getResize();
-    }
-    /**
-     * <p> Set to true if the image uploaded is to be resized if the height is found to be greater than the height property below</p>
-     *
-     * JavaScript Info:
-     * @property resize
-     * @type Boolean
-     * 
-     */
-    public void setResize(boolean value) {
-        getPolymerElement().setResize(value);
-    }
-
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property customClass
-     * @type Boolean
-     * @behavior BwtUploader
-     */
-    public boolean getCustomClass() {
-        return getPolymerElement().getCustomClass();
-    }
-    /**
-     * 
-     *
-     * JavaScript Info:
-     * @property customClass
-     * @type Boolean
-     * @behavior BwtUploader
-     */
-    public void setCustomClass(boolean value) {
-        getPolymerElement().setCustomClass(value);
-    }
-
-    /**
-     * <p>Additional Headers, empty by default</p>
-     *
-     * JavaScript Info:
-     * @property headers
+     * @property body
      * @type Object
      * 
      */
-    public JavaScriptObject getHeaders() {
-        return getPolymerElement().getHeaders();
+    public JavaScriptObject getBody() {
+        return getPolymerElement().getBody();
     }
     /**
-     * <p>Additional Headers, empty by default</p>
+     * <p> Object which contains the response as well as any other properties to be passed on to the api</p>
      *
      * JavaScript Info:
-     * @property headers
+     * @property body
      * @type Object
      * 
      */
-    public void setHeaders(JavaScriptObject value) {
-        getPolymerElement().setHeaders(value);
+    public void setBody(JavaScriptObject value) {
+        getPolymerElement().setBody(value);
     }
 
     /**
@@ -278,72 +278,95 @@ public class BwtUploader extends PolymerWidget {
     }
 
     /**
-     * <p> Object which contains the response as well as any other properties to be passed on to the api</p>
+     * 
      *
      * JavaScript Info:
-     * @property body
-     * @type Object
+     * @property customClass
+     * @type Boolean
      * 
      */
-    public JavaScriptObject getBody() {
-        return getPolymerElement().getBody();
+    public boolean getCustomClass() {
+        return getPolymerElement().getCustomClass();
     }
     /**
-     * <p> Object which contains the response as well as any other properties to be passed on to the api</p>
+     * 
      *
      * JavaScript Info:
-     * @property body
-     * @type Object
+     * @property customClass
+     * @type Boolean
      * 
      */
-    public void setBody(JavaScriptObject value) {
-        getPolymerElement().setBody(value);
+    public void setCustomClass(boolean value) {
+        getPolymerElement().setCustomClass(value);
     }
 
     /**
-     * <p> private variable</p>
+     * 
      *
      * JavaScript Info:
-     * @property error
-     * @type Object
-     * @behavior BwtUploader
+     * @property placeHolderRemoved
+     * @type Boolean
+     * @behavior BwtProgressBar
      */
-    public JavaScriptObject getError() {
-        return getPolymerElement().getError();
+    public boolean getPlaceHolderRemoved() {
+        return getPolymerElement().getPlaceHolderRemoved();
     }
     /**
-     * <p> private variable</p>
+     * 
      *
      * JavaScript Info:
-     * @property error
-     * @type Object
-     * @behavior BwtUploader
+     * @property placeHolderRemoved
+     * @type Boolean
+     * @behavior BwtProgressBar
      */
-    public void setError(JavaScriptObject value) {
-        getPolymerElement().setError(value);
+    public void setPlaceHolderRemoved(boolean value) {
+        getPolymerElement().setPlaceHolderRemoved(value);
     }
 
     /**
-     * <p> private variable</p>
+     * <p> Set to true if the image uploaded is to be resized if the height is found to be greater than the height property below</p>
      *
      * JavaScript Info:
-     * @property file
-     * @type Object
-     * @behavior BwtUploader
+     * @property resize
+     * @type Boolean
+     * 
      */
-    public JavaScriptObject getFile() {
-        return getPolymerElement().getFile();
+    public boolean getResize() {
+        return getPolymerElement().getResize();
     }
     /**
-     * <p> private variable</p>
+     * <p> Set to true if the image uploaded is to be resized if the height is found to be greater than the height property below</p>
      *
      * JavaScript Info:
-     * @property file
-     * @type Object
-     * @behavior BwtUploader
+     * @property resize
+     * @type Boolean
+     * 
      */
-    public void setFile(JavaScriptObject value) {
-        getPolymerElement().setFile(value);
+    public void setResize(boolean value) {
+        getPolymerElement().setResize(value);
+    }
+
+    /**
+     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
+     *
+     * JavaScript Info:
+     * @property theme
+     * @type String
+     * 
+     */
+    public String getTheme() {
+        return getPolymerElement().getTheme();
+    }
+    /**
+     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
+     *
+     * JavaScript Info:
+     * @property theme
+     * @type String
+     * 
+     */
+    public void setTheme(String value) {
+        getPolymerElement().setTheme(value);
     }
 
     /**
@@ -367,6 +390,52 @@ public class BwtUploader extends PolymerWidget {
      */
     public void setUploadText(String value) {
         getPolymerElement().setUploadText(value);
+    }
+
+    /**
+     * <p>location of the placeholder image</p>
+     *
+     * JavaScript Info:
+     * @property placeholder
+     * @type String
+     * 
+     */
+    public String getPlaceholder() {
+        return getPolymerElement().getPlaceholder();
+    }
+    /**
+     * <p>location of the placeholder image</p>
+     *
+     * JavaScript Info:
+     * @property placeholder
+     * @type String
+     * 
+     */
+    public void setPlaceholder(String value) {
+        getPolymerElement().setPlaceholder(value);
+    }
+
+    /**
+     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
+     *
+     * JavaScript Info:
+     * @property image
+     * @type String
+     * 
+     */
+    public String getImage() {
+        return getPolymerElement().getImage();
+    }
+    /**
+     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
+     *
+     * JavaScript Info:
+     * @property image
+     * @type String
+     * 
+     */
+    public void setImage(String value) {
+        getPolymerElement().setImage(value);
     }
 
     /**
@@ -416,52 +485,6 @@ public class BwtUploader extends PolymerWidget {
     }
 
     /**
-     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
-     *
-     * JavaScript Info:
-     * @property image
-     * @type String
-     * @behavior BwtUploader
-     */
-    public String getImage() {
-        return getPolymerElement().getImage();
-    }
-    /**
-     * <p> url of the image to be displayed, this can be used mixed with the placeholder</p>
-     *
-     * JavaScript Info:
-     * @property image
-     * @type String
-     * @behavior BwtUploader
-     */
-    public void setImage(String value) {
-        getPolymerElement().setImage(value);
-    }
-
-    /**
-     * <p>location of the placeholder image</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * @behavior BwtUploader
-     */
-    public String getPlaceholder() {
-        return getPolymerElement().getPlaceholder();
-    }
-    /**
-     * <p>location of the placeholder image</p>
-     *
-     * JavaScript Info:
-     * @property placeholder
-     * @type String
-     * @behavior BwtUploader
-     */
-    public void setPlaceholder(String value) {
-        getPolymerElement().setPlaceholder(value);
-    }
-
-    /**
      * <p>Ajax end point where the file should upload to eg: /api/image/upload</p>
      *
      * JavaScript Info:
@@ -484,40 +507,29 @@ public class BwtUploader extends PolymerWidget {
         getPolymerElement().setTarget(value);
     }
 
-    /**
-     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
-     *
-     * JavaScript Info:
-     * @property theme
-     * @type String
-     * @behavior BwtUploader
-     */
-    public String getTheme() {
-        return getPolymerElement().getTheme();
-    }
-    /**
-     * <p>The type of placeholder, accepts either one of two arguments; square or circle</p>
-     *
-     * JavaScript Info:
-     * @property theme
-     * @type String
-     * @behavior BwtUploader
-     */
-    public void setTheme(String value) {
-        getPolymerElement().setTheme(value);
-    }
-
 
     // Needed in UIBinder
     /**
-     * <p>Maximum accepted File size in Kilo Bytes *</p>
+     * <p> private variable</p>
      *
      * JavaScript Info:
-     * @attribute max-file-size
+     * @attribute file
      * 
      */
-    public void setMaxFileSize(String value) {
-        Polymer.property(this.getPolymerElement(), "maxFileSize", value);
+    public void setFile(String value) {
+        Polymer.property(this.getPolymerElement(), "file", value);
+    }
+
+    // Needed in UIBinder
+    /**
+     * <p>Additional Headers, empty by default</p>
+     *
+     * JavaScript Info:
+     * @attribute headers
+     * 
+     */
+    public void setHeaders(String value) {
+        Polymer.property(this.getPolymerElement(), "headers", value);
     }
 
     // Needed in UIBinder
@@ -536,26 +548,14 @@ public class BwtUploader extends PolymerWidget {
 
     // Needed in UIBinder
     /**
-     * <p>Additional Headers, empty by default</p>
+     * <p>Maximum accepted File size in Kilo Bytes *</p>
      *
      * JavaScript Info:
-     * @attribute headers
+     * @attribute max-file-size
      * 
      */
-    public void setHeaders(String value) {
-        Polymer.property(this.getPolymerElement(), "headers", value);
-    }
-
-    // Needed in UIBinder
-    /**
-     * <p>a value that the uploader expects to be data binded to</p>
-     *
-     * JavaScript Info:
-     * @attribute value
-     * 
-     */
-    public void setValue(String value) {
-        Polymer.property(this.getPolymerElement(), "value", value);
+    public void setMaxFileSize(String value) {
+        Polymer.property(this.getPolymerElement(), "maxFileSize", value);
     }
 
     // Needed in UIBinder
@@ -572,14 +572,14 @@ public class BwtUploader extends PolymerWidget {
 
     // Needed in UIBinder
     /**
-     * <p> private variable</p>
+     * <p>a value that the uploader expects to be data binded to</p>
      *
      * JavaScript Info:
-     * @attribute error
-     * @behavior BwtUploader
+     * @attribute value
+     * 
      */
-    public void setError(String value) {
-        Polymer.property(this.getPolymerElement(), "error", value);
+    public void setValue(String value) {
+        Polymer.property(this.getPolymerElement(), "value", value);
     }
 
     // Needed in UIBinder
@@ -587,11 +587,11 @@ public class BwtUploader extends PolymerWidget {
      * <p> private variable</p>
      *
      * JavaScript Info:
-     * @attribute file
-     * @behavior BwtUploader
+     * @attribute error
+     * @behavior BwtProgressBar
      */
-    public void setFile(String value) {
-        Polymer.property(this.getPolymerElement(), "file", value);
+    public void setError(String value) {
+        Polymer.property(this.getPolymerElement(), "error", value);
     }
 
 

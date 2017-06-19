@@ -10,7 +10,7 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * <p>  The <code>iron-input-validate</code> event is fired whenever <code>validate()</code> is called.</p>
+ * <p>Fired whenever <code>validate()</code> is called.</p>
  */
 public class IronInputValidateEvent extends DomEvent<IronInputValidateEventHandler> {
 

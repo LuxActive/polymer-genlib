@@ -13,16 +13,16 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
- * <p><code>&lt;iron-dropdown&gt;</code> is a generalized element that is useful when you have<br>hidden content (<code>.dropdown-content</code>) that is revealed due to some change in<br>state that should cause it to do so.</p>
+ * <p><code>&lt;iron-dropdown&gt;</code> is a generalized element that is useful when you have<br>hidden content (<code>dropdown-content</code>) that is revealed due to some change in<br>state that should cause it to do so.</p>
  * <p>Note that this is a low-level element intended to be used as part of other<br>composite elements that cause dropdowns to be revealed.</p>
  * <p>Examples of elements that might be implemented using an <code>iron-dropdown</code><br>include comboboxes, menubuttons, selects. The list goes on.</p>
- * <p>The <code>&lt;iron-dropdown&gt;</code> element exposes attributes that allow the position<br>of the <code>.dropdown-content</code> relative to the <code>.dropdown-trigger</code> to be<br>configured.</p>
+ * <p>The <code>&lt;iron-dropdown&gt;</code> element exposes attributes that allow the position<br>of the <code>dropdown-content</code> relative to the <code>dropdown-trigger</code> to be<br>configured.</p>
  * <pre><code>&lt;iron-dropdown horizontal-align=&quot;right&quot; vertical-align=&quot;top&quot;&gt;
- *   &lt;div class=&quot;dropdown-content&quot;&gt;Hello!&lt;/div&gt;
+ *   &lt;div slot=&quot;dropdown-content&quot;&gt;Hello!&lt;/div&gt;
  * &lt;/iron-dropdown&gt;
  * 
  * 
- * </code></pre><p>In the above example, the <code>&lt;div&gt;</code> with class <code>.dropdown-content</code> will be<br>hidden until the dropdown element has <code>opened</code> set to true, or when the <code>open</code><br>method is called on the element.</p>
+ * </code></pre><p>In the above example, the <code>&lt;div&gt;</code> assigned to the <code>dropdown-content</code> slot will be<br>hidden until the dropdown element has <code>opened</code> set to true, or when the <code>open</code><br>method is called on the element.</p>
  */
 @JsType(isNative=true)
 public interface IronDropdownElement extends HTMLElement {
@@ -32,23 +32,23 @@ public interface IronDropdownElement extends HTMLElement {
 
 
     /**
-     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
+     * <p>Set to true to auto-fit on attach.</p>
      *
      * JavaScript Info:
-     * @property allowOutsideScroll
+     * @property autoFitOnAttach
      * @type Boolean
-     * 
+     * @behavior PaperToast
      */
-    @JsProperty boolean getAllowOutsideScroll();
+    @JsProperty boolean getAutoFitOnAttach();
     /**
-     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
+     * <p>Set to true to auto-fit on attach.</p>
      *
      * JavaScript Info:
-     * @property allowOutsideScroll
+     * @property autoFitOnAttach
      * @type Boolean
-     * 
+     * @behavior PaperToast
      */
-    @JsProperty void setAllowOutsideScroll(boolean value);
+    @JsProperty void setAutoFitOnAttach(boolean value);
 
     /**
      * <p>The backdrop element.</p>
@@ -121,7 +121,7 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty JavaScriptObject getKeyEventTarget();
     /**
@@ -130,7 +130,7 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @property keyEventTarget
      * @type ?EventTarget
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setKeyEventTarget(JavaScriptObject value);
 
@@ -192,23 +192,23 @@ public interface IronDropdownElement extends HTMLElement {
     @JsProperty void setFocusTarget(JavaScriptObject value);
 
     /**
-     * <p>The element to fit <code>this</code> into.</p>
+     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown. Pass an Array for multiple animations.<br>See <code>neon-animation</code> documentation for more animation configuration<br>details.</p>
      *
      * JavaScript Info:
-     * @property fitInto
+     * @property closeAnimationConfig
      * @type Object
-     * @behavior PaperToast
+     * 
      */
-    @JsProperty JavaScriptObject getFitInto();
+    @JsProperty JavaScriptObject getCloseAnimationConfig();
     /**
-     * <p>The element to fit <code>this</code> into.</p>
+     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown. Pass an Array for multiple animations.<br>See <code>neon-animation</code> documentation for more animation configuration<br>details.</p>
      *
      * JavaScript Info:
-     * @property fitInto
+     * @property closeAnimationConfig
      * @type Object
-     * @behavior PaperToast
+     * 
      */
-    @JsProperty void setFitInto(JavaScriptObject value);
+    @JsProperty void setCloseAnimationConfig(JavaScriptObject value);
 
     /**
      * <p>An animation config. If provided, this will be used to animate the<br>opening of the dropdown. Pass an Array for multiple animations.<br>See <code>neon-animation</code> documentation for more animation configuration<br>details.</p>
@@ -273,7 +273,7 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type !Object
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty JavaScriptObject getKeyBindings();
     /**
@@ -282,47 +282,28 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @property keyBindings
      * @type !Object
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setKeyBindings(JavaScriptObject value);
 
     /**
-     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown. Pass an Array for multiple animations.<br>See <code>neon-animation</code> documentation for more animation configuration<br>details.</p>
+     * <p>The element to fit <code>this</code> into.</p>
      *
      * JavaScript Info:
-     * @property closeAnimationConfig
+     * @property fitInto
      * @type Object
-     * 
-     */
-    @JsProperty JavaScriptObject getCloseAnimationConfig();
-    /**
-     * <p>An animation config. If provided, this will be used to animate the<br>closing of the dropdown. Pass an Array for multiple animations.<br>See <code>neon-animation</code> documentation for more animation configuration<br>details.</p>
-     *
-     * JavaScript Info:
-     * @property closeAnimationConfig
-     * @type Object
-     * 
-     */
-    @JsProperty void setCloseAnimationConfig(JavaScriptObject value);
-
-    /**
-     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
-     *
-     * JavaScript Info:
-     * @property restoreFocusOnClose
-     * @type Boolean
      * @behavior PaperToast
      */
-    @JsProperty boolean getRestoreFocusOnClose();
+    @JsProperty JavaScriptObject getFitInto();
     /**
-     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
+     * <p>The element to fit <code>this</code> into.</p>
      *
      * JavaScript Info:
-     * @property restoreFocusOnClose
-     * @type Boolean
+     * @property fitInto
+     * @type Object
      * @behavior PaperToast
      */
-    @JsProperty void setRestoreFocusOnClose(boolean value);
+    @JsProperty void setFitInto(JavaScriptObject value);
 
     /**
      * <p>Set to true to display a backdrop behind the overlay. It traps the focus<br>within the light DOM of the overlay.</p>
@@ -344,42 +325,23 @@ public interface IronDropdownElement extends HTMLElement {
     @JsProperty void setWithBackdrop(boolean value);
 
     /**
-     * <p>Set to true to auto-fit on attach.</p>
+     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
      *
      * JavaScript Info:
-     * @property autoFitOnAttach
+     * @property allowOutsideScroll
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
-    @JsProperty boolean getAutoFitOnAttach();
+    @JsProperty boolean getAllowOutsideScroll();
     /**
-     * <p>Set to true to auto-fit on attach.</p>
+     * <p>By default, the dropdown will constrain scrolling on the page<br>to itself when opened.<br>Set to true in order to prevent scroll from being constrained<br>to the dropdown when it opens.</p>
      *
      * JavaScript Info:
-     * @property autoFitOnAttach
+     * @property allowOutsideScroll
      * @type Boolean
-     * @behavior PaperToast
+     * 
      */
-    @JsProperty void setAutoFitOnAttach(boolean value);
-
-    /**
-     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
-     *
-     * JavaScript Info:
-     * @property dynamicAlign
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty boolean getDynamicAlign();
-    /**
-     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
-     *
-     * JavaScript Info:
-     * @property dynamicAlign
-     * @type Boolean
-     * @behavior PaperToast
-     */
-    @JsProperty void setDynamicAlign(boolean value);
+    @JsProperty void setAllowOutsideScroll(boolean value);
 
     /**
      * <p>Set to true to disable animations when opening and closing the<br>dropdown.</p>
@@ -401,12 +363,31 @@ public interface IronDropdownElement extends HTMLElement {
     @JsProperty void setNoAnimations(boolean value);
 
     /**
+     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
+     *
+     * JavaScript Info:
+     * @property dynamicAlign
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getDynamicAlign();
+    /**
+     * <p>If true, it will use <code>horizontalAlign</code> and <code>verticalAlign</code> values as preferred alignment<br>and if there’s not enough space, it will pick the values which minimize the cropping.</p>
+     *
+     * JavaScript Info:
+     * @property dynamicAlign
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setDynamicAlign(boolean value);
+
+    /**
      * <p>If true, this property will cause the implementing element to<br>automatically stop propagation on any handled KeyboardEvents.</p>
      *
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getStopKeyboardEventPropagation();
     /**
@@ -415,7 +396,7 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @property stopKeyboardEventPropagation
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setStopKeyboardEventPropagation(boolean value);
 
@@ -444,7 +425,7 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getDisabled();
     /**
@@ -453,7 +434,7 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @property disabled
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setDisabled(boolean value);
 
@@ -501,7 +482,7 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty boolean getFocused();
     /**
@@ -510,7 +491,7 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @property focused
      * @type Boolean
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      */
     @JsProperty void setFocused(boolean value);
 
@@ -591,6 +572,25 @@ public interface IronDropdownElement extends HTMLElement {
     @JsProperty void setOpened(boolean value);
 
     /**
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
+     *
+     * JavaScript Info:
+     * @property restoreFocusOnClose
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty boolean getRestoreFocusOnClose();
+    /**
+     * <p>Set to true to enable restoring of focus when overlay is closed.</p>
+     *
+     * JavaScript Info:
+     * @property restoreFocusOnClose
+     * @type Boolean
+     * @behavior PaperToast
+     */
+    @JsProperty void setRestoreFocusOnClose(boolean value);
+
+    /**
      * <p>The orientation against which to align the element vertically<br>relative to the <code>positionTarget</code>. Possible values are “top”, “bottom”, “auto”.</p>
      *
      * JavaScript Info:
@@ -608,25 +608,6 @@ public interface IronDropdownElement extends HTMLElement {
      * @behavior PaperToast
      */
     @JsProperty void setVerticalAlign(String value);
-
-    /**
-     * <p>The orientation against which to align the element horizontally<br>relative to the <code>positionTarget</code>. Possible values are “left”, “right”, “auto”.</p>
-     *
-     * JavaScript Info:
-     * @property horizontalAlign
-     * @type String
-     * @behavior PaperToast
-     */
-    @JsProperty String getHorizontalAlign();
-    /**
-     * <p>The orientation against which to align the element horizontally<br>relative to the <code>positionTarget</code>. Possible values are “left”, “right”, “auto”.</p>
-     *
-     * JavaScript Info:
-     * @property horizontalAlign
-     * @type String
-     * @behavior PaperToast
-     */
-    @JsProperty void setHorizontalAlign(String value);
 
     /**
      * <p>Convenience property for setting an ‘entry’ animation. Do not set <code>animationConfig.entry</code><br>manually if using this. The animated node is set to <code>this</code> if using this property.</p>
@@ -666,6 +647,25 @@ public interface IronDropdownElement extends HTMLElement {
      */
     @JsProperty void setExitAnimation(String value);
 
+    /**
+     * <p>The orientation against which to align the dropdown content<br>horizontally relative to the dropdown trigger.<br>Overridden from <code>Polymer.IronFitBehavior</code>.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalAlign
+     * @type String
+     * 
+     */
+    @JsProperty String getHorizontalAlign();
+    /**
+     * <p>The orientation against which to align the dropdown content<br>horizontally relative to the dropdown trigger.<br>Overridden from <code>Polymer.IronFitBehavior</code>.</p>
+     *
+     * JavaScript Info:
+     * @property horizontalAlign
+     * @type String
+     * 
+     */
+    @JsProperty void setHorizontalAlign(String value);
+
 
     /**
      * <p>Can be used to imperatively add a key binding to the implementing<br>element. This is the imperative equivalent of declaring a keybinding<br>in the <code>keyBindings</code> prototype property.</p>
@@ -674,7 +674,7 @@ public interface IronDropdownElement extends HTMLElement {
      * @method addOwnKeyBinding
      * @param {} eventString  
      * @param {} handlerName  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * 
      */
     void addOwnKeyBinding(Object eventString, Object handlerName);
@@ -685,7 +685,7 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -696,31 +696,20 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void stopResizeNotificationsFor(Object target);
 
     /**
-     * <p>Cancels the overlay.</p>
+     * <p>Positions and fits the element into the <code>fitInto</code> element.</p>
      *
      * JavaScript Info:
-     * @method cancel
-     * @param {Event=} event  
+     * @method fit
      * @behavior PaperToast
      * 
      */
-    void cancel(JavaScriptObject event);
-
-    /**
-     * <p>Cancels the currently running animations.</p>
-     *
-     * JavaScript Info:
-     * @method cancelAnimation
-     * @behavior PaperTooltip
-     * 
-     */
-    void cancelAnimation();
+    void fit();
 
     /**
      * <p>Close the overlay.</p>
@@ -733,16 +722,6 @@ public interface IronDropdownElement extends HTMLElement {
     void close();
 
     /**
-     * <p>Invalidates the cached tabbable nodes. To be called when any of the focusable<br>content changes (e.g. a button is disabled).</p>
-     *
-     * JavaScript Info:
-     * @method invalidateTabbables
-     * @behavior PaperToast
-     * 
-     */
-    void invalidateTabbables();
-
-    /**
      * <p>Positions the element according to <code>horizontalAlign, verticalAlign</code>.</p>
      *
      * JavaScript Info:
@@ -751,6 +730,16 @@ public interface IronDropdownElement extends HTMLElement {
      * 
      */
     void position();
+
+    /**
+     * <p>Invalidates the cached tabbable nodes. To be called when any of the focusable<br>content changes (e.g. a button is disabled).</p>
+     *
+     * JavaScript Info:
+     * @method invalidateTabbables
+     * @behavior PaperToast
+     * 
+     */
+    void invalidateTabbables();
 
     /**
      * <p>Equivalent to calling <code>resetFit()</code> and <code>fit()</code>. Useful to call this after<br>the element or the <code>fitInto</code> element has been resized, or if any of the<br>positioning properties (e.g. <code>horizontalAlign, verticalAlign</code>) is updated.<br>It preserves the scroll position of the sizingTarget.</p>
@@ -773,24 +762,34 @@ public interface IronDropdownElement extends HTMLElement {
     void resetFit();
 
     /**
-     * <p>When called, will remove all imperatively-added key bindings.</p>
+     * <p>Cancels the currently running animations.</p>
      *
      * JavaScript Info:
-     * @method removeOwnKeyBindings
-     * @behavior PaperToggleButton
+     * @method cancelAnimation
+     * @behavior PaperTooltip
      * 
      */
-    void removeOwnKeyBindings();
+    void cancelAnimation();
 
     /**
      * <p>Can be called to manually notify a resizable and its descendant<br>resizables of a resize change.</p>
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void notifyResize();
+
+    /**
+     * <p>When called, will remove all imperatively-added key bindings.</p>
+     *
+     * JavaScript Info:
+     * @method removeOwnKeyBindings
+     * @behavior PaperTab
+     * 
+     */
+    void removeOwnKeyBindings();
 
     /**
      * <p>Open the overlay.</p>
@@ -833,23 +832,13 @@ public interface IronDropdownElement extends HTMLElement {
     void constrain();
 
     /**
-     * <p>Positions and fits the element into the <code>fitInto</code> element.</p>
-     *
-     * JavaScript Info:
-     * @method fit
-     * @behavior PaperToast
-     * 
-     */
-    void fit();
-
-    /**
      * <p>Returns true if a keyboard event matches <code>eventString</code>.</p>
      *
      * JavaScript Info:
      * @method keyboardEventMatchesKeys
      * @param {KeyboardEvent} event  
      * @param {string} eventString  
-     * @behavior PaperToggleButton
+     * @behavior PaperTab
      * @return {boolean}
      */
     boolean keyboardEventMatchesKeys(JavaScriptObject event, String eventString);
@@ -860,10 +849,21 @@ public interface IronDropdownElement extends HTMLElement {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);
+
+    /**
+     * <p>Cancels the overlay.</p>
+     *
+     * JavaScript Info:
+     * @method cancel
+     * @param {Event=} event  
+     * @behavior PaperToast
+     * 
+     */
+    void cancel(JavaScriptObject event);
 
     /**
      * <p>Plays an animation with an optional <code>type</code>.</p>

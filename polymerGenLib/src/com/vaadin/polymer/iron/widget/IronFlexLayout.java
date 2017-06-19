@@ -19,12 +19,21 @@ import com.google.gwt.core.client.JavaScriptObject;
  * <ol>
  * <li><p><a href="https://github.com/PolymerElements/iron-flex-layout/tree/master/iron-flex-layout-classes.html">Layout classes</a>.<br>The layout class stylesheet provides a simple set of class-based flexbox rules, that<br>let you specify layout properties directly in markup. You must include this file<br>in every element that needs to use them.</p>
  * <p>Sample use:</p>
- * <p>  <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html"></p>
- *   <style is="custom-style" include="iron-flex iron-flex-alignment"></style>
- * 
- *   <div class="layout horizontal layout-start">
- *     <div>cross axis start alignment</div>
- *   </div>
+ * <pre><code>&lt;custom-element-demo&gt;
+ *   &lt;template&gt;
+ *     &lt;script src=&quot;../webcomponentsjs/webcomponents-lite.js&quot;&gt;&lt;/script&gt;
+ *     &lt;next-code-block&gt;&lt;/next-code-block&gt;
+ *   &lt;/template&gt;
+ * &lt;/custom-element-demo&gt;
+ * </code></pre><pre><code class="lang-html">&lt;link rel=&quot;import&quot; href=&quot;iron-flex-layout-classes.html&quot;&gt;
+ * &lt;style is=&quot;custom-style&quot; include=&quot;iron-flex iron-flex-alignment&quot;&gt;&lt;/style&gt;
+ * &lt;style&gt;
+ *   .test { width: 100px; }
+ * &lt;/style&gt;
+ * &lt;div class=&quot;layout horizontal center-center&quot;&gt;
+ *   &lt;div class=&quot;test&quot;&gt;horizontal layout center alignment&lt;/div&gt;
+ * &lt;/div&gt;
+ * </code></pre>
  * </li>
  * <li><p><a href="https://github.com/PolymerElements/iron-flex-layout/blob/master/iron-flex-layout.html">Custom CSS mixins</a>.<br>The mixin stylesheet includes custom CSS mixins that can be applied inside a CSS rule using the <code>@apply</code> function.</p>
  * </li>

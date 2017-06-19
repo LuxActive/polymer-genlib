@@ -26,7 +26,7 @@ import jsinterop.annotations.JsType;
 public interface NeonAnimatableElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "neon-animatable";
-    @JsOverlay public static final String SRC = "neon-animation/neon-animatable.html";
+    @JsOverlay public static final String SRC = "neon-animation/neon-animation.html";
 
 
     /**
@@ -93,7 +93,7 @@ public interface NeonAnimatableElement extends HTMLElement {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void assignParentResizable(Object parentResizable);
@@ -104,7 +104,7 @@ public interface NeonAnimatableElement extends HTMLElement {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void stopResizeNotificationsFor(Object target);
@@ -115,7 +115,7 @@ public interface NeonAnimatableElement extends HTMLElement {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     boolean resizerShouldNotify(JavaScriptObject element);
@@ -125,7 +125,7 @@ public interface NeonAnimatableElement extends HTMLElement {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     void notifyResize();

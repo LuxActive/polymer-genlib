@@ -21,15 +21,17 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
+ * <p><em>This element has been deprecated in favor of <a href="https://github.com/PolymerElements/app-layout">app-layout</a>.*</em></p>
  * <p>Material design: <a href="https://www.google.com/design/spec/patterns/scrolling-techniques.html">Scrolling techniques</a></p>
- * <p><code>paper-scroll-header-panel</code> contains a header section and a content section.  The<br>header is initially on the top part of the view but it scrolls away with the<br>rest of the scrollable content.  Upon scrolling slightly up at any point, the<br>header scrolls back into view.  This saves screen space and allows users to<br>access important controls by easily moving them back to the view.</p>
+ * <p><code>paper-scroll-header-panel</code> contains a header section and a content section.  The<br>header is initially on the top part of the view but it scrolls away with the<br>rest of the scrollable content. Upon scrolling slightly up at any point, the<br>header scrolls back into view. This saves screen space and allows users to<br>access important controls by easily moving them back to the view.</p>
  * <p><strong>Important:</strong> The <code>paper-scroll-header-panel</code> will not display if its parent does not have a height.</p>
  * <p>Using <a href="https://www.polymer-project.org/1.0/docs/migration.html#layout-attributes">layout classes</a> or custom properties, you can easily make the <code>paper-scroll-header-panel</code> fill the screen</p>
  * <pre><code class="lang-html">&lt;body class=&quot;fullbleed layout vertical&quot;&gt;
  *   &lt;paper-scroll-header-panel class=&quot;flex&quot;&gt;
- *     &lt;paper-toolbar&gt;
+ *     &lt;paper-toolbar slot=&quot;header&quot;&gt;
  *       &lt;div&gt;Hello World!&lt;/div&gt;
  *     &lt;/paper-toolbar&gt;
+ *     &lt;div slot=&quot;content&quot;&gt;Content goes here...&lt;/div&gt;
  *   &lt;/paper-scroll-header-panel&gt;
  * &lt;/body&gt;
  * </code></pre>
@@ -49,8 +51,8 @@ import com.google.gwt.core.client.JavaScriptObject;
  * }
  * </code></pre>
  * <pre><code class="lang-html">&lt;paper-scroll-header-panel&gt;
- *   &lt;div class=&quot;paper-header&quot;&gt;Header&lt;/div&gt;
- *   &lt;div&gt;Content goes here...&lt;/div&gt;
+ *   &lt;div class=&quot;paper-header&quot; slot=&quot;header&quot;&gt;Header&lt;/div&gt;
+ *   &lt;div slot=&quot;content&quot;&gt;Content goes here...&lt;/div&gt;
  * &lt;/paper-scroll-header-panel&gt;
  * </code></pre>
  * <h3 id="styling">Styling</h3>
@@ -368,7 +370,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * JavaScript Info:
      * @method stopResizeNotificationsFor
      * @param {} target  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void stopResizeNotificationsFor(Object target) {
@@ -381,7 +383,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * JavaScript Info:
      * @method assignParentResizable
      * @param {} parentResizable  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void assignParentResizable(Object parentResizable) {
@@ -419,7 +421,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      *
      * JavaScript Info:
      * @method notifyResize
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * 
      */
     public void notifyResize() {
@@ -432,7 +434,7 @@ public class PaperScrollHeaderPanel extends PolymerWidget {
      * JavaScript Info:
      * @method resizerShouldNotify
      * @param {HTMLElement} element  
-     * @behavior PaperTimePicker
+     * @behavior PaperClockSelector
      * @return {boolean}
      */
     public boolean resizerShouldNotify(JavaScriptObject element) {

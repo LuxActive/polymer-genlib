@@ -19,7 +19,7 @@ import jsinterop.annotations.JsType;
 public interface GoogleChartLoaderElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "google-chart-loader";
-    @JsOverlay public static final String SRC = "google-chart/google-chart-loader.html";
+    @JsOverlay public static final String SRC = "google-chart/google-chart.html";
 
 
     /**

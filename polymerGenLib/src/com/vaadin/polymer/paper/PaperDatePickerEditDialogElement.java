@@ -19,7 +19,7 @@ import jsinterop.annotations.JsType;
 public interface PaperDatePickerEditDialogElement extends HTMLElement {
 
     @JsOverlay public static final String TAG = "paper-date-picker-edit-dialog";
-    @JsOverlay public static final String SRC = "paper-date-picker-item/paper-date-picker-edit-dialog.html";
+    @JsOverlay public static final String SRC = "paper-date-picker-item/paper-datetime-picker-item.html";
 
 
     /**
@@ -40,6 +40,44 @@ public interface PaperDatePickerEditDialogElement extends HTMLElement {
      * 
      */
     @JsProperty void setDate(JavaScriptObject value);
+
+    /**
+     * <p>The maximum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property maxDate
+     * @type Date
+     * 
+     */
+    @JsProperty JavaScriptObject getMaxDate();
+    /**
+     * <p>The maximum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property maxDate
+     * @type Date
+     * 
+     */
+    @JsProperty void setMaxDate(JavaScriptObject value);
+
+    /**
+     * <p>The minimum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property minDate
+     * @type Date
+     * 
+     */
+    @JsProperty JavaScriptObject getMinDate();
+    /**
+     * <p>The minimum allowed date</p>
+     *
+     * JavaScript Info:
+     * @property minDate
+     * @type Date
+     * 
+     */
+    @JsProperty void setMinDate(JavaScriptObject value);
 
     /**
      * <p>Text for the cancel button in the edit dialog. Use this property to localize the element.</p>

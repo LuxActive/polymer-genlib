@@ -20,7 +20,7 @@ import jsinterop.annotations.JsType;
 public interface NeonAnimatableBehavior {
 
     @JsOverlay public static final String NAME = "Polymer.NeonAnimatableBehavior";
-    @JsOverlay public static final String SRC = "neon-animation/neon-animatable-behavior.html";
+    @JsOverlay public static final String SRC = "neon-animation/neon-shared-element-animatable-behavior.html";
 
 
     /**
@@ -29,7 +29,7 @@ public interface NeonAnimatableBehavior {
      * JavaScript Info:
      * @property animationConfig
      * @type Object
-     * @behavior PaperTooltip
+     * 
      */
     @JsProperty JavaScriptObject getAnimationConfig();
     /**
@@ -38,7 +38,7 @@ public interface NeonAnimatableBehavior {
      * JavaScript Info:
      * @property animationConfig
      * @type Object
-     * @behavior PaperTooltip
+     * 
      */
     @JsProperty void setAnimationConfig(JavaScriptObject value);
 
@@ -48,7 +48,7 @@ public interface NeonAnimatableBehavior {
      * JavaScript Info:
      * @property entryAnimation
      * @type String
-     * @behavior PaperTooltip
+     * 
      */
     @JsProperty String getEntryAnimation();
     /**
@@ -57,7 +57,7 @@ public interface NeonAnimatableBehavior {
      * JavaScript Info:
      * @property entryAnimation
      * @type String
-     * @behavior PaperTooltip
+     * 
      */
     @JsProperty void setEntryAnimation(String value);
 
@@ -67,7 +67,7 @@ public interface NeonAnimatableBehavior {
      * JavaScript Info:
      * @property exitAnimation
      * @type String
-     * @behavior PaperTooltip
+     * 
      */
     @JsProperty String getExitAnimation();
     /**
@@ -76,7 +76,7 @@ public interface NeonAnimatableBehavior {
      * JavaScript Info:
      * @property exitAnimation
      * @type String
-     * @behavior PaperTooltip
+     * 
      */
     @JsProperty void setExitAnimation(String value);
 

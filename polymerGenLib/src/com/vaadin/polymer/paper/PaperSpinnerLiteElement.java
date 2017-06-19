@@ -61,7 +61,7 @@ public interface PaperSpinnerLiteElement extends HTMLElement {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperSpinner
+     * 
      */
     @JsProperty boolean getActive();
     /**
@@ -70,7 +70,7 @@ public interface PaperSpinnerLiteElement extends HTMLElement {
      * JavaScript Info:
      * @property active
      * @type Boolean
-     * @behavior PaperSpinner
+     * 
      */
     @JsProperty void setActive(boolean value);
 
@@ -80,7 +80,7 @@ public interface PaperSpinnerLiteElement extends HTMLElement {
      * JavaScript Info:
      * @property alt
      * @type String
-     * @behavior PaperSpinner
+     * 
      */
     @JsProperty String getAlt();
     /**
@@ -89,7 +89,7 @@ public interface PaperSpinnerLiteElement extends HTMLElement {
      * JavaScript Info:
      * @property alt
      * @type String
-     * @behavior PaperSpinner
+     * 
      */
     @JsProperty void setAlt(String value);
 
