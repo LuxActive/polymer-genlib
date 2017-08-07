@@ -47,7 +47,9 @@
     "pdf-browser-viewer": "IngressoRapidoWebComponents/pdf-browser-viewer#1.0.6",
     "transburger-icon": "kcmr/transburger-icon#3.0.1",
     "iron-swipeable-pages": "GeoloeG/iron-swipeable-pages#1.2.8",
-    "zdkelt-time-picker": "zdkelt-time-picker/bower_components/zdkelt-time-picker#2.0.0"
+    "zdkelt-time-picker": "zdkelt-time-picker/bower_components/zdkelt-time-picker#2.0.0",
+   	"iron-collapse": "PolymerElements/iron-collapse#2.0.0"
+    
   },
   "resolutions": {
     "paper-styles": "2.0.0",
